@@ -778,7 +778,7 @@ window.GAMES = [
     price: 98,
     verdict: "Кооп-челлендж: добраться до вершины. Не сюжет, но финал есть — каждый забег как короткая история.",
     storeUrl: "https://store.steampowered.com/app/3527290/PEAK/",
-    imageUrl: steamImage(3527290),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/31bac6b2eccf09b368f5e95ce510bae2baf3cfcd/header.jpg",
     youtubeUrl: youtube("u_vlCvsf8dg")
   },
   {
