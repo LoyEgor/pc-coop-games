@@ -337,59 +337,63 @@ tbody tr.is-hidden {
 
 .image-col,
 .image-cell {
-  width: 8.5%;
+  width: 8%;
 }
 
 th:nth-child(2),
 .title-cell {
-  width: 11%;
+  width: 10%;
 }
 
 th:nth-child(3) {
-  width: 4.5%;
+  width: 4%;
 }
 
 th:nth-child(4) {
-  width: 15%;
+  width: 13%;
 }
 
 th:nth-child(5) {
-  width: 5.5%;
+  width: 6%;
 }
 
 th:nth-child(6) {
-  width: 8.5%;
+  width: 5%;
 }
 
 th:nth-child(7) {
-  width: 5.5%;
-}
-
-th:nth-child(8) {
-  width: 5.5%;
-}
-
-th:nth-child(9) {
-  width: 8.5%;
-}
-
-th:nth-child(10) {
   width: 8%;
 }
 
-th:nth-child(11),
-.verdict-cell {
-  width: 15%;
+th:nth-child(8) {
+  width: 5%;
+}
+
+th:nth-child(9) {
+  width: 5%;
+}
+
+th:nth-child(10) {
+  width: 7%;
+}
+
+th:nth-child(11) {
+  width: 7%;
 }
 
 th:nth-child(12),
-.link-col {
-  width: 5.5%;
+.verdict-cell {
+  width: 13%;
 }
 
 th:nth-child(13),
+.link-col {
+  width: 5%;
+}
+
+th:nth-child(14),
 .action-col {
-  width: 4.5%;
+  width: 4%;
 }
 
 .image-cell img {
@@ -500,6 +504,19 @@ th:nth-child(13),
 
 .badge.muted {
   color: var(--muted);
+}
+
+.tag.tier {
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-2));
+  color: var(--accent);
+  font-weight: 820;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge.ending {
+  font-weight: 720;
 }
 
 .detail {

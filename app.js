@@ -6,6 +6,16 @@ const ONE_COPY = {
   none: { label: "Нужно 2 копии", rank: 1, tone: "muted" }
 };
 
+const ENDING_TYPE = {
+  story: { label: "Сюжет", short: "Сюжет", tone: "info", rank: 5 },
+  levels: { label: "Уровни", short: "Уровни", tone: "muted", rank: 4 },
+  "arcade-goal": { label: "Цель / эскейп", short: "Цель", tone: "good", rank: 3 },
+  roguelite: { label: "Roguelite", short: "Roguelite", tone: "warn", rank: 2 },
+  "survival-goal": { label: "Survival + финал", short: "Survival", tone: "bad", rank: 1 }
+};
+
+const TIER_VALUES = new Set(["AAA", "AA", "Indie"]);
+
 // 'FIT_RANK' has been removed as the 'Попадание' column is deleted
 
 const state = {
@@ -22,6 +32,7 @@ const state = {
     hours: { min: "", max: "" },
     price: { min: "", max: "" },
     genres: new Set(),
+    endingType: new Set(),
     ratingSource: new Set(),
     oneCopy: new Set()
   }
@@ -51,6 +62,12 @@ const filterConfig = {
   playersMax: { type: "range", label: "Игроки", step: 1, min: 0 },
   hours: { type: "range", label: "Часы", step: 1, min: 0 },
   genres: { type: "set", label: "Жанры", options: () => uniqueSorted(games.flatMap((game) => game.genres)) },
+  endingType: {
+    type: "set",
+    label: "Тип игры",
+    options: () => Object.keys(ENDING_TYPE),
+    labelFor: (value) => ENDING_TYPE[value]?.label || value
+  },
   ratingSource: { type: "set", label: "Отзывы", options: () => uniqueSorted(games.map((game) => game.ratingSource)) },
   oneCopy: {
     type: "set",
@@ -109,6 +126,7 @@ function isHidden(game) {
 function getSortValue(game, key) {
   if (key === "genres") return game.genres.join(", ");
   if (key === "oneCopy") return ONE_COPY[game.oneCopy]?.rank || 0;
+  if (key === "endingType") return ENDING_TYPE[game.endingType]?.rank || 0;
   if (key === "price") return game.price || 0;
   return game[key];
 }
@@ -135,6 +153,7 @@ function gameMatchesFilters(game) {
   }
 
   if (state.filters.genres.size > 0 && !game.genres.some((genre) => state.filters.genres.has(genre))) return false;
+  if (state.filters.endingType.size > 0 && !state.filters.endingType.has(game.endingType)) return false;
   if (state.filters.ratingSource.size > 0 && !state.filters.ratingSource.has(game.ratingSource)) return false;
   if (state.filters.oneCopy.size > 0 && !state.filters.oneCopy.has(game.oneCopy)) return false;
 
@@ -187,7 +206,8 @@ function renderRow(game) {
         ${hiddenLabel}
       </td>
       <td class="number-cell">${game.year}</td>
-      <td><div class="tag-list">${game.genres.map((genre) => `<span class="tag">${escapeHtml(genre)}</span>`).join("")}</div></td>
+      <td><div class="tag-list">${game.genres.map((genre) => `<span class="tag${TIER_VALUES.has(genre) ? " tier" : ""}">${escapeHtml(genre)}</span>`).join("")}</div></td>
+      <td>${renderEndingType(game.endingType)}</td>
       <td class="number-cell rating">${game.rating}</td>
       <td>
         <span class="badge ${sourceTone}">${escapeHtml(game.ratingSource)}</span>
@@ -210,6 +230,12 @@ function renderRow(game) {
 
 function trimNumber(value) {
   return Number.isInteger(value) ? value : value.toFixed(1);
+}
+
+function renderEndingType(value) {
+  const meta = ENDING_TYPE[value];
+  if (!meta) return `<span class="detail">—</span>`;
+  return `<span class="badge ending ${meta.tone}" data-ending="${escapeHtml(value)}">${escapeHtml(meta.short)}</span>`;
 }
 
 // 'fitTone' has been removed as the 'Попадание' column is deleted
