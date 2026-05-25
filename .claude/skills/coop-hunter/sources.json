@@ -1,0 +1,92 @@
+{
+  "_comment": "Crawl order. Each source has a method (steamdb_tag | co_optimus | curator | reddit | webfetch) and parameters. The skill processes them in order, starting from current_source_idx in progress.json.",
+  "sources": [
+    {
+      "id": "steamdb_coop_campaign",
+      "method": "steamdb_tag",
+      "tag_id": 1685,
+      "tag_name": "Co-op Campaign",
+      "url_template": "https://steamdb.info/tag/1685/?sort=score-desc&page={page}",
+      "page_size": 25,
+      "max_pages": 20,
+      "note": "Most explicit signal for finite co-op content. Highest yield expected."
+    },
+    {
+      "id": "steamdb_online_coop_story_rich",
+      "method": "steamdb_tag_intersection",
+      "tags": [3859, 1742],
+      "tag_names": ["Online Co-Op", "Story Rich"],
+      "url_template": "https://steamdb.info/tags/?tags=3859%2C1742&sort=score-desc&page={page}",
+      "page_size": 25,
+      "max_pages": 15,
+      "note": "Online + narrative. Filter out duplicates from previous source."
+    },
+    {
+      "id": "co_optimus_pc_campaign",
+      "method": "co_optimus",
+      "url_template": "https://www.co-optimus.com/games.php?system=10&mode=2&page={page}",
+      "page_size": 30,
+      "max_pages": 20,
+      "note": "system=10 is PC, mode=2 is Campaign. Very targeted."
+    },
+    {
+      "id": "co_optimus_pc_arcade",
+      "method": "co_optimus",
+      "url_template": "https://www.co-optimus.com/games.php?system=10&mode=3&page={page}",
+      "page_size": 30,
+      "max_pages": 10,
+      "note": "mode=3 is Arcade — finite levels without strong story. Maps to endingType 'levels' or 'arcade-goal'."
+    },
+    {
+      "id": "steam_curator_cooptimus",
+      "method": "curator",
+      "url_template": "https://store.steampowered.com/curator/8217971/?curator_app_list_page={page}",
+      "page_size": 50,
+      "max_pages": 15,
+      "note": "Co-Optimus official Steam curator. Pre-curated quality."
+    },
+    {
+      "id": "howlongtobeat_multiplayer",
+      "method": "webfetch",
+      "url_template": "https://howlongtobeat.com/?q=&t=games&detail=&list-filter%5Bplatform%5D=PC&list-filter%5Bmulti_player%5D=Co-Op&page={page}",
+      "page_size": 25,
+      "max_pages": 10,
+      "note": "Games with Main Story length filled = guaranteed finite. PC + Co-Op filter."
+    },
+    {
+      "id": "reddit_coopgaming_top",
+      "method": "reddit_top_posts",
+      "subreddit": "CoopGaming",
+      "url_template": "https://www.reddit.com/r/CoopGaming/top.json?t=all&limit=100&after={after}",
+      "page_size": 100,
+      "max_pages": 5,
+      "note": "Top posts of all time. Extract game names from titles and link cards."
+    },
+    {
+      "id": "articles_pcgamer_top_coop",
+      "method": "webfetch",
+      "urls": [
+        "https://www.pcgamer.com/best-co-op-games/",
+        "https://www.rockpapershotgun.com/best-co-op-games-pc",
+        "https://www.polygon.com/best-co-op-games-pc",
+        "https://www.eurogamer.net/best-coop-games-pc"
+      ],
+      "note": "Editor-curated lists. Each article ≈ 30-50 games. Extract titles, dedupe against data.js."
+    },
+    {
+      "id": "backloggd_coop_completed",
+      "method": "webfetch",
+      "url_template": "https://www.backloggd.com/games/?genres%5B%5D=cooperative&platforms%5B%5D=pc&status%5B%5D=completed&sort=top_rated&page={page}",
+      "page_size": 24,
+      "max_pages": 10,
+      "note": "Community-marked completed co-op games on PC. Strong signal that game has an ending."
+    }
+  ],
+  "_method_notes": {
+    "steamdb_tag": "SteamDB pages are HTML. Use WebFetch to extract game names + appids from the table rows.",
+    "co_optimus": "Each row in the games table has a game name + link to /game/<id>/pc/<slug>.html. From individual game page, extract co-op modes (Local/Online/Combo) + supported player counts + 'Campaign Length' field if present.",
+    "curator": "Steam curator pages. Extract game cards (name + Steam app link).",
+    "reddit_top_posts": "JSON API. Parse 'data.children' for posts; extract game mentions from title/selftext via simple heuristics or by clicking through to linked store pages.",
+    "webfetch": "Generic article scrape. Look for ordered/unordered lists of game names with links to Steam."
+  }
+}

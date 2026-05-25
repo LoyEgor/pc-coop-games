@@ -1,2 +1,9 @@
-.claude/
+# IDE / runtime configs
+.claude/launch.json
+.claude/settings.local.json
+
+# Skill runtime state (logs, progress, etc.) — not source
+.claude/skills/*/state/
+
+# Misc
 header-screenshot.png
