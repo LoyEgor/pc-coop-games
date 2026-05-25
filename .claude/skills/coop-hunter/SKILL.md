@@ -22,17 +22,61 @@ When called:
 
 1. Read `.claude/skills/coop-hunter/state/progress.json` (create with defaults if missing — see "Initial state").
 2. If `progress.done === true` → re-write `state/summary.md` and exit with "DONE".
-3. Identify the current source (`progress.current_source_idx`) from `sources.json`.
+3. Identify the current source (`progress.current_source_idx`) from `sources.json`. The current source MUST have `phase == progress.current_phase`. If not, advance `current_source_idx` to the next source with matching phase (or trigger phase transition — see below).
 4. From that source, pull the next batch of candidates starting at `progress.current_offset`. Batch size = 5.
 5. For each candidate in batch (sequentially):
    - Run the "Per-candidate procedure" below.
    - On success → append entry to `data.js`, update `progress.json`, append to `state/added.tsv`.
    - On any skip → append to `state/skipped.tsv` with the reason, update progress, continue.
+   - **After every successful add**, check auto-push (see "Auto-push" section).
 6. After the batch:
    - If `progress.added_count` crossed a multiple of 50 since last validation → run "Validation pass".
-   - If the current source is exhausted (offset >= source max) → move to next source.
-   - If all sources exhausted → set `progress.done = true`, write `state/summary.md`, exit.
+   - If the current source is exhausted (offset >= source max) → mark it complete (append to `completed_sources`), reset `current_offset = 0`, move to next source IN THE SAME PHASE.
+   - If all sources of `current_phase` are completed → run **Phase transition logic** below.
 7. Return. `/goal` will call you again next turn.
+
+## Phase transition logic
+
+Maintain in progress.json:
+- `current_phase` (default 1)
+- `max_phase` (default 1 — Windows behavior; Mac launcher sets 4)
+- `phase_start_count` (added_count when current phase started; default 0)
+
+When all sources of `current_phase` are completed:
+
+1. Compute `phase_yield = added_count - phase_start_count`.
+2. If `phase_yield > 0` AND `current_phase < max_phase`:
+   - `current_phase += 1`
+   - `phase_start_count = added_count`
+   - `current_source_idx` advances to the first source of the new phase
+   - `current_offset = 0`
+   - Continue processing.
+3. Else (yield is 0 OR we've reached max_phase):
+   - `done = true`
+   - Write `state/summary.md`
+   - Exit.
+
+This means: on Windows with `max_phase=1`, after phase 1 is done, `done=true`. On Mac with `max_phase=4`, the skill cascades through 2, 3, 4 until a phase adds nothing new.
+
+## Auto-push (Mac mode)
+
+Maintain in progress.json:
+- `auto_push_every_n` (default 0 — disabled; Mac launcher sets 25)
+- `last_push_at` (added_count at the last push; default 0)
+
+After every successful add, if `auto_push_every_n > 0` AND `(added_count - last_push_at) >= auto_push_every_n`:
+
+```bash
+git add data.js .claude/skills/coop-hunter/state/added.tsv .claude/skills/coop-hunter/state/skipped.tsv .claude/skills/coop-hunter/state/progress.json
+git commit -m "coop-hunter: batch +N games (total M, phase P)"
+git push
+```
+
+Where N = `added_count - last_push_at`, M = `added_count`, P = `current_phase`.
+
+After push: `last_push_at = added_count`.
+
+If `git push` fails (network, conflict), log to `state/push-fails.tsv` and continue — do NOT halt. Try again on the next batch.
 
 ## Per-candidate procedure
 
@@ -129,6 +173,44 @@ For `playersLabel`, `hours`, `hoursLabel`, `verdict` — derive from Steam descr
   - `added_count += 1`
   - `last_added = <id>`
 
+## Phase 4 source methods (cascade re-evaluation + exhaustive search)
+
+These methods replace the standard "Per-candidate procedure" for sources in phase 4. They are only reached when `max_phase >= 4` (Mac mode).
+
+### `revalidate_existing`
+Goal: catch false positives that slipped through earlier (e.g., Deep Rock Galactic, Lethal Company, R.E.P.O. — endless games that initially passed the finite-content check).
+
+1. Load `data.js`, iterate all non-hidden entries.
+2. For each entry, in batches of `batch_size`:
+   - Refetch Steam appdetails. Compare name, price, header_image. If image URL doesn't return HTTP 200 → log to `state/bad-existing.tsv` with reason `broken_image`.
+   - Refetch reviews summary. If %positive dropped below 50 → log with reason `quality_drop`.
+   - Re-run finite-content scan with strictest rules:
+     - If Steam tags include `MMO`, `Massively Multiplayer`, `Free to Play` + `Open World Survival Craft` → log with reason `endless_misclassified`.
+     - If negative review snippets show ≥3 hits of `endless` / `live service` / `no ending` / `no point` / `infinite` → log with reason `endless_misclassified`.
+   - Check YouTube URL: WebFetch the URL, verify title contains the game name. If 404 / completely unrelated → log with reason `bad_video`.
+3. Do NOT modify or remove entries. Only log. User reviews `state/bad-existing.tsv` and decides.
+4. This source's "offset" is the index into existing entries; "exhausted" when all entries scanned.
+
+### `reeval_skipped`
+1. Read `state/skipped.tsv`. Filter rows where reason in [`ambiguous`, `unclear_ending`, `not_enough_reviews`].
+2. For each row, re-run the full "Per-candidate procedure" with current data.
+3. If now passes → add it (counts toward phase_yield).
+4. If still fails → leave skipped (no double-log).
+5. Exhausted when all eligible rows processed.
+
+### `steam_more_like_this`
+1. Read `data.js`. Take top `top_n` non-hidden entries by `rating` (default 25).
+2. For each, WebFetch the Steam store page. Parse the "More like this" / "More from these developers" / "Players also liked" sections.
+3. Extract game names + Steam app IDs.
+4. Dedupe against existing entries.
+5. For each new candidate → run "Per-candidate procedure".
+
+### `websearch_queries`
+1. For each query in `queries` array, run a single `WebSearch` call.
+2. From results, extract game names (look for entities that match patterns like "X is a co-op game" or italicized titles).
+3. Dedupe against existing entries.
+4. For each new candidate → run "Per-candidate procedure".
+
 ## Validation pass (every 50 added)
 
 When `added_count` reaches a multiple of 50:
@@ -158,15 +240,22 @@ If `state/progress.json` doesn't exist, create it with:
 {
   "current_source_idx": 0,
   "current_offset": 0,
+  "current_phase": 1,
+  "max_phase": 1,
+  "phase_start_count": 0,
   "added_count": 0,
   "skipped_count": 0,
   "last_validation_at": 0,
+  "auto_push_every_n": 0,
+  "last_push_at": 0,
   "completed_sources": [],
   "done": false,
   "last_added": null,
   "last_run_timestamp": null
 }
 ```
+
+If the file exists but is missing the newer fields (`current_phase`, `max_phase`, `phase_start_count`, `auto_push_every_n`, `last_push_at`), backfill them with the defaults above before proceeding. This preserves existing runs.
 
 ## Final report
 

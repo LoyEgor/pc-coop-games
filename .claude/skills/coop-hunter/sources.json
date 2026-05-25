@@ -1,60 +1,90 @@
 {
-  "_comment": "Crawl order. Each source has a method (steamdb_tag | co_optimus | curator | reddit | webfetch) and parameters. The skill processes them in order, starting from current_source_idx in progress.json.",
+  "_comment": "Crawl order. Sources are grouped into 4 phases. The skill processes phase 1 first; when all sources of a phase are completed AND that phase added > 0 games, it escalates to the next phase. When a phase adds 0 games (or current_phase > max_phase), the skill marks done=true. Windows runs typically use max_phase=1 (single pass); Mac runs use max_phase=4 (cascading + re-evaluation).",
   "sources": [
     {
       "id": "steamdb_coop_campaign",
+      "phase": 1,
       "method": "steamdb_tag",
       "tag_id": 1685,
       "tag_name": "Co-op Campaign",
       "url_template": "https://steamdb.info/tag/1685/?sort=score-desc&page={page}",
       "page_size": 25,
       "max_pages": 20,
-      "note": "Most explicit signal for finite co-op content. Highest yield expected."
-    },
-    {
-      "id": "steamdb_online_coop_story_rich",
-      "method": "steamdb_tag_intersection",
-      "tags": [3859, 1742],
-      "tag_names": ["Online Co-Op", "Story Rich"],
-      "url_template": "https://steamdb.info/tags/?tags=3859%2C1742&sort=score-desc&page={page}",
-      "page_size": 25,
-      "max_pages": 15,
-      "note": "Online + narrative. Filter out duplicates from previous source."
+      "note": "Highest yield. Steam-explicit signal for finite co-op content."
     },
     {
       "id": "co_optimus_pc_campaign",
+      "phase": 1,
       "method": "co_optimus",
       "url_template": "https://www.co-optimus.com/games.php?system=10&mode=2&page={page}",
       "page_size": 30,
       "max_pages": 20,
-      "note": "system=10 is PC, mode=2 is Campaign. Very targeted."
+      "note": "PC + Campaign mode. Very targeted."
     },
     {
       "id": "co_optimus_pc_arcade",
+      "phase": 1,
       "method": "co_optimus",
       "url_template": "https://www.co-optimus.com/games.php?system=10&mode=3&page={page}",
       "page_size": 30,
       "max_pages": 10,
-      "note": "mode=3 is Arcade — finite levels without strong story. Maps to endingType 'levels' or 'arcade-goal'."
+      "note": "Arcade mode — finite levels without strong story. Maps to endingType 'levels' or 'arcade-goal'."
     },
     {
       "id": "steam_curator_cooptimus",
+      "phase": 1,
       "method": "curator",
       "url_template": "https://store.steampowered.com/curator/8217971/?curator_app_list_page={page}",
       "page_size": 50,
       "max_pages": 15,
       "note": "Co-Optimus official Steam curator. Pre-curated quality."
     },
+
+    {
+      "id": "steamdb_online_coop_story_rich",
+      "phase": 2,
+      "method": "steamdb_tag_intersection",
+      "tags": [3859, 1742],
+      "tag_names": ["Online Co-Op", "Story Rich"],
+      "url_template": "https://steamdb.info/tags/?tags=3859%2C1742&sort=score-desc&page={page}",
+      "page_size": 25,
+      "max_pages": 15,
+      "note": "Online + narrative."
+    },
     {
       "id": "howlongtobeat_multiplayer",
+      "phase": 2,
       "method": "webfetch",
       "url_template": "https://howlongtobeat.com/?q=&t=games&detail=&list-filter%5Bplatform%5D=PC&list-filter%5Bmulti_player%5D=Co-Op&page={page}",
       "page_size": 25,
       "max_pages": 10,
-      "note": "Games with Main Story length filled = guaranteed finite. PC + Co-Op filter."
+      "note": "Games with Main Story length filled = guaranteed finite."
     },
     {
+      "id": "backloggd_coop_completed",
+      "phase": 2,
+      "method": "webfetch",
+      "url_template": "https://www.backloggd.com/games/?genres%5B%5D=cooperative&platforms%5B%5D=pc&status%5B%5D=completed&sort=top_rated&page={page}",
+      "page_size": 24,
+      "max_pages": 10,
+      "note": "Community-marked completed co-op games. Strong signal that game has an ending."
+    },
+    {
+      "id": "articles_top_coop",
+      "phase": 2,
+      "method": "webfetch",
+      "urls": [
+        "https://www.pcgamer.com/best-co-op-games/",
+        "https://www.rockpapershotgun.com/best-co-op-games-pc",
+        "https://www.polygon.com/best-co-op-games-pc",
+        "https://www.eurogamer.net/best-coop-games-pc"
+      ],
+      "note": "Editor-curated lists. Each article ≈ 30-50 games."
+    },
+
+    {
       "id": "reddit_coopgaming_top",
+      "phase": 3,
       "method": "reddit_top_posts",
       "subreddit": "CoopGaming",
       "url_template": "https://www.reddit.com/r/CoopGaming/top.json?t=all&limit=100&after={after}",
@@ -63,30 +93,82 @@
       "note": "Top posts of all time. Extract game names from titles and link cards."
     },
     {
-      "id": "articles_pcgamer_top_coop",
-      "method": "webfetch",
-      "urls": [
-        "https://www.pcgamer.com/best-co-op-games/",
-        "https://www.rockpapershotgun.com/best-co-op-games-pc",
-        "https://www.polygon.com/best-co-op-games-pc",
-        "https://www.eurogamer.net/best-coop-games-pc"
-      ],
-      "note": "Editor-curated lists. Each article ≈ 30-50 games. Extract titles, dedupe against data.js."
+      "id": "steamdb_tag_2p_local_coop",
+      "phase": 3,
+      "method": "steamdb_tag",
+      "tag_id": 7368,
+      "tag_name": "2 Player Local Co-Op",
+      "url_template": "https://steamdb.info/tag/7368/?sort=score-desc&page={page}",
+      "page_size": 25,
+      "max_pages": 10
     },
     {
-      "id": "backloggd_coop_completed",
-      "method": "webfetch",
-      "url_template": "https://www.backloggd.com/games/?genres%5B%5D=cooperative&platforms%5B%5D=pc&status%5B%5D=completed&sort=top_rated&page={page}",
-      "page_size": 24,
-      "max_pages": 10,
-      "note": "Community-marked completed co-op games on PC. Strong signal that game has an ending."
+      "id": "steamdb_tag_4p_online_coop",
+      "phase": 3,
+      "method": "steamdb_tag",
+      "tag_id": 30406,
+      "tag_name": "4 Player Online Co-Op",
+      "url_template": "https://steamdb.info/tag/30406/?sort=score-desc&page={page}",
+      "page_size": 25,
+      "max_pages": 10
+    },
+    {
+      "id": "reddit_remoteplay_top",
+      "phase": 3,
+      "method": "reddit_top_posts",
+      "subreddit": "RemotePlayWhilePlayingTogether",
+      "url_template": "https://www.reddit.com/r/RemotePlayWhilePlayingTogether/top.json?t=year&limit=100&after={after}",
+      "page_size": 100,
+      "max_pages": 3
+    },
+
+    {
+      "id": "revalidate_existing",
+      "phase": 4,
+      "method": "revalidate_existing",
+      "note": "Iterate existing entries in data.js. For each: refetch Steam page, verify name+price still match, image URL still resolves (HTTP 200), %positive still >=50, endingType still defensible (esp. catch false positives like Deep Rock Galactic / Lethal Company / R.E.P.O. that slipped through as finite when they're endless). Flag failures to state/bad-existing.tsv. Do NOT auto-remove — log only.",
+      "batch_size": 10
+    },
+    {
+      "id": "reeval_skipped",
+      "phase": 4,
+      "method": "reeval_skipped",
+      "note": "Re-process state/skipped.tsv with strictest rules. If a game was skipped as 'ambiguous' or 'unclear_ending', re-evaluate with fresh data. If it now passes, add it. Most entries should still be skipped.",
+      "batch_size": 10
+    },
+    {
+      "id": "steam_more_like_this",
+      "phase": 4,
+      "method": "steam_more_like_this",
+      "note": "For each of the top-25 highest-rated entries in data.js (rating >=90), fetch Steam's 'More like this' / 'Similar by tags' recommendations. Extract new candidates, dedupe, process each through the standard procedure.",
+      "top_n": 25
+    },
+    {
+      "id": "websearch_niche_queries",
+      "phase": 4,
+      "method": "websearch_queries",
+      "queries": [
+        "best co-op puzzle games PC with ending 2026",
+        "co-op horror games PC finite campaign steam",
+        "co-op JRPG steam two player ending",
+        "co-op racing campaign PC steam",
+        "co-op platformer two player PC steam",
+        "couch co-op story games PC finite",
+        "remote play together best co-op games",
+        "co-op shooter PC story campaign 2024 2025 2026"
+      ],
+      "note": "WebSearch for niche queries that might surface candidates not in any structured source."
     }
   ],
   "_method_notes": {
     "steamdb_tag": "SteamDB pages are HTML. Use WebFetch to extract game names + appids from the table rows.",
-    "co_optimus": "Each row in the games table has a game name + link to /game/<id>/pc/<slug>.html. From individual game page, extract co-op modes (Local/Online/Combo) + supported player counts + 'Campaign Length' field if present.",
+    "co_optimus": "Each row has a game name + link. From individual game page, extract co-op modes + supported player counts + 'Campaign Length' field if present.",
     "curator": "Steam curator pages. Extract game cards (name + Steam app link).",
-    "reddit_top_posts": "JSON API. Parse 'data.children' for posts; extract game mentions from title/selftext via simple heuristics or by clicking through to linked store pages.",
-    "webfetch": "Generic article scrape. Look for ordered/unordered lists of game names with links to Steam."
+    "reddit_top_posts": "JSON API. Parse 'data.children' for posts; extract game mentions.",
+    "webfetch": "Generic article scrape. Look for game lists with links to Steam.",
+    "revalidate_existing": "Read data.js, iterate entries. Use steam_fetch.py to refresh each. Compare to stored values. Log mismatches.",
+    "reeval_skipped": "Read state/skipped.tsv. For each row where reason is in [ambiguous, unclear_ending, not_enough_reviews], run validate() again. If now passes, build entry and append.",
+    "steam_more_like_this": "Use Steam's tag-similarity to expand. Each top entry's Steam page has 'More like this' carousel. Scrape those titles.",
+    "websearch_queries": "Run each query through WebSearch. Parse results for game names mentioned. Dedupe heavily against existing data.js."
   }
 }
