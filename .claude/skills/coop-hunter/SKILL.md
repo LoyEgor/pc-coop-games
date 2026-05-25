@@ -82,6 +82,14 @@ If `git push` fails (network, conflict), log to `state/push-fails.tsv` and conti
 
 For one candidate `name`:
 
+### 0. Hardcoded blocklist (MANDATORY FIRST CHECK)
+
+Before ANY other check, compare the candidate's name (case-insensitive, fuzzy match) against the "Hardcoded blocklist" section in `classification.md`. If it matches → **skip immediately** with reason `blocklisted_endless`. Do NOT proceed to Steam search, do NOT spend tokens on API calls.
+
+Examples of names that must trigger this skip: Deep Rock Galactic, Lethal Company, R.E.P.O., Helldivers 2, Bloons TD 6, Crab Champions, Don't Starve Together, Project Zomboid, Brotato, Vampire Survivors, Palworld, V Rising, Enshrouded, Core Keeper, Sea of Thieves, Path of Exile, Diablo Immortal, any MMO/Battle Royale, and many more (see classification.md for the full list).
+
+The owner has explicitly authorized this hard reject: «мне принципиально важно, чтобы в материалах не появлялись endless игры». No exceptions.
+
 ### 1. De-duplication
 - Steam search API: `https://steamcommunity.com/actions/SearchApps/<urlencoded name>`
 - Take first result's `appid`.

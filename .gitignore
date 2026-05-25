@@ -2,8 +2,13 @@
 .claude/launch.json
 .claude/settings.local.json
 
-# Skill runtime state (logs, progress, etc.) — not source
-.claude/skills/*/state/
+# Local launcher transcripts (regenerated every run)
+coop-hunter-transcript.log
+coop-hunter.log
+
+# Skill internal scratch
+.claude/skills/coop-hunter/state/_*.json
+.claude/skills/coop-hunter/scripts/__pycache__/
 
 # Misc
 header-screenshot.png

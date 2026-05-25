@@ -1,0 +1,5 @@
+timestamp	candidate_name	reason	source	notes
+2026-05-26T00:05:00Z	Wobbly Life	endless	steamdb_coop_campaign	sandbox party game, no defined ending
+2026-05-26T00:05:00Z	WEBFISHING	endless	steamdb_coop_campaign	massively multiplayer fishing hangout, no goal
+2026-05-26T00:05:00Z	Factorio	endless	steamdb_coop_campaign	factory sim, no win state in base game
+2026-05-26T00:25:00Z	Portal Reloaded	requires_base_game	steamdb_coop_campaign	free Portal 2 mod
