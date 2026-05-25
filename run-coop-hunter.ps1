@@ -22,6 +22,27 @@ $transcript = Join-Path $repoRoot "coop-hunter-transcript.log"
 
 Set-Location $repoRoot
 
+# Locate the claude CLI. Try PATH first, then known npm install location.
+$claudeCmd = $null
+$onPath = Get-Command claude -ErrorAction SilentlyContinue
+if ($onPath) {
+  $claudeCmd = $onPath.Source
+} else {
+  $candidate = Join-Path $env:APPDATA "npm\claude.cmd"
+  if (Test-Path $candidate) {
+    $claudeCmd = $candidate
+    # Also add to PATH for this session so child processes find it.
+    $env:Path = "$($env:APPDATA)\npm;$env:Path"
+  }
+}
+
+if (-not $claudeCmd) {
+  Write-Host "ERROR: claude CLI not found. Tried PATH and $env:APPDATA\npm\claude.cmd." -ForegroundColor Red
+  Write-Host "Install with: npm install -g @anthropic-ai/claude-code" -ForegroundColor Yellow
+  exit 1
+}
+Write-Host "Using claude: $claudeCmd"
+
 # Capture EVERYTHING shown in the terminal to a log file (for morning review).
 # This does NOT break the interactive UI -- transcript runs in parallel.
 try { Start-Transcript -Path $transcript -Append | Out-Null } catch {}
@@ -94,7 +115,7 @@ while ($true) {
   # Interactive mode -- positional arg sends the prompt as the first message.
   # No -p flag = stays interactive after the prompt, you see the chat live.
   # Loop exits naturally when claude exits (user quits, /goal completes, or crash).
-  claude --dangerously-skip-permissions $goalPrompt
+  & $claudeCmd --dangerously-skip-permissions $goalPrompt
 
   # After claude exits, check progress.
   if (-not (Test-Path $progressFile)) {
