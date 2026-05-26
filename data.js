@@ -2288,7 +2288,7 @@ window.GAMES = [
     price: 673,
     verdict: "Beat'em up по Marvel от создателей TMNT Shredder's Revenge: до 4 героев, короткая кампания.",
     storeUrl: "https://store.steampowered.com/app/2753970/",
-    imageUrl: steamImage(2753970),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2753970/bcb8dd8a710ecd285876fd185b162f5feb545ee3/header_alt_assets_0.jpg",
     youtubeUrl: youtube("95KGhcg1o1o")
   },
   {
@@ -2353,7 +2353,7 @@ window.GAMES = [
     price: 187,
     verdict: "Хаотичный кооп-роуд-трип: вчетвером тащите трейлер сквозь препятствия. Короткая кампания.",
     storeUrl: "https://store.steampowered.com/app/3949040/",
-    imageUrl: steamImage(3949040),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3949040/cae24b4ed7f4531be51f0d63f785b7d253f92dc3/header.jpg",
     youtubeUrl: youtube("BvRhz1RvAOE")
   },
   {
@@ -2385,7 +2385,7 @@ window.GAMES = [
     price: 500,
     verdict: "Продолжение медитативной мойки — теперь со сплит-скрином и онлайн-кооперативом на двоих.",
     storeUrl: "https://store.steampowered.com/app/2968420/",
-    imageUrl: steamImage(2968420),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2968420/91fea40a711c5a74cce1bb1a9e05c48a379f6aa0/header.jpg",
     youtubeUrl: youtube("gE7_okg5TQM")
   },
   {
@@ -2627,7 +2627,7 @@ window.GAMES = [
     price: 489,
     verdict: "Кооп-приключение про двух LEGO-кубиков, спасающих космический корабль. В духе Split Fiction.",
     storeUrl: "https://store.steampowered.com/app/1538550/",
-    imageUrl: steamImage(1538550),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1538550/db718ae2be60558df2ef9fcd65302ad87a6045d4/header.jpg",
     youtubeUrl: youtube("0kzKpCAV7Ks")
   },
   {
@@ -2643,7 +2643,7 @@ window.GAMES = [
     price: 225,
     verdict: "Кооп-приключение на двоих в невесомости: асимметричные пазлы, побег из империи слизи Moontella.",
     storeUrl: "https://store.steampowered.com/app/3744430/",
-    imageUrl: steamImage(3744430),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744430/2b1989c2b09a474a13a9dc3db410248ad9fc04e4/header.jpg",
     youtubeUrl: youtube("e4Vhv2WgvzA")
   },
   {
@@ -2739,7 +2739,7 @@ window.GAMES = [
     price: 1899,
     verdict: "Новая LEGO Batman от TT Games: сплит-скрин + Remote Play, кампания на двоих.",
     storeUrl: "https://store.steampowered.com/app/2215200/",
-    imageUrl: steamImage(2215200),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/a07a9a6c0c9c1225f5b260b4f29fe40e6f099f6b/header.jpg",
     youtubeUrl: youtube("Mi-ru6HY5sA")
   },
   {

@@ -8,9 +8,9 @@
   "done": false,
   "last_added": "blood-typers",
   "last_run_timestamp": "2026-05-26T03:50:00Z",
-  "current_phase": 1,
+  "current_phase": 4,
   "max_phase": 4,
-  "phase_start_count": 0,
+  "phase_start_count": 75,
   "auto_push_every_n": 25,
   "last_push_at": 61
 }
