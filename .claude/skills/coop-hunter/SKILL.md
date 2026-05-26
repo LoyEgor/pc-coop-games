@@ -148,7 +148,7 @@ If `release_date.date` < 2015:
 ### 9. Build and append entry
 Use the helper script `scripts/append_entry.py` (described below) to insert a new entry into `data.js` immediately before the first `hidden: true` block (or at end if no hidden entries). Pass JSON args.
 
-Entry shape:
+Entry shape (post-2026-05 minimal schema — see CLAUDE.md WHY-1/2/3):
 ```json
 {
   "id": "kebab-case-slug",
@@ -157,22 +157,24 @@ Entry shape:
   "genres": ["AAA", "Shooter", "FPS"],
   "endingType": "story",
   "rating": 87,
-  "ratingSource": "Steam",
-  "ratingLabel": "Steam 87% positive",
   "playersMax": 4,
-  "playersLabel": "до 4, кампания",
   "hours": 12,
-  "hoursLabel": "10-15",
   "oneCopy": "none",
   "price": 599,
   "verdict": "Краткое описание одной строкой на русском.",
   "storeUrl": "https://store.steampowered.com/app/<id>/",
-  "imageUrl": "steamImage(<id>)",  // use the helper invocation
+  "imageUrl": "steamImage(<id>)",
   "youtubeUrl": "youtube(\"VIDEO_ID\")"
 }
 ```
 
-For `playersLabel`, `hours`, `hoursLabel`, `verdict` — derive from Steam description + reviews. Keep verdict ≤120 chars.
+Do NOT include `ratingSource`, `ratingLabel`, `playersLabel`, or `hoursLabel` — these were intentionally removed from the schema. The append_entry.py helper enforces this.
+
+For `hours` — use HowLongToBeat's "Main + Extras" value (typical playthrough including side activities, NOT pure main story, NOT 100% completionist). Single integer or one-decimal float.
+
+For `rating` — always Steam % positive (from `/appreviews/<id>?json=1`). Never use Metacritic or OpenCritic.
+
+For `verdict` — ≤120 chars Russian.
 
 ### 10. Persist
 - Append to `state/added.tsv`: `<timestamp>\t<id>\t<title>\t<source>\t<price>\t<%positive>`

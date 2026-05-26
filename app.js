@@ -33,7 +33,6 @@ const state = {
     price: { min: "", max: "" },
     genres: new Set(),
     endingType: new Set(),
-    ratingSource: new Set(),
     oneCopy: new Set()
   }
 };
@@ -68,7 +67,6 @@ const filterConfig = {
     options: () => Object.keys(ENDING_TYPE),
     labelFor: (value) => ENDING_TYPE[value]?.label || value
   },
-  ratingSource: { type: "set", label: "Отзывы", options: () => uniqueSorted(games.map((game) => game.ratingSource)) },
   oneCopy: {
     type: "set",
     label: "Второму",
@@ -154,7 +152,6 @@ function gameMatchesFilters(game) {
 
   if (state.filters.genres.size > 0 && !game.genres.some((genre) => state.filters.genres.has(genre))) return false;
   if (state.filters.endingType.size > 0 && !state.filters.endingType.has(game.endingType)) return false;
-  if (state.filters.ratingSource.size > 0 && !state.filters.ratingSource.has(game.ratingSource)) return false;
   if (state.filters.oneCopy.size > 0 && !state.filters.oneCopy.has(game.oneCopy)) return false;
 
   return true;
@@ -187,7 +184,6 @@ function render() {
 
 function renderRow(game) {
   const hidden = isHidden(game);
-  const sourceTone = game.ratingSource === "Metacritic" ? "muted" : "info";
   const oneCopy = ONE_COPY[game.oneCopy] || ONE_COPY.none;
   const hiddenLabel = hidden ? `<span class="hidden-note">${escapeHtml(game.hiddenReason || "Скрыто")}</span>` : "";
   const priceDisplay = game.price > 0
@@ -209,12 +205,8 @@ function renderRow(game) {
       <td><div class="tag-list">${game.genres.map((genre) => `<span class="tag${TIER_VALUES.has(genre) ? " tier" : ""}">${escapeHtml(genre)}</span>`).join("")}</div></td>
       <td>${renderEndingType(game.endingType)}</td>
       <td class="number-cell rating">${game.rating}</td>
-      <td>
-        <span class="badge ${sourceTone}">${escapeHtml(game.ratingSource)}</span>
-        <span class="detail block">${escapeHtml(game.ratingLabel)}</span>
-      </td>
-      <td class="number-cell">${game.playersMax}<span class="detail block">${escapeHtml(game.playersLabel)}</span></td>
-      <td class="number-cell">${trimNumber(game.hours)}<span class="detail block">${escapeHtml(game.hoursLabel)} ч</span></td>
+      <td class="number-cell">${game.playersMax}</td>
+      <td class="number-cell">${trimNumber(game.hours)}&nbsp;ч</td>
       <td><span class="badge ${oneCopy.tone}">${escapeHtml(oneCopy.label)}</span></td>
       <td class="number-cell price-cell">${priceDisplay}</td>
       <td class="verdict-cell">${escapeHtml(game.verdict)}</td>

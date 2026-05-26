@@ -58,30 +58,39 @@ If you're not 100% sure a game has an ending, **do not add it**. Quality > volum
 
 ```javascript
 {
-  id: "kebab-case-slug",                // unique
-  title: "Game Title",                   // as on Steam
-  year: 2024,                            // release year
-  genres: ["AAA", "Action", "Shooter"],  // first item is tier: "AAA" | "AA" | "Indie"; rest are existing genre taxonomy
-  endingType: "story",                   // one of: story | levels | arcade-goal | roguelite | survival-goal
-  rating: 87,                            // 0-100, positive review percentage or Metacritic score
-  ratingSource: "Steam",                 // "Steam" | "Metacritic" | "OpenCritic"
-  ratingLabel: "Steam 87% positive",     // human-readable
-  playersMax: 4,                         // max co-op count
-  playersLabel: "до 4, кампания",        // Russian label
-  hours: 12,                             // approximate Main Story hours
-  hoursLabel: "10-15",                   // range
-  oneCopy: "none",                       // see above
-  price: 599,                            // UAH integer (from Steam cc=ua)
-  verdict: "Краткое описание.",          // ≤120 chars Russian
+  id: "kebab-case-slug",                 // unique
+  title: "Game Title",                    // as on Steam
+  year: 2024,                             // release year
+  genres: ["AAA", "Action", "Shooter"],   // first item is tier: "AAA" | "AA" | "Indie"; rest are from the existing taxonomy
+  endingType: "story",                    // one of: story | levels | arcade-goal | roguelite | survival-goal
+  rating: 87,                             // Steam % positive (0-100). Always Steam — see WHY-1 below
+  playersMax: 4,                          // max co-op count
+  hours: 12,                              // "Main + a bit" — typical playthrough time. Single number — see WHY-3
+  oneCopy: "none",                        // "none" (each needs a copy) | "remote-play" | "friend-pass"
+  price: 599,                             // UAH integer from Steam cc=ua
+  verdict: "Краткое описание.",           // ≤120 chars Russian
   storeUrl: "https://store.steampowered.com/app/<id>/",
-  imageUrl: steamImage(<id>),            // helper; expands to header.jpg
-  youtubeUrl: youtube("VIDEO_ID")        // helper; must be a real gameplay video, NOT a search URL
+  imageUrl: steamImage(<id>),             // helper; expands to header.jpg
+  youtubeUrl: youtube("VIDEO_ID")         // helper; MUST be a real gameplay video, NOT a search URL
 }
 ```
 
 Optional flags:
 - `hidden: true` + `hiddenReason: "..."` — keeps game in DB but hides from default view (used for "уже прошли" / referenced games).
 - `"needs-review": true` — Steam reviews 50-70%, flagged for manual quality check.
+
+### Why the schema is this minimal
+
+**WHY-1: Rating is always Steam %positive.** Previously the schema had `rating + ratingSource + ratingLabel` where source could be `Steam`, `Metacritic`, or `OpenCritic`. The owner decided this was noise: three different scoring scales mixed in one column makes the rating harder to read at a glance, and the catalog's purpose is "should we play this" — for which the most relevant signal is **how Steam players felt** about the game, not how critics scored it. So the `ratingSource` column was deleted entirely, and `rating` is now a single Steam %positive number. The skill always uses Steam (`/appreviews/<id>?json=1`) — do NOT introduce Metacritic/OpenCritic again.
+
+**WHY-2: `playersMax` is a number, not a label.** Previously there was a `playersLabel` like `"до 4, кампания"` or `"2, локально"` rendered as a sub-line. The owner decided this duplicated information: the number is already visible (`4`), and the multiplayer mode (local vs online vs Friend Pass) is already encoded in the `oneCopy` field which has its own column. So `playersLabel` was deleted. Show just `playersMax` as a single integer.
+
+**WHY-3: `hours` is one number, not a range.** Previously there was a `hoursLabel` like `"10-15"` rendered as a sub-line. The owner decided that for "should we play this tonight" a single representative number is more useful than a range. The number represents "Main Story + a bit" (a.k.a. HowLongToBeat's **Main + Extras**) — what a typical co-op duo will spend if they do the campaign plus a few side activities but don't go for 100% completion. This is also approximately what the previous `hours` field already stored, so removing `hoursLabel` was lossless. Use HowLongToBeat's "Main + Extras" if available; otherwise estimate.
+
+### Existing genre taxonomy (do not invent new ones)
+`Shooter, Third-person, FPS, Action, RPG, Tactics, Fantasy, Sci-fi, Puzzle, Adventure, Platformer, Stealth, Military, Open World, Loot, Horror, Soulslike, Isometric, Survival`
+
+Plus the tier values `AAA`, `AA`, `Indie` (which are prepended to the genres array and rendered as a highlighted chip via `.tag.tier` CSS).
 
 ### Existing genre taxonomy (do not invent new ones)
 `Shooter, Third-person, FPS, Action, RPG, Tactics, Fantasy, Sci-fi, Puzzle, Adventure, Platformer, Stealth, Military, Open World, Loot, Horror, Soulslike, Isometric, Survival`

@@ -3,3 +3,6 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T00:05:00Z	WEBFISHING	endless	steamdb_coop_campaign	massively multiplayer fishing hangout, no goal
 2026-05-26T00:05:00Z	Factorio	endless	steamdb_coop_campaign	factory sim, no win state in base game
 2026-05-26T00:25:00Z	Portal Reloaded	requires_base_game	steamdb_coop_campaign	free Portal 2 mod
+2026-05-26T00:50:00Z	Ancient Dungeon	vr_only	steamdb_coop_campaign	VR Only category
+2026-05-26T00:50:00Z	Levelhead	endless	steamdb_coop_campaign	Massively Multiplayer + Free To Play
+2026-05-26T00:50:00Z	Slap City	pvp_primary	steamdb_coop_campaign	smash-clone with primarily PvP content, limited co-op

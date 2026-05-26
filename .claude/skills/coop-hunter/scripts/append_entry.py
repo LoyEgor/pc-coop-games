@@ -43,8 +43,12 @@ def render_entry(g):
         yt_expr = f'youtubeSearch({js_str(g.get("title", ""))})'
 
     needs_review = g.get("needs_review") or g.get("needs-review")
-    review_line = '\n    "needs-review": true,' if needs_review else ""
+    review_line = ',\n    "needs-review": true' if needs_review else ""
 
+    # NOTE: data shape was trimmed in 2026-05. We no longer store ratingSource,
+    # ratingLabel, playersLabel, or hoursLabel. Rating is always Steam %positive
+    # (see CLAUDE.md section "Data shape" for rationale). Do not re-add those
+    # fields.
     return f"""  {{
     id: {js_str(g["id"])},
     title: {js_str(g["title"])},
@@ -52,12 +56,8 @@ def render_entry(g):
     genres: {js_arr(g["genres"])},
     endingType: {js_str(g["endingType"])},
     rating: {int(g["rating"])},
-    ratingSource: {js_str(g["ratingSource"])},
-    ratingLabel: {js_str(g["ratingLabel"])},
     playersMax: {int(g["playersMax"])},
-    playersLabel: {js_str(g["playersLabel"])},
     hours: {g["hours"]},
-    hoursLabel: {js_str(g["hoursLabel"])},
     oneCopy: {js_str(g["oneCopy"])},
     price: {int(g["price"])},
     verdict: {js_str(g["verdict"])},
