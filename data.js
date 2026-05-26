@@ -4210,6 +4210,38 @@ window.GAMES = [
     youtubeUrl: youtube("CkmqPvSkxtI")
   },
   {
+    id: "lynked-banner-of-the-spark",
+    title: "Lynked: Banner of the Spark",
+    year: 2025,
+    genres: ["Indie", "Action", "RPG", "Adventure"],
+    endingType: "story",
+    rating: 79,
+    playersMax: 3,
+    hours: 25,
+    oneCopy: "none",
+    price: 197,
+    verdict: "Rogue-life action RPG with town-building — 3-player online campaign across chapters 1-9 ending in the Combot Network finale.",
+    storeUrl: "https://store.steampowered.com/app/3159570/",
+    imageUrl: steamImage(3159570),
+    youtubeUrl: youtube("hLXbid_25u4")
+  },
+  {
+    id: "last-epoch",
+    title: "Last Epoch",
+    year: 2024,
+    genres: ["AA", "RPG", "Fantasy", "Loot", "Isometric"],
+    endingType: "story",
+    rating: 77,
+    playersMax: 4,
+    hours: 30,
+    oneCopy: "none",
+    price: 700,
+    verdict: "ARPG with 10-chapter time-travel campaign and 4-player online co-op — finite story ends; optional Monoliths endgame after credits.",
+    storeUrl: "https://store.steampowered.com/app/899770/",
+    imageUrl: steamImage(899770),
+    youtubeUrl: youtube("R583gpKBp5s")
+  },
+  {
     id: "a-way-out",
     title: "A Way Out",
     year: 2018,
