@@ -7,7 +7,10 @@ import sys
 import json
 import os
 sys.path.insert(0, os.path.dirname(__file__))
-from append_entry import render_entry
+# Reuse the SAME gates as append_entry.py so batch inserts can't bypass them:
+#   - render_entry() raises ValueError if there is no real 11-char video_id
+#   - previously_removed_ids() lists ids ever auto-removed as endless
+from append_entry import render_entry, previously_removed_ids
 import re
 from pathlib import Path
 
@@ -22,13 +25,23 @@ def main():
     with open(batch_file, encoding="utf-8") as f:
         entries = json.load(f)
     content = DATA_JS.read_text(encoding="utf-8")
+    removed_ids = previously_removed_ids()
     added = []
     skipped = []
     for g in entries:
         if re.search(r'id:\s*"' + re.escape(g["id"]) + r'"', content):
-            skipped.append(g["id"])
+            skipped.append(f"{g['id']} (duplicate)")
             continue
-        new_entry = render_entry(g) + ","
+        # Gate: never re-add a game previously removed as endless.
+        if g["id"] in removed_ids:
+            skipped.append(f"{g['id']} (previously_removed_endless)")
+            continue
+        # Gate: render_entry raises ValueError without a real video_id.
+        try:
+            new_entry = render_entry(g) + ","
+        except ValueError as e:
+            skipped.append(f"{g['id']} (rejected: {e})")
+            continue
         match = re.search(r'\n  \{\n(?:[^{}]*?)\n    hidden:\s*true', content)
         if match:
             insert_pos = match.start() + 1

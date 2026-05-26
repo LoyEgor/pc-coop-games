@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
-# coop-hunter overnight runner (macOS / Linux)
+# coop-hunter runner (macOS / Linux) — finds new PC co-op games, appends to data.js.
 #
-# Differences from the Windows .ps1 version:
+# Behavior:
 #   - max_phase=4 (cascading: easy → medium → niche → re-evaluation + exhaustive)
-#   - auto_push_every_n=25 (commits and pushes to GitHub after every 25 added games)
-#   - Goal is only marked done when a full phase yields 0 new games
+#   - PUSH POLICY: zero interim pushes. The skill makes exactly ONE commit + push
+#     at the end, after the Final pass (see coop-hunter SKILL.md "Push policy").
+#   - done=true only after TWO consecutive phase-4 passes yield 0 new games.
+#     This launcher auto-clears a stale done flag, so re-running just resumes.
+#   - Classification reads .claude/skills/shared/taxonomy.json (the authoritative
+#     genre + endingType source).
 #
 # Usage:
 #   1. Open Terminal
-#   2. cd "/path/to/Games for Two 2"
+#   2. cd <repo root>
 #   3. ./run-coop-hunter.sh
 #
 # First time: chmod +x run-coop-hunter.sh
@@ -89,25 +93,33 @@ for k, v in defaults.items():
 cur["max_phase"] = 4
 cur["auto_push_every_n"] = 0  # was 25; now ZERO pushes during the run
 
+# An explicit launch means "go again". A previous run may have set done=true
+# after two dry phase-4 passes; the owner re-launches precisely because the
+# catalog is not actually exhausted (sources refresh over time). Clear done and
+# reset the dry-pass counter so the skill resumes hunting from current_offset.
+if cur.get("done"):
+    cur["done"] = False
+    cur["phase_4_zero_yield_passes"] = 0
+
 with open(path, "w") as f:
     json.dump(cur, f, indent=2)
-print(f"progress.json initialized: max_phase=4, auto_push_every_n=0 (push only at end), added_count={cur['added_count']}, current_phase={cur['current_phase']}, phase_4_zero_yield_passes={cur.get('phase_4_zero_yield_passes', 0)}")
+print(f"progress.json initialized: max_phase=4, auto_push_every_n=0 (push only at end), added_count={cur['added_count']}, current_phase={cur['current_phase']}, done={cur['done']}, phase_4_zero_yield_passes={cur.get('phase_4_zero_yield_passes', 0)}")
 PYEOF
 
 # -------- header --------
 echo ""
 echo "================================================================"
-echo "  coop-hunter — overnight runner (macOS, cascading + auto-push)"
+echo "  coop-hunter — runner (macOS, cascading phases 1-4)"
 echo "================================================================"
 echo "  Started:       $(date)"
 echo "  Repo:          $REPO_ROOT"
 echo "  Claude CLI:    $CLAUDE_CMD"
 echo "  Transcript:    $TRANSCRIPT"
 echo ""
-echo "  Cascading enabled: 4 phases. Goal closes only when a phase adds 0 games."
-echo "  Auto-push enabled: commits + pushes every 25 added games."
+echo "  Cascading: 4 phases. Closes after TWO consecutive dry phase-4 passes."
+echo "  Push policy: NO interim pushes — ONE commit + push at the end (Final pass)."
 echo "  Permissions auto-approved (--dangerously-skip-permissions)."
-echo "  Auto-restart on early exit (up to 20 times)."
+echo "  Auto-restart on early exit; rate-limit pauses uncapped."
 echo ""
 echo "  To stop: Ctrl+C. State is persistent — safe to restart later."
 echo "================================================================"

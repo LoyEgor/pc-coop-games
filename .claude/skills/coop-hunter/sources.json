@@ -215,7 +215,7 @@
     }
   ],
   "_method_notes": {
-    "steamdb_tag": "SteamDB pages are HTML. Use WebFetch to extract game names + appids from the table rows.",
+    "steamdb_tag": "SteamDB pages are HTML. Use WebFetch to extract game names + appids from the table rows. FALLBACK (proven): SteamDB often returns HTTP 403 to bots — when that happens, use the Steam Store search by tag instead, e.g. https://store.steampowered.com/search/?tags=<tag_id>&category2=9&supportedlang=english&os=win&sort_by=Reviews_DESC&page={N} (category2=9 = co-op).",
     "co_optimus": "Each row has a game name + link. From individual game page, extract co-op modes + supported player counts + 'Campaign Length' field if present.",
     "curator": "Steam curator pages. Extract game cards (name + Steam app link).",
     "reddit_top_posts": "JSON API. Parse 'data.children' for posts; extract game mentions.",

@@ -118,19 +118,26 @@ Tier values render as a highlighted chip via `.tag.tier` CSS; the Genres filter 
 Lives at `.claude/skills/coop-hunter/` and is auto-loaded by Claude Code when this repo is opened. Its job: systematically discover new candidates from SteamDB / Co-Optimus / curators / Reddit / articles, validate them, classify, and append to `data.js`.
 
 ### To invoke
-Use the `/goal` command in Claude Code:
+Run the launcher (macOS / Linux). It sets up the `/goal` loop for you:
 
 ```
-/goal Run the coop-hunter skill to expand data.js per its rules. Process candidates sequentially, persist after each addition, validate every 50, and stop when phase 4 yields 0 new games.
+./run-coop-hunter.sh
 ```
 
-For automated overnight runs, use the launchers:
-- **Windows**: `.\run-coop-hunter.ps1` (single pass, no git push)
-- **Mac / Linux**: `./run-coop-hunter.sh` (cascading phases 1-4, auto-push every 25 games)
+The launcher cascades phases 1-4 and stops only after TWO consecutive phase-4
+passes yield 0 new games. Push policy: NO interim pushes — exactly ONE commit +
+push at the end, after the skill's Final pass. (Windows `.ps1` launcher was
+removed — this is a macOS/Linux project now.)
 
-See `.claude/skills/coop-hunter/README.md` for full skill documentation.
+See [`.claude/skills/README.md`](.claude/skills/README.md) for the full picture.
 
-**There are two skills in this project** — `coop-hunter` (grows the catalog) and `fact-checker` (verifies every existing entry). Quick brief covering both, with launchers and watch-progress commands: [`.claude/skills/README.md`](.claude/skills/README.md). Read that first if you're new to the repo.
+**There are two skills + three launchers + one cron in this project:**
+- `coop-hunter` (skill) — grows the catalog. Launch: `./run-coop-hunter.sh`.
+- `fact-checker` (skill) — verifies existing entries. Launch: `./run-fact-checker.sh`.
+- taxonomy migration — fact-checker in a special mode, one-time. Launch: `./run-migration.sh`.
+- `refresh-prices` (GitHub Actions cron) — owns `price`/`rating`, runs daily on GitHub, no LLM.
+
+Quick brief covering all of them, with watch-progress commands: [`.claude/skills/README.md`](.claude/skills/README.md). Read that first if you're new to the repo.
 
 ### Skill rules (summary)
 - Sequential, not parallel. Sleep 1.5s between Steam API calls (rate-limit).

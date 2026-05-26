@@ -30,7 +30,7 @@ When called:
    - Run the "Per-candidate procedure" below.
    - On success → append entry to `data.js`, update `progress.json`, append to `state/added.tsv`.
    - On any skip → append to `state/skipped.tsv` with the reason, update progress, continue.
-   - **After every successful add**, check auto-push (see "Auto-push" section).
+   - **Do NOT push between adds.** See "Push policy" — pushing happens once, in the Final pass, at the very end.
 6. After the batch:
    - If `progress.added_count` crossed a multiple of 50 since last validation → run "Validation pass".
    - If the current source is exhausted (offset >= source max) → mark it complete (append to `completed_sources`), reset `current_offset = 0`, move to next source IN THE SAME PHASE.
@@ -223,7 +223,7 @@ Entry shape (post-2026-05 minimal schema — see CLAUDE.md WHY-1/2/3):
   "id": "kebab-case-slug",
   "title": "Game Title",
   "year": 2024,
-  "genres": ["AAA", "Shooter", "FPS"],
+  "genres": ["AAA", "First-person", "Shooter", "Sci-fi"],
   "endingType": "story",
   "rating": 87,
   "playersMax": 4,

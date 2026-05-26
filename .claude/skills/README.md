@@ -1,19 +1,30 @@
 # Skills + automation in this project
 
-Two long-running, `/goal`-driven, drill-mode skills + one fully-automated
-GitHub Actions cron that handles price/rating drift without any LLM needed.
+Two `/goal`-driven, drill-mode skills (run via three launchers) + one
+fully-automated GitHub Actions cron that handles price/rating drift with no LLM.
 
-| Component | Purpose | Trigger | State |
+| Component | Purpose | Launcher / trigger | State |
 |---|---|---|---|
-| **coop-hunter** (skill) | Discovers new PC co-op games and appends them to `data.js`. | `./run-coop-hunter.sh` (manual) | `.claude/skills/coop-hunter/state/` |
-| **fact-checker** (skill) | Walks every existing entry in `data.js` and verifies each field against Steam / HowLongToBeat / YouTube. | `./run-fact-checker.sh` (manual) | `.claude/skills/fact-checker/state/` |
-| **refresh-prices** (cron) | Owns `price` and `rating` on existing entries. Re-fetches from Steam daily, commits drift > threshold. No LLM, pure stdlib Python. | `.github/workflows/refresh-prices.yml` (daily 04:00 UTC, GitHub-hosted) | `.github/refresh-status.json` |
+| **coop-hunter** (skill) | Discovers new PC co-op games and appends them to `data.js`. | `./run-coop-hunter.sh` | `.claude/skills/coop-hunter/state/` |
+| **fact-checker** (skill) | Walks every existing entry and verifies each field against Steam / HLTB / YouTube. Logs editorial discrepancies. | `./run-fact-checker.sh` | `.claude/skills/fact-checker/state/` |
+| **taxonomy migration** (fact-checker, special mode) | One-time: rewrites all entries onto the axis taxonomy (split FPS, narrow Adventure, fill perspective). | `./run-migration.sh` | shares fact-checker state (`mode=taxonomy_migration`) |
+| **refresh-prices** (cron) | Owns `price` and `rating` on existing entries. Re-fetches from Steam daily, commits drift > threshold. Pure stdlib Python, no LLM. | `.github/workflows/refresh-prices.yml` (daily 04:00 UTC, GitHub-hosted) | `.github/refresh-status.json` |
+
+**The single source of truth for genres + endingType is
+[`shared/taxonomy.json`](shared/taxonomy.json).** Both skills read it and classify
+by axis (tier / perspective / mechanic / setting / structure); they never invent
+tags. `classification.md` and `CLAUDE.md` carry prose for humans but defer to
+taxonomy.json on any conflict.
 
 **Both skills check `.github/refresh-status.json` before touching price/rating
 on existing entries.** If `last_success` is within 30h → cron is healthy,
 they skip those two checks and focus on editorial fields. If stale or missing
 → they fall back to doing the fetch themselves and warn. For NEW entries
 they always fetch fresh (cron only updates, never inserts).
+
+**Push policy:** coop-hunter makes exactly ONE commit + push at the end of a run
+(after its Final pass) — no interim pushes. fact-checker and migration leave
+changes in the working tree for you to review + commit. The cron commits itself.
 
 ---
 
@@ -22,10 +33,10 @@ they always fetch fresh (cron only updates, never inserts).
 Crawls Steam tags, Co-Optimus, curators, Reddit lists, then niche / Wikipedia
 sources. For each candidate: dedupes, validates online co-op + finite content +
 ≥50% Steam reviews, classifies tier and endingType, finds a real YouTube
-gameplay video, appends via `scripts/append_entry.py`. Auto-pushes to
-`origin/main` every 25 adds. Cascades phases 1→4; phase 4 also auto-removes
-endless false positives and auto-fixes broken media. Stops when a phase yields
-0 new entries AND revalidation has actually run.
+gameplay video, appends via `scripts/append_entry.py`. Cascades phases 1→4;
+phase 4 also auto-removes endless false positives and auto-fixes broken media.
+Stops only after TWO consecutive phase-4 passes yield 0 new games (sources
+refresh over time, so one dry pass is not enough). One commit + push at the end.
 
 **Read first:** [coop-hunter/SKILL.md](coop-hunter/SKILL.md), [coop-hunter/classification.md](coop-hunter/classification.md), [coop-hunter/sources.json](coop-hunter/sources.json).
 

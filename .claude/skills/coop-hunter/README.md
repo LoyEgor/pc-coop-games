@@ -5,13 +5,18 @@ Autonomous, resumable agent that systematically grows `data.js` with new PC co-o
 ## Quick start
 
 ```
-/goal Use the coop-hunter skill to crawl all sources from sources.json
-and add every game that fits the criteria. Process 3-5 candidates per turn,
-validate every 50 games via a fresh subagent, persist progress after each
-addition, and stop when all sources are exhausted.
+./run-coop-hunter.sh
 ```
 
-The `/goal` command keeps Claude working across many turns until the goal is met. Token consumption is paced (sleep between Steam API calls + small per-turn batch size).
+The launcher sets up the `/goal` loop, which keeps Claude working across many
+turns until the goal is met. Token consumption is paced (sleep between Steam API
+calls + small per-turn batch size). The skill stops only after TWO consecutive
+phase-4 passes yield 0 new games, then runs a Final pass on what it found and
+makes exactly ONE commit + push.
+
+**Classification source of truth:** [`../shared/taxonomy.json`](../shared/taxonomy.json)
+(axis-structured: tier / perspective / mechanic / setting / structure). The
+prose in `classification.md` defers to it.
 
 ## What it does
 
@@ -22,12 +27,14 @@ For each game in each source:
 3. Steam appreviews → `%positive` + sample for finite-content keyword scan.
 4. Verify online co-op (Steam category) OR Remote Play.
 5. Verify finite content (HowLongToBeat + Steam keyword scan).
-6. Classify tier (AAA/AA/Indie via publisher) + endingType (story/levels/arcade-goal/roguelite/survival-goal via rules in classification.md).
-7. WebSearch for a real gameplay YouTube video (not a search-URL placeholder).
-8. Append to `data.js` via `scripts/append_entry.py`.
-9. Update `state/progress.json` and `state/added.tsv`.
+6. Classify by axis using `../shared/taxonomy.json`: tier + exactly one perspective + at least one mechanic + optional setting/structure + endingType. Never invent tags.
+7. WebSearch for a real gameplay YouTube video (not a search-URL placeholder). `append_entry.py` rejects entries without a real 11-char video_id (exit 4).
+8. Append to `data.js` via `scripts/append_entry.py` (also blocks ids in `removed-entries.tsv`, exit 3).
+9. Update `state/progress.json` (incl. `session_added_ids`) and `state/added.tsv`.
 
-Every 50 additions: spawn a fresh Agent to spot-check 10 random entries. Failures land in `state/validation-fails.tsv` for human review (not auto-corrected).
+Every 50 additions: spawn a fresh Agent to spot-check 10 random entries. Failures land in `state/validation-fails.tsv` for human review.
+
+Phase 4 also AUTO-REMOVES endless false positives (`remove_entry.py`) and AUTO-FIXES broken YouTube/images (`fix_youtube.py`, `fix_image.py`) — but never `price`/`rating`, which the GitHub Actions cron owns (see `../README.md`).
 
 ## Resume after crash
 
@@ -44,16 +51,22 @@ It will read `state/progress.json` and pick up exactly where it stopped.
 ```
 SKILL.md              Main instructions Claude follows
 sources.json          Ordered list of sources to crawl (SteamDB tags, Co-Optimus, curators, Reddit, articles)
-classification.md     Deterministic rules for tier + endingType + genre mapping + quality threshold
+classification.md     Prose rules for tier/endingType/quality + blocklist. Defers to ../shared/taxonomy.json.
+../shared/taxonomy.json  AUTHORITATIVE genre + endingType definitions (axis-structured)
 scripts/
   steam_fetch.py      Steam API helper: search, details, reviews, validate
-  append_entry.py     Inserts a new entry into data.js (before hidden block)
+  append_entry.py     Inserts a new entry (gates: real video_id exit 4, removed-entries exit 3)
+  batch_append.py     Bulk insert from a JSON array (same gates as append_entry)
+  remove_entry.py     Removes an entry (phase 4 endless cleanup)
+  fix_youtube.py      Replaces a broken/placeholder youtubeUrl with a real video id
+  fix_image.py        Repoints a broken imageUrl to the steamImage() helper
 state/
-  progress.json       Current source/offset, counters, completed sources list
+  progress.json       Current source/offset, counters, session_added_ids, phase_4_zero_yield_passes
   added.tsv           Log of every game added
   skipped.tsv         Log of every skip with reason
+  removed-entries.tsv Log of endless games removed in phase 4 (also a re-add blocklist)
   validation-fails.tsv  Spot-check failures awaiting human review
-  summary.md          Final report (written when all sources exhausted)
+  summary.md          Final report (regenerated each run; may be stale between runs)
 ```
 
 ## Token economics
@@ -65,9 +78,10 @@ state/
 ## Safety
 
 - Won't touch `app.js` / `index.html` / `styles.css`.
-- Won't delete or modify existing entries in `data.js`.
-- Won't auto-correct validation failures — only logs them.
-- Won't ask the user questions. If a candidate is ambiguous, it's logged to `skipped.tsv` with reason `ambiguous`.
+- Won't touch `price` / `rating` on existing entries when the refresh-prices cron is healthy (defers via `.github/refresh-status.json`).
+- Phases 1-3 only ADD entries. Phase 4 may auto-remove endless false positives and auto-fix broken media — this is intentional (see CLAUDE.md §6); every removal is logged to `removed-entries.tsv`.
+- Won't auto-correct the spot-check validation failures — only logs them.
+- Won't ask the user questions. Ambiguous candidate → `skipped.tsv` reason `ambiguous` / `taxonomy_ambiguous`.
 
 ## Manually checking progress
 

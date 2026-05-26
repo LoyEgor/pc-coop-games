@@ -83,16 +83,28 @@ for k, v in defaults.items():
     if k not in cur:
         cur[k] = v
 
-# Fill total_entries from list_entries.py --count
-if cur["total_entries"] is None:
-    skill_root = Path(path).resolve().parents[1]
-    list_script = skill_root / "scripts" / "list_entries.py"
-    out = subprocess.check_output(["python3", str(list_script), "--count"]).decode().strip()
-    cur["total_entries"] = int(out)
+# Always refresh total_entries — the catalog grows over time.
+skill_root = Path(path).resolve().parents[1]
+list_script = skill_root / "scripts" / "list_entries.py"
+out = subprocess.check_output(["python3", str(list_script), "--count"]).decode().strip()
+cur["total_entries"] = int(out)
+
+# An explicit launch means "go". Clear a stale done flag so the run actually
+# starts. If the previous run had finished (current_idx past the end), rewind
+# to 0 for a fresh full pass; otherwise keep current_idx so a crashed run
+# resumes where it stopped.
+cur["done"] = False
+# This launcher runs NORMAL verification (log-only for editorial fields). The
+# separate run-migration.sh sets mode=taxonomy_migration for the one-time bulk
+# tag rewrite. Force normal here so a prior migration mode can't leak in.
+cur["mode"] = "normal"
+if cur["current_idx"] >= cur["total_entries"]:
+    cur["current_idx"] = 0
+    cur["partial_entries"] = []
 
 with open(path, "w") as f:
     json.dump(cur, f, indent=2)
-print(f"progress.json: current_idx={cur['current_idx']}, total={cur['total_entries']}, checked={cur['checked_count']}, fixed={cur['fixed_count']}, proposed={cur['proposed_count']}, done={cur['done']}")
+print(f"progress.json: mode={cur['mode']}, current_idx={cur['current_idx']}, total={cur['total_entries']}, checked={cur['checked_count']}, fixed={cur['fixed_count']}, proposed={cur['proposed_count']}, done={cur['done']}")
 PYEOF
 
 # -------- header --------
