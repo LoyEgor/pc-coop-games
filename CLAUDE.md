@@ -87,22 +87,31 @@ Optional flags:
 
 **WHY-3: `hours` is one integer, not a range and not a float.** Previously there was a `hoursLabel` like `"10-15"` rendered as a sub-line. The owner decided that for "should we play this tonight" a single representative number is more useful than a range. The number represents "Main Story + a bit" (a.k.a. HowLongToBeat's **Main + Extras**) — what a typical co-op duo will spend if they do the campaign plus a few side activities but don't go for 100% completion. This is also approximately what the previous `hours` field already stored, so removing `hoursLabel` was lossless. Use HowLongToBeat's "Main + Extras" if available; otherwise estimate. **Always store as an integer** — round HLTB values to the nearest whole hour. Fractional values like `8.5` are not allowed; the rendering layer and `append_entry.py` both round defensively, but skills must not emit fractions in the first place.
 
-### Existing genre taxonomy (do not invent new ones)
-`Shooter, Third-person, FPS, Action, RPG, Tactics, Fantasy, Sci-fi, Puzzle, Adventure, Platformer, Stealth, Military, Open World, Loot, Horror, Soulslike, Isometric, Survival`
+### Genre taxonomy — defined in `.claude/skills/shared/taxonomy.json`
 
-Plus the tier values `AAA`, `AA`, `Indie` (which are prepended to the genres array and rendered as a highlighted chip via `.tag.tier` CSS).
+**The authoritative taxonomy is `.claude/skills/shared/taxonomy.json`.** Do not invent tags; if you need one that isn't there, that's an owner decision. The genres array is now AXIS-STRUCTURED. Order within the array: tier → perspective → mechanic(s) → setting(s) → structure(s).
 
-### Existing genre taxonomy (do not invent new ones)
-`Shooter, Third-person, FPS, Action, RPG, Tactics, Fantasy, Sci-fi, Puzzle, Adventure, Platformer, Stealth, Military, Open World, Loot, Horror, Soulslike, Isometric, Survival`
+| Axis | Rule | Tags |
+|------|------|------|
+| tier | exactly one (first element) | `AAA`, `AA`, `Indie` |
+| perspective | exactly one | `First-person`, `Third-person`, `Isometric`, `Side-view` |
+| mechanic | at least one | `Shooter`, `Action`, `Puzzle`, `Platformer`, `RPG`, `Tactics`, `Stealth`, `Soulslike`, `Loot`, `Adventure` |
+| setting | optional, multiple | `Fantasy`, `Sci-fi`, `Horror`, `Military` |
+| structure | optional, multiple | `Open World`, `Survival` |
 
-Plus the tier values `AAA`, `AA`, `Indie` (which are prepended to the genres array and rendered as a highlighted chip via `.tag.tier` CSS).
+Notes vs the pre-2026-05 taxonomy:
+- `FPS` is GONE — split into `First-person` (perspective) + `Shooter` (mechanic).
+- `Top-down` merged into `Isometric` (all "seen from above").
+- `Adventure` is NARROW — narrative-led + exploration + dialogue only (Chicory-style), NOT "any game with a story".
 
-### endingType values
+Tier values render as a highlighted chip via `.tag.tier` CSS; the Genres filter renders one section per axis with live counts (OR within an axis, AND across axes).
+
+### endingType values (full decision-trees in taxonomy.json)
 - `story` — narrative campaign with cutscenes (BG3, Halo, RE5).
-- `levels` — discrete level/mission set with last one, weak/no narrative (Castle Crashers, Cuphead, Streets of Rage 4).
+- `levels` — discrete level/mission set with last one, weak/no narrative (Castle Crashers, Cuphead, RV There Yet?).
 - `arcade-goal` — short single-session goal: climb, escape, defuse (PEAK, Operation Tango, We Were Here, Keep Talking).
-- `roguelite` — run-based with final boss (Risk of Rain 2, Hades, Spelunky 2).
-- `survival-goal` — survival sandbox with explicit win-condition (Terraria, Valheim, Raft, Stardew Valley).
+- `roguelite` — run-based with persistent meta-progress + final boss (Risk of Rain 2, Hades, Spelunky 2).
+- `survival-goal` — survival sandbox with explicit named win-condition (Terraria, Valheim, Raft, Stardew Valley).
 
 ## 5. The `coop-hunter` skill
 

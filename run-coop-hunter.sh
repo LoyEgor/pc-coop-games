@@ -64,8 +64,10 @@ defaults = {
   "added_count": 0,
   "skipped_count": 0,
   "last_validation_at": 0,
-  "auto_push_every_n": 25,
+  "auto_push_every_n": 0,
   "last_push_at": 0,
+  "phase_4_zero_yield_passes": 0,
+  "session_added_ids": [],
   "completed_sources": [],
   "done": False,
   "last_added": None,
@@ -78,16 +80,18 @@ else:
     cur = {}
 
 # Backfill missing fields. Force Mac-specific settings even if already present
-# (in case file was created by Windows runner with different values).
+# (in case file was created by an older launcher version that set them
+# differently). auto_push_every_n is now forced to 0 — push happens exactly
+# once at the end of the run, in the Final pass.
 for k, v in defaults.items():
     if k not in cur:
         cur[k] = v
 cur["max_phase"] = 4
-cur["auto_push_every_n"] = 25
+cur["auto_push_every_n"] = 0  # was 25; now ZERO pushes during the run
 
 with open(path, "w") as f:
     json.dump(cur, f, indent=2)
-print(f"progress.json initialized: max_phase=4, auto_push_every_n=25, added_count={cur['added_count']}, current_phase={cur['current_phase']}")
+print(f"progress.json initialized: max_phase=4, auto_push_every_n=0 (push only at end), added_count={cur['added_count']}, current_phase={cur['current_phase']}, phase_4_zero_yield_passes={cur.get('phase_4_zero_yield_passes', 0)}")
 PYEOF
 
 # -------- header --------
@@ -111,42 +115,37 @@ echo ""
 
 # -------- the one-shot prompt --------
 GOAL_PROMPT=$(cat <<'PROMPT_EOF'
-/goal Run the coop-hunter skill (.claude/skills/coop-hunter/) to expand data.js with PC co-op games and fix broken entries. Mac overnight; progress.json already has max_phase=4 and auto_push_every_n=25.
+/goal Run the coop-hunter skill (.claude/skills/coop-hunter/) to expand data.js with PC co-op games. Mac overnight; progress.json seeded with max_phase=4 and auto_push_every_n=0 (push policy changed — see §3).
 
-Read SKILL.md, classification.md, sources.json first — they hold the full procedure. This prompt is the contract; the details live in those files.
+Read SKILL.md, then .claude/skills/shared/taxonomy.json, then classification.md and sources.json. taxonomy.json is the AUTHORITATIVE source for genre + endingType — classify by AXIS (tier/perspective/mechanic/setting/structure), never invent tags. In any conflict, taxonomy.json wins over classification.md.
 
 RULES (non-negotiable):
 
 1. Sequential, 3–5 candidates per turn, 1.5s sleep between Steam API calls.
 
-2. Persist state after every add or skip: progress.json + added.tsv / skipped.tsv. Resume relies on this — without it a crash loses work.
+2. Persist state after every add or skip: progress.json + added.tsv / skipped.tsv. Every add MUST also append the id to progress.session_added_ids. Resume relies on this.
 
-3. Auto-push every 25 adds per SKILL.md "Auto-push". Push failure → log push-fails.tsv, continue, never halt.
+3. PUSH POLICY: ZERO interim pushes. auto_push_every_n=0 by design — do NOT push during normal operation. ONE final push at the very end, fired by the Final-pass section in SKILL.md. Working tree stays dirty between batches; that is intentional.
 
-4. Cascade phases 1→4. Phase finished with yield>0 AND current_phase<4 → escalate. Phase 4 fully exhausted → set done=true.
+4. CRON COORDINATION: `.github/workflows/refresh-prices.yml` owns `price` and `rating` on EXISTING entries (heartbeat in `.github/refresh-status.json`). For existing entries (phase 4 revalidate_existing): if cron last_success < 30h ago → SKIP price/rating checks, the cron has it. For NEW entries you add: always fetch fresh (cron only updates, never inserts). The Final pass MUST NOT touch price/rating at all.
 
-5. Phase 4 = revalidate_existing (auto-removes endless via remove_entry.py, auto-fixes YouTube via fix_youtube.py, auto-fixes images via fix_image.py) + reeval_skipped + steam_more_like_this + websearch_niche_queries + drill sources (Backloggd top-completed, Steam community, YouTube curator playlists, Reddit just_finished, Wikipedia). Run revalidate_existing BEFORE declaring done.
+5. Cascade phases 1→4. Yield>0 AND current_phase<4 → escalate. In phase 4 with yield>0 → loop phase 4 again from idx 0 with permuted source order. In phase 4 with yield=0: increment phase_4_zero_yield_passes; require TWO consecutive dry passes before triggering Final pass + done. The owner empirical observation "I restart and it finds another 15 games" is exactly the case this catches.
 
-6. NEVER ASK QUESTIONS. Use classification.md. Ambiguous candidate → skipped.tsv reason "ambiguous", continue. The user is asleep.
+6. Phase 4 = revalidate_existing (auto-removes endless via remove_entry.py; auto-fixes YouTube via fix_youtube.py; auto-fixes images via fix_image.py — but NEVER price/rating, those are the cron job) + reeval_skipped + steam_more_like_this + websearch_niche_queries + drill sources (Backloggd, Steam community, YouTube curator playlists, Reddit just_finished, Wikipedia).
 
-7. NEVER touch app.js / index.html / styles.css. data.js only via append_entry.py (exits 4 without a real 11-char video_id; exits 3 if id is in removed-entries.tsv).
+7. FINAL PASS before declaring done (mandatory, see SKILL.md "Final pass before done"): for each id in session_added_ids, verify image+youtube only, never price/rating. Then ONE git commit + push. Only after push succeeds → done=true and session_added_ids=[].
 
-8. DRILL MODE — don't give up on the first failure:
-   - YouTube not found → run §8's 6-query cascade, then Steam page scrape, then youtube.com/results, then Reddit. Refuse only after all exhaust.
-   - Source 403/404/empty → use the fallback in state/NOTES.md, write a substitute query, or pull from a different domain.
-   - Phase yield 0 → re-check with a fresh page-window before declaring exhausted.
-   - Niche WebSearches dry → Wikipedia "List of cooperative video games", Backloggd top-completed, Steam community discussions.
-   - Treat "I couldn't find X" as a hypothesis to disprove, not an exit signal.
+8. NEVER ASK QUESTIONS. Classify via taxonomy.json decision-trees. If a candidate matches no path, or needs a tag not in taxonomy.json → skipped.tsv reason "taxonomy_ambiguous" / "taxonomy_gap". Owner is asleep.
 
-9. Tool call fails → retry once with +5s sleep. Second fail → log, continue.
+9. NEVER touch app.js / index.html / styles.css. data.js only via append_entry.py (exits 4 without real 11-char video_id; exits 3 if id is in removed-entries.tsv).
 
-10. Sub-agents sequentially, one task each, not in parallel.
+10. DRILL MODE: YouTube not found → §8 cascade + Steam page + youtube.com/results + Reddit. Source 403/404 → write substitute query or different domain. Niche WebSearches dry → Wikipedia, Backloggd, Steam community. Treat "cannot find X" as a hypothesis to disprove.
 
-Stop only when ALL hold: every source in every phase exhausted, phase 4 revalidate_existing actually ran, every auto-fixable image/video got fixed-or-logged-as-irrecoverable. Phase 4 yield=0 alone is NOT enough.
+11. Tool call fails → retry once with +5s. Sub-agents sequentially.
 
-Output every 10 adds: "[P=phase N=added K=skipped src=source_id last=<title>]".
+Output every 10 adds: "[P=phase N=added K=skipped p4dry=X src=source_id last=<title>]".
 
-Doubt about adding → SKIP. Doubt about giving up on a search → KEEP DRILLING. User reviews the git history in the morning.
+Doubt about adding → SKIP. Doubt about giving up on a search → KEEP DRILLING.
 PROMPT_EOF
 )
 

@@ -103,56 +103,55 @@ Re-evaluate per classification.md "One-copy rules":
 
 If derived differs from current → propose.
 
-### 8. genres + tier (the user-emphasized "all applicable tags" check)
+### 8. genres + tier — derived from `.claude/skills/shared/taxonomy.json`
 
-Fetch Steam's user-defined tags for the app:
-- Open the Steam store page (`https://store.steampowered.com/app/<app_id>/`) via WebFetch.
-- Extract the top 10 tags from the `glance_tags` / popular tags section.
+Read `taxonomy.json` once at start of run; cache the in-memory dict for every entry's classification.
 
-Map each Steam tag to our taxonomy in classification.md:
+For each entry:
+1. Fetch Steam's user-defined tags for the app:
+   - Open `https://store.steampowered.com/app/<app_id>/` via WebFetch.
+   - Extract the top 10 popular tags from the `glance_tags` section.
+2. Map each Steam tag to taxonomy via the `steam_tags` array in each `taxonomy.json` entry. A single Steam tag may map to multiple taxonomy tags across axes (e.g. `"FPS"` → `First-person` AND `Shooter`).
+3. Apply axis rules from `taxonomy.axes`:
+   - `tier` — derive from publishers, exactly one. Already in entry.
+   - `perspective` — pick exactly one using `decision_tree`. Critical: every entry must have one. If the entry currently has none → log `proposed-fixes.tsv` with the derived perspective.
+   - `mechanic` — at least one required. **Adventure has `narrowing_rule`** — apply ONLY to narrative-led + exploration + dialogue games. If the entry has `Adventure` but does not match the rule (e.g. it's actually an action game or pure puzzle), log a proposed REMOVAL of `Adventure`.
+   - `setting`, `structure` — optional.
 
-```
-Steam tag                          → Our taxonomy
-"FPS", "First-Person"              → FPS
-"Third-Person", "Third Person Shooter" → Third-person
-"Shooter"                          → Shooter
-"Action"                           → Action
-"RPG", "Role-Playing"              → RPG
-"Tactical", "Tactics"              → Tactics
-"Fantasy"                          → Fantasy
-"Sci-fi", "Science Fiction"        → Sci-fi
-"Puzzle"                           → Puzzle
-"Adventure"                        → Adventure
-"Platformer", "2D Platformer", "3D Platformer" → Platformer
-"Stealth"                          → Stealth
-"Military"                         → Military
-"Open World"                       → Open World
-"Loot", "Hack and Slash"           → Loot
-"Horror", "Psychological Horror"   → Horror
-"Souls-like", "Soulslike"          → Soulslike
-"Isometric", "Top-Down"            → Isometric
-"Survival"                         → Survival
-```
-
-Tier (AAA / AA / Indie) derived from `publishers` per classification.md.
-
-Compare the set of "applicable our-taxonomy tags" to `entry.genres` (excluding tier):
-- Missing tags Steam says apply but entry doesn't have → log proposed addition.
-- Extra tags entry has but Steam doesn't → log proposed removal.
+Compare derived genres set to `entry.genres`:
+- Missing axis tag (especially perspective) → log to `proposed-fixes.tsv` (field=`genres`, new_value=what to add).
+- Extra tag that doesn't match any `decision_tree` from taxonomy → log proposed REMOVAL.
 - Tier mismatch → log proposed change.
 
-Don't auto-modify the genres array. Editorial choice.
+**Do not auto-modify the `genres` array.** Editorial choice — owner reviews `proposed-fixes.tsv` and decides which to apply via a separate migration step. Exception: there is a dedicated migration phase (see `taxonomy_migration` section below) that DOES auto-apply specific deterministic rewrites (e.g., split `FPS` → `First-person` + `Shooter`).
 
-### 9. endingType
+### 9. endingType — derived from `taxonomy.json` decision_tree
 
-Re-derive per classification.md:
-- Steam categories include "Roguelite" or "Roguelike" → `roguelite`.
-- "Survival" tag + confirmed final boss in HLTB or wiki → `survival-goal`.
-- Strong story tags (Story Rich, Narrative, Cinematic) → `story`.
-- Discrete missions/levels with weak narrative → `levels`.
-- Short single-session goal (climb, escape, defuse) → `arcade-goal`.
+Walk through `taxonomy.ending_types[*].decision_tree` for each ending type. Apply the first matching one to the entry.
 
-If derived differs from current → propose.
+If derived ≠ stored → log to `state/proposed-fixes.tsv`. Do not auto-fix; endingType is editorial. The fact-checker SHOULD flag well-known confusions (e.g., a game tagged `levels` whose verdict says "single-session climb" → propose `arcade-goal`).
+
+If the decision_tree matches multiple types (genuine ambiguity), log to `state/discrepancies.tsv` with reason `endingtype_ambiguous`. Owner decides.
+
+## taxonomy_migration phase (special, one-time bulk fix)
+
+Triggered manually by setting `progress.mode = "taxonomy_migration"` in fact-checker progress.json. For each entry, AUTO-APPLY the following deterministic rules and log to `state/applied-fixes.tsv`:
+
+1. **FPS split**: if `genres` contains `"FPS"`:
+   - Replace `"FPS"` with `"First-person"`.
+   - If the entry has shooter mechanics per Steam tags AND `"Shooter"` is not already present, add `"Shooter"` in mechanic position.
+   - The 6 exceptions (portal-2, dying-light, dying-light-2, vermintide-2, dead-island-de, dead-island-2) get ONLY `"First-person"`, no `"Shooter"`.
+
+2. **Adventure narrowing**: if `genres` contains `"Adventure"`, run the strict decision_tree:
+   - Game is built around narrative-led exploration with dialogue? → keep
+   - Else (it's actually action/shooter/puzzle/sim) → REMOVE `Adventure` from genres array
+   - The entry's verdict + Steam description are the input. WebFetch Steam page if uncertain.
+
+3. **Perspective enrichment**: if no perspective tag is present, derive one from Steam tags + verdict + screenshots-tag-list:
+   - Insert the derived tag immediately after tier, before mechanics.
+   - If unable to derive → log to `proposed-fixes.tsv` with reason `perspective_undetermined`, don't auto-fix.
+
+This phase is reserved for the explicit taxonomy migration run. Normal fact-checker runs do NOT execute it — they only LOG proposed changes per §8 / §9.
 
 ### 10. youtubeUrl
 

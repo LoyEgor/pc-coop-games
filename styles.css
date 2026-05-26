@@ -876,6 +876,76 @@ tbody tr:hover .youtube-link .yt-icon-play {
   font-weight: 500;
 }
 
+.check-row.with-subtitle {
+  align-items: flex-start;
+  padding: 4px 0;
+}
+
+.check-row.with-subtitle input {
+  margin-top: 2px;
+}
+
+.check-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.filter-subtitle {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.filter-divider {
+  margin: 8px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.facet-section {
+  display: grid;
+  gap: 5px;
+}
+
+.facet-heading {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 1px;
+}
+
+.check-row.faceted {
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+}
+
+.check-row.faceted .check-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.check-count {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.check-row.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.check-row.disabled input {
+  cursor: not-allowed;
+}
+
 .check-row input {
   width: 16px;
   height: 16px;

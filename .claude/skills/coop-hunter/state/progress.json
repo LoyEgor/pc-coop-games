@@ -11,6 +11,8 @@
   "current_phase": 4,
   "max_phase": 4,
   "phase_start_count": 148,
-  "auto_push_every_n": 25,
-  "last_push_at": 109
+  "auto_push_every_n": 0,
+  "last_push_at": 109,
+  "phase_4_zero_yield_passes": 0,
+  "session_added_ids": []
 }

@@ -133,9 +133,9 @@ RULES:
    - imageUrl HEAD non-200 → ../coop-hunter/scripts/fix_image.py <id> <app_id>
    - Everything else → log to state/proposed-fixes.tsv (genres, endingType, playersMax, oneCopy, tier, hours, year). Owner reviews manually.
 
-4. DRILL MODE — never refuse on first failure. Retry Steam with different UA, fall back to store-page scrape, fall back to appdetails 'genres[]' if tags unscrapable. Don't declare an entry "checked" if you skipped >2 of 11 checks; mark partial in progress.partial_entries[].
+4. DRILL MODE — never refuse on first failure. Retry Steam with different UA, fall back to store-page scrape, fall back to appdetails genres[] if tags unscrapable. Do not declare an entry "checked" if you skipped >2 of 11 checks; mark partial in progress.partial_entries[].
 
-5. NEVER ASK QUESTIONS. Owner is asleep. Use classification.md rules. Ambiguous → log discrepancies.tsv reason "ambiguous", continue.
+5. NEVER ASK QUESTIONS. Owner is asleep. Classify genres + endingType strictly via .claude/skills/shared/taxonomy.json (axis-structured: tier/perspective/mechanic/setting/structure; never invent tags). taxonomy.json wins over classification.md. Ambiguous → log discrepancies.tsv reason "ambiguous", continue.
 
 6. NEVER remove entries. If a game now looks blocklist-worthy, log to state/proposed-removals.tsv. coop-hunter phase 4 handles removals; fact-checker only logs.
 
@@ -149,7 +149,7 @@ RULES:
 
 Stop only when ALL: current_idx >= total_entries AND partial_entries is empty AND every bad_video / no_image was fixed-or-logged. Re-walk partial entries in a second pass if needed.
 
-Doubt about fixing → LOG, don't write. Doubt about giving up on a source → DRILL another source.
+Doubt about fixing → LOG, do not write. Doubt about giving up on a source → DRILL another source.
 PROMPT_EOF
 )
 

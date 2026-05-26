@@ -1,20 +1,91 @@
 const STORAGE_KEY = "pc-coop-table-v3";
 
+// Labels mirror what's shown in the table chips — filter labels are kept
+// identical so users see one term, not two. Subtitle is a one-sentence
+// definition rendered in light gray under the filter checkbox. Pulled from
+// .claude/skills/shared/taxonomy.json so the skills and the UI agree.
 const ONE_COPY = {
-  "friend-pass": { label: "Friend Pass", rank: 3, tone: "good" },
-  "remote-play": { label: "Remote Play", rank: 2, tone: "warn" },
-  none: { label: "Two copies", rank: 1, tone: "muted" }
+  "friend-pass": {
+    label: "Friend Pass",
+    rank: 3,
+    tone: "good",
+    subtitle: "Friend Pass / asymmetric — one owner can invite a non-owner."
+  },
+  "remote-play": {
+    label: "Remote Play",
+    rank: 2,
+    tone: "warn",
+    subtitle: "Local co-op only, played remotely via Steam Remote Play Together. One copy required."
+  },
+  none: {
+    label: "Two copies",
+    rank: 1,
+    tone: "muted",
+    subtitle: "Each player needs their own copy. Standard online multiplayer."
+  }
 };
 
 const ENDING_TYPE = {
-  story: { label: "Story", short: "Story", tone: "info", rank: 5 },
-  levels: { label: "Levels", short: "Levels", tone: "muted", rank: 4 },
-  "arcade-goal": { label: "Arcade goal", short: "Goal", tone: "good", rank: 3 },
-  roguelite: { label: "Roguelite", short: "Roguelite", tone: "warn", rank: 2 },
-  "survival-goal": { label: "Survival finale", short: "Survival", tone: "bad", rank: 1 }
+  story: {
+    label: "Story",
+    short: "Story",
+    tone: "info",
+    rank: 5,
+    subtitle: "Narrative campaign with cutscenes and a defined finale."
+  },
+  levels: {
+    label: "Levels",
+    short: "Levels",
+    tone: "muted",
+    rank: 4,
+    subtitle: "Discrete level / mission set with a defined last one. No procedural generation."
+  },
+  "arcade-goal": {
+    label: "Goal",
+    short: "Goal",
+    tone: "good",
+    rank: 3,
+    subtitle: "Single-session win in 5–60 min. Restart to retry. No persistent meta-progress."
+  },
+  roguelite: {
+    label: "Roguelite",
+    short: "Roguelite",
+    tone: "warn",
+    rank: 2,
+    subtitle: "Procedural runs with persistent meta-progress between attempts. Final boss = real ending."
+  },
+  "survival-goal": {
+    label: "Survival",
+    short: "Survival",
+    tone: "bad",
+    rank: 1,
+    subtitle: "Open-ended survival with an explicit named win-condition (final boss / structure / rocket)."
+  }
 };
 
 const TIER_VALUES = new Set(["AAA", "AA", "Indie"]);
+
+// Faceted-filter axes for the Genres column. Mirrors the `axes` structure in
+// .claude/skills/shared/taxonomy.json. Within an axis the filter is OR (pick
+// First-person + Third-person → games matching either). Across axes it's AND
+// (Tier=AAA AND View=Side-view → must be both). "FPS" is a legacy perspective
+// tag still present in un-migrated data; it lives under the View axis until the
+// taxonomy migration replaces it with First-person.
+const GENRE_AXES = [
+  { key: "tier", label: "Tier", tags: ["AAA", "AA", "Indie"] },
+  { key: "perspective", label: "View", tags: ["First-person", "Third-person", "Isometric", "Side-view", "FPS"] },
+  { key: "mechanic", label: "Genre", tags: ["Shooter", "Action", "Puzzle", "Platformer", "RPG", "Tactics", "Stealth", "Soulslike", "Loot", "Adventure"] },
+  { key: "setting", label: "Setting", tags: ["Fantasy", "Sci-fi", "Horror", "Military"] },
+  { key: "structure", label: "Structure", tags: ["Open World", "Survival"] }
+];
+const TAG_TO_AXIS = (() => {
+  const map = {};
+  for (const axis of GENRE_AXES) {
+    for (const tag of axis.tags) map[tag] = axis.key;
+  }
+  return map;
+})();
+const OTHER_AXIS = "_other";
 
 // 'FIT_RANK' has been removed as the 'Попадание' column is deleted
 
@@ -71,13 +142,15 @@ const filterConfig = {
     type: "set",
     label: "Ending",
     options: () => Object.keys(ENDING_TYPE),
-    labelFor: (value) => ENDING_TYPE[value]?.label || value
+    labelFor: (value) => ENDING_TYPE[value]?.short || value,
+    subtitleFor: (value) => ENDING_TYPE[value]?.subtitle || ""
   },
   oneCopy: {
     type: "set",
     label: "Copies",
     options: () => Object.keys(ONE_COPY),
-    labelFor: (value) => ONE_COPY[value].label
+    labelFor: (value) => ONE_COPY[value]?.label || value,
+    subtitleFor: (value) => ONE_COPY[value]?.subtitle || ""
   },
   price: { type: "range", label: "Price", step: 50, min: 49 }
 };
@@ -146,7 +219,35 @@ function compareValues(a, b) {
   return String(a ?? "").localeCompare(String(b ?? ""), "ru", { numeric: true });
 }
 
-function gameMatchesFilters(game) {
+// Group a Set of selected genre tags by their axis. Returns { axisKey: [tags] }.
+function groupSelectedGenresByAxis(selectedSet) {
+  const byAxis = {};
+  for (const tag of selectedSet) {
+    const axis = TAG_TO_AXIS[tag] || OTHER_AXIS;
+    (byAxis[axis] ||= []).push(tag);
+  }
+  return byAxis;
+}
+
+// Faceted genre match: OR within an axis, AND across axes.
+// `genresByAxis` is the precomputed grouping (so callers can override one axis
+// when computing per-option counts). When omitted, uses the live filter state.
+function gameMatchesGenres(game, genresByAxis) {
+  const byAxis = genresByAxis || groupSelectedGenresByAxis(state.filters.genres);
+  const gameTags = new Set(game.genres);
+  for (const axis of Object.keys(byAxis)) {
+    const tags = byAxis[axis];
+    if (tags.length === 0) continue;
+    // OR within axis: game must have at least one of the selected tags
+    if (!tags.some((t) => gameTags.has(t))) return false; // AND across axes
+  }
+  return true;
+}
+
+function gameMatchesFilters(game, opts) {
+  const skipGenres = opts && opts.skipGenres;
+  const genresOverride = opts && opts.genresByAxis;
+
   const played = isPlayed(game);
   if (state.viewMode === "active" && played) return false;
   if (state.viewMode === "played" && !played) return false;
@@ -165,11 +266,34 @@ function gameMatchesFilters(game) {
     if (filter.max !== "" && value > Number(filter.max)) return false;
   }
 
-  if (state.filters.genres.size > 0 && !game.genres.some((genre) => state.filters.genres.has(genre))) return false;
+  if (!skipGenres) {
+    if (genresOverride) {
+      // Count-probe path: always apply the provided axis grouping.
+      if (!gameMatchesGenres(game, genresOverride)) return false;
+    } else if (state.filters.genres.size > 0) {
+      if (!gameMatchesGenres(game)) return false;
+    }
+  }
   if (state.filters.endingType.size > 0 && !state.filters.endingType.has(game.endingType)) return false;
   if (state.filters.oneCopy.size > 0 && !state.filters.oneCopy.has(game.oneCopy)) return false;
 
   return true;
+}
+
+// For the faceted Genres popover: how many games would match if `tag` (in
+// `axisKey`) were the constraint for its axis, holding all OTHER axes' current
+// selections + every non-genre filter fixed. Drives the live counts and the
+// auto-disable of zero-count options. Same-axis siblings are ignored (OR
+// semantics — adding another option in the same axis only widens).
+function countForGenreOption(axisKey, tag) {
+  const byAxis = groupSelectedGenresByAxis(state.filters.genres);
+  // Replace this axis's selection with just `tag` for the count probe.
+  const probe = { ...byAxis, [axisKey]: [tag] };
+  let n = 0;
+  for (const game of games) {
+    if (gameMatchesFilters(game, { genresByAxis: probe })) n++;
+  }
+  return n;
 }
 
 function getVisibleGames() {
@@ -372,17 +496,72 @@ function renderFilterMarkup(key, config) {
     `;
   }
 
-  const options = config.options();
   const selected = state.filters[key];
+
+  // Genres is a faceted filter: render one labeled section per axis
+  // (Tier / View / Genre / Setting / Structure). Each option shows a live
+  // count and disables itself when picking it would yield zero results given
+  // the other axes' current selections. OR within a section, AND across.
+  if (key === "genres") {
+    const present = new Set(config.options());
+    const sectionsHtml = GENRE_AXES
+      .map((axis) => {
+        const tagsInData = axis.tags.filter((t) => present.has(t));
+        if (tagsInData.length === 0) return "";
+        const rows = tagsInData
+          .map((value) => {
+            const count = countForGenreOption(axis.key, value);
+            const isChecked = selected.has(value);
+            const isDisabled = count === 0 && !isChecked;
+            return `
+              <label class="check-row faceted${isDisabled ? " disabled" : ""}">
+                <input type="checkbox" data-set-filter="genres" value="${escapeHtml(value)}" ${isChecked ? "checked" : ""} ${isDisabled ? "disabled" : ""}>
+                <span class="check-label">${escapeHtml(value)}</span>
+                <span class="check-count">${count}</span>
+              </label>
+            `;
+          })
+          .join("");
+        return `
+          <div class="facet-section">
+            <div class="facet-heading">${escapeHtml(axis.label)}</div>
+            ${rows}
+          </div>
+        `;
+      })
+      .filter(Boolean)
+      .join('<hr class="filter-divider">');
+    return `
+      <div class="popover-title">${escapeHtml(config.label)}</div>
+      <div class="checkbox-list faceted">
+        ${sectionsHtml}
+      </div>
+      <button class="button full" type="button" data-clear-filter="genres">Clear</button>
+    `;
+  }
+
+  // Simple single-list set filter (endingType, oneCopy) with optional subtitle.
+  const options = config.options();
+  const renderRow = (value) => {
+    const labelText = config.labelFor ? config.labelFor(value) : value;
+    const subtitleText = config.subtitleFor ? config.subtitleFor(value) : "";
+    const subtitleHtml = subtitleText
+      ? `<div class="filter-subtitle">${escapeHtml(subtitleText)}</div>`
+      : "";
+    return `
+      <label class="check-row${subtitleText ? " with-subtitle" : ""}">
+        <input type="checkbox" data-set-filter="${escapeHtml(key)}" value="${escapeHtml(value)}" ${selected.has(value) ? "checked" : ""}>
+        <div class="check-row-text">
+          <span>${escapeHtml(labelText)}</span>
+          ${subtitleHtml}
+        </div>
+      </label>
+    `;
+  };
   return `
     <div class="popover-title">${escapeHtml(config.label)}</div>
     <div class="checkbox-list">
-      ${options.map((value) => `
-        <label class="check-row">
-          <input type="checkbox" data-set-filter="${escapeHtml(key)}" value="${escapeHtml(value)}" ${selected.has(value) ? "checked" : ""}>
-          <span>${escapeHtml(config.labelFor ? config.labelFor(value) : value)}</span>
-        </label>
-      `).join("")}
+      ${options.map(renderRow).join("")}
     </div>
     <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
   `;
@@ -406,6 +585,12 @@ function bindFilterControls(key, config) {
         else state.filters[key].delete(input.value);
       }
       render();
+      // The faceted Genres popover shows live counts that depend on the
+      // current selection, so re-render it in place after each toggle.
+      if (key === "genres" && input.dataset.setFilter) {
+        els.popover.innerHTML = renderFilterMarkup(key, config);
+        bindFilterControls(key, config);
+      }
     });
   });
 

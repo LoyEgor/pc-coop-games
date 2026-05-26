@@ -1,0 +1,272 @@
+{
+  "$comment": "Canonical taxonomy for genres + endingType. Single source of truth read by coop-hunter and fact-checker skills. Hard rule: skills must consult this file before assigning any tag; if a candidate does not match a decision-tree path, log 'taxonomy_ambiguous' and skip — DO NOT invent. UI also reads endingType subtitles from here (see app.js).",
+  "$version": "2026-05-26",
+
+  "axes": {
+    "tier": {
+      "rule": "exactly_one_per_game",
+      "position_in_genres_array": "first",
+      "note": "Always the first element of the genres array. Auto-prepended."
+    },
+    "perspective": {
+      "rule": "exactly_one_per_game",
+      "note": "Every game has exactly one primary perspective. If perspective is switchable (e.g. some RPGs), pick the one used most often during co-op gameplay."
+    },
+    "mechanic": {
+      "rule": "at_least_one_per_game",
+      "note": "What the player primarily does. Multiple allowed but be conservative — only tag if the mechanic is a defining feature."
+    },
+    "setting": {
+      "rule": "optional_multiple",
+      "note": "Story/world flavor. Can have 0, 1, or 2; rarely more."
+    },
+    "structure": {
+      "rule": "optional_multiple",
+      "note": "Macro-structure of the experience. Can stack (e.g. Open World + Survival)."
+    }
+  },
+
+  "tier": {
+    "AAA": {
+      "definition": "Major publisher (Activision, EA, Ubisoft, Sony, MS, Take-Two, Square Enix, Capcom, Konami, Sega, Bethesda, Bandai Namco, Larian post-2020, Warner Bros, THQ Nordic AAA imprint, 505 AAA, Focus AAA).",
+      "rule": "Single-element decision based on publishers[]."
+    },
+    "AA": {
+      "definition": "Mid-budget studio. Examples: Frozenbyte, Fatshark, Saber, Supermassive, Arrowhead, Techland, People Can Fly, Larian pre-2020, Coffee Stain, Focus, Plaion, Deep Silver, Devolver (some), Annapurna, tinyBuild.",
+      "rule": "If not AAA and not Indie, default AA. Studio size 20-100 → AA."
+    },
+    "Indie": {
+      "definition": "Self-published or small indie publisher; studio size <20.",
+      "rule": "Default if neither AAA nor AA applies."
+    }
+  },
+
+  "perspective": {
+    "First-person": {
+      "definition": "Camera is the player character's eyes. Hands/weapons visible, no body.",
+      "steam_tags": ["First-Person", "FPS"],
+      "examples_positive": ["portal-2", "dying-light", "talos-principle", "vermintide-2", "we-were-here-forever"],
+      "examples_negative": ["castle-crashers (2D), hades (isometric), peak (third-person climber)"],
+      "decision_tree": [
+        "Camera anchored at character eye level? → yes",
+        "No visible body, only hands/weapons? → yes"
+      ]
+    },
+    "Third-person": {
+      "definition": "Camera follows the player character from behind or over-the-shoulder. Full body visible.",
+      "steam_tags": ["Third Person", "Third-Person Shooter"],
+      "examples_positive": ["gears-of-war-reloaded", "space-marine-2", "sniper-elite-5", "peak"],
+      "examples_negative": ["portal-2 (FP), monaco (top-down)"],
+      "decision_tree": [
+        "Camera follows character from behind/shoulder? → yes",
+        "Full player body visible? → yes"
+      ]
+    },
+    "Isometric": {
+      "definition": "Any fixed camera looking down at the play area — covers both 3/4 isometric/dimetric views (Hades, The Ascent) and strict bird's-eye top-down views (Monaco, Hotline-style twin-stick). Merged tag: we do not split isometric vs top-down because the boundary is fuzzy and the filter intent is the same ('show me games seen from above').",
+      "steam_tags": ["Isometric", "Top-Down", "Top Down", "Twin Stick Shooter"],
+      "examples_positive": ["the-ascent", "darksiders-genesis", "lara-croft-guardian-light", "hades", "monaco", "magicka-2", "death-squared"],
+      "examples_negative": ["peak (third-person), castle-crashers (side-view), portal-2 (first-person)"],
+      "decision_tree": [
+        "Is the camera fixed ABOVE the play area (3/4 angle through straight-down)? → yes",
+        "Player is rendered small, seen from above rather than behind? → yes"
+      ]
+    },
+    "Side-view": {
+      "definition": "2D camera viewing the action from the side. Classic platformer / fighter / beat-em-up layout.",
+      "steam_tags": ["2D", "2D Platformer", "Side Scroller", "Fighting"],
+      "examples_positive": ["castle-crashers", "cuphead", "streets-of-rage-4", "broforce", "trine-5"],
+      "examples_negative": ["portal-2 (3D FP), peak (3D TP)"],
+      "decision_tree": [
+        "2D rendering with the camera at the side? → yes",
+        "Player runs/jumps horizontally? → typically yes"
+      ]
+    }
+  },
+
+  "mechanic": {
+    "Shooter": {
+      "definition": "Primary verb is shooting projectiles at enemies. Aiming is a core skill.",
+      "steam_tags": ["Shooter", "FPS", "Third-Person Shooter", "Twin Stick Shooter"],
+      "examples_positive": ["halo-mcc", "borderlands-3", "sniper-elite-5"],
+      "examples_negative": ["portal-2 (shoots portals, not enemies), vermintide-2 (melee primary)"]
+    },
+    "Action": {
+      "definition": "Real-time verb-driven gameplay with reflexes. Combat, dodging, timing.",
+      "steam_tags": ["Action"],
+      "examples_positive": ["castle-crashers", "darksiders-genesis"],
+      "examples_negative": ["powerwash-simulator (relaxation), we-were-here-forever (puzzle)"],
+      "narrowing_rule": "Do NOT apply to pure puzzle games even when they have reflex elements. Reserve for combat/dodging/timing as the primary loop."
+    },
+    "Puzzle": {
+      "definition": "Primary loop is solving puzzles. Logic, spatial, communication, or pattern-based.",
+      "steam_tags": ["Puzzle", "Logic", "Word Game"],
+      "examples_positive": ["portal-2", "we-were-here-forever", "operation-tango", "keep-talking-and-nobody-explodes"],
+      "examples_negative": ["castle-crashers (action)"]
+    },
+    "Platformer": {
+      "definition": "Core challenge is precise movement: jumping, running, climbing.",
+      "steam_tags": ["Platformer", "2D Platformer", "3D Platformer", "Precision Platformer"],
+      "examples_positive": ["castle-crashers", "cuphead", "trine-5", "a-hat-in-time"],
+      "examples_negative": ["portal-2 (puzzle), gears-of-war (cover shooter)"]
+    },
+    "RPG": {
+      "definition": "Character progression with stats, abilities, equipment. Build/spec choices matter.",
+      "steam_tags": ["RPG", "Action RPG", "JRPG", "CRPG"],
+      "examples_positive": ["baldurs-gate-3", "borderlands-3", "remnant-2", "dying-light"],
+      "examples_negative": ["castle-crashers (no real RPG depth)"]
+    },
+    "Tactics": {
+      "definition": "Strategic decision-making with movement on a grid or with pause-and-plan.",
+      "steam_tags": ["Tactical", "Tactical RPG", "Turn-Based Tactics"],
+      "examples_positive": ["wasteland-3", "door-kickers-2", "sniper-elite-5"],
+      "examples_negative": ["dying-light (real-time action)"]
+    },
+    "Stealth": {
+      "definition": "Avoiding detection is a core mechanic with dedicated systems (vision cones, noise meters).",
+      "steam_tags": ["Stealth"],
+      "examples_positive": ["sniper-elite-5", "styx-shards-of-darkness", "monaco"],
+      "examples_negative": ["gears-of-war (you fight openly)"]
+    },
+    "Soulslike": {
+      "definition": "Punishing combat with stamina, deliberate timing, run-back-on-death loop. Lineage from Dark Souls.",
+      "steam_tags": ["Souls-like", "Soulslike", "Difficult"],
+      "examples_positive": ["remnant-2", "remnant-1", "elden-ring-nightreign"],
+      "examples_negative": ["castle-crashers (not punishing enough)"]
+    },
+    "Loot": {
+      "definition": "Borderlands-style colored-rarity equipment as a primary reward loop.",
+      "steam_tags": ["Loot"],
+      "examples_positive": ["borderlands-3", "tiny-tinas-wonderlands", "outriders"],
+      "examples_negative": ["dying-light (has loot but not the primary loop)"]
+    },
+    "Adventure": {
+      "definition": "Narrative-led exploration with dialogue, story choices, and discovery as primary mechanics. NARROW JANR — point-and-click lineage. Not 'any game with a story'.",
+      "steam_tags": ["Adventure", "Point and Click", "Narrative", "Story Rich"],
+      "examples_positive": ["chicory-colorful-tale", "with-you", "rhythm-doctor"],
+      "examples_negative": [
+        "castle-crashers (action+platformer, NOT adventure)",
+        "gears-of-war (shooter, NOT adventure)",
+        "rv-there-yet (action+puzzle road-trip)",
+        "powerwash-simulator (puzzle/relax sim)"
+      ],
+      "narrowing_rule": "Apply ONLY if the game is BUILT AROUND narrative and exploration as the verb. If story is incidental (e.g. shooter campaign), DO NOT tag Adventure. After this rule is applied, expect ~10-15 entries to keep the tag (down from the historical ~120)."
+    }
+  },
+
+  "setting": {
+    "Fantasy": {
+      "definition": "Magic, swords, dragons, medieval-ish worlds.",
+      "steam_tags": ["Fantasy", "Dark Fantasy", "Medieval"],
+      "examples_positive": ["baldurs-gate-3", "trine-5", "vermintide-2"]
+    },
+    "Sci-fi": {
+      "definition": "Future tech, space, aliens, cyberpunk.",
+      "steam_tags": ["Sci-fi", "Space", "Cyberpunk", "Futuristic"],
+      "examples_positive": ["halo-mcc", "the-ascent", "portal-2"]
+    },
+    "Horror": {
+      "definition": "Game uses fear / dread / supernatural threat as a core flavor.",
+      "steam_tags": ["Horror", "Psychological Horror", "Survival Horror"],
+      "examples_positive": ["dying-light", "outlast-trials"]
+    },
+    "Military": {
+      "definition": "Real-world military setting (WWII, modern combat, special forces).",
+      "steam_tags": ["Military", "World War II", "Modern Combat"],
+      "examples_positive": ["sniper-elite-5", "ghost-recon-wildlands"]
+    }
+  },
+
+  "structure": {
+    "Open World": {
+      "definition": "Large connected map with non-linear progression.",
+      "steam_tags": ["Open World", "Sandbox"],
+      "examples_positive": ["far-cry-5", "dying-light", "ghost-recon-wildlands"]
+    },
+    "Survival": {
+      "definition": "Resource management + base building + threats. Hunger/thirst/shelter loop common.",
+      "steam_tags": ["Survival", "Survival Craft"],
+      "examples_positive": ["grounded", "the-forest", "sons-of-the-forest", "valheim"]
+    }
+  },
+
+  "ending_types": {
+    "story": {
+      "table_label": "Story",
+      "filter_label": "Story",
+      "filter_subtitle": "Narrative campaign with cutscenes and a defined finale.",
+      "decision_tree": [
+        "Has named characters with arcs? → yes",
+        "Has cutscenes and a credits/finale beat? → yes",
+        "Is the game built around the story (not minor flavor)? → yes"
+      ],
+      "examples": ["baldurs-gate-3", "halo-mcc", "a-way-out", "sons-of-the-forest"]
+    },
+    "levels": {
+      "table_label": "Levels",
+      "filter_label": "Levels",
+      "filter_subtitle": "Discrete level / mission set with a defined last one. No procedural generation.",
+      "decision_tree": [
+        "Discrete levels or missions in a fixed set? → yes",
+        "Last level / mission is reachable as a win-state? → yes",
+        "Is the level set NOT procedurally generated? → yes",
+        "Story can be weak or absent — what matters is the level structure."
+      ],
+      "examples": ["castle-crashers", "streets-of-rage-4", "cuphead", "rv-there-yet", "left-4-dead-2"]
+    },
+    "arcade-goal": {
+      "table_label": "Goal",
+      "filter_label": "Goal",
+      "filter_subtitle": "Single-session win in 5–60 min. Restart to retry. No persistent meta-progress.",
+      "decision_tree": [
+        "Can you finish a session in 5-60 min? → yes",
+        "Can you restart the run aiming for the SAME exact goal? → yes",
+        "Is there NO persistent unlock/stat track between runs? → yes (otherwise it's roguelite)"
+      ],
+      "examples": ["peak", "operation-tango", "keep-talking-and-nobody-explodes", "we-were-here-forever"]
+    },
+    "roguelite": {
+      "table_label": "Roguelite",
+      "filter_label": "Roguelite",
+      "filter_subtitle": "Procedural runs with persistent meta-progress between attempts. Final boss = real ending.",
+      "decision_tree": [
+        "Run is procedurally generated? → yes",
+        "There is PERSISTENT progression between runs (unlocks, stats, items)? → yes",
+        "Reaching the final boss = recognizable 'beat the game' moment? → yes"
+      ],
+      "examples": ["hades", "risk-of-rain-2", "spelunky-2", "deadzone-rogue"]
+    },
+    "survival-goal": {
+      "table_label": "Survival",
+      "filter_label": "Survival finale",
+      "filter_subtitle": "Open-ended survival with an explicit named win-condition (final boss / structure / rocket).",
+      "decision_tree": [
+        "Game is built around survival mechanics (resources/base/threats)? → yes",
+        "There is an EXPLICIT NAMED win-condition or final boss? → yes (Moon Lord, Yagluth, Project Assembly, etc.)",
+        "Without the named win-condition: NOT survival-goal (those are endless and forbidden by CLAUDE.md §2)."
+      ],
+      "examples": ["valheim", "terraria", "satisfactory", "grounded"]
+    }
+  },
+
+  "one_copy_modes": {
+    "none": {
+      "table_label": "Two copies",
+      "filter_label": "Two copies",
+      "filter_subtitle": "Each player needs their own copy. Standard online multiplayer.",
+      "rank": 1
+    },
+    "remote-play": {
+      "table_label": "Remote Play",
+      "filter_label": "Remote Play",
+      "filter_subtitle": "Local co-op only, played remotely via Steam Remote Play Together. One copy required.",
+      "rank": 2
+    },
+    "friend-pass": {
+      "table_label": "Friend Pass",
+      "filter_label": "Friend Pass",
+      "filter_subtitle": "Friend Pass / asymmetric design — one owner can invite a non-owner.",
+      "rank": 3
+    }
+  }
+}

@@ -52,33 +52,41 @@ When all sources of `current_phase` are completed:
    - `phase_start_count = added_count`
    - `current_source_idx` advances to the first source of the new phase
    - `current_offset = 0`
+   - `phase_4_zero_yield_passes = 0` (reset — we got out of phase 4 dry-streak by escalating)
    - Continue processing.
-3. Else (yield is 0 OR we've reached max_phase):
-   - `done = true`
-   - Write `state/summary.md`
-   - Exit.
+3. Else if `phase_yield > 0` AND `current_phase == max_phase`:
+   - We're in phase 4 (the deepest phase) and it found something. Re-enter phase 4 from the start.
+   - `phase_start_count = added_count` (new yield window begins)
+   - `current_source_idx = (first source idx of phase 4)`
+   - `current_offset = 0`
+   - `completed_sources = [s for s in completed_sources if (source.phase != 4)]` — un-mark phase-4 sources so we walk them again with current data.
+   - `phase_4_zero_yield_passes = 0`
+   - Continue processing. Sources are not deterministic across time: Steam tags update, Reddit threads appear, WebSearch index refreshes. A phase-4 source that gave 0 last hour may give a hit now.
+4. Else (yield is 0 in `current_phase`):
+   - If `current_phase < max_phase` → `done = true` (cascade can't escalate without proof of life). Trigger the **Final pass before done** below.
+   - If `current_phase == max_phase` (phase 4 dry-run): increment `phase_4_zero_yield_passes`. **STOP-CONDITION CHANGE — require TWO consecutive dry passes**:
+     - If `phase_4_zero_yield_passes < 2`: do NOT declare done. Reset phase 4 (same as case 3 above), permute the source order if possible (or try alternative WebSearch phrasings on `websearch_niche_queries`), continue processing. The premise is: a 0-yield pass might be due to transient rate-limits, exhausted single-query phrasings, or stale Reddit caches; one more pass with the same data sources but fresh fetches often surfaces 1–5 more games.
+     - If `phase_4_zero_yield_passes >= 2`: NOW trigger the **Final pass before done**, then `done = true`.
 
-This means: on Windows with `max_phase=1`, after phase 1 is done, `done=true`. On Mac with `max_phase=4`, the skill cascades through 2, 3, 4 until a phase adds nothing new.
+This means: a single dry pass through phase 4 is NOT enough to declare the catalog complete. The skill must prove there's nothing left by repeating phase 4 with fresh fetches and getting 0 twice in a row. The owner's empirical observation — "I restart and it finds another 15 games" — is exactly the case this fixes.
 
-## Auto-push (Mac mode)
+On Windows with `max_phase=1`, after phase 1's yield → done check (cases 3/4 don't apply). On Mac with `max_phase=4`, the skill cascades through 2, 3, 4 and then loops phase 4 until two consecutive dry passes.
 
-Maintain in progress.json:
-- `auto_push_every_n` (default 0 — disabled; Mac launcher sets 25)
-- `last_push_at` (added_count at the last push; default 0)
+## Push policy: ZERO pushes during the run, ONE at the end
 
-After every successful add, if `auto_push_every_n > 0` AND `(added_count - last_push_at) >= auto_push_every_n`:
+This is a deliberate change from earlier versions. Auto-push during the run is **disabled**. Reasons:
+1. Constant `github-actions[bot]` + `coop-hunter:bot` commits create noise that's hard to review.
+2. The owner wants to inspect what the skill found before it lands on `main`.
+3. Push race conditions between the skill and the daily `refresh-prices.yml` cron are easier to avoid if the skill pushes exactly once.
 
-```bash
-git add data.js .claude/skills/coop-hunter/state/added.tsv .claude/skills/coop-hunter/state/skipped.tsv .claude/skills/coop-hunter/state/progress.json
-git commit -m "coop-hunter: batch +N games (total M, phase P)"
-git push
-```
+**Maintain in progress.json:**
+- `auto_push_every_n: 0` — interim push DISABLED. The launcher seeds this. Do NOT raise.
+- `last_push_at: int` — kept only for backward compatibility, unused in this push policy.
+- `session_added_ids: []` — ids appended this session, accumulator for the final pass (see below). Cleared only after the final push succeeds.
 
-Where N = `added_count - last_push_at`, M = `added_count`, P = `current_phase`.
+Therefore: **do NOT commit or push between batches**. Just append entries to `data.js` and persist state to `state/progress.json` after each add. The single commit + push happens in the "Final pass" section below, fired by the stop condition.
 
-After push: `last_push_at = added_count`.
-
-If `git push` fails (network, conflict), log to `state/push-fails.tsv` and continue — do NOT halt. Try again on the next batch. If `git push` was rejected because the remote is ahead (the cron in `.github/workflows/refresh-prices.yml` may have committed between your last pull and this push), run `git pull --rebase origin main` and retry the push once before logging.
+If you find yourself in a situation where the working tree has grown large and you're worried about losing work to a crash: don't push — instead, the next launcher restart will simply read `state/progress.json` and resume. `data.js` is local in the worktree and survives crashes. The state/added.tsv log is the audit trail.
 
 ## Coordination with the GitHub Actions refresh cron
 
@@ -156,10 +164,25 @@ If `release_date.date` < 2015:
 - Scan for: `GFWL`, `servers shut down`, `online doesn't work`, `requires GameSpy`, `online dead`.
 - If any hit → skip with reason `online_broken`.
 
-### 7. Classify
-- **Tier**: see `classification.md`. Based on `publishers` field from Steam. Indie publishers and self-published → Indie. Major publishers (Activision, Blizzard, EA, Ubisoft, Sony, Microsoft, Take-Two, Square Enix, Capcom, Konami, Sega, Bethesda) → AAA. Anything in between → AA.
-- **endingType**: see `classification.md` for decision matrix. Default to `story` if narrative-heavy, `levels` if mission-set, `roguelite` if Steam categories include "Roguelite", `arcade-goal` if short single-session escape/climb, `survival-goal` if "Survival" tag + final boss confirmed.
-- **Genres**: map Steam categories to existing taxonomy in `classification.md`. Prepend tier value (e.g., `["AAA", "Shooter", "FPS"]`).
+### 7. Classify — read `.claude/skills/shared/taxonomy.json` FIRST
+
+`taxonomy.json` is the **single source of truth** for genre + endingType. Do not invent tags or paraphrase definitions from memory. The file is small enough to read in full at the start of every classification step.
+
+Procedure for each candidate:
+
+1. **Read `.claude/skills/shared/taxonomy.json` once per turn.**
+2. **Tier** — apply `tier` rules based on `publishers[]`. Exactly one tier, prepended to the `genres` array.
+3. **Perspective** — `taxonomy.json` axes rule: `exactly_one_per_game`. Pick ONE of `First-person`, `Third-person`, `Isometric`, `Side-view`, `Top-down` using the per-tag `decision_tree`. If none clearly applies → log `taxonomy_ambiguous` to skipped.tsv with the candidate name; do NOT guess.
+4. **Mechanic(s)** — at least one required. Walk through the `mechanic` section, apply each tag's `decision_tree`. Multiple allowed but be conservative. **Especially for `Adventure`**: the tag has a strict `narrowing_rule` — apply ONLY to narrative-led + exploration + dialogue games (Chicory-style). If the game has a story but the verb is shooting / fighting / puzzle — do NOT tag Adventure.
+5. **Setting** — optional, multiple. Walk through `setting` section, apply where `decision_tree` matches.
+6. **Structure** — optional, multiple. Same procedure.
+7. **endingType** — exactly one. Walk through `ending_types` section, apply the matching `decision_tree`. If no path matches → log `taxonomy_ambiguous` and skip.
+
+Final genres array example: `["AAA", "First-person", "Shooter", "Sci-fi"]` (tier first, then perspective, then mechanics, then settings, then structures).
+
+If you find yourself wanting to introduce a tag not present in `taxonomy.json` → STOP. Log to skipped.tsv with reason `taxonomy_gap` and a one-line description of what was missing. Do not edit `taxonomy.json` yourself; that's an owner decision.
+
+The legacy `classification.md` file is kept for prose explanations (audit-friendly), but in case of conflict, **`taxonomy.json` wins**.
 
 ### 8. Find gameplay YouTube — drill mode, must return a real video id
 
@@ -228,6 +251,7 @@ For `verdict` — ≤120 chars English. Plain, factual, one sentence. No marketi
   - `current_offset += 1`
   - `added_count += 1`
   - `last_added = <id>`
+  - **`session_added_ids.append(<id>)`** — accumulator for the Final pass. Cleared only after the final push succeeds.
 
 ## Phase 4 source methods (cascade re-evaluation + exhaustive search)
 
@@ -311,6 +335,8 @@ If `state/progress.json` doesn't exist, create it with:
   "last_validation_at": 0,
   "auto_push_every_n": 0,
   "last_push_at": 0,
+  "phase_4_zero_yield_passes": 0,
+  "session_added_ids": [],
   "completed_sources": [],
   "done": false,
   "last_added": null,
@@ -318,15 +344,70 @@ If `state/progress.json` doesn't exist, create it with:
 }
 ```
 
-If the file exists but is missing the newer fields (`current_phase`, `max_phase`, `phase_start_count`, `auto_push_every_n`, `last_push_at`), backfill them with the defaults above before proceeding. This preserves existing runs.
+If the file exists but is missing newer fields (`current_phase`, `max_phase`, `phase_start_count`, `auto_push_every_n`, `last_push_at`, `phase_4_zero_yield_passes`, `session_added_ids`), backfill them with the defaults above before proceeding. This preserves existing runs.
+
+## Final pass before done (mandatory before push)
+
+When the stop condition (Phase transition logic case 4 with `phase_4_zero_yield_passes >= 2`) fires, do NOT immediately set `done=true` and exit. First run this final pass on the entries this session added.
+
+### Step 1: scope
+Read `progress.session_added_ids`. These are the ids appended during this session. The Final pass operates ONLY on these — not the whole catalog. The owner runs the separate `fact-checker` skill for whole-catalog audits; coop-hunter's Final pass is the "vet the work you just did" gate.
+
+If `session_added_ids` is empty (e.g., the session started already done) → skip Step 2, go straight to Step 3.
+
+### Step 2: focused fact-check per session-added id
+
+For each id in `session_added_ids`:
+
+1. **Image check.** `HEAD` request to the resolved `imageUrl`. If non-200 → call `scripts/fix_image.py <id> <app_id>` to fall back to the canonical `steamImage(<id>)` helper. If still 404 → log to `state/bad-existing.tsv` with reason `no_image_after_final_pass`.
+
+2. **YouTube check.** If `youtubeUrl` is `youtubeSearch(...)` (forbidden — should never have been allowed by `append_entry.py` exit 4, but verify defensively) → run §8 6-query drill cascade and `scripts/fix_youtube.py <id> <video_id>`. If a real `youtube("X")` URL: WebFetch the URL, verify the title contains the game name (≥30% token overlap, case-insensitive). If unrelated → run cascade, fix.
+
+3. **Steam app id is alive.** One `appdetails` call (sleep 1.5s). If `success: false` → the game got delisted between when you added it and now. Log to `state/bad-existing.tsv` with reason `delisted_after_add` so the owner reviews before merge.
+
+4. **DO NOT touch `price` or `rating`.** Those are owned by `.github/workflows/refresh-prices.yml`. The cron will reconcile them on its next daily run. If you fetched these during the initial add (§3, §4 of per-candidate procedure), good — they're the initial values, the cron takes over from here. The Final pass MUST NOT call `update_field.py <id> rating ...` or `update_field.py <id> price ...`.
+
+5. **Do not re-check genres / endingType / playersMax / oneCopy.** Those are editorial; the `fact-checker` skill audits them at the catalog level. Re-checking here would cost LLM tokens for marginal value.
+
+### Step 3: single final commit + push
+
+After Step 2 completes (whether or not it surfaced fixes):
+
+```bash
+git add data.js \
+        .claude/skills/coop-hunter/state/added.tsv \
+        .claude/skills/coop-hunter/state/skipped.tsv \
+        .claude/skills/coop-hunter/state/progress.json \
+        .claude/skills/coop-hunter/state/bad-existing.tsv \
+        .claude/skills/coop-hunter/state/removed-entries.tsv \
+        .claude/skills/coop-hunter/state/youtube-fixes.tsv \
+        .claude/skills/coop-hunter/state/image-fixes.tsv 2>/dev/null
+
+# If nothing staged (no adds + no fixes), skip commit entirely
+git diff --cached --quiet && echo "Nothing to commit" || \
+  git commit -m "coop-hunter: session +N games, M fixes (total T)"
+
+# Pull/rebase in case the refresh-prices cron landed during our run
+git pull --rebase origin main || true
+git push origin main
+```
+
+If push fails: log to `state/push-fails.tsv` and KEEP the work-tree dirty. Do NOT clear `session_added_ids` — the next invocation will retry the push. Do NOT mark `done=true` until push succeeds (otherwise the next session loses track of which adds need fact-checking).
+
+If push succeeds:
+- `session_added_ids = []`
+- `done = true`
+- Write `state/summary.md` (see Final report below).
 
 ## Final report
 
-When all sources exhausted, write `state/summary.md`:
-- Total added, skipped, validated, validation-fails.
+When the Final pass finishes successfully (after push), write `state/summary.md`:
+- Total added this session, total added overall.
+- Skipped, validated, validation-fails.
 - Top 10 sources by yield.
 - Reasons for skips, ranked.
 - Distribution of new entries by tier + endingType.
+- Final pass results: imageUrl fixes / youtubeUrl fixes / delisted games surfaced.
 - Token estimate (if tracked).
 
 ## Tools to use

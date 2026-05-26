@@ -95,43 +95,46 @@ Apply in order. First match wins.
 | Stardew Valley | survival-goal | Community Center / Grandpa's evaluation as endpoint |
 | Valheim | survival-goal | Five bosses, fifth = win condition |
 
-## Steam category → existing genre mapping
+## Steam category → genre mapping — SUPERSEDED by taxonomy.json
 
-When Steam returns categories, map them to the existing taxonomy in `data.js`. New genres are NOT introduced.
+> **AUTHORITATIVE SOURCE: `.claude/skills/shared/taxonomy.json`.** The mapping
+> table below is kept only as a human-readable cross-reference. In any conflict,
+> `taxonomy.json` wins. The skill MUST read `taxonomy.json` (its `steam_tags`
+> arrays per tag) and classify by axis, not by this prose table.
 
-| Steam category | Map to (one or more existing) |
-|----------------|-------------------------------|
-| Action | Action |
-| Adventure | Adventure |
-| RPG / Role-Playing Game | RPG |
-| Strategy | Tactics |
-| FPS / First-Person Shooter | Shooter, FPS |
-| Third-Person Shooter | Shooter, Third-person |
-| Shooter | Shooter |
-| Puzzle | Puzzle |
-| Platformer | Platformer |
-| Stealth | Stealth |
-| Horror | Horror |
-| Sci-fi | Sci-fi |
-| Fantasy | Fantasy |
-| Open World | Open World |
-| Survival | Survival |
-| Soulslike / Souls-like | Soulslike |
-| Loot / Looter Shooter | Loot |
-| Isometric / Top-Down | Isometric |
-| Military / War | Military |
-| Beat 'em up | Action |
-| Roguelite / Roguelike | (don't add to genres; endingType handles it) |
-| Metroidvania | Action, Platformer |
-| Twin Stick Shooter | Action, Shooter |
-| Hack and Slash | Action |
-| Crafting | Survival |
-| Sandbox | Adventure |
-| Arcade | Action |
-| Run and Gun | Action, Shooter |
-| Cooking | Puzzle |
+Key differences from the old table (post-2026-05 taxonomy):
+- **Perspective is now a real axis** with exactly one tag per game: `First-person`, `Third-person`, `Isometric`, `Side-view`. The old composite `FPS` is GONE — a first-person shooter is `First-person` (perspective) + `Shooter` (mechanic), separately.
+- `Top-down` was merged INTO `Isometric` (covers all "seen from above").
+- `Adventure` is NARROW now — only narrative-led + exploration + dialogue games (Chicory-style), NOT "any game with a story". See its `narrowing_rule` in taxonomy.json.
 
-Plus the **tier** value prepended as the first item.
+Quick reference (full rules + decision-trees live in taxonomy.json):
+
+| Steam tag | Maps to (axis: tag) |
+|-----------|---------------------|
+| First-Person / FPS | perspective: First-person (+ mechanic: Shooter if it's a shooter) |
+| Third Person | perspective: Third-person (+ Shooter if applicable) |
+| Isometric / Top-Down / Twin Stick | perspective: Isometric |
+| 2D / Side Scroller / Fighting | perspective: Side-view |
+| Shooter | mechanic: Shooter |
+| Action | mechanic: Action (NOT for pure puzzles) |
+| Puzzle | mechanic: Puzzle |
+| Platformer | mechanic: Platformer |
+| RPG | mechanic: RPG |
+| Tactical / Strategy | mechanic: Tactics |
+| Stealth | mechanic: Stealth |
+| Souls-like | mechanic: Soulslike |
+| Loot / Looter Shooter | mechanic: Loot |
+| Adventure / Point & Click / Narrative | mechanic: Adventure (ONLY if narrative-led — see narrowing_rule) |
+| Fantasy | setting: Fantasy |
+| Sci-fi | setting: Sci-fi |
+| Horror | setting: Horror |
+| Military / War | setting: Military |
+| Open World / Sandbox | structure: Open World |
+| Survival / Crafting | structure: Survival |
+| Roguelite / Roguelike | (no genre tag; endingType handles it) |
+| Metroidvania | perspective: Side-view + mechanic: Platformer |
+
+Plus the **tier** value prepended as the first item. Final order in the genres array: tier → perspective → mechanic(s) → setting(s) → structure(s).
 
 ## Quality threshold rules
 
