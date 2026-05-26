@@ -147,3 +147,6 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-26T16:00:00Z	stolen-realm	Stolen Realm	websearch_turnrpg_drill	415	84.1
 2026-05-26T16:00:00Z	jagged-alliance-3	Jagged Alliance 3	websearch_turnrpg_drill	835	89.3
 2026-05-26T16:00:00Z	popucom	POPUCOM	websearch_kidfriendly_drill	440	87.1
+2026-05-26T16:20:00Z	deadzone-rogue	Deadzone: Rogue	websearch_roguelite_drill	291	83.4
+2026-05-26T16:20:00Z	godbreakers	GODBREAKERS	websearch_roguelite_drill	299	72.8
+2026-05-26T16:20:00Z	unsolved-case	Unsolved Case	websearch_detective_drill	0	87.7

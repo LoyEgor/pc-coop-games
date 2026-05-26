@@ -73,3 +73,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T15:45:00Z	Sniper Elite 5	duplicate	websearch_tactics_drill	already in data.js
 2026-05-26T16:00:00Z	Mage Arena	pvp_primary	websearch_drill	4v4 PvP voice spell battles, Early Access
 2026-05-26T16:00:00Z	Fae Farm	online_broken	websearch_drill	online co-op going offline Sept 2025
+2026-05-26T16:15:00Z	Killing Floor 3	blocklisted_endless	websearch_drill	wave-based KF lineage, no campaign ending
+2026-05-26T16:15:00Z	Hell Let Loose	pvp_primary	websearch_drill	primarily 50v50 PvP, no co-op campaign
+2026-05-26T16:15:00Z	Victory Heat Rally	no_coop	websearch_drill	PvP-only racing, no co-op category
+2026-05-26T16:15:00Z	Sonic Racing CrossWorlds	no_coop	websearch_drill	PvP-only racing
