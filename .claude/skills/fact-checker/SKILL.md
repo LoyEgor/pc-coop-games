@@ -28,6 +28,16 @@ You are walking `data.js` end-to-end and verifying every recorded field against 
 
 For the entry at `progress.current_idx`:
 
+### 0. Check the refresh-cron heartbeat (do this ONCE per run, cache the result)
+
+Read `.github/refresh-status.json`. This file is written by the GitHub Actions workflow `refresh-prices.yml` which **owns `price` and `rating`** on existing entries.
+
+- File missing OR `last_success` is `null` → cron has not yet run on this repo. Treat price/rating as **your** responsibility for this run. Continue with §3 and §4 below normally.
+- `last_success` within 30 hours → cron is healthy. **SKIP §3 (rating drift) and §4 (price drift)** for every entry this run. Focus only on the editorial checks (§5–§11). In progress lines, report `rating SKIP-cron` / `price SKIP-cron`.
+- `last_success` older than 30 hours → cron is stale or broken. Treat price/rating as your responsibility (fallback mode). Append one line to `state/discrepancies.tsv` with reason `cron_stale` so the owner notices.
+
+This decision is computed once per skill invocation (cache the mode: `cron_healthy` / `cron_stale` / `cron_missing`) and applies to every entry in the loop. Do not re-read the file per entry.
+
 ### 1. Load entry from data.js
 
 Call `python3 scripts/list_entries.py <idx>` → JSON with current values of every field for that index.

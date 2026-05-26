@@ -1,0 +1,13 @@
+{
+  "owned_fields": ["price", "rating"],
+  "next_expected_window_hours": 30,
+  "entries_checked": 0,
+  "updates_applied": {
+    "price": 0,
+    "rating": 0
+  },
+  "fetch_failures": 0,
+  "last_success": null,
+  "last_failure": null,
+  "note": "Initial bootstrap state — cron has not yet run. Until last_success is populated, skills should treat price/rating as their own responsibility."
+}

@@ -1,12 +1,19 @@
-# Skills in this project
+# Skills + automation in this project
 
-Two long-running, `/goal`-driven, drill-mode skills. Both are autonomous,
-resumable, log everything, and never ask the human questions during a run.
+Two long-running, `/goal`-driven, drill-mode skills + one fully-automated
+GitHub Actions cron that handles price/rating drift without any LLM needed.
 
-| Skill | Purpose | Launcher | State |
+| Component | Purpose | Trigger | State |
 |---|---|---|---|
-| **coop-hunter** | Discovers new PC co-op games and appends them to `data.js`. | `./run-coop-hunter.sh` | `.claude/skills/coop-hunter/state/` |
-| **fact-checker** | Walks every existing entry in `data.js` and verifies each field against Steam / HowLongToBeat / YouTube. | `./run-fact-checker.sh` | `.claude/skills/fact-checker/state/` |
+| **coop-hunter** (skill) | Discovers new PC co-op games and appends them to `data.js`. | `./run-coop-hunter.sh` (manual) | `.claude/skills/coop-hunter/state/` |
+| **fact-checker** (skill) | Walks every existing entry in `data.js` and verifies each field against Steam / HowLongToBeat / YouTube. | `./run-fact-checker.sh` (manual) | `.claude/skills/fact-checker/state/` |
+| **refresh-prices** (cron) | Owns `price` and `rating` on existing entries. Re-fetches from Steam daily, commits drift > threshold. No LLM, pure stdlib Python. | `.github/workflows/refresh-prices.yml` (daily 04:00 UTC, GitHub-hosted) | `.github/refresh-status.json` |
+
+**Both skills check `.github/refresh-status.json` before touching price/rating
+on existing entries.** If `last_success` is within 30h → cron is healthy,
+they skip those two checks and focus on editorial fields. If stale or missing
+→ they fall back to doing the fetch themselves and warn. For NEW entries
+they always fetch fresh (cron only updates, never inserts).
 
 ---
 

@@ -1,0 +1,75 @@
+name: refresh-prices
+
+# Owned-by-cron: this workflow keeps `price` (UAH) and `rating` (Steam %positive)
+# on every non-hidden entry in data.js fresh. Drift thresholds:
+#   - rating >= 5pp
+#   - price  >= 10% relative
+# Below threshold = silent. Above = auto-update + commit + push.
+#
+# Skills (coop-hunter, fact-checker) read .github/refresh-status.json and skip
+# these two fields when the cron is healthy (< 30h since last success).
+# If the cron is stale, skills fall back to doing the work themselves.
+
+on:
+  schedule:
+    # Daily at 04:00 UTC (07:00 Kyiv). GitHub schedules are best-effort —
+    # actual fire time may drift by a few minutes during peak load.
+    - cron: '0 4 * * *'
+  workflow_dispatch:  # allows manual trigger from the Actions tab
+
+permissions:
+  contents: write   # needed to commit + push data.js + refresh-status.json
+
+concurrency:
+  group: refresh-prices
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # full history not needed; default fetch-depth: 1 is fine
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run refresh script
+        run: python3 .github/scripts/refresh.py
+
+      - name: Show status file
+        if: always()
+        run: cat .github/refresh-status.json || echo "(no status file)"
+
+      - name: Commit + push if changes
+        if: success()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Stage data.js (may or may not have changes) + status (always changes).
+          git add data.js .github/refresh-status.json .claude/skills/fact-checker/state/applied-fixes.tsv 2>/dev/null || true
+
+          # Only commit if there are real changes (status file timestamp
+          # alone shouldn't trigger noise — but data.js + applied-fixes.tsv will).
+          if git diff --cached --quiet -- data.js .claude/skills/fact-checker/state/applied-fixes.tsv; then
+            # No data changes — still commit status to record heartbeat,
+            # but use a quieter message.
+            git diff --cached --quiet && exit 0
+            git commit -m "refresh: heartbeat (no drift)"
+          else
+            # Real updates landed. Extract counts from status file.
+            PRICE_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied']['price'])")
+            RATING_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied']['rating'])")
+            git commit -m "refresh: ${PRICE_N} price, ${RATING_N} rating updates"
+          fi
+
+          # Pull/rebase in case coop-hunter pushed during our run.
+          git pull --rebase origin main || true
+          git push

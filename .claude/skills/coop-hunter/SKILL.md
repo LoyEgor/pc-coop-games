@@ -78,7 +78,19 @@ Where N = `added_count - last_push_at`, M = `added_count`, P = `current_phase`.
 
 After push: `last_push_at = added_count`.
 
-If `git push` fails (network, conflict), log to `state/push-fails.tsv` and continue — do NOT halt. Try again on the next batch.
+If `git push` fails (network, conflict), log to `state/push-fails.tsv` and continue — do NOT halt. Try again on the next batch. If `git push` was rejected because the remote is ahead (the cron in `.github/workflows/refresh-prices.yml` may have committed between your last pull and this push), run `git pull --rebase origin main` and retry the push once before logging.
+
+## Coordination with the GitHub Actions refresh cron
+
+`.github/workflows/refresh-prices.yml` runs daily and **owns the `price` and `rating` fields** on existing entries. Its heartbeat lives in `.github/refresh-status.json`.
+
+Before fetching Steam reviews or price for an EXISTING entry, read `.github/refresh-status.json`:
+
+- File missing OR `last_success` is `null` → cron has not run yet. Fall back to doing the price/rating fetch yourself.
+- `last_success` is more recent than 30 hours ago → cron is healthy. **SKIP** the price/rating check for that entry. Don't waste tokens duplicating the bot's work.
+- `last_success` older than 30 hours → cron is stale/broken. Fall back to doing the fetch yourself, and append a one-line warning to `state/push-fails.tsv` so the owner notices the cron is unhealthy.
+
+This rule applies in §3 (Quality threshold), §4 step "price drift", and in phase 4 `revalidate_existing`. It does NOT apply to step §2 (initial Steam validation for a NEW entry) — for new entries you always fetch fresh because the cron never inserts, only updates.
 
 ## Per-candidate procedure
 

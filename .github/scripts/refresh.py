@@ -1,0 +1,219 @@
+#!/usr/bin/env python3
+"""
+Refresh `price` and `rating` for every non-hidden entry in data.js by hitting
+Steam's storefront API (cc=ua) and appreviews endpoint. Designed to run on a
+GitHub Actions cron — see .github/workflows/refresh-prices.yml.
+
+This script OWNS the two drift-prone fields:
+  - `price`  (UAH, from /api/appdetails?cc=ua → price_overview.final / 100)
+  - `rating` (Steam %positive, from /appreviews/<id>?json=1)
+
+Drift thresholds (match fact-checker conservative auto-fix):
+  - rating: apply update if |new - old| >= 5pp
+  - price:  apply update if relative |new - old| / old >= 10%
+
+For NEW entries: this script never inserts. The coop-hunter skill does that,
+including the initial price/rating values.
+
+After every run (success OR failure) the script writes
+`.github/refresh-status.json` with a timestamp + counts. Both skills read this
+to decide whether to skip price/rating checks (cron healthy) or do them
+themselves (cron stale/missing).
+
+Re-uses helpers:
+  - .claude/skills/fact-checker/scripts/list_entries.py  (iterate)
+  - .claude/skills/fact-checker/scripts/update_field.py  (write)
+
+Stdlib only. No third-party packages.
+
+Exit 0 on success (with or without updates), 1 if any unrecoverable error.
+"""
+
+import datetime
+import json
+import os
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+STATUS_FILE = REPO_ROOT / ".github" / "refresh-status.json"
+LIST_ENTRIES = REPO_ROOT / ".claude" / "skills" / "fact-checker" / "scripts" / "list_entries.py"
+UPDATE_FIELD = REPO_ROOT / ".claude" / "skills" / "fact-checker" / "scripts" / "update_field.py"
+
+UA = "Mozilla/5.0 (compatible; pc-coop-games-refresh-bot/1.0)"
+SLEEP_BETWEEN_CALLS = 1.0  # seconds; Steam's IP rate-limit needs a small pause
+RATING_DRIFT_PP = 5         # apply rating update if >= 5pp drift
+PRICE_DRIFT_REL = 0.10      # apply price update if >= 10% relative drift
+HTTP_TIMEOUT = 20
+
+# Limits for one cron run — if Steam returns errors past these caps,
+# log and exit gracefully so the heartbeat still gets written.
+MAX_CONSECUTIVE_FAILURES = 10
+
+
+def fetch_json(url):
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+
+def appdetails(app_id):
+    url = (
+        f"https://store.steampowered.com/api/appdetails"
+        f"?appids={app_id}&cc=ua&filters=basic,price_overview"
+    )
+    data = fetch_json(url).get(str(app_id), {})
+    if not data.get("success"):
+        return None
+    return data["data"]
+
+
+def appreviews(app_id):
+    url = (
+        f"https://store.steampowered.com/appreviews/{app_id}"
+        f"?json=1&language=all&purchase_type=all&filter=summary"
+    )
+    return fetch_json(url).get("query_summary", {})
+
+
+def compute_rating(reviews_summary):
+    total = reviews_summary.get("total_reviews", 0)
+    positive = reviews_summary.get("total_positive", 0)
+    if total < 50:  # too few to trust; same threshold as coop-hunter §3
+        return None
+    return round(positive / total * 100)
+
+
+def list_entries():
+    out = subprocess.check_output(["python3", str(LIST_ENTRIES)])
+    return json.loads(out.decode("utf-8"))
+
+
+def apply_update(game_id, field, new_value):
+    """Call update_field.py to actually edit data.js. Returns True on success."""
+    result = subprocess.run(
+        ["python3", str(UPDATE_FIELD), game_id, field, str(new_value)],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        print(f"  ! update_field.py failed for {game_id}.{field}: {result.stderr.strip()}", file=sys.stderr)
+        return False
+    return True
+
+
+def write_status(success, entries_checked, updates, failures, error=None):
+    STATUS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "owned_fields": ["price", "rating"],
+        "next_expected_window_hours": 30,
+        "entries_checked": entries_checked,
+        "updates_applied": updates,
+        "fetch_failures": failures,
+    }
+    ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    if success:
+        payload["last_success"] = ts
+        # Preserve last_failure if present, just don't update it
+        if STATUS_FILE.exists():
+            try:
+                prev = json.loads(STATUS_FILE.read_text())
+                if prev.get("last_failure"):
+                    payload["last_failure"] = prev["last_failure"]
+            except (json.JSONDecodeError, OSError):
+                pass
+    else:
+        payload["last_failure"] = ts
+        payload["last_failure_error"] = error or "unknown"
+        if STATUS_FILE.exists():
+            try:
+                prev = json.loads(STATUS_FILE.read_text())
+                if prev.get("last_success"):
+                    payload["last_success"] = prev["last_success"]
+            except (json.JSONDecodeError, OSError):
+                pass
+    STATUS_FILE.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def main():
+    print(f"[{datetime.datetime.utcnow().isoformat()}Z] Refresh started")
+
+    try:
+        entries = list_entries()
+    except Exception as e:
+        print(f"FATAL: list_entries failed: {e}", file=sys.stderr)
+        write_status(False, 0, {"price": 0, "rating": 0}, 0, error=f"list_entries: {e}")
+        sys.exit(1)
+
+    print(f"Loaded {len(entries)} non-hidden entries from data.js")
+
+    updates = {"price": 0, "rating": 0}
+    failures = 0
+    consecutive_failures = 0
+    checked = 0
+
+    for i, entry in enumerate(entries, 1):
+        game_id = entry.get("id")
+        app_id = entry.get("__app_id")
+        if not game_id or not app_id:
+            print(f"  [{i}/{len(entries)}] SKIP {game_id!r}: no app_id derivable")
+            continue
+
+        try:
+            time.sleep(SLEEP_BETWEEN_CALLS)
+            details = appdetails(app_id)
+            time.sleep(SLEEP_BETWEEN_CALLS)
+            reviews = appreviews(app_id)
+            consecutive_failures = 0
+        except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError, TimeoutError) as e:
+            failures += 1
+            consecutive_failures += 1
+            print(f"  [{i}/{len(entries)}] FAIL {game_id} (app {app_id}): {e}")
+            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                print(f"FATAL: {consecutive_failures} consecutive failures — aborting", file=sys.stderr)
+                write_status(False, checked, updates, failures, error=f"too_many_failures:{consecutive_failures}")
+                sys.exit(1)
+            continue
+
+        checked += 1
+
+        # Price drift
+        if details and details.get("price_overview"):
+            new_price = round(details["price_overview"]["final"] / 100)
+            try:
+                old_price = int(entry.get("price", 0))
+            except ValueError:
+                old_price = 0
+            if old_price > 0:
+                rel_drift = abs(new_price - old_price) / old_price
+                if rel_drift >= PRICE_DRIFT_REL:
+                    if apply_update(game_id, "price", new_price):
+                        updates["price"] += 1
+                        print(f"  [{i}/{len(entries)}] {game_id}: price {old_price} -> {new_price} ({rel_drift*100:.0f}% drift)")
+
+        # Rating drift
+        new_rating = compute_rating(reviews)
+        if new_rating is not None:
+            try:
+                old_rating = int(entry.get("rating", 0))
+            except ValueError:
+                old_rating = 0
+            if abs(new_rating - old_rating) >= RATING_DRIFT_PP:
+                if apply_update(game_id, "rating", new_rating):
+                    updates["rating"] += 1
+                    print(f"  [{i}/{len(entries)}] {game_id}: rating {old_rating} -> {new_rating} ({abs(new_rating-old_rating)}pp drift)")
+
+    print(f"\n[{datetime.datetime.utcnow().isoformat()}Z] Refresh complete")
+    print(f"  entries_checked: {checked}/{len(entries)}")
+    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}")
+    print(f"  fetch_failures:  {failures}")
+
+    write_status(True, checked, updates, failures)
+
+
+if __name__ == "__main__":
+    main()
