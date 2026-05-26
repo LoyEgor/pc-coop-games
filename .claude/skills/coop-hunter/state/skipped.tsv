@@ -85,3 +85,11 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T17:00:00Z	Capcom Fighting Collection	no_coop	websearch_drill	PvP-only categories
 2026-05-26T17:00:00Z	Abyss Crew	not_enough_reviews	websearch_drill	18 reviews
 2026-05-26T17:00:00Z	TwinCop	not_enough_reviews	websearch_drill	33 reviews below 50
+2026-05-26T21:13:05Z	van-helsing-final-cut	ambiguous	Final Cut co-op reportedly broken/removed; reliability uncertain
+2026-05-26T21:17:59Z	dungeon-siege-3	invalid_app_id	appdetails cc=ua returns INVALID (region-restricted/no UA price); cannot fetch clean data
+2026-05-26T21:24:12Z	alien-breed-impact	ambiguous	co-op is online-only with no Remote Play Together; co-op reliability/extent uncertain
+2026-05-26T21:26:21Z	wolcen-lords-of-mayhem	no_coop	Steam categories list single-player only (no Co-op/Online Co-op category)
+2026-05-26T21:42:09Z	guns-gore-cannoli-2	no_coop	appdetails categories list no Co-op/Online Co-op/Remote Play Together (only generic Multi-player); co-op unconfirmable via metadata
+2026-05-26T21:45:36Z	its-only-money	early_access	Early Access, sandbox-primary with only a light campaign; ending not confirmable to 100% per owner rule
+2026-05-26T21:50:10Z	geometry-wars-3	no_coop	Adventure campaign (with ending) is single-player only; co-op modes are endless score-attack
+2026-05-26T21:53:20Z	far-far-west	endless	horde + extraction + roguelite shooter, Early Access, explicitly no story ending ('endless onslaught', repeatable contracts) — violates CLAUDE.md no-endless rule despite 96%/31k reviews
