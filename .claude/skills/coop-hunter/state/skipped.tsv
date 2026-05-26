@@ -58,3 +58,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T09:35:00Z	south-park-snow-day	South Park: Snow Day	websearch_drill	low_quality	50.1%% positive — right at threshold, Steam API returning failures
 2026-05-26T09:35:00Z	toxic-commando	John Carpenter's Toxic Commando	websearch_drill	unclear_ending	"relentless waves" language suggests wave-based, no narrative endpoint
 2026-05-26T09:35:00Z	trash-goblin	Trash Goblin	websearch_drill	endless	"endless good vibes" cozy shopkeeping — explicitly no defined endpoint
+2026-05-26T10:15:00Z	eiyuden-chronicle	Eiyuden Chronicle: Hundred Heroes	websearch_drill	no_coop	Steam categories show single-player only — no Co-op tag
+2026-05-26T10:30:00Z	curse-of-the-dead-gods	Curse of the Dead Gods	websearch_drill	no_coop	Steam categories show single-player only
+2026-05-26T10:30:00Z	ghostlore	Ghostlore	websearch_drill	async_only	asynchronous online multiplayer, not real co-op
+2026-05-26T10:45:00Z	dead-static-drive	Dead Static Drive	websearch_drill	not_enough_reviews	only 42 reviews + 38% positive — both below thresholds
