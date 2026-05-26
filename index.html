@@ -1,126 +1,127 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Кооп-игры для двух на PC</title>
+  <title>PC Co-op Games</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="data.js" defer></script>
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=2026-05-26-en12">
+  <script src="data.js?v=2026-05-26-en12" defer></script>
+  <script src="app.js?v=2026-05-26-en12" defer></script>
 </head>
 <body data-theme="dark">
   <div class="app">
     <header class="topbar">
       <div class="title-block">
-        <h1>Кооп-игры для двух на PC</h1>
-        <p>Кандидаты для удалённого прохождения вдвоём. Скрытые игры остаются в базе, но не мешают основному списку.</p>
+        <h1>PC Co-op Games</h1>
+        <p>Co-op games you can actually finish — every entry has credits, a final boss, or a clear win condition.</p>
       </div>
       <div class="top-actions">
-        <label class="switch">
-          <input id="showHiddenToggle" type="checkbox">
-          <span>Показать скрытые</span>
-        </label>
+        <div class="view-mode" id="viewModeControl" role="tablist" aria-label="View mode">
+          <button class="view-mode-btn" type="button" data-view="active" role="tab">To play</button>
+          <button class="view-mode-btn" type="button" data-view="all" role="tab">All</button>
+          <button class="view-mode-btn" type="button" data-view="played" role="tab">Played</button>
+        </div>
         <button class="button" id="resetFiltersButton" type="button">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg>
-          Сбросить фильтры
+          Reset filters
         </button>
         <button class="button" id="themeButton" type="button">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-          Тема
+          Theme
         </button>
       </div>
     </header>
 
     <main>
-      <section class="table-panel" aria-label="Таблица кооп-игр">
+      <section class="table-panel" aria-label="Co-op games table">
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
-                <th class="image-col">Картинка</th>
+                <th class="image-col">Image</th>
                 <th>
-                  <div class="th-control" data-filter="title" aria-label="Фильтр игры">
+                  <div class="th-control" data-filter="title" aria-label="Filter by game">
                     <button class="th-sort" type="button" data-sort="title">
-                      <span class="th-label">Игра <span data-sort-icon="title"></span></span>
+                      <span class="th-label">Game <span data-sort-icon="title"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="year" aria-label="Фильтр года">
+                  <div class="th-control" data-filter="year" aria-label="Filter by year">
                     <button class="th-sort" type="button" data-sort="year">
-                      <span class="th-label">Год <span data-sort-icon="year"></span></span>
+                      <span class="th-label">Year <span data-sort-icon="year"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="genres" aria-label="Фильтр жанров">
+                  <div class="th-control" data-filter="genres" aria-label="Filter by genres">
                     <button class="th-sort" type="button" data-sort="genres">
-                      <span class="th-label">Жанры <span data-sort-icon="genres"></span></span>
+                      <span class="th-label">Genres <span data-sort-icon="genres"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="endingType" aria-label="Фильтр типа игры">
+                  <div class="th-control" data-filter="endingType" aria-label="Filter by ending type">
                     <button class="th-sort" type="button" data-sort="endingType">
-                      <span class="th-label">Тип <span data-sort-icon="endingType"></span></span>
+                      <span class="th-label">Ending <span data-sort-icon="endingType"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="rating" aria-label="Фильтр рейтинга">
+                  <div class="th-control" data-filter="rating" aria-label="Filter by rating">
                     <button class="th-sort" type="button" data-sort="rating">
-                      <span class="th-label">Рейтинг <span data-sort-icon="rating"></span></span>
+                      <span class="th-label">Rating <span data-sort-icon="rating"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="playersMax" aria-label="Фильтр игроков">
+                  <div class="th-control" data-filter="playersMax" aria-label="Filter by players">
                     <button class="th-sort" type="button" data-sort="playersMax">
-                      <span class="th-label">Игроки <span data-sort-icon="playersMax"></span></span>
+                      <span class="th-label">Players <span data-sort-icon="playersMax"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="hours" aria-label="Фильтр часов">
+                  <div class="th-control" data-filter="hours" aria-label="Filter by hours">
                     <button class="th-sort" type="button" data-sort="hours">
-                      <span class="th-label">Часы <span data-sort-icon="hours"></span></span>
+                      <span class="th-label">Hours <span data-sort-icon="hours"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="oneCopy" aria-label="Фильтр покупки второй копии">
+                  <div class="th-control" data-filter="oneCopy" aria-label="Filter by second-copy requirement">
                     <button class="th-sort" type="button" data-sort="oneCopy">
-                      <span class="th-label">Второму <span data-sort-icon="oneCopy"></span></span>
+                      <span class="th-label">Copies <span data-sort-icon="oneCopy"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
                 <th>
-                  <div class="th-control" data-filter="price" aria-label="Фильтр цены">
+                  <div class="th-control" data-filter="price" aria-label="Filter by price">
                     <button class="th-sort" type="button" data-sort="price">
-                      <span class="th-label">Цена <span data-sort-icon="price"></span></span>
+                      <span class="th-label">Price <span data-sort-icon="price"></span></span>
                     </button>
-                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+                    <span class="filter-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v5l-4-2v-3z"></path></svg></span>
                   </div>
                 </th>
-                <th class="verdict-col">Вердикт</th>
+                <th class="verdict-col">Verdict</th>
                 <th class="link-col">YouTube</th>
-                <th class="action-col">Скрыть</th>
+                <th class="action-col">Played</th>
               </tr>
             </thead>
             <tbody id="gamesBody"></tbody>
           </table>
-          <div class="empty-state" id="emptyState">Ничего не найдено.</div>
+          <div class="empty-state" id="emptyState">No games match.</div>
         </div>
         <div class="table-footer" id="tableCaption"></div>
       </section>
@@ -130,10 +131,10 @@
   <div class="filter-popover" id="filterPopover" hidden></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <div class="video-modal" id="videoModal" hidden role="dialog" aria-modal="true" aria-label="Видео геймплея">
+  <div class="video-modal" id="videoModal" hidden role="dialog" aria-modal="true" aria-label="Gameplay video">
     <div class="video-modal-backdrop" data-close></div>
     <div class="video-modal-frame">
-      <button class="video-modal-close" type="button" data-close aria-label="Закрыть">
+      <button class="video-modal-close" type="button" data-close aria-label="Close">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
       </button>
       <iframe id="videoFrame" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>

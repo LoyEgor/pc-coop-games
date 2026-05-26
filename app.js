@@ -3,15 +3,15 @@ const STORAGE_KEY = "pc-coop-table-v3";
 const ONE_COPY = {
   "friend-pass": { label: "Friend Pass", rank: 3, tone: "good" },
   "remote-play": { label: "Remote Play", rank: 2, tone: "warn" },
-  none: { label: "Нужно 2 копии", rank: 1, tone: "muted" }
+  none: { label: "Two copies", rank: 1, tone: "muted" }
 };
 
 const ENDING_TYPE = {
-  story: { label: "Сюжет", short: "Сюжет", tone: "info", rank: 5 },
-  levels: { label: "Уровни", short: "Уровни", tone: "muted", rank: 4 },
-  "arcade-goal": { label: "Цель / эскейп", short: "Цель", tone: "good", rank: 3 },
+  story: { label: "Story", short: "Story", tone: "info", rank: 5 },
+  levels: { label: "Levels", short: "Levels", tone: "muted", rank: 4 },
+  "arcade-goal": { label: "Arcade goal", short: "Goal", tone: "good", rank: 3 },
   roguelite: { label: "Roguelite", short: "Roguelite", tone: "warn", rank: 2 },
-  "survival-goal": { label: "Survival + финал", short: "Survival", tone: "bad", rank: 1 }
+  "survival-goal": { label: "Survival finale", short: "Survival", tone: "bad", rank: 1 }
 };
 
 const TIER_VALUES = new Set(["AAA", "AA", "Indie"]);
@@ -19,11 +19,15 @@ const TIER_VALUES = new Set(["AAA", "AA", "Indie"]);
 // 'FIT_RANK' has been removed as the 'Попадание' column is deleted
 
 const state = {
-  sortKey: "rating",
+  sortKey: "year",
   sortDirection: "desc",
-  showHidden: false,
+  // "active" = unplayed only (default), "all" = everything, "played" = played only
+  viewMode: "active",
   theme: "dark",
-  hiddenOverrides: {},
+  // Maps gameId -> true (marked played) | false (explicitly unmarked).
+  // Storage uses the older "hiddenOverrides" key — same shape, same semantics
+  // (true == "this game is done"), just renamed for clarity.
+  playedOverrides: {},
   filters: {
     title: "",
     year: { min: "", max: "" },
@@ -43,7 +47,7 @@ const els = {
   empty: document.querySelector("#emptyState"),
   popover: document.querySelector("#filterPopover"),
   toast: document.querySelector("#toast"),
-  showHidden: document.querySelector("#showHiddenToggle"),
+  viewMode: document.querySelector("#viewModeControl"),
   themeButton: document.querySelector("#themeButton"),
   resetFilters: document.querySelector("#resetFiltersButton"),
   videoModal: document.querySelector("#videoModal"),
@@ -57,25 +61,25 @@ const games = window.GAMES.map((game) => ({
 }));
 
 const filterConfig = {
-  title: { type: "text", label: "Игра", placeholder: "Название или вердикт" },
-  year: { type: "range", label: "Год", step: 1, min: 0 },
-  rating: { type: "range", label: "Рейтинг", step: 5, min: 0 },
-  playersMax: { type: "range", label: "Игроки", step: 1, min: 0 },
-  hours: { type: "range", label: "Часы", step: 1, min: 0 },
-  genres: { type: "set", label: "Жанры", options: () => uniqueSorted(games.flatMap((game) => game.genres)) },
+  title: { type: "text", label: "Game", placeholder: "Title or verdict" },
+  year: { type: "range", label: "Year", step: 1, min: 0 },
+  rating: { type: "range", label: "Rating", step: 5, min: 0 },
+  playersMax: { type: "range", label: "Players", step: 1, min: 0 },
+  hours: { type: "range", label: "Hours", step: 1, min: 0 },
+  genres: { type: "set", label: "Genres", options: () => uniqueSorted(games.flatMap((game) => game.genres)) },
   endingType: {
     type: "set",
-    label: "Тип игры",
+    label: "Ending",
     options: () => Object.keys(ENDING_TYPE),
     labelFor: (value) => ENDING_TYPE[value]?.label || value
   },
   oneCopy: {
     type: "set",
-    label: "Второму",
+    label: "Copies",
     options: () => Object.keys(ONE_COPY),
     labelFor: (value) => ONE_COPY[value].label
   },
-  price: { type: "range", label: "Цена", step: 50, min: 49 }
+  price: { type: "range", label: "Price", step: 50, min: 49 }
 };
 
 function getRangeExtents(key) {
@@ -88,8 +92,14 @@ function loadPrefs() {
   try {
     const prefs = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     state.theme = prefs.theme || "dark";
-    state.showHidden = Boolean(prefs.showHidden);
-    state.hiddenOverrides = prefs.hiddenOverrides || {};
+    // Forward-compat: viewMode supersedes the older showHidden boolean.
+    if (typeof prefs.viewMode === "string") {
+      state.viewMode = prefs.viewMode;
+    } else if (prefs.showHidden) {
+      state.viewMode = "all";
+    }
+    // Same: playedOverrides supersedes the older hiddenOverrides (same shape).
+    state.playedOverrides = prefs.playedOverrides || prefs.hiddenOverrides || {};
   } catch {
     state.theme = "dark";
   }
@@ -98,8 +108,8 @@ function loadPrefs() {
 function savePrefs() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
     theme: state.theme,
-    showHidden: state.showHidden,
-    hiddenOverrides: state.hiddenOverrides
+    viewMode: state.viewMode,
+    playedOverrides: state.playedOverrides
   }));
 }
 
@@ -116,9 +126,9 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-function isHidden(game) {
-  if (Object.prototype.hasOwnProperty.call(state.hiddenOverrides, game.id)) {
-    return state.hiddenOverrides[game.id];
+function isPlayed(game) {
+  if (Object.prototype.hasOwnProperty.call(state.playedOverrides, game.id)) {
+    return state.playedOverrides[game.id];
   }
   return Boolean(game.hidden);
 }
@@ -137,7 +147,10 @@ function compareValues(a, b) {
 }
 
 function gameMatchesFilters(game) {
-  if (!state.showHidden && isHidden(game)) return false;
+  const played = isPlayed(game);
+  if (state.viewMode === "active" && played) return false;
+  if (state.viewMode === "played" && !played) return false;
+  // "all" — no filtering by played state
 
   const text = state.filters.title.trim().toLowerCase();
   if (text) {
@@ -171,29 +184,32 @@ function getVisibleGames() {
 
 function render() {
   document.body.dataset.theme = state.theme;
-  els.showHidden.checked = state.showHidden;
-  els.themeButton.lastChild.textContent = state.theme === "dark" ? " Светлая" : " Тёмная";
+  document.body.dataset.viewMode = state.viewMode;
+  els.themeButton.lastChild.textContent = state.theme === "dark" ? " Light" : " Dark";
+
+  els.viewMode.querySelectorAll(".view-mode-btn").forEach((btn) => {
+    btn.classList.toggle("is-active", btn.dataset.view === state.viewMode);
+  });
 
   const visibleGames = getVisibleGames();
-  const hiddenCount = games.filter(isHidden).length;
+  const playedCount = games.filter(isPlayed).length;
 
   els.body.innerHTML = visibleGames.map(renderRow).join("");
   els.empty.hidden = visibleGames.length > 0;
-  els.caption.textContent = `Показано ${visibleGames.length} из ${games.length}. Скрыто: ${hiddenCount}.`;
+  els.caption.textContent = `Showing ${visibleGames.length} of ${games.length}. Played: ${playedCount}.`;
   renderSortIcons();
   renderActiveFilterButtons();
 }
 
 function renderRow(game) {
-  const hidden = isHidden(game);
+  const played = isPlayed(game);
   const oneCopy = ONE_COPY[game.oneCopy] || ONE_COPY.none;
-  const hiddenLabel = hidden ? `<span class="hidden-note">${escapeHtml(game.hiddenReason || "Скрыто")}</span>` : "";
   const priceDisplay = game.price > 0
     ? `<a class="price-link" href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">${game.price}&nbsp;₴</a>`
     : `<span class="detail">—</span>`;
 
   return `
-    <tr class="${hidden ? "is-hidden" : ""}">
+    <tr class="${played ? "is-played" : ""}">
       <td class="image-cell">
         <a href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">
           <img src="${escapeHtml(game.imageUrl)}" alt="${escapeHtml(game.title)}" loading="lazy">
@@ -201,21 +217,20 @@ function renderRow(game) {
       </td>
       <td class="title-cell">
         <a class="game-link" href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">${escapeHtml(game.title)}</a>
-        ${hiddenLabel}
       </td>
       <td class="number-cell">${game.year}</td>
       <td><div class="tag-list">${game.genres.map((genre) => `<span class="tag${TIER_VALUES.has(genre) ? " tier" : ""}">${escapeHtml(genre)}</span>`).join("")}</div></td>
       <td>${renderEndingType(game.endingType)}</td>
       <td class="number-cell rating">${game.rating}</td>
       <td class="number-cell">${game.playersMax}</td>
-      <td class="number-cell">${trimNumber(game.hours)}&nbsp;ч</td>
+      <td class="number-cell">${trimNumber(game.hours)}&nbsp;h</td>
       <td><span class="badge ${oneCopy.tone}">${escapeHtml(oneCopy.label)}</span></td>
       <td class="number-cell price-cell">${priceDisplay}</td>
       <td class="verdict-cell">${escapeHtml(game.verdict)}</td>
       <td>${renderYoutubeButton(game)}</td>
       <td class="action-cell">
-        <button class="icon-action" type="button" data-hide-id="${escapeHtml(game.id)}" aria-label="${hidden ? "Вернуть" : "Скрыть"} ${escapeHtml(game.title)}">
-          ${hidden ? restoreIcon() : hideIcon()}
+        <button class="icon-action played-toggle" type="button" data-played-id="${escapeHtml(game.id)}" data-played="${played}" aria-label="${played ? "Unmark" : "Mark as played"} ${escapeHtml(game.title)}" aria-pressed="${played}">
+          ${checkIcon()}
         </button>
       </td>
     </tr>
@@ -239,7 +254,7 @@ function renderYoutubeButton(game) {
       <path class="yt-icon-body" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.378.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.12 2.136c1.873.505 9.378.505 9.378.505s7.505 0 9.378-.505a3.015 3.015 0 0 0 2.12-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"></path>
       <path class="yt-icon-play" d="M9.75 15.568V8.432L15.818 12z"></path>
     </svg>`;
-  const aria = `aria-label="Геймплей — ${escapeHtml(game.title)}"`;
+  const aria = `aria-label="Gameplay — ${escapeHtml(game.title)}"`;
   if (videoId) {
     return `<button class="youtube-link" type="button" data-video-id="${videoId}" data-video-title="${escapeHtml(game.title)}" ${aria}>${icon}</button>`;
   }
@@ -264,20 +279,34 @@ function renderEndingType(value) {
   return `<span class="badge ending ${meta.tone}" data-ending="${escapeHtml(value)}">${escapeHtml(meta.short)}</span>`;
 }
 
-// 'fitTone' has been removed as the 'Попадание' column is deleted
-
-function hideIcon() {
-  return '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18"></path><path d="M10.6 10.6A2 2 0 0 0 13.4 13.4"></path><path d="M9.9 4.2A10.7 10.7 0 0 1 12 4c5 0 9 5 10 8a15.9 15.9 0 0 1-3.1 4.7"></path><path d="M6.1 6.1A15.2 15.2 0 0 0 2 12c1 3 5 8 10 8a10.8 10.8 0 0 0 4.1-.8"></path></svg>';
-}
-
-function restoreIcon() {
-  return '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+function checkIcon() {
+  // YouTube-like "satisfying" toggle. Layers:
+  //   1. .particle-burst — 8 radial particles that fly out on activation
+  //   2. <circle> — fills green on activation (transition)
+  //   3. Two tick paths — drawn one after another (pen-like motion: short
+  //      stroke down-right, then longer stroke up-right with a brief pause
+  //      between them). Each animates via stroke-dashoffset.
+  // Animation timing is in CSS keyframes; total duration ~700ms.
+  const particles = Array.from({ length: 8 }, (_, i) =>
+    `<span class="particle" style="--angle:${i * 45}deg"></span>`
+  ).join("");
+  return `<span class="particle-burst" aria-hidden="true">${particles}</span>
+  <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle class="check-icon-ring" cx="12" cy="12" r="9"></circle>
+    <path class="check-icon-tick check-icon-tick-down" d="M7.2 12.6 L10.8 16.2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+    <path class="check-icon-tick check-icon-tick-up" d="M10.8 16.2 L17 9" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+  </svg>`;
 }
 
 function renderSortIcons() {
-  document.querySelectorAll("[data-sort-icon]").forEach((icon) => {
-    const key = icon.dataset.sortIcon;
-    icon.textContent = key === state.sortKey ? (state.sortDirection === "asc" ? "↑" : "↓") : "";
+  // Direction arrows were removed (they clipped the labels in narrow columns
+  // and the user explicitly said direction doesn't matter to them visually).
+  // Active sort column is marked with .is-active-sort on the <th> itself,
+  // so the underline spans the full column width — not just the inner chip.
+  document.querySelectorAll(".th-control[data-filter]").forEach((control) => {
+    const key = control.querySelector("[data-sort]")?.dataset.sort;
+    const th = control.closest("th");
+    if (th) th.classList.toggle("is-active-sort", key === state.sortKey);
   });
 }
 
@@ -322,7 +351,7 @@ function renderFilterMarkup(key, config) {
     return `
       <div class="popover-title">${escapeHtml(config.label)}</div>
       <input class="filter-input" data-text-filter="${escapeHtml(key)}" value="${escapeHtml(state.filters[key])}" placeholder="${escapeHtml(config.placeholder)}">
-      <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Очистить</button>
+      <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
     `;
   }
 
@@ -334,12 +363,12 @@ function renderFilterMarkup(key, config) {
     const minValue = filter.min !== "" ? filter.min : String(dataMin);
     const maxValue = filter.max !== "" ? filter.max : String(dataMax);
     return `
-      <div class="popover-title">${escapeHtml(config.label)}: от / до</div>
+      <div class="popover-title">${escapeHtml(config.label)}: min / max</div>
       <div class="range-grid">
         <input class="filter-input" type="number" inputmode="numeric" data-range-min="${escapeHtml(key)}" value="${escapeHtml(minValue)}" placeholder="${dataMin}" min="${inputMin}" step="${step}">
         <input class="filter-input" type="number" inputmode="numeric" data-range-max="${escapeHtml(key)}" value="${escapeHtml(maxValue)}" placeholder="${dataMax}" min="${inputMin}" step="${step}">
       </div>
-      <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Очистить</button>
+      <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
     `;
   }
 
@@ -355,7 +384,7 @@ function renderFilterMarkup(key, config) {
         </label>
       `).join("")}
     </div>
-    <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Очистить</button>
+    <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
   `;
 }
 
@@ -419,10 +448,16 @@ function initEvents() {
         const key = sortBtn?.dataset.sort;
         if (!key) return;
         if (state.sortKey === key) {
+          // Same column toggles direction. (Direction is not visualized but
+          // changes which end of the list shows up first.)
           state.sortDirection = state.sortDirection === "asc" ? "desc" : "asc";
         } else {
+          // New column: pick a sensible default direction per data type so
+          // the user rarely needs a second click. Numeric / rank-like columns
+          // start descending (newest/highest first); textual columns ascending.
           state.sortKey = key;
-          state.sortDirection = "asc";
+          const numericDefaultDesc = new Set(["year", "rating", "playersMax", "hours", "price", "endingType", "oneCopy"]);
+          state.sortDirection = numericDefaultDesc.has(key) ? "desc" : "asc";
         }
         render();
         return;
@@ -449,14 +484,25 @@ function initEvents() {
       openVideo(ytButton.dataset.videoId);
       return;
     }
-    const button = event.target.closest("[data-hide-id]");
+    const button = event.target.closest("[data-played-id]");
     if (!button) return;
-    const game = games.find((item) => item.id === button.dataset.hideId);
+    const game = games.find((item) => item.id === button.dataset.playedId);
     if (!game) return;
-    state.hiddenOverrides[game.id] = !isHidden(game);
-    savePrefs();
-    render();
-    showToast(state.hiddenOverrides[game.id] ? "Игра скрыта" : "Игра возвращена");
+    const next = !isPlayed(game);
+    state.playedOverrides[game.id] = next;
+    // Trigger the satisfying animation on the existing element BEFORE the
+    // row's eventual re-render. data-played flips immediately so the CSS
+    // transitions (green fill, tick draw-in) run while the row is still in
+    // place. The full animation is ~720ms — re-render is delayed so the user
+    // sees the whole sequence even when the row is about to be filtered out
+    // of the active view.
+    button.dataset.played = String(next);
+    if (next) button.classList.add("is-toggling");
+    setTimeout(() => {
+      savePrefs();
+      render();
+    }, next ? 760 : 220);
+    showToast(next ? "Marked as played" : "Unmarked");
   });
 
   els.videoModal.addEventListener("click", (event) => {
@@ -467,8 +513,10 @@ function initEvents() {
     if (event.key === "Escape" && !els.videoModal.hidden) closeVideo();
   });
 
-  els.showHidden.addEventListener("change", () => {
-    state.showHidden = els.showHidden.checked;
+  els.viewMode.addEventListener("click", (event) => {
+    const btn = event.target.closest("[data-view]");
+    if (!btn) return;
+    state.viewMode = btn.dataset.view;
     savePrefs();
     render();
   });

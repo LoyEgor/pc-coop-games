@@ -195,7 +195,7 @@ Entry shape (post-2026-05 minimal schema — see CLAUDE.md WHY-1/2/3):
   "hours": 12,
   "oneCopy": "none",
   "price": 599,
-  "verdict": "Краткое описание одной строкой на русском.",
+  "verdict": "One-line description in English.",
   "storeUrl": "https://store.steampowered.com/app/<id>/",
   "imageUrl": "steamImage(<id>)",
   "youtubeUrl": "youtube(\"VIDEO_ID\")"
@@ -208,7 +208,7 @@ For `hours` — use HowLongToBeat's "Main + Extras" value (typical playthrough i
 
 For `rating` — always Steam % positive (from `/appreviews/<id>?json=1`). Never use Metacritic or OpenCritic.
 
-For `verdict` — ≤120 chars Russian.
+For `verdict` — ≤120 chars English. Plain, factual, one sentence. No marketing fluff. The site is English-only.
 
 ### 10. Persist
 - Append to `state/added.tsv`: `<timestamp>\t<id>\t<title>\t<source>\t<price>\t<%positive>`

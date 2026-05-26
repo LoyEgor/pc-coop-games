@@ -173,29 +173,36 @@ h1 {
   flex: 0 0 auto;
 }
 
-.switch {
-  min-height: 36px;
+/* 3-state segmented control: To play / All / Played */
+.view-mode {
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 14px 0 12px;
-  border-radius: var(--radius-sm);
   background: var(--surface-2);
-  color: var(--ink);
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+}
+
+.view-mode-btn {
+  background: transparent;
+  border: 0;
+  padding: 5px 12px;
+  min-height: 30px;
   font-size: 13px;
-  white-space: nowrap;
-  transition: background-color 140ms ease;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 140ms ease, color 140ms ease;
 }
 
-.switch:hover {
-  background: var(--surface-3);
+.view-mode-btn:hover {
+  color: var(--ink);
 }
 
-.switch input {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--accent);
+.view-mode-btn.is-active {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 main {
@@ -250,6 +257,25 @@ table {
   table-layout: fixed;
 }
 
+/* Below 1350px the table is too cramped for everything: the verdict column
+   goes first (it's the most text-heavy and the least essential), and the rest
+   of the table gets horizontal scroll so columns stay readable instead of
+   squashing. Below 720px the mobile card layout takes over. */
+@media (max-width: 1349.98px) and (min-width: 720.02px) {
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .table-wrap table {
+    min-width: 1100px;
+  }
+
+  th.verdict-col,
+  .verdict-cell {
+    display: none;
+  }
+}
+
 th,
 td {
   padding: 10px 10px;
@@ -285,8 +311,11 @@ tbody tr:hover {
   background: var(--surface-3);
 }
 
-tbody tr.is-hidden {
-  opacity: 0.5;
+/* Played rows are dimmed only in the "All" view (where they share space with
+   unplayed). In the "Played" view it's literally the played-only list — full
+   opacity. In "To play" they're filtered out entirely. */
+body[data-view-mode="all"] tbody tr.is-played {
+  opacity: 0.55;
 }
 
 .th-control {
@@ -366,6 +395,12 @@ tbody tr.is-hidden {
   color: var(--accent);
 }
 
+/* Active sort column: a thin underline at the bottom of the whole th cell
+   (direction isn't visualized — only "this column is the sort key"). */
+th.is-active-sort {
+  box-shadow: inset 0 -2px 0 0 var(--accent);
+}
+
 .th-label {
   display: inline-flex;
   align-items: center;
@@ -403,11 +438,11 @@ th:nth-child(6) {
 }
 
 th:nth-child(7) {
-  width: 92px;
+  width: 100px;
 }
 
 th:nth-child(8) {
-  width: 82px;
+  width: 90px;
 }
 
 th:nth-child(9) {
@@ -492,17 +527,6 @@ th:nth-child(13),
 
 .price-link:hover {
   color: var(--accent-strong);
-}
-
-.hidden-note {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: var(--surface-3);
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 600;
 }
 
 .number-cell {
@@ -666,12 +690,125 @@ tbody tr:hover .youtube-link .yt-icon-play {
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--muted);
+  cursor: pointer;
   transition: background-color 140ms ease, color 140ms ease;
 }
 
 .icon-action:hover {
   background: var(--surface-3);
   color: var(--accent);
+}
+
+/* Played-toggle: satisfying YouTube-like check.
+   - Off state: outlined gray circle.
+   - On state: green-filled circle (#22C55E) with a white check.
+   - Activation animation (~720ms):
+     1. Ring fills green + scale punch with overshoot.
+     2. Tick is drawn in two pen-like strokes — first the short stroke
+        going down-right, then a brief pause, then the longer up-right
+        stroke. Each segment uses stroke-dashoffset 1 → 0.
+     3. Eight green particles burst radially out of the icon. */
+.played-toggle {
+  position: relative;
+  overflow: visible;
+}
+
+.played-toggle .check-icon {
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.played-toggle .check-icon-ring {
+  fill: transparent;
+  transition: fill 260ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke 260ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.played-toggle .check-icon-tick {
+  stroke: #FFFFFF;
+  /* Linear easing keeps the pen velocity constant — when the second stroke
+     picks up right after the first ends, the eye reads it as one continuous
+     motion that just changes direction, with no decel/accel pause. */
+  transition: stroke-dashoffset 180ms linear;
+}
+
+.played-toggle[data-played="true"] .check-icon-ring {
+  fill: #22C55E;
+  stroke: #22C55E;
+}
+
+.played-toggle[data-played="true"] .check-icon-tick-down {
+  stroke-dashoffset: 0;
+  transition-delay: 150ms;
+  transition-duration: 120ms;
+}
+
+.played-toggle[data-played="true"] .check-icon-tick-up {
+  stroke-dashoffset: 0;
+  transition-delay: 270ms;   /* exactly when the down stroke finishes */
+  transition-duration: 210ms;
+}
+
+/* Scale punch on activation only (uncheck stays calm). */
+.played-toggle.is-toggling .check-icon {
+  animation: played-punch 620ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes played-punch {
+  0%   { transform: scale(1); }
+  18%  { transform: scale(1.32); }
+  42%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+/* Particle burst — 8 dots fly radially out from the icon center. */
+.particle-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #4ADE80;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.particle:nth-child(odd)  { background: #22C55E; }
+.particle:nth-child(even) { background: #86EFAC; width: 3px; height: 3px; }
+
+.played-toggle.is-toggling .particle {
+  animation: particle-fly 720ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.played-toggle.is-toggling .particle:nth-child(even) {
+  animation-duration: 640ms;
+  animation-delay: 40ms;
+}
+
+@keyframes particle-fly {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-2px) scale(0.4);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-14px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-30px) scale(0.4);
+  }
 }
 
 .empty-state {
@@ -987,8 +1124,8 @@ tbody tr:hover .youtube-link .yt-icon-play {
     box-shadow: 0 2px 10px rgba(36, 43, 64, 0.06);
   }
 
-  tbody tr.is-hidden {
-    opacity: 0.55;
+  tbody tr.is-played {
+    opacity: 0.6;
   }
 
   td {
@@ -1036,10 +1173,6 @@ tbody tr:hover .youtube-link .yt-icon-play {
     overflow-wrap: break-word;
   }
 
-  td.title-cell .hidden-note {
-    margin-top: 8px;
-  }
-
   /* Numeric chip row: year/rating/players/hours/price */
   tr td.number-cell,
   tr td:nth-child(3) {
@@ -1063,11 +1196,11 @@ tbody tr:hover .youtube-link .yt-icon-play {
   tr td:nth-child(8) { order: 6; }
   tr td:nth-child(10) { order: 7; }
 
-  tr td:nth-child(3)::before  { content: "Год";    color: var(--muted); font-weight: 500; }
-  tr td:nth-child(6)::before  { content: "★";      color: var(--accent-2); font-weight: 700; }
-  tr td:nth-child(7)::before  { content: "Игроки"; color: var(--muted); font-weight: 500; }
-  tr td:nth-child(8)::before  { content: "Часы";   color: var(--muted); font-weight: 500; }
-  tr td:nth-child(10)::before { content: "Цена";   color: var(--muted); font-weight: 500; }
+  tr td:nth-child(3)::before  { content: "Year";    color: var(--muted); font-weight: 500; }
+  tr td:nth-child(6)::before  { content: "★";       color: var(--accent-2); font-weight: 700; }
+  tr td:nth-child(7)::before  { content: "Players"; color: var(--muted); font-weight: 500; }
+  tr td:nth-child(8)::before  { content: "Hours";   color: var(--muted); font-weight: 500; }
+  tr td:nth-child(10)::before { content: "Price";   color: var(--muted); font-weight: 500; }
 
   tr td:nth-child(10) .price-link {
     color: var(--accent);

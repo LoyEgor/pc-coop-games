@@ -14,7 +14,7 @@ window.GAMES = [
     hours: 9,
     oneCopy: "none",
     price: 1299,
-    verdict: "Самый прямой наследник ощущения Army of Two: укрытия, мясо, дуо.",
+    verdict: "The closest spiritual successor to Army of Two: cover, chunky guns, built for two.",
     storeUrl: "https://store.steampowered.com/app/2523720/Gears_of_War_Reloaded/",
     imageUrl: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2523720/779c1934da3b39c307d91195ff764502f2ce1063/capsule_616x353.jpg",
     youtubeUrl: youtube("UHg5MMnsMJ4")
@@ -30,7 +30,7 @@ window.GAMES = [
     hours: 11,
     oneCopy: "none",
     price: 1299,
-    verdict: "Очень жирный современный кооп-экшен. Не про укрытия, а про продавить всё силой.",
+    verdict: "Beefy modern co-op action. Not about hiding behind cover — about steamrolling everything.",
     storeUrl: "https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/",
     imageUrl: steamImage(2183900),
     youtubeUrl: youtube("_5qGL9IK-XY")
@@ -46,7 +46,7 @@ window.GAMES = [
     hours: 85,
     oneCopy: "none",
     price: 899,
-    verdict: "Лучший вариант, если окей пошаговая ролевая игра и большая законченная кампания.",
+    verdict: "The pick if you're okay with turn-based RPG and a huge finished campaign.",
     storeUrl: "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/",
     imageUrl: steamImage(1086940),
     youtubeUrl: youtube("UxSgaBXMqP4")
@@ -62,7 +62,7 @@ window.GAMES = [
     hours: 22,
     oneCopy: "none",
     price: 1299,
-    verdict: "Dark Souls с пушками. Кампания конечная, но игра любит повторные прохождения и лут.",
+    verdict: "Dark Souls with guns. Campaign is finite but the game leans hard on re-runs and loot.",
     storeUrl: "https://store.steampowered.com/app/1282100/REMNANT_II/",
     imageUrl: steamImage(1282100),
     youtubeUrl: youtube("x3ZheAh5oPc")
@@ -78,7 +78,7 @@ window.GAMES = [
     hours: 13,
     oneCopy: "remote-play",
     price: 600,
-    verdict: "Кооп-пазлы и платформинг. Не AAA, но аккуратная законченная игра.",
+    verdict: "Co-op puzzle-platforming. Not AAA, but a polished finished game.",
     storeUrl: "https://store.steampowered.com/app/1436700/Trine_5_A_Clockwork_Conspiracy/",
     imageUrl: steamImage(1436700),
     youtubeUrl: youtube("MDCcvLZVEnM")
@@ -94,7 +94,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 579,
-    verdict: "Медленнее Army of Two: стелс, снайпинг, тактика. Вдвоём работает хорошо.",
+    verdict: "Slower than Army of Two: stealth, sniping, tactics. Works well in two.",
     storeUrl: "https://store.steampowered.com/app/1029690/Sniper_Elite_5/",
     imageUrl: steamImage(1029690),
     youtubeUrl: youtube("uG8LCpWPZlg")
@@ -110,7 +110,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 375,
-    verdict: "Пазл-кооп с голосовой связью. Не экшен, но именно игра для двоих.",
+    verdict: "Voice-chat puzzle co-op. Not action — but built ground-up for two.",
     storeUrl: "https://store.steampowered.com/app/1341290/We_Were_Here_Forever/",
     imageUrl: steamImage(1341290),
     youtubeUrl: youtube("YeNCUS_Cdas")
@@ -126,7 +126,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "friend-pass",
     price: 415,
-    verdict: "Асимметричный шпионский кооп: один агент, второй хакер. Короткая, зато честно сделана под двух игроков.",
+    verdict: "Asymmetric spy co-op: one agent, one hacker. Short but designed honestly for duos.",
     storeUrl: "https://store.steampowered.com/app/1335790/Operation_Tango/",
     imageUrl: steamImage(1335790),
     youtubeUrl: youtube("CIJZ2tfW__8")
@@ -142,7 +142,7 @@ window.GAMES = [
     hours: 14,
     oneCopy: "remote-play",
     price: 635,
-    verdict: "Киберпанк twin-stick шутер. Красивый, но сюжет не главный козырь.",
+    verdict: "Cyberpunk twin-stick shooter. Pretty, but the story is not the headline.",
     storeUrl: "https://store.steampowered.com/app/979690/The_Ascent/",
     imageUrl: steamImage(979690),
     youtubeUrl: youtube("vXUTYzj_bKE")
@@ -158,7 +158,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 499,
-    verdict: "Кампания есть и заканчивается, но это лутер-шутер. Брать, если окей гриндовая ДНК.",
+    verdict: "Campaign exists and ends, but it's a looter-shooter. Take it if you're fine with grindy DNA.",
     storeUrl: "https://store.steampowered.com/app/680420/OUTRIDERS/",
     imageUrl: steamImage(680420),
     youtubeUrl: youtube("S8TaAcA0_Ug")
@@ -174,7 +174,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "none",
     price: 479,
-    verdict: "Пошаговая ролевая игра с нормальным сюжетом и решениями. Хороший кооп, если хочется не шутер.",
+    verdict: "Turn-based RPG with a real story and choices. Solid pick if you want something other than a shooter.",
     storeUrl: "https://store.steampowered.com/app/719040/Wasteland_3/",
     imageUrl: steamImage(719040),
     youtubeUrl: youtube("4XY4BAtJuow")
@@ -190,7 +190,7 @@ window.GAMES = [
     hours: 11,
     oneCopy: "none",
     price: 760,
-    verdict: "Один из лучших вариантов под запрос: AAA, сюжет, экшен, можно проходить вдвоём.",
+    verdict: "One of the best fits for the brief: AAA, story, action, fully co-op-able.",
     storeUrl: "https://store.steampowered.com/app/1097840/Gears_5/",
     imageUrl: steamImage(1097840),
     youtubeUrl: youtube("yxnXis9OV_E")
@@ -206,7 +206,7 @@ window.GAMES = [
     hours: 55,
     oneCopy: "none",
     price: 1399,
-    verdict: "Много законченных кампаний в одном пакете. Минус - это FPS, не постановочный дуо-боевик.",
+    verdict: "Many finished campaigns in one package. Downside — it's an FPS, not a cinematic duo action.",
     storeUrl: "https://store.steampowered.com/app/976730/Halo_The_Master_Chief_Collection/",
     imageUrl: steamImage(976730),
     youtubeUrl: youtube("yTy41rmm6rk")
@@ -222,7 +222,7 @@ window.GAMES = [
     hours: 14,
     oneCopy: "remote-play",
     price: 389,
-    verdict: "Изометрический экшен про двух персонажей. Ближе к Diablo/Darksiders, чем к Army of Two.",
+    verdict: "Isometric action for two heroes. Closer to Diablo/Darksiders than to Army of Two.",
     storeUrl: "https://store.steampowered.com/app/710920/Darksiders_Genesis/",
     imageUrl: steamImage(710920),
     youtubeUrl: youtube("C7Hxw08wRfs")
@@ -238,7 +238,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "friend-pass",
     price: 349,
-    verdict: "Кооп и кампания есть, но игра спорная. Buddy Pass работает через Deluxe Edition.",
+    verdict: "Co-op and a campaign exist, but the game is divisive. Buddy Pass works via Deluxe Edition.",
     storeUrl: "https://store.steampowered.com/app/1056960/Wolfenstein_Youngblood/",
     imageUrl: steamImage(1056960),
     youtubeUrl: youtube("lFM7zFCVwgo")
@@ -254,7 +254,7 @@ window.GAMES = [
     hours: 22,
     oneCopy: "none",
     price: 915,
-    verdict: "Открытый мир, не постановочная дуо-игра. Вдвоём весело, но сюжетно рыхло.",
+    verdict: "Open-world, not a tight duo game. Fun in two but plot is loose.",
     storeUrl: "https://store.steampowered.com/app/552520/Far_Cry_5/",
     imageUrl: steamImage(552520),
     youtubeUrl: youtube("n-lJd1gueOQ")
@@ -270,7 +270,7 @@ window.GAMES = [
     hours: 75,
     oneCopy: "remote-play",
     price: 529,
-    verdict: "Если BG3 зайдёт, это почти обязательная следующая остановка. Кампания огромная и законченная.",
+    verdict: "If BG3 clicks, this is the almost-mandatory next stop. Huge, finished campaign.",
     storeUrl: "https://store.steampowered.com/app/435150/Divinity_Original_Sin_2/",
     imageUrl: steamImage(435150),
     youtubeUrl: youtube("unWFWGrMbpc")
@@ -286,7 +286,7 @@ window.GAMES = [
     hours: 35,
     oneCopy: "none",
     price: 759,
-    verdict: "Военный кооп в открытом мире. Сюжет слабее, зато двое чистят карту работает.",
+    verdict: "Military co-op in an open world. Story is weaker, but two players clearing the map works.",
     storeUrl: "https://store.steampowered.com/app/460930/Tom_Clancys_Ghost_Recon_Wildlands/",
     imageUrl: steamImage(460930),
     youtubeUrl: youtube("7UboU-rioaY")
@@ -302,7 +302,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 225,
-    verdict: "Если не проходил кооп-кампанию, это must-play. Не просто режим, а отдельная игра на двоих.",
+    verdict: "If you haven't done the co-op campaign, it's a must-play. Not a mode — a separate two-player game.",
     storeUrl: "https://store.steampowered.com/app/620/Portal_2/",
     imageUrl: steamImage(620),
     youtubeUrl: youtube("aySPmEBzlS4")
@@ -318,7 +318,7 @@ window.GAMES = [
     hours: 7,
     oneCopy: "remote-play",
     price: 180,
-    verdict: "Старенькая, но крепкая приключенческая кооп-игра с пазлами и боёвкой.",
+    verdict: "Old but solid adventure co-op with puzzles and combat.",
     storeUrl: "https://store.steampowered.com/app/35130/Lara_Croft_and_the_Guardian_of_Light/",
     imageUrl: steamImage(35130),
     youtubeUrl: youtube("nER0GNRlK_c")
@@ -334,7 +334,7 @@ window.GAMES = [
     hours: 23,
     oneCopy: "none",
     price: 849,
-    verdict: "Крупная кооп-кампания с отличной стрельбой и лутом. Сюжет спорный, но вдвоём темп держит хорошо.",
+    verdict: "Big co-op campaign with great gunplay and loot. Story is meh, but tempo holds up in two.",
     storeUrl: "https://store.steampowered.com/app/397540/Borderlands_3/",
     imageUrl: steamImage(397540),
     youtubeUrl: youtube("KojWXk9Vgso")
@@ -350,7 +350,7 @@ window.GAMES = [
     hours: 17,
     oneCopy: "none",
     price: 1249,
-    verdict: "Borderlands в фэнтези-обёртке. Хороший вариант, если хочется стрельбы, классов и более лёгкого тона.",
+    verdict: "Borderlands in fantasy clothing. Good if you want shooting, classes, and a lighter tone.",
     storeUrl: "https://store.steampowered.com/app/1286680/Tiny_Tinas_Wonderlands/",
     imageUrl: steamImage(1286680),
     youtubeUrl: youtube("L0wnhP_mQKA")
@@ -366,7 +366,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 349,
-    verdict: "Паркур, зомби и полный кооп кампании после вступления. Более грязный и живой вариант для двоих.",
+    verdict: "Parkour, zombies, and full co-op campaign after the intro. A grittier, livelier two-player option.",
     storeUrl: "https://store.steampowered.com/app/239140/Dying_Light/",
     imageUrl: steamImage(239140),
     youtubeUrl: youtube("fo_fqfUd3q8")
@@ -382,7 +382,7 @@ window.GAMES = [
     hours: 24,
     oneCopy: "none",
     price: 1599,
-    verdict: "Больше открытого мира и паркура, чем в первой части. Кооп есть почти на всю кампанию, прогресс сильнее завязан на хоста.",
+    verdict: "More open-world parkour than the first. Co-op for nearly the whole campaign; progress tied to host.",
     storeUrl: "https://store.steampowered.com/app/534380/Dying_Light_2_Stay_Human_Reloaded_Edition/",
     imageUrl: steamImage(534380),
     youtubeUrl: youtube("inetjGIjKGU")
@@ -398,7 +398,7 @@ window.GAMES = [
     hours: 13,
     oneCopy: "none",
     price: 600,
-    verdict: "Быстрый мясной FPS с оружием, мечами и лутом. Сюжет вторичен, зато экшен в коопе бодрый.",
+    verdict: "Fast meaty FPS with guns, swords, and loot. Story is secondary; co-op is electric.",
     storeUrl: "https://store.steampowered.com/app/324800/Shadow_Warrior_2/",
     imageUrl: steamImage(324800),
     youtubeUrl: youtube("ftciCeHHn5c")
@@ -414,7 +414,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 579,
-    verdict: "Пульповый кооп-шутер про экспедиции, ловушки и толпы врагов. Больше аркада, чем сюжетный дуо-боевик.",
+    verdict: "Pulpy expedition co-op with traps and waves of mummies. More arcade than story-driven duo.",
     storeUrl: "https://store.steampowered.com/app/312670/Strange_Brigade/",
     imageUrl: steamImage(312670),
     youtubeUrl: youtube("PpAHlg2oIDQ")
@@ -430,7 +430,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 599,
-    verdict: "Трёхместный кооп по Aliens: коридоры, классы, ксеноморфы. Хорошо как вечерний шутер, слабее как история.",
+    verdict: "Three-player Aliens co-op: corridors, classes, xenos. Fine as an evening shooter, weaker as a story.",
     storeUrl: "https://store.steampowered.com/app/1549970/Aliens_Fireteam_Elite/",
     imageUrl: steamImage(1549970),
     youtubeUrl: youtube("6c8TrceZWS4")
@@ -446,7 +446,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 749,
-    verdict: "Наследник Left 4 Dead с карточной системой и кооп-кампанией. Хорошо для стрельбы, но не для плотного сюжета.",
+    verdict: "Left 4 Dead heir with a card system and co-op campaign. Great for shooting, light on plot.",
     storeUrl: "https://store.steampowered.com/app/924970/Back_4_Blood/",
     imageUrl: steamImage(924970),
     youtubeUrl: youtube("mnjwzd0WsEQ")
@@ -462,7 +462,7 @@ window.GAMES = [
     hours: 35,
     oneCopy: "none",
     price: 479,
-    verdict: "Выживание с историей и хорошим коопом. Не боевик, зато сильная совместная песочница с понятной целью.",
+    verdict: "Survival with a story and great co-op. Not an action game, but a strong shared sandbox with a clear goal.",
     storeUrl: "https://store.steampowered.com/app/962130/Grounded/",
     imageUrl: steamImage(962130),
     youtubeUrl: youtube("ebITJ7jQIf4")
@@ -478,7 +478,7 @@ window.GAMES = [
     hours: 16,
     oneCopy: "none",
     price: 530,
-    verdict: "Изометрический action RPG с онлайн-коопом на двоих. Не AAA, но аккуратная законченная кампания.",
+    verdict: "Isometric action RPG with online two-player co-op. Not AAA, but a tidy finished campaign.",
     storeUrl: "https://store.steampowered.com/app/1432050/Nobody_Saves_the_World/",
     imageUrl: steamImage(1432050),
     youtubeUrl: youtube("OZQPvKMUlkc")
@@ -494,7 +494,7 @@ window.GAMES = [
     hours: 14,
     oneCopy: "none",
     price: 249,
-    verdict: "Редкий полноценный кооп-стелс. Хороший кандидат, если хочется не стрелять, а синхронно прокрадываться.",
+    verdict: "A rare proper stealth co-op. Strong pick if you'd rather sneak than shoot.",
     storeUrl: "https://store.steampowered.com/app/355790/Styx_Shards_of_Darkness/",
     imageUrl: steamImage(355790),
     youtubeUrl: youtube("apwc3_A9WL8")
@@ -510,7 +510,7 @@ window.GAMES = [
     hours: 16,
     oneCopy: "none",
     price: 533,
-    verdict: "Безумный открытый мир с кооп-кампанией. Стоит держать в списке, но PC-кооп у серии иногда капризный.",
+    verdict: "Insane open world with a co-op campaign. Worth tracking, though PC co-op can be finicky.",
     storeUrl: "https://store.steampowered.com/app/206420/Saints_Row_IV_ReElected/",
     imageUrl: steamImage(206420),
     youtubeUrl: youtube("kzDK1IYo9nw")
@@ -526,7 +526,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 389,
-    verdict: "Классика 4-местного лутер-шутера. Огромная кампания, тонны оружия, кооп с самого старта.",
+    verdict: "Classic 4-player looter-shooter. Massive campaign, tons of guns, co-op from minute one.",
     storeUrl: "https://store.steampowered.com/app/49520/Borderlands_2/",
     imageUrl: steamImage(49520),
     youtubeUrl: youtube("KsNZ6eOJl0c")
@@ -542,7 +542,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 1696,
-    verdict: "Большая кампания с актами и нормальной концовкой. Онлайн-кооп на двоих работает без сюрпризов.",
+    verdict: "Big multi-act campaign with a real ending. Two-player online co-op works without surprises.",
     storeUrl: "https://store.steampowered.com/app/2344520/Diablo_IV/",
     imageUrl: steamImage(2344520),
     youtubeUrl: youtube("wH72EpRepWM")
@@ -558,7 +558,7 @@ window.GAMES = [
     hours: 22,
     oneCopy: "none",
     price: 18,
-    verdict: "Кооп-резня в фэнтези. Миссии короткие, кампания развёртывается по актам и доходит до финала.",
+    verdict: "Fantasy co-op slaughter. Missions are short; the campaign rolls out in acts to a finale.",
     storeUrl: "https://store.steampowered.com/app/552500/Warhammer_Vermintide_2/",
     imageUrl: steamImage(552500),
     youtubeUrl: youtube("4VadHTHJ-K8")
@@ -574,7 +574,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 225,
-    verdict: "Эталон коопа от Valve. Пять отдельных кампаний, каждая со своим финалом.",
+    verdict: "Valve's co-op gold standard. Five distinct campaigns, each with its own finale.",
     storeUrl: "https://store.steampowered.com/app/550/Left_4_Dead_2/",
     imageUrl: steamImage(550),
     youtubeUrl: youtube("RvMFOsm4WmU")
@@ -590,7 +590,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 279,
-    verdict: "Выживание-хоррор с настоящим сюжетом и концовкой. Строй базу, исследуй пещеры.",
+    verdict: "Survival-horror with a real story and ending. Build a base, explore caves.",
     storeUrl: "https://store.steampowered.com/app/242760/The_Forest/",
     imageUrl: steamImage(242760),
     youtubeUrl: youtube("62imEBDF2rE")
@@ -606,7 +606,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 600,
-    verdict: "Продолжение The Forest: карта больше, монстры жёстче. Концовка есть, кооп онлайн.",
+    verdict: "Sequel to The Forest: bigger map, nastier monsters. Has an ending, co-op online.",
     storeUrl: "https://store.steampowered.com/app/1326470/Sons_Of_The_Forest/",
     imageUrl: steamImage(1326470),
     youtubeUrl: youtube("lSJSVtkhRck")
@@ -622,7 +622,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "friend-pass",
     price: 545,
-    verdict: "Кинематографичный хоррор. Один владеет, второй заходит бесплатно через Friend's Pass.",
+    verdict: "Cinematic horror. One owns it, the other joins free via Friend's Pass.",
     storeUrl: "https://store.steampowered.com/app/1024480/The_Dark_Pictures_Anthology_Man_of_Medan/",
     imageUrl: steamImage(1024480),
     youtubeUrl: youtube("UyBYdhfAxvY")
@@ -638,7 +638,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 369,
-    verdict: "Хаотичный кооп с комбинированием элементов. Короткая, но смешная законченная кампания.",
+    verdict: "Chaotic co-op with element-combining magic. Short but funny finished campaign.",
     storeUrl: "https://store.steampowered.com/app/238370/Magicka_2/",
     imageUrl: steamImage(238370),
     youtubeUrl: youtube("o3NQb5zvBKY")
@@ -654,7 +654,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "none",
     price: 98,
-    verdict: "Кооп-челлендж: добраться до вершины. Не сюжет, но финал есть — каждый забег как короткая история.",
+    verdict: "Co-op challenge: reach the summit. Not a story, but each run is a short complete arc.",
     storeUrl: "https://store.steampowered.com/app/3527290/PEAK/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/31bac6b2eccf09b368f5e95ce510bae2baf3cfcd/header.jpg",
     youtubeUrl: youtube("u_vlCvsf8dg")
@@ -670,7 +670,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 430,
-    verdict: "Survival на плоту с финальной сюжетной аркой. Кооп до 8 человек онлайн.",
+    verdict: "Survival on a raft with a real story arc. Online co-op up to 8.",
     storeUrl: "https://store.steampowered.com/app/648800/Raft/",
     imageUrl: steamImage(648800),
     youtubeUrl: youtube("iyU4_RR0l0o")
@@ -686,7 +686,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 325,
-    verdict: "Короткий мясной кооп-боевик. Кампания заканчивается, заходит на пару вечеров.",
+    verdict: "Short meaty co-op action. Campaign ends; good for a couple of evenings.",
     storeUrl: "https://store.steampowered.com/app/274190/Broforce/",
     imageUrl: steamImage(274190),
     youtubeUrl: youtube("DHmKxqMId_w")
@@ -702,7 +702,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 229,
-    verdict: "Классический beat'em up на четверых. Старый, но один из лучших коопов — прошёл и закрыл.",
+    verdict: "Classic 4-player beat-em-up. Old but still one of the best co-op games.",
     storeUrl: "https://store.steampowered.com/app/204360/Castle_Crashers/",
     imageUrl: steamImage(204360),
     youtubeUrl: youtube("Ek2Eoivlwhs")
@@ -718,7 +718,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Боссы и платформинг в стиле 30-х. Кооп локальный — удалённо через Remote Play.",
+    verdict: "30s-cartoon bosses and platforming. Local co-op only — remote needs Remote Play.",
     storeUrl: "https://store.steampowered.com/app/268910/Cuphead/",
     imageUrl: steamImage(268910),
     youtubeUrl: youtube("Ygdm1ltqC6c")
@@ -734,7 +734,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 515,
-    verdict: "Бодрый beat'em up по черепашкам. Короткий, проходится за вечер-два.",
+    verdict: "Punchy TMNT beat-em-up. Short — finishes in an evening or two.",
     storeUrl: "https://store.steampowered.com/app/1361510/Teenage_Mutant_Ninja_Turtles_Shredders_Revenge/",
     imageUrl: steamImage(1361510),
     youtubeUrl: youtube("RlviJbgWEEE")
@@ -750,7 +750,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Простая action-RPG про двух котов. Приятная, заканчивается, идеально без напряга.",
+    verdict: "Simple action RPG about two cats. Pleasant, finishes, zero stress.",
     storeUrl: "https://store.steampowered.com/app/914710/Cat_Quest_II/",
     imageUrl: steamImage(914710),
     youtubeUrl: youtube("RPfKh3FMk5s")
@@ -766,7 +766,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Один космический корабль на двоих. Чистый кооп ради коопа — всё на коммуникацию.",
+    verdict: "One space ship, two pilots. Pure co-op-for-co-op's-sake — all about comms.",
     storeUrl: "https://store.steampowered.com/app/252110/Lovers_in_a_Dangerous_Spacetime/",
     imageUrl: steamImage(252110),
     youtubeUrl: youtube("r9JButWd1zI")
@@ -782,7 +782,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 329,
-    verdict: "Story-driven roguelite про семью защитников. В коопе работает приятно.",
+    verdict: "Story-driven roguelite about a family of guardians. Plays nicely in co-op.",
     storeUrl: "https://store.steampowered.com/app/330020/Children_of_Morta/",
     imageUrl: steamImage(330020),
     youtubeUrl: youtube("Xs8wgjSBVI4")
@@ -798,7 +798,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 415,
-    verdict: "Недооценённый кооп-экшен от создателей Rogue Legacy. Заточен под командную игру.",
+    verdict: "Underrated co-op brawler from the Rogue Legacy team. Designed around team play.",
     storeUrl: "https://store.steampowered.com/app/416600/Full_Metal_Furies/",
     imageUrl: steamImage(416600),
     youtubeUrl: youtube("KjUrQmHv_w0")
@@ -814,7 +814,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 279,
-    verdict: "Эскейп-румы в виде игры. Хороший вариант, если хочется думать, а не стрелять.",
+    verdict: "Escape rooms as a video game. Good pick if you'd rather think than shoot.",
     storeUrl: "https://store.steampowered.com/app/1812090/Escape_Academy/",
     imageUrl: steamImage(1812090),
     youtubeUrl: youtube("Gowvcv6c_Bs")
@@ -830,7 +830,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 635,
-    verdict: "Кооп-экспедиция на странной планете. Прохождение до финала, без гриндфеста.",
+    verdict: "Co-op expedition on a weird planet. Plays through to a finale, no grindfest.",
     storeUrl: "https://store.steampowered.com/app/973810/Journey_To_The_Savage_Planet/",
     imageUrl: steamImage(973810),
     youtubeUrl: youtube("G6hMPSNVcJU")
@@ -846,7 +846,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 555,
-    verdict: "Прямое продолжение Journey. Кооп онлайн и split-screen — прямо в тему расширенного списка.",
+    verdict: "Direct sequel to Journey. Online co-op and split-screen — bullseye for this list.",
     storeUrl: "https://store.steampowered.com/app/2787320/Revenge_of_the_Savage_Planet/",
     imageUrl: steamImage(2787320),
     youtubeUrl: youtube("0O-T24Mq77A")
@@ -862,7 +862,7 @@ window.GAMES = [
     hours: 9,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Раз есть Trine 5, логично взять и Trine 2 — самую любимую часть серии.",
+    verdict: "Since Trine 5 is here, Trine 2 belongs too — the most-loved entry in the series.",
     storeUrl: "https://store.steampowered.com/app/35720/Trine_2_Complete_Story/",
     imageUrl: steamImage(35720),
     youtubeUrl: youtube("yxIaDq9aKPY")
@@ -878,7 +878,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "remote-play",
     price: 430,
-    verdict: "Метроидвания с боями и платформингом. Локальный кооп до 4 человек.",
+    verdict: "Metroidvania with brawling and platforming. Local co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/534550/Guacamelee_2/",
     imageUrl: steamImage(534550),
     youtubeUrl: youtube("f-b9PJKunww")
@@ -894,7 +894,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 108,
-    verdict: "Рогалик-шутер: забег заканчивается финальным боссом, но это не сюжетная кампания.",
+    verdict: "Roguelite shooter: runs end with a final boss, but it's not a story campaign.",
     storeUrl: "https://store.steampowered.com/app/632360/Risk_of_Rain_2/",
     imageUrl: steamImage(632360),
     youtubeUrl: youtube("qBRe2NDdN1E")
@@ -910,7 +910,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "remote-play",
     price: 800,
-    verdict: "Party-кооп про кухню. Кампании заканчиваются, но это не приключение, а тест нервов.",
+    verdict: "Party kitchen co-op. Campaigns end, but it's a nerves test, not an adventure.",
     storeUrl: "https://store.steampowered.com/app/1243830/Overcooked_All_You_Can_Eat/",
     imageUrl: steamImage(1243830),
     youtubeUrl: youtube("GS81-vvSo2U")
@@ -926,7 +926,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "none",
     price: 225,
-    verdict: "Песочница с финальной прогрессией: от Eye of Cthulhu до Moon Lord. Онлайн до 8.",
+    verdict: "Sandbox with real endgame progression: Eye of Cthulhu through Moon Lord. Online up to 8.",
     storeUrl: "https://store.steampowered.com/app/105600/Terraria/",
     imageUrl: steamImage(105600),
     youtubeUrl: youtube("Yb6Ja-YHQ1c")
@@ -942,7 +942,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "none",
     price: 229,
-    verdict: "Жизненный сим с коопом до 8. Community Center как явная финальная цель.",
+    verdict: "Life sim with co-op up to 8. Community Center as an explicit endgame goal.",
     storeUrl: "https://store.steampowered.com/app/413150/Stardew_Valley/",
     imageUrl: steamImage(413150),
     youtubeUrl: youtube("m5_kcslaxmI")
@@ -958,7 +958,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 249,
-    verdict: "Хаотичный кооп-маг до 4. Прародитель Magicka 2.",
+    verdict: "Chaotic four-mage co-op. The original that Magicka 2 grew from.",
     storeUrl: "https://store.steampowered.com/app/42910/Magicka/",
     imageUrl: steamImage(42910),
     youtubeUrl: youtube("lmLDkzwpMs8")
@@ -974,7 +974,7 @@ window.GAMES = [
     hours: 2,
     oneCopy: "none",
     price: 0,
-    verdict: "Бесплатное начало серии. Двое в замке, пазлы через рацию.",
+    verdict: "Free start of the series. Two players in a castle, puzzles over walkie-talkie.",
     storeUrl: "https://store.steampowered.com/app/582500/We_Were_Here/",
     imageUrl: steamImage(582500),
     youtubeUrl: youtube("6M4SZZH_iFQ")
@@ -990,7 +990,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 108,
-    verdict: "Лучшая часть серии: 4-6 часов кооп-пазлов с голосом.",
+    verdict: "Best entry in the series: 4–6 hours of voice-driven co-op puzzles.",
     storeUrl: "https://store.steampowered.com/app/865360/We_Were_Here_Together/",
     imageUrl: steamImage(865360),
     youtubeUrl: youtube("XTy9QU71FtQ")
@@ -1006,7 +1006,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 515,
-    verdict: "Возрождение легенды. Beat'em up онлайн до 4.",
+    verdict: "The legend reborn. Beat-em-up with online co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/985890/Streets_of_Rage_4/",
     imageUrl: steamImage(985890),
     youtubeUrl: youtube("0QQIQrCmz1E")
@@ -1022,7 +1022,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "remote-play",
     price: 325,
-    verdict: "Bullet-hell roguelike. Двоих через Remote Play, есть финал — The Past.",
+    verdict: "Bullet-hell roguelike. Two players via Remote Play; has a real finale — The Past.",
     storeUrl: "https://store.steampowered.com/app/311690/Enter_the_Gungeon/",
     imageUrl: steamImage(311690),
     youtubeUrl: youtube("hEvjcwVUml4")
@@ -1038,7 +1038,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 279,
-    verdict: "Онлайн-кооп roguelike. Финальные маршруты до 7-1 / Cosmic Ocean.",
+    verdict: "Online co-op roguelike. Final routes through 7-1 / Cosmic Ocean.",
     storeUrl: "https://store.steampowered.com/app/418530/Spelunky_2/",
     imageUrl: steamImage(418530),
     youtubeUrl: youtube("JGhRmS4Gs-g")
@@ -1054,7 +1054,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Оригинал. Локальный кооп + Remote Play, финальная зона Olmec.",
+    verdict: "The original. Local co-op + Remote Play, final zone Olmec.",
     storeUrl: "https://store.steampowered.com/app/239350/Spelunky/",
     imageUrl: steamImage(239350),
     youtubeUrl: youtube("idJ0sGE8fio")
@@ -1070,7 +1070,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 229,
-    verdict: "От авторов Castle Crashers. Онлайн-кооп, законченная кампания.",
+    verdict: "From the Castle Crashers team. Online co-op, finished campaign.",
     storeUrl: "https://store.steampowered.com/app/238460/BattleBlock_Theater/",
     imageUrl: steamImage(238460),
     youtubeUrl: youtube("CS3Lj4-EtR8")
@@ -1086,7 +1086,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "remote-play",
     price: 649,
-    verdict: "Огромная LEGO-кампания: все 9 эпизодов. Локально + Remote Play.",
+    verdict: "Massive LEGO campaign covering all 9 episodes. Local + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/920210/LEGO_Star_Wars_The_Skywalker_Saga/",
     imageUrl: steamImage(920210),
     youtubeUrl: youtube("s5_X2LoisQw")
@@ -1102,7 +1102,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "remote-play",
     price: 799,
-    verdict: "Цельная LEGO-игра с открытым городом.",
+    verdict: "A coherent LEGO game with an open city.",
     storeUrl: "https://store.steampowered.com/app/578330/LEGO_City_Undercover/",
     imageUrl: steamImage(578330),
     youtubeUrl: youtube("z5xMtpM6dPA")
@@ -1118,7 +1118,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Любимая LEGO-кампания по Marvel.",
+    verdict: "A beloved LEGO Marvel campaign.",
     storeUrl: "https://store.steampowered.com/app/249130/LEGO_Marvel_Super_Heroes/",
     imageUrl: steamImage(249130),
     youtubeUrl: youtube("HnbNGpN8T8s")
@@ -1134,7 +1134,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 600,
-    verdict: "3D-платформер с коопом. Локально + Remote Play.",
+    verdict: "3D platformer with co-op. Local + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/253230/A_Hat_in_Time/",
     imageUrl: steamImage(253230),
     youtubeUrl: youtube("jqEFLf-0tUU")
@@ -1150,7 +1150,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "remote-play",
     price: 299,
-    verdict: "Один из лучших кооп-платформеров. До 4 локально.",
+    verdict: "One of the best co-op platformers ever. Up to 4 local.",
     storeUrl: "https://store.steampowered.com/app/242550/Rayman_Legends/",
     imageUrl: steamImage(242550),
     youtubeUrl: youtube("Dt_Rw0u1xmo")
@@ -1166,7 +1166,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 150,
-    verdict: "Предшественник Legends. Локальный кооп до 4.",
+    verdict: "Predecessor to Legends. Local co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/207490/Rayman_Origins/",
     imageUrl: steamImage(207490),
     youtubeUrl: youtube("XYYU4o9q1Fw")
@@ -1182,7 +1182,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 1699,
-    verdict: "LittleBigPlanet-наследник. Локальный + онлайн кооп. Дорогой без скидки.",
+    verdict: "LittleBigPlanet's spiritual heir. Local + online co-op. Pricey without a sale.",
     storeUrl: "https://store.steampowered.com/app/1599660/Sackboy_A_Big_Adventure/",
     imageUrl: steamImage(1599660),
     youtubeUrl: youtube("OetgxfDiqH8")
@@ -1198,7 +1198,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 229,
-    verdict: "Классика action tower defense. Онлайн-кампания на двоих.",
+    verdict: "Classic action tower defense. Online two-player campaign.",
     storeUrl: "https://store.steampowered.com/app/201790/Orcs_Must_Die_2/",
     imageUrl: steamImage(201790),
     youtubeUrl: youtube("OzLGPao96ms")
@@ -1214,7 +1214,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 325,
-    verdict: "Action tower defense с RPG-прогрессией. До 4 онлайн.",
+    verdict: "Action tower defense with RPG progression. Online up to 4.",
     storeUrl: "https://store.steampowered.com/app/65800/Dungeon_Defenders/",
     imageUrl: steamImage(65800),
     youtubeUrl: youtube("vX2lYTJKa7E")
@@ -1230,7 +1230,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 409,
-    verdict: "FPS-tower defense. Онлайн-кампания до 4.",
+    verdict: "FPS tower defense. Online campaign up to 4.",
     storeUrl: "https://store.steampowered.com/app/210770/Sanctum_2/",
     imageUrl: steamImage(210770),
     youtubeUrl: youtube("cFv0dhOnSFY")
@@ -1246,7 +1246,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 187,
-    verdict: "Эпизодная кооп-кампания против зомби-волн. До 4 онлайн.",
+    verdict: "Episodic co-op campaign against zombie waves. Up to 4 online.",
     storeUrl: "https://store.steampowered.com/app/699130/World_War_Z_Aftermath/",
     imageUrl: steamImage(699130),
     youtubeUrl: youtube("dPxZV7KFahU")
@@ -1262,7 +1262,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 529,
-    verdict: "Sniper Elite в зомби-сеттинге. Кооп до 4.",
+    verdict: "Sniper Elite in a zombie skin. Co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/301640/Zombie_Army_Trilogy/",
     imageUrl: steamImage(301640),
     youtubeUrl: youtube("1OSaI8tTxnQ")
@@ -1278,7 +1278,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 600,
-    verdict: "Олдскульный FPS с кооп-кампанией до 4.",
+    verdict: "Old-school FPS with a co-op campaign up to 4.",
     storeUrl: "https://store.steampowered.com/app/41070/Serious_Sam_3_BFE/",
     imageUrl: steamImage(41070),
     youtubeUrl: youtube("8ViDZN-zW3E")
@@ -1294,7 +1294,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 740,
-    verdict: "Современный Serious Sam с кооп-кампанией.",
+    verdict: "Modern Serious Sam with a co-op campaign.",
     storeUrl: "https://store.steampowered.com/app/257420/Serious_Sam_4/",
     imageUrl: steamImage(257420),
     youtubeUrl: youtube("O-ZRv1gpdHQ")
@@ -1310,7 +1310,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 0,
-    verdict: "Бесплатная top-down кооп-миссионка. Очевидное добавление.",
+    verdict: "Free top-down co-op missions. Obvious add.",
     storeUrl: "https://store.steampowered.com/app/563560/Alien_Swarm_Reactive_Drop/",
     imageUrl: steamImage(563560),
     youtubeUrl: youtube("KZvHEpKNXnY")
@@ -1326,7 +1326,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 500,
-    verdict: "Симулятор мойки. Career-режим с финитными работами.",
+    verdict: "Powerwashing sim. Career mode with finite jobs.",
     storeUrl: "https://store.steampowered.com/app/1290000/PowerWash_Simulator/",
     imageUrl: steamImage(1290000),
     youtubeUrl: youtube("AIGIRdQALxE")
@@ -1342,7 +1342,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 649,
-    verdict: "Voxel-разрушение. Кооп-кампания добавлена в 2026.",
+    verdict: "Voxel destruction. Co-op campaign added in 2026.",
     storeUrl: "https://store.steampowered.com/app/1167630/Teardown/",
     imageUrl: steamImage(1167630),
     youtubeUrl: youtube("qLk-mdUMINI")
@@ -1358,7 +1358,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 279,
-    verdict: "Physics-кооп до 8. Уровни проходятся.",
+    verdict: "Physics co-op up to 8. Levels have an end.",
     storeUrl: "https://store.steampowered.com/app/477160/Human_Fall_Flat/",
     imageUrl: steamImage(477160),
     youtubeUrl: youtube("1Q6o-XtVz6M")
@@ -1374,7 +1374,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 279,
-    verdict: "Настольная roguelite-RPG. Онлайн-кампания.",
+    verdict: "Boardgame-y roguelite RPG. Online campaign.",
     storeUrl: "https://store.steampowered.com/app/527230/For_The_King/",
     imageUrl: steamImage(527230),
     youtubeUrl: youtube("gZiFXgXFTqA")
@@ -1390,7 +1390,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 415,
-    verdict: "Roguelite immersive sim. Пройти город онлайн до 4.",
+    verdict: "Roguelite immersive sim. Clear the city online up to 4.",
     storeUrl: "https://store.steampowered.com/app/512900/Streets_of_Rogue/",
     imageUrl: steamImage(512900),
     youtubeUrl: youtube("ARV3PEqN3jI")
@@ -1406,7 +1406,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "remote-play",
     price: 199,
-    verdict: "Twin-stick roguelike. Локальный кооп + Remote Play.",
+    verdict: "Twin-stick roguelike. Local co-op + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/242680/Nuclear_Throne/",
     imageUrl: steamImage(242680),
     youtubeUrl: youtube("-YS_lHKUGoo")
@@ -1422,7 +1422,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Roguelite в подвалах с боссами-эндингами. Локальный кооп до 4.",
+    verdict: "Roguelite in basements with ending bosses. Local co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/",
     imageUrl: steamImage(250900),
     youtubeUrl: youtube("E6HNZYZFYAw")
@@ -1438,7 +1438,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 329,
-    verdict: "Милая кооп-почта про птичек-киви. Онлайн на двоих.",
+    verdict: "Cute kiwi-bird postal co-op. Online for two.",
     storeUrl: "https://store.steampowered.com/app/1242980/KeyWe/",
     imageUrl: steamImage(1242980),
     youtubeUrl: youtube("8TK7-nHBZQY")
@@ -1454,7 +1454,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "remote-play",
     price: 419,
-    verdict: "Кооп-грузчики в духе Overcooked. Локально + Remote Play.",
+    verdict: "Co-op movers in the Overcooked vein. Local + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/996770/Moving_Out/",
     imageUrl: steamImage(996770),
     youtubeUrl: youtube("DYTqHcPubxQ")
@@ -1470,7 +1470,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 390,
-    verdict: "FPS-roguelike с финалом забега. Онлайн на двоих.",
+    verdict: "FPS roguelike with a run-ending boss. Online for two.",
     storeUrl: "https://store.steampowered.com/app/692890/Roboquest/",
     imageUrl: steamImage(692890),
     youtubeUrl: youtube("qR_zwoYPUrg")
@@ -1486,7 +1486,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 399,
-    verdict: "FPS-roguelite до 4 с финальным боссом забега.",
+    verdict: "FPS roguelite up to 4 with a final run boss.",
     storeUrl: "https://store.steampowered.com/app/1217060/Gunfire_Reborn/",
     imageUrl: steamImage(1217060),
     youtubeUrl: youtube("lwxoc5Eh_FQ")
@@ -1502,7 +1502,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 460,
-    verdict: "Roguelite от Curse of the Dead Gods. Онлайн-кооп.",
+    verdict: "Roguelite from the Curse of the Dead Gods studio. Online co-op.",
     storeUrl: "https://store.steampowered.com/app/2071280/Ravenswatch/",
     imageUrl: steamImage(2071280),
     youtubeUrl: youtube("7OFllCT_3ck")
@@ -1518,7 +1518,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 239,
-    verdict: "Заклинательский roguelite. Локально + Remote Play.",
+    verdict: "Spell-flinging roguelite. Local + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/445980/Wizard_of_Legend/",
     imageUrl: steamImage(445980),
     youtubeUrl: youtube("7txCf5jTOy8")
@@ -1534,7 +1534,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Roguelite roadtrip. Доехать до Канады, локально до 4.",
+    verdict: "Roguelite road trip. Make it to Canada, local up to 4.",
     storeUrl: "https://store.steampowered.com/app/252610/Death_Road_to_Canada/",
     imageUrl: steamImage(252610),
     youtubeUrl: youtube("09XMf0N2lJU")
@@ -1550,7 +1550,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 169,
-    verdict: "Грязный криминальный кооп-боевик. Прямой родственник Army of Two.",
+    verdict: "Grimy criminal co-op action. Direct cousin to Army of Two.",
     storeUrl: "https://store.steampowered.com/app/28000/Kane__Lynch_2_Dog_Days/",
     imageUrl: steamImage(28000),
     youtubeUrl: youtube("r_vIMU02GTE")
@@ -1566,7 +1566,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "remote-play",
     price: 289,
-    verdict: "PvP + кооп Quest Mode и Dark World. Локально + Remote Play.",
+    verdict: "PvP + co-op Quest Mode and Dark World. Local + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/251470/TowerFall_Ascension/",
     imageUrl: steamImage(251470),
     youtubeUrl: youtube("bkEaLWtVSqM")
@@ -1582,7 +1582,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 649,
-    verdict: "Сборник 7 классических beat'em up'ов Capcom. Онлайн.",
+    verdict: "A bundle of 7 classic Capcom beat-em-ups. Online.",
     storeUrl: "https://store.steampowered.com/app/885150/Capcom_Beat_Em_Up_Bundle/",
     imageUrl: steamImage(885150),
     youtubeUrl: youtube("hg-RVzP4bHM")
@@ -1598,7 +1598,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "remote-play",
     price: 149,
-    verdict: "Самая известная Metal Slug. Локально + Remote Play.",
+    verdict: "The most famous Metal Slug. Local + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/250180/METAL_SLUG_3/",
     imageUrl: steamImage(250180),
     youtubeUrl: youtube("wgjqoDmVods")
@@ -1614,7 +1614,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 229,
-    verdict: "Кооп-ограбления top-down. Онлайн до 4.",
+    verdict: "Top-down co-op heists. Online up to 4.",
     storeUrl: "https://store.steampowered.com/app/113020/Monaco_Whats_Yours_Is_Mine/",
     imageUrl: steamImage(113020),
     youtubeUrl: youtube("rWqM3YVZiJw")
@@ -1630,7 +1630,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Приключенческая головоломка от Рона Гилберта. Локально до 3.",
+    verdict: "Adventure puzzler by Ron Gilbert. Local up to 3.",
     storeUrl: "https://store.steampowered.com/app/221810/The_Cave/",
     imageUrl: steamImage(221810),
     youtubeUrl: youtube("DjJKUBR-APY")
@@ -1646,7 +1646,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 229,
-    verdict: "Mega Man-like roguelite. Онлайн на двоих.",
+    verdict: "A Mega Man-like roguelite. Online for two.",
     storeUrl: "https://store.steampowered.com/app/322110/20XX/",
     imageUrl: steamImage(322110),
     youtubeUrl: youtube("4OEcKZ9Cgok")
@@ -1662,7 +1662,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 229,
-    verdict: "Roguelike-платформер. Онлайн до 4.",
+    verdict: "Roguelike platformer. Online up to 4.",
     storeUrl: "https://store.steampowered.com/app/323220/Vagante/",
     imageUrl: steamImage(323220),
     youtubeUrl: youtube("w3X8Orp_Fjo")
@@ -1678,7 +1678,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 415,
-    verdict: "First-person dungeon roguelike. Онлайн до 4.",
+    verdict: "First-person dungeon roguelike. Online up to 4.",
     storeUrl: "https://store.steampowered.com/app/371970/Barony/",
     imageUrl: steamImage(371970),
     youtubeUrl: youtube("FWyOf82UsXc")
@@ -1694,7 +1694,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 489,
-    verdict: "Карточный roguelite в актах. Онлайн-кампания.",
+    verdict: "Card-game roguelite split into acts. Online campaign.",
     storeUrl: "https://store.steampowered.com/app/1385380/Across_the_Obelisk/",
     imageUrl: steamImage(1385380),
     youtubeUrl: youtube("EKlhgaZfKgM")
@@ -1710,7 +1710,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 399,
-    verdict: "Кооп escape room с комнатами и DLC-кампаниями. Онлайн до 6.",
+    verdict: "Co-op escape rooms with rooms and DLC campaigns. Online up to 6.",
     storeUrl: "https://store.steampowered.com/app/1435790/Escape_Simulator/",
     imageUrl: steamImage(1435790),
     youtubeUrl: youtube("uGFNGZfWycs")
@@ -1726,7 +1726,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "friend-pass",
     price: 325,
-    verdict: "Один обезвреживает бомбу, второй читает мануал. Одной копии достаточно.",
+    verdict: "One defuses the bomb, one reads the manual. A single copy is enough.",
     storeUrl: "https://store.steampowered.com/app/341800/Keep_Talking_and_Nobody_Explodes/",
     imageUrl: steamImage(341800),
     youtubeUrl: youtube("CAbLeIgUoTg")
@@ -1742,7 +1742,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 479,
-    verdict: "Soulslike с пушками. Предшественник Remnant II.",
+    verdict: "Soulslike with guns. Predecessor to Remnant II.",
     storeUrl: "https://store.steampowered.com/app/617290/Remnant_From_the_Ashes/",
     imageUrl: steamImage(617290),
     youtubeUrl: youtube("gAmfVuLvIaI")
@@ -1758,7 +1758,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 533,
-    verdict: "Зомби-боевик с кооп-кампанией до 4.",
+    verdict: "Zombie action with a co-op campaign up to 4.",
     storeUrl: "https://store.steampowered.com/app/383150/Dead_Island_Definitive_Edition/",
     imageUrl: steamImage(383150),
     youtubeUrl: youtube("urvxAMDosFY")
@@ -1774,7 +1774,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 279,
-    verdict: "Voxel-Minecraft с боссами и прогрессией. Кооп локально/онлайн до 4.",
+    verdict: "Voxel Minecraft with bosses and progression. Local/online co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/374040/Portal_Knights/",
     imageUrl: steamImage(374040),
     youtubeUrl: youtube("2jK1hIF2zfs")
@@ -1790,7 +1790,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "none",
     price: 124,
-    verdict: "Кооп-восхождение скованными цепью. Добраться до вершины.",
+    verdict: "Climb-em-up co-op, chained at the wrist. Reach the top to win.",
     storeUrl: "https://store.steampowered.com/app/2567870/Chained_Together/",
     imageUrl: steamImage(2567870),
     youtubeUrl: youtube("Lwm0xHPmRis")
@@ -1806,7 +1806,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "none",
     price: 99,
-    verdict: "Простые кооп-уровни до 8 человек. Минималистично и хорошо.",
+    verdict: "Simple co-op levels for up to 8. Minimal and great.",
     storeUrl: "https://store.steampowered.com/app/1509960/PICO_PARK/",
     imageUrl: steamImage(1509960),
     youtubeUrl: youtube("NGmOZbTYrr8")
@@ -1822,7 +1822,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Road Rash-наследник. Локальный split-screen + Remote Play.",
+    verdict: "A Road Rash successor. Local split-screen + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/300380/Road_Redemption/",
     imageUrl: steamImage(300380),
     youtubeUrl: youtube("Ta448FEU8VA")
@@ -1838,7 +1838,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "none",
     price: 279,
-    verdict: "Орды гигантских жуков. Онлайн-миссии до 4.",
+    verdict: "Hordes of giant bugs. Online missions up to 4.",
     storeUrl: "https://store.steampowered.com/app/410320/EARTH_DEFENSE_FORCE_41_The_Shadow_of_New_Despair/",
     imageUrl: steamImage(410320),
     youtubeUrl: youtube("ivK7H9NMiUM")
@@ -1854,7 +1854,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Twin-stick кампания. Локально до 4.",
+    verdict: "Twin-stick campaign. Local up to 4.",
     storeUrl: "https://store.steampowered.com/app/250110/Assault_Android_Cactus/",
     imageUrl: steamImage(250110),
     youtubeUrl: youtube("HaQogKg__es")
@@ -1870,7 +1870,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Современный beat'em up в духе 90-х. Локально до 3.",
+    verdict: "A modern beat-em-up in 90s style. Local up to 3.",
     storeUrl: "https://store.steampowered.com/app/674520/FightN_Rage/",
     imageUrl: steamImage(674520),
     youtubeUrl: youtube("KHLg7RsaDbc")
@@ -1886,7 +1886,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 310,
-    verdict: "Тактический пиксельный shooter. Онлайн до 4.",
+    verdict: "Tactical pixel shooter. Online up to 4.",
     storeUrl: "https://store.steampowered.com/app/686200/Door_Kickers_Action_Squad/",
     imageUrl: steamImage(686200),
     youtubeUrl: youtube("AWhQx_zd_ns")
@@ -1902,7 +1902,7 @@ window.GAMES = [
     hours: 80,
     oneCopy: "none",
     price: 740,
-    verdict: "Строим автоматизированный завод на чужой планете ради сборки космического элеватора.",
+    verdict: "Build an automated factory on an alien planet to assemble the Project Assembly Space Elevator.",
     storeUrl: "https://store.steampowered.com/app/526870/",
     imageUrl: steamImage(526870),
     youtubeUrl: youtube("Jbs2haRVmC0")
@@ -1918,7 +1918,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "none",
     price: 399,
-    verdict: "Ритмический bullet hell на четверых: уворачиваемся от геометрии под электронную музыку.",
+    verdict: "Rhythm bullet-hell for four: dodge geometry to electronic music.",
     storeUrl: "https://store.steampowered.com/app/531510/",
     imageUrl: steamImage(531510),
     youtubeUrl: youtube("Fll1AMxCYlo")
@@ -1934,7 +1934,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 329,
-    verdict: "Сюрреалистичный битэмап про чёрно-белых психопатов с автоматами и битами из вселенной Madness.",
+    verdict: "Surreal beat-em-up about black-and-white psychos with guns and bats from the Madness universe.",
     storeUrl: "https://store.steampowered.com/app/488860/",
     imageUrl: steamImage(488860),
     youtubeUrl: youtube("gjSInV8P8Js")
@@ -1950,7 +1950,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Уютное приключение про собаку с кистью: раскрашиваем мир, решаем пазлы и копаемся в чужих травмах.",
+    verdict: "Cozy adventure about a dog with a paintbrush: color the world, solve puzzles, dig into trauma.",
     storeUrl: "https://store.steampowered.com/app/1123450/",
     imageUrl: steamImage(1123450),
     youtubeUrl: youtube("_C-hZZYiwPI")
@@ -1966,7 +1966,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 325,
-    verdict: "MMO-рейд в формате roguelite: четверо кроликов уворачиваются от паттернов босса с мечами и магией.",
+    verdict: "MMO raid as a roguelite: four bunnies dodge boss patterns with swords and magic.",
     storeUrl: "https://store.steampowered.com/app/2132850/",
     imageUrl: steamImage(2132850),
     youtubeUrl: youtube("jUxtCGIiA_4")
@@ -1982,7 +1982,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 309,
-    verdict: "Тактический штурм комнат с командой спецназа: вид сверху, пауза по нажатию, миссии в шаг от провала.",
+    verdict: "Tactical room-clearing with a spec-ops team: top-down, pause-on-keypress, one step from failure.",
     storeUrl: "https://store.steampowered.com/app/1239080/",
     imageUrl: steamImage(1239080),
     youtubeUrl: youtube("5JUcXnNydAg")
@@ -1998,7 +1998,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Физика невесомости и космонавты-неумехи: один палец на руке, один тумблер за раз, локальные ржаки.",
+    verdict: "Zero-G physics and clumsy cosmonauts: one finger per arm, one toggle at a time, slapstick gold.",
     storeUrl: "https://store.steampowered.com/app/1138850/",
     imageUrl: steamImage(1138850),
     youtubeUrl: youtube("MFAdHlHSJKg")
@@ -2014,7 +2014,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 515,
-    verdict: "Шарики путешествуют по историческим эпохам, бьют врагов и врываются друг в друга — 3D-платформер на четверых.",
+    verdict: "Spheres travel through historical eras, bash enemies and each other — 3D platformer for four.",
     storeUrl: "https://store.steampowered.com/app/1227650/",
     imageUrl: steamImage(1227650),
     youtubeUrl: youtube("IJSqPoeqfUk")
@@ -2030,7 +2030,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 515,
-    verdict: "Открытый мир, паркур-шутер от автора Severed Steel: парим, рикошетим пули, врываемся вчетвером.",
+    verdict: "Open-world parkour shooter from the Severed Steel author: glide, ricochet, raid in four.",
     storeUrl: "https://store.steampowered.com/app/1836730/",
     imageUrl: steamImage(1836730),
     youtubeUrl: youtube("3Bx528Rgy7c")
@@ -2046,7 +2046,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "remote-play",
     price: 163,
-    verdict: "Физический мордобой палочных человечков с прокачкой в roguelite-структуре — от Free Lives.",
+    verdict: "Physics-fistfight stick figures with progression in a roguelite structure — from Free Lives.",
     storeUrl: "https://store.steampowered.com/app/2085540/",
     imageUrl: steamImage(2085540),
     youtubeUrl: youtube("4C8EY6HUE34")
@@ -2062,7 +2062,7 @@ window.GAMES = [
     hours: 80,
     oneCopy: "none",
     price: 880,
-    verdict: "Классическая RTS в HD: кооперативные исторические кампании от Чингисхана до Жанны д'Арк.",
+    verdict: "Classic RTS in HD: co-op historical campaigns from Genghis Khan to Joan of Arc.",
     storeUrl: "https://store.steampowered.com/app/813780/",
     imageUrl: steamImage(813780),
     youtubeUrl: youtube("B2lPFRtaMhc")
@@ -2078,7 +2078,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 169,
-    verdict: "Гибрид tower defense и factory-game: автоматизируем добычу, отстраиваемся и отбиваемся вместе.",
+    verdict: "Hybrid of tower defense and factory game: automate mining, build, defend together.",
     storeUrl: "https://store.steampowered.com/app/1127400/",
     imageUrl: steamImage(1127400),
     youtubeUrl: youtube("WOYOnhhj8f8")
@@ -2094,7 +2094,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "remote-play",
     price: 325,
-    verdict: "Ритм-рогалик: ходим по подземелью в такт бэнгеру, бьём скелетов на удар по такту.",
+    verdict: "Rhythm roguelike: move through dungeons on the beat, kill skeletons on the downbeat.",
     storeUrl: "https://store.steampowered.com/app/247080/",
     imageUrl: steamImage(247080),
     youtubeUrl: youtube("ytLz4ptBdN0")
@@ -2110,7 +2110,7 @@ window.GAMES = [
     hours: 7,
     oneCopy: "none",
     price: 229,
-    verdict: "Сказочный платформер от Frozenbyte: рыцарь, маг и воровка решают пазлы и колотят скелетов втроём.",
+    verdict: "Frozenbyte's fairy-tale platformer: knight, mage, and thief solve puzzles and bash skeletons together.",
     storeUrl: "https://store.steampowered.com/app/35700/",
     imageUrl: steamImage(35700),
     youtubeUrl: youtube("6Hj1kcojnSU")
@@ -2126,7 +2126,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 222,
-    verdict: "Кооперативный психо-хоррор от Red Barrels: сбегаем из садистских испытаний холодной войны.",
+    verdict: "Co-op psycho-horror from Red Barrels: escape sadistic Cold War trials.",
     storeUrl: "https://store.steampowered.com/app/1304930/",
     imageUrl: steamImage(1304930),
     youtubeUrl: youtube("lqytOzHvRLA")
@@ -2142,7 +2142,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "remote-play",
     price: 57,
-    verdict: "Хардкорный симулятор кафе: бьём по клавишам, готовим бургеры и кофе, пока клиенты не лопнули.",
+    verdict: "Hardcore cafe sim: hammer keys, cook burgers and coffee before customers explode.",
     storeUrl: "https://store.steampowered.com/app/247020/",
     imageUrl: steamImage(247020),
     youtubeUrl: youtube("gkZIB7hCMTc")
@@ -2158,7 +2158,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 187,
-    verdict: "Антипазлер: каждые 60 секунд другая комбинация инструментов и одна цель — собрать фрукты.",
+    verdict: "Anti-puzzler: every 60 seconds a new combo of tools and one goal — collect the fruit.",
     storeUrl: "https://store.steampowered.com/app/2477090/",
     imageUrl: steamImage(2477090),
     youtubeUrl: youtube("ExwgTFTC0tw")
@@ -2174,7 +2174,7 @@ window.GAMES = [
     hours: 7,
     oneCopy: "none",
     price: 169,
-    verdict: "Стильный 2D-битэмап от Ska Studios: киберсамураи рубят боссов под индастриал.",
+    verdict: "Stylish 2D beat-em-up from Ska Studios: cyber-samurai chop bosses to industrial.",
     storeUrl: "https://store.steampowered.com/app/268990/",
     imageUrl: steamImage(268990),
     youtubeUrl: youtube("3CowOAg-F0Q")
@@ -2190,7 +2190,7 @@ window.GAMES = [
     hours: 16,
     oneCopy: "none",
     price: 600,
-    verdict: "Космическая песочница про колонизацию планет — финал по сюжету про древнюю цивилизацию.",
+    verdict: "Space sandbox about colonizing planets — story finale about an ancient civilization.",
     storeUrl: "https://store.steampowered.com/app/361420/",
     imageUrl: steamImage(361420),
     youtubeUrl: youtube("HkVPsGKYIiY")
@@ -2206,7 +2206,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "none",
     price: 539,
-    verdict: "Викинговский survival с боссами — пять (а с Ashlands шесть) финальных боссов как условие победы.",
+    verdict: "Viking survival with bosses — five (six with Ashlands) final bosses as the win condition.",
     storeUrl: "https://store.steampowered.com/app/892970/",
     imageUrl: steamImage(892970),
     youtubeUrl: youtube("IVBFVaMktDU")
@@ -2222,7 +2222,7 @@ window.GAMES = [
     hours: 35,
     oneCopy: "none",
     price: 600,
-    verdict: "Survival-crafting во вселенной LOTR — кампания про возвращение гномов в Морию с финалом.",
+    verdict: "Survival-crafting in the LOTR universe — a campaign about the dwarves' return to Moria with a finale.",
     storeUrl: "https://store.steampowered.com/app/2933130/",
     imageUrl: steamImage(2933130),
     youtubeUrl: youtube("oD04v9ufk6c")
@@ -2238,7 +2238,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 419,
-    verdict: "Кооперативный roguelite-боевик: процедурные подземелья, прокачка героев, общий городок-хаб.",
+    verdict: "Co-op roguelite action: procedural dungeons, hero progression, a shared town hub.",
     storeUrl: "https://store.steampowered.com/app/619820/",
     imageUrl: steamImage(619820),
     youtubeUrl: youtube("69DqrQe-cd8")
@@ -2254,7 +2254,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 740,
-    verdict: "Хоррор-приключение от создателей Little Nightmares — кооп на двоих с финалом.",
+    verdict: "Horror-adventure from the Little Nightmares team — two-player co-op with a finale.",
     storeUrl: "https://store.steampowered.com/app/2129530/",
     imageUrl: steamImage(2129530),
     youtubeUrl: youtube("YQVLlHbIuGU")
@@ -2270,7 +2270,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 1199,
-    verdict: "Кооп-spinoff Elden Ring: roguelite-вылазки втроём против Найтлордов.",
+    verdict: "Elden Ring co-op spinoff: roguelite raids by three against the Nightlords.",
     storeUrl: "https://store.steampowered.com/app/2622380/",
     imageUrl: steamImage(2622380),
     youtubeUrl: youtube("bRt3Ylt_Udk")
@@ -2286,7 +2286,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 673,
-    verdict: "Beat'em up по Marvel от создателей TMNT Shredder's Revenge: до 4 героев, короткая кампания.",
+    verdict: "Beat-em-up from the TMNT Shredder's Revenge team: up to 4 heroes, short campaign.",
     storeUrl: "https://store.steampowered.com/app/2753970/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2753970/bcb8dd8a710ecd285876fd185b162f5feb545ee3/header_alt_assets_0.jpg",
     youtubeUrl: youtube("95KGhcg1o1o")
@@ -2302,7 +2302,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 499,
-    verdict: "Дека-билдер с боссом-финалом, теперь в кооперативе до 4 человек.",
+    verdict: "Deck-builder with a final boss, now in co-op for up to 4.",
     storeUrl: "https://store.steampowered.com/app/2868840/",
     imageUrl: steamImage(2868840),
     youtubeUrl: youtube("OiHkpr_FYc0"),
@@ -2319,7 +2319,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 515,
-    verdict: "Roguelite beat'em up от Dotemu: пиксельный экшен, кооп на двоих, финальный босс Сан-Кинг.",
+    verdict: "Roguelite beat-em-up from Dotemu: pixel action, two-player co-op, final boss Sun-King.",
     storeUrl: "https://store.steampowered.com/app/1904480/",
     imageUrl: steamImage(1904480),
     youtubeUrl: youtube("R3lBuJkHYh4")
@@ -2335,7 +2335,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "remote-play",
     price: 499,
-    verdict: "Симулятор секты + roguelite-вылазки. С обновлением Unholy Alliance — кооп на двоих.",
+    verdict: "Cult sim plus roguelite runs. With the Unholy Alliance update — co-op for two.",
     storeUrl: "https://store.steampowered.com/app/1313140/",
     imageUrl: steamImage(1313140),
     youtubeUrl: youtube("mkxJ9zhWa6k")
@@ -2351,7 +2351,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 187,
-    verdict: "Хаотичный кооп-роуд-трип: вчетвером тащите трейлер сквозь препятствия. Короткая кампания.",
+    verdict: "Chaotic co-op road trip: drag a trailer through obstacles, four players. Short campaign.",
     storeUrl: "https://store.steampowered.com/app/3949040/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3949040/cae24b4ed7f4531be51f0d63f785b7d253f92dc3/header.jpg",
     youtubeUrl: youtube("BvRhz1RvAOE")
@@ -2367,7 +2367,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 925,
-    verdict: "Спин-офф Sniper Elite 5: миссии во французском Сопротивлении, кооп на двоих, X-Ray-выстрелы.",
+    verdict: "Spinoff of Sniper Elite 5: missions in the French Resistance, two-player co-op, X-Ray kills.",
     storeUrl: "https://store.steampowered.com/app/2169200/",
     imageUrl: steamImage(2169200),
     youtubeUrl: youtube("k_NLBkhOU6E")
@@ -2383,7 +2383,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 500,
-    verdict: "Продолжение медитативной мойки — теперь со сплит-скрином и онлайн-кооперативом на двоих.",
+    verdict: "Sequel to the meditative powerwash — now with split-screen and online co-op for two.",
     storeUrl: "https://store.steampowered.com/app/2968420/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2968420/91fea40a711c5a74cce1bb1a9e05c48a379f6aa0/header.jpg",
     youtubeUrl: youtube("gE7_okg5TQM")
@@ -2399,7 +2399,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 700,
-    verdict: "Half-Life-вдохновленный survival-кооп: учёные сбегают из подземной лаборатории. Финал в 1.0.",
+    verdict: "Half-Life-inspired survival co-op: scientists escape an underground lab. Ending in 1.0.",
     storeUrl: "https://store.steampowered.com/app/427410/",
     imageUrl: steamImage(427410),
     youtubeUrl: youtube("ESgISzPUCtw")
@@ -2415,7 +2415,7 @@ window.GAMES = [
     hours: 35,
     oneCopy: "none",
     price: 2579,
-    verdict: "Очередная BL: новая планета, четыре охотника, кампания на 4 игроков. Релиз получил смешанные отзывы.",
+    verdict: "Another BL: new planet, four Vault Hunters, a campaign for 4. Mixed reception at launch.",
     storeUrl: "https://store.steampowered.com/app/1285190/",
     imageUrl: steamImage(1285190),
     youtubeUrl: youtube("vVfGbgW-nF4"),
@@ -2432,7 +2432,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 211,
-    verdict: "Ремейк первого Risk of Rain: 2D-roguelite-стрелялка с финальным боссом и кооп на 4.",
+    verdict: "Remake of the first Risk of Rain: 2D roguelite shooter with a final boss and co-op for 4.",
     storeUrl: "https://store.steampowered.com/app/1337520/",
     imageUrl: steamImage(1337520),
     youtubeUrl: youtube("r87yUeAXDMQ")
@@ -2448,7 +2448,7 @@ window.GAMES = [
     hours: 16,
     oneCopy: "none",
     price: 699,
-    verdict: "Снайперский стелс по Италии 40-х: огромные открытые миссии, кооп на двоих, X-Ray-выстрелы.",
+    verdict: "Sniper stealth in 40s Italy: massive open missions, two-player co-op, X-Ray kills.",
     storeUrl: "https://store.steampowered.com/app/312660/",
     imageUrl: steamImage(312660),
     youtubeUrl: youtube("I432Z3qCtgs")
@@ -2464,7 +2464,7 @@ window.GAMES = [
     hours: 16,
     oneCopy: "none",
     price: 79,
-    verdict: "Ремастер Saints Row 3: дурдом-сюжет про Святых в Steelport, кооп на двоих.",
+    verdict: "Remaster of Saints Row 3: madhouse plot about the Saints in Steelport, two-player co-op.",
     storeUrl: "https://store.steampowered.com/app/978300/",
     imageUrl: steamImage(978300),
     youtubeUrl: youtube("HTX--pyBxr4")
@@ -2480,7 +2480,7 @@ window.GAMES = [
     hours: 60,
     oneCopy: "none",
     price: 1999,
-    verdict: "Очередная EDF: ещё больше жуков, ещё больше миссий. Онлайн-кооп до 4.",
+    verdict: "Yet another EDF: more bugs, more missions. Online co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/2291060/",
     imageUrl: steamImage(2291060),
     youtubeUrl: youtube("55GmzkhLkrk"),
@@ -2497,7 +2497,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 915,
-    verdict: "Открытая Куба, революция против диктатора Кастильо. Кооп всю кампанию на двоих.",
+    verdict: "Open Cuba, revolution against dictator Castillo. Two-player co-op for the whole campaign.",
     storeUrl: "https://store.steampowered.com/app/2369390/",
     imageUrl: steamImage(2369390),
     youtubeUrl: youtube("YCN7AF3b4GA")
@@ -2513,7 +2513,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 379,
-    verdict: "Сказочный платформер-головоломка про троих героев: рыцарь, маг и воровка. Теперь до 4 в коопе.",
+    verdict: "Fairy-tale platformer-puzzler with three heroes: knight, mage, thief. Now up to 4 in co-op.",
     storeUrl: "https://store.steampowered.com/app/690640/",
     imageUrl: steamImage(690640),
     youtubeUrl: youtube("szdg4txFw6U")
@@ -2529,7 +2529,7 @@ window.GAMES = [
     hours: 60,
     oneCopy: "none",
     price: 949,
-    verdict: "Охота на гигантских монстров в Новом Мире. Кампания + SOS-флаеры на четверых.",
+    verdict: "Hunting giant monsters in the New World. Campaign plus SOS flares for four players.",
     storeUrl: "https://store.steampowered.com/app/582010/",
     imageUrl: steamImage(582010),
     youtubeUrl: youtube("jn7zTVX-FD8")
@@ -2545,7 +2545,7 @@ window.GAMES = [
     hours: 7,
     oneCopy: "remote-play",
     price: 699,
-    verdict: "Душевный платформер про двух Ярни, связанных нитью. Локальный кооп через Remote Play.",
+    verdict: "Heartfelt platformer about two Yarnys tied by string. Local co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/1225570/",
     imageUrl: steamImage(1225570),
     youtubeUrl: youtube("KCUsy2UamxQ")
@@ -2561,7 +2561,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 379,
-    verdict: "Зомби-апокалипсис с базой и общиной: 4 финала Legacy. Онлайн-кооп до 4 игроков.",
+    verdict: "Zombie apocalypse with a base and a community: 4 Legacy endings. Online co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/495420/",
     imageUrl: steamImage(495420),
     youtubeUrl: youtube("iMJ803rxem8")
@@ -2577,7 +2577,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 59,
-    verdict: "Кооп-FPS по Warhammer 40k: терминаторы зачищают Space Hulk от тиранидов. Кампания на 4.",
+    verdict: "Co-op FPS in Warhammer 40k: terminators clear a Space Hulk of tyranids. Campaign for 4.",
     storeUrl: "https://store.steampowered.com/app/816090/",
     imageUrl: steamImage(816090),
     youtubeUrl: youtube("6an1gvsR6r8")
@@ -2593,7 +2593,7 @@ window.GAMES = [
     hours: 60,
     oneCopy: "none",
     price: 47,
-    verdict: "Изометрическая тактическая RPG-кампания на двоих от Larian. Предшественник D:OS2.",
+    verdict: "Isometric tactical RPG campaign for two by Larian. Predecessor to D:OS2.",
     storeUrl: "https://store.steampowered.com/app/373420/",
     imageUrl: steamImage(373420),
     youtubeUrl: youtube("HnffHGYbpxc")
@@ -2609,7 +2609,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 60,
-    verdict: "Первая Vermintide: убиваем скейвенов в Юбершрайке. Предшественник VT2.",
+    verdict: "First Vermintide: skaven-slaying in Ubersreik. Predecessor to VT2.",
     storeUrl: "https://store.steampowered.com/app/235540/",
     imageUrl: steamImage(235540),
     youtubeUrl: youtube("d1xJv3pSNZU")
@@ -2625,7 +2625,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 489,
-    verdict: "Кооп-приключение про двух LEGO-кубиков, спасающих космический корабль. В духе Split Fiction.",
+    verdict: "Co-op adventure about two LEGO bricks saving a spaceship. In the Split Fiction vein.",
     storeUrl: "https://store.steampowered.com/app/1538550/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1538550/db718ae2be60558df2ef9fcd65302ad87a6045d4/header.jpg",
     youtubeUrl: youtube("0kzKpCAV7Ks")
@@ -2641,7 +2641,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 225,
-    verdict: "Кооп-приключение на двоих в невесомости: асимметричные пазлы, побег из империи слизи Moontella.",
+    verdict: "Two-player co-op in zero gravity: asymmetric puzzles, escape from the slime empire Moontella.",
     storeUrl: "https://store.steampowered.com/app/3744430/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744430/2b1989c2b09a474a13a9dc3db410248ad9fc04e4/header.jpg",
     youtubeUrl: youtube("e4Vhv2WgvzA")
@@ -2657,7 +2657,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "none",
     price: 225,
-    verdict: "Кооп-эскейп: два детектива, каждый со своей половиной пазла, должны общаться чтобы выжить.",
+    verdict: "Co-op escape: two detectives, each with half the puzzle, must talk to survive.",
     storeUrl: "https://store.steampowered.com/app/2012320/",
     imageUrl: steamImage(2012320),
     youtubeUrl: youtube("r0lefeOTYYA")
@@ -2673,7 +2673,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 399,
-    verdict: "Кооп-roguelite дека-билдер от создателей Book of Demons: бумажная стилистика, до 3 в кооперативе.",
+    verdict: "Co-op roguelite deck-builder from the Book of Demons team: paper aesthetics, up to 3 in co-op.",
     storeUrl: "https://store.steampowered.com/app/1201540/",
     imageUrl: steamImage(1201540),
     youtubeUrl: youtube("V-XrmbnaOGM")
@@ -2689,7 +2689,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 229,
-    verdict: "Олдскульная пиксельная action-RPG в духе Secret of Mana. Кампания и кооп до 4.",
+    verdict: "Old-school pixel action-RPG in the Secret of Mana vein. Campaign and co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/269770/",
     imageUrl: steamImage(269770),
     youtubeUrl: youtube("CkEQFNMs290")
@@ -2705,7 +2705,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 1599,
-    verdict: "Самостоятельный спин-офф Dying Light 2: новый регион, новая кампания, паркур+кооп на 4.",
+    verdict: "Standalone spinoff of Dying Light 2: new region, new campaign, parkour and co-op for 4.",
     storeUrl: "https://store.steampowered.com/app/3008130/",
     imageUrl: steamImage(3008130),
     youtubeUrl: youtube("-9ugPXmWcfg")
@@ -2721,7 +2721,7 @@ window.GAMES = [
     hours: 16,
     oneCopy: "none",
     price: 625,
-    verdict: "Хардкорная SWAT-тактика: миссии с заложниками, медленно и страшно. Кооп до 5.",
+    verdict: "Hardcore SWAT tactics: missions with hostages, slow and scary. Co-op up to 5.",
     storeUrl: "https://store.steampowered.com/app/1144200/",
     imageUrl: steamImage(1144200),
     youtubeUrl: youtube("_8LSKoxTjOg")
@@ -2737,7 +2737,7 @@ window.GAMES = [
     hours: 14,
     oneCopy: "remote-play",
     price: 1899,
-    verdict: "Новая LEGO Batman от TT Games: сплит-скрин + Remote Play, кампания на двоих.",
+    verdict: "New LEGO Batman from TT Games: split-screen + Remote Play, two-player campaign.",
     storeUrl: "https://store.steampowered.com/app/2215200/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/a07a9a6c0c9c1225f5b260b4f29fe40e6f099f6b/header.jpg",
     youtubeUrl: youtube("Mi-ru6HY5sA")
@@ -2753,7 +2753,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 195,
-    verdict: "Stealth-экшен про двух воров в магической столице 1910-х. Кооп на двоих от OtherSide Entertainment.",
+    verdict: "Stealth action about two thieves in a magical 1910s capital. Two-player co-op from OtherSide.",
     storeUrl: "https://store.steampowered.com/app/3341000/",
     imageUrl: steamImage(3341000),
     youtubeUrl: youtube("I8NwUMBNnrs")
@@ -2769,7 +2769,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 325,
-    verdict: "Кооп-эскейп: вдвоём решаете загадки, чтобы сбежать с пустынного острова.",
+    verdict: "Co-op escape: solve riddles together to flee a deserted island.",
     storeUrl: "https://store.steampowered.com/app/1858650/",
     imageUrl: steamImage(1858650),
     youtubeUrl: youtube("f04Sn_B6rzE")
@@ -2785,7 +2785,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "none",
     price: 122,
-    verdict: "Асимметричный кооп: два игрока видят разные миры, должны общаться чтобы решить пазлы.",
+    verdict: "Asymmetric co-op: two players see different worlds and must talk to solve puzzles.",
     storeUrl: "https://store.steampowered.com/app/1801110/",
     imageUrl: steamImage(1801110),
     youtubeUrl: youtube("u26eyzvcQSk")
@@ -2801,7 +2801,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "friend-pass",
     price: 149,
-    verdict: "Асимметричный кооп от Rusty Lake: один в Прошлом, другой в Будущем. Один экземпляр на двоих.",
+    verdict: "Asymmetric co-op from Rusty Lake: one in the Past, the other in the Future. One copy for two.",
     storeUrl: "https://store.steampowered.com/app/1515210/",
     imageUrl: steamImage(1515210),
     youtubeUrl: youtube("gQ8K4WZH8uI")
@@ -2817,7 +2817,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "none",
     price: 225,
-    verdict: "Co-opvania 8-bit платформер от создателя UnEpic: вдвоём против Тёмного Жреца.",
+    verdict: "Co-opvania 8-bit platformer by the UnEpic dev: two against the Dark Priest.",
     storeUrl: "https://store.steampowered.com/app/1966220/",
     imageUrl: steamImage(1966220),
     youtubeUrl: youtube("rEI-hK7jugQ")
@@ -2833,7 +2833,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 274,
-    verdict: "Survival-horror в стиле Resident Evil, но врагов убиваешь печатанием слов. Кооп до 4.",
+    verdict: "Resident Evil-style survival horror — but you kill enemies by typing words. Co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/2790330/",
     imageUrl: steamImage(2790330),
     youtubeUrl: youtube("pfsL5AcgmLI")
@@ -2849,7 +2849,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 103,
-    verdict: "Швеция 80-х, роботы вместо людей. Кооп-кампания до 4 с финалом FNIX Showdown.",
+    verdict: "80s Sweden, robots instead of people. Co-op campaign up to 4 with the FNIX Showdown finale.",
     storeUrl: "https://store.steampowered.com/app/704270/",
     imageUrl: steamImage(704270),
     youtubeUrl: youtube("3jLJQeOFUH4")
@@ -2865,7 +2865,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 36,
-    verdict: "Survival в Амазонии: Story Mode с финалом про Джейка Хиггинса + Spirit of Amazonia DLC. Кооп до 4.",
+    verdict: "Amazon survival: Story Mode finale about Jake Higgins + Spirit of Amazonia DLC. Co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/815370/",
     imageUrl: steamImage(815370),
     youtubeUrl: youtube("swn9STN3kQQ")
@@ -2881,7 +2881,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 999,
-    verdict: "Сиквел Grounded от Obsidian: новые насекомые, новые гаджеты, кооп-survival до 4.",
+    verdict: "Obsidian's Grounded sequel: new bugs, new gadgets, co-op survival up to 4.",
     storeUrl: "https://store.steampowered.com/app/2661300/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2661300/c4fc47c7e6ece14e438f0957d066dc9ab2a3412a/header.jpg",
     youtubeUrl: youtube("aIZ85S0Auqs")
@@ -2897,7 +2897,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 700,
-    verdict: "Сессионный survival: миссии-«пролёты» на враждебной планете. Кооп до 8 игроков.",
+    verdict: "Session-based survival: \"drop\" missions on a hostile planet. Co-op for up to 8.",
     storeUrl: "https://store.steampowered.com/app/1149460/",
     imageUrl: steamImage(1149460),
     youtubeUrl: youtube("G1lDFmeEpN8")
@@ -2913,7 +2913,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 175,
-    verdict: "Grounded-подобный survival: вы крошечные люди в большом лесу. Главный сюжет с финалом + кооп до 10.",
+    verdict: "Grounded-like survival: you're tiny humans in a big forest. Main story with a finale + co-op up to 10.",
     storeUrl: "https://store.steampowered.com/app/768200/",
     imageUrl: steamImage(768200),
     youtubeUrl: youtube("mH9HqLtNmWc")
@@ -2929,7 +2929,7 @@ window.GAMES = [
     hours: 22,
     oneCopy: "none",
     price: 1800,
-    verdict: "Зомби-RPG в Лос-Анджелесе: красочное FLESH-расчленение, кампания на 3 в коопе.",
+    verdict: "Zombie RPG in Los Angeles: gory FLESH-system dismemberment, co-op campaign for 3.",
     storeUrl: "https://store.steampowered.com/app/934700/",
     imageUrl: steamImage(934700),
     youtubeUrl: youtube("BaKTLmOel4k")
@@ -2945,7 +2945,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "remote-play",
     price: 540,
-    verdict: "Классическая Tales: 50ч сюжета и real-time бои, где в коопе каждый рулит своим персонажем.",
+    verdict: "Classic Tales: 50h of story and real-time combat where each co-op player controls a hero.",
     storeUrl: "https://store.steampowered.com/app/738540/",
     imageUrl: steamImage(738540),
     youtubeUrl: youtube("2K92D1echI4")
@@ -2961,7 +2961,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "remote-play",
     price: 479,
-    verdict: "Ремейк классики SNES от Square Enix: 3-местный кооп через Remote Play, классическая action-JRPG.",
+    verdict: "Square Enix remake of the SNES classic: 3-player co-op via Remote Play, classic action JRPG.",
     storeUrl: "https://store.steampowered.com/app/637670/",
     imageUrl: steamImage(637670),
     youtubeUrl: youtube("t7hcNknRGg8"),
@@ -2978,7 +2978,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "remote-play",
     price: 335,
-    verdict: "Короткая ARPG про 5-дневное путешествие. Множественные финалы, кооп до 4.",
+    verdict: "Short ARPG about a 5-day journey. Multiple endings, co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/320040/",
     imageUrl: steamImage(320040),
     youtubeUrl: youtube("v2iDCRRtsXU")
@@ -2994,7 +2994,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "remote-play",
     price: 600,
-    verdict: "Уютная игра-проводник про управление паромом для душ. Кооп на двоих локально/через Remote Play.",
+    verdict: "Cozy ferry-master game about guiding souls. Co-op for two, local or via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/972660/",
     imageUrl: steamImage(972660),
     youtubeUrl: youtube("RD3AJsqN4hw")
@@ -3010,7 +3010,7 @@ window.GAMES = [
     hours: 40,
     oneCopy: "none",
     price: 329,
-    verdict: "Тактическая RPG-сказка в стиле комикса. Кампании-главы с финалом, онлайн-кооп до 4.",
+    verdict: "Tactical RPG fairy tale in a comic-book style. Chapters with finales, online co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/763890/",
     imageUrl: steamImage(763890),
     youtubeUrl: youtube("LXg3WxA-SfY")
@@ -3026,7 +3026,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Кооп-метроидвания на двоих: два генно-модифицированных солдата против теократии. Story-driven.",
+    verdict: "Co-op metroidvania for two: two gene-modded soldiers vs a theocracy. Story-driven.",
     storeUrl: "https://store.steampowered.com/app/763180/",
     imageUrl: steamImage(763180),
     youtubeUrl: youtube("-kL3qvbnzQk")
@@ -3042,7 +3042,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 450,
-    verdict: "Сбежать из 11 тюрем с напарником. Изометрический пиксель-арт, разная карта на каждом уровне.",
+    verdict: "Escape 11 prisons with a partner. Isometric pixel art, a different layout each level.",
     storeUrl: "https://store.steampowered.com/app/641990/",
     imageUrl: steamImage(641990),
     youtubeUrl: youtube("EzrX0cLHENE")
@@ -3058,7 +3058,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 415,
-    verdict: "Стелс про повелителя теней-ниндзя. Сюжетная кампания, кооп на двоих с тенью-помощником.",
+    verdict: "Stealth about a lord of shadows. Story campaign, two-player co-op with a shadow partner.",
     storeUrl: "https://store.steampowered.com/app/280160/",
     imageUrl: steamImage(280160),
     youtubeUrl: youtube("1VZlIN2JRpM")
@@ -3074,7 +3074,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 700,
-    verdict: "Сиквел: больше открытых уровней и кооп до 3 теневых ниндзя. Полная кампания в коопе.",
+    verdict: "Sequel: more open levels and co-op for 3 shadow-ninjas. Full campaign in co-op.",
     storeUrl: "https://store.steampowered.com/app/1158370/",
     imageUrl: steamImage(1158370),
     youtubeUrl: youtube("kl6_7W0F4ng")
@@ -3090,7 +3090,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 39,
-    verdict: "Двуцветный платформер с инверсной гравитацией: обязательно вдвоём, прыгай через мир туда-сюда.",
+    verdict: "Two-color platformer with inverted gravity: requires two players, hop across the world.",
     storeUrl: "https://store.steampowered.com/app/95400/",
     imageUrl: steamImage(95400),
     youtubeUrl: youtube("ieTR271Bbh4")
@@ -3106,7 +3106,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 199,
-    verdict: "Roguelite-tower-defense гибрид от Amplitude: пробежки сквозь 12 этажей, кооп до 4.",
+    verdict: "Roguelite-tower-defense hybrid by Amplitude: runs through 12 floors, co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/249050/",
     imageUrl: steamImage(249050),
     youtubeUrl: youtube("NxHPkiuB8-4")
@@ -3122,7 +3122,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 229,
-    verdict: "Overcooked в космосе: чистите станцию от инопланетной слизи. Корабли разных размеров, кооп до 4.",
+    verdict: "Overcooked in space: clean a station of alien slime. Ships of varying size, co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/400080/",
     imageUrl: steamImage(400080),
     youtubeUrl: youtube("ubexjG_qvtM")
@@ -3138,7 +3138,7 @@ window.GAMES = [
     hours: 10,
     oneCopy: "friend-pass",
     price: 225,
-    verdict: "Асимметричный кооп: один — шпион Катя, другой — хакер Мартин, 1996 год. Friend-friendly.",
+    verdict: "Asymmetric co-op: one is spy Katya, the other is hacker Martin, 1996. Friend-friendly.",
     storeUrl: "https://store.steampowered.com/app/290530/",
     imageUrl: steamImage(290530),
     youtubeUrl: youtube("DS6YixLa8qA")
@@ -3154,7 +3154,7 @@ window.GAMES = [
     hours: 2,
     oneCopy: "friend-pass",
     price: 149,
-    verdict: "Асимметричный кооп: одна копия на двоих, два экрана с разной информацией. Короткая жуткая история.",
+    verdict: "Asymmetric co-op: one copy between two, two screens with different info. Short creepy story.",
     storeUrl: "https://store.steampowered.com/app/790740/",
     imageUrl: steamImage(790740),
     youtubeUrl: youtube("-KNskRpW9jI")
@@ -3170,7 +3170,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 229,
-    verdict: "Ремейк культовой Sega: ToeJam и Earl собирают части корабля. Roguelite-комплект-собиралка на 4.",
+    verdict: "Remake of the Sega cult classic: ToeJam and Earl gather ship parts. Roguelite collect-em-up for 4.",
     storeUrl: "https://store.steampowered.com/app/516110/",
     imageUrl: steamImage(516110),
     youtubeUrl: youtube("hRQKHroYn2I")
@@ -3186,7 +3186,7 @@ window.GAMES = [
     hours: 7,
     oneCopy: "remote-play",
     price: 325,
-    verdict: "Кооп-головоломка про кубы-роботы: тяни на кнопку, не упади в лаву. До 4 локально.",
+    verdict: "Co-op puzzler with robot cubes: pull onto buttons, don't fall in lava. Up to 4 local.",
     storeUrl: "https://store.steampowered.com/app/471810/",
     imageUrl: steamImage(471810),
     youtubeUrl: youtube("xYLGtAPR4TQ")
@@ -3202,7 +3202,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "none",
     price: 199,
-    verdict: "Сиквел Pico Park: ещё больше уровней, World и Dark Mode, кооп до 8 онлайн или локально.",
+    verdict: "Pico Park sequel: more levels, World and Dark Mode, co-op up to 8 online or local.",
     storeUrl: "https://store.steampowered.com/app/2644470/",
     imageUrl: steamImage(2644470),
     youtubeUrl: youtube("ktORKMV83Vw")
@@ -3218,7 +3218,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 194,
-    verdict: "Кооп-хоррор по «Бэкрумам»: 30+ уровней лиминальных пространств, цель — выбраться.",
+    verdict: "Co-op horror in the Backrooms: 30+ levels of liminal spaces, goal — get out.",
     storeUrl: "https://store.steampowered.com/app/1943950/",
     imageUrl: steamImage(1943950),
     youtubeUrl: youtube("RPT9in5oKfE")
@@ -3234,7 +3234,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "remote-play",
     price: 499,
-    verdict: "Сказочный кооперативный ремейк: два брата, одно путешествие, легендарный финал.",
+    verdict: "Fairy-tale co-op remake: two brothers, one journey, legendary ending.",
     storeUrl: "https://store.steampowered.com/app/2153350/",
     imageUrl: steamImage(2153350),
     youtubeUrl: youtube("DmDABD1chLk")
@@ -3250,7 +3250,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "none",
     price: 149,
-    verdict: "Soulslike про мух-рыцарей в духе старой RuneScape: 3-5 часов, кооп до 4, явный финал.",
+    verdict: "Soulslike about fly knights in old-RuneScape vibes: 3–5 hours, co-op up to 4, clear ending.",
     storeUrl: "https://store.steampowered.com/app/3108510/",
     imageUrl: steamImage(3108510),
     youtubeUrl: youtube("vh0PUkk4QbQ")
@@ -3266,7 +3266,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Top-down action-RPG про роботов с тикающим таймером: коротко, остро, реальный финал.",
+    verdict: "Top-down action RPG about robots with a ticking timer: short, sharp, real finale.",
     storeUrl: "https://store.steampowered.com/app/1062110/",
     imageUrl: steamImage(1062110),
     youtubeUrl: youtube("pjZSW4DmEV4")
@@ -3282,7 +3282,7 @@ window.GAMES = [
     hours: 7,
     oneCopy: "remote-play",
     price: 379,
-    verdict: "Интерактивная драма Xbox Game Studios: голосуете за решения семьи, до 8 игроков, финал.",
+    verdict: "Xbox Game Studios interactive drama: vote on family decisions, up to 8 players, ending.",
     storeUrl: "https://store.steampowered.com/app/1341820/",
     imageUrl: steamImage(1341820),
     youtubeUrl: youtube("8tGpacDb7C0")
@@ -3298,7 +3298,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "remote-play",
     price: 146,
-    verdict: "Два пингвина связаны верёвкой — лезете на гору вместе. Дойти до вершины = финал.",
+    verdict: "Two penguins tied by rope — climb a mountain together. Reach the top = end.",
     storeUrl: "https://store.steampowered.com/app/1607680/",
     imageUrl: steamImage(1607680),
     youtubeUrl: youtube("40mEdhodBbk")
@@ -3314,7 +3314,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 225,
-    verdict: "Кооп-хоррор: история Джоан в лабиринтах, до 8 игроков, главы с финалом.",
+    verdict: "Co-op horror: Joan's story through labyrinths, up to 8 players, chapters with a finale.",
     storeUrl: "https://store.steampowered.com/app/1302240/",
     imageUrl: steamImage(1302240),
     youtubeUrl: youtube("VCRwtcTgmE4")
@@ -3330,7 +3330,7 @@ window.GAMES = [
     hours: 70,
     oneCopy: "none",
     price: 628,
-    verdict: "Средневековый тактический RPG про отряд наёмников: 5 регионов, главный сюжет с концовкой.",
+    verdict: "Medieval tactical RPG about a mercenary band: 5 regions, main story with an ending.",
     storeUrl: "https://store.steampowered.com/app/1527950/",
     imageUrl: steamImage(1527950),
     youtubeUrl: youtube("ECF4SLQcKs8")
@@ -3346,7 +3346,7 @@ window.GAMES = [
     hours: 9,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Ретро-метроидвания 8-bit стиля с моральным выбором: Good/Evil ending, ко-оп Deux or Die.",
+    verdict: "Retro 8-bit metroidvania with a moral choice: Good/Evil ending, Deux or Die co-op.",
     storeUrl: "https://store.steampowered.com/app/374190/",
     imageUrl: steamImage(374190),
     youtubeUrl: youtube("iIIt0kFQx3Q")
@@ -3362,7 +3362,7 @@ window.GAMES = [
     hours: 7,
     oneCopy: "remote-play",
     price: 325,
-    verdict: "Сиквел кооп-хейст-стелса: 4 игрока, структурная кампания + процедурные миссии.",
+    verdict: "Sequel to the co-op heist stealth: 4 players, structured campaign + procedural missions.",
     storeUrl: "https://store.steampowered.com/app/1063030/",
     imageUrl: steamImage(1063030),
     youtubeUrl: youtube("CXpFDy4__is"),
@@ -3379,7 +3379,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 225,
-    verdict: "Асимметричный стелс: один в поле, второй хакер. 24 уровня в 3 корпорациях, чёткий финал.",
+    verdict: "Asymmetric stealth: one in the field, one hacking. 24 levels across 3 corporations, clear finale.",
     storeUrl: "https://store.steampowered.com/app/622770/",
     imageUrl: steamImage(622770),
     youtubeUrl: youtube("xxD71ikLAMA"),
@@ -3396,7 +3396,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "remote-play",
     price: 312,
-    verdict: "2.5D платформер в духе Donkey Kong Country: коротко, ярко, кооп с финалом.",
+    verdict: "2.5D platformer in the Donkey Kong Country vein: short, vivid, co-op with an ending.",
     storeUrl: "https://store.steampowered.com/app/2374190/",
     imageUrl: steamImage(2374190),
     youtubeUrl: youtube("6i0h-Gs0hUk")
@@ -3412,7 +3412,7 @@ window.GAMES = [
     hours: 14,
     oneCopy: "none",
     price: 2299,
-    verdict: "Rocksteady-шутер про отряд против Лиги: кампания заканчивается, сезоны мимо.",
+    verdict: "Rocksteady shooter about the squad vs the League: campaign ends; ignore the seasons.",
     storeUrl: "https://store.steampowered.com/app/315210/",
     imageUrl: steamImage(315210),
     youtubeUrl: youtube("bFmeHsaYn8Y"),
@@ -3429,7 +3429,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "remote-play",
     price: 1199,
-    verdict: "LEGO-кооператив по миру Horizon Zero Dawn: сюжет короткий, есть финал.",
+    verdict: "LEGO co-op set in the Horizon Zero Dawn world: short story, has an ending.",
     storeUrl: "https://store.steampowered.com/app/2428810/",
     imageUrl: steamImage(2428810),
     youtubeUrl: youtube("Gj_Kr8UNIlI"),
@@ -3446,7 +3446,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 1199,
-    verdict: "Кооп-аркадные гонки в Мексике с Horizon Adventure (главные истории) и финальной кампанией.",
+    verdict: "Co-op arcade racing in Mexico with Horizon Adventure (main stories) and a finale campaign.",
     storeUrl: "https://store.steampowered.com/app/1551360/",
     imageUrl: steamImage(1551360),
     youtubeUrl: youtube("o9CdBgGXJQ8")
@@ -3462,7 +3462,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "none",
     price: 49,
-    verdict: "Малый кооп-пазл серии We Were Here: парк аттракционов, асимметричные загадки, час-два игры.",
+    verdict: "Small co-op puzzler in the We Were Here series: amusement park, asymmetric riddles, 1–2h.",
     storeUrl: "https://store.steampowered.com/app/2296990/",
     imageUrl: steamImage(2296990),
     youtubeUrl: youtube("tK9Nl7g9rqQ")
@@ -3478,7 +3478,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 284,
-    verdict: "Слешер по пустыням от Deck13: песчаный сёрф, кооп на двоих, кампания с финалом.",
+    verdict: "Desert slasher from Deck13: sand-surf, two-player co-op, campaign with a finale.",
     storeUrl: "https://store.steampowered.com/app/1230530/",
     imageUrl: steamImage(1230530),
     youtubeUrl: youtube("gobdzzgnK5A")
@@ -3494,7 +3494,7 @@ window.GAMES = [
     hours: 35,
     oneCopy: "none",
     price: 1699,
-    verdict: "Ремастер легендарного ARPG: 5 актов через Diablo и Baal, до 8 игроков, кросс-плей.",
+    verdict: "Remaster of the legendary ARPG: 5 acts through Diablo and Baal, up to 8 players, cross-play.",
     storeUrl: "https://store.steampowered.com/app/2536520/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2536520/8cfd8f0d73075b10b3b58d9eccfee799baffab79/header.jpg",
     youtubeUrl: youtube("U1WoDuajPAU")
@@ -3510,7 +3510,7 @@ window.GAMES = [
     hours: 35,
     oneCopy: "none",
     price: 515,
-    verdict: "Тёмный ARPG в духе Titan Quest: кампания с финалом, кооп до 4, LAN тоже работает.",
+    verdict: "Dark ARPG in the Titan Quest vein: campaign with a finale, co-op up to 4, LAN also works.",
     storeUrl: "https://store.steampowered.com/app/219990/",
     imageUrl: steamImage(219990),
     youtubeUrl: youtube("_k6CZKON3pQ")
@@ -3526,7 +3526,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 55,
-    verdict: "Изометрическая Лара с тремя друзьями — храм Осириса, пазлы, кампания с финалом.",
+    verdict: "Isometric Lara with three friends — the Temple of Osiris, puzzles, campaign with a finale.",
     storeUrl: "https://store.steampowered.com/app/289690/",
     imageUrl: steamImage(289690),
     youtubeUrl: youtube("2HgBR5q17FM"),
@@ -3543,7 +3543,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "remote-play",
     price: 166,
-    verdict: "Кооп-роуглайт на 4: победить сумасшедшего колдуна Праксиса, восстановить Эмбер-древо.",
+    verdict: "4-player co-op roguelite: defeat the maddened sorcerer Praxis, restore the Ember Tree.",
     storeUrl: "https://store.steampowered.com/app/1135230/",
     imageUrl: steamImage(1135230),
     youtubeUrl: youtube("9LOyxu5Vb0g")
@@ -3559,7 +3559,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 400,
-    verdict: "Hades по Артуриане: 4 игрока, нужно зарубить порченного короля Артура и его рыцарей.",
+    verdict: "Hades in Arthurian dress: 4 players, must slay the corrupted King Arthur and his knights.",
     storeUrl: "https://store.steampowered.com/app/1763250/",
     imageUrl: steamImage(1763250),
     youtubeUrl: youtube("U9Z-V-zUhKs")
@@ -3575,7 +3575,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 499,
-    verdict: "Action-roguelite с MOBA-привкусом: 8 миров с боссами, до 4 игроков, билдов вагон.",
+    verdict: "Action roguelite with MOBA flavor: 8 worlds with bosses, up to 4 players, tons of builds.",
     storeUrl: "https://store.steampowered.com/app/2444750/",
     imageUrl: steamImage(2444750),
     youtubeUrl: youtube("2gHAk3GOt8M")
@@ -3591,7 +3591,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "remote-play",
     price: 0,
-    verdict: "Бесплатный кооп-пазл: два минотавра в лабиринте, 30 уровней с финалом. Шедевр короче.",
+    verdict: "Free co-op puzzler: two minotaurs in a labyrinth, 30 levels with a finale. A short masterpiece.",
     storeUrl: "https://store.steampowered.com/app/791470/",
     imageUrl: steamImage(791470),
     youtubeUrl: youtube("ruIe0bSrL-g")
@@ -3607,7 +3607,7 @@ window.GAMES = [
     hours: 28,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Покемоны на кассетах с фьюжном: открытый мир, кооп до 8, сюжет с Архангелами завершается.",
+    verdict: "Pokémon on cassettes with fusion: open world, co-op up to 8, story with Archangels finishes.",
     storeUrl: "https://store.steampowered.com/app/1321440/",
     imageUrl: steamImage(1321440),
     youtubeUrl: youtube("wTvs6kmyYtY")
@@ -3623,7 +3623,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 325,
-    verdict: "Пиксель-роуглайт: 4 героя поднимаются на вершину Forsaken Spire к финальному боссу.",
+    verdict: "Pixel roguelite: 4 heroes climb the Forsaken Spire to the final boss.",
     storeUrl: "https://store.steampowered.com/app/677120/",
     imageUrl: steamImage(677120),
     youtubeUrl: youtube("sC664vLN1J8")
@@ -3639,7 +3639,7 @@ window.GAMES = [
     hours: 14,
     oneCopy: "none",
     price: 92,
-    verdict: "Сиквел Hammerwatch: открытый мир, кооп до 4, сюжет про возвращение Тёмного Колдуна.",
+    verdict: "Hammerwatch sequel: open world, co-op up to 4, story about the Dark Sorcerer's return.",
     storeUrl: "https://store.steampowered.com/app/1538970/",
     imageUrl: steamImage(1538970),
     youtubeUrl: youtube("wN3WEYj23j0"),
@@ -3656,7 +3656,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Overcooked + автоматизация: 15 дней до франшизы, до 4 поваров, чёткая цель ресторана.",
+    verdict: "Overcooked plus automation: 15 days to franchise, up to 4 cooks, clear restaurant goal.",
     storeUrl: "https://store.steampowered.com/app/1599600/",
     imageUrl: steamImage(1599600),
     youtubeUrl: youtube("ICsPqUYxvAo")
@@ -3672,7 +3672,7 @@ window.GAMES = [
     hours: 2,
     oneCopy: "remote-play",
     price: 0,
-    verdict: "Бесплатная игра-площадка для двоих: маленькие пазлы, спокойный темп, явный финал.",
+    verdict: "Free playground game for two: small puzzles, calm pace, explicit ending.",
     storeUrl: "https://store.steampowered.com/app/1860570/",
     imageUrl: steamImage(1860570),
     youtubeUrl: youtube("phN4T1D9-xg")
@@ -3688,7 +3688,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 649,
-    verdict: "Эпизодический Resident Evil: Клэр и Мойра, Барри и Натали, кооп-сплит, явный финал.",
+    verdict: "Episodic Resident Evil: Claire and Moira, Barry and Natalia, split co-op, clear finale.",
     storeUrl: "https://store.steampowered.com/app/287290/",
     imageUrl: steamImage(287290),
     youtubeUrl: youtube("n-cgqb9XS8A")
@@ -3704,7 +3704,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 329,
-    verdict: "Сиквел роуглайт-мага: 3D-вид, 4 игрока, спинит-комбо. Финал есть, но отзывы смешанные.",
+    verdict: "Roguelite-mage sequel: 3D view, 4 players, spinning combos. Has an ending but reviews mixed.",
     storeUrl: "https://store.steampowered.com/app/2193540/",
     imageUrl: steamImage(2193540),
     youtubeUrl: youtube("t6pD8H9t2Qs"),
@@ -3721,7 +3721,7 @@ window.GAMES = [
     hours: 35,
     oneCopy: "none",
     price: 699,
-    verdict: "Кооп до 4: 100 миссий против инопланетных Праймеров, кампания с финалом, 5 сложностей.",
+    verdict: "Co-op up to 4: 100 missions against alien Primers, campaign with a finale, 5 difficulties.",
     storeUrl: "https://store.steampowered.com/app/1007040/",
     imageUrl: steamImage(1007040),
     youtubeUrl: youtube("ypblzOHZsPM")
@@ -3737,7 +3737,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 600,
-    verdict: "Кооп-роуглайт с пошаговыми боями: спасти истории Атенея, финальный босс Unbound.",
+    verdict: "Co-op roguelite with turn-based combat: save the Atheneum's stories, final boss Unbound.",
     storeUrl: "https://store.steampowered.com/app/1062810/",
     imageUrl: steamImage(1062810),
     youtubeUrl: youtube("j96YAtJYcIs")
@@ -3753,7 +3753,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 999,
-    verdict: "Souls-like FF от Team Ninja: 3-игроки в большинстве миссий, кампания с финальным боссом.",
+    verdict: "Team Ninja's Souls-like FF: 3 players in most missions, campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/1358700/",
     imageUrl: steamImage(1358700),
     youtubeUrl: youtube("EWfE2XEA-K0"),
@@ -3770,7 +3770,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Бури тоннели, защищай базу: 27-миссионная кампания + процедурки, кооп через split-screen/RPT.",
+    verdict: "Dig tunnels, defend the base: 27-mission campaign + procedurals, co-op via split-screen/RPT.",
     storeUrl: "https://store.steampowered.com/app/1713810/",
     imageUrl: steamImage(1713810),
     youtubeUrl: youtube("wAd37WsWkqA")
@@ -3786,7 +3786,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Сурвайвл на тихоокеанских островах: 3 босса + ремонт самолёта = реальный финал.",
+    verdict: "Survival on Pacific islands: 3 bosses + repair the plane = a real ending.",
     storeUrl: "https://store.steampowered.com/app/313120/",
     imageUrl: steamImage(313120),
     youtubeUrl: youtube("BlIYhDVKNz8")
@@ -3802,7 +3802,7 @@ window.GAMES = [
     hours: 22,
     oneCopy: "none",
     price: 879,
-    verdict: "Метроидвания Игараси: True Ending про Гремори, кооп Chaos Mode на двоих.",
+    verdict: "Igarashi's metroidvania: True Ending about Gremory, Chaos Mode co-op for two.",
     storeUrl: "https://store.steampowered.com/app/692850/",
     imageUrl: steamImage(692850),
     youtubeUrl: youtube("-nwq4OJkXxE")
@@ -3818,7 +3818,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "remote-play",
     price: 600,
-    verdict: "Action-RPG в духе Mana: 3 героя, сюжет про восстание против богов, кооп после набора отряда.",
+    verdict: "Action RPG in the Mana style: 3 heroes, a story about rebellion against the gods, co-op once the party forms.",
     storeUrl: "https://store.steampowered.com/app/2176930/",
     imageUrl: steamImage(2176930),
     youtubeUrl: youtube("YUnQqsNTJoM"),
@@ -3835,7 +3835,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 1399,
-    verdict: "Япония вместо Старого света: Wirebug, Palamute, финал — All-mother Narwa. Кооп в хабе.",
+    verdict: "Japan in place of the Old World: Wirebug, Palamute, finale — All-mother Narwa. Co-op in the hub.",
     storeUrl: "https://store.steampowered.com/app/1446780/",
     imageUrl: steamImage(1446780),
     youtubeUrl: youtube("nmoh6GfgZss")
@@ -3851,7 +3851,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 279,
-    verdict: "Скандинавский survival-roguelite: Saga Mode с Hel/Fenrir/Surtr и финальной кат-сценой.",
+    verdict: "Scandinavian survival-roguelite: Saga Mode with Hel/Fenrir/Surtr and a finale cutscene.",
     storeUrl: "https://store.steampowered.com/app/858820/",
     imageUrl: steamImage(858820),
     youtubeUrl: youtube("jBzZ9OtyD7Q")
@@ -3867,12 +3867,12 @@ window.GAMES = [
     hours: 6,
     oneCopy: "friend-pass",
     price: 799,
-    verdict: "Спрятано: уже пройдено. Полностью построено вокруг дуо.",
+    verdict: "Hazelight's co-op-only prison break — built end-to-end for two players. Friend Pass covers the second copy.",
     storeUrl: "https://store.steampowered.com/app/1222700/A_Way_Out/",
     imageUrl: steamImage(1222700),
     youtubeUrl: youtube("87HIFtmB948"),
     hidden: true,
-    hiddenReason: "Уже играли"
+    hiddenReason: "Played"
   },
   {
     id: "it-takes-two",
@@ -3885,12 +3885,12 @@ window.GAMES = [
     hours: 12,
     oneCopy: "friend-pass",
     price: 999,
-    verdict: "Спрятано: уже пройдено. Friend's Pass закрывает покупку второй копии.",
+    verdict: "Hazelight's whimsical platformer-puzzler about a marriage on the rocks. Friend's Pass covers copy two.",
     storeUrl: "https://store.steampowered.com/app/1426210/It_Takes_Two/",
     imageUrl: steamImage(1426210),
     youtubeUrl: youtube("SPa5JXzPaAk"),
     hidden: true,
-    hiddenReason: "Уже играли"
+    hiddenReason: "Played"
   },
   {
     id: "split-fiction",
@@ -3903,12 +3903,12 @@ window.GAMES = [
     hours: 15,
     oneCopy: "friend-pass",
     price: 1299,
-    verdict: "Спрятано: уже пройдено. Эталонная проверка поля Friend Pass.",
+    verdict: "Hazelight's sci-fi/fantasy follow-up to It Takes Two. The benchmark Friend Pass game.",
     storeUrl: "https://store.steampowered.com/app/2001120/Split_Fiction/",
     imageUrl: steamImage(2001120),
     youtubeUrl: youtube("fcwngWPXQtg"),
     hidden: true,
-    hiddenReason: "Уже играли"
+    hiddenReason: "Played"
   },
   {
     id: "resident-evil-5",
@@ -3921,12 +3921,12 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 649,
-    verdict: "Спрятано: уже пройдено. Классический кооп-боевик Capcom.",
+    verdict: "Capcom's classic co-op shooter set in Africa — the campaign is built around two-player play.",
     storeUrl: "https://store.steampowered.com/app/21690/Resident_Evil_5/",
     imageUrl: steamImage(21690),
     youtubeUrl: youtube("qUsTgI0cs4c"),
     hidden: true,
-    hiddenReason: "Уже играли"
+    hiddenReason: "Played"
   },
   {
     id: "resident-evil-6",
@@ -3939,12 +3939,12 @@ window.GAMES = [
     hours: 21,
     oneCopy: "none",
     price: 649,
-    verdict: "Спрятано: уже пройдено. Много кампаний, много хаоса, спорная репутация.",
+    verdict: "Sprawling four-campaign action shooter. Divisive reception but bottomless co-op chaos.",
     storeUrl: "https://store.steampowered.com/app/221040/Resident_Evil_6/",
     imageUrl: steamImage(221040),
     youtubeUrl: youtube("mI6TntXFfZY"),
     hidden: true,
-    hiddenReason: "Уже играли"
+    hiddenReason: "Played"
   },
   {
     id: "dead-space-3",
@@ -3957,12 +3957,12 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 699,
-    verdict: "Спрятано: уже пройдено. Кооп сильнее меняет тон игры, чем в первых двух частях.",
+    verdict: "Necromorphs in the snow. The co-op pivot changes the tone more than RE5 or RE6 did.",
     storeUrl: "https://store.steampowered.com/app/1238060/Dead_Space_3/",
     imageUrl: steamImage(1238060),
     youtubeUrl: youtube("cZ3mad7SOBg"),
     hidden: true,
-    hiddenReason: "Уже играли"
+    hiddenReason: "Played"
   },
   {
     id: "army-of-two",
@@ -3975,11 +3975,11 @@ window.GAMES = [
     hours: 7,
     oneCopy: "none",
     price: 0,
-    verdict: "Спрятано: уже пройдено и оставлено как референс. Не является активным PC-кандидатом.",
+    verdict: "The original two-man military shooter. Kept as a reference point, not an active PC pick.",
     storeUrl: "https://en.wikipedia.org/wiki/Army_of_Two_(video_game)",
     imageUrl: "https://i.ytimg.com/vi/WbggbjbHphA/hqdefault.jpg",
     youtubeUrl: youtube("WbggbjbHphA"),
     hidden: true,
-    hiddenReason: "Уже играли / референс"
+    hiddenReason: "Played / reference"
   }
 ];

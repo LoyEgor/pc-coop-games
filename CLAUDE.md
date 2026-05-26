@@ -68,7 +68,7 @@ If you're not 100% sure a game has an ending, **do not add it**. Quality > volum
   hours: 12,                              // "Main + a bit" — typical playthrough time. INTEGER only, no fractions — see WHY-3
   oneCopy: "none",                        // "none" (each needs a copy) | "remote-play" | "friend-pass"
   price: 599,                             // UAH integer from Steam cc=ua
-  verdict: "Краткое описание.",           // ≤120 chars Russian
+  verdict: "Short description.",          // ≤120 chars English
   storeUrl: "https://store.steampowered.com/app/<id>/",
   imageUrl: steamImage(<id>),             // helper; expands to header.jpg
   youtubeUrl: youtube("VIDEO_ID")         // helper; MUST be a real gameplay video, NOT a search URL
@@ -120,6 +120,8 @@ For automated overnight runs, use the launchers:
 - **Mac / Linux**: `./run-coop-hunter.sh` (cascading phases 1-4, auto-push every 25 games)
 
 See `.claude/skills/coop-hunter/README.md` for full skill documentation.
+
+**There are two skills in this project** — `coop-hunter` (grows the catalog) and `fact-checker` (verifies every existing entry). Quick brief covering both, with launchers and watch-progress commands: [`.claude/skills/README.md`](.claude/skills/README.md). Read that first if you're new to the repo.
 
 ### Skill rules (summary)
 - Sequential, not parallel. Sleep 1.5s between Steam API calls (rate-limit).
@@ -197,7 +199,7 @@ Do not touch `.github/`, GitHub Actions, or any deployment workflow without expl
 
 ## 9. Persona and tone
 
-The owner is Russian-speaking and direct. Verdicts and labels in `data.js` are in Russian. UI strings are in Russian. Code comments and LLM-facing docs (like this file) are in English where helpful for any future LLM, Russian where it's user-facing.
+The owner is Russian-speaking and direct, but the public site is **English-only**. All user-facing strings in `data.js` (the `verdict` field, `hiddenReason`), `app.js` (ONE_COPY / ENDING_TYPE labels, filter labels, captions), and `index.html` (`<h1>`, subtitle, button text, column headers) are in English. Code comments and LLM-facing docs (like this file) are in English. The owner himself communicates in Russian — that's a session-level concern, not a data/UI concern.
 
 When asked to make changes:
 - Be concise.
