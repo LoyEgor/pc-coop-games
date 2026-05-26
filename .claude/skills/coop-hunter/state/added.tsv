@@ -33,3 +33,7 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-26T00:55:00Z	enshrouded	Enshrouded	curated_top_lists	549	86.0
 2026-05-26T00:55:00Z	palworld	Palworld	curated_top_lists	600	94.3
 2026-05-26T00:55:00Z	sea-of-thieves	Sea of Thieves	curated_top_lists	1030	88.7
+2026-05-26T01:30:00Z	astroneer	ASTRONEER	steamdb_coop_campaign	600	91.9
+2026-05-26T01:32:00Z	valheim	Valheim	steamdb_coop_campaign	539	94.0
+2026-05-26T01:35:00Z	lotr-return-to-moria	The Lord of the Rings: Return to Moria	steamdb_coop_campaign	600	81.5
+2026-05-26T01:38:00Z	heroes-of-hammerwatch-2	Heroes of Hammerwatch II	steamdb_coop_campaign	419	83.1

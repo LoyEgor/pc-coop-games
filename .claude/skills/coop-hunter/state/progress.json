@@ -1,11 +1,16 @@
 {
   "current_source_idx": 0,
-  "current_offset": 34,
-  "added_count": 34,
-  "skipped_count": 7,
+  "current_offset": 38,
+  "added_count": 38,
+  "skipped_count": 11,
   "last_validation_at": 0,
   "completed_sources": [],
   "done": false,
-  "last_added": "sea-of-thieves",
-  "last_run_timestamp": "2026-05-26T01:00:00Z"
+  "last_added": "heroes-of-hammerwatch-2",
+  "last_run_timestamp": "2026-05-26T01:40:00Z",
+  "current_phase": 1,
+  "max_phase": 4,
+  "phase_start_count": 0,
+  "auto_push_every_n": 25,
+  "last_push_at": 34
 }

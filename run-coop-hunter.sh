@@ -111,46 +111,42 @@ echo ""
 
 # -------- the one-shot prompt --------
 GOAL_PROMPT=$(cat <<'PROMPT_EOF'
-/goal Run the coop-hunter skill from .claude/skills/coop-hunter/ to expand data.js with new PC co-op games.
+/goal Run the coop-hunter skill (.claude/skills/coop-hunter/) to expand data.js with PC co-op games and fix broken entries. Mac overnight; progress.json already has max_phase=4 and auto_push_every_n=25.
 
-This is the macOS overnight run. progress.json has been seeded with max_phase=4 and auto_push_every_n=25.
+Read SKILL.md, classification.md, sources.json first — they hold the full procedure. This prompt is the contract; the details live in those files.
 
-Strict rules (read SKILL.md, classification.md, and sources.json before starting):
+RULES (non-negotiable):
 
-1. Process candidates sequentially. Sleep 1.5s between Steam API calls. Process ONLY 3-5 candidates per turn before returning control.
+1. Sequential, 3–5 candidates per turn, 1.5s sleep between Steam API calls.
 
-2. Persist progress to state/progress.json AFTER EVERY game added or skipped. Append to state/added.tsv and state/skipped.tsv. Non-negotiable.
+2. Persist state after every add or skip: progress.json + added.tsv / skipped.tsv. Resume relies on this — without it a crash loses work.
 
-3. Run validation pass (spawn fresh general-purpose Agent) every 50 added games. Log failures to state/validation-fails.tsv.
+3. Auto-push every 25 adds per SKILL.md "Auto-push". Push failure → log push-fails.tsv, continue, never halt.
 
-4. AUTO-PUSH IS ENABLED. After every 25 added games (since the last push), commit data.js and the state files to git and push to origin. Use the exact procedure in SKILL.md "Auto-push" section. If git push fails, log to state/push-fails.tsv and continue — do not halt.
+4. Cascade phases 1→4. Phase finished with yield>0 AND current_phase<4 → escalate. Phase 4 fully exhausted → set done=true.
 
-5. CASCADING IS ENABLED. When all sources of the current phase are completed:
-   - If that phase added > 0 games AND current_phase < 4 → escalate to next phase (procedure in SKILL.md "Phase transition logic").
-   - If a phase adds 0 games OR current_phase == 4 is exhausted with 0 new → set done=true and STOP.
+5. Phase 4 = revalidate_existing (auto-removes endless via remove_entry.py, auto-fixes YouTube via fix_youtube.py, auto-fixes images via fix_image.py) + reeval_skipped + steam_more_like_this + websearch_niche_queries + drill sources (Backloggd top-completed, Steam community, YouTube curator playlists, Reddit just_finished, Wikipedia). Run revalidate_existing BEFORE declaring done.
 
-6. Phase 4 has special source methods (revalidate_existing, reeval_skipped, steam_more_like_this, websearch_queries). Read SKILL.md "Phase 4 source methods" for each. revalidate_existing is especially important — it catches false positives like Deep Rock Galactic / Lethal Company / R.E.P.O. that may have been added as finite but are actually endless. Log mismatches to state/bad-existing.tsv (do NOT auto-remove entries).
+6. NEVER ASK QUESTIONS. Use classification.md. Ambiguous candidate → skipped.tsv reason "ambiguous", continue. The user is asleep.
 
-7. NEVER ASK QUESTIONS. For every decision, use the deterministic rules in classification.md. If a candidate is genuinely ambiguous, log to skipped.tsv with reason "ambiguous" and continue. The user is asleep.
+7. NEVER touch app.js / index.html / styles.css. data.js only via append_entry.py (exits 4 without a real 11-char video_id; exits 3 if id is in removed-entries.tsv).
 
-8. If a tool call fails, retry once with 5s extra sleep. On second failure, log and continue. Do NOT halt for transient errors.
+8. DRILL MODE — don't give up on the first failure:
+   - YouTube not found → run §8's 6-query cascade, then Steam page scrape, then youtube.com/results, then Reddit. Refuse only after all exhaust.
+   - Source 403/404/empty → use the fallback in state/NOTES.md, write a substitute query, or pull from a different domain.
+   - Phase yield 0 → re-check with a fresh page-window before declaring exhausted.
+   - Niche WebSearches dry → Wikipedia "List of cooperative video games", Backloggd top-completed, Steam community discussions.
+   - Treat "I couldn't find X" as a hypothesis to disprove, not an exit signal.
 
-9. Do NOT modify app.js, index.html, or styles.css. Modify data.js only via scripts/append_entry.py.
+9. Tool call fails → retry once with +5s sleep. Second fail → log, continue.
 
-10. Spawn sub-agents one at a time (sequentially, not in parallel) when delegating source-scraping or candidate evaluation. Each sub-agent should handle ONE specific task and return its output. This keeps per-turn token usage modest.
+10. Sub-agents sequentially, one task each, not in parallel.
 
-11. DRILL MODE. When something doesn't return a result, escalate before giving up:
-    - YouTube video not found on first WebSearch query → run the full 6-query cascade in SKILL.md §8, then try Steam page scraping, then `https://www.youtube.com/results?...`. Only refuse after every alternative is exhausted.
-    - Source returns 403 / 404 / empty → try the documented fallback in state/NOTES.md (e.g. SteamDB blocked → use store.steampowered.com/search), or write your own substitute query, or pull a similar list from a different domain.
-    - A phase yields 0 games → double-check by re-running source 0 of that phase with a different page-window before declaring it exhausted.
-    - Existing entry has broken image → call fix_image.py; broken video → run the §8 cascade and call fix_youtube.py. The user explicitly wants ZERO broken images / broken videos in the table — the modal opens the YouTube iframe and a search URL cannot be embedded.
-    - Out-of-the-box: if 8 niche WebSearches return nothing new, try Wikipedia "List of cooperative video games", Backloggd top-completed, Steam community discussions. Treat "no candidate found" as a hypothesis to disprove, not an exit condition.
+Stop only when ALL hold: every source in every phase exhausted, phase 4 revalidate_existing actually ran, every auto-fixable image/video got fixed-or-logged-as-irrecoverable. Phase 4 yield=0 alone is NOT enough.
 
-12. The only legitimate stopping conditions: (a) every source in every phase exhausted with 0 cumulative new games AND every existing entry has been re-validated AND every broken video/image has been fixed-or-logged-as-irrecoverable. Phase 4 having "yield = 0" is not enough by itself — make sure revalidation actually ran and any auto-fixable entries got fixed before reporting done.
+Output every 10 adds: "[P=phase N=added K=skipped src=source_id last=<title>]".
 
-Continue until done=true. Output a single summary line every 10 additions: "[P=phase N=added K=skipped src=source_id last=<title>]".
-
-Make autonomous, drill-mode, rule-based decisions. When in doubt about adding a game → SKIP (quality beats volume). When in doubt about giving up on a search → KEEP DRILLING (the user explicitly wants out-of-the-box alternatives). The user will review the morning's git history.
+Doubt about adding → SKIP. Doubt about giving up on a search → KEEP DRILLING. User reviews the git history in the morning.
 PROMPT_EOF
 )
 

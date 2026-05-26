@@ -6,3 +6,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T00:50:00Z	Ancient Dungeon	vr_only	steamdb_coop_campaign	VR Only category
 2026-05-26T00:50:00Z	Levelhead	endless	steamdb_coop_campaign	Massively Multiplayer + Free To Play
 2026-05-26T00:50:00Z	Slap City	pvp_primary	steamdb_coop_campaign	smash-clone with primarily PvP content, limited co-op
+2026-05-26T01:40:00Z	Warhammer 40000 Darktide	endless_misclassified	steamdb_coop_campaign	mission-based service game, seasons/updates, no defined ending
+2026-05-26T01:40:00Z	ARK Survival Evolved	blocklisted_endless	curated	on hardcoded blocklist
+2026-05-26T01:40:00Z	Conan Exiles	endless	curated	Massively Multiplayer category, sandbox survival no win-condition
+2026-05-26T01:40:00Z	Project Zomboid	blocklisted_endless	curated	on hardcoded blocklist

@@ -25,22 +25,22 @@
 
 ### 1. Verify state
 ```bash
-cd "C:/Users/loyeg/OneDrive/Documents/Games for Two 2"
-grep -c "^    id:" data.js   # should be 159
+cd <repo root>          # on this Mac: /Volumes/Work/Projects/pc-coop-games
+grep -c "^    id:" data.js   # current count (143 after the 2026-05-26 cleanup)
 git diff data.js | head      # confirm only additions, no replacements
 ```
 
-### 2. data.js write workflow (IMPORTANT — Windows encoding gotcha)
-- **Do not** use `python -c '{...}' | python append_entry.py` for entries with
-  Russian/Cyrillic text. Windows default codec (cp1252) corrupts the JSON pipe
-  and the script truncates `data.js` to 0 bytes on the failed `write_text()`.
-- **Use `scripts/batch_append.py`** with a JSON file (UTF-8, written via the
-  Write tool) and run with `PYTHONIOENCODING=utf-8`:
+### 2. data.js write workflow
+- Modern stack: macOS Python 3.9+ defaults to UTF-8 stdout, so the Cyrillic
+  pipe issue that bit the original Windows session no longer applies. Just run:
   ```bash
-  PYTHONIOENCODING=utf-8 /c/Users/loyeg/AppData/Local/Programs/Python/Python310/python.exe \
-    .claude/skills/coop-hunter/scripts/batch_append.py .claude/skills/coop-hunter/state/_batch.json
+  python3 .claude/skills/coop-hunter/scripts/append_entry.py < entry.json
   ```
-- The batch script is idempotent: rerunning skips ids already present.
+- For bulk inserts use `scripts/batch_append.py` with a JSON file (UTF-8).
+  Both scripts are idempotent: rerunning skips ids already present.
+- Historical note: on the original Windows session we had to set
+  `PYTHONIOENCODING=utf-8` and call Python via its full `.exe` path because
+  `cp1252` corrupted the pipe. Not needed on macOS / Linux.
 
 ### 3. Candidates already queried but NOT yet added (next batch ready)
 These were verified via Steam API in this session but the user asked to stop

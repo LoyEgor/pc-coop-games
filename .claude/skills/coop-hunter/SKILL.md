@@ -324,7 +324,7 @@ When all sources exhausted, write `state/summary.md`:
 - `WebSearch` — YouTube + ranked lists from Reddit/articles (when source needs it).
 - `Read` / `Edit` / `Write` — data.js + state files.
 - `Agent` — validation subagent.
-- `Python` (via Bash with full path `/c/Users/loyeg/AppData/Local/Programs/Python/Python310/python.exe`) — for parsing JSON, appending entries.
+- `Python` — call as `python3` (it's on PATH on macOS and modern Linux; on Windows use `py` or `python`). All scripts in `scripts/` have a `#!/usr/bin/env python3` shebang. They are tested on Python 3.9+; no third-party packages required (stdlib only: `urllib`, `json`, `re`, `pathlib`, `datetime`).
 
 ## What NOT to do
 
