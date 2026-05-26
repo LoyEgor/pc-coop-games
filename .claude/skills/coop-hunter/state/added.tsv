@@ -150,3 +150,6 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-26T16:20:00Z	deadzone-rogue	Deadzone: Rogue	websearch_roguelite_drill	291	83.4
 2026-05-26T16:20:00Z	godbreakers	GODBREAKERS	websearch_roguelite_drill	299	72.8
 2026-05-26T16:20:00Z	unsolved-case	Unsolved Case	websearch_detective_drill	0	87.7
+2026-05-26T16:35:00Z	sea-of-stars	Sea of Stars	websearch_jrpg_drill	700	89.1
+2026-05-26T16:40:00Z	river-city-girls-2	River City Girls 2	websearch_brawler_drill	479	85.4
+2026-05-26T16:40:00Z	mayhem-brawler	Mayhem Brawler	websearch_brawler_drill	415	89.0

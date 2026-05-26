@@ -77,3 +77,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T16:15:00Z	Hell Let Loose	pvp_primary	websearch_drill	primarily 50v50 PvP, no co-op campaign
 2026-05-26T16:15:00Z	Victory Heat Rally	no_coop	websearch_drill	PvP-only racing, no co-op category
 2026-05-26T16:15:00Z	Sonic Racing CrossWorlds	no_coop	websearch_drill	PvP-only racing
+2026-05-26T16:30:00Z	Aloft	endless	websearch_drill	Early Access sandbox with no defined ending
+2026-05-26T16:30:00Z	Ticking Together	not_enough_reviews	websearch_drill	44 reviews, below 50 threshold
+2026-05-26T16:30:00Z	Ra Ra BOOM	not_enough_reviews	websearch_drill	23 reviews
+2026-05-26T16:30:00Z	Foxhole	blocklisted_endless	websearch_drill	MMO persistent war
