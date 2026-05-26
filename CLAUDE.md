@@ -65,7 +65,7 @@ If you're not 100% sure a game has an ending, **do not add it**. Quality > volum
   endingType: "story",                    // one of: story | levels | arcade-goal | roguelite | survival-goal
   rating: 87,                             // Steam % positive (0-100). Always Steam — see WHY-1 below
   playersMax: 4,                          // max co-op count
-  hours: 12,                              // "Main + a bit" — typical playthrough time. Single number — see WHY-3
+  hours: 12,                              // "Main + a bit" — typical playthrough time. INTEGER only, no fractions — see WHY-3
   oneCopy: "none",                        // "none" (each needs a copy) | "remote-play" | "friend-pass"
   price: 599,                             // UAH integer from Steam cc=ua
   verdict: "Краткое описание.",           // ≤120 chars Russian
@@ -85,7 +85,7 @@ Optional flags:
 
 **WHY-2: `playersMax` is a number, not a label.** Previously there was a `playersLabel` like `"до 4, кампания"` or `"2, локально"` rendered as a sub-line. The owner decided this duplicated information: the number is already visible (`4`), and the multiplayer mode (local vs online vs Friend Pass) is already encoded in the `oneCopy` field which has its own column. So `playersLabel` was deleted. Show just `playersMax` as a single integer.
 
-**WHY-3: `hours` is one number, not a range.** Previously there was a `hoursLabel` like `"10-15"` rendered as a sub-line. The owner decided that for "should we play this tonight" a single representative number is more useful than a range. The number represents "Main Story + a bit" (a.k.a. HowLongToBeat's **Main + Extras**) — what a typical co-op duo will spend if they do the campaign plus a few side activities but don't go for 100% completion. This is also approximately what the previous `hours` field already stored, so removing `hoursLabel` was lossless. Use HowLongToBeat's "Main + Extras" if available; otherwise estimate.
+**WHY-3: `hours` is one integer, not a range and not a float.** Previously there was a `hoursLabel` like `"10-15"` rendered as a sub-line. The owner decided that for "should we play this tonight" a single representative number is more useful than a range. The number represents "Main Story + a bit" (a.k.a. HowLongToBeat's **Main + Extras**) — what a typical co-op duo will spend if they do the campaign plus a few side activities but don't go for 100% completion. This is also approximately what the previous `hours` field already stored, so removing `hoursLabel` was lossless. Use HowLongToBeat's "Main + Extras" if available; otherwise estimate. **Always store as an integer** — round HLTB values to the nearest whole hour. Fractional values like `8.5` are not allowed; the rendering layer and `append_entry.py` both round defensively, but skills must not emit fractions in the first place.
 
 ### Existing genre taxonomy (do not invent new ones)
 `Shooter, Third-person, FPS, Action, RPG, Tactics, Fantasy, Sci-fi, Puzzle, Adventure, Platformer, Stealth, Military, Open World, Loot, Horror, Soulslike, Isometric, Survival`

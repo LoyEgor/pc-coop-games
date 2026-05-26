@@ -156,7 +156,8 @@ Deep Rock Galactic, Lethal Company, R.E.P.O., REPO, Content Warning,
 Phasmophobia, Helldivers 2, Bloons TD 6, BTD6, Crab Champions,
 Schedule I, Schedule 1, Don't Starve Together, Project Zomboid,
 Killing Floor 2, Killing Floor 3, GTFO, Wobbly Life, WEBFISHING,
-Factorio, Planet Crafter, Boomerang Fu, Fortnite, Apex Legends,
+Factorio, Planet Crafter, The Planet Crafter, Boomerang Fu, Brotato,
+V Rising, Enshrouded, Core Keeper, Palworld, Fortnite, Apex Legends,
 Warzone, Destiny 2, War Thunder, World of Tanks, Path of Exile,
 Diablo Immortal, Genshin Impact, Lost Ark, New World, Albion Online,
 Sea of Thieves, Rust, ARK Survival Evolved, ARK Survival Ascended,
@@ -167,6 +168,8 @@ Stumble Guys, Brawlhalla, Multiversus, SMITE, Paladins, Splitgate
 ```
 
 Log skip reason as `blocklisted_endless`. Do not run any further checks.
+
+In addition: any id listed in `state/removed-entries.tsv` is auto-blocked at append time (`scripts/append_entry.py` exits 3). The skill should filter on title earlier to avoid wasted API calls — see SKILL.md §0 Gate B.
 
 ### Hard signals (any one = immediate skip)
 

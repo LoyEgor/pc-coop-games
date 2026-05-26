@@ -17,6 +17,26 @@ import re
 from pathlib import Path
 
 DATA_JS = Path(__file__).resolve().parents[3].parent / "data.js"
+REMOVED_TSV = Path(__file__).resolve().parents[1] / "state" / "removed-entries.tsv"
+
+
+def previously_removed_ids():
+    """Return set of ids ever auto-removed by remove_entry.py.
+
+    Any id in this file was once judged endless and must never be re-added,
+    even if a later source disagrees. This is the secondary gate behind the
+    classification.md hardcoded blocklist (§0 of SKILL.md).
+    """
+    if not REMOVED_TSV.exists():
+        return set()
+    ids = set()
+    for i, line in enumerate(REMOVED_TSV.read_text(encoding="utf-8").splitlines()):
+        if i == 0 or not line.strip():
+            continue
+        parts = line.split("\t")
+        if len(parts) >= 2 and parts[1]:
+            ids.add(parts[1])
+    return ids
 
 
 def render_entry(g):
@@ -33,14 +53,23 @@ def render_entry(g):
     else:
         image_expr = js_str(g.get("imageUrl", ""))
 
-    # youtubeUrl: prefer youtube("ID") helper if youtube_id provided; else fallback
-    if g.get("youtube_id"):
-        yt_expr = f'youtube("{g["youtube_id"]}")'
-    elif g.get("youtubeUrl", "").startswith("youtube") or g.get("youtubeUrl", "").startswith("youtubeSearch"):
-        yt_expr = g["youtubeUrl"]
-    else:
-        # last resort — wrap as search
-        yt_expr = f'youtubeSearch({js_str(g.get("title", ""))})'
+    # youtubeUrl: ONLY a real 11-char YouTube video id is accepted.
+    # The table opens a modal with the YouTube iframe; a search URL cannot be
+    # embedded. Silent youtubeSearch(...) fallback was the root cause of the
+    # 88 broken placeholders — explicit reject is the fix.
+    youtube_id = g.get("youtube_id")
+    if not youtube_id and g.get("youtubeUrl", "").startswith('youtube("'):
+        # Allow passing a pre-rendered youtube("ID") helper string.
+        m = re.match(r'^youtube\("([A-Za-z0-9_-]{11})"\)$', g["youtubeUrl"])
+        if m:
+            youtube_id = m.group(1)
+    if not youtube_id or not re.match(r'^[A-Za-z0-9_-]{11}$', youtube_id):
+        raise ValueError(
+            f"refusing to add '{g.get('id')}': a real 11-char YouTube video_id is "
+            f"required (got youtube_id={g.get('youtube_id')!r}, "
+            f"youtubeUrl={g.get('youtubeUrl')!r}). Drill the search per SKILL.md §8."
+        )
+    yt_expr = f'youtube("{youtube_id}")'
 
     needs_review = g.get("needs_review") or g.get("needs-review")
     review_line = ',\n    "needs-review": true' if needs_review else ""
@@ -57,7 +86,7 @@ def render_entry(g):
     endingType: {js_str(g["endingType"])},
     rating: {int(g["rating"])},
     playersMax: {int(g["playersMax"])},
-    hours: {g["hours"]},
+    hours: {int(round(float(g["hours"])))},
     oneCopy: {js_str(g["oneCopy"])},
     price: {int(g["price"])},
     verdict: {js_str(g["verdict"])},
@@ -85,7 +114,18 @@ def main():
         print(f"SKIP: id '{g['id']}' already present", file=sys.stderr)
         sys.exit(1)
 
-    new_entry = render_entry(g) + ","
+    # Reject ids that were previously auto-removed as endless. The skill ran
+    # itself in circles earlier (removed and re-added the same 16 endless
+    # games an hour apart); this gate prevents that.
+    if g["id"] in previously_removed_ids():
+        print(f"BLOCKED: id '{g['id']}' was previously removed as endless — refusing to re-add", file=sys.stderr)
+        sys.exit(3)
+
+    try:
+        new_entry = render_entry(g) + ","
+    except ValueError as e:
+        print(f"REJECT: {e}", file=sys.stderr)
+        sys.exit(4)
 
     # Insert before the first "hidden: true" block.
     # Find the opening brace of the entry that contains hidden: true and back up.

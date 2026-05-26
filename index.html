@@ -36,7 +36,6 @@
 
     <main>
       <section class="table-panel" aria-label="Таблица кооп-игр">
-        <div class="table-caption" id="tableCaption"></div>
         <div class="table-wrap">
           <table>
             <thead>
@@ -123,11 +122,22 @@
           </table>
           <div class="empty-state" id="emptyState">Ничего не найдено.</div>
         </div>
+        <div class="table-footer" id="tableCaption"></div>
       </section>
     </main>
   </div>
 
   <div class="filter-popover" id="filterPopover" hidden></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="video-modal" id="videoModal" hidden role="dialog" aria-modal="true" aria-label="Видео геймплея">
+    <div class="video-modal-backdrop" data-close></div>
+    <div class="video-modal-frame">
+      <button class="video-modal-close" type="button" data-close aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+      <iframe id="videoFrame" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
 </body>
 </html>

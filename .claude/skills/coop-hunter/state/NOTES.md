@@ -1,9 +1,15 @@
 # Coop-hunter session notes — 2026-05-26
 
 ## Status at stop
-- **Added: 34 games** (data.js: 125 original → 159 total)
+- **Added during prior run: 34 games** (data.js: 125 original → 159 total → 143 after 2026-05-26 blocklist cleanup)
 - **Skipped: 7** (see `skipped.tsv`)
 - **Source in progress: source 0** (SteamDB Co-op Campaign tag = 1685)
+
+## 2026-05-26 cleanup pass (manual review)
+- Removed 16 blocklisted endless games (Helldivers 2, Core Keeper, V Rising, Enshrouded, Palworld, Sea of Thieves, Deep Rock Galactic, Lethal Company, Bloons TD 6, Crab Champions, Schedule I, R.E.P.O., Boomerang Fu, Planet Crafter, Brotato, Don't Starve Together). See `removed-entries.tsv` for the second batch of removals at this timestamp.
+- Hardened `append_entry.py` to reject any id present in `removed-entries.tsv` (exit code 3). `SKILL.md` §0 now mandates this filter before any API calls.
+- Added `scripts/fix_youtube.py` and updated phase 4 `revalidate_existing` to auto-fix `youtubeSearch(...)` placeholders and auto-remove endless false positives (was only-log previously).
+- `progress.json` reset to `done: false` so the next `/goal` run resumes work.
 - Source 0 method: SteamDB direct returned 403, so used the **Steam Store search** as a proxy:
   `https://store.steampowered.com/search/?tags=1685&supportedlang=english&category2=9&os=win&sort_by=Reviews_DESC&page={N}`
 - Pages 1–5 of that search were scanned; useful candidates were processed.

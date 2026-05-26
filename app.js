@@ -45,7 +45,9 @@ const els = {
   toast: document.querySelector("#toast"),
   showHidden: document.querySelector("#showHiddenToggle"),
   themeButton: document.querySelector("#themeButton"),
-  resetFilters: document.querySelector("#resetFiltersButton")
+  resetFilters: document.querySelector("#resetFiltersButton"),
+  videoModal: document.querySelector("#videoModal"),
+  videoFrame: document.querySelector("#videoFrame")
 };
 
 const games = window.GAMES.map((game) => ({
@@ -210,7 +212,7 @@ function renderRow(game) {
       <td><span class="badge ${oneCopy.tone}">${escapeHtml(oneCopy.label)}</span></td>
       <td class="number-cell price-cell">${priceDisplay}</td>
       <td class="verdict-cell">${escapeHtml(game.verdict)}</td>
-      <td><a class="youtube-link" href="${escapeHtml(game.youtubeUrl)}" target="_blank" rel="noreferrer">Gameplay</a></td>
+      <td>${renderYoutubeButton(game)}</td>
       <td class="action-cell">
         <button class="icon-action" type="button" data-hide-id="${escapeHtml(game.id)}" aria-label="${hidden ? "Вернуть" : "Скрыть"} ${escapeHtml(game.title)}">
           ${hidden ? restoreIcon() : hideIcon()}
@@ -221,7 +223,39 @@ function renderRow(game) {
 }
 
 function trimNumber(value) {
-  return Number.isInteger(value) ? value : value.toFixed(1);
+  return Math.round(value);
+}
+
+function extractYoutubeId(url) {
+  if (typeof url !== "string") return null;
+  const match = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+function renderYoutubeButton(game) {
+  const videoId = extractYoutubeId(game.youtubeUrl);
+  const icon = `
+    <svg class="yt-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="yt-icon-body" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.378.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.12 2.136c1.873.505 9.378.505 9.378.505s7.505 0 9.378-.505a3.015 3.015 0 0 0 2.12-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"></path>
+      <path class="yt-icon-play" d="M9.75 15.568V8.432L15.818 12z"></path>
+    </svg>`;
+  const aria = `aria-label="Геймплей — ${escapeHtml(game.title)}"`;
+  if (videoId) {
+    return `<button class="youtube-link" type="button" data-video-id="${videoId}" data-video-title="${escapeHtml(game.title)}" ${aria}>${icon}</button>`;
+  }
+  return `<a class="youtube-link" href="${escapeHtml(game.youtubeUrl)}" target="_blank" rel="noreferrer" ${aria}>${icon}</a>`;
+}
+
+function openVideo(videoId) {
+  els.videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+  els.videoModal.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeVideo() {
+  els.videoFrame.src = "";
+  els.videoModal.hidden = true;
+  document.body.style.overflow = "";
 }
 
 function renderEndingType(value) {
@@ -409,6 +443,12 @@ function initEvents() {
   });
 
   els.body.addEventListener("click", (event) => {
+    const ytButton = event.target.closest("[data-video-id]");
+    if (ytButton) {
+      event.preventDefault();
+      openVideo(ytButton.dataset.videoId);
+      return;
+    }
     const button = event.target.closest("[data-hide-id]");
     if (!button) return;
     const game = games.find((item) => item.id === button.dataset.hideId);
@@ -417,6 +457,14 @@ function initEvents() {
     savePrefs();
     render();
     showToast(state.hiddenOverrides[game.id] ? "Игра скрыта" : "Игра возвращена");
+  });
+
+  els.videoModal.addEventListener("click", (event) => {
+    if (event.target.closest("[data-close]")) closeVideo();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !els.videoModal.hidden) closeVideo();
   });
 
   els.showHidden.addEventListener("change", () => {

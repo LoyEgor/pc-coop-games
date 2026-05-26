@@ -139,9 +139,18 @@ Strict rules (read SKILL.md, classification.md, and sources.json before starting
 
 10. Spawn sub-agents one at a time (sequentially, not in parallel) when delegating source-scraping or candidate evaluation. Each sub-agent should handle ONE specific task and return its output. This keeps per-turn token usage modest.
 
+11. DRILL MODE. When something doesn't return a result, escalate before giving up:
+    - YouTube video not found on first WebSearch query → run the full 6-query cascade in SKILL.md §8, then try Steam page scraping, then `https://www.youtube.com/results?...`. Only refuse after every alternative is exhausted.
+    - Source returns 403 / 404 / empty → try the documented fallback in state/NOTES.md (e.g. SteamDB blocked → use store.steampowered.com/search), or write your own substitute query, or pull a similar list from a different domain.
+    - A phase yields 0 games → double-check by re-running source 0 of that phase with a different page-window before declaring it exhausted.
+    - Existing entry has broken image → call fix_image.py; broken video → run the §8 cascade and call fix_youtube.py. The user explicitly wants ZERO broken images / broken videos in the table — the modal opens the YouTube iframe and a search URL cannot be embedded.
+    - Out-of-the-box: if 8 niche WebSearches return nothing new, try Wikipedia "List of cooperative video games", Backloggd top-completed, Steam community discussions. Treat "no candidate found" as a hypothesis to disprove, not an exit condition.
+
+12. The only legitimate stopping conditions: (a) every source in every phase exhausted with 0 cumulative new games AND every existing entry has been re-validated AND every broken video/image has been fixed-or-logged-as-irrecoverable. Phase 4 having "yield = 0" is not enough by itself — make sure revalidation actually ran and any auto-fixable entries got fixed before reporting done.
+
 Continue until done=true. Output a single summary line every 10 additions: "[P=phase N=added K=skipped src=source_id last=<title>]".
 
-Make autonomous, conservative, rule-based decisions. When in doubt, SKIP rather than add — quality beats volume. The user will review the morning's git history.
+Make autonomous, drill-mode, rule-based decisions. When in doubt about adding a game → SKIP (quality beats volume). When in doubt about giving up on a search → KEEP DRILLING (the user explicitly wants out-of-the-box alternatives). The user will review the morning's git history.
 PROMPT_EOF
 )
 
@@ -158,13 +167,27 @@ if command -v script >/dev/null 2>&1; then
 fi
 
 # -------- main loop --------
-MAX_RESTARTS=20
+# Crash restarts (process died for non-rate-limit reasons) are capped at
+# MAX_RESTARTS. Rate-limit pauses are NOT counted — we just sleep until the
+# Anthropic 5-hour window resets and try again. This lets the script run
+# overnight / multi-day without you having to babysit the token quota.
+MAX_RESTARTS=200
+RATE_LIMIT_SLEEP=1800   # 30 minutes — typical Anthropic 5h window reset granularity
+CRASH_SLEEP=30
 RUN=0
+CRASH_COUNT=0
+
+is_rate_limited() {
+  # Inspect the tail of the transcript for Anthropic rate-limit markers.
+  # The exact message has varied across versions; we match generously.
+  tail -n 400 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
+    'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'
+}
 
 while true; do
   RUN=$((RUN + 1))
   echo ""
-  echo "[$(date)] ============ Run #$RUN ============"
+  echo "[$(date)] ============ Run #$RUN (crashes counted: $CRASH_COUNT / $MAX_RESTARTS) ============"
   echo ""
 
   if [ "$USE_SCRIPT" -eq 1 ]; then
@@ -195,15 +218,28 @@ while true; do
     break
   fi
 
-  if [ "$RUN" -ge "$MAX_RESTARTS" ]; then
+  # Distinguish rate-limit vs other exit.
+  if is_rate_limited; then
+    HOURS=$((RATE_LIMIT_SLEEP / 3600))
+    MINS=$(((RATE_LIMIT_SLEEP % 3600) / 60))
     echo ""
-    echo "[$(date)] Max $MAX_RESTARTS restarts reached. Stopping." >&2
+    echo "[$(date)] Rate limit detected in transcript. Sleeping ${HOURS}h${MINS}m before resuming."
+    echo "[$(date)] This pause does NOT count toward the crash budget — the script will keep retrying"
+    echo "[$(date)] until the Anthropic 5-hour window resets. Ctrl+C to stop."
+    sleep "$RATE_LIMIT_SLEEP"
+    continue
+  fi
+
+  CRASH_COUNT=$((CRASH_COUNT + 1))
+  if [ "$CRASH_COUNT" -ge "$MAX_RESTARTS" ]; then
+    echo ""
+    echo "[$(date)] Reached $MAX_RESTARTS non-rate-limit crashes. Stopping." >&2
     break
   fi
 
   echo ""
-  echo "[$(date)] Restarting claude in 30s. Ctrl+C to stop."
-  sleep 30
+  echo "[$(date)] Restarting claude in ${CRASH_SLEEP}s. Ctrl+C to stop."
+  sleep "$CRASH_SLEEP"
 done
 
 # -------- final report --------

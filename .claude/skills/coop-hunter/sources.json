@@ -158,6 +158,60 @@
         "co-op shooter PC story campaign 2024 2025 2026"
       ],
       "note": "WebSearch for niche queries that might surface candidates not in any structured source."
+    },
+
+    {
+      "id": "backloggd_top_completed_coop",
+      "phase": 4,
+      "method": "webfetch",
+      "url_template": "https://www.backloggd.com/games/?genres%5B%5D=cooperative&platforms%5B%5D=pc&status%5B%5D=completed&sort=user_count&page={page}",
+      "page_size": 24,
+      "max_pages": 8,
+      "note": "Drill source: Backloggd, ordered by user-count instead of rating — surfaces less-discussed games that nonetheless people actually finished."
+    },
+    {
+      "id": "steam_community_recommendations",
+      "phase": 4,
+      "method": "webfetch",
+      "url_template": "https://steamcommunity.com/groups/coopgaming/discussions/0/?page={page}",
+      "page_size": 30,
+      "max_pages": 5,
+      "note": "Drill source: community discussions about co-op games. Posts often list 5-10 games each. Extract names, dedupe heavily."
+    },
+    {
+      "id": "youtube_curator_playlists",
+      "phase": 4,
+      "method": "websearch_queries",
+      "queries": [
+        "co-op games to play with friend 2024 playlist",
+        "best 2 player PC games with ending youtube playlist",
+        "underrated co-op campaign games steam",
+        "hidden gem co-op story games PC",
+        "split-screen story games PC steam",
+        "co-op survival games with ending steam",
+        "co-op puzzle games like Portal 2 steam",
+        "co-op metroidvania story games PC"
+      ],
+      "note": "Drill source: niche WebSearch surfacing games NOT in mainstream lists. Parse curator playlist titles + descriptions for game names."
+    },
+    {
+      "id": "reddit_just_finished",
+      "phase": 4,
+      "method": "webfetch",
+      "url_template": "https://www.reddit.com/r/CoopGaming/search.json?q=%22just+finished%22+OR+%22just+beat%22+OR+%22completed%22&restrict_sr=1&sort=top&t=year&limit=100&after={after}",
+      "page_size": 100,
+      "max_pages": 4,
+      "note": "Drill source: Reddit threads where people explicitly say they finished a co-op game = strong endless-filter signal."
+    },
+    {
+      "id": "wikipedia_coop_lists",
+      "phase": 4,
+      "method": "webfetch",
+      "urls": [
+        "https://en.wikipedia.org/wiki/List_of_cooperative_video_games",
+        "https://en.wikipedia.org/wiki/Local_multiplayer_video_game"
+      ],
+      "note": "Drill source: Wikipedia's curated lists of co-op games. Often surfaces older / obscure titles with verified ending status."
     }
   ],
   "_method_notes": {
