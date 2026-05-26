@@ -10,3 +10,11 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T01:40:00Z	ARK Survival Evolved	blocklisted_endless	curated	on hardcoded blocklist
 2026-05-26T01:40:00Z	Conan Exiles	endless	curated	Massively Multiplayer category, sandbox survival no win-condition
 2026-05-26T01:40:00Z	Project Zomboid	blocklisted_endless	curated	on hardcoded blocklist
+2026-05-26T02:10:00Z	Hades II	no_coop	gamerant_2025	categories list only Single-player, no co-op at this time
+2026-05-26T02:10:00Z	Wo Long Fallen Dynasty	low_quality	gamerant_2025	49.6%% positive — below 50%% threshold
+2026-05-26T02:25:00Z	GTFO	blocklisted_endless	misc	on hardcoded blocklist
+2026-05-26T02:25:00Z	Killing Floor 2	blocklisted_endless	misc	on hardcoded blocklist
+2026-05-26T02:25:00Z	Halo Infinite	no_coop	misc	Steam categories list PvP only — campaign co-op not surfaced
+2026-05-26T02:25:00Z	Sniper Ghost Warrior Contracts 2	no_coop	misc	Single-player only
+2026-05-26T02:25:00Z	Generation Zero	unclear_ending	misc	open world survival, no defined ending
+2026-05-26T02:25:00Z	Streets of Rogue 2	early_access	misc	still Coming soon — no reviews
