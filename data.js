@@ -2928,7 +2928,7 @@ window.GAMES = [
     playersMax: 3,
     hours: 22,
     oneCopy: "none",
-    price: 1800,
+    price: 1333,
     verdict: "Zombie RPG in Los Angeles: gory FLESH-system dismemberment, co-op campaign for 3.",
     storeUrl: "https://store.steampowered.com/app/934700/",
     imageUrl: steamImage(934700),
