@@ -36,3 +36,6 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T05:45:00Z	Mycopunk	endless	websearch_niche	mission-based looter shooter with events/limited-time content, no defined ending
 2026-05-26T05:45:00Z	Call of Duty Black Ops 7	no_steam_search_match	websearch_niche	search returned BO3 — BO7 may not be on Steam or under different name
 2026-05-26T05:50:00Z	Call of Duty Black Ops 7	low_quality	websearch_niche	39.0%% positive — well below 50%% threshold
+2026-05-26T06:25:00Z	The Talos Principle 2	no_coop	puzzle_drill	Single-player only — sequel did not add co-op
+2026-05-26T06:25:00Z	Shadow Puppeteer	not_enough_reviews	backloggd_drill	only 222 reviews — below threshold; old 2014 game
+2026-05-26T06:45:00Z	Bellwright	early_access	steam_community	Early Access, ~3 years until 1.0 — no defined ending
