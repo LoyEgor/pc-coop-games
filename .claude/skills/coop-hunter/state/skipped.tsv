@@ -71,3 +71,5 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T11:00:00Z	spirit-of-the-north-2	Spirit of the North 2	websearch_drill	no_coop	single-player only, no co-op category
 2026-05-26T11:00:00Z	monster-hunter-wilds	Monster Hunter Wilds	websearch_drill	endless	endgame focus, co-op story restrictions
 2026-05-26T15:45:00Z	Sniper Elite 5	duplicate	websearch_tactics_drill	already in data.js
+2026-05-26T16:00:00Z	Mage Arena	pvp_primary	websearch_drill	4v4 PvP voice spell battles, Early Access
+2026-05-26T16:00:00Z	Fae Farm	online_broken	websearch_drill	online co-op going offline Sept 2025
