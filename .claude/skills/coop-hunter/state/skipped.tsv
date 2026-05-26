@@ -39,3 +39,18 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T06:25:00Z	The Talos Principle 2	no_coop	puzzle_drill	Single-player only — sequel did not add co-op
 2026-05-26T06:25:00Z	Shadow Puppeteer	not_enough_reviews	backloggd_drill	only 222 reviews — below threshold; old 2014 game
 2026-05-26T06:45:00Z	Bellwright	early_access	steam_community	Early Access, ~3 years until 1.0 — no defined ending
+2026-05-26T07:15:00Z	paranoia-place	PARANOIA PLACE	websearch_2024_2025	endless	sessional rounds with random items, no narrative ending
+2026-05-26T07:35:00Z	endless-dungeon	ENDLESS Dungeon	websearch_drill	unclear_ending	roguelite without clear narrative ending — finite runs but infinite play
+2026-05-26T07:35:00Z	trinity-fusion	Trinity Fusion	websearch_drill	no_coop	steam categories show single-player only
+2026-05-26T07:35:00Z	goblin-stone	Goblin Stone	websearch_drill	no_coop	steam categories show single-player only
+2026-05-26T07:45:00Z	little-nightmares-3	Little Nightmares III	websearch_horror_drill	low_quality	46.5%% positive (below 50%% threshold)
+2026-05-26T07:45:00Z	dark-hours	Dark Hours	websearch_horror_drill	endless	sessional contract-based heists, no narrative ending
+2026-05-26T08:05:00Z	lonely-mountains-snow-riders	Lonely Mountains Snow Riders	websearch_drill	unclear_ending	leaderboard-focused racing without explicit campaign endpoint
+2026-05-26T08:05:00Z	sun-haven	Sun Haven	websearch_drill	unclear_ending	open-ended farming sim without confirmed story finale
+2026-05-26T08:05:00Z	dinkum	Dinkum	websearch_drill	unclear_ending	open-ended life-sim like Stardew/Animal Crossing — no defined win-state
+2026-05-26T08:25:00Z	skull-and-bones	Skull and Bones	websearch_drill	endless	Ubisoft live-service open-world pirate, no narrative conclusion
+2026-05-26T08:25:00Z	arma-3	Arma 3	websearch_drill	ambiguous	main campaign single-player; co-op only via Apex Protocol DLC + workshop missions
+2026-05-26T08:45:00Z	path-of-exile-2	Path of Exile 2	websearch_drill	blocklisted_mmo	Steam category MMO — HARD BLOCK per SKILL.md
+2026-05-26T08:45:00Z	titan-quest-2	Titan Quest II	websearch_drill	early_access	released Aug 2025 as EA; multiplayer in 'early preview state'
+2026-05-26T09:00:00Z	windblown	Windblown	websearch_drill	early_access	Motion Twin's roguelite still in EA — ending planned but not yet shipped
+2026-05-26T09:15:00Z	restaurats	Restaurats	websearch_drill	unclear_ending	roguelike cooking with procedural runs — no confirmed defined endpoint
