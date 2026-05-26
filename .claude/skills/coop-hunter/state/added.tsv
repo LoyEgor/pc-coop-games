@@ -74,3 +74,15 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-26T03:40:00Z	the-past-within	The Past Within	puzzle_search	149	94.7
 2026-05-26T03:50:00Z	pampas-selene	Pampas & Selene: The Maze of Demons	niche_search	225	90.8
 2026-05-26T03:50:00Z	blood-typers	Blood Typers	niche_search	274	94.8
+2026-05-26T04:45:00Z	generation-zero	Generation Zero	reeval_skipped	103	72.0
+2026-05-26T05:00:00Z	green-hell	Green Hell	steam_more_like_this	36	84.9
+2026-05-26T05:00:00Z	grounded-2	Grounded 2	steam_more_like_this	999	80.7
+2026-05-26T05:00:00Z	icarus	ICARUS	steam_more_like_this	700	74.5
+2026-05-26T05:00:00Z	smalland	Smalland: Survive the Wilds	steam_more_like_this	175	82.0
+2026-05-26T05:10:00Z	dead-island-2	Dead Island 2	websearch_niche	1800	77.2
+2026-05-26T05:20:00Z	tales-of-vesperia	Tales of Vesperia: Definitive Edition	websearch_niche	540	81.3
+2026-05-26T05:20:00Z	secret-of-mana	Secret of Mana	websearch_niche	479	68.4
+2026-05-26T05:20:00Z	moon-hunters	Moon Hunters	websearch_niche	335	78.1
+2026-05-26T05:35:00Z	spiritfarer	Spiritfarer	websearch_niche	600	95.0
+2026-05-26T05:35:00Z	wildermyth	Wildermyth	websearch_niche	329	94.7
+2026-05-26T05:40:00Z	anima-flux	Anima Flux	websearch_niche	415	84.7

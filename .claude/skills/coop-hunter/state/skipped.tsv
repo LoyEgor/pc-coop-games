@@ -26,3 +26,13 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T03:00:00Z	Subnautica 2	early_access	gamerant_2025	Early Access launched May 2026, no 1.0 ending confirmed yet
 2026-05-26T03:25:00Z	Forza Horizon 6	endless	steam_new_2026	racing live-service with seasons, no defined ending
 2026-05-26T03:25:00Z	Deep Rock Galactic Rogue Core	blocklisted_endless	steam_new_2026	DRG spinoff, same endless mission-grind structure
+2026-05-26T05:00:00Z	Subnautica	no_coop	steam_more_like_this	categories list Single-player only, no Multi-player
+2026-05-26T05:00:00Z	Subnautica Below Zero	no_coop	steam_more_like_this	categories list Single-player only, no Multi-player
+2026-05-26T05:20:00Z	Tales of Berseria	no_coop	websearch_niche	cats lack explicit Co-op category — only Multi-player/Shared Screen
+2026-05-26T05:20:00Z	Trials of Mana	no_coop	websearch_niche	Single-player only (remake dropped co-op)
+2026-05-26T05:35:00Z	Horizon Chase Turbo	pvp_primary	websearch_niche	cats list PvP only, no Co-op
+2026-05-26T05:35:00Z	Team Sonic Racing	pvp_primary	websearch_niche	cats list PvP only, no Co-op
+2026-05-26T05:45:00Z	Battlefield 6	no_coop	websearch_niche	categories list PvP/Online PvP only, no Co-op
+2026-05-26T05:45:00Z	Mycopunk	endless	websearch_niche	mission-based looter shooter with events/limited-time content, no defined ending
+2026-05-26T05:45:00Z	Call of Duty Black Ops 7	no_steam_search_match	websearch_niche	search returned BO3 — BO7 may not be on Steam or under different name
+2026-05-26T05:50:00Z	Call of Duty Black Ops 7	low_quality	websearch_niche	39.0%% positive — well below 50%% threshold
