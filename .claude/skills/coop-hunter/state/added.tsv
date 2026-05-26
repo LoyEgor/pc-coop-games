@@ -156,3 +156,6 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-26T17:00:00Z	blazing-chrome	Blazing Chrome	websearch_brawler_drill	360	87.5
 2026-05-26T17:10:00Z	bokura-planet	BOKURA: planet	websearch_puzzle_drill	122	74.8
 2026-05-26T17:10:00Z	get-together	Get Together: A Coop Adventure	websearch_puzzle_drill	179	67.3
+2026-05-26T17:20:00Z	tmnt-splintered-fate	Teenage Mutant Ninja Turtles: Splintered Fate	websearch_tmnt_drill	579	82.9
+2026-05-26T17:30:00Z	the-riftbreaker	The Riftbreaker	websearch_rts_drill	600	90.4
+2026-05-26T17:30:00Z	steel-division-2	Steel Division 2	websearch_rts_drill	1199	79.5
