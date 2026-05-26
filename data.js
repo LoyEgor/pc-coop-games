@@ -3646,6 +3646,38 @@ window.GAMES = [
     "needs-review": true
   },
   {
+    id: "plateup",
+    title: "PlateUp!",
+    year: 2022,
+    genres: ["Indie", "Action", "Puzzle"],
+    endingType: "roguelite",
+    rating: 95,
+    playersMax: 4,
+    hours: 12,
+    oneCopy: "remote-play",
+    price: 415,
+    verdict: "Overcooked + автоматизация: 15 дней до франшизы, до 4 поваров, чёткая цель ресторана.",
+    storeUrl: "https://store.steampowered.com/app/1599600/",
+    imageUrl: steamImage(1599600),
+    youtubeUrl: youtube("ICsPqUYxvAo")
+  },
+  {
+    id: "with-you",
+    title: "With You",
+    year: 2022,
+    genres: ["Indie", "Puzzle", "Adventure"],
+    endingType: "story",
+    rating: 89,
+    playersMax: 2,
+    hours: 2,
+    oneCopy: "remote-play",
+    price: 0,
+    verdict: "Бесплатная игра-площадка для двоих: маленькие пазлы, спокойный темп, явный финал.",
+    storeUrl: "https://store.steampowered.com/app/1860570/",
+    imageUrl: steamImage(1860570),
+    youtubeUrl: youtube("phN4T1D9-xg")
+  },
+  {
     id: "a-way-out",
     title: "A Way Out",
     year: 2018,

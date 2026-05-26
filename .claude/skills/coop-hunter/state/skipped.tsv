@@ -54,3 +54,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T08:45:00Z	titan-quest-2	Titan Quest II	websearch_drill	early_access	released Aug 2025 as EA; multiplayer in 'early preview state'
 2026-05-26T09:00:00Z	windblown	Windblown	websearch_drill	early_access	Motion Twin's roguelite still in EA — ending planned but not yet shipped
 2026-05-26T09:15:00Z	restaurats	Restaurats	websearch_drill	unclear_ending	roguelike cooking with procedural runs — no confirmed defined endpoint
+2026-05-26T09:35:00Z	helldivers-1	HELLDIVERS Dive Harder Edition	websearch_drill	endless	Galactic War sessional structure — same live-service feel as HD2 blocklist
+2026-05-26T09:35:00Z	south-park-snow-day	South Park: Snow Day	websearch_drill	low_quality	50.1%% positive — right at threshold, Steam API returning failures
+2026-05-26T09:35:00Z	toxic-commando	John Carpenter's Toxic Commando	websearch_drill	unclear_ending	"relentless waves" language suggests wave-based, no narrative endpoint
+2026-05-26T09:35:00Z	trash-goblin	Trash Goblin	websearch_drill	endless	"endless good vibes" cozy shopkeeping — explicitly no defined endpoint
