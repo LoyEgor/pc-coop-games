@@ -5339,7 +5339,7 @@ window.GAMES = [
     verdict: "Quirky hand-drawn adventure: 2-player co-op exploring a strange world through a full story to its ending.",
     storeUrl: "https://store.steampowered.com/app/400630/",
     imageUrl: steamImage(400630),
-    youtubeUrl: youtube("0-sHlHrbCdY")
+    youtubeUrl: youtube("9YPHyP8QV88")
   },
   {
     id: "sundered",
@@ -5387,7 +5387,7 @@ window.GAMES = [
     verdict: "Streets of Rage-style beat-em-up: 2-player co-op cleaning up the city across levels to a final showdown.",
     storeUrl: "https://store.steampowered.com/app/384200/",
     imageUrl: steamImage(384200),
-    youtubeUrl: youtube("2MSJaufxgjA")
+    youtubeUrl: youtube("yh71RcrIbdM")
   },
   {
     id: "final-vendetta",
