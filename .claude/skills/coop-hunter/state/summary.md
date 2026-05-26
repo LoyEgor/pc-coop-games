@@ -1,16 +1,61 @@
 # Coop-hunter session summary — 2026-05-26 (final, post-drill)
 
-## Headline numbers (overnight drill session)
+## Headline numbers (final session)
 
-- **Entries in `data.js`**: 247 (208 at start of drill → +39 added in this fresh phase-4 pass)
-- **Cumulative session adds**: 148 across the whole 2026-05-26 day (109 prior phases + 39 fresh drill)
-- **Broken image auto-fixed**: 1 (Diablo II: Resurrected — fresh release, replaced steamImage helper with literal Akamai URL)
-- **YouTube placeholders remaining**: 0 (all 247 entries have real `youtube("11char")`)
-- **Skips logged this drill**: 32 (blocklisted MMOs, no-coop, low-quality, Early Access, endless, etc.)
+- **Entries in `data.js`**: 271 (247 at start of last drill → +24 added in this fresh phase-4 pass)
+- **Cumulative session adds**: 172 across the whole 2026-05-26 day (148 prior phases + 24 fresh drill)
+- **Broken image auto-fixed this drill**: 1 (Godbreakers — fresh 2025 release, replaced steamImage helper with literal Akamai URL)
+- **YouTube placeholders remaining**: 0 (all 271 entries have real `youtube("11char")`)
+- **Skips logged this drill**: 11 (blocklisted MMOs, no-coop, low-quality, Early Access, endless, not_enough_reviews)
 - **Final health checks at session end**:
-  - 247/247 youtube URLs are real 11-char video IDs (zero `youtubeSearch(...)` placeholders)
-  - 32/32 newly-added image URLs returned HTTP 200 (after D2R akamai fix)
-  - Random 10-sample of pre-existing entries: all 200
+  - 271/271 youtube URLs are real 11-char video IDs (zero `youtubeSearch(...)` placeholders)
+  - 11/11 hardcoded literal-URL imageUrls returned HTTP 200
+  - Random 25-sample of steamImage helper URLs: all 200 (after godbreakers akamai fix)
+  - 24/24 newly-added entries' YouTube URLs return HTTP 200
+
+## Latest drill — additions (+24 in this session, phase 4 redo)
+
+**Rhythm / unusual genres:**
+- Rhythm Doctor (7th Beat Games, 2025 1.0, 98% Steam) — story drum-rhythm campaign, local + RPT
+- SUPER CRAZY RHYTHM CASTLE (Konami, 2023) — 4-player puzzle-rhythm-castle mashup
+
+**RTS / Tactics / Strategy:**
+- Company of Heroes 2 (Relic/Sega, 2013) — Theater of War co-op missions
+- Gloomhaven (Flaming Fowl/Asmodee, 2021) — 95-scenario branching campaign
+- Wargroove (Chucklefish, 2019) — pixel-art Advance Wars tactics with Double Trouble campaign
+- Wargroove 2 (Chucklefish, 2023) — three campaigns + Conquest mode
+- Steel Division 2 (Eugen Systems, 2019) — WW2 Eastern Front, historical co-op missions
+- The Riftbreaker (EXOR Studios, 2021) — action TD with Megastructure endgame ending (2.0 update)
+- Sunderfolk (Secret Door/Dreamhaven, 2025) — couch co-op tactical RPG, phones as controllers
+- Stolen Realm (Burst2Flame, 2024) — turn-based RPG for up to 6 players
+- Jagged Alliance 3 (Haemimont/THQ Nordic, 2023) — mercenary tactics in Grand Chien
+
+**Roguelite / Action / RPG:**
+- Deadzone: Rogue (Prismatic, 2025) — sci-fi roguelite FPS with final boss
+- GODBREAKERS (24 Bit Games, 2025) — 4-player action-roguelike with MMO-style bosses
+- Teenage Mutant Ninja Turtles: Splintered Fate (Super Evil Megacorp, 2024) — Hades-like TMNT
+- Lynked: Banner of the Spark (FuzzyBot/Dreamhaven, 2025) — rogue-life RPG with town building
+- Last Epoch (Eleventh Hour Games, 2024) — 10-chapter time-travel ARPG campaign
+- Sea of Stars (Sabotage Studio, 2023) — pixel JRPG with Dawn of Equinox 3-player local coop
+
+**Brawler / Run-n-gun:**
+- River City Girls 2 (WayForward, 2022) — open-world brawler with story campaign
+- Mayhem Brawler (Hero Concept, 2021) — comic-book beat-em-up, 3 branching endings
+- Blazing Chrome (JoyMasher, 2019) — Contra/Metal Slug-style 2-player run-n-gun
+
+**Puzzle / Detective:**
+- POPUCOM (ICOTA Studios, 2025) — Chinese co-op color-puzzle platformer
+- Unsolved Case (Eleven Puzzles, 2022) — free 2-player asymmetric detective puzzle
+- BOKURA: planet (Kazuyuki Mekaru, 2025) — sequel asymmetric puzzle, ~3h ending
+- Get Together: A Coop Adventure (Studio Sterneck, 2021) — short asymmetric soul-searching puzzle
+
+## Latest drill — skips (11 logged this session)
+
+- **Blocklist / MMO**: Foxhole, Killing Floor 3, Path of Exile 2, Sky: Children of the Light (all caught by hardcoded blocklist)
+- **PvP-only**: Hell Let Loose, Victory Heat Rally, Sonic Racing: CrossWorlds, Capcom Fighting Collection (no co-op category), Mage Arena
+- **Endless / Early Access**: Barotrauma ("virtually endless replayability" per Steam), Aloft (Early Access sandbox, no defined ending)
+- **Insufficient reviews (<50)**: Ticking Together (44), Ra Ra BOOM (23), Abyss Crew (18), TwinCop (33)
+- **Online broken**: Fae Farm (online coop offline Sept 2025)
 
 ## Phase coverage (drill pass)
 
