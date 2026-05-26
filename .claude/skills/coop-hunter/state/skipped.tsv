@@ -81,3 +81,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T16:30:00Z	Ticking Together	not_enough_reviews	websearch_drill	44 reviews, below 50 threshold
 2026-05-26T16:30:00Z	Ra Ra BOOM	not_enough_reviews	websearch_drill	23 reviews
 2026-05-26T16:30:00Z	Foxhole	blocklisted_endless	websearch_drill	MMO persistent war
+2026-05-26T17:00:00Z	Barotrauma	endless	websearch_drill	procedurally generated endless replayability per Steam page
+2026-05-26T17:00:00Z	Capcom Fighting Collection	no_coop	websearch_drill	PvP-only categories
+2026-05-26T17:00:00Z	Abyss Crew	not_enough_reviews	websearch_drill	18 reviews
+2026-05-26T17:00:00Z	TwinCop	not_enough_reviews	websearch_drill	33 reviews below 50
