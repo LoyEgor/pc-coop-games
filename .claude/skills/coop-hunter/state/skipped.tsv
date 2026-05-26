@@ -62,3 +62,11 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T10:30:00Z	curse-of-the-dead-gods	Curse of the Dead Gods	websearch_drill	no_coop	Steam categories show single-player only
 2026-05-26T10:30:00Z	ghostlore	Ghostlore	websearch_drill	async_only	asynchronous online multiplayer, not real co-op
 2026-05-26T10:45:00Z	dead-static-drive	Dead Static Drive	websearch_drill	not_enough_reviews	only 42 reviews + 38% positive — both below thresholds
+2026-05-26T10:55:00Z	wild-hearts	Wild Hearts	websearch_drill	low_quality	46.7%% positive — below 50%% threshold
+2026-05-26T10:55:00Z	dauntless	Dauntless	websearch_drill	online_broken	game shut down servers, no longer playable
+2026-05-26T10:55:00Z	marvel-avengers	Marvel's Avengers	websearch_drill	endless	live-service shut down, dead online
+2026-05-26T10:55:00Z	anthem	Anthem	websearch_drill	endless	live-service shut down
+2026-05-26T10:55:00Z	crackdown-3	Crackdown 3	websearch_drill	not_on_steam	Microsoft Store/Xbox only, not on Steam
+2026-05-26T11:00:00Z	sky-children-of-the-light	Sky: Children of the Light	websearch_drill	blocklisted_mmo	Steam category MMO — HARD BLOCK per SKILL.md
+2026-05-26T11:00:00Z	spirit-of-the-north-2	Spirit of the North 2	websearch_drill	no_coop	single-player only, no co-op category
+2026-05-26T11:00:00Z	monster-hunter-wilds	Monster Hunter Wilds	websearch_drill	endless	endgame focus, co-op story restrictions

@@ -3825,6 +3825,38 @@ window.GAMES = [
     "needs-review": true
   },
   {
+    id: "monster-hunter-rise",
+    title: "Monster Hunter Rise",
+    year: 2022,
+    genres: ["AAA", "Action", "RPG", "Adventure"],
+    endingType: "story",
+    rating: 83,
+    playersMax: 4,
+    hours: 30,
+    oneCopy: "none",
+    price: 1399,
+    verdict: "Япония вместо Старого света: Wirebug, Palamute, финал — All-mother Narwa. Кооп в хабе.",
+    storeUrl: "https://store.steampowered.com/app/1446780/",
+    imageUrl: steamImage(1446780),
+    youtubeUrl: youtube("nmoh6GfgZss")
+  },
+  {
+    id: "tribes-of-midgard",
+    title: "Tribes of Midgard",
+    year: 2021,
+    genres: ["Indie", "Action", "RPG", "Survival"],
+    endingType: "story",
+    rating: 76,
+    playersMax: 10,
+    hours: 20,
+    oneCopy: "none",
+    price: 279,
+    verdict: "Скандинавский survival-roguelite: Saga Mode с Hel/Fenrir/Surtr и финальной кат-сценой.",
+    storeUrl: "https://store.steampowered.com/app/858820/",
+    imageUrl: steamImage(858820),
+    youtubeUrl: youtube("jBzZ9OtyD7Q")
+  },
+  {
     id: "a-way-out",
     title: "A Way Out",
     year: 2018,
