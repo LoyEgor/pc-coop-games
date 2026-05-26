@@ -126,3 +126,7 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-26T09:15:00Z	hammerwatch-2	Hammerwatch II	websearch_drill	92	61.7
 2026-05-26T09:35:00Z	plateup	PlateUp!	websearch_cooking_drill	415	94.8
 2026-05-26T09:35:00Z	with-you	With You	websearch_puzzle_drill	0	89.1
+2026-05-26T09:45:00Z	resident-evil-revelations-2	Resident Evil Revelations 2	websearch_capcom_drill	649	78.2
+2026-05-26T09:45:00Z	wizard-of-legend-2	Wizard of Legend 2	websearch_roguelite_drill	329	52.7
+2026-05-26T09:55:00Z	edf-5	Earth Defense Force 5	websearch_capcom_drill	699	94.3
+2026-05-26T09:55:00Z	inkbound	Inkbound	websearch_roguelite_drill	600	86.8
