@@ -1,16 +1,16 @@
 {
   "current_source_idx": 0,
-  "current_offset": 61,
-  "added_count": 61,
-  "skipped_count": 19,
+  "current_offset": 75,
+  "added_count": 75,
+  "skipped_count": 27,
   "last_validation_at": 0,
   "completed_sources": [],
   "done": false,
-  "last_added": "vermintide-1",
-  "last_run_timestamp": "2026-05-26T02:45:00Z",
+  "last_added": "blood-typers",
+  "last_run_timestamp": "2026-05-26T03:50:00Z",
   "current_phase": 1,
   "max_phase": 4,
   "phase_start_count": 0,
   "auto_push_every_n": 25,
-  "last_push_at": 34
+  "last_push_at": 61
 }
