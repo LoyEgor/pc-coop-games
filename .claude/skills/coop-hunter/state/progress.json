@@ -1,16 +1,16 @@
 {
   "current_source_idx": 0,
-  "current_offset": 148,
-  "added_count": 148,
-  "skipped_count": 77,
+  "current_offset": 154,
+  "added_count": 154,
+  "skipped_count": 78,
   "last_validation_at": 0,
   "completed_sources": [],
-  "done": true,
-  "last_added": "tribes-of-midgard",
-  "last_run_timestamp": "2026-05-26T11:10:00Z",
+  "done": false,
+  "last_added": "wargroove-2",
+  "last_run_timestamp": "2026-05-26T15:20:00Z",
   "current_phase": 4,
   "max_phase": 4,
-  "phase_start_count": 109,
+  "phase_start_count": 148,
   "auto_push_every_n": 25,
   "last_push_at": 109
 }
