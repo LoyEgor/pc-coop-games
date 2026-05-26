@@ -55,3 +55,276 @@ timestamp	id	field	old_value	new_value	reason
 2026-05-26T12:22:02Z	assault-android-cactus	rating	88	94
 2026-05-26T12:22:08Z	door-kickers-action-squad	price	310	62
 2026-05-26T13:35:27Z	dead-island-2	price	1800	1333
+2026-05-26T20:42:42Z	gears-of-war-reloaded	genres	['AAA', 'Shooter', 'Third-person', 'Action']	['AAA', 'Third-person', 'Shooter', 'Action']	
+2026-05-26T20:42:42Z	space-marine-2	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Sci-fi']	['AAA', 'Third-person', 'Shooter', 'Action', 'Sci-fi']	
+2026-05-26T20:42:42Z	baldurs-gate-3	genres	['AAA', 'RPG', 'Tactics', 'Fantasy']	['AAA', 'Isometric', 'RPG', 'Tactics', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	remnant-2	genres	['AA', 'Shooter', 'Action', 'RPG', 'Soulslike']	['AA', 'Third-person', 'Shooter', 'Action', 'RPG', 'Soulslike']	perspective_added
+2026-05-26T20:42:42Z	trine-5	genres	['AA', 'Puzzle', 'Platformer', 'Fantasy']	['AA', 'Side-view', 'Puzzle', 'Platformer', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	sniper-elite-5	genres	['AA', 'Shooter', 'Stealth', 'Tactics', 'Military']	['AA', 'Third-person', 'Shooter', 'Stealth', 'Tactics', 'Military']	perspective_added
+2026-05-26T20:42:42Z	we-were-here-forever	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	operation-tango	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Third-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	the-ascent	genres	['AA', 'Shooter', 'Action', 'RPG', 'Sci-fi', 'Isometric']	['AA', 'Isometric', 'Shooter', 'Action', 'RPG', 'Sci-fi']	
+2026-05-26T20:42:42Z	outriders	genres	['AAA', 'Shooter', 'Action', 'RPG', 'Loot', 'Sci-fi']	['AAA', 'Third-person', 'Shooter', 'Action', 'RPG', 'Loot', 'Sci-fi']	perspective_added
+2026-05-26T20:42:42Z	wasteland-3	genres	['AA', 'RPG', 'Tactics']	['AA', 'Isometric', 'RPG', 'Tactics']	perspective_added
+2026-05-26T20:42:42Z	gears-5	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Sci-fi']	['AAA', 'Third-person', 'Shooter', 'Action', 'Sci-fi']	
+2026-05-26T20:42:42Z	halo-mcc	genres	['AAA', 'Shooter', 'FPS', 'Sci-fi']	['AAA', 'First-person', 'Shooter', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	darksiders-genesis	genres	['AA', 'Action', 'Isometric', 'Fantasy']	['AA', 'Isometric', 'Action', 'Fantasy']	
+2026-05-26T20:42:42Z	wolfenstein-youngblood	genres	['AAA', 'Shooter', 'FPS', 'Action', 'Sci-fi']	['AAA', 'First-person', 'Shooter', 'Action', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	far-cry-5	genres	['AAA', 'Shooter', 'FPS', 'Open World', 'Action']	['AAA', 'First-person', 'Shooter', 'Action', 'Open World']	fps_split
+2026-05-26T20:42:42Z	divinity-original-sin-2	genres	['AAA', 'RPG', 'Tactics', 'Fantasy']	['AAA', 'Isometric', 'RPG', 'Tactics', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	ghost-recon-wildlands	genres	['AAA', 'Shooter', 'Third-person', 'Open World', 'Tactics', 'Military']	['AAA', 'Third-person', 'Shooter', 'Tactics', 'Military', 'Open World']	
+2026-05-26T20:42:42Z	portal-2	genres	['AAA', 'Puzzle', 'FPS', 'Sci-fi']	['AAA', 'First-person', 'Puzzle', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	lara-croft-guardian-light	genres	['AAA', 'Action', 'Puzzle', 'Adventure', 'Isometric']	['AAA', 'Isometric', 'Action', 'Puzzle']	adventure_removed
+2026-05-26T20:42:42Z	borderlands-3	genres	['AAA', 'Shooter', 'FPS', 'RPG', 'Loot', 'Open World']	['AAA', 'First-person', 'Shooter', 'RPG', 'Loot', 'Open World']	fps_split
+2026-05-26T20:42:42Z	tiny-tinas-wonderlands	genres	['AAA', 'Shooter', 'FPS', 'RPG', 'Loot', 'Fantasy']	['AAA', 'First-person', 'Shooter', 'RPG', 'Loot', 'Fantasy']	fps_split
+2026-05-26T20:42:42Z	dying-light	genres	['AAA', 'Action', 'FPS', 'RPG', 'Open World', 'Horror']	['AAA', 'First-person', 'Action', 'RPG', 'Horror', 'Open World']	fps_split
+2026-05-26T20:42:42Z	dying-light-2	genres	['AAA', 'Action', 'FPS', 'RPG', 'Open World', 'Horror']	['AAA', 'First-person', 'Action', 'RPG', 'Horror', 'Open World']	fps_split
+2026-05-26T20:42:42Z	shadow-warrior-2	genres	['AA', 'Shooter', 'FPS', 'Action', 'Loot']	['AA', 'First-person', 'Shooter', 'Action', 'Loot']	fps_split
+2026-05-26T20:42:42Z	strange-brigade	genres	['AA', 'Shooter', 'Third-person', 'Action', 'Adventure']	['AA', 'Third-person', 'Shooter', 'Action']	adventure_removed
+2026-05-26T20:42:42Z	aliens-fireteam-elite	genres	['AA', 'Shooter', 'Third-person', 'Action', 'Horror', 'Sci-fi']	['AA', 'Third-person', 'Shooter', 'Action', 'Horror', 'Sci-fi']	
+2026-05-26T20:42:42Z	back-4-blood	genres	['AAA', 'Shooter', 'FPS', 'Action', 'Horror']	['AAA', 'First-person', 'Shooter', 'Action', 'Horror']	fps_split
+2026-05-26T20:42:42Z	grounded	genres	['AA', 'Survival', 'Adventure', 'Open World']	['AA', 'First-person', 'Survival', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	nobody-saves-the-world	genres	['Indie', 'Action', 'RPG', 'Isometric']	['Indie', 'Isometric', 'Action', 'RPG']	
+2026-05-26T20:42:42Z	styx-shards-of-darkness	genres	['AA', 'Stealth', 'Action', 'Fantasy']	['AA', 'Third-person', 'Stealth', 'Action', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	saints-row-4	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Open World', 'Sci-fi']	['AAA', 'Third-person', 'Shooter', 'Action', 'Sci-fi', 'Open World']	
+2026-05-26T20:42:42Z	borderlands-2	genres	['AAA', 'Shooter', 'FPS', 'RPG', 'Loot', 'Open World']	['AAA', 'First-person', 'Shooter', 'RPG', 'Loot', 'Open World']	fps_split
+2026-05-26T20:42:42Z	diablo-4	genres	['AAA', 'Action', 'RPG', 'Loot', 'Fantasy', 'Isometric']	['AAA', 'Isometric', 'Action', 'RPG', 'Loot', 'Fantasy']	
+2026-05-26T20:42:42Z	vermintide-2	genres	['AA', 'Action', 'FPS', 'Fantasy', 'Horror']	['AA', 'First-person', 'Action', 'Fantasy', 'Horror']	fps_split
+2026-05-26T20:42:42Z	left-4-dead-2	genres	['AAA', 'Shooter', 'FPS', 'Action', 'Horror']	['AAA', 'First-person', 'Shooter', 'Action', 'Horror']	fps_split
+2026-05-26T20:42:42Z	the-forest	genres	['Indie', 'Survival', 'Horror', 'Adventure', 'Open World']	['Indie', 'First-person', 'Horror', 'Survival', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	sons-of-the-forest	genres	['Indie', 'Survival', 'Horror', 'Adventure', 'Open World']	['Indie', 'First-person', 'Horror', 'Survival', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	man-of-medan	genres	['AA', 'Adventure', 'Horror']	['AA', 'Third-person', 'Adventure', 'Horror']	perspective_added
+2026-05-26T20:42:42Z	magicka-2	genres	['AA', 'Action', 'Adventure', 'Fantasy', 'Isometric']	['AA', 'Isometric', 'Action', 'Fantasy']	adventure_removed
+2026-05-26T20:42:42Z	peak	genres	['Indie', 'Adventure', 'Action']	['Indie', 'Third-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	raft	genres	['Indie', 'Survival', 'Adventure', 'Open World']	['Indie', 'First-person', 'Survival', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	broforce	genres	['Indie', 'Action', 'Platformer', 'Shooter']	['Indie', 'Side-view', 'Action', 'Platformer', 'Shooter']	perspective_added
+2026-05-26T20:42:42Z	castle-crashers	genres	['Indie', 'Action', 'RPG', 'Fantasy']	['Indie', 'Side-view', 'Action', 'RPG', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	cuphead	genres	['Indie', 'Action', 'Platformer', 'Shooter']	['Indie', 'Side-view', 'Action', 'Platformer', 'Shooter']	perspective_added
+2026-05-26T20:42:42Z	tmnt-shredders-revenge	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Side-view', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	cat-quest-2	genres	['Indie', 'Action', 'RPG', 'Adventure', 'Fantasy']	['Indie', 'Isometric', 'Action', 'RPG', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	lovers-spacetime	genres	['Indie', 'Action', 'Adventure', 'Sci-fi']	['Indie', 'Side-view', 'Action', 'Sci-fi']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	children-of-morta	genres	['Indie', 'Action', 'RPG', 'Fantasy']	['Indie', 'Isometric', 'Action', 'RPG', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	full-metal-furies	genres	['Indie', 'Action', 'RPG', 'Adventure']	['Indie', 'Side-view', 'Action', 'RPG']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	escape-academy	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	journey-savage-planet	genres	['AA', 'Adventure', 'Action', 'Sci-fi']	['AA', 'First-person', 'Action', 'Sci-fi']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	revenge-savage-planet	genres	['AA', 'Adventure', 'Action', 'Sci-fi']	['AA', 'Third-person', 'Action', 'Sci-fi']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	trine-2	genres	['AA', 'Puzzle', 'Platformer', 'Fantasy']	['AA', 'Side-view', 'Puzzle', 'Platformer', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	guacamelee-2	genres	['Indie', 'Action', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	risk-of-rain-2	genres	['Indie', 'Action', 'Shooter', 'Sci-fi']	['Indie', 'Third-person', 'Action', 'Shooter', 'Sci-fi']	perspective_added
+2026-05-26T20:42:42Z	overcooked-all-you-can-eat	genres	['AA', 'Puzzle', 'Action']	['AA', 'Isometric', 'Puzzle', 'Action']	perspective_added
+2026-05-26T20:42:42Z	terraria	genres	['Indie', 'Survival', 'Adventure', 'Open World']	['Indie', 'Side-view', 'Survival', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	stardew-valley	genres	['Indie', 'RPG', 'Adventure']	['Indie', 'Isometric', 'RPG']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	magicka	genres	['Indie', 'Action', 'Adventure', 'Fantasy']	['Indie', 'Isometric', 'Action', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	we-were-here	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	we-were-here-together	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	streets-of-rage-4	genres	['Indie', 'Action']	['Indie', 'Side-view', 'Action']	perspective_added
+2026-05-26T20:42:42Z	enter-the-gungeon	genres	['Indie', 'Action', 'Shooter', 'Isometric']	['Indie', 'Isometric', 'Action', 'Shooter']	
+2026-05-26T20:42:42Z	spelunky-2	genres	['Indie', 'Action', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	spelunky	genres	['Indie', 'Action', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	battleblock-theater	genres	['Indie', 'Action', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	lego-skywalker-saga	genres	['AAA', 'Action', 'Adventure']	['AAA', 'Third-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	lego-city-undercover	genres	['AAA', 'Action', 'Adventure', 'Open World']	['AAA', 'Third-person', 'Action', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	lego-marvel-superheroes	genres	['AAA', 'Action', 'Adventure']	['AAA', 'Third-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	a-hat-in-time	genres	['Indie', 'Action', 'Platformer', 'Adventure']	['Indie', 'Third-person', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	rayman-legends	genres	['AAA', 'Action', 'Platformer', 'Adventure']	['AAA', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	rayman-origins	genres	['AAA', 'Action', 'Platformer', 'Adventure']	['AAA', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	sackboy-big-adventure	genres	['AAA', 'Action', 'Platformer', 'Adventure']	['AAA', 'Third-person', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	orcs-must-die-2	genres	['AA', 'Action', 'Tactics', 'Fantasy']	['AA', 'Third-person', 'Action', 'Tactics', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	dungeon-defenders	genres	['AA', 'Action', 'Tactics', 'RPG', 'Fantasy']	['AA', 'Third-person', 'Action', 'Tactics', 'RPG', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	sanctum-2	genres	['AA', 'Shooter', 'FPS', 'Tactics', 'Sci-fi']	['AA', 'First-person', 'Shooter', 'Tactics', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	world-war-z	genres	['AA', 'Shooter', 'Third-person', 'Action', 'Horror']	['AA', 'Third-person', 'Shooter', 'Action', 'Horror']	
+2026-05-26T20:42:42Z	zombie-army-trilogy	genres	['AA', 'Shooter', 'Third-person', 'Action', 'Horror']	['AA', 'Third-person', 'Shooter', 'Action', 'Horror']	
+2026-05-26T20:42:42Z	serious-sam-3	genres	['AA', 'Shooter', 'FPS', 'Action', 'Sci-fi']	['AA', 'First-person', 'Shooter', 'Action', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	serious-sam-4	genres	['AA', 'Shooter', 'FPS', 'Action', 'Sci-fi']	['AA', 'First-person', 'Shooter', 'Action', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	alien-swarm-reactive-drop	genres	['Indie', 'Shooter', 'Action', 'Sci-fi', 'Horror', 'Isometric']	['Indie', 'Isometric', 'Shooter', 'Action', 'Sci-fi', 'Horror']	
+2026-05-26T20:42:42Z	powerwash-simulator	genres	['Indie', 'Adventure', 'Puzzle']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	teardown	genres	['Indie', 'Action', 'Adventure']	['Indie', 'First-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	human-fall-flat	genres	['Indie', 'Puzzle', 'Adventure', 'Platformer']	['Indie', 'Third-person', 'Puzzle', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	for-the-king	genres	['Indie', 'RPG', 'Tactics', 'Adventure', 'Fantasy']	['Indie', 'Isometric', 'RPG', 'Tactics', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	streets-of-rogue	genres	['Indie', 'Action', 'RPG', 'Adventure', 'Isometric']	['Indie', 'Isometric', 'Action', 'RPG']	adventure_removed
+2026-05-26T20:42:42Z	nuclear-throne	genres	['Indie', 'Action', 'Shooter']	['Indie', 'Isometric', 'Action', 'Shooter']	perspective_added
+2026-05-26T20:42:42Z	binding-of-isaac-rebirth	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Isometric', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	keywe	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Isometric', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	moving-out	genres	['Indie', 'Puzzle', 'Action']	['Indie', 'Isometric', 'Puzzle', 'Action']	perspective_added
+2026-05-26T20:42:42Z	roboquest	genres	['Indie', 'Action', 'Shooter', 'FPS', 'Sci-fi']	['Indie', 'First-person', 'Action', 'Shooter', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	gunfire-reborn	genres	['Indie', 'Action', 'Shooter', 'FPS']	['Indie', 'First-person', 'Action', 'Shooter']	fps_split
+2026-05-26T20:42:42Z	ravenswatch	genres	['AA', 'Action', 'RPG', 'Fantasy', 'Isometric']	['AA', 'Isometric', 'Action', 'RPG', 'Fantasy']	
+2026-05-26T20:42:42Z	wizard-of-legend	genres	['Indie', 'Action', 'RPG', 'Fantasy']	['Indie', 'Isometric', 'Action', 'RPG', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	death-road-to-canada	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Isometric', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	kane-lynch-2	genres	['AAA', 'Shooter', 'Third-person', 'Action']	['AAA', 'Third-person', 'Shooter', 'Action']	
+2026-05-26T20:42:42Z	towerfall-ascension	genres	['Indie', 'Action', 'Platformer']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	capcom-beat-em-up-bundle	genres	['AAA', 'Action', 'Adventure']	['AAA', 'Side-view', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	metal-slug-3	genres	['AAA', 'Action', 'Shooter', 'Platformer']	['AAA', 'Side-view', 'Action', 'Shooter', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	monaco	genres	['Indie', 'Action', 'Adventure', 'Stealth', 'Isometric']	['Indie', 'Isometric', 'Action', 'Stealth']	adventure_removed
+2026-05-26T20:42:42Z	the-cave	genres	['AA', 'Puzzle', 'Adventure', 'Platformer']	['AA', 'Side-view', 'Puzzle', 'Adventure', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	20xx	genres	['Indie', 'Action', 'Platformer']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	vagante	genres	['Indie', 'Action', 'RPG', 'Platformer', 'Fantasy']	['Indie', 'Side-view', 'Action', 'RPG', 'Platformer', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	barony	genres	['Indie', 'Action', 'RPG', 'Fantasy']	['Indie', 'First-person', 'Action', 'RPG', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	across-the-obelisk	genres	['Indie', 'RPG', 'Tactics', 'Adventure', 'Fantasy']	['Indie', 'Side-view', 'RPG', 'Tactics', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	escape-simulator	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	keep-talking-nobody-explodes	genres	['Indie', 'Puzzle']	['Indie', 'First-person', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	remnant-1	genres	['AA', 'Shooter', 'Third-person', 'Action', 'RPG', 'Soulslike']	['AA', 'Third-person', 'Shooter', 'Action', 'RPG', 'Soulslike']	
+2026-05-26T20:42:42Z	dead-island-de	genres	['AAA', 'Action', 'FPS', 'RPG', 'Open World', 'Horror']	['AAA', 'First-person', 'Action', 'RPG', 'Horror', 'Open World']	fps_split
+2026-05-26T20:42:42Z	portal-knights	genres	['AA', 'Action', 'RPG', 'Adventure', 'Fantasy']	['AA', 'Third-person', 'Action', 'RPG', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	chained-together	genres	['Indie', 'Adventure', 'Action']	['Indie', 'Third-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	pico-park	genres	['Indie', 'Puzzle', 'Platformer']	['Indie', 'Side-view', 'Puzzle', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	road-redemption	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Third-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	edf-4-1	genres	['AA', 'Shooter', 'Action', 'Sci-fi']	['AA', 'Third-person', 'Shooter', 'Action', 'Sci-fi']	perspective_added
+2026-05-26T20:42:42Z	assault-android-cactus	genres	['Indie', 'Action', 'Shooter']	['Indie', 'Isometric', 'Action', 'Shooter']	perspective_added
+2026-05-26T20:42:42Z	fightn-rage	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Side-view', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	door-kickers-action-squad	genres	['Indie', 'Action', 'Shooter', 'Tactics']	['Indie', 'Side-view', 'Action', 'Shooter', 'Tactics']	perspective_added
+2026-05-26T20:42:42Z	satisfactory	genres	['AA', 'Survival', 'Open World']	['AA', 'First-person', 'Survival', 'Open World']	perspective_added
+2026-05-26T20:42:42Z	just-shapes-and-beats	genres	['Indie', 'Action']	['Indie', 'Side-view', 'Action']	perspective_added
+2026-05-26T20:42:42Z	madness-project-nexus	genres	['Indie', 'Action', 'Shooter']	['Indie', 'Side-view', 'Action', 'Shooter']	perspective_added
+2026-05-26T20:42:42Z	chicory-colorful-tale	genres	['Indie', 'Adventure', 'Puzzle']	['Indie', 'Isometric', 'Adventure', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	rabbit-and-steel	genres	['Indie', 'Action', 'RPG']	['Indie', 'Isometric', 'Action', 'RPG']	perspective_added
+2026-05-26T20:42:42Z	door-kickers-2	genres	['Indie', 'Tactics', 'Isometric']	['Indie', 'Isometric', 'Tactics']	
+2026-05-26T20:42:42Z	heavenly-bodies	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Side-view', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	bang-on-balls-chronicles	genres	['Indie', 'Platformer', 'Adventure']	['Indie', 'Third-person', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	echo-point-nova	genres	['Indie', 'Shooter', 'FPS']	['Indie', 'First-person', 'Shooter']	fps_split
+2026-05-26T20:42:42Z	stick-it-to-the-stickman	genres	['Indie', 'Action']	['Indie', 'Side-view', 'Action']	perspective_added
+2026-05-26T20:42:42Z	age-of-empires-2-de	genres	['AAA', 'Tactics']	['AAA', 'Isometric', 'Tactics']	perspective_added
+2026-05-26T20:42:42Z	mindustry	genres	['Indie', 'Tactics']	['Indie', 'Isometric', 'Tactics']	perspective_added
+2026-05-26T20:42:42Z	crypt-of-the-necrodancer	genres	['Indie', 'Action']	['Indie', 'Isometric', 'Action']	perspective_added
+2026-05-26T20:42:42Z	trine-1	genres	['AA', 'Action', 'Platformer']	['AA', 'Side-view', 'Action', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	outlast-trials	genres	['Indie', 'Horror']	['Indie', 'First-person', 'Horror']	perspective_added
+2026-05-26T20:42:42Z	cook-serve-delicious	genres	['Indie', 'Puzzle']	['Indie', 'First-person', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	mosa-lina	genres	['Indie', 'Puzzle']	['Indie', 'Side-view', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	dishwasher-vampire-smile	genres	['Indie', 'Action']	['Indie', 'Side-view', 'Action']	perspective_added
+2026-05-26T20:42:42Z	astroneer	genres	['Indie', 'Survival', 'Adventure', 'Sci-fi']	['Indie', 'Third-person', 'Sci-fi', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	valheim	genres	['Indie', 'Survival', 'Open World', 'Fantasy']	['Indie', 'Third-person', 'Fantasy', 'Survival', 'Open World']	perspective_added
+2026-05-26T20:42:42Z	lotr-return-to-moria	genres	['AA', 'Survival', 'Adventure', 'Fantasy']	['AA', 'Third-person', 'Fantasy', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	heroes-of-hammerwatch-2	genres	['Indie', 'Action', 'RPG', 'Isometric']	['Indie', 'Isometric', 'Action', 'RPG']	
+2026-05-26T20:42:42Z	reanimal	genres	['AAA', 'Adventure', 'Horror', 'Puzzle']	['AAA', 'Side-view', 'Puzzle', 'Horror']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	elden-ring-nightreign	genres	['AAA', 'Action', 'RPG', 'Soulslike', 'Fantasy']	['AAA', 'Third-person', 'Action', 'RPG', 'Soulslike', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	marvel-cosmic-invasion	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Side-view', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	slay-the-spire-2	genres	['Indie', 'Tactics', 'Adventure']	['Indie', 'Side-view', 'Tactics']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	absolum	genres	['Indie', 'Action', 'Adventure', 'Fantasy']	['Indie', 'Side-view', 'Action', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	cult-of-the-lamb	genres	['AA', 'Action', 'Adventure']	['AA', 'Isometric', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	rv-there-yet	genres	['Indie', 'Adventure', 'Puzzle']	['Indie', 'Isometric', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	sniper-elite-resistance	genres	['AA', 'Shooter', 'Third-person', 'Military', 'Stealth']	['AA', 'Third-person', 'Shooter', 'Stealth', 'Military']	
+2026-05-26T20:42:42Z	powerwash-simulator-2	genres	['Indie', 'Adventure', 'Puzzle']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	abiotic-factor	genres	['Indie', 'Survival', 'Sci-fi', 'Adventure']	['Indie', 'First-person', 'Sci-fi', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	borderlands-4	genres	['AAA', 'Shooter', 'FPS', 'RPG', 'Loot']	['AAA', 'First-person', 'Shooter', 'RPG', 'Loot']	fps_split
+2026-05-26T20:42:42Z	risk-of-rain-returns	genres	['Indie', 'Action', 'Shooter', 'Platformer']	['Indie', 'Side-view', 'Action', 'Shooter', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	sniper-elite-4	genres	['AA', 'Shooter', 'Third-person', 'Military', 'Stealth']	['AA', 'Third-person', 'Shooter', 'Stealth', 'Military']	
+2026-05-26T20:42:42Z	saints-row-3-remastered	genres	['AAA', 'Action', 'Third-person', 'Open World']	['AAA', 'Third-person', 'Action', 'Open World']	
+2026-05-26T20:42:42Z	edf-6	genres	['AA', 'Shooter', 'Third-person', 'Sci-fi']	['AA', 'Third-person', 'Shooter', 'Sci-fi']	
+2026-05-26T20:42:42Z	far-cry-6	genres	['AAA', 'Shooter', 'FPS', 'Action', 'Open World']	['AAA', 'First-person', 'Shooter', 'Action', 'Open World']	fps_split
+2026-05-26T20:42:42Z	trine-4	genres	['AA', 'Adventure', 'Platformer', 'Puzzle', 'Fantasy']	['AA', 'Side-view', 'Platformer', 'Puzzle', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	monster-hunter-world	genres	['AAA', 'Action', 'RPG', 'Adventure', 'Fantasy']	['AAA', 'Third-person', 'Action', 'RPG', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	unravel-two	genres	['AAA', 'Adventure', 'Platformer', 'Puzzle']	['AAA', 'Side-view', 'Platformer', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	state-of-decay-2	genres	['AAA', 'Action', 'RPG', 'Survival', 'Horror']	['AAA', 'Third-person', 'Action', 'RPG', 'Horror', 'Survival']	perspective_added
+2026-05-26T20:42:42Z	space-hulk-deathwing	genres	['AA', 'Shooter', 'FPS', 'Sci-fi', 'Military']	['AA', 'First-person', 'Shooter', 'Sci-fi', 'Military']	fps_split
+2026-05-26T20:42:42Z	divinity-original-sin-1	genres	['AA', 'RPG', 'Tactics', 'Fantasy', 'Isometric']	['AA', 'Isometric', 'RPG', 'Tactics', 'Fantasy']	
+2026-05-26T20:42:42Z	vermintide-1	genres	['AA', 'Shooter', 'FPS', 'Action', 'Fantasy']	['AA', 'First-person', 'Shooter', 'Action', 'Fantasy']	fps_split
+2026-05-26T20:42:42Z	lego-voyagers	genres	['AA', 'Adventure', 'Puzzle', 'Platformer']	['AA', 'Isometric', 'Puzzle', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	together-moon-escape	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	parallel-experiment	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Side-view', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	hellcard	genres	['Indie', 'Tactics', 'Adventure']	['Indie', 'Side-view', 'Tactics']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	secrets-of-grindea	genres	['Indie', 'Action', 'RPG', 'Adventure']	['Indie', 'Isometric', 'Action', 'RPG']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	dying-light-the-beast	genres	['AA', 'Action', 'Adventure', 'Horror', 'Open World', 'Survival']	['AA', 'First-person', 'Action', 'Horror', 'Open World', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	ready-or-not	genres	['Indie', 'Shooter', 'FPS', 'Tactics', 'Military']	['Indie', 'First-person', 'Shooter', 'Tactics', 'Military']	fps_split
+2026-05-26T20:42:42Z	lego-batman-legacy	genres	['AAA', 'Action', 'Adventure']	['AAA', 'Third-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	thick-as-thieves	genres	['AA', 'Action', 'Stealth', 'Adventure']	['AA', 'First-person', 'Action', 'Stealth']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	in-sink	genres	['Indie', 'Adventure', 'Puzzle']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	bokura	genres	['Indie', 'Adventure', 'Puzzle', 'Platformer']	['Indie', 'Isometric', 'Puzzle', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	the-past-within	genres	['Indie', 'Adventure', 'Puzzle', 'Horror']	['Indie', 'Side-view', 'Puzzle', 'Horror']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	pampas-selene	genres	['Indie', 'Action', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	blood-typers	genres	['Indie', 'Horror', 'Survival', 'Adventure']	['Indie', 'First-person', 'Horror', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	generation-zero	genres	['AA', 'Shooter', 'FPS', 'Open World', 'Survival', 'Sci-fi']	['AA', 'First-person', 'Shooter', 'Sci-fi', 'Open World', 'Survival']	fps_split
+2026-05-26T20:42:42Z	green-hell	genres	['Indie', 'Survival', 'Open World', 'Adventure']	['Indie', 'First-person', 'Survival', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	grounded-2	genres	['AAA', 'Survival', 'Adventure', 'Open World']	['AAA', 'First-person', 'Survival', 'Open World']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	icarus	genres	['Indie', 'Survival', 'Sci-fi', 'Adventure']	['Indie', 'First-person', 'Sci-fi', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	smalland	genres	['Indie', 'Survival', 'Adventure', 'Fantasy']	['Indie', 'Third-person', 'Fantasy', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	dead-island-2	genres	['AAA', 'Action', 'FPS', 'Horror', 'RPG']	['AAA', 'First-person', 'Action', 'RPG', 'Horror']	fps_split
+2026-05-26T20:42:42Z	tales-of-vesperia	genres	['AAA', 'RPG', 'Action', 'Fantasy', 'Adventure']	['AAA', 'Third-person', 'RPG', 'Action', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	secret-of-mana	genres	['AAA', 'RPG', 'Action', 'Adventure', 'Fantasy']	['AAA', 'Isometric', 'RPG', 'Action', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	moon-hunters	genres	['Indie', 'RPG', 'Action', 'Adventure', 'Fantasy']	['Indie', 'Isometric', 'RPG', 'Action', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	spiritfarer	genres	['Indie', 'Adventure', 'Platformer', 'Survival']	['Indie', 'Side-view', 'Adventure', 'Platformer', 'Survival']	perspective_added
+2026-05-26T20:42:42Z	wildermyth	genres	['Indie', 'RPG', 'Tactics', 'Fantasy', 'Adventure']	['Indie', 'Isometric', 'RPG', 'Tactics', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	anima-flux	genres	['Indie', 'Action', 'Platformer', 'Adventure', 'Sci-fi']	['Indie', 'Side-view', 'Action', 'Platformer', 'Sci-fi']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	escapists-2	genres	['AA', 'Adventure', 'Stealth', 'Action']	['AA', 'Isometric', 'Stealth', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	aragami	genres	['Indie', 'Action', 'Stealth', 'Fantasy']	['Indie', 'Third-person', 'Action', 'Stealth', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	aragami-2	genres	['Indie', 'Action', 'Stealth', 'Fantasy']	['Indie', 'Third-person', 'Action', 'Stealth', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	ibb-and-obb	genres	['Indie', 'Puzzle', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Puzzle', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	dungeon-of-the-endless	genres	['Indie', 'Tactics', 'Action', 'Sci-fi']	['Indie', 'Isometric', 'Tactics', 'Action', 'Sci-fi']	perspective_added
+2026-05-26T20:42:42Z	out-of-space	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Isometric', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	clandestine	genres	['Indie', 'Stealth', 'Action', 'Adventure']	['Indie', 'Third-person', 'Stealth', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	tick-tock-tale-for-two	genres	['Indie', 'Puzzle', 'Adventure', 'Horror']	['Indie', 'Side-view', 'Puzzle', 'Horror']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	toejam-earl-groove	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Isometric', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	death-squared	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Isometric', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	pico-park-2	genres	['Indie', 'Puzzle', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Puzzle', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	escape-the-backrooms	genres	['Indie', 'Horror', 'Adventure', 'Survival']	['Indie', 'First-person', 'Horror', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	brothers-tale-two-sons-remake	genres	['AA', 'Adventure', 'Puzzle', 'Platformer']	['AA', 'Third-person', 'Adventure', 'Puzzle', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	flyknight	genres	['Indie', 'RPG', 'Action', 'Soulslike', 'Adventure']	['Indie', 'Third-person', 'RPG', 'Action', 'Soulslike']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	unsighted	genres	['Indie', 'Action', 'RPG', 'Adventure']	['Indie', 'Isometric', 'Action', 'RPG']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	as-dusk-falls	genres	['AAA', 'Adventure']	['AAA', 'Third-person', 'Adventure']	perspective_added
+2026-05-26T20:42:42Z	bread-and-fred	genres	['Indie', 'Platformer', 'Puzzle']	['Indie', 'Side-view', 'Platformer', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	labyrinthine	genres	['Indie', 'Horror', 'Adventure', 'Puzzle']	['Indie', 'First-person', 'Puzzle', 'Horror']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	wartales	genres	['AA', 'RPG', 'Tactics', 'Open World']	['AA', 'Isometric', 'RPG', 'Tactics', 'Open World']	perspective_added
+2026-05-26T20:42:42Z	infernax	genres	['Indie', 'Action', 'Adventure', 'Platformer']	['Indie', 'Side-view', 'Action', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	monaco-2	genres	['Indie', 'Stealth', 'Action', 'Isometric']	['Indie', 'Isometric', 'Stealth', 'Action']	
+2026-05-26T20:42:42Z	hacktag	genres	['Indie', 'Stealth', 'Puzzle']	['Indie', 'Isometric', 'Stealth', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	nikoderiko	genres	['Indie', 'Platformer', 'Adventure']	['Indie', 'Side-view', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	suicide-squad-kjl	genres	['AAA', 'Shooter', 'Third-person', 'Action']	['AAA', 'Third-person', 'Shooter', 'Action']	
+2026-05-26T20:42:42Z	lego-horizon-adventures	genres	['AAA', 'Action', 'Adventure']	['AAA', 'Third-person', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	forza-horizon-5	genres	['AAA', 'Action', 'Open World']	['AAA', 'Third-person', 'Action', 'Open World']	perspective_added
+2026-05-26T20:42:42Z	we-were-here-expeditions-friendship	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'First-person', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	atlas-fallen	genres	['AA', 'Action', 'RPG', 'Fantasy']	['AA', 'Third-person', 'Action', 'RPG', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	diablo-2-resurrected	genres	['AAA', 'Action', 'RPG', 'Isometric', 'Loot']	['AAA', 'Isometric', 'Action', 'RPG', 'Loot']	
+2026-05-26T20:42:42Z	grim-dawn	genres	['Indie', 'Action', 'RPG', 'Isometric', 'Loot']	['Indie', 'Isometric', 'Action', 'RPG', 'Loot']	
+2026-05-26T20:42:42Z	lara-croft-temple-osiris	genres	['AAA', 'Action', 'Adventure', 'Puzzle']	['AAA', 'Isometric', 'Action', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	ember-knights	genres	['Indie', 'Action', 'RPG']	['Indie', 'Isometric', 'Action', 'RPG']	perspective_added
+2026-05-26T20:42:42Z	sworn	genres	['Indie', 'Action', 'Fantasy']	['Indie', 'Isometric', 'Action', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	shape-of-dreams	genres	['Indie', 'Action', 'RPG', 'Isometric']	['Indie', 'Isometric', 'Action', 'RPG']	
+2026-05-26T20:42:42Z	dyo	genres	['Indie', 'Puzzle', 'Platformer']	['Indie', 'Side-view', 'Puzzle', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	cassette-beasts	genres	['Indie', 'RPG', 'Adventure']	['Indie', 'Isometric', 'RPG']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	heroes-of-hammerwatch	genres	['Indie', 'Action', 'RPG', 'Isometric']	['Indie', 'Isometric', 'Action', 'RPG']	
+2026-05-26T20:42:42Z	hammerwatch-2	genres	['Indie', 'Action', 'RPG', 'Isometric']	['Indie', 'Isometric', 'Action', 'RPG']	
+2026-05-26T20:42:42Z	plateup	genres	['Indie', 'Action', 'Puzzle']	['Indie', 'Isometric', 'Action', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	with-you	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Side-view', 'Puzzle', 'Adventure']	perspective_added
+2026-05-26T20:42:42Z	resident-evil-revelations-2	genres	['AAA', 'Horror', 'Action', 'Survival']	['AAA', 'Third-person', 'Action', 'Horror', 'Survival']	perspective_added
+2026-05-26T20:42:42Z	wizard-of-legend-2	genres	['Indie', 'Action', 'RPG']	['Indie', 'Isometric', 'Action', 'RPG']	perspective_added
+2026-05-26T20:42:42Z	edf-5	genres	['AA', 'Shooter', 'Third-person', 'Sci-fi']	['AA', 'Third-person', 'Shooter', 'Sci-fi']	
+2026-05-26T20:42:42Z	inkbound	genres	['Indie', 'RPG', 'Tactics', 'Isometric']	['Indie', 'Isometric', 'RPG', 'Tactics']	
+2026-05-26T20:42:42Z	stranger-of-paradise-ff-origin	genres	['AAA', 'Action', 'RPG', 'Soulslike', 'Fantasy']	['AAA', 'Third-person', 'Action', 'RPG', 'Soulslike', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	lumencraft	genres	['Indie', 'Action', 'Shooter', 'Isometric']	['Indie', 'Isometric', 'Action', 'Shooter']	
+2026-05-26T20:42:42Z	stranded-deep	genres	['Indie', 'Survival', 'Adventure']	['Indie', 'First-person', 'Survival']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	bloodstained-rotn	genres	['AA', 'Action', 'RPG', 'Adventure', 'Platformer']	['AA', 'Side-view', 'Action', 'RPG', 'Platformer']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	trinity-trigger	genres	['AA', 'RPG', 'Action', 'Fantasy']	['AA', 'Isometric', 'RPG', 'Action', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	monster-hunter-rise	genres	['AAA', 'Action', 'RPG', 'Adventure']	['AAA', 'Third-person', 'Action', 'RPG']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	tribes-of-midgard	genres	['Indie', 'Action', 'RPG', 'Survival']	['Indie', 'Isometric', 'Action', 'RPG', 'Survival']	perspective_added
+2026-05-26T20:42:42Z	rhythm-doctor	genres	['Indie', 'Adventure', 'Puzzle']	['Indie', 'Side-view', 'Adventure', 'Puzzle']	perspective_added
+2026-05-26T20:42:42Z	super-crazy-rhythm-castle	genres	['AAA', 'Adventure', 'Puzzle']	['AAA', 'Isometric', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	company-of-heroes-2	genres	['AAA', 'Tactics', 'Military']	['AAA', 'Isometric', 'Tactics', 'Military']	perspective_added
+2026-05-26T20:42:42Z	gloomhaven	genres	['AA', 'Tactics', 'RPG', 'Fantasy', 'Isometric']	['AA', 'Isometric', 'Tactics', 'RPG', 'Fantasy']	
+2026-05-26T20:42:42Z	wargroove	genres	['Indie', 'Tactics', 'Fantasy']	['Indie', 'Isometric', 'Tactics', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	wargroove-2	genres	['Indie', 'Tactics', 'Fantasy']	['Indie', 'Isometric', 'Tactics', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	sunderfolk	genres	['AA', 'Tactics', 'RPG', 'Fantasy']	['AA', 'Isometric', 'Tactics', 'RPG', 'Fantasy']	perspective_added
+2026-05-26T20:42:42Z	stolen-realm	genres	['Indie', 'Tactics', 'RPG', 'Fantasy', 'Isometric']	['Indie', 'Isometric', 'Tactics', 'RPG', 'Fantasy']	
+2026-05-26T20:42:42Z	jagged-alliance-3	genres	['AA', 'Tactics', 'Military', 'Stealth']	['AA', 'Isometric', 'Tactics', 'Stealth', 'Military']	perspective_added
+2026-05-26T20:42:42Z	popucom	genres	['Indie', 'Adventure', 'Platformer', 'Puzzle']	['Indie', 'Third-person', 'Platformer', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	deadzone-rogue	genres	['Indie', 'Shooter', 'FPS', 'Sci-fi']	['Indie', 'First-person', 'Shooter', 'Sci-fi']	fps_split
+2026-05-26T20:42:42Z	godbreakers	genres	['Indie', 'Action', 'RPG', 'Third-person']	['Indie', 'Third-person', 'Action', 'RPG']	
+2026-05-26T20:42:42Z	unsolved-case	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Side-view', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	sea-of-stars	genres	['Indie', 'RPG', 'Adventure', 'Fantasy']	['Indie', 'Isometric', 'RPG', 'Fantasy']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	river-city-girls-2	genres	['AA', 'Action', 'Adventure']	['AA', 'Side-view', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	mayhem-brawler	genres	['Indie', 'Action', 'Adventure']	['Indie', 'Side-view', 'Action']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	blazing-chrome	genres	['Indie', 'Action', 'Shooter', 'Platformer']	['Indie', 'Side-view', 'Action', 'Shooter', 'Platformer']	perspective_added
+2026-05-26T20:42:42Z	bokura-planet	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Isometric', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	get-together	genres	['Indie', 'Puzzle', 'Adventure']	['Indie', 'Side-view', 'Puzzle']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	tmnt-splintered-fate	genres	['AA', 'Action', 'Isometric']	['AA', 'Isometric', 'Action']	
+2026-05-26T20:42:42Z	the-riftbreaker	genres	['Indie', 'Action', 'Tactics', 'Sci-fi']	['Indie', 'Isometric', 'Action', 'Tactics', 'Sci-fi']	perspective_added
+2026-05-26T20:42:42Z	steel-division-2	genres	['AA', 'Tactics', 'Military']	['AA', 'Isometric', 'Tactics', 'Military']	perspective_added
+2026-05-26T20:42:42Z	lynked-banner-of-the-spark	genres	['Indie', 'Action', 'RPG', 'Adventure']	['Indie', 'Isometric', 'Action', 'RPG']	perspective_added|adventure_removed
+2026-05-26T20:42:42Z	last-epoch	genres	['AA', 'RPG', 'Fantasy', 'Loot', 'Isometric']	['AA', 'Isometric', 'RPG', 'Loot', 'Fantasy']	
+2026-05-26T20:42:42Z	a-way-out	genres	['AA', 'Action', 'Adventure', 'Third-person']	['AA', 'Third-person', 'Action']	adventure_removed
+2026-05-26T20:42:42Z	it-takes-two	genres	['AA', 'Action', 'Adventure', 'Puzzle', 'Platformer']	['AA', 'Action', 'Puzzle', 'Platformer']	adventure_removed|perspective_undetermined
+2026-05-26T20:42:42Z	split-fiction	genres	['AA', 'Action', 'Adventure', 'Platformer', 'Sci-fi', 'Fantasy']	['AA', 'Action', 'Platformer', 'Sci-fi', 'Fantasy']	adventure_removed|perspective_undetermined
+2026-05-26T20:42:42Z	resident-evil-5	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Horror']	['AAA', 'Third-person', 'Shooter', 'Action', 'Horror']	
+2026-05-26T20:42:42Z	resident-evil-6	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Horror']	['AAA', 'Third-person', 'Shooter', 'Action', 'Horror']	
+2026-05-26T20:42:42Z	dead-space-3	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Horror', 'Sci-fi']	['AAA', 'Third-person', 'Shooter', 'Action', 'Horror', 'Sci-fi']	
+2026-05-26T20:42:42Z	army-of-two	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Military']	['AAA', 'Third-person', 'Shooter', 'Action', 'Military']	
+2026-05-26T20:44:56Z	it-takes-two	genres	["AA", "Action", "Puzzle", "Platformer"]	["AA", "Third-person", "Action", "Puzzle", "Platformer"]	perspective_added
+2026-05-26T20:44:56Z	split-fiction	genres	["AA", "Action", "Platformer", "Sci-fi", "Fantasy"]	["AA", "Third-person", "Action", "Platformer", "Sci-fi", "Fantasy"]	perspective_added

@@ -13,8 +13,8 @@
       "note": "Every game has exactly one primary perspective. If perspective is switchable (e.g. some RPGs), pick the one used most often during co-op gameplay."
     },
     "mechanic": {
-      "rule": "at_least_one_per_game",
-      "note": "What the player primarily does. Multiple allowed but be conservative — only tag if the mechanic is a defining feature."
+      "rule": "at_least_one_per_game_unless_survival",
+      "note": "What the player primarily does. Multiple allowed but be conservative — only tag if the mechanic is a defining feature. EXEMPTION: survival-craft games whose defining axis is Survival (structure) may carry NO mechanic tag — Survival anchors the genre on its own (e.g. Valheim, Terraria, Satisfactory). Do not force-fit a wrong mechanic like Action onto a building/automation survival game. If a survival game has an obvious combat focus you MAY add Action, but it is optional."
     },
     "setting": {
       "rule": "optional_multiple",
