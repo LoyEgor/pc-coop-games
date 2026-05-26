@@ -369,7 +369,7 @@ window.GAMES = [
     verdict: "Паркур, зомби и полный кооп кампании после вступления. Более грязный и живой вариант для двоих.",
     storeUrl: "https://store.steampowered.com/app/239140/Dying_Light/",
     imageUrl: steamImage(239140),
-    youtubeUrl: youtube("pL4a6QkzkLs")
+    youtubeUrl: youtube("fo_fqfUd3q8")
   },
   {
     id: "dying-light-2",
@@ -929,7 +929,7 @@ window.GAMES = [
     verdict: "Песочница с финальной прогрессией: от Eye of Cthulhu до Moon Lord. Онлайн до 8.",
     storeUrl: "https://store.steampowered.com/app/105600/Terraria/",
     imageUrl: steamImage(105600),
-    youtubeUrl: youtubeSearch("Terraria")
+    youtubeUrl: youtube("Yb6Ja-YHQ1c")
   },
   {
     id: "stardew-valley",
@@ -945,7 +945,7 @@ window.GAMES = [
     verdict: "Жизненный сим с коопом до 8. Community Center как явная финальная цель.",
     storeUrl: "https://store.steampowered.com/app/413150/Stardew_Valley/",
     imageUrl: steamImage(413150),
-    youtubeUrl: youtubeSearch("Stardew Valley")
+    youtubeUrl: youtube("m5_kcslaxmI")
   },
   {
     id: "magicka",
@@ -961,7 +961,7 @@ window.GAMES = [
     verdict: "Хаотичный кооп-маг до 4. Прародитель Magicka 2.",
     storeUrl: "https://store.steampowered.com/app/42910/Magicka/",
     imageUrl: steamImage(42910),
-    youtubeUrl: youtubeSearch("Magicka")
+    youtubeUrl: youtube("lmLDkzwpMs8")
   },
   {
     id: "we-were-here",
@@ -977,7 +977,7 @@ window.GAMES = [
     verdict: "Бесплатное начало серии. Двое в замке, пазлы через рацию.",
     storeUrl: "https://store.steampowered.com/app/582500/We_Were_Here/",
     imageUrl: steamImage(582500),
-    youtubeUrl: youtubeSearch("We Were Here")
+    youtubeUrl: youtube("6M4SZZH_iFQ")
   },
   {
     id: "we-were-here-together",
@@ -993,7 +993,7 @@ window.GAMES = [
     verdict: "Лучшая часть серии: 4-6 часов кооп-пазлов с голосом.",
     storeUrl: "https://store.steampowered.com/app/865360/We_Were_Here_Together/",
     imageUrl: steamImage(865360),
-    youtubeUrl: youtubeSearch("We Were Here Together")
+    youtubeUrl: youtube("XTy9QU71FtQ")
   },
   {
     id: "streets-of-rage-4",
@@ -1009,7 +1009,7 @@ window.GAMES = [
     verdict: "Возрождение легенды. Beat'em up онлайн до 4.",
     storeUrl: "https://store.steampowered.com/app/985890/Streets_of_Rage_4/",
     imageUrl: steamImage(985890),
-    youtubeUrl: youtubeSearch("Streets of Rage 4")
+    youtubeUrl: youtube("0QQIQrCmz1E")
   },
   {
     id: "enter-the-gungeon",
@@ -1025,7 +1025,7 @@ window.GAMES = [
     verdict: "Bullet-hell roguelike. Двоих через Remote Play, есть финал — The Past.",
     storeUrl: "https://store.steampowered.com/app/311690/Enter_the_Gungeon/",
     imageUrl: steamImage(311690),
-    youtubeUrl: youtubeSearch("Enter the Gungeon")
+    youtubeUrl: youtube("hEvjcwVUml4")
   },
   {
     id: "spelunky-2",
@@ -1041,7 +1041,7 @@ window.GAMES = [
     verdict: "Онлайн-кооп roguelike. Финальные маршруты до 7-1 / Cosmic Ocean.",
     storeUrl: "https://store.steampowered.com/app/418530/Spelunky_2/",
     imageUrl: steamImage(418530),
-    youtubeUrl: youtubeSearch("Spelunky 2")
+    youtubeUrl: youtube("JGhRmS4Gs-g")
   },
   {
     id: "spelunky",
@@ -1057,7 +1057,7 @@ window.GAMES = [
     verdict: "Оригинал. Локальный кооп + Remote Play, финальная зона Olmec.",
     storeUrl: "https://store.steampowered.com/app/239350/Spelunky/",
     imageUrl: steamImage(239350),
-    youtubeUrl: youtubeSearch("Spelunky")
+    youtubeUrl: youtube("idJ0sGE8fio")
   },
   {
     id: "battleblock-theater",
@@ -1073,7 +1073,7 @@ window.GAMES = [
     verdict: "От авторов Castle Crashers. Онлайн-кооп, законченная кампания.",
     storeUrl: "https://store.steampowered.com/app/238460/BattleBlock_Theater/",
     imageUrl: steamImage(238460),
-    youtubeUrl: youtubeSearch("BattleBlock Theater")
+    youtubeUrl: youtube("CS3Lj4-EtR8")
   },
   {
     id: "lego-skywalker-saga",
@@ -1089,7 +1089,7 @@ window.GAMES = [
     verdict: "Огромная LEGO-кампания: все 9 эпизодов. Локально + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/920210/LEGO_Star_Wars_The_Skywalker_Saga/",
     imageUrl: steamImage(920210),
-    youtubeUrl: youtubeSearch("LEGO Star Wars Skywalker Saga")
+    youtubeUrl: youtube("s5_X2LoisQw")
   },
   {
     id: "lego-city-undercover",
@@ -1105,7 +1105,7 @@ window.GAMES = [
     verdict: "Цельная LEGO-игра с открытым городом.",
     storeUrl: "https://store.steampowered.com/app/578330/LEGO_City_Undercover/",
     imageUrl: steamImage(578330),
-    youtubeUrl: youtubeSearch("LEGO City Undercover")
+    youtubeUrl: youtube("z5xMtpM6dPA")
   },
   {
     id: "lego-marvel-superheroes",
@@ -1121,7 +1121,7 @@ window.GAMES = [
     verdict: "Любимая LEGO-кампания по Marvel.",
     storeUrl: "https://store.steampowered.com/app/249130/LEGO_Marvel_Super_Heroes/",
     imageUrl: steamImage(249130),
-    youtubeUrl: youtubeSearch("LEGO Marvel Super Heroes")
+    youtubeUrl: youtube("HnbNGpN8T8s")
   },
   {
     id: "a-hat-in-time",
@@ -1137,7 +1137,7 @@ window.GAMES = [
     verdict: "3D-платформер с коопом. Локально + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/253230/A_Hat_in_Time/",
     imageUrl: steamImage(253230),
-    youtubeUrl: youtubeSearch("A Hat in Time")
+    youtubeUrl: youtube("jqEFLf-0tUU")
   },
   {
     id: "rayman-legends",
@@ -1153,7 +1153,7 @@ window.GAMES = [
     verdict: "Один из лучших кооп-платформеров. До 4 локально.",
     storeUrl: "https://store.steampowered.com/app/242550/Rayman_Legends/",
     imageUrl: steamImage(242550),
-    youtubeUrl: youtubeSearch("Rayman Legends")
+    youtubeUrl: youtube("Dt_Rw0u1xmo")
   },
   {
     id: "rayman-origins",
@@ -1169,7 +1169,7 @@ window.GAMES = [
     verdict: "Предшественник Legends. Локальный кооп до 4.",
     storeUrl: "https://store.steampowered.com/app/207490/Rayman_Origins/",
     imageUrl: steamImage(207490),
-    youtubeUrl: youtubeSearch("Rayman Origins")
+    youtubeUrl: youtube("XYYU4o9q1Fw")
   },
   {
     id: "sackboy-big-adventure",
@@ -1185,7 +1185,7 @@ window.GAMES = [
     verdict: "LittleBigPlanet-наследник. Локальный + онлайн кооп. Дорогой без скидки.",
     storeUrl: "https://store.steampowered.com/app/1599660/Sackboy_A_Big_Adventure/",
     imageUrl: steamImage(1599660),
-    youtubeUrl: youtubeSearch("Sackboy A Big Adventure")
+    youtubeUrl: youtube("OetgxfDiqH8")
   },
   {
     id: "orcs-must-die-2",
@@ -1201,7 +1201,7 @@ window.GAMES = [
     verdict: "Классика action tower defense. Онлайн-кампания на двоих.",
     storeUrl: "https://store.steampowered.com/app/201790/Orcs_Must_Die_2/",
     imageUrl: steamImage(201790),
-    youtubeUrl: youtubeSearch("Orcs Must Die 2")
+    youtubeUrl: youtube("OzLGPao96ms")
   },
   {
     id: "dungeon-defenders",
@@ -1217,7 +1217,7 @@ window.GAMES = [
     verdict: "Action tower defense с RPG-прогрессией. До 4 онлайн.",
     storeUrl: "https://store.steampowered.com/app/65800/Dungeon_Defenders/",
     imageUrl: steamImage(65800),
-    youtubeUrl: youtubeSearch("Dungeon Defenders")
+    youtubeUrl: youtube("vX2lYTJKa7E")
   },
   {
     id: "sanctum-2",
@@ -1233,7 +1233,7 @@ window.GAMES = [
     verdict: "FPS-tower defense. Онлайн-кампания до 4.",
     storeUrl: "https://store.steampowered.com/app/210770/Sanctum_2/",
     imageUrl: steamImage(210770),
-    youtubeUrl: youtubeSearch("Sanctum 2")
+    youtubeUrl: youtube("cFv0dhOnSFY")
   },
   {
     id: "world-war-z",
@@ -1249,7 +1249,7 @@ window.GAMES = [
     verdict: "Эпизодная кооп-кампания против зомби-волн. До 4 онлайн.",
     storeUrl: "https://store.steampowered.com/app/699130/World_War_Z_Aftermath/",
     imageUrl: steamImage(699130),
-    youtubeUrl: youtubeSearch("World War Z Aftermath")
+    youtubeUrl: youtube("dPxZV7KFahU")
   },
   {
     id: "zombie-army-trilogy",
@@ -1265,7 +1265,7 @@ window.GAMES = [
     verdict: "Sniper Elite в зомби-сеттинге. Кооп до 4.",
     storeUrl: "https://store.steampowered.com/app/301640/Zombie_Army_Trilogy/",
     imageUrl: steamImage(301640),
-    youtubeUrl: youtubeSearch("Zombie Army Trilogy")
+    youtubeUrl: youtube("1OSaI8tTxnQ")
   },
   {
     id: "serious-sam-3",
@@ -1281,7 +1281,7 @@ window.GAMES = [
     verdict: "Олдскульный FPS с кооп-кампанией до 4.",
     storeUrl: "https://store.steampowered.com/app/41070/Serious_Sam_3_BFE/",
     imageUrl: steamImage(41070),
-    youtubeUrl: youtubeSearch("Serious Sam 3 BFE")
+    youtubeUrl: youtube("8ViDZN-zW3E")
   },
   {
     id: "serious-sam-4",
@@ -1297,7 +1297,7 @@ window.GAMES = [
     verdict: "Современный Serious Sam с кооп-кампанией.",
     storeUrl: "https://store.steampowered.com/app/257420/Serious_Sam_4/",
     imageUrl: steamImage(257420),
-    youtubeUrl: youtubeSearch("Serious Sam 4")
+    youtubeUrl: youtube("O-ZRv1gpdHQ")
   },
   {
     id: "alien-swarm-reactive-drop",
@@ -1313,7 +1313,7 @@ window.GAMES = [
     verdict: "Бесплатная top-down кооп-миссионка. Очевидное добавление.",
     storeUrl: "https://store.steampowered.com/app/563560/Alien_Swarm_Reactive_Drop/",
     imageUrl: steamImage(563560),
-    youtubeUrl: youtubeSearch("Alien Swarm Reactive Drop")
+    youtubeUrl: youtube("KZvHEpKNXnY")
   },
   {
     id: "powerwash-simulator",
@@ -1329,7 +1329,7 @@ window.GAMES = [
     verdict: "Симулятор мойки. Career-режим с финитными работами.",
     storeUrl: "https://store.steampowered.com/app/1290000/PowerWash_Simulator/",
     imageUrl: steamImage(1290000),
-    youtubeUrl: youtubeSearch("PowerWash Simulator")
+    youtubeUrl: youtube("AIGIRdQALxE")
   },
   {
     id: "teardown",
@@ -1345,7 +1345,7 @@ window.GAMES = [
     verdict: "Voxel-разрушение. Кооп-кампания добавлена в 2026.",
     storeUrl: "https://store.steampowered.com/app/1167630/Teardown/",
     imageUrl: steamImage(1167630),
-    youtubeUrl: youtubeSearch("Teardown")
+    youtubeUrl: youtube("qLk-mdUMINI")
   },
   {
     id: "human-fall-flat",
@@ -1361,7 +1361,7 @@ window.GAMES = [
     verdict: "Physics-кооп до 8. Уровни проходятся.",
     storeUrl: "https://store.steampowered.com/app/477160/Human_Fall_Flat/",
     imageUrl: steamImage(477160),
-    youtubeUrl: youtubeSearch("Human Fall Flat")
+    youtubeUrl: youtube("1Q6o-XtVz6M")
   },
   {
     id: "for-the-king",
@@ -1377,7 +1377,7 @@ window.GAMES = [
     verdict: "Настольная roguelite-RPG. Онлайн-кампания.",
     storeUrl: "https://store.steampowered.com/app/527230/For_The_King/",
     imageUrl: steamImage(527230),
-    youtubeUrl: youtubeSearch("For The King")
+    youtubeUrl: youtube("gZiFXgXFTqA")
   },
   {
     id: "streets-of-rogue",
@@ -1393,7 +1393,7 @@ window.GAMES = [
     verdict: "Roguelite immersive sim. Пройти город онлайн до 4.",
     storeUrl: "https://store.steampowered.com/app/512900/Streets_of_Rogue/",
     imageUrl: steamImage(512900),
-    youtubeUrl: youtubeSearch("Streets of Rogue")
+    youtubeUrl: youtube("ARV3PEqN3jI")
   },
   {
     id: "nuclear-throne",
@@ -1409,7 +1409,7 @@ window.GAMES = [
     verdict: "Twin-stick roguelike. Локальный кооп + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/242680/Nuclear_Throne/",
     imageUrl: steamImage(242680),
-    youtubeUrl: youtubeSearch("Nuclear Throne")
+    youtubeUrl: youtube("-YS_lHKUGoo")
   },
   {
     id: "binding-of-isaac-rebirth",
@@ -1425,7 +1425,7 @@ window.GAMES = [
     verdict: "Roguelite в подвалах с боссами-эндингами. Локальный кооп до 4.",
     storeUrl: "https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/",
     imageUrl: steamImage(250900),
-    youtubeUrl: youtubeSearch("Binding of Isaac Rebirth")
+    youtubeUrl: youtube("E6HNZYZFYAw")
   },
   {
     id: "keywe",
@@ -1441,7 +1441,7 @@ window.GAMES = [
     verdict: "Милая кооп-почта про птичек-киви. Онлайн на двоих.",
     storeUrl: "https://store.steampowered.com/app/1242980/KeyWe/",
     imageUrl: steamImage(1242980),
-    youtubeUrl: youtubeSearch("KeyWe")
+    youtubeUrl: youtube("8TK7-nHBZQY")
   },
   {
     id: "moving-out",
@@ -1457,7 +1457,7 @@ window.GAMES = [
     verdict: "Кооп-грузчики в духе Overcooked. Локально + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/996770/Moving_Out/",
     imageUrl: steamImage(996770),
-    youtubeUrl: youtubeSearch("Moving Out")
+    youtubeUrl: youtube("DYTqHcPubxQ")
   },
   {
     id: "roboquest",
@@ -1473,7 +1473,7 @@ window.GAMES = [
     verdict: "FPS-roguelike с финалом забега. Онлайн на двоих.",
     storeUrl: "https://store.steampowered.com/app/692890/Roboquest/",
     imageUrl: steamImage(692890),
-    youtubeUrl: youtubeSearch("Roboquest")
+    youtubeUrl: youtube("qR_zwoYPUrg")
   },
   {
     id: "gunfire-reborn",
@@ -1489,7 +1489,7 @@ window.GAMES = [
     verdict: "FPS-roguelite до 4 с финальным боссом забега.",
     storeUrl: "https://store.steampowered.com/app/1217060/Gunfire_Reborn/",
     imageUrl: steamImage(1217060),
-    youtubeUrl: youtubeSearch("Gunfire Reborn")
+    youtubeUrl: youtube("lwxoc5Eh_FQ")
   },
   {
     id: "ravenswatch",
@@ -1505,7 +1505,7 @@ window.GAMES = [
     verdict: "Roguelite от Curse of the Dead Gods. Онлайн-кооп.",
     storeUrl: "https://store.steampowered.com/app/2071280/Ravenswatch/",
     imageUrl: steamImage(2071280),
-    youtubeUrl: youtubeSearch("Ravenswatch")
+    youtubeUrl: youtube("7OFllCT_3ck")
   },
   {
     id: "wizard-of-legend",
@@ -1521,7 +1521,7 @@ window.GAMES = [
     verdict: "Заклинательский roguelite. Локально + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/445980/Wizard_of_Legend/",
     imageUrl: steamImage(445980),
-    youtubeUrl: youtubeSearch("Wizard of Legend")
+    youtubeUrl: youtube("7txCf5jTOy8")
   },
   {
     id: "death-road-to-canada",
@@ -1537,7 +1537,7 @@ window.GAMES = [
     verdict: "Roguelite roadtrip. Доехать до Канады, локально до 4.",
     storeUrl: "https://store.steampowered.com/app/252610/Death_Road_to_Canada/",
     imageUrl: steamImage(252610),
-    youtubeUrl: youtubeSearch("Death Road to Canada")
+    youtubeUrl: youtube("09XMf0N2lJU")
   },
   {
     id: "kane-lynch-2",
@@ -1553,7 +1553,7 @@ window.GAMES = [
     verdict: "Грязный криминальный кооп-боевик. Прямой родственник Army of Two.",
     storeUrl: "https://store.steampowered.com/app/28000/Kane__Lynch_2_Dog_Days/",
     imageUrl: steamImage(28000),
-    youtubeUrl: youtubeSearch("Kane Lynch 2 Dog Days")
+    youtubeUrl: youtube("r_vIMU02GTE")
   },
   {
     id: "towerfall-ascension",
@@ -1569,7 +1569,7 @@ window.GAMES = [
     verdict: "PvP + кооп Quest Mode и Dark World. Локально + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/251470/TowerFall_Ascension/",
     imageUrl: steamImage(251470),
-    youtubeUrl: youtubeSearch("TowerFall Ascension")
+    youtubeUrl: youtube("bkEaLWtVSqM")
   },
   {
     id: "capcom-beat-em-up-bundle",
@@ -1585,7 +1585,7 @@ window.GAMES = [
     verdict: "Сборник 7 классических beat'em up'ов Capcom. Онлайн.",
     storeUrl: "https://store.steampowered.com/app/885150/Capcom_Beat_Em_Up_Bundle/",
     imageUrl: steamImage(885150),
-    youtubeUrl: youtubeSearch("Capcom Beat Em Up Bundle")
+    youtubeUrl: youtube("hg-RVzP4bHM")
   },
   {
     id: "metal-slug-3",
@@ -1601,7 +1601,7 @@ window.GAMES = [
     verdict: "Самая известная Metal Slug. Локально + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/250180/METAL_SLUG_3/",
     imageUrl: steamImage(250180),
-    youtubeUrl: youtubeSearch("METAL SLUG 3")
+    youtubeUrl: youtube("wgjqoDmVods")
   },
   {
     id: "monaco",
@@ -1617,7 +1617,7 @@ window.GAMES = [
     verdict: "Кооп-ограбления top-down. Онлайн до 4.",
     storeUrl: "https://store.steampowered.com/app/113020/Monaco_Whats_Yours_Is_Mine/",
     imageUrl: steamImage(113020),
-    youtubeUrl: youtubeSearch("Monaco Whats Yours Is Mine")
+    youtubeUrl: youtube("rWqM3YVZiJw")
   },
   {
     id: "the-cave",
@@ -1633,7 +1633,7 @@ window.GAMES = [
     verdict: "Приключенческая головоломка от Рона Гилберта. Локально до 3.",
     storeUrl: "https://store.steampowered.com/app/221810/The_Cave/",
     imageUrl: steamImage(221810),
-    youtubeUrl: youtubeSearch("The Cave")
+    youtubeUrl: youtube("DjJKUBR-APY")
   },
   {
     id: "20xx",
@@ -1649,7 +1649,7 @@ window.GAMES = [
     verdict: "Mega Man-like roguelite. Онлайн на двоих.",
     storeUrl: "https://store.steampowered.com/app/322110/20XX/",
     imageUrl: steamImage(322110),
-    youtubeUrl: youtubeSearch("20XX")
+    youtubeUrl: youtube("4OEcKZ9Cgok")
   },
   {
     id: "vagante",
@@ -1665,7 +1665,7 @@ window.GAMES = [
     verdict: "Roguelike-платформер. Онлайн до 4.",
     storeUrl: "https://store.steampowered.com/app/323220/Vagante/",
     imageUrl: steamImage(323220),
-    youtubeUrl: youtubeSearch("Vagante")
+    youtubeUrl: youtube("w3X8Orp_Fjo")
   },
   {
     id: "barony",
@@ -1681,7 +1681,7 @@ window.GAMES = [
     verdict: "First-person dungeon roguelike. Онлайн до 4.",
     storeUrl: "https://store.steampowered.com/app/371970/Barony/",
     imageUrl: steamImage(371970),
-    youtubeUrl: youtubeSearch("Barony")
+    youtubeUrl: youtube("FWyOf82UsXc")
   },
   {
     id: "across-the-obelisk",
@@ -1697,7 +1697,7 @@ window.GAMES = [
     verdict: "Карточный roguelite в актах. Онлайн-кампания.",
     storeUrl: "https://store.steampowered.com/app/1385380/Across_the_Obelisk/",
     imageUrl: steamImage(1385380),
-    youtubeUrl: youtubeSearch("Across the Obelisk")
+    youtubeUrl: youtube("EKlhgaZfKgM")
   },
   {
     id: "escape-simulator",
@@ -1713,7 +1713,7 @@ window.GAMES = [
     verdict: "Кооп escape room с комнатами и DLC-кампаниями. Онлайн до 6.",
     storeUrl: "https://store.steampowered.com/app/1435790/Escape_Simulator/",
     imageUrl: steamImage(1435790),
-    youtubeUrl: youtubeSearch("Escape Simulator")
+    youtubeUrl: youtube("uGFNGZfWycs")
   },
   {
     id: "keep-talking-nobody-explodes",
@@ -1729,7 +1729,7 @@ window.GAMES = [
     verdict: "Один обезвреживает бомбу, второй читает мануал. Одной копии достаточно.",
     storeUrl: "https://store.steampowered.com/app/341800/Keep_Talking_and_Nobody_Explodes/",
     imageUrl: steamImage(341800),
-    youtubeUrl: youtubeSearch("Keep Talking and Nobody Explodes")
+    youtubeUrl: youtube("CAbLeIgUoTg")
   },
   {
     id: "remnant-1",
@@ -1745,7 +1745,7 @@ window.GAMES = [
     verdict: "Soulslike с пушками. Предшественник Remnant II.",
     storeUrl: "https://store.steampowered.com/app/617290/Remnant_From_the_Ashes/",
     imageUrl: steamImage(617290),
-    youtubeUrl: youtubeSearch("Remnant From the Ashes")
+    youtubeUrl: youtube("gAmfVuLvIaI")
   },
   {
     id: "dead-island-de",
@@ -1761,7 +1761,7 @@ window.GAMES = [
     verdict: "Зомби-боевик с кооп-кампанией до 4.",
     storeUrl: "https://store.steampowered.com/app/383150/Dead_Island_Definitive_Edition/",
     imageUrl: steamImage(383150),
-    youtubeUrl: youtubeSearch("Dead Island Definitive Edition")
+    youtubeUrl: youtube("urvxAMDosFY")
   },
   {
     id: "portal-knights",
@@ -1777,7 +1777,7 @@ window.GAMES = [
     verdict: "Voxel-Minecraft с боссами и прогрессией. Кооп локально/онлайн до 4.",
     storeUrl: "https://store.steampowered.com/app/374040/Portal_Knights/",
     imageUrl: steamImage(374040),
-    youtubeUrl: youtubeSearch("Portal Knights")
+    youtubeUrl: youtube("2jK1hIF2zfs")
   },
   {
     id: "chained-together",
@@ -1793,7 +1793,7 @@ window.GAMES = [
     verdict: "Кооп-восхождение скованными цепью. Добраться до вершины.",
     storeUrl: "https://store.steampowered.com/app/2567870/Chained_Together/",
     imageUrl: steamImage(2567870),
-    youtubeUrl: youtubeSearch("Chained Together")
+    youtubeUrl: youtube("Lwm0xHPmRis")
   },
   {
     id: "pico-park",
@@ -1809,7 +1809,7 @@ window.GAMES = [
     verdict: "Простые кооп-уровни до 8 человек. Минималистично и хорошо.",
     storeUrl: "https://store.steampowered.com/app/1509960/PICO_PARK/",
     imageUrl: steamImage(1509960),
-    youtubeUrl: youtubeSearch("PICO PARK")
+    youtubeUrl: youtube("NGmOZbTYrr8")
   },
   {
     id: "road-redemption",
@@ -1825,7 +1825,7 @@ window.GAMES = [
     verdict: "Road Rash-наследник. Локальный split-screen + Remote Play.",
     storeUrl: "https://store.steampowered.com/app/300380/Road_Redemption/",
     imageUrl: steamImage(300380),
-    youtubeUrl: youtubeSearch("Road Redemption")
+    youtubeUrl: youtube("Ta448FEU8VA")
   },
   {
     id: "edf-4-1",
@@ -1841,7 +1841,7 @@ window.GAMES = [
     verdict: "Орды гигантских жуков. Онлайн-миссии до 4.",
     storeUrl: "https://store.steampowered.com/app/410320/EARTH_DEFENSE_FORCE_41_The_Shadow_of_New_Despair/",
     imageUrl: steamImage(410320),
-    youtubeUrl: youtubeSearch("Earth Defense Force 4.1")
+    youtubeUrl: youtube("ivK7H9NMiUM")
   },
   {
     id: "assault-android-cactus",
@@ -1857,7 +1857,7 @@ window.GAMES = [
     verdict: "Twin-stick кампания. Локально до 4.",
     storeUrl: "https://store.steampowered.com/app/250110/Assault_Android_Cactus/",
     imageUrl: steamImage(250110),
-    youtubeUrl: youtubeSearch("Assault Android Cactus")
+    youtubeUrl: youtube("HaQogKg__es")
   },
   {
     id: "fightn-rage",
@@ -1873,7 +1873,7 @@ window.GAMES = [
     verdict: "Современный beat'em up в духе 90-х. Локально до 3.",
     storeUrl: "https://store.steampowered.com/app/674520/FightN_Rage/",
     imageUrl: steamImage(674520),
-    youtubeUrl: youtubeSearch("FightN Rage")
+    youtubeUrl: youtube("KHLg7RsaDbc")
   },
   {
     id: "door-kickers-action-squad",
@@ -1889,7 +1889,7 @@ window.GAMES = [
     verdict: "Тактический пиксельный shooter. Онлайн до 4.",
     storeUrl: "https://store.steampowered.com/app/686200/Door_Kickers_Action_Squad/",
     imageUrl: steamImage(686200),
-    youtubeUrl: youtubeSearch("Door Kickers Action Squad")
+    youtubeUrl: youtube("AWhQx_zd_ns")
   },
   {
     id: "satisfactory",
@@ -1937,7 +1937,7 @@ window.GAMES = [
     verdict: "Сюрреалистичный битэмап про чёрно-белых психопатов с автоматами и битами из вселенной Madness.",
     storeUrl: "https://store.steampowered.com/app/488860/",
     imageUrl: steamImage(488860),
-    youtubeUrl: youtubeSearch("Madness Project Nexus co-op gameplay")
+    youtubeUrl: youtube("gjSInV8P8Js")
   },
   {
     id: "chicory-colorful-tale",
@@ -1953,7 +1953,7 @@ window.GAMES = [
     verdict: "Уютное приключение про собаку с кистью: раскрашиваем мир, решаем пазлы и копаемся в чужих травмах.",
     storeUrl: "https://store.steampowered.com/app/1123450/",
     imageUrl: steamImage(1123450),
-    youtubeUrl: youtubeSearch("Chicory Colorful Tale co-op gameplay")
+    youtubeUrl: youtube("_C-hZZYiwPI")
   },
   {
     id: "rabbit-and-steel",
@@ -1969,7 +1969,7 @@ window.GAMES = [
     verdict: "MMO-рейд в формате roguelite: четверо кроликов уворачиваются от паттернов босса с мечами и магией.",
     storeUrl: "https://store.steampowered.com/app/2132850/",
     imageUrl: steamImage(2132850),
-    youtubeUrl: youtubeSearch("Rabbit and Steel co-op gameplay")
+    youtubeUrl: youtube("jUxtCGIiA_4")
   },
   {
     id: "door-kickers-2",
@@ -1985,7 +1985,7 @@ window.GAMES = [
     verdict: "Тактический штурм комнат с командой спецназа: вид сверху, пауза по нажатию, миссии в шаг от провала.",
     storeUrl: "https://store.steampowered.com/app/1239080/",
     imageUrl: steamImage(1239080),
-    youtubeUrl: youtubeSearch("Door Kickers 2 co-op gameplay")
+    youtubeUrl: youtube("5JUcXnNydAg")
   },
   {
     id: "heavenly-bodies",
@@ -2001,7 +2001,7 @@ window.GAMES = [
     verdict: "Физика невесомости и космонавты-неумехи: один палец на руке, один тумблер за раз, локальные ржаки.",
     storeUrl: "https://store.steampowered.com/app/1138850/",
     imageUrl: steamImage(1138850),
-    youtubeUrl: youtubeSearch("Heavenly Bodies co-op gameplay")
+    youtubeUrl: youtube("MFAdHlHSJKg")
   },
   {
     id: "bang-on-balls-chronicles",
@@ -2017,7 +2017,7 @@ window.GAMES = [
     verdict: "Шарики путешествуют по историческим эпохам, бьют врагов и врываются друг в друга — 3D-платформер на четверых.",
     storeUrl: "https://store.steampowered.com/app/1227650/",
     imageUrl: steamImage(1227650),
-    youtubeUrl: youtubeSearch("Bang-On Balls Chronicles co-op gameplay")
+    youtubeUrl: youtube("IJSqPoeqfUk")
   },
   {
     id: "echo-point-nova",
@@ -2033,7 +2033,7 @@ window.GAMES = [
     verdict: "Открытый мир, паркур-шутер от автора Severed Steel: парим, рикошетим пули, врываемся вчетвером.",
     storeUrl: "https://store.steampowered.com/app/1836730/",
     imageUrl: steamImage(1836730),
-    youtubeUrl: youtubeSearch("Echo Point Nova co-op gameplay")
+    youtubeUrl: youtube("3Bx528Rgy7c")
   },
   {
     id: "stick-it-to-the-stickman",
@@ -2049,7 +2049,7 @@ window.GAMES = [
     verdict: "Физический мордобой палочных человечков с прокачкой в roguelite-структуре — от Free Lives.",
     storeUrl: "https://store.steampowered.com/app/2085540/",
     imageUrl: steamImage(2085540),
-    youtubeUrl: youtubeSearch("Stick It to the Stickman co-op gameplay")
+    youtubeUrl: youtube("4C8EY6HUE34")
   },
   {
     id: "age-of-empires-2-de",
@@ -2065,7 +2065,7 @@ window.GAMES = [
     verdict: "Классическая RTS в HD: кооперативные исторические кампании от Чингисхана до Жанны д'Арк.",
     storeUrl: "https://store.steampowered.com/app/813780/",
     imageUrl: steamImage(813780),
-    youtubeUrl: youtubeSearch("Age of Empires 2 Definitive Edition co-op campaign")
+    youtubeUrl: youtube("B2lPFRtaMhc")
   },
   {
     id: "mindustry",
@@ -2081,7 +2081,7 @@ window.GAMES = [
     verdict: "Гибрид tower defense и factory-game: автоматизируем добычу, отстраиваемся и отбиваемся вместе.",
     storeUrl: "https://store.steampowered.com/app/1127400/",
     imageUrl: steamImage(1127400),
-    youtubeUrl: youtubeSearch("Mindustry co-op gameplay")
+    youtubeUrl: youtube("WOYOnhhj8f8")
   },
   {
     id: "crypt-of-the-necrodancer",
@@ -2097,7 +2097,7 @@ window.GAMES = [
     verdict: "Ритм-рогалик: ходим по подземелью в такт бэнгеру, бьём скелетов на удар по такту.",
     storeUrl: "https://store.steampowered.com/app/247080/",
     imageUrl: steamImage(247080),
-    youtubeUrl: youtubeSearch("Crypt of the NecroDancer co-op gameplay")
+    youtubeUrl: youtube("ytLz4ptBdN0")
   },
   {
     id: "trine-1",
@@ -2113,7 +2113,7 @@ window.GAMES = [
     verdict: "Сказочный платформер от Frozenbyte: рыцарь, маг и воровка решают пазлы и колотят скелетов втроём.",
     storeUrl: "https://store.steampowered.com/app/35700/",
     imageUrl: steamImage(35700),
-    youtubeUrl: youtubeSearch("Trine 1 co-op gameplay")
+    youtubeUrl: youtube("6Hj1kcojnSU")
   },
   {
     id: "outlast-trials",
@@ -2129,7 +2129,7 @@ window.GAMES = [
     verdict: "Кооперативный психо-хоррор от Red Barrels: сбегаем из садистских испытаний холодной войны.",
     storeUrl: "https://store.steampowered.com/app/1304930/",
     imageUrl: steamImage(1304930),
-    youtubeUrl: youtubeSearch("Outlast Trials co-op gameplay")
+    youtubeUrl: youtube("lqytOzHvRLA")
   },
   {
     id: "cook-serve-delicious",
@@ -2145,7 +2145,7 @@ window.GAMES = [
     verdict: "Хардкорный симулятор кафе: бьём по клавишам, готовим бургеры и кофе, пока клиенты не лопнули.",
     storeUrl: "https://store.steampowered.com/app/247020/",
     imageUrl: steamImage(247020),
-    youtubeUrl: youtubeSearch("Cook Serve Delicious co-op gameplay")
+    youtubeUrl: youtube("gkZIB7hCMTc")
   },
   {
     id: "mosa-lina",
@@ -2161,7 +2161,7 @@ window.GAMES = [
     verdict: "Антипазлер: каждые 60 секунд другая комбинация инструментов и одна цель — собрать фрукты.",
     storeUrl: "https://store.steampowered.com/app/2477090/",
     imageUrl: steamImage(2477090),
-    youtubeUrl: youtubeSearch("Mosa Lina co-op gameplay")
+    youtubeUrl: youtube("ExwgTFTC0tw")
   },
   {
     id: "dishwasher-vampire-smile",
@@ -2177,7 +2177,7 @@ window.GAMES = [
     verdict: "Стильный 2D-битэмап от Ska Studios: киберсамураи рубят боссов под индастриал.",
     storeUrl: "https://store.steampowered.com/app/268990/",
     imageUrl: steamImage(268990),
-    youtubeUrl: youtubeSearch("Dishwasher Vampire Smile co-op gameplay")
+    youtubeUrl: youtube("3CowOAg-F0Q")
   },
   {
     id: "astroneer",
