@@ -70,6 +70,12 @@ jobs:
             git commit -m "refresh: ${PRICE_N} price, ${RATING_N} rating updates"
           fi
 
-          # Pull/rebase in case coop-hunter pushed during our run.
-          git pull --rebase origin main || true
+          # Pull/rebase in case coop-hunter pushed during our run. On a conflict,
+          # abort and fail the step rather than pushing a half-rebased tree —
+          # a red job is visible; a silent bad push is not.
+          if ! git pull --rebase origin main; then
+            git rebase --abort 2>/dev/null || true
+            echo "::error::rebase onto origin/main conflicted — not pushing"
+            exit 1
+          fi
           git push

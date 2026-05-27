@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 # Reuse the SAME gates as append_entry.py so batch inserts can't bypass them:
 #   - render_entry() raises ValueError if there is no real 11-char video_id
 #   - previously_removed_ids() lists ids ever auto-removed as endless
-from append_entry import render_entry, previously_removed_ids
+from append_entry import render_entry, previously_removed_ids, insert_entry, atomic_write_text
 import re
 from pathlib import Path
 
@@ -29,37 +29,31 @@ def main():
     added = []
     skipped = []
     for g in entries:
-        if re.search(r'id:\s*"' + re.escape(g["id"]) + r'"', content):
-            skipped.append(f"{g['id']} (duplicate)")
-            continue
-        # Gate: never re-add a game previously removed as endless.
-        if g["id"] in removed_ids:
-            skipped.append(f"{g['id']} (previously_removed_endless)")
-            continue
-        # Gate: render_entry raises ValueError without a real video_id.
+        # One malformed entry (missing field via KeyError, or no real video_id
+        # via render_entry's ValueError) must NOT abort the batch and discard the
+        # entries already inserted in memory — skip it and keep going.
         try:
+            gid = g["id"]
+            if re.search(r'id:\s*"' + re.escape(gid) + r'"', content):
+                skipped.append(f"{gid} (duplicate)")
+                continue
+            # Gate: never re-add a game previously removed as endless.
+            if gid in removed_ids:
+                skipped.append(f"{gid} (previously_removed_endless)")
+                continue
+            # Gate: render_entry raises ValueError without a real video_id.
             new_entry = render_entry(g) + ","
-        except ValueError as e:
-            skipped.append(f"{g['id']} (rejected: {e})")
+        except (ValueError, KeyError) as e:
+            skipped.append(f"{g.get('id', '<no id>')} (rejected: {e})")
             continue
-        match = re.search(r'\n  \{\n(?:[^{}]*?)\n    hidden:\s*true', content)
-        if match:
-            insert_pos = match.start() + 1
-            content = content[:insert_pos] + new_entry + "\n" + content[insert_pos:]
-        else:
-            new_content = re.sub(
-                r'\n  \}\n\];',
-                f'\n  }},\n{new_entry}\n];',
-                content,
-                count=1,
-            )
-            if new_content == content:
-                print(f"ERROR: couldn't find insertion point for {g['id']}", file=sys.stderr)
-                sys.exit(2)
-            content = new_content
-        added.append(g["id"])
+        new_content = insert_entry(content, new_entry)
+        if new_content is None:
+            print(f"ERROR: couldn't find insertion point for {gid}", file=sys.stderr)
+            sys.exit(2)
+        content = new_content
+        added.append(gid)
 
-    DATA_JS.write_text(content, encoding="utf-8")
+    atomic_write_text(DATA_JS, content)
     print(f"Added {len(added)}: {added}")
     if skipped:
         print(f"Skipped {len(skipped)} (already present): {skipped}")

@@ -66,9 +66,17 @@ banner "FINAL — committing any leftover working-tree changes"
 if [ -n "$(git status --porcelain)" ]; then
   git add -A
   git commit -m "run-all: fact-checker media fixes + state logs"
-  # Pull/rebase in case the refresh-prices cron landed during the run.
-  git pull --rebase origin main || true
-  if git push origin main; then
+  BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+  if [ "$BRANCH" != "main" ]; then
+    # Never push a non-main branch (e.g. a worktree branch) to origin/main —
+    # that would push a stale main and orphan this commit. Leave it local.
+    echo "[run-all] On branch '$BRANCH' (not main) — committed locally, NOT pushing. Merge to main by hand." >&2
+  # Pull/rebase in case the refresh-prices cron landed during the run. On a
+  # conflict, abort and stop — never push a half-rebased tree.
+  elif ! git pull --rebase origin main; then
+    git rebase --abort 2>/dev/null || true
+    echo "[run-all] WARNING: rebase onto origin/main conflicted — commit is local, resolve and push by hand." >&2
+  elif git push origin main; then
     echo "[run-all] Final commit pushed."
   else
     echo "[run-all] WARNING: final push failed — changes are committed locally, push by hand." >&2

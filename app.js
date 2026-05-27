@@ -156,7 +156,9 @@ const filterConfig = {
 };
 
 function getRangeExtents(key) {
-  const values = games.map((g) => Number(g[key])).filter((v) => !isNaN(v) && v > 0);
+  // Keep 0 in scope: price 0 = a legitimately free game, and the floor must be
+  // 0 so those games stay inside the Price range (no other column has a real 0).
+  const values = games.map((g) => Number(g[key])).filter((v) => !isNaN(v) && v >= 0);
   if (!values.length) return { min: 0, max: 0 };
   return { min: Math.min(...values), max: Math.max(...values) };
 }
@@ -255,7 +257,7 @@ function gameMatchesFilters(game, opts) {
 
   const text = state.filters.title.trim().toLowerCase();
   if (text) {
-    const haystack = [game.title, game.verdict, game.genres.join(" "), game.ratingLabel].join(" ").toLowerCase();
+    const haystack = [game.title, game.verdict, game.genres.join(" ")].join(" ").toLowerCase();
     if (!haystack.includes(text)) return false;
   }
 

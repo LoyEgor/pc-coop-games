@@ -11,6 +11,7 @@ Stdin = JSON object matching the shape in SKILL.md.
 Returns 0 on success, 1 if id already present (no-op), 2 on error.
 """
 
+import os
 import sys
 import json
 import re
@@ -18,6 +19,43 @@ from pathlib import Path
 
 DATA_JS = Path(__file__).resolve().parents[3].parent / "data.js"
 REMOVED_TSV = Path(__file__).resolve().parents[1] / "state" / "removed-entries.tsv"
+
+
+def atomic_write_text(path, text):
+    """Write `text` to `path` atomically: write a sibling temp file, then
+    os.replace (atomic on the same filesystem). A crash mid-write can no longer
+    truncate data.js — the original stays intact until the rename succeeds."""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def insert_entry(content, entry_text):
+    """Insert a rendered, comma-terminated entry into the GAMES array.
+
+    Inserts immediately before the first `hidden: true` entry, else before the
+    closing `];`. Located line-by-line (not via a `[^{}]` regex) so a `{` or `}`
+    inside a verdict/title string can't break the match. Returns the new content,
+    or None if no insertion point could be found.
+    """
+    lines = content.split("\n")
+    hidden_idx = next(
+        (i for i, l in enumerate(lines) if re.match(r"\s*hidden:\s*true", l)),
+        None,
+    )
+    if hidden_idx is not None:
+        # Back up from the hidden field to its entry's opening `{`.
+        open_idx = next(
+            (j for j in range(hidden_idx, -1, -1) if lines[j].strip() == "{"),
+            None,
+        )
+        if open_idx is not None:
+            lines[open_idx:open_idx] = entry_text.split("\n")
+            return "\n".join(lines)
+    # No hidden block (or its opening couldn't be located): append before `];`,
+    # moving the trailing comma onto what was previously the last entry.
+    new_content = re.sub(r"\n  \}\n\];", f"\n  }},\n{entry_text}\n];", content, count=1)
+    return new_content if new_content != content else None
 
 
 def previously_removed_ids():
@@ -47,11 +85,21 @@ def render_entry(g):
     def js_arr(a):
         return "[" + ", ".join(js_str(x) for x in a) + "]"
 
-    # imageUrl: prefer the steamImage helper if app_id is given; else literal
+    def js_int(v):
+        # Round defensively: a value arriving as "87.6" or 8.5 becomes a clean
+        # integer instead of crashing int() (only `hours` was protected before).
+        return int(round(float(v)))
+
+    # imageUrl: prefer the steamImage helper if app_id is given; else literal.
     if g.get("app_id"):
         image_expr = f"steamImage({g['app_id']})"
     else:
-        image_expr = js_str(g.get("imageUrl", ""))
+        raw_image = g.get("imageUrl", "")
+        # The skill sometimes passes the helper call itself as a literal string
+        # (e.g. "steamImage(429660)"). Quoting that makes it a string value, so
+        # the UI renders a broken <img src>. Emit it as a bare call instead.
+        m = re.match(r"^steamImage\((\d+)\)$", raw_image.strip()) if isinstance(raw_image, str) else None
+        image_expr = f"steamImage({m.group(1)})" if m else js_str(raw_image)
 
     # youtubeUrl: ONLY a real 11-char YouTube video id is accepted.
     # The table opens a modal with the YouTube iframe; a search URL cannot be
@@ -81,14 +129,14 @@ def render_entry(g):
     return f"""  {{
     id: {js_str(g["id"])},
     title: {js_str(g["title"])},
-    year: {int(g["year"])},
+    year: {js_int(g["year"])},
     genres: {js_arr(g["genres"])},
     endingType: {js_str(g["endingType"])},
-    rating: {int(g["rating"])},
-    playersMax: {int(g["playersMax"])},
-    hours: {int(round(float(g["hours"])))},
+    rating: {js_int(g["rating"])},
+    playersMax: {js_int(g["playersMax"])},
+    hours: {js_int(g["hours"])},
     oneCopy: {js_str(g["oneCopy"])},
-    price: {int(g["price"])},
+    price: {js_int(g["price"])},
     verdict: {js_str(g["verdict"])},
     storeUrl: {js_str(g["storeUrl"])},
     imageUrl: {image_expr},
@@ -124,49 +172,20 @@ def main():
     try:
         new_entry = render_entry(g) + ","
     except ValueError as e:
+        # exit 4 stays the video_id gate (SKILL.md §8): a missing/invalid
+        # 11-char id is the only ValueError render_entry raises deliberately.
         print(f"REJECT: {e}", file=sys.stderr)
         sys.exit(4)
+    except KeyError as e:
+        print(f"ERROR: '{g.get('id')}' is missing required field {e}", file=sys.stderr)
+        sys.exit(2)
 
-    # Insert before the first "hidden: true" block.
-    # Find the opening brace of the entry that contains hidden: true and back up.
-    # Strategy: match "  {\n    id: ...,\n    ...\n    hidden: true," — find the line where the parent entry starts.
-    # Simpler: find the entry blocks; insert before the first entry that has hidden: true.
+    new_content = insert_entry(content, new_entry)
+    if new_content is None:
+        print("ERROR: couldn't find insertion point in data.js", file=sys.stderr)
+        sys.exit(2)
 
-    # Split into entries by top-level `  {` and `  },` patterns. Risky to do regex parsing of JS.
-    # Pragmatic: find "    hidden: true," string, then back up to the most recent "  {" before it.
-
-    match = re.search(r'\n  \{\n(?:[^{}]*?)\n    hidden:\s*true', content)
-    if match:
-        # Insert before "\n  {"
-        insert_pos = match.start() + 1  # after the leading \n
-        # Insert as ",\n  {...new entry...},\n"
-        # But the previous entry already ends with "},\n" so we just need "  {new}\n,\n"
-        # Existing pattern is:
-        # ...
-        # },
-        # {
-        #   hidden game...
-        # We want to insert between "}," and "{ hidden" lines.
-        new_content = content[:insert_pos] + new_entry + "\n" + content[insert_pos:]
-    else:
-        # No hidden block. Insert before the closing "];".
-        end_match = re.search(r'\n\];\s*$', content)
-        if not end_match:
-            print("ERROR: couldn't find closing ']' of games array", file=sys.stderr)
-            sys.exit(2)
-        # Add a comma to the last entry (replace its "}\n];" with "},\n  {new}\n];")
-        # Last entry ends with "  }\n];" — replace with "  },\n<new>\n];"
-        new_content = re.sub(
-            r'\n  \}\n\];',
-            f'\n  }},\n{new_entry}\n];',
-            content,
-            count=1
-        )
-        if new_content == content:
-            print("ERROR: couldn't find insertion point", file=sys.stderr)
-            sys.exit(2)
-
-    DATA_JS.write_text(new_content, encoding="utf-8")
+    atomic_write_text(DATA_JS, new_content)
     print(f"OK: appended '{g['id']}'")
 
 

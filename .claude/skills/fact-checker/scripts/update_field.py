@@ -13,6 +13,7 @@ Logs every applied fix to state/applied-fixes.tsv.
 Exits 0 on success, 1 if id/field not found, 2 on error.
 """
 
+import os
 import sys
 import re
 import datetime
@@ -21,6 +22,14 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[3].parent
 DATA_JS = REPO_ROOT / "data.js"
 LOG_TSV = REPO_ROOT / ".claude" / "skills" / "fact-checker" / "state" / "applied-fixes.tsv"
+
+
+def atomic_write_text(path, text):
+    """Write atomically (temp file + os.replace) so a crash mid-write can't
+    truncate data.js."""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
 
 ALLOWED_FIELDS = {"rating", "price", "year", "playersMax", "hours"}
 
@@ -87,7 +96,7 @@ def main():
         print(f"NOT FOUND: '{game_id}.{field}'", file=sys.stderr)
         sys.exit(1)
 
-    DATA_JS.write_text(new_content, encoding="utf-8")
+    atomic_write_text(DATA_JS, new_content)
     ensure_log_header()
     with LOG_TSV.open("a", encoding="utf-8") as f:
         ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")

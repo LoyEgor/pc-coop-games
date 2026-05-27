@@ -69,7 +69,7 @@ def appdetails(app_id):
     data = fetch_json(url).get(str(app_id), {})
     if not data.get("success"):
         return None
-    return data["data"]
+    return data.get("data")
 
 
 def appreviews(app_id):
@@ -178,15 +178,25 @@ def main():
                 write_status(False, checked, updates, failures, error=f"too_many_failures:{consecutive_failures}")
                 sys.exit(1)
             continue
+        except Exception as e:
+            # An unexpected payload shape (e.g. a missing key) for ONE entry must
+            # never abort the whole run: the heartbeat written at the end is what
+            # tells the skills the cron is alive. Count it, log it, move on.
+            failures += 1
+            print(f"  [{i}/{len(entries)}] ERROR {game_id} (app {app_id}): {type(e).__name__}: {e}")
+            continue
 
         checked += 1
 
-        # Price drift
-        if details and details.get("price_overview"):
-            new_price = round(details["price_overview"]["final"] / 100)
+        # Price drift — only trust a UAH price_overview with a numeric `final`.
+        # cc=ua can fall back to another currency for region-restricted apps;
+        # writing that as UAH would be wrong, so skip anything that isn't UAH.
+        po = details.get("price_overview") if details else None
+        if po and po.get("currency") == "UAH" and isinstance(po.get("final"), int):
+            new_price = round(po["final"] / 100)
             try:
                 old_price = int(entry.get("price", 0))
-            except ValueError:
+            except (ValueError, TypeError):
                 old_price = 0
             if old_price > 0:
                 rel_drift = abs(new_price - old_price) / old_price
@@ -200,7 +210,7 @@ def main():
         if new_rating is not None:
             try:
                 old_rating = int(entry.get("rating", 0))
-            except ValueError:
+            except (ValueError, TypeError):
                 old_rating = 0
             if abs(new_rating - old_rating) >= RATING_DRIFT_PP:
                 if apply_update(game_id, "rating", new_rating):

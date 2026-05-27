@@ -18,6 +18,7 @@ Logs each removal to state/removed-entries.tsv.
 Exits 0 on success, 1 if any id was not found.
 """
 
+import os
 import sys
 import re
 import datetime
@@ -26,6 +27,14 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[3].parent
 DATA_JS = REPO_ROOT / "data.js"
 REMOVED_TSV = REPO_ROOT / ".claude" / "skills" / "coop-hunter" / "state" / "removed-entries.tsv"
+
+
+def atomic_write_text(path, text):
+    """Write atomically (temp file + os.replace) so a crash mid-write can't
+    truncate data.js."""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
 
 
 def ensure_log_header():
@@ -119,7 +128,6 @@ def main():
     ids = sys.argv[1:]
 
     # Allow reason via env var.
-    import os
     reason = os.environ.get("REMOVE_REASON", "endless_misclassified")
     signals = os.environ.get("REMOVE_SIGNALS", "")
 
@@ -135,7 +143,7 @@ def main():
             not_found.append(game_id)
             print(f"NOT FOUND: {game_id}", file=sys.stderr)
 
-    DATA_JS.write_text(content, encoding="utf-8")
+    atomic_write_text(DATA_JS, content)
     print(f"\n{len(removed)} entries removed, {len(not_found)} not found.")
     sys.exit(1 if not_found else 0)
 
