@@ -138,3 +138,66 @@ timestamp	candidate_name	reason	source	notes
 2026-05-27T00:06:13Z	33-immortals	blocklisted_endless	Steam tag includes Massively Multiplayer (HARD BLOCK per CLAUDE.md §6); also unreleased (no reviews)
 2026-05-27T00:06:13Z	anvil-vault-breakers	not_found	Steam search returns no match under this name
 2026-05-27T00:06:13Z	time-wasters	no_coop	Steam appdetails lists Single-player only (VS-like)
+2026-05-27T06:49:00Z	lovers-in-a-dangerous-spacetime	duplicate	already in data.js as app 252110
+2026-05-27T06:51:30Z	wizard-with-a-gun	unclear_ending	open-ended survival sandbox, no explicit named win-condition per CLAUDE.md survival-goal rule
+2026-05-27T06:51:30Z	trinity-fusion	no_coop	Steam appdetails lists Single-player only (no Co-op category)
+2026-05-27T06:51:30Z	wild-hearts	low_quality	46.7% positive (<50%), also monster-hunt mission grind
+2026-05-27T06:55:07Z	lara-croft-guardian-of-light	duplicate	already in data.js as app 35130
+2026-05-27T06:55:07Z	lara-croft-temple-of-osiris	duplicate	already in data.js as app 289690
+2026-05-27T07:02:45Z	ripout	unclear_ending	mission-based co-op horror FPS, 60.7% mixed, no confirmable campaign finale per owner rule
+2026-05-27T07:02:45Z	sephonie	no_coop	Steam appdetails Single-player only
+2026-05-27T07:02:45Z	trepang2	no_coop	Steam appdetails Single-player only (no co-op category)
+2026-05-27T07:02:45Z	fear-3	online_broken	2011 co-op online unreliable per Steam discussions (connectivity failures), no Remote Play Together fallback
+2026-05-27T07:02:45Z	sacred-3	low_quality	27.1% positive (<50%)
+2026-05-27T07:02:45Z	catastronauts	unclear_ending	obscure 4p party ship-battler, campaign finale not confirmable, doubt->skip
+2026-05-27T07:02:45Z	hunted-the-demons-forge	no_coop	Steam version categories list no co-op/multiplayer (online co-op removed post-GFWL)
+2026-05-27T07:06:56Z	orcs-must-die-deathtrap	unclear_ending	roguelite horde defense, no confirmable campaign finale vs endless escalation, doubt->skip
+2026-05-27T07:06:56Z	tetris-effect-connected	unclear_ending	core product is endless Tetris; co-op Connected journey is a stretch, doubt->skip
+2026-05-27T07:06:56Z	warhammer-quest-2	no_coop	Steam appdetails no co-op category (single-player), 59.3%
+2026-05-27T07:06:56Z	killsquad	unclear_ending	contract/bounty co-op ARPG, mission-grind without campaign finale, doubt->skip
+2026-05-27T07:11:22Z	how-to-survive-2	unclear_ending	open survival-sandbox base game, no explicit named win-condition, 69% mixed, doubt->skip
+2026-05-27T07:11:22Z	krater	low_quality	55.5% positive, co-op added post-launch (no online-coop tag), 2012
+2026-05-27T07:11:22Z	dungeon-siege-3	region_restricted	appdetails success=false for cc=ua (not sold in Ukraine), no UAH price; also 57.5% mixed
+2026-05-27T07:11:22Z	far-cry-4	unclear_ending	co-op limited to free-roam Guns-for-Hire; story campaign is single-player only (cannot finish together)
+2026-05-27T07:15:28Z	the-quarry	local_only_no_remote	co-op is couch-only (Shared/Split Screen); online Wolf Pack is spectate/vote only, no Remote Play Together; CLAUDE.md §3 excludes local-only
+2026-05-27T07:15:28Z	toodee-and-topdee	taxonomy_ambiguous	perspective by design mixes Side-view (Toodee) + top-down (Topdee) simultaneously; perspective axis not cleanly assignable, no guessing per rule 8
+2026-05-27T07:15:28Z	directive-8020	local_only_no_remote	launch has couch Movie Night only; Shared Story removed; online is unreleased post-launch update; no Remote Play Together
+2026-05-27T07:17:49Z	cursed-castilla	no_coop	Steam appdetails single-player only (no co-op category)
+2026-05-27T07:20:39Z	geometry-wars-3	unclear_ending	co-op modes are endless score-attack; finite Adventure campaign is single-player only (cannot finish together)
+2026-05-27T07:20:39Z	bpm-bullets-per-minute	no_coop	Steam appdetails lists no co-op category (single-player)
+2026-05-27T07:23:38Z	gordian-quest	no_coop	Steam appdetails lists no co-op category (single-player roguelite deckbuilder)
+2026-05-27T07:25:55Z	ziggurat-2	no_coop	Steam appdetails lists no co-op category
+2026-05-27T07:25:55Z	tower-of-guns	no_coop	Steam appdetails lists no co-op category
+2026-05-27T07:25:55Z	tin-hearts	no_coop	Steam appdetails single-player puzzle (no co-op)
+2026-05-27T07:25:55Z	earthfall	endless	L4D-style horde shooter, mission/horde-based with no campaign finale; online effectively dead
+2026-05-27T07:29:12Z	moonglow-bay	local_only_no_remote	co-op is local Shared/Split Screen only, no Remote Play Together or online; CLAUDE.md §3 excludes pure local-only
+2026-05-27T07:32:37Z	lego-worlds	unclear_ending	open-ended build sandbox (Minecraft-like); Master Builder is a progression milestone, not a finite finale; CLAUDE.md excludes sandboxes w/o defined win
+2026-05-27T07:36:05Z	disney-illusion-island	not_enough_reviews	31 Steam reviews (<50 threshold) despite 93.5% positive; recheck later
+2026-05-27T07:36:05Z	lego-movie-2-videogame	region_restricted	appdetails success=false for cc=ua (not sold in Ukraine), no UAH price; only 19 reviews
+2026-05-27T07:36:05Z	bluey-the-videogame	local_only_no_remote	co-op is Shared/Split Screen only, no Remote Play Together or online (CLAUDE.md §3)
+2026-05-27T07:36:05Z	pvz-battle-for-neighborville	endless	live-service PvE/PvP shooter, region-based open content with no campaign finale
+2026-05-27T07:39:24Z	rise-of-the-triad-ludicrous	no_coop	Steam appdetails lists no co-op category
+2026-05-27T07:39:24Z	doom-64	no_coop	Steam appdetails single-player only
+2026-05-27T07:39:24Z	ion-fury	no_coop	Steam appdetails single-player only (base game, no co-op)
+2026-05-27T07:41:52Z	alien-breed-impact	unclear_coop	2010, only generic "Co-op" tag (no Online Co-op/Remote Play Together), remote co-op viability unconfirmed; 74% mixed
+2026-05-27T07:41:52Z	synthetik-2	unclear_ending	Early Access roguelite with halted development; defined final-boss endgame not confirmed (doubt->skip)
+2026-05-27T07:41:52Z	anomaly-warzone-earth	no_coop	Steam appdetails single-player only (tower-offense)
+2026-05-27T07:44:23Z	house-of-the-dead-2-remake	low_quality	44.7% positive (<50%), poorly received 2025 remake
+2026-05-27T07:44:23Z	monster-sanctuary	no_coop	Steam appdetails no co-op category (online is PvP/trade, not co-op campaign)
+2026-05-27T07:44:23Z	blue-estate	no_coop	only Remote Play Together tag, no Co-op category; single-player rail shooter
+2026-05-27T07:47:32Z	hero-siege	blocklisted_endless	Steam genres include Massively Multiplayer (HARD BLOCK per CLAUDE.md §6); seasonal/endless ARPG
+2026-05-27T07:47:32Z	halo-wars-2	not_on_steam	Steam search returns no match (Microsoft Store / Xbox app only, not on Steam)
+2026-05-27T07:49:23Z	lost-planet-2	region_restricted	appdetails success=false for cc=ua (no UAH price); also 2010 GFWL-era online co-op likely broken; 65.8%
+2026-05-27T07:49:23Z	lost-planet-3	no_coop	Steam appdetails no co-op category (multiplayer was PvP); campaign single-player
+2026-05-27T07:52:53Z	astebreed	no_coop	Steam appdetails single-player only (shmup)
+2026-05-27T07:52:53Z	sacred-2-gold	no_coop	Steam appdetails no co-op category, no release date/price (delisted/unavailable)
+2026-05-27T07:55:37Z	killing-floor-2	blocklisted_endless	Killing Floor series on hardcoded blocklist (CLAUDE.md §6) — wave-based endless
+2026-05-27T07:58:04Z	warhammer-40k-boltgun	no_coop	Steam appdetails base game no co-op (co-op is a separate endless horde DLC mode)
+2026-05-27T07:58:04Z	greak-memories-of-azur	no_coop	single-player (control three siblings solo); no co-op category
+2026-05-27T07:58:04Z	the-plucky-squire	no_coop	single-player adventure, no co-op category
+2026-05-27T07:58:04Z	lost-words-beyond-the-page	no_coop	single-player narrative game, no co-op
+2026-05-27T08:00:08Z	necromunda-underhive-wars	unclear_ending	co-op is repeatable Operations (not the finite story campaign); 56.1% mixed, doubt->skip
+2026-05-27T08:00:08Z	spirit-of-the-north-2	no_coop	Steam appdetails no co-op category (single-player)
+2026-05-27T08:00:08Z	trailmakers	unclear_ending	open-ended vehicle-building sandbox; campaign lacks a defined named win-state
+2026-05-27T08:00:08Z	deep-rock-galactic-rogue-core	blocklisted_endless	Deep Rock Galactic franchise on hardcoded blocklist (CLAUDE.md §6)
+2026-05-27T08:00:08Z	sven-coop	endless	Half-Life co-op mod, open community-map platform with no defined ending

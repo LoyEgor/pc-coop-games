@@ -1,29 +1,19 @@
 #!/usr/bin/env bash
-# fact-checker runner (macOS / Linux)
+# fact-checker runner (macOS / Linux) — verifies every data.js entry vs Steam / HLTB / YouTube.
 #
-# Walks every non-hidden entry in data.js and verifies its recorded fields
-# against authoritative sources (Steam, HowLongToBeat, YouTube). Auto-fixes
-# safe drift (rating, price, broken media). Logs everything else to TSVs in
-# .claude/skills/fact-checker/state/ for owner review.
+# ARCHITECTURE (changed 2026-05-27): headless bursts, NOT /goal — same reason as
+# run-coop-hunter.sh (the /goal evaluator overflowed on long runs and hung). Each
+# burst is one fresh `claude -p` process that verifies ~12 entries, persists
+# state, and exits. The bash loop runs the next burst. No evaluator, no overflow.
 #
-# Differences from run-coop-hunter.sh:
-#   - Different skill (fact-checker, not coop-hunter)
-#   - No phase cascade — single linear pass over data.js
-#   - Auto-push DISABLED (data changes here are tiny edits, not bulk inserts;
-#     batched commit by hand at the end is cleaner)
-#   - Same rate-limit-aware loop and 200-crash budget as coop-hunter
+#   - Auto-fix scope: broken youtube/image only. Rating/price are cron-owned
+#     (skipped when the refresh-prices cron is healthy). Editorial fields are
+#     LOGGED to proposed-fixes.tsv, never auto-written.
+#   - Leaves changes in the working tree for you to review + commit.
 #
-# Usage:
-#   1. chmod +x run-fact-checker.sh   (first time only)
-#   2. ./run-fact-checker.sh
-#
-# Monitor from a second Terminal:
-#   tail -f fact-checker-transcript.log
-#   tail -f .claude/skills/fact-checker/state/discrepancies.tsv
-#   tail -f .claude/skills/fact-checker/state/proposed-fixes.tsv
-#   cat    .claude/skills/fact-checker/state/progress.json
-#
-# To stop: Ctrl+C. progress.json persists, restart picks up at current_idx.
+# Usage:   ./run-fact-checker.sh      (chmod +x once)
+# Stop:    Ctrl+C. State persists; restart resumes at current_idx.
+# Watch:   tail -f fact-checker-transcript.log
 
 set -u
 
@@ -58,21 +48,16 @@ if [ -z "$PY" ]; then
   exit 1
 fi
 
-# -------- seed progress.json + fill total_entries if missing --------
+# -------- seed progress.json --------
 mkdir -p "$(dirname "$PROGRESS_FILE")"
 "$PY" - "$PROGRESS_FILE" <<'PYEOF'
 import json, os, sys, subprocess
 from pathlib import Path
 path = sys.argv[1]
 defaults = {
-  "current_idx": 0,
-  "total_entries": None,
-  "checked_count": 0,
-  "fixed_count": 0,
-  "proposed_count": 0,
-  "partial_entries": [],
-  "done": False,
-  "last_run_timestamp": None,
+  "current_idx": 0, "total_entries": None, "checked_count": 0,
+  "fixed_count": 0, "proposed_count": 0, "partial_entries": [],
+  "done": False, "mode": "normal", "last_run_timestamp": None,
 }
 if os.path.exists(path):
     with open(path) as f:
@@ -89,14 +74,10 @@ list_script = skill_root / "scripts" / "list_entries.py"
 out = subprocess.check_output(["python3", str(list_script), "--count"]).decode().strip()
 cur["total_entries"] = int(out)
 
-# An explicit launch means "go". Clear a stale done flag so the run actually
-# starts. If the previous run had finished (current_idx past the end), rewind
-# to 0 for a fresh full pass; otherwise keep current_idx so a crashed run
-# resumes where it stopped.
+# An explicit launch means "go". Clear stale done; this launcher is NORMAL mode
+# (run-migration.sh handles taxonomy_migration). If the previous run finished
+# (idx past the end), rewind for a fresh full pass; else resume at current_idx.
 cur["done"] = False
-# This launcher runs NORMAL verification (log-only for editorial fields). The
-# separate run-migration.sh sets mode=taxonomy_migration for the one-time bulk
-# tag rewrite. Force normal here so a prior migration mode can't leak in.
 cur["mode"] = "normal"
 if cur["current_idx"] >= cur["total_entries"]:
     cur["current_idx"] = 0
@@ -104,115 +85,81 @@ if cur["current_idx"] >= cur["total_entries"]:
 
 with open(path, "w") as f:
     json.dump(cur, f, indent=2)
-print(f"progress.json: mode={cur['mode']}, current_idx={cur['current_idx']}, total={cur['total_entries']}, checked={cur['checked_count']}, fixed={cur['fixed_count']}, proposed={cur['proposed_count']}, done={cur['done']}")
+print(f"progress.json: mode={cur['mode']}, current_idx={cur['current_idx']}, total={cur['total_entries']}, done={cur['done']}")
 PYEOF
 
 # -------- header --------
 echo ""
 echo "================================================================"
-echo "  fact-checker — drill-mode runner (macOS)"
+echo "  fact-checker — headless-burst runner (macOS)"
 echo "================================================================"
-echo "  Started:       $(date)"
-echo "  Repo:          $REPO_ROOT"
-echo "  Claude CLI:    $CLAUDE_CMD"
-echo "  Transcript:    $TRANSCRIPT"
+echo "  Started:    $(date)"
+echo "  Repo:       $REPO_ROOT"
+echo "  Claude CLI: $CLAUDE_CMD"
+echo "  Transcript: $TRANSCRIPT"
 echo ""
-echo "  Mode: walks data.js end-to-end, verifies every recorded field."
-echo "  Auto-fix scope: rating drift, price drift, broken youtube/image only."
-echo "  Everything else logged to state/proposed-fixes.tsv for owner review."
-echo "  Auto-restart on early exit (200 crashes; rate-limit pauses uncapped)."
-echo ""
-echo "  To stop: Ctrl+C. State is persistent — restart picks up at current_idx."
+echo "  Each burst = one fresh 'claude -p' process (~12 entries) that exits."
+echo "  Auto-fix: broken youtube/image only. Rating/price = cron-owned."
+echo "  Editorial findings logged to state/proposed-fixes.tsv for your review."
+echo "  Changes left in the working tree; review 'git diff data.js' after."
 echo "================================================================"
 echo ""
 
-# -------- one-shot goal prompt --------
-GOAL_PROMPT=$(cat <<'PROMPT_EOF'
-/goal Run the fact-checker skill (.claude/skills/fact-checker/) to verify every non-hidden entry in data.js against authoritative sources and persist findings.
+# -------- the per-burst prompt (NO /goal) --------
+BURST_PROMPT=$(cat <<'PROMPT_EOF'
+Run the fact-checker skill (.claude/skills/fact-checker/) for ONE BURST, then EXIT. This is a headless invocation; a bash loop re-invokes you per burst and you resume from state/progress.json. Do NOT verify the whole catalog in one invocation.
 
-Read SKILL.md first; this prompt is the contract, the details live there.
+Read first: SKILL.md; .claude/skills/shared/taxonomy.json (AUTHORITATIVE for genre + endingType — classify by axis, never invent tags); state/progress.json.
 
-RULES:
+THIS BURST:
+- Resume from progress.json.current_idx. Verify AT MOST 12 entries this invocation, sequentially, 1.5s sleep between Steam API calls. After each entry: current_idx += 1 and persist progress.json.
+- After ~12 entries, STOP and exit. The loop starts your next burst.
 
-1. Resumable. Read state/progress.json; start from current_idx. Persist after every entry processed.
+PER ENTRY, verify vs Steam / HowLongToBeat / YouTube: rating, price, hours, playersMax, oneCopy, genres (by taxonomy axes), tier, endingType, youtubeUrl, imageUrl.
 
-2. One entry per ~2 turns. 4-6 web calls each (Steam appdetails, appreviews, HLTB, YouTube WebFetch, image HEAD, optional Steam store page). Sleep 1.5s between Steam API calls. Sequential, not parallel.
+AUTO-FIX (only these): broken youtubeUrl (youtubeSearch placeholder / 404 / unrelated) via ../coop-hunter/scripts/fix_youtube.py; broken imageUrl via ../coop-hunter/scripts/fix_image.py. EVERYTHING editorial (genres / endingType / playersMax / oneCopy / hours / year / tier) -> LOG to state/proposed-fixes.tsv, do NOT auto-write.
 
-3. CONSERVATIVE AUTO-FIX (only):
-   - rating drift >= 5pp → update_field.py <id> rating <new>
-   - price drift >= 10% but < 25% → update_field.py <id> price <new>
-   - youtubeUrl is youtubeSearch(...) or 404 or unrelated → run the 6-query drill cascade in coop-hunter SKILL.md §8, replace via ../coop-hunter/scripts/fix_youtube.py
-   - imageUrl HEAD non-200 → ../coop-hunter/scripts/fix_image.py <id> <app_id>
-   - Everything else → log to state/proposed-fixes.tsv (genres, endingType, playersMax, oneCopy, tier, hours, year). Owner reviews manually.
+CRON COORDINATION (priority: cron > fact-checker): read .github/refresh-status.json. If last_success < 30h old, SKIP rating + price checks entirely — the cron owns them. If stale/missing, you MAY log rating/price drift to proposed-fixes.tsv, but do not fight the cron.
 
-4. DRILL MODE — never refuse on first failure. Retry Steam with different UA, fall back to store-page scrape, fall back to appdetails genres[] if tags unscrapable. Do not declare an entry "checked" if you skipped >2 of 11 checks; mark partial in progress.partial_entries[].
+NEVER touch app.js / index.html / styles.css. NEVER remove entries (log blocklist-worthy ones to proposed-removals.tsv). NEVER ASK QUESTIONS — ambiguous -> discrepancies.tsv, continue.
 
-5. NEVER ASK QUESTIONS. Owner is asleep. Classify genres + endingType strictly via .claude/skills/shared/taxonomy.json (axis-structured: tier/perspective/mechanic/setting/structure; never invent tags). taxonomy.json wins over classification.md. Ambiguous → log discrepancies.tsv reason "ambiguous", continue.
+COMPLETION: when current_idx >= total_entries AND partial_entries is empty, set progress.done=true. Otherwise leave done=false; the loop runs the next burst.
 
-6. NEVER remove entries. If a game now looks blocklist-worthy, log to state/proposed-removals.tsv. coop-hunter phase 4 handles removals; fact-checker only logs.
-
-7. NEVER touch app.js / index.html / styles.css. data.js only via update_field.py and ../coop-hunter/scripts/fix_youtube.py / fix_image.py.
-
-8. PROGRESS LINE every entry, to stdout:
-   [N/TOTAL] <id>: rating <state> | hours <state> | genres <state> | media <state> | other <state>
-   Where state ∈ {OK, drift, fix, propose, fail}. This is how owner sees progress.
-
-9. Tool call fails → retry once with +5s sleep. Second fail → log and continue.
-
-10. SESSION BURST CAP (critical for hands-off). A marathon session overflows the /goal evaluator ("Prompt is too long") and HANGS, forcing a manual Ctrl+C. So: verify at most ~12 entries per session, then persist progress.json and end the turn reporting exactly "BURST DONE". The launcher restarts you fresh; you resume from current_idx. Many short bursts, never a marathon. Finish line unchanged. Evaluator releases you when all entries are checked (done=true) OR you report BURST DONE.
-
-Stop only when ALL: current_idx >= total_entries AND partial_entries is empty AND every bad_video / no_image was fixed-or-logged. Re-walk partial entries in a second pass if needed.
-
-Doubt about fixing → LOG, do not write. Doubt about giving up on a source → DRILL another source.
+End with one line: [N/TOTAL checked | F fixed | P proposed]
 PROMPT_EOF
 )
 
-# -------- read initial state for delta tracking --------
+# -------- delta tracking --------
 INITIAL_CHECKED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['checked_count'])")
 TOTAL=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['total_entries'])")
-echo "Starting checked: $INITIAL_CHECKED / $TOTAL"
+echo "Starting at entry $("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_idx'])") / $TOTAL"
 echo ""
 
-# -------- transcript via 'script' for live + log --------
-USE_SCRIPT=0
-if command -v script >/dev/null 2>&1; then
-  USE_SCRIPT=1
-fi
-
-# -------- main loop --------
-# Same rate-limit-aware machinery as run-coop-hunter.sh: rate-limit pauses
-# don't count toward the crash budget; only real crashes do.
-MAX_RESTARTS=200
-RATE_LIMIT_SLEEP=1800   # 30 minutes
-CRASH_SLEEP=30
-RUN=0
-CRASH_COUNT=0
+# -------- main loop: one claude -p burst per iteration --------
+MAX_BURSTS=600
+RATE_LIMIT_SLEEP=1800
+BURST=0
 
 is_rate_limited() {
-  tail -n 400 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
+  tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
     'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'
 }
 
-is_burst_done() {
-  # Skill ends each session after ~12 entries with "BURST DONE" to keep the
-  # /goal evaluator from overflowing. Clean expected exit — not a crash.
-  tail -n 60 "$TRANSCRIPT" 2>/dev/null | grep -qi "BURST DONE"
-}
-
 while true; do
-  RUN=$((RUN + 1))
-  echo ""
-  echo "[$(date)] ============ Run #$RUN (crashes counted: $CRASH_COUNT / $MAX_RESTARTS) ============"
-  echo ""
-
-  if [ "$USE_SCRIPT" -eq 1 ]; then
-    script -a -q "$TRANSCRIPT" "$CLAUDE_CMD" --dangerously-skip-permissions "$GOAL_PROMPT"
-  else
-    "$CLAUDE_CMD" --dangerously-skip-permissions "$GOAL_PROMPT"
+  BURST=$((BURST + 1))
+  if [ "$BURST" -gt "$MAX_BURSTS" ]; then
+    echo "[$(date)] Reached MAX_BURSTS=$MAX_BURSTS. Stopping (runaway guard)." >&2
+    break
   fi
 
+  echo ""
+  echo "[$(date)] ================= Burst #$BURST ================="
+  echo ""
+
+  "$CLAUDE_CMD" -p --dangerously-skip-permissions "$BURST_PROMPT" 2>&1 | tee -a "$TRANSCRIPT"
+
   if [ ! -f "$PROGRESS_FILE" ]; then
-    echo "[$(date)] WARNING: progress.json missing after run. Stopping." >&2
+    echo "[$(date)] WARNING: progress.json missing. Stopping." >&2
     break
   fi
 
@@ -223,41 +170,20 @@ while true; do
   IDX=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_idx'])")
 
   echo ""
-  echo "[$(date)] Claude exited. checked=$CHECKED/$TOTAL  fixed=$FIXED  proposed=$PROPOSED  idx=$IDX  done=$DONE"
+  echo "[$(date)] Burst #$BURST done. idx=$IDX/$TOTAL fixed=$FIXED proposed=$PROPOSED done=$DONE"
 
   if [ "$DONE" = "True" ] || [ "$DONE" = "true" ]; then
-    echo ""
     echo "[$(date)] FACT-CHECK COMPLETE."
     break
   fi
 
   if is_rate_limited; then
-    HOURS=$((RATE_LIMIT_SLEEP / 3600))
-    MINS=$(((RATE_LIMIT_SLEEP % 3600) / 60))
-    echo ""
-    echo "[$(date)] Rate limit detected. Sleeping ${HOURS}h${MINS}m. This pause does NOT count toward crash budget."
+    echo "[$(date)] Rate limit detected. Sleeping 30m before the next burst (Ctrl+C to stop)."
     sleep "$RATE_LIMIT_SLEEP"
     continue
   fi
 
-  # Clean burst exit (~12 entries done): restart fresh, do NOT count as crash.
-  if is_burst_done; then
-    echo ""
-    echo "[$(date)] Burst complete — restarting with a fresh transcript (not a crash)."
-    sleep 3
-    continue
-  fi
-
-  CRASH_COUNT=$((CRASH_COUNT + 1))
-  if [ "$CRASH_COUNT" -ge "$MAX_RESTARTS" ]; then
-    echo ""
-    echo "[$(date)] Reached $MAX_RESTARTS non-rate-limit crashes. Stopping." >&2
-    break
-  fi
-
-  echo ""
-  echo "[$(date)] Restarting claude in ${CRASH_SLEEP}s. Ctrl+C to stop."
-  sleep "$CRASH_SLEEP"
+  sleep 3
 done
 
 # -------- final report --------
@@ -269,19 +195,16 @@ if [ -f "$PROGRESS_FILE" ]; then
   CHECKED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['checked_count'])")
   FIXED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['fixed_count'])")
   PROPOSED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['proposed_count'])")
-  DELTA=$((CHECKED - INITIAL_CHECKED))
-  echo "  Checked this session:  $DELTA"
-  echo "  Checked total:         $CHECKED / $TOTAL"
-  echo "  Auto-fixed:            $FIXED"
-  echo "  Proposed for review:   $PROPOSED"
+  echo "  Checked total:        $CHECKED / $TOTAL"
+  echo "  Auto-fixed:           $FIXED"
+  echo "  Proposed for review:  $PROPOSED"
+  echo "  Bursts run:           $BURST"
 fi
 echo ""
 echo "Review the logs:"
-echo "  Transcript:           $TRANSCRIPT"
-echo "  Discrepancies (info): $REPO_ROOT/.claude/skills/fact-checker/state/discrepancies.tsv"
-echo "  Proposed fixes:       $REPO_ROOT/.claude/skills/fact-checker/state/proposed-fixes.tsv"
-echo "  Proposed removals:    $REPO_ROOT/.claude/skills/fact-checker/state/proposed-removals.tsv"
-echo "  Applied fixes:        $REPO_ROOT/.claude/skills/fact-checker/state/applied-fixes.tsv"
+echo "  Transcript:        $TRANSCRIPT"
+echo "  Proposed fixes:    $REPO_ROOT/.claude/skills/fact-checker/state/proposed-fixes.tsv"
+echo "  Proposed removals: $REPO_ROOT/.claude/skills/fact-checker/state/proposed-removals.tsv"
+echo "  Applied fixes:     $REPO_ROOT/.claude/skills/fact-checker/state/applied-fixes.tsv"
 echo ""
-echo "Auto-fixes (if any) staged in your working tree — review the diff before commit:"
-echo "  git diff data.js"
+echo "Review the diff before committing:  git diff data.js"
