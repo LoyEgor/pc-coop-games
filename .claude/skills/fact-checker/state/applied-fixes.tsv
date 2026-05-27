@@ -328,3 +328,5 @@ timestamp	id	field	old_value	new_value	reason
 2026-05-26T20:42:42Z	army-of-two	genres	['AAA', 'Shooter', 'Third-person', 'Action', 'Military']	['AAA', 'Third-person', 'Shooter', 'Action', 'Military']	
 2026-05-26T20:44:56Z	it-takes-two	genres	["AA", "Action", "Puzzle", "Platformer"]	["AA", "Third-person", "Action", "Puzzle", "Platformer"]	perspective_added
 2026-05-26T20:44:56Z	split-fiction	genres	["AA", "Action", "Platformer", "Sci-fi", "Fantasy"]	["AA", "Third-person", "Action", "Platformer", "Sci-fi", "Fantasy"]	perspective_added
+2026-05-27T08:09:31Z	company-of-heroes-2	price	970	97
+2026-05-27T08:09:33Z	gloomhaven	price	1680	168
