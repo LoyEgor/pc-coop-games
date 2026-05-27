@@ -232,7 +232,7 @@ When asked to make changes:
 
 ## 10. What this file is NOT
 
-- It is not a roadmap or backlog. The owner doesn't track tasks here.
+- It is not a roadmap or backlog. Owner's draft backlog of future ideas lives in [`TODO.md`](TODO.md) at repo root — check it for known-pending improvements before suggesting work, and update it (cross-off + delete completed blocks) when an item is actually finished. Do NOT start work on a `TODO.md` item without an explicit request.
 - It is not a changelog. Use `git log` for that.
 - It is not a place to dump unstructured opinions or "thoughts". Keep it as crisp rules.
 
