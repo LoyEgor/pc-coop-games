@@ -123,13 +123,6 @@
     },
 
     {
-      "id": "revalidate_existing",
-      "phase": 4,
-      "method": "revalidate_existing",
-      "note": "Iterate existing entries in data.js. For each: refetch Steam page, verify name+price still match, image URL still resolves (HTTP 200), %positive still >=50, endingType still defensible (esp. catch false positives like Deep Rock Galactic / Lethal Company / R.E.P.O. that slipped through as finite when they're endless). Flag failures to state/bad-existing.tsv. Do NOT auto-remove — log only.",
-      "batch_size": 10
-    },
-    {
       "id": "reeval_skipped",
       "phase": 4,
       "method": "reeval_skipped",
@@ -220,7 +213,6 @@
     "curator": "Steam curator pages. Extract game cards (name + Steam app link).",
     "reddit_top_posts": "JSON API. Parse 'data.children' for posts; extract game mentions.",
     "webfetch": "Generic article scrape. Look for game lists with links to Steam.",
-    "revalidate_existing": "Read data.js, iterate entries. Use steam_fetch.py to refresh each. Compare to stored values. Log mismatches.",
     "reeval_skipped": "Read state/skipped.tsv. For each row where reason is in [ambiguous, unclear_ending, not_enough_reviews], run validate() again. If now passes, build entry and append.",
     "steam_more_like_this": "Use Steam's tag-similarity to expand. Each top entry's Steam page has 'More like this' carousel. Scrape those titles.",
     "websearch_queries": "Run each query through WebSearch. Parse results for game names mentioned. Dedupe heavily against existing data.js."

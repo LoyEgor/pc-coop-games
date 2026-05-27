@@ -121,7 +121,7 @@ AUTO-FIX (only these): broken youtubeUrl (youtubeSearch placeholder / 404 / unre
 
 CRON COORDINATION (priority: cron > fact-checker): read .github/refresh-status.json. If last_success < 30h old, SKIP rating + price checks entirely — the cron owns them. If stale/missing, you MAY log rating/price drift to proposed-fixes.tsv, but do not fight the cron.
 
-NEVER touch app.js / index.html / styles.css. NEVER remove entries (log blocklist-worthy ones to proposed-removals.tsv). NEVER ASK QUESTIONS — ambiguous -> discrepancies.tsv, continue.
+ENDLESS REMOVAL (you are the enforcer now): if an entry matches the hardcoded blocklist OR has Steam tags MMO/Massively Multiplayer/Battle Royale OR >=3 negative-review endless hits -> AUTO-REMOVE via ../coop-hunter/scripts/remove_entry.py <id>. Borderline/judgment cases -> log to state/proposed-removals.tsv only. NEVER touch app.js / index.html / styles.css. NEVER ASK QUESTIONS — ambiguous -> discrepancies.tsv, continue.
 
 COMPLETION: when current_idx >= total_entries AND partial_entries is empty, set progress.done=true. Otherwise leave done=false; the loop runs the next burst.
 

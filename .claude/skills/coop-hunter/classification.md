@@ -175,8 +175,9 @@ The Crew, The Crew 2, The Crew Motorfest, Test Drive Unlimited
 Forza Horizon (the whole series) and other open-world racing FESTIVALS are
 endless by our rule: they have no credits/Hall-of-Fame finish — the festival
 continues indefinitely with seasonal playlists. The devs of FH5 confirmed there
-is no ending. `forza-horizon-5` was a historical false positive; it must be
-removed on the next `revalidate_existing` pass and never re-added.
+is no ending. `forza-horizon-5` was a historical false positive; the
+`fact-checker` skill removes such entries and `removed-entries.tsv` blocks
+re-adding.
 
 Log skip reason as `blocklisted_endless`. Do not run any further checks.
 
@@ -243,15 +244,20 @@ A candidate must show at least 2 of these to qualify as finite:
 
 When in doubt: **skip**. The owner explicitly prefers a smaller, trustworthy catalog over a larger one with false positives.
 
-## Auto-removal on phase 4 revalidate
+## Auto-removal of endless games (now owned by the fact-checker skill)
 
-When `revalidate_existing` runs (phase 4) and detects an existing entry that now fails the strict endless rules above:
+As of 2026-05-27, removing endless games that slipped into `data.js` is the
+**`fact-checker`** skill's job (coop-hunter's `revalidate_existing` was removed
+to end the double work). When the fact-checker detects an existing entry that
+fails the strict endless rules above:
 
-1. Run `scripts/remove_entry.py` to remove the entry from `data.js`.
-2. Append to `state/removed-entries.tsv` with: timestamp, id, title, reason, signals_matched.
-3. Decrement `progress.added_count` to reflect actual data.js size.
+1. Run `scripts/remove_entry.py <id>` to remove the entry from `data.js`.
+2. It appends to `state/removed-entries.tsv` (timestamp, id, title, reason) — which also blocks re-adding.
 
-Do NOT prompt the user before removing. The owner explicitly authorized auto-removal for endless games.
+Do NOT prompt the user before removing a deterministic blocklist/endless match.
+The owner explicitly authorized auto-removal for endless games. Borderline /
+judgment-call removals are logged to `proposed-removals.tsv` instead. coop-hunter
+prevents endless games at ADD time via its §8b fit-gate; it does not re-scan.
 
 ## One-copy rules (oneCopy field)
 

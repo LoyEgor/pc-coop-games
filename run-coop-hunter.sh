@@ -132,9 +132,10 @@ RULES:
 1. data.js only via scripts/append_entry.py (exit 4 = no real 11-char video_id; exit 3 = id in removed-entries.tsv). Find a REAL gameplay video via SKILL.md §8 drill cascade — never a youtubeSearch placeholder.
 2. CRON COORDINATION: the GitHub Actions cron owns price + rating on EXISTING entries. If .github/refresh-status.json last_success is < 30h old, SKIP price/rating checks for existing entries. NEW entries: fetch fresh once. NEVER overwrite cron-owned fields otherwise.
 3. NEVER touch app.js / index.html / styles.css.
-4. Phase cascade 1->4 (SKILL.md). Phase 4 = revalidate_existing + reeval_skipped + steam_more_like_this + websearch_niche_queries + drill sources; auto-remove endless via remove_entry.py, auto-fix media via fix_youtube.py / fix_image.py, but NEVER price/rating.
-5. NEVER ASK QUESTIONS. Ambiguous classification -> skipped.tsv reason taxonomy_ambiguous / taxonomy_gap. Owner is asleep.
-6. DRILL MODE: exhaust alternative queries / sources before giving up; treat "cannot find X" as a hypothesis to disprove.
+4. GROWTH ONLY. Phase cascade 1->4 (SKILL.md). Phase 4 = reeval_skipped + steam_more_like_this + websearch_niche_queries + drill sources. coop-hunter NO LONGER re-validates existing entries (that moved to the fact-checker skill) — do not re-walk the catalog.
+5. FINAL FIT-GATE before every add (SKILL.md §8b): confirm PC+Steam, real 2+ co-op, a CLEAR finite ending, >=50 reviews & >=50% positive, not blocklisted, real video+image. On ANY doubt -> SKIP (skipped.tsv reason low_fit / taxonomy_gap). Prevention beats cleanup; the owner wants a small trustworthy catalog, not volume.
+6. NEVER ASK QUESTIONS. Ambiguous classification -> skipped.tsv reason taxonomy_ambiguous. Owner is asleep.
+7. DRILL MODE: exhaust alternative queries / sources before giving up; treat "cannot find X" as a hypothesis to disprove.
 
 COMPLETION: only when the catalog is exhausted — TWO consecutive dry phase-4 passes (phase_4_zero_yield_passes >= 2) — run the Final pass on session_added_ids (verify image + youtube only, NEVER price/rating), make ONE git commit + push, then set progress.done=true and session_added_ids=[]. Otherwise leave done=false; the loop runs the next burst.
 

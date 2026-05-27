@@ -151,11 +151,11 @@ Quick brief covering all of them, with watch-progress commands: [`.claude/skills
 - Resumable: if interrupted, `progress.json` records where to pick up.
 - Idempotent: skip if Steam app id already in `data.js`.
 - Never asks the user questions — uses `classification.md` rules; logs `ambiguous` to `state/skipped.tsv` and moves on.
-- **Phase 4 includes `revalidate_existing`** which re-checks every existing entry and **auto-removes** any that turn out to be endless. See section 6.
+- **coop-hunter is GROWTH-only** (changed 2026-05-27). It finds new games and applies strict ADD-TIME gates so junk never gets in (see SKILL.md §8b Final fit-gate). It no longer re-walks the catalog — re-validating existing entries (endless re-check, broken media, drift) is the **`fact-checker`** skill's job. See section 6.
 
 ## 6. Auto-removal of endless games (false positive cleanup)
 
-The owner has been explicit: **if an endless game ends up in `data.js`, the skill must remove it on the next pass**. The phase 4 `revalidate_existing` method is the enforcer.
+The owner has been explicit: **if an endless game ends up in `data.js`, it must be removed**. As of 2026-05-27 the **`fact-checker` skill is the enforcer** (it owns existing-entry verification; coop-hunter's old `revalidate_existing` was removed to end the double work). The fact-checker auto-removes deterministic blocklist/endless matches via `remove_entry.py` and logs judgment-call removals to `proposed-removals.tsv`.
 
 For each existing entry, the skill checks for endless markers:
 

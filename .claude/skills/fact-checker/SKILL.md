@@ -19,7 +19,10 @@ You are walking `data.js` end-to-end and verifying every recorded field against 
    - `imageUrl` HEAD returns non-200 — replace with `steamImage(<app_id>)` via `scripts/fix_image.py` (re-use coop-hunter's helper).
 5. **Log everything else.** `genres`, `endingType`, `playersMax`, `oneCopy`, `tier`, `year`, `hours` — discrepancies go to `state/proposed-fixes.tsv` with the proposed value and rationale. The owner reviews and applies manually.
 6. **No questions.** Drill through alternatives instead. Owner is asleep.
-7. **No removing entries.** If a game now looks like it should be blocklisted (e.g., turned out endless), log to `state/proposed-removals.tsv`. Do NOT call `remove_entry.py`. That's coop-hunter's job in phase 4.
+7. **Endless removal — fact-checker is now the enforcer** (this moved here from coop-hunter's old `revalidate_existing`, 2026-05-27). Two tiers:
+   - **AUTO-REMOVE (deterministic):** if the entry's title matches the hardcoded blocklist in `coop-hunter/classification.md`, OR Steam tags now include `MMO` / `Massively Multiplayer` / `Battle Royale`, OR negative reviews show ≥3 hits of `endless` / `no ending` / `live service` / `no point` / `infinite grind` → call `../coop-hunter/scripts/remove_entry.py <id>` (logs to `removed-entries.tsv`, which also blocks re-adding). These are safe, rule-based.
+   - **LOG only (judgment calls):** anything borderline (e.g. a survival game whose ending is debatable) → `state/proposed-removals.tsv` for the owner to decide. Do NOT auto-remove on a judgment call.
+   This makes the fact-checker the single owner of existing-entry quality (endless re-check + media + drift + taxonomy + consistency via find_neighbors.py). coop-hunter no longer re-walks the catalog.
 8. **Progress reporting.** After every entry, print a single line:
    `[N/TOTAL] <id>: rating <state> | hours <state> | genres <state> | media <state> | other <state>`
    Where `<state>` is `OK`, `drift`, `fix`, `propose`, or `fail`.
@@ -222,8 +225,10 @@ It reads `data.js` + coop-hunter's `skipped.tsv` and writes
 
 For each finding: VERIFY which side is correct (Steam page + HLTB + dev notes),
 then:
-- catalog entry wrong (endless slipped in, e.g. Forza Horizon 5) → log to
-  `state/proposed-removals.tsv` (coop-hunter phase 4 removes it; or owner does).
+- catalog entry wrong (endless slipped in, e.g. Forza Horizon 5) → if it matches
+  the hardcoded blocklist or the deterministic endless markers (rule 7),
+  AUTO-REMOVE via `../coop-hunter/scripts/remove_entry.py <id>`; if it's a
+  judgment call, log to `state/proposed-removals.tsv`.
 - skip wrong (a finite game wrongly skipped) → it will be re-evaluated by
   coop-hunter `reeval_skipped`; note it in `state/discrepancies.tsv`.
 - `endingType` mismatch within a franchise → log the correct value to
@@ -244,7 +249,7 @@ to re-check all 400+ entries.
 2. `partial_entries` is empty (every entry got a complete check, not just partial).
 3. Every entry with a `bad_video` or `no_image` flag was either fixed-and-logged or logged as irrecoverable.
 
-Phase 4 of coop-hunter handles further removals based on `proposed-removals.tsv`. Fact-checker only logs, never removes.
+The fact-checker auto-removes deterministic endless/blocklist matches (rule 7) and logs judgment-call removals to `proposed-removals.tsv` for the owner. coop-hunter no longer re-validates existing entries.
 
 ## Initial state
 

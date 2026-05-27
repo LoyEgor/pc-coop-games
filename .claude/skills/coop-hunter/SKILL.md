@@ -100,7 +100,7 @@ Before fetching Steam reviews or price for an EXISTING entry, read `.github/refr
 - `last_success` is more recent than 30 hours ago → cron is healthy. **SKIP** the price/rating check for that entry. Don't waste tokens duplicating the bot's work.
 - `last_success` older than 30 hours → cron is stale/broken. Fall back to doing the fetch yourself, and append a one-line warning to `state/push-fails.tsv` so the owner notices the cron is unhealthy.
 
-This rule applies in §3 (Quality threshold), §4 step "price drift", and in phase 4 `revalidate_existing`. It does NOT apply to step §2 (initial Steam validation for a NEW entry) — for new entries you always fetch fresh because the cron never inserts, only updates.
+This rule applies in §3 (Quality threshold) and §4 step "price drift". It does NOT apply to step §2 (initial Steam validation for a NEW entry) — for new entries you always fetch fresh because the cron never inserts, only updates.
 
 ## Per-candidate procedure
 
@@ -214,7 +214,22 @@ Drill the search in this order. Stop at the first cascade level that yields a cl
    - WebSearch `<title> co-op site:reddit.com` — Reddit threads often link to gameplay clips.
 6. **Only after all of the above produce nothing**: refuse to add this entry. Log to `state/skipped.tsv` with reason `no_video_found`. Do NOT fall back to `youtubeSearch(...)` — that placeholder is forbidden.
 
-The same cascade is used in phase 4 `revalidate_existing` to fix the 88 historic `youtubeSearch(...)` placeholders. Be patient: a single skip costs less than a broken modal.
+The `fact-checker` skill uses the same cascade to fix any broken/placeholder YouTube URLs on existing entries. For coop-hunter, this matters at ADD time: be patient finding a real video — a single skip costs less than a broken modal.
+
+### 8b. FINAL FIT-GATE (mandatory — prevention beats cleanup)
+
+Since coop-hunter no longer re-walks the catalog to clean up mistakes (that's the fact-checker now), the ADD-TIME gates are the main defense. Before calling `append_entry.py`, run this final fit-check and SKIP on ANY doubt. A skipped good game costs nothing; a wrong added game costs manual cleanup later — the owner explicitly prefers a smaller, trustworthy catalog over a larger noisy one.
+
+Confirm ALL of these hold (you already gathered the evidence in §0–§8); if any is uncertain → skip to `state/skipped.tsv` with reason `low_fit` + a one-line why:
+
+- **On Steam, PC** (not Epic/console-only).
+- **Real multiplayer co-op for 2+** — online co-op OR Remote Play Together. NOT single-player-only, NOT PvP-only.
+- **Finite — a clear, identifiable ending** (story credits / last level / final boss / named win-condition / arcade goal). This is the #1 rule. If you cannot point to a concrete ending, it is endless → SKIP, never "probably has one".
+- **Quality**: ≥50 total Steam reviews AND ≥50% positive.
+- **Not blocklisted / not previously removed** (re-confirm §0 gates A+B).
+- **A real gameplay video and a working image** were found.
+
+If the candidate is a clear genre/structure outlier you can't classify against `taxonomy.json` → SKIP `taxonomy_gap`, do not force-fit. When genuinely unsure whether it belongs → SKIP. Drill for evidence first (per drill mode), but the tie-breaker is always SKIP.
 
 ### 9. Build and append entry
 Use the helper script `scripts/append_entry.py` (described below) to insert a new entry into `data.js` immediately before the first `hidden: true` block (or at end if no hidden entries). Pass JSON args.
@@ -255,30 +270,11 @@ For `verdict` — ≤120 chars English. Plain, factual, one sentence. No marketi
   - `last_added = <id>`
   - **`session_added_ids.append(<id>)`** — accumulator for the Final pass. Cleared only after the final push succeeds.
 
-## Phase 4 source methods (cascade re-evaluation + exhaustive search)
+## Phase 4 source methods (exhaustive GROWTH search)
 
-These methods replace the standard "Per-candidate procedure" for sources in phase 4. They are only reached when `max_phase >= 4` (Mac mode).
+These methods replace the standard "Per-candidate procedure" for sources in phase 4. They are only reached when `max_phase >= 4` (Mac mode). **Phase 4 is now GROWTH-only** — it finds NEW games via deeper sources. Re-validating EXISTING entries (endless re-check, broken media, drift) is NOT coop-hunter's job anymore; that moved to the `fact-checker` skill (single owner of existing-entry quality). This split removes the old double work that made coop-hunter spend hours re-walking the whole catalog before it could reach `done`.
 
-### `revalidate_existing`
-Goal: catch false positives that slipped through earlier (e.g., Deep Rock Galactic, Lethal Company, R.E.P.O. — endless games that initially passed the finite-content check) AND fix data-quality regressions in existing entries (broken images, dropped review scores, placeholder YouTube URLs).
-
-1. Load `data.js`, iterate all non-hidden entries.
-2. For each entry, in batches of `batch_size`:
-   - Refetch Steam appdetails. Check the entry's `imageUrl`:
-     - If it's `steamImage(<id>)` helper → HEAD-request the expanded URL; if 200 → ok.
-     - If it's a hardcoded full URL (rare, e.g. `gears-of-war-reloaded`) → HEAD-request; if 404 → **AUTO-REPLACE** with `steamImage(<app_id>)` via `scripts/fix_image.py <id> <app_id>`.
-     - If both forms fail → log to `state/bad-existing.tsv` with reason `broken_image` and leave a `needs-review: true` flag on the entry so the user sees it.
-   - Refetch reviews summary. If %positive dropped below 50 → log with reason `quality_drop`.
-   - Re-run finite-content scan with strictest rules:
-     - If Steam tags include `MMO`, `Massively Multiplayer`, `Free to Play` + `Open World Survival Craft` → **AUTO-REMOVE** via `scripts/remove_entry.py <id>` with `REMOVE_REASON=endless_misclassified`. Also append to `state/bad-existing.tsv` for visibility.
-     - If negative review snippets show ≥3 hits of `endless` / `live service` / `no ending` / `no point` / `infinite` → **AUTO-REMOVE** as above.
-     - If name matches the hardcoded blocklist in `classification.md` (some entries pre-date the blocklist) → **AUTO-REMOVE**.
-   - YouTube check + auto-fix:
-     - If the entry's `youtubeUrl` line starts with `youtubeSearch(` → it is a placeholder. Run `WebSearch: "<title> co-op gameplay site:youtube.com"`, pick the first `https://www.youtube.com/watch?v=<11 chars>` result whose title contains the game name and ideally one of `co-op`, `multiplayer`, `walkthrough`, `no commentary`. Call `scripts/fix_youtube.py <id> <video_id>` to replace.
-     - If the URL is `youtube("...")` but WebFetch returns 404 or a title that does not contain the game name → run the same WebSearch + `fix_youtube.py` replacement.
-     - If WebSearch returns no clearly matching video in the top 5 → leave the entry as-is and log to `state/bad-existing.tsv` with reason `bad_video`. Do NOT replace with a random unrelated video.
-3. Auto-removed entries are tracked in `state/removed-entries.tsv` (by `remove_entry.py`). Auto-fixed YouTube URLs are tracked in `state/youtube-fixes.tsv` (by `fix_youtube.py`). The owner has authorized both auto-actions (see CLAUDE.md §6).
-4. This source's "offset" is the index into existing entries; "exhausted" when all entries scanned. After auto-removal the array is shorter — re-read `data.js` at the start of each batch so the offset stays consistent.
+> Removed 2026-05-27: `revalidate_existing`. If you find an endless game already in `data.js`, you may STILL auto-remove it via `scripts/remove_entry.py` (the hard rule against endless games stands), but do NOT systematically re-walk the catalog — the fact-checker does that.
 
 ### `reeval_skipped`
 1. Read `state/skipped.tsv`. Filter rows where reason in [`ambiguous`, `unclear_ending`, `not_enough_reviews`].
