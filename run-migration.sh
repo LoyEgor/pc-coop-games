@@ -159,6 +159,9 @@ CRASH_SLEEP=30
 RUN=0
 CRASH_COUNT=0
 
+# Fresh log each run (don't accumulate across runs).
+: > "$TRANSCRIPT"
+
 is_rate_limited() {
   tail -n 400 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
     'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'

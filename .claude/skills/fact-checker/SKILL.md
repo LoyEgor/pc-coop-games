@@ -1,11 +1,11 @@
 ---
 name: fact-checker
-description: Walk every non-hidden entry in data.js and verify the recorded fields against authoritative sources (Steam appdetails + appreviews, HowLongToBeat, YouTube). Auto-fix safe drift (rating, price, broken media). Log everything else to TSVs for the owner to review. Drill mode — never stop on a single failure; only declare done when every entry has been checked at least once AND every auto-fixable discrepancy has been applied-or-logged-as-irrecoverable. Run via `/goal` on `./run-fact-checker.sh`. Independent of coop-hunter — has its own progress/state.
+description: Walk every non-hidden entry in data.js and verify the recorded fields against authoritative sources (Steam appdetails + appreviews, HowLongToBeat, YouTube). Auto-fix safe drift (rating, price, broken media). Log everything else to TSVs for the owner to review. Drill mode — never stop on a single failure; only declare done when every entry has been checked at least once AND every auto-fixable discrepancy has been applied-or-logged-as-irrecoverable. Run via `./run-fact-checker.sh` (a bash loop of headless `claude -p` bursts, ~12 entries each). Independent of coop-hunter — has its own progress/state.
 ---
 
 # Fact-checker
 
-You are walking `data.js` end-to-end and verifying every recorded field against authoritative sources. This is a separate skill from `coop-hunter` with its own state. You will be invoked across many turns via `/goal`; persist after every entry checked.
+You are walking `data.js` end-to-end and verifying every recorded field against authoritative sources. This is a separate skill from `coop-hunter` with its own state. The launcher `./run-fact-checker.sh` invokes you ONE BURST at a time as a headless `claude -p` process: resume from `state/progress.json`, verify ~12 entries, persist after EACH, then EXIT — the bash loop starts your next burst fresh. Persist after every entry checked.
 
 ## Hard rules
 

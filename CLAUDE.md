@@ -118,16 +118,22 @@ Tier values render as a highlighted chip via `.tag.tier` CSS; the Genres filter 
 Lives at `.claude/skills/coop-hunter/` and is auto-loaded by Claude Code when this repo is opened. Its job: systematically discover new candidates from SteamDB / Co-Optimus / curators / Reddit / articles, validate them, classify, and append to `data.js`.
 
 ### To invoke
-Run the launcher (macOS / Linux). It sets up the `/goal` loop for you:
+Run the launcher (macOS / Linux):
 
 ```
 ./run-coop-hunter.sh
 ```
 
-The launcher cascades phases 1-4 and stops only after TWO consecutive phase-4
-passes yield 0 new games. Push policy: NO interim pushes — exactly ONE commit +
-push at the end, after the skill's Final pass. (Windows `.ps1` launcher was
-removed — this is a macOS/Linux project now.)
+**Execution model (changed 2026-05-27): headless bursts, NOT `/goal`.** The
+launcher is a bash loop; each iteration runs ONE `claude -p` (headless) burst
+that processes ~20 candidates, persists state, and EXITS — then the loop starts
+the next burst with a fresh process. (Earlier the launcher used `/goal`, but its
+evaluator reads the whole transcript every turn and overflowed on multi-hour
+runs — "Prompt is too long" — so the project moved to headless bursts.) The
+skill is resumable from `state/progress.json`, cascades phases 1-4, and stops
+only after TWO consecutive phase-4 passes yield 0 new games. Push policy: NO
+interim pushes — exactly ONE commit + push at the end (the skill's Final pass).
+Windows `.ps1` launcher was removed — this is a macOS/Linux project now.
 
 See [`.claude/skills/README.md`](.claude/skills/README.md) for the full picture.
 
@@ -197,14 +203,14 @@ If a game appears on this list, **never add it**, regardless of what Steam categ
 
 `index.html`, `app.js`, `styles.css` are the rendering layer. The skill **does not touch them** — only `data.js`. If you (as a future LLM) are asked to change UI:
 
-- Column widths in `styles.css` (currently 14 columns: Картинка, Игра, Год, Жанры, Тип, Рейтинг, Отзывы, Игроки, Часы, Второму, Цена, Вердикт, YouTube, Скрыть).
-- Filter logic in `app.js` (`gameMatchesFilters`, `filterConfig`).
+- 13 columns, all English: Image, Game, Year, Genres, Ending, Rating, Players, Hours, Copies, Price, Verdict, YouTube, Played. (There is NO "reviews count" column — `rating` is the only Steam-derived score; see WHY-1.)
+- Filter logic in `app.js` (`gameMatchesFilters`, `filterConfig`, and the faceted Genres model: OR within an axis, AND across axes — see `GENRE_AXES`).
 - Sort logic in `app.js` (`getSortValue`).
 - Row template in `app.js` (`renderRow`, `renderEndingType`).
 
 UI conventions:
 - The header cell has two click zones: clicking the **text label** sorts that column; clicking the **rest of the cell** (chevron, empty space) opens the filter popover.
-- Range filters (Год, Рейтинг, Игроки, Часы, Цена) pre-fill min/max with the actual data extents and snap to grid increments (rating: 5, price: 50 with stepBase 49).
+- Range filters (Year, Rating, Players, Hours, Price) pre-fill min/max with the actual data extents and snap to grid increments (rating: 5, price: 50 with stepBase 49).
 - Tier values (AAA / AA / Indie) are stored INSIDE the `genres` array as the first element and styled differently via `.tag.tier`.
 
 ## 8. Deployment

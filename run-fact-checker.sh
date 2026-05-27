@@ -138,11 +138,23 @@ echo ""
 # -------- main loop: one claude -p burst per iteration --------
 MAX_BURSTS=600
 RATE_LIMIT_SLEEP=1800
+TRANSCRIPT_CAP_BYTES=$((20 * 1024 * 1024))   # cap the log at ~20 MB
 BURST=0
+
+# Fresh log each run (transcript is for tail -f + rate-limit detection, not state).
+: > "$TRANSCRIPT"
 
 is_rate_limited() {
   tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
     'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'
+}
+
+cap_transcript() {
+  local sz
+  sz=$(wc -c < "$TRANSCRIPT" 2>/dev/null || echo 0)
+  if [ "$sz" -gt "$TRANSCRIPT_CAP_BYTES" ]; then
+    tail -n 4000 "$TRANSCRIPT" > "$TRANSCRIPT.keep" && cat "$TRANSCRIPT.keep" > "$TRANSCRIPT" && rm -f "$TRANSCRIPT.keep"
+  fi
 }
 
 while true; do
@@ -157,6 +169,7 @@ while true; do
   echo ""
 
   "$CLAUDE_CMD" -p --dangerously-skip-permissions "$BURST_PROMPT" 2>&1 | tee -a "$TRANSCRIPT"
+  cap_transcript
 
   if [ ! -f "$PROGRESS_FILE" ]; then
     echo "[$(date)] WARNING: progress.json missing. Stopping." >&2

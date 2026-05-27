@@ -1,18 +1,20 @@
 ---
 name: coop-hunter
-description: Systematically expand the PC co-op games database in data.js. Crawls SteamDB tags, Co-Optimus, Steam curators, Reddit lists, and HowLongToBeat sequentially. For each candidate game verifies online co-op + finite content + ≥50% Steam reviews, classifies tier (AAA/AA/Indie) and endingType (story/levels/arcade-goal/roguelite/survival-goal), finds a gameplay YouTube video, then appends to data.js. State is persisted between runs so the skill is fully resumable after crashes or interruption. Invoke this skill explicitly with /goal when you want to grow the database; do not invoke during normal feature work.
+description: Systematically expand the PC co-op games database in data.js. Crawls SteamDB tags, Co-Optimus, Steam curators, Reddit lists, and HowLongToBeat sequentially. For each candidate game verifies online co-op + finite content + ≥50% Steam reviews, classifies tier (AAA/AA/Indie) and endingType (story/levels/arcade-goal/roguelite/survival-goal), finds a gameplay YouTube video, then appends to data.js. State is persisted between runs so the skill is fully resumable. Run it via ./run-coop-hunter.sh (a bash loop of headless `claude -p` bursts); do not invoke during normal feature work.
 ---
 
 # Co-op Hunter
 
-You are systematically expanding `data.js` with new co-op games that fit the criteria. **You will be invoked across many turns via `/goal`** — work slowly and persist state after every game, so a crash never costs more than one game.
+You are systematically expanding `data.js` with new co-op games that fit the criteria.
+
+**Execution model:** the launcher `./run-coop-hunter.sh` invokes you ONE BURST at a time as a headless `claude -p` process. Each burst: resume from `state/progress.json`, process ~20 candidates, persist state after EACH, then EXIT. The bash loop starts the next burst fresh. (This replaced an older `/goal`-driven model whose evaluator overflowed on long runs.) Work slowly and persist after every game, so a crash never costs more than one game.
 
 ## Hard rules (never violate)
 
 1. **Sequential, not parallel.** One candidate at a time. Don't batch Steam API calls across more than 5 IDs per turn. Sleep 1.5s between Steam appdetails fetches (we hit rate-limits earlier).
 2. **Persist state after EVERY game added.** Update `state/progress.json` and append to `state/added.tsv` before moving to the next candidate. If you crash mid-game, the next run resumes from `progress.json`.
 3. **No questions.** Decide based on the rules in `classification.md`. If a candidate is genuinely ambiguous, log it to `state/skipped.tsv` with reason `ambiguous` and move on.
-4. **Stay slow.** Process 3–5 candidates per turn maximum. Return control to `/goal`, it will call you again. This keeps per-turn token budget low.
+4. **Bounded burst.** Process ~20 candidates per invocation, then persist state and EXIT. The launcher (`./run-coop-hunter.sh`) starts your next burst as a fresh headless process. Do not try to finish the whole catalog in one invocation.
 5. **Validate every 50 added games** by spawning a fresh Agent (see "Validation pass" below).
 6. **Idempotent.** Before adding a candidate, check `data.js` for the Steam app id. If already present → skip.
 7. **Drill mode (never give up on the first failure).** If a WebSearch returns no clean match, run the next alternative query — §8 lists six. If a source page returns 403/404, write a substitute URL or use a different domain. If a YouTube video can't be found on the first try, exhaust Steam page scraping → direct YouTube search page → Reddit links → other phrasings before refusing. The user explicitly authorized out-of-the-box behavior: "пусть пытается до последнего и выходя out of the box, ища альтернативы". Treat "I couldn't find X" as a hypothesis to disprove, not an exit condition.
@@ -23,7 +25,7 @@ You are systematically expanding `data.js` with new co-op games that fit the cri
 When called:
 
 1. Read `.claude/skills/coop-hunter/state/progress.json` (create with defaults if missing — see "Initial state").
-2. If `progress.done === true` → re-write `state/summary.md` and exit with "DONE".
+2. If `progress.done === true` → exit immediately with "DONE" (the launcher loop will stop).
 3. Identify the current source (`progress.current_source_idx`) from `sources.json`. The current source MUST have `phase == progress.current_phase`. If not, advance `current_source_idx` to the next source with matching phase (or trigger phase transition — see below).
 4. From that source, pull the next batch of candidates starting at `progress.current_offset`. Batch size = 5.
 5. For each candidate in batch (sequentially):
@@ -35,7 +37,7 @@ When called:
    - If `progress.added_count` crossed a multiple of 50 since last validation → run "Validation pass".
    - If the current source is exhausted (offset >= source max) → mark it complete (append to `completed_sources`), reset `current_offset = 0`, move to next source IN THE SAME PHASE.
    - If all sources of `current_phase` are completed → run **Phase transition logic** below.
-7. Return. `/goal` will call you again next turn.
+7. Once you have processed ~20 candidates this invocation, persist state and EXIT. The launcher starts your next burst as a fresh process (resuming from `progress.json`).
 
 ## Phase transition logic
 
@@ -70,7 +72,7 @@ When all sources of `current_phase` are completed:
 
 This means: a single dry pass through phase 4 is NOT enough to declare the catalog complete. The skill must prove there's nothing left by repeating phase 4 with fresh fetches and getting 0 twice in a row. The owner's empirical observation — "I restart and it finds another 15 games" — is exactly the case this fixes.
 
-On Windows with `max_phase=1`, after phase 1's yield → done check (cases 3/4 don't apply). On Mac with `max_phase=4`, the skill cascades through 2, 3, 4 and then loops phase 4 until two consecutive dry passes.
+The launcher sets `max_phase=4`, so the skill cascades through phases 1→4 and then loops phase 4 until two consecutive dry passes. (`max_phase=1` is a legacy single-pass mode; the only launcher today is the macOS/Linux `./run-coop-hunter.sh`.)
 
 ## Push policy: ZERO pushes during the run, ONE at the end
 
@@ -397,18 +399,11 @@ If push fails: log to `state/push-fails.tsv` and KEEP the work-tree dirty. Do NO
 If push succeeds:
 - `session_added_ids = []`
 - `done = true`
-- Write `state/summary.md` (see Final report below).
 
-## Final report
-
-When the Final pass finishes successfully (after push), write `state/summary.md`:
-- Total added this session, total added overall.
-- Skipped, validated, validation-fails.
-- Top 10 sources by yield.
-- Reasons for skips, ranked.
-- Distribution of new entries by tier + endingType.
-- Final pass results: imageUrl fixes / youtubeUrl fixes / delisted games surfaced.
-- Token estimate (if tracked).
+Do NOT write a `state/summary.md` report file. The audit trail already lives in
+`added.tsv` / `skipped.tsv` / `removed-entries.tsv` and the launcher prints a
+final summary to the terminal. This project does not keep regenerable report
+artifacts.
 
 ## Tools to use
 

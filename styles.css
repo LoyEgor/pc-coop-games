@@ -238,6 +238,19 @@ main {
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
+  /* Lives INSIDE the scroll container as a sticky-bottom bar (mirror of the
+     sticky-top header). z-index 10 = same as the header: rows scroll under it,
+     but a hovered image-zoom (z-index 50) paints OVER it, just like over the
+     header. This is how the zoom can overlap the footer without escaping the
+     scroll container (no JS). Mobile resets this to static. */
+  position: sticky;
+  /* bottom: -1px (not 0) so the bar overshoots the scroll-container edge by a
+     pixel — the overshoot is clipped, but it kills the sub-pixel seam where a
+     row was peeking through under the footer (Chrome rounds the sticky offset).
+     Matching padding-bottom keeps the text vertically centred. */
+  bottom: -1px;
+  padding-bottom: 7px;
+  z-index: 10;
 }
 
 .table-wrap {
@@ -307,12 +320,10 @@ th {
 tbody tr {
   background: var(--surface);
   transition: background-color 100ms ease;
-  /* position+z-index baseline so the hovered row can be lifted above its
-     neighbours. Played rows use opacity (a stacking context), so without an
-     explicit lift the image-zoom on an active row gets painted UNDER adjacent
-     rows. See tbody tr:hover. */
+  /* position:relative WITHOUT z-index — does not create a stacking context, so
+     the row never lifts above the sticky header. Only the image-cell does that
+     (on hover), via its own z-index. The header always covers a hovered row. */
   position: relative;
-  z-index: 1;
 }
 
 tbody tr:nth-child(even) {
@@ -321,9 +332,9 @@ tbody tr:nth-child(even) {
 
 tbody tr:hover {
   background: var(--surface-3);
-  /* Lift the whole hovered row above every neighbour (including dimmed
-     opacity:0.55 played rows) so the scaled image preview paints on top. */
-  z-index: 20;
+  /* No z-index here on purpose: a row hover must NOT lift the row above the
+     sticky header. Only the zoomed image is the exception (.image-cell:hover,
+     z-index 50 > th 10). */
 }
 
 /* Played rows are dimmed only in the "All" view (where they share space with
@@ -1187,6 +1198,8 @@ tbody tr:hover .youtube-link .yt-icon-play {
     padding: 8px 4px 0;
     background: transparent;
     justify-content: flex-start;
+    /* No sticky-bottom on mobile — it just sits at the end of the card list. */
+    position: static;
   }
 
   .table-wrap {
