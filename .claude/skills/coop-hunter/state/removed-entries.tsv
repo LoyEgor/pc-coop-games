@@ -27,3 +27,4 @@ timestamp	id	title	reason	signals_matched
 2026-05-26T00:32:18Z	dont-starve-together	Don't Starve Together	endless_misclassified	hardcoded_blocklist+manual_audit
 2026-05-27T11:46:15Z	target		test	
 2026-05-27T11:46:37Z	portal		t	
+2026-05-27T13:38:35Z	forza-horizon-5	Forza Horizon 5	blocklisted_endless	open-world racing festival, no credits/Hall-of-Fame finish; classification.md hardcoded blocklist; historical false positive

@@ -135,6 +135,13 @@ TOTAL=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['total_en
 echo "Starting at entry $("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_idx'])") / $TOTAL"
 echo ""
 
+# -------- consistency audit (cheap, no network) — refresh inconsistencies.tsv --------
+# Catches catalog self-contradictions (same franchise added vs skipped, mixed
+# endingType) that per-entry checks miss. Output is a short owner-review queue.
+echo "[$(date)] Running consistency audit (find_neighbors.py)..."
+"$PY" "$REPO_ROOT/.claude/skills/fact-checker/scripts/find_neighbors.py" || true
+echo ""
+
 # -------- main loop: one claude -p burst per iteration --------
 MAX_BURSTS=600
 RATE_LIMIT_SLEEP=1800

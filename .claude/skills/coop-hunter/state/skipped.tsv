@@ -11,12 +11,10 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T01:40:00Z	Conan Exiles	endless	curated	Massively Multiplayer category, sandbox survival no win-condition
 2026-05-26T01:40:00Z	Project Zomboid	blocklisted_endless	curated	on hardcoded blocklist
 2026-05-26T02:10:00Z	Hades II	no_coop	gamerant_2025	categories list only Single-player, no co-op at this time
-2026-05-26T02:10:00Z	Wo Long Fallen Dynasty	low_quality	gamerant_2025	49.6%% positive — below 50%% threshold
 2026-05-26T02:25:00Z	GTFO	blocklisted_endless	misc	on hardcoded blocklist
 2026-05-26T02:25:00Z	Killing Floor 2	blocklisted_endless	misc	on hardcoded blocklist
 2026-05-26T02:25:00Z	Halo Infinite	no_coop	misc	Steam categories list PvP only — campaign co-op not surfaced
 2026-05-26T02:25:00Z	Sniper Ghost Warrior Contracts 2	no_coop	misc	Single-player only
-2026-05-26T02:25:00Z	Generation Zero	unclear_ending	misc	open world survival, no defined ending
 2026-05-26T02:25:00Z	Streets of Rogue 2	early_access	misc	still Coming soon — no reviews
 2026-05-26T03:00:00Z	DuneCrawl	no_coop	wasdland	Steam categories list PvP/Online PvP/LAN PvP only — no co-op category
 2026-05-26T03:00:00Z	Solasta II	no_coop	wasdland	Single-player only, no Multi-player category
@@ -101,8 +99,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T23:01:42Z	lego-marvel-superheroes-1	duplicate	appid 249130 already in catalog as lego-marvel-superheroes
 2026-05-26T23:01:42Z	saints-row-third-remastered	duplicate	appid 978300 already in catalog as saints-row-3-remastered
 2026-05-26T23:11:25Z	resident-evil-operation-raccoon-city	not_on_steam	Steam search returns no result; delisted by Capcom, not currently purchasable
-2026-05-26T23:14:18Z	foul-play	ambiguous	Steam search returns only the Playtest app (no categories/price); main game appid not resolvable via search, deferred
-2026-05-26T23:17:31Z	company-of-heroes-3	unclear_ending	57% mixed; co-op is skirmish-vs-AI (endless), the campaign is single-player only — weak co-op-with-ending fit
+2026-05-26T23:17:31Z	company-of-heroes-3	no_coop	57% mixed; campaign is single-player only — co-op is skirmish-vs-AI (endless mode), no co-op campaign with an ending
 2026-05-26T23:17:31Z	ghost-recon-breakpoint	live_service_borderline	open-world live-service (raids/ongoing); already have Ghost Recon Wildlands which is the cleaner finite-campaign pick
 2026-05-26T23:17:31Z	dnd-dark-alliance-2021	not_on_steam	Steam search for "Dark Alliance" resolves only to Baldur's Gate Dark Alliance I/II (already in catalog); 2021 D&D Dark Alliance not surfacing, likely delisted
 2026-05-26T23:24:00Z	curse-of-the-dead-gods	no_coop	Steam appdetails lists Single-player only; co-op was never added to this roguelite
@@ -118,12 +115,9 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T23:36:19Z	halo-infinite	no_coop	Base Steam appid is the free-to-play PvP multiplayer (endless); co-op campaign is a separate paywalled mode not reflected in categories
 2026-05-26T23:36:19Z	drake-hollow	unclear_ending	procedural island base-defense survival; no crisp named win-condition confirmable, borderline endless per owner rule
 2026-05-26T23:42:05Z	the-slormancer	no_coop	Steam appdetails lists Single-player only (2025 1.0 release); no co-op category
-2026-05-26T23:43:59Z	sine-mora-ex	low_quality	64.5% positive (681 reviews); below the selective bar and shmup vein already well covered
 2026-05-26T23:47:17Z	souldiers	no_coop	Steam appdetails lists Single-player only
 2026-05-26T23:47:17Z	earthfall	low_quality	65.0% positive; L4D-clone with abandoned support/dead playerbase, below selective bar
 2026-05-26T23:47:17Z	aliens-versus-predator-classic	no_coop	Steam categories list Single-player + (PvP) Multi-player only; no co-op campaign
-2026-05-26T23:47:17Z	foul-play	not_found	appid 254060 resolves to KnightShift; Foul Play main-game appid not cleanly resolvable via search/guess
-2026-05-26T23:49:11Z	dungeon-defenders-awakened	low_quality	66% positive; effectively a remake of dungeon-defenders (already in catalog), low marginal value
 2026-05-26T23:49:11Z	no-rest-for-the-wicked	early_access	genres include Early Access (Moon Studios ARPG); campaign incomplete, no 1.0 ending yet
 2026-05-26T23:51:17Z	tempest-rising	no_coop	Steam categories list Single-player + (PvP) Multi-player only; no Co-op category
 2026-05-26T23:54:06Z	fae-farm	ambiguous	appdetails lists Multi-player but no explicit Co-op category; co-op presence not confirmable from metadata per skill rule
@@ -158,7 +152,7 @@ timestamp	candidate_name	reason	source	notes
 2026-05-27T07:11:22Z	how-to-survive-2	unclear_ending	open survival-sandbox base game, no explicit named win-condition, 69% mixed, doubt->skip
 2026-05-27T07:11:22Z	krater	low_quality	55.5% positive, co-op added post-launch (no online-coop tag), 2012
 2026-05-27T07:11:22Z	dungeon-siege-3	region_restricted	appdetails success=false for cc=ua (not sold in Ukraine), no UAH price; also 57.5% mixed
-2026-05-27T07:11:22Z	far-cry-4	unclear_ending	co-op limited to free-roam Guns-for-Hire; story campaign is single-player only (cannot finish together)
+2026-05-27T07:11:22Z	far-cry-4	no_coop	story campaign is single-player only; co-op limited to free-roam Guns-for-Hire (endless sandbox, no finishable co-op campaign)
 2026-05-27T07:15:28Z	the-quarry	local_only_no_remote	co-op is couch-only (Shared/Split Screen); online Wolf Pack is spectate/vote only, no Remote Play Together; CLAUDE.md §3 excludes local-only
 2026-05-27T07:15:28Z	toodee-and-topdee	taxonomy_ambiguous	perspective by design mixes Side-view (Toodee) + top-down (Topdee) simultaneously; perspective axis not cleanly assignable, no guessing per rule 8
 2026-05-27T07:15:28Z	directive-8020	local_only_no_remote	launch has couch Movie Night only; Shared Story removed; online is unreleased post-launch update; no Remote Play Together
@@ -201,3 +195,16 @@ timestamp	candidate_name	reason	source	notes
 2026-05-27T08:00:08Z	trailmakers	unclear_ending	open-ended vehicle-building sandbox; campaign lacks a defined named win-state
 2026-05-27T08:00:08Z	deep-rock-galactic-rogue-core	blocklisted_endless	Deep Rock Galactic franchise on hardcoded blocklist (CLAUDE.md §6)
 2026-05-27T08:00:08Z	sven-coop	endless	Half-Life co-op mod, open community-map platform with no defined ending
+2026-05-27T12:28:10Z	horizon-chase-turbo	taxonomy_gap	arcade racer; no Racing mechanic tag in taxonomy.json and catalog has zero racing games - owner decision
+2026-05-27T12:28:10Z	dirt-5	taxonomy_gap	has Co-op + finite career but Racing has no mechanic tag in taxonomy.json - owner decision
+2026-05-27T12:28:10Z	team-sonic-racing	taxonomy_gap	kart racer; no Racing mechanic tag; co-op also weak (Steam lists only PvP/split-screen)
+2026-05-27T12:28:10Z	sonic-all-stars-racing-transformed	taxonomy_gap	kart racer; no Racing mechanic; World Tour is single-player, MP is competitive PvP
+2026-05-27T12:31:22Z	cry-of-fear	online_broken	native co-op server browser broken since ~2015; co-op only via Radmin VPN/port-forward; no Remote Play Together (CLAUDE.md release<2015 check)
+2026-05-27T12:31:22Z	pacify	unclear_ending	session-based co-op escape horror (House/Lighthouse rounds); no campaign arc or defined end-state
+2026-05-27T12:48:00Z	its-only-money	unclear_ending	phase4_backloggd_sub	open-world crime sandbox sim (Saints Row-like); "playground"/become-the-1% framing, no HLTB Main Story, no review ending confirmation - when-in-doubt skip
+2026-05-27T12:52:00Z	cave-story-plus	no_coop	phase4_youtube_curator	Steam categories list only Single-player; the co-op feature is Switch-only, not present on Steam store page (no Co-op/Remote Play Together category)
+2026-05-27T12:58:00Z	outland	delisted	phase4_youtube_curator	Housemarque Outland (305050) removed from Steam sale Apr 2024; appdetails returns null price/release - not purchasable, fails platform criterion
+2026-05-27T13:03:08Z	dungeon-siege-2	no_coop	phase4_wikipedia	Steam version lists only Single-player; GameSpy/LAN multiplayer stripped, no Co-op or Remote Play Together category
+2026-05-27T13:03:08Z	far-cry-3	online_broken	phase4_wikipedia	Ubisoft shut down master servers Mar 2024; online co-op campaign no longer playable, no Remote Play Together (release<2015 check)
+2026-05-27T13:03:56Z	speedrunners	no_coop	phase4_wikipedia	competitive PvP party racer (Online PvP / Split Screen PvP categories, no Co-op); no co-op campaign or ending
+2026-05-27T13:03:56Z	jumanji-the-video-game	invalid_app_id	phase4_wikipedia	appdetails success:false (delisted/region-locked); not returned by Steam app search - not purchasable

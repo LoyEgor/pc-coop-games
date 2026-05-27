@@ -1,19 +1,27 @@
 {
-  "current_source_idx": 15,
-  "current_offset": 210,
-  "added_count": 344,
-  "skipped_count": 208,
+  "current_source_idx": 12,
+  "current_offset": 279,
+  "added_count": 353,
+  "skipped_count": 221,
   "last_validation_at": 200,
-  "completed_sources": ["steam_more_like_this"],
+  "completed_sources": [
+    "steam_more_like_this",
+    "websearch_niche_queries",
+    "backloggd_top_completed_coop",
+    "steam_community_recommendations",
+    "youtube_curator_playlists",
+    "reddit_just_finished",
+    "wikipedia_coop_lists"
+  ],
   "done": false,
-  "last_added": "knights-and-bikes",
-  "last_run_timestamp": "2026-05-27T09:51:00Z",
+  "last_added": "dead-rising-2-off-the-record",
+  "last_run_timestamp": "2026-05-27T14:30:00Z",
   "current_phase": 4,
   "max_phase": 4,
   "phase_start_count": 148,
   "auto_push_every_n": 0,
   "last_push_at": 109,
-  "phase_4_zero_yield_passes": 1,
+  "phase_4_zero_yield_passes": 0,
   "session_added_ids": [
     "halo-wars-de",
     "guacamelee-stce",
@@ -113,6 +121,16 @@
     "charlie-murder",
     "dungeons-3",
     "risk-of-rain-2013",
-    "knights-and-bikes"
+    "knights-and-bikes",
+    "tales-of-berseria",
+    "never-alone",
+    "rain-world",
+    "heretic-hexen",
+    "tristoy",
+    "we-were-here-too",
+    "pile-up-box-by-box",
+    "dead-rising-2",
+    "fear-3",
+    "dead-rising-2-off-the-record"
   ]
 }

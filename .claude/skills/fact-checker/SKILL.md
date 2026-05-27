@@ -197,6 +197,46 @@ When any step fails:
 
 Do not declare an entry "checked" if you skipped more than 2 of the 11 checks. Mark it as `partial_check` in `state/progress.json.partial_entries[]` so the next pass can retry.
 
+## Consistency audit (run ONCE per fact-check run, before/after the entry loop)
+
+Per-entry verification can't catch a whole CLASS of errors: a wrong decision that
+looks self-consistent in isolation (e.g. Forza Horizon 5 added as `story` with a
+hallucinated "finale campaign" — there is no ending). These are caught not by
+ground truth but by the catalog **contradicting itself**. Run:
+
+```
+python3 scripts/find_neighbors.py
+```
+
+It reads `data.js` + coop-hunter's `skipped.tsv` and writes
+`state/inconsistencies.tsv` with two precise (low-noise) signals:
+
+- **`franchise_split`** — a game is in the catalog while a same-franchise sibling
+  was SKIPPED on a *judgment* reason (`endless`, `unclear_ending`, `ambiguous`,
+  `low_quality`, …). Same franchise, opposite verdict = one side is wrong. This
+  is exactly the Forza-5-in / Forza-6-skipped pattern. (Mechanical skips —
+  `duplicate`, `no_coop`, `not_on_steam`, mod, VR, EA — are NOT flagged; they're
+  objective, not contradictions.)
+- **`franchise_ending`** — two same-franchise catalog entries with different
+  `endingType` (e.g. Sniper Elite 3/4/5 mismatched).
+
+For each finding: VERIFY which side is correct (Steam page + HLTB + dev notes),
+then:
+- catalog entry wrong (endless slipped in, e.g. Forza Horizon 5) → log to
+  `state/proposed-removals.tsv` (coop-hunter phase 4 removes it; or owner does).
+- skip wrong (a finite game wrongly skipped) → it will be re-evaluated by
+  coop-hunter `reeval_skipped`; note it in `state/discrepancies.tsv`.
+- `endingType` mismatch within a franchise → log the correct value to
+  `state/proposed-fixes.tsv`.
+
+A `franchise_split` where the SAME id is both in the catalog and in `skipped.tsv`
+means a stale skip row — note it; the skip log just needs that line dropped.
+
+This audit is cheap (no network) and the output is short (~10 items, not 1000) —
+review it every run. It is the answer to "no single result can be trusted": the
+system surfaces its own contradictions into one short queue instead of asking you
+to re-check all 400+ entries.
+
 ## Stopping condition
 
 `done = true` only when ALL of:

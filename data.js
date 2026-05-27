@@ -881,7 +881,7 @@ window.GAMES = [
     verdict: "Metroidvania with brawling and platforming. Local co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/534550/Guacamelee_2/",
     imageUrl: steamImage(534550),
-    youtubeUrl: youtube("f-b9PJKunww")
+    youtubeUrl: youtube("xuGrBiRAK30")
   },
   {
     id: "risk-of-rain-2",
@@ -3434,22 +3434,6 @@ window.GAMES = [
     imageUrl: steamImage(2428810),
     youtubeUrl: youtube("Gj_Kr8UNIlI"),
     "needs-review": true
-  },
-  {
-    id: "forza-horizon-5",
-    title: "Forza Horizon 5",
-    year: 2021,
-    genres: ["AAA", "Third-person", "Action", "Open World"],
-    endingType: "story",
-    rating: 89,
-    playersMax: 6,
-    hours: 25,
-    oneCopy: "none",
-    price: 1199,
-    verdict: "Co-op arcade racing in Mexico with Horizon Adventure (main stories) and a finale campaign.",
-    storeUrl: "https://store.steampowered.com/app/1551360/",
-    imageUrl: steamImage(1551360),
-    youtubeUrl: youtube("o9CdBgGXJQ8")
   },
   {
     id: "we-were-here-expeditions-friendship",
@@ -6464,7 +6448,7 @@ window.GAMES = [
     price: 249,
     verdict: "Two-player roguelite where you crew a ship, load cannons and blast sea monsters to beat the final storm boss.",
     storeUrl: "https://store.steampowered.com/app/1286580/",
-    imageUrl: "steamImage(1286580)",
+    imageUrl: steamImage(1286580),
     youtubeUrl: youtube("Gw86YkoSaeM")
   },
   {
@@ -6480,7 +6464,7 @@ window.GAMES = [
     price: 400,
     verdict: "Zelda-like co-op for up to four; raid procedural dungeons, upgrade your village and clear the final boss.",
     storeUrl: "https://store.steampowered.com/app/787810/",
-    imageUrl: "steamImage(787810)",
+    imageUrl: steamImage(787810),
     youtubeUrl: youtube("62bzkChSJ9c")
   },
   {
@@ -6496,7 +6480,7 @@ window.GAMES = [
     price: 599,
     verdict: "Turn-based co-op strategy RPG for up to four; complete the story campaign and defeat its final boss.",
     storeUrl: "https://store.steampowered.com/app/1676840/",
-    imageUrl: "steamImage(1676840)",
+    imageUrl: steamImage(1676840),
     youtubeUrl: youtube("Dsuf-VOnaLI")
   },
   {
@@ -6512,7 +6496,7 @@ window.GAMES = [
     price: 275,
     verdict: "Wordless co-op journey of a fawn and wolf cub through snowy wilds, solving gentle puzzles to find their way home.",
     storeUrl: "https://store.steampowered.com/app/1982340/",
-    imageUrl: "steamImage(1982340)",
+    imageUrl: steamImage(1982340),
     youtubeUrl: youtube("kug_0l_RkzY")
   },
   {
@@ -6528,7 +6512,7 @@ window.GAMES = [
     price: 399,
     verdict: "Co-op sandbox where two geese terrorize a village, ticking off a checklist of pranks up to the final bell heist.",
     storeUrl: "https://store.steampowered.com/app/837470/",
-    imageUrl: "steamImage(837470)",
+    imageUrl: steamImage(837470),
     youtubeUrl: youtube("ukNgNbV4q9w")
   },
   {
@@ -6544,7 +6528,7 @@ window.GAMES = [
     price: 325,
     verdict: "Co-op tower-defense action RPG remake for up to four; build traps, fight waves and finish the campaign's last map.",
     storeUrl: "https://store.steampowered.com/app/1101190/",
-    imageUrl: "steamImage(1101190)",
+    imageUrl: steamImage(1101190),
     youtubeUrl: youtube("NVAJGVmScmI"),
     "needs-review": true
   },
@@ -6561,7 +6545,7 @@ window.GAMES = [
     price: 183,
     verdict: "Open-world military shooter; squad up to four and finish the campaign against a rogue ex-Ghost on Auroa island.",
     storeUrl: "https://store.steampowered.com/app/2231380/",
-    imageUrl: "steamImage(2231380)",
+    imageUrl: steamImage(2231380),
     youtubeUrl: youtube("_nGxtOT0ISA")
   },
   {
@@ -6577,7 +6561,7 @@ window.GAMES = [
     price: 319,
     verdict: "Cinematic co-op horror on a ghost ship; online Shared Story or couch Movie Night, choices decide who survives.",
     storeUrl: "https://store.steampowered.com/app/939850/",
-    imageUrl: "steamImage(939850)",
+    imageUrl: steamImage(939850),
     youtubeUrl: youtube("QA1Gwog95GU")
   },
   {
@@ -6593,7 +6577,7 @@ window.GAMES = [
     price: 59,
     verdict: "Frantic co-op arcade shooter; blast swarms of bugs upward across a campaign of levels to the final boss.",
     storeUrl: "https://store.steampowered.com/app/350740/",
-    imageUrl: "steamImage(350740)",
+    imageUrl: steamImage(350740),
     youtubeUrl: youtube("URZNAphPLHo")
   },
   {
@@ -6609,7 +6593,7 @@ window.GAMES = [
     price: 700,
     verdict: "Co-op sci-fi soulslike on a doomed space station; two players battle through interconnected horror to the final boss.",
     storeUrl: "https://store.steampowered.com/app/628670/",
-    imageUrl: "steamImage(628670)",
+    imageUrl: steamImage(628670),
     youtubeUrl: youtube("TUKJ9XoSWlA")
   },
   {
@@ -6625,7 +6609,7 @@ window.GAMES = [
     price: 379,
     verdict: "Co-op BattleMech mercenary shooter for up to four; pilot your lance through the story campaign to its finale.",
     storeUrl: "https://store.steampowered.com/app/784080/",
-    imageUrl: "steamImage(784080)",
+    imageUrl: steamImage(784080),
     youtubeUrl: youtube("fsLiVtohRv4")
   },
   {
@@ -6641,7 +6625,7 @@ window.GAMES = [
     price: 325,
     verdict: "Co-op mining-and-crafting survival adventure; dig deep, research tech and build a rocket to reach the endgame.",
     storeUrl: "https://store.steampowered.com/app/876650/",
-    imageUrl: "steamImage(876650)",
+    imageUrl: steamImage(876650),
     youtubeUrl: youtube("JtKQzI6Qg4Q")
   },
   {
@@ -6657,7 +6641,7 @@ window.GAMES = [
     price: 415,
     verdict: "LEGO retelling of the Indiana Jones trilogy; two-player drop-in co-op via Remote Play, story with a defined last level.",
     storeUrl: "https://store.steampowered.com/app/32330/",
-    imageUrl: "steamImage(32330)",
+    imageUrl: steamImage(32330),
     youtubeUrl: youtube("dIZkKUwfM0c")
   },
   {
@@ -6673,7 +6657,7 @@ window.GAMES = [
     price: 415,
     verdict: "LEGO retelling of the Pirates of the Caribbean films; two-player co-op via Remote Play, story with a defined finale.",
     storeUrl: "https://store.steampowered.com/app/311770/",
-    imageUrl: "steamImage(311770)",
+    imageUrl: steamImage(311770),
     youtubeUrl: youtube("R-jCJ-dXJiM")
   },
   {
@@ -6689,7 +6673,7 @@ window.GAMES = [
     price: 415,
     verdict: "LEGO Clone Wars adventure; two-player drop-in co-op via Remote Play, story levels with a defined last battle.",
     storeUrl: "https://store.steampowered.com/app/32510/",
-    imageUrl: "steamImage(32510)",
+    imageUrl: steamImage(32510),
     youtubeUrl: youtube("ipr9U8OTgxU")
   },
   {
@@ -6705,7 +6689,7 @@ window.GAMES = [
     price: 55,
     verdict: "Frantic co-op cooking game; run a food truck across a campaign of levels to the cross-country finale.",
     storeUrl: "https://store.steampowered.com/app/1000030/",
-    imageUrl: "steamImage(1000030)",
+    imageUrl: steamImage(1000030),
     youtubeUrl: youtube("cI3sg9UywxY")
   },
   {
@@ -6721,7 +6705,7 @@ window.GAMES = [
     price: 415,
     verdict: "LEGO retelling of all six Star Wars films; two-player co-op via Remote Play, story levels with a defined finale.",
     storeUrl: "https://store.steampowered.com/app/32440/",
-    imageUrl: "steamImage(32440)",
+    imageUrl: steamImage(32440),
     youtubeUrl: youtube("nUGit2kMks0")
   },
   {
@@ -6737,7 +6721,7 @@ window.GAMES = [
     price: 549,
     verdict: "LEGO retelling of the Lord of the Rings trilogy; two-player co-op via Remote Play, story with a defined last battle.",
     storeUrl: "https://store.steampowered.com/app/214510/",
-    imageUrl: "steamImage(214510)",
+    imageUrl: steamImage(214510),
     youtubeUrl: youtube("jUqVs7X_jcs")
   },
   {
@@ -6753,7 +6737,7 @@ window.GAMES = [
     price: 379,
     verdict: "LEGO retelling of The Force Awakens; two-player co-op via Remote Play, story levels with a defined finale.",
     storeUrl: "https://store.steampowered.com/app/438640/",
-    imageUrl: "steamImage(438640)",
+    imageUrl: steamImage(438640),
     youtubeUrl: youtube("lZOAv4d6mG8")
   },
   {
@@ -6769,7 +6753,7 @@ window.GAMES = [
     price: 549,
     verdict: "LEGO Batman's first outing; two-player drop-in co-op via Remote Play, story levels with a defined last mission.",
     storeUrl: "https://store.steampowered.com/app/21000/",
-    imageUrl: "steamImage(21000)",
+    imageUrl: steamImage(21000),
     youtubeUrl: youtube("BBQvCixlRPE")
   },
   {
@@ -6785,7 +6769,7 @@ window.GAMES = [
     price: 279,
     verdict: "LEGO Movie tie-in; two-player co-op via Remote Play, story levels following the film to a defined finale.",
     storeUrl: "https://store.steampowered.com/app/267530/",
-    imageUrl: "steamImage(267530)",
+    imageUrl: steamImage(267530),
     youtubeUrl: youtube("o5dKex7BJX8")
   },
   {
@@ -6801,7 +6785,7 @@ window.GAMES = [
     price: 479,
     verdict: "LEGO Ninjago Movie tie-in; two-player co-op via Remote Play, story levels with a defined last battle.",
     storeUrl: "https://store.steampowered.com/app/640590/",
-    imageUrl: "steamImage(640590)",
+    imageUrl: steamImage(640590),
     youtubeUrl: youtube("hXveO_gpcDg")
   },
   {
@@ -6817,7 +6801,7 @@ window.GAMES = [
     price: 740,
     verdict: "Co-op action-strategy in the Minecraft world; rally mobs with up to three friends to repel the piglin invasion.",
     storeUrl: "https://store.steampowered.com/app/1928870/",
-    imageUrl: "steamImage(1928870)",
+    imageUrl: steamImage(1928870),
     youtubeUrl: youtube("8S1-MnzW1bc"),
     "needs-review": true
   },
@@ -6834,7 +6818,7 @@ window.GAMES = [
     price: 329,
     verdict: "Kids' co-op dino adventure; romp through story levels with a friend via Remote Play to a defined finale.",
     storeUrl: "https://store.steampowered.com/app/1177020/",
-    imageUrl: "steamImage(1177020)",
+    imageUrl: steamImage(1177020),
     youtubeUrl: youtube("lxqW3MDq67g")
   },
   {
@@ -6850,7 +6834,7 @@ window.GAMES = [
     price: 459,
     verdict: "Retro-styled co-op shooter; blast through a campaign of gory handcrafted levels with a friend to the final boss.",
     storeUrl: "https://store.steampowered.com/app/964800/",
-    imageUrl: "steamImage(964800)",
+    imageUrl: steamImage(964800),
     youtubeUrl: youtube("1i1Q5W84ch0")
   },
   {
@@ -6866,7 +6850,7 @@ window.GAMES = [
     price: 225,
     verdict: "Co-op physics party game; grab hands and swing across a campaign of levels to the final stretch.",
     storeUrl: "https://store.steampowered.com/app/905340/",
-    imageUrl: "steamImage(905340)",
+    imageUrl: steamImage(905340),
     youtubeUrl: youtube("p84jLF6fqPA")
   },
   {
@@ -6882,7 +6866,7 @@ window.GAMES = [
     price: 285,
     verdict: "Quirky co-op puzzle-platformer; a dedicated two-player campaign of levels with a defined finish via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/572890/",
-    imageUrl: "steamImage(572890)",
+    imageUrl: steamImage(572890),
     youtubeUrl: youtube("2-2OFcpA7aw")
   },
   {
@@ -6898,7 +6882,7 @@ window.GAMES = [
     price: 329,
     verdict: "Co-op light-gun rail shooter remake; two players blast through a mansion of horrors to the final boss.",
     storeUrl: "https://store.steampowered.com/app/1694600/",
-    imageUrl: "steamImage(1694600)",
+    imageUrl: steamImage(1694600),
     youtubeUrl: youtube("n6HBVViH1FA"),
     "needs-review": true
   },
@@ -6915,7 +6899,7 @@ window.GAMES = [
     price: 799,
     verdict: "Dieselpunk RTS playable co-op across the whole story campaign; command mechs and infantry to the finale.",
     storeUrl: "https://store.steampowered.com/app/826630/",
-    imageUrl: "steamImage(826630)",
+    imageUrl: steamImage(826630),
     youtubeUrl: youtube("oI8g6iCjC9s")
   },
   {
@@ -6931,7 +6915,7 @@ window.GAMES = [
     price: 250,
     verdict: "Co-op horizontal shoot-em-up; two players blast through a story campaign of stages to the final boss.",
     storeUrl: "https://store.steampowered.com/app/606730/",
-    imageUrl: "steamImage(606730)",
+    imageUrl: steamImage(606730),
     youtubeUrl: youtube("B3Aj6lf8RzM"),
     "needs-review": true
   },
@@ -6948,7 +6932,7 @@ window.GAMES = [
     price: 229,
     verdict: "Theatrical co-op beat-em-up; two daemon-hunters brawl through staged acts to the grand finale.",
     storeUrl: "https://store.steampowered.com/app/244810/",
-    imageUrl: "steamImage(244810)",
+    imageUrl: steamImage(244810),
     youtubeUrl: youtube("JLviwSQvqeU")
   },
   {
@@ -6964,7 +6948,7 @@ window.GAMES = [
     price: 169,
     verdict: "Punk-rock co-op beat-em-up RPG for up to four; brawl through a gory campaign of levels to the final boss.",
     storeUrl: "https://store.steampowered.com/app/405290/",
-    imageUrl: "steamImage(405290)",
+    imageUrl: steamImage(405290),
     youtubeUrl: youtube("85g7CXq1Nwg")
   },
   {
@@ -6980,7 +6964,7 @@ window.GAMES = [
     price: 545,
     verdict: "Co-op dungeon-management RTS; two players command evil hordes through a campaign of missions to the finale.",
     storeUrl: "https://store.steampowered.com/app/493900/",
-    imageUrl: "steamImage(493900)",
+    imageUrl: steamImage(493900),
     youtubeUrl: youtube("qwu7a05qV9o")
   },
   {
@@ -6996,7 +6980,7 @@ window.GAMES = [
     price: 33,
     verdict: "Original co-op action roguelite for up to four; survive a hostile planet and beat the final boss Providence.",
     storeUrl: "https://store.steampowered.com/app/248820/",
-    imageUrl: "steamImage(248820)",
+    imageUrl: steamImage(248820),
     youtubeUrl: youtube("8jBKfk78IEI")
   },
   {
@@ -7012,8 +6996,169 @@ window.GAMES = [
     price: 415,
     verdict: "Co-op story adventure; two kids and their bikes explore a 1980s island, solving puzzles and brawling to the finale.",
     storeUrl: "https://store.steampowered.com/app/592480/",
-    imageUrl: "steamImage(592480)",
+    imageUrl: steamImage(592480),
     youtubeUrl: youtube("u_c20Xocdis")
+  },
+  {
+    id: "tales-of-berseria",
+    title: "Tales of Berseria",
+    year: 2017,
+    genres: ["AAA", "Third-person", "RPG", "Action", "Fantasy"],
+    endingType: "story",
+    rating: 91,
+    playersMax: 4,
+    hours: 56,
+    oneCopy: "remote-play",
+    price: 450,
+    verdict: "Dark-themed Tales JRPG; a friend drops into the real-time battles, ~55h story to a clear finale.",
+    storeUrl: "https://store.steampowered.com/app/429660/",
+    imageUrl: steamImage(429660),
+    youtubeUrl: youtube("Z4CUOWu96cs")
+  },
+  {
+    id: "never-alone",
+    title: "Never Alone (Kisima Ingitchuna)",
+    year: 2014,
+    genres: ["Indie", "Side-view", "Platformer", "Puzzle"],
+    endingType: "story",
+    rating: 81,
+    playersMax: 2,
+    hours: 4,
+    oneCopy: "remote-play",
+    price: 229,
+    verdict: "Atmospheric folklore puzzle-platformer; one player guides the girl Nuna, the other her arctic fox.",
+    storeUrl: "https://store.steampowered.com/app/295790/",
+    imageUrl: steamImage(295790),
+    youtubeUrl: youtube("OH4kjv53Qtc")
+  },
+  {
+    id: "rain-world",
+    title: "Rain World",
+    year: 2017,
+    genres: ["Indie", "Side-view", "Platformer", "Survival"],
+    endingType: "survival-goal",
+    rating: 94,
+    playersMax: 4,
+    hours: 22,
+    oneCopy: "remote-play",
+    price: 489,
+    verdict: "Harsh ecosystem survival-platformer; play the Survivor campaign together via Jolly Co-op, ending in ascension.",
+    storeUrl: "https://store.steampowered.com/app/312520/",
+    imageUrl: steamImage(312520),
+    youtubeUrl: youtube("Zt7ZWkC69TQ")
+  },
+  {
+    id: "heretic-hexen",
+    title: "Heretic + Hexen",
+    year: 2025,
+    genres: ["AAA", "First-person", "Shooter", "Fantasy"],
+    endingType: "levels",
+    rating: 95,
+    playersMax: 4,
+    hours: 16,
+    oneCopy: "none",
+    price: 449,
+    verdict: "Nightdive remaster bundling both classic dark-fantasy id shooters, fully playable in online co-op campaigns.",
+    storeUrl: "https://store.steampowered.com/app/3286930/",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3286930/af11a57f074bf3f1b901bb96f9ea519a0928c80c/header.jpg?t=1756918167",
+    youtubeUrl: youtube("H5sTCDz9EnY")
+  },
+  {
+    id: "tristoy",
+    title: "TRISTOY",
+    year: 2015,
+    genres: ["Indie", "Side-view", "Platformer", "Puzzle", "Action", "Fantasy"],
+    endingType: "story",
+    rating: 64,
+    playersMax: 2,
+    hours: 4,
+    oneCopy: "remote-play",
+    price: 22,
+    verdict: "Co-op-only story platformer: a prince and wizard puzzle, fight and jump their way out of a fantasy dungeon.",
+    storeUrl: "https://store.steampowered.com/app/303260/",
+    imageUrl: steamImage(303260),
+    youtubeUrl: youtube("xJPkUg8o_n8"),
+    "needs-review": true
+  },
+  {
+    id: "we-were-here-too",
+    title: "We Were Here Too",
+    year: 2018,
+    genres: ["Indie", "First-person", "Puzzle"],
+    endingType: "arcade-goal",
+    rating: 79,
+    playersMax: 2,
+    hours: 2,
+    oneCopy: "none",
+    price: 225,
+    verdict: "Two players split across a castle escape via walkie-talkie puzzles. Second in the series.",
+    storeUrl: "https://store.steampowered.com/app/677160/",
+    imageUrl: steamImage(677160),
+    youtubeUrl: youtube("KwjPVadfsk8")
+  },
+  {
+    id: "pile-up-box-by-box",
+    title: "Pile Up! Box by Box",
+    year: 2021,
+    genres: ["Indie", "Third-person", "Platformer"],
+    endingType: "levels",
+    rating: 92,
+    playersMax: 4,
+    hours: 4,
+    oneCopy: "remote-play",
+    price: 375,
+    verdict: "Family-friendly co-op platformer: stack and toss cardboard-box characters through papercraft worlds.",
+    storeUrl: "https://store.steampowered.com/app/1109820/",
+    imageUrl: steamImage(1109820),
+    youtubeUrl: youtube("okhqihJnncM")
+  },
+  {
+    id: "dead-rising-2",
+    title: "Dead Rising 2",
+    year: 2010,
+    genres: ["AAA", "Third-person", "Action", "Horror"],
+    endingType: "story",
+    rating: 78,
+    playersMax: 2,
+    hours: 18,
+    oneCopy: "none",
+    price: 162,
+    verdict: "Two-player zombie mall mayhem in Fortune City: craft absurd weapons and beat the clock to escape.",
+    storeUrl: "https://store.steampowered.com/app/45740/",
+    imageUrl: steamImage(45740),
+    youtubeUrl: youtube("J0WSifTV8aA")
+  },
+  {
+    id: "fear-3",
+    title: "F.E.A.R. 3",
+    year: 2011,
+    genres: ["AAA", "First-person", "Shooter", "Horror"],
+    endingType: "story",
+    rating: 71,
+    playersMax: 2,
+    hours: 6,
+    oneCopy: "none",
+    price: 279,
+    verdict: "Asymmetric horror-shooter co-op: one brother dual-wields guns, the other bends enemies with telekinesis.",
+    storeUrl: "https://store.steampowered.com/app/21100/",
+    imageUrl: steamImage(21100),
+    youtubeUrl: youtube("YrXtNIhDA3s")
+  },
+  {
+    id: "dead-rising-2-off-the-record",
+    title: "Dead Rising 2: Off the Record",
+    year: 2011,
+    genres: ["AAA", "Third-person", "Action", "Horror"],
+    endingType: "story",
+    rating: 77,
+    playersMax: 2,
+    hours: 16,
+    oneCopy: "none",
+    price: 162,
+    verdict: "Dead Rising 2 reimagined with Frank West: two-player zombie carnage in Fortune City with a story finale.",
+    storeUrl: "https://store.steampowered.com/app/45770/",
+    imageUrl: steamImage(45770),
+    youtubeUrl: youtube("gqBYB2nLSK4")
   },
   {
     id: "a-way-out",
