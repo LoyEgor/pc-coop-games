@@ -1,1 +1,4 @@
 timestamp	id	field	old_value	new_value	reason
+2026-05-26T22:17:39Z	zombie-army-4	hours	12	20	hltb_main_extras=20h_vs_stored_12 (9-mission campaign ~10-12h; extras are collectibles); owner decides
+2026-05-26T22:18:30Z	orcs-must-die-3	hours	10	16	hltb main 7.5h, main+extras ~15-16h vs stored 10; extras are replay/difficulty content; owner decides
+2026-05-26T22:21:56Z	scott-pilgrim-the-game	hours	4	8	hltb main 4h = stored; main+extras ~8h (extras = character replays/grinding); owner decides if single-run 4 or M+E 8

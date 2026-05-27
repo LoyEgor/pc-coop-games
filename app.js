@@ -309,7 +309,8 @@ function getVisibleGames() {
 function render() {
   document.body.dataset.theme = state.theme;
   document.body.dataset.viewMode = state.viewMode;
-  els.themeButton.lastChild.textContent = state.theme === "dark" ? " Light" : " Dark";
+  const themeLabel = els.themeButton.querySelector(".btn-label");
+  if (themeLabel) themeLabel.textContent = state.theme === "dark" ? " Light" : " Dark";
 
   els.viewMode.querySelectorAll(".view-mode-btn").forEach((btn) => {
     btn.classList.toggle("is-active", btn.dataset.view === state.viewMode);
@@ -713,6 +714,24 @@ function initEvents() {
   });
 
   els.resetFilters.addEventListener("click", clearAllFilters);
+
+  initStickyOffsets();
+}
+
+// Mobile: the title block scrolls away as ordinary flow content (no display
+// toggling — that changed the document height and made the page jump). Only the
+// controls bar + filter strip are sticky. We just need the filter strip to stick
+// flush below the controls bar, so keep --controls-h in sync with the controls
+// bar height. No scroll listener, no layout mutation = nothing to jerk.
+function initStickyOffsets() {
+  const controls = document.querySelector(".top-actions");
+  const sync = () => {
+    if (controls) {
+      document.documentElement.style.setProperty("--controls-h", controls.offsetHeight + "px");
+    }
+  };
+  window.addEventListener("resize", sync);
+  sync();
 }
 
 function showToast(message) {

@@ -1,18 +1,18 @@
 {
   "current_source_idx": 14,
-  "current_offset": 0,
-  "added_count": 245,
-  "skipped_count": 100,
+  "current_offset": 111,
+  "added_count": 309,
+  "skipped_count": 145,
   "last_validation_at": 200,
   "completed_sources": [],
-  "done": true,
-  "last_added": "neon-chrome",
-  "last_run_timestamp": "2026-05-26T21:50:17Z",
+  "done": false,
+  "last_added": "defense-grid-2",
+  "last_run_timestamp": "2026-05-27T03:54:00Z",
   "current_phase": 4,
   "max_phase": 4,
   "phase_start_count": 148,
   "auto_push_every_n": 0,
   "last_push_at": 109,
-  "phase_4_zero_yield_passes": 2,
-  "session_added_ids": []
+  "phase_4_zero_yield_passes": 0,
+  "session_added_ids": ["halo-wars-de", "guacamelee-stce", "van-helsing-final-cut", "lego-jurassic-world", "lego-dc-super-villains", "lego-the-incredibles", "lego-harry-potter-collection", "lego-the-hobbit", "lego-marvel-super-heroes-2", "saints-row-2022", "lego-batman-3-beyond-gotham", "lego-batman-2-dc-super-heroes", "painkiller-hell-and-damnation", "lego-marvels-avengers", "left-4-dead-1", "salt-and-sanctuary", "haven", "degrees-of-separation", "aces-of-the-luftwaffe-squadron", "tmnt-cowabunga-collection", "9-monkeys-of-shaolin", "young-souls", "39-days-to-mars", "code-of-princess-ex", "die-for-valhalla", "phantom-breaker-battle-grounds-ultimate", "the-takeover", "splinter-cell-blacklist", "jamestown-plus", "sky-force-reloaded", "tesla-vs-lovecraft", "livelock", "greedy-guns", "phogs", "bleed-2", "neurovoider", "we-need-to-go-deeper", "pixeljunk-monsters-2", "endless-dungeon", "dragon-marked-for-death", "battletoads-2020", "iron-meat", "astral-ascent", "sun-haven", "mercenary-kings", "steredenn-binary-stars", "blazing-beaks", "kingdom-two-crowns", "chronicon", "sanctum-1", "pang-adventures", "wulverblade", "warhammer-40k-inquisitor-martyr", "age-of-empires-4", "age-of-mythology-retold", "my-time-at-sandrock", "coral-island", "ikaruga", "r-type-dimensions-ex", "achilles-legends-untold", "contra-anniversary-collection", "the-ninja-saviors-return-of-the-warriors", "sky-force-anniversary", "defense-grid-2"]
 }

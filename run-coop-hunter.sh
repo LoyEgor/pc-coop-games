@@ -141,7 +141,7 @@ RULES (non-negotiable):
 
 4. CRON COORDINATION: `.github/workflows/refresh-prices.yml` owns `price` and `rating` on EXISTING entries (heartbeat in `.github/refresh-status.json`). For existing entries (phase 4 revalidate_existing): if cron last_success < 30h ago → SKIP price/rating checks, the cron has it. For NEW entries you add: always fetch fresh (cron only updates, never inserts). The Final pass MUST NOT touch price/rating at all.
 
-5. Cascade phases 1→4. Yield>0 AND current_phase<4 → escalate. In phase 4 with yield>0 → loop phase 4 again from idx 0 with permuted source order. In phase 4 with yield=0: increment phase_4_zero_yield_passes; require TWO consecutive dry passes before triggering Final pass + done. The owner empirical observation "I restart and it finds another 15 games" is exactly the case this catches.
+5. Cascade phases 1→4. Yield>0 AND current_phase<4 → escalate. In phase 4 with yield>0 → loop phase 4 again from idx 0, permuted source order. In phase 4 with yield=0: increment phase_4_zero_yield_passes; require TWO consecutive dry passes before Final pass + done.
 
 6. Phase 4 = revalidate_existing (auto-removes endless via remove_entry.py; auto-fixes YouTube via fix_youtube.py; auto-fixes images via fix_image.py — but NEVER price/rating, those are the cron job) + reeval_skipped + steam_more_like_this + websearch_niche_queries + drill sources (Backloggd, Steam community, YouTube curator playlists, Reddit just_finished, Wikipedia).
 
@@ -154,6 +154,8 @@ RULES (non-negotiable):
 10. DRILL MODE: YouTube not found → §8 cascade + Steam page + youtube.com/results + Reddit. Source 403/404 → write substitute query or different domain. Niche WebSearches dry → Wikipedia, Backloggd, Steam community. Treat "cannot find X" as a hypothesis to disprove.
 
 11. Tool call fails → retry once with +5s. Sub-agents sequentially.
+
+12. SESSION BURST CAP (critical for hands-off). A marathon session overflows the /goal evaluator ("Prompt is too long") and HANGS, forcing a manual Ctrl+C. So: process at most ~15 candidates per session, then persist state and end the turn reporting exactly "BURST DONE". The launcher restarts you fresh; you resume from progress.json. Many short bursts, never a marathon. Finish line unchanged (done=true after two dry phase-4 passes), just reached across bursts. Evaluator releases you when done=true OR you report BURST DONE.
 
 Output every 10 adds: "[P=phase N=added K=skipped p4dry=X src=source_id last=<title>]".
 
@@ -189,6 +191,13 @@ is_rate_limited() {
   # The exact message has varied across versions; we match generously.
   tail -n 400 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
     'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'
+}
+
+is_burst_done() {
+  # The skill ends each session after ~15 candidates with "BURST DONE" to keep
+  # the /goal evaluator from overflowing. That is a CLEAN, expected exit — not a
+  # crash — so it must not consume the crash budget.
+  tail -n 60 "$TRANSCRIPT" 2>/dev/null | grep -qi "BURST DONE"
 }
 
 while true; do
@@ -234,6 +243,14 @@ while true; do
     echo "[$(date)] This pause does NOT count toward the crash budget — the script will keep retrying"
     echo "[$(date)] until the Anthropic 5-hour window resets. Ctrl+C to stop."
     sleep "$RATE_LIMIT_SLEEP"
+    continue
+  fi
+
+  # Clean burst exit (~15 candidates done): restart fresh, do NOT count as crash.
+  if is_burst_done; then
+    echo ""
+    echo "[$(date)] Burst complete — restarting with a fresh transcript (not a crash)."
+    sleep 3
     continue
   fi
 

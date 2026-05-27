@@ -288,7 +288,13 @@ td {
 th {
   position: sticky;
   top: 0;
-  z-index: 5;
+  /* Above scrolling content (rows are z-index 1) but BELOW a hovered row
+     (z-index 20): the desktop image-zoom on hover should paint OVER the sticky
+     column header. In the normal (non-hover) state the header stays on top.
+     (Mobile is the opposite — there the header is always topmost via the
+     .top-actions / thead z-index:60/59 rules in the mobile media query, and
+     the image-zoom is disabled anyway.) */
+  z-index: 10;
   background: var(--surface-2);
   color: var(--ink);
   font-size: 13px;
@@ -301,6 +307,12 @@ th {
 tbody tr {
   background: var(--surface);
   transition: background-color 100ms ease;
+  /* position+z-index baseline so the hovered row can be lifted above its
+     neighbours. Played rows use opacity (a stacking context), so without an
+     explicit lift the image-zoom on an active row gets painted UNDER adjacent
+     rows. See tbody tr:hover. */
+  position: relative;
+  z-index: 1;
 }
 
 tbody tr:nth-child(even) {
@@ -309,6 +321,9 @@ tbody tr:nth-child(even) {
 
 tbody tr:hover {
   background: var(--surface-3);
+  /* Lift the whole hovered row above every neighbour (including dimmed
+     opacity:0.55 played rows) so the scaled image preview paints on top. */
+  z-index: 20;
 }
 
 /* Played rows are dimmed only in the "All" view (where they share space with
@@ -1070,24 +1085,81 @@ tbody tr:hover .youtube-link .yt-icon-play {
    Mobile (< 720px) — table → card grid
    ───────────────────────────────────────────── */
 @media (max-width: 720px) {
+  /* Let the document flow to its natural height and scroll via the viewport
+     (so window.scrollY drives the title-collapse). The global rule pins
+     html/body to 100% + overflow:hidden for the desktop fixed-layout. */
   html,
   body {
-    overflow: auto;
+    height: auto;
+    /* overflow-x: clip (not hidden) — `hidden` forces overflow-y to `auto`,
+       which turns html into a scroll container and breaks position:sticky on
+       the topbar. `clip` trims sideways overflow without creating a scroller,
+       so the document scrolls via the viewport and sticky works. */
+    overflow-x: clip;
+    overflow-y: visible;
   }
 
   .app {
+    /* Block (not grid) on mobile: a grid item can only stick within its own
+       auto-sized track, so a grid topbar scrolls away. As a block child it
+       sticks against the tall document and stays pinned. */
+    display: block;
     height: auto;
     min-height: 100vh;
   }
 
+  /* display:contents removes the topbar box and promotes the title-block +
+     top-actions into the .app block flow. That lets the title scroll away as
+     ordinary content (constant document height → no jump), while the controls
+     bar below it is independently sticky. */
   .topbar {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 12px;
+    display: contents;
   }
 
+  .title-block {
+    padding: 12px 12px 8px;
+  }
+
+  /* Controls bar: its own sticky strip pinned to the top. view-mode on the
+     left, Reset + theme pushed to the right edge (margin-left:auto on Reset). */
   .top-actions {
-    justify-content: flex-start;
+    position: sticky;
+    top: 0;
+    /* Header sits above ALL content (cards hover at z-index 20, image zoom at
+       50) — nothing may paint over it. Stays below the filter popover (100)
+       and the video modal (200), which are intentional overlays. */
+    z-index: 60;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: center;
+    padding: 8px 12px;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .top-actions .view-mode {
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  /* Push Reset (and the theme button after it) to the right edge. */
+  #resetFiltersButton {
+    margin-left: auto;
+  }
+
+  /* Controls must fit on one line near phone widths: drop the Reset "filters"
+     word, theme = icon only. */
+  .btn-label-extra {
+    display: none;
+  }
+
+  .icon-only-mobile .btn-label {
+    display: none;
+  }
+
+  .icon-only-mobile {
+    padding: 0 10px;
   }
 
   h1 {
@@ -1105,6 +1177,10 @@ tbody tr:hover .youtube-link .yt-icon-play {
     box-shadow: none;
     border-radius: 0;
     display: block;
+    /* Must be visible (desktop sets it to hidden) — otherwise it becomes a
+       scroll container and the sticky filter strip sticks inside it / scrolls
+       away instead of pinning to the viewport. */
+    overflow: visible;
   }
 
   .table-footer {
@@ -1124,12 +1200,18 @@ tbody tr:hover .youtube-link .yt-icon-play {
     display: block;
   }
 
-  /* Horizontally-scrollable filter strip in place of the desktop header row */
+  /* Horizontally-scrollable filter strip; stays pinned right under the
+     (collapsing) topbar so filters are reachable at any scroll position. */
   thead {
     position: sticky;
-    top: 0;
-    z-index: 8;
-    background: var(--bg);
+    top: var(--controls-h, 52px);
+    /* Just under the controls bar (60) but still above all content, so a
+       hovered card (z-index 20) can never paint over the filter strip. */
+    z-index: 59;
+    /* Same translucent frosted backdrop as the controls bar — together they
+       read as one monolithic blurred header, not a solid grey block. */
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(12px);
     margin: 0 -12px;
     padding: 8px 12px;
     overflow-x: auto;
@@ -1137,6 +1219,12 @@ tbody tr:hover .youtube-link .yt-icon-play {
     white-space: nowrap;
     scrollbar-width: thin;
     display: block;
+  }
+
+  /* The active-sort underline marks a table column — meaningless in the card
+     view's horizontal chip strip. Drop it. */
+  th.is-active-sort {
+    box-shadow: none;
   }
 
   thead tr {

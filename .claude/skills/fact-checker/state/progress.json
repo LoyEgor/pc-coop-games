@@ -1,11 +1,11 @@
 {
-  "current_idx": 264,
-  "total_entries": 264,
-  "checked_count": 264,
+  "current_idx": 293,
+  "total_entries": 337,
+  "checked_count": 293,
   "fixed_count": 271,
-  "proposed_count": 0,
+  "proposed_count": 3,
   "partial_entries": [],
-  "done": true,
-  "last_run_timestamp": "2026-05-26T20:42:42Z",
+  "done": false,
+  "last_run_timestamp": "2026-05-26T22:45:00Z",
   "mode": "normal"
 }

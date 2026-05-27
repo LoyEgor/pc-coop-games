@@ -93,3 +93,48 @@ timestamp	candidate_name	reason	source	notes
 2026-05-26T21:45:36Z	its-only-money	early_access	Early Access, sandbox-primary with only a light campaign; ending not confirmable to 100% per owner rule
 2026-05-26T21:50:10Z	geometry-wars-3	no_coop	Adventure campaign (with ending) is single-player only; co-op modes are endless score-attack
 2026-05-26T21:53:20Z	far-far-west	endless	horde + extraction + roguelite shooter, Early Access, explicitly no story ending ('endless onslaught', repeatable contracts) — violates CLAUDE.md no-endless rule despite 96%/31k reviews
+2026-05-26T22:55:24Z	dungeon-siege-3	invalid_app_id	delisted from Steam (appdetails success=false for appid 39160); not purchasable
+2026-05-26T22:57:36Z	halo-wars-2	not_on_steam	Steam search returns no result; PC version is Microsoft Store/Xbox exclusive, never released on Steam
+2026-05-26T23:01:42Z	sacred-3	low_quality	27.1% positive (4458 reviews), well below 50% threshold
+2026-05-26T23:01:42Z	painkiller-2025	unclear_ending	new 2025 reboot, 56.7% mixed reviews; co-op structure (campaign vs arena) not confirmable to finite per owner rule
+2026-05-26T23:01:42Z	painkiller-black-edition	no_coop	classic Painkiller is single-player only (no Co-op category in appdetails)
+2026-05-26T23:01:42Z	lego-marvel-superheroes-1	duplicate	appid 249130 already in catalog as lego-marvel-superheroes
+2026-05-26T23:01:42Z	saints-row-third-remastered	duplicate	appid 978300 already in catalog as saints-row-3-remastered
+2026-05-26T23:11:25Z	resident-evil-operation-raccoon-city	not_on_steam	Steam search returns no result; delisted by Capcom, not currently purchasable
+2026-05-26T23:14:18Z	foul-play	ambiguous	Steam search returns only the Playtest app (no categories/price); main game appid not resolvable via search, deferred
+2026-05-26T23:17:31Z	company-of-heroes-3	unclear_ending	57% mixed; co-op is skirmish-vs-AI (endless), the campaign is single-player only — weak co-op-with-ending fit
+2026-05-26T23:17:31Z	ghost-recon-breakpoint	live_service_borderline	open-world live-service (raids/ongoing); already have Ghost Recon Wildlands which is the cleaner finite-campaign pick
+2026-05-26T23:17:31Z	dnd-dark-alliance-2021	not_on_steam	Steam search for "Dark Alliance" resolves only to Baldur's Gate Dark Alliance I/II (already in catalog); 2021 D&D Dark Alliance not surfacing, likely delisted
+2026-05-26T23:24:00Z	curse-of-the-dead-gods	no_coop	Steam appdetails lists Single-player only; co-op was never added to this roguelite
+2026-05-26T23:27:34Z	lost-in-random-eternal-die	no_coop	Steam appdetails lists Single-player only (2025 release); co-op not present in categories
+2026-05-26T23:29:50Z	spirit-of-the-north-2	no_coop	Steam appdetails lists Single-player only (2025 release)
+2026-05-26T23:29:50Z	ripout	unclear_ending	60.7% mixed; procedural mission-based co-op horror shooter, finite campaign structure not confirmable per owner rule
+2026-05-26T23:29:50Z	trinity-fusion	no_coop	Steam appdetails lists Single-player only; roguelite metroidvania without co-op category
+2026-05-26T23:31:55Z	star-ocean-second-story-r	no_coop	Steam appdetails lists Single-player only; the remake has no co-op
+2026-05-26T23:31:55Z	gunlord-x	not_found	Steam search returns no match under this name
+2026-05-26T23:31:55Z	cyber-citizen-shockman-2	not_found	Steam search returns no match under this name
+2026-05-26T23:33:51Z	windblown	early_access	Still in Early Access (genres include Early Access); no announced 1.0 endgame, per soft-signal rule
+2026-05-26T23:33:51Z	wizard-with-a-gun	unclear_ending	open-ended survival-craft sandbox; no explicit named win-condition confirmable, plus search collided with Squirrel with a Gun
+2026-05-26T23:36:19Z	halo-infinite	no_coop	Base Steam appid is the free-to-play PvP multiplayer (endless); co-op campaign is a separate paywalled mode not reflected in categories
+2026-05-26T23:36:19Z	drake-hollow	unclear_ending	procedural island base-defense survival; no crisp named win-condition confirmable, borderline endless per owner rule
+2026-05-26T23:42:05Z	the-slormancer	no_coop	Steam appdetails lists Single-player only (2025 1.0 release); no co-op category
+2026-05-26T23:43:59Z	sine-mora-ex	low_quality	64.5% positive (681 reviews); below the selective bar and shmup vein already well covered
+2026-05-26T23:47:17Z	souldiers	no_coop	Steam appdetails lists Single-player only
+2026-05-26T23:47:17Z	earthfall	low_quality	65.0% positive; L4D-clone with abandoned support/dead playerbase, below selective bar
+2026-05-26T23:47:17Z	aliens-versus-predator-classic	no_coop	Steam categories list Single-player + (PvP) Multi-player only; no co-op campaign
+2026-05-26T23:47:17Z	foul-play	not_found	appid 254060 resolves to KnightShift; Foul Play main-game appid not cleanly resolvable via search/guess
+2026-05-26T23:49:11Z	dungeon-defenders-awakened	low_quality	66% positive; effectively a remake of dungeon-defenders (already in catalog), low marginal value
+2026-05-26T23:49:11Z	no-rest-for-the-wicked	early_access	genres include Early Access (Moon Studios ARPG); campaign incomplete, no 1.0 ending yet
+2026-05-26T23:51:17Z	tempest-rising	no_coop	Steam categories list Single-player + (PvP) Multi-player only; no Co-op category
+2026-05-26T23:54:06Z	fae-farm	ambiguous	appdetails lists Multi-player but no explicit Co-op category; co-op presence not confirmable from metadata per skill rule
+2026-05-26T23:55:46Z	raiden-iv-x-mutant-storm	not_found	Steam search returns no match under this name
+2026-05-26T23:57:57Z	sker-ritual	endless	wave/horde round-based survival shooter (CoD-Zombies-style); core loop is endless waves, violates no-endless rule
+2026-05-26T23:57:57Z	aska	early_access	genres include Early Access; open-ended viking survival sandbox without confirmed named win-condition
+2026-05-27T00:00:05Z	the-anacrusis	low_quality	46.7% positive (below 50% threshold)
+2026-05-27T00:00:05Z	voidtrain	unclear_ending	co-op survival-exploration; crisp named win-condition not confirmable to owner standard (doubt -> skip)
+2026-05-27T00:00:05Z	hellbreach-vegas	endless	wave/horde-based co-op shooter (CoD-zombies style); endless waves, violates no-endless rule
+2026-05-27T00:02:38Z	double-dragon-trilogy	low_quality	54.5% positive; criticized port, below selective bar and beat-em-up vein already well covered
+2026-05-27T00:04:31Z	void-crew	unclear_ending	run/mission-based co-op space sim (Deep-Rock-like procedural missions); finite "beat the game" not confirmable per owner rule
+2026-05-27T00:06:13Z	33-immortals	blocklisted_endless	Steam tag includes Massively Multiplayer (HARD BLOCK per CLAUDE.md §6); also unreleased (no reviews)
+2026-05-27T00:06:13Z	anvil-vault-breakers	not_found	Steam search returns no match under this name
+2026-05-27T00:06:13Z	time-wasters	no_coop	Steam appdetails lists Single-player only (VS-like)

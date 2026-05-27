@@ -159,6 +159,8 @@ RULES:
 
 9. Tool call fails → retry once with +5s sleep. Second fail → log and continue.
 
+10. SESSION BURST CAP (critical for hands-off). A marathon session overflows the /goal evaluator ("Prompt is too long") and HANGS, forcing a manual Ctrl+C. So: verify at most ~12 entries per session, then persist progress.json and end the turn reporting exactly "BURST DONE". The launcher restarts you fresh; you resume from current_idx. Many short bursts, never a marathon. Finish line unchanged. Evaluator releases you when all entries are checked (done=true) OR you report BURST DONE.
+
 Stop only when ALL: current_idx >= total_entries AND partial_entries is empty AND every bad_video / no_image was fixed-or-logged. Re-walk partial entries in a second pass if needed.
 
 Doubt about fixing → LOG, do not write. Doubt about giving up on a source → DRILL another source.
@@ -189,6 +191,12 @@ CRASH_COUNT=0
 is_rate_limited() {
   tail -n 400 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
     'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'
+}
+
+is_burst_done() {
+  # Skill ends each session after ~12 entries with "BURST DONE" to keep the
+  # /goal evaluator from overflowing. Clean expected exit — not a crash.
+  tail -n 60 "$TRANSCRIPT" 2>/dev/null | grep -qi "BURST DONE"
 }
 
 while true; do
@@ -229,6 +237,14 @@ while true; do
     echo ""
     echo "[$(date)] Rate limit detected. Sleeping ${HOURS}h${MINS}m. This pause does NOT count toward crash budget."
     sleep "$RATE_LIMIT_SLEEP"
+    continue
+  fi
+
+  # Clean burst exit (~12 entries done): restart fresh, do NOT count as crash.
+  if is_burst_done; then
+    echo ""
+    echo "[$(date)] Burst complete — restarting with a fresh transcript (not a crash)."
+    sleep 3
     continue
   fi
 
