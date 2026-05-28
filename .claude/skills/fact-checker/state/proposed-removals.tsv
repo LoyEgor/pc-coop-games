@@ -1,1 +1,2 @@
 timestamp	id	field	old_value	new_value	reason
+2026-05-28T21:41:59Z	diablo-4	endless	in_catalog	remove?	Steam genres now list "Massively Multiplayer" (and "Free To Play"). Rule 7 would auto-remove, but owner explicitly added D4 knowing the main campaign is finite (CLAUDE.md §2 notes "D4 main campaign IS finite"). Live-service shell with seasonal battle pass is the concern. Owner decides whether the campaign-finite intent still holds.

@@ -35,8 +35,9 @@ When called:
    - **Do NOT push between adds.** See "Push policy" — pushing happens once, in the Final pass, at the very end.
 6. After the batch:
    - If `progress.added_count` crossed a multiple of 50 since last validation → run "Validation pass".
-   - If the current source is exhausted (offset >= source max) → mark it complete (append to `completed_sources`), reset `current_offset = 0`, move to next source IN THE SAME PHASE.
-   - If all sources of `current_phase` are completed → run **Phase transition logic** below.
+   - **Mark source progress EXPLICITLY — this is mandatory, not optional.** A source is "exhausted for this pass" when its per-method done-criterion is met (see "Phase-4 source exhaustion criteria" below for the exact rule per method — e.g. `steam_more_like_this` is done after all 25 seed entries are scanned, `websearch_niche_queries` after all 8 queries run). When exhausted: **append its id to `completed_sources` in progress.json** (write the JSON, don't just say it), set `current_offset = 0`, reset `bursts_on_current_source = 0`, and advance `current_source_idx` to the next source IN THE SAME PHASE whose id is NOT already in `completed_sources`.
+   - **Anti-stall cap — never sit on one source.** Increment `bursts_on_current_source` each burst you stay on the same `current_source_idx`. If it reaches **2** without the source being exhausted, FORCE-advance anyway: append the current source id to `completed_sources` (it will get another shot on the next phase-4 re-entry), reset offset + counter, move to the next not-completed source. Rationale: `steam_more_like_this` can churn near-duplicates indefinitely; the fresh drill sources (`websearch_niche_queries`, `backloggd`, `steam_community_recommendations`, `youtube_curator_playlists`, `reddit_just_finished`, `wikipedia_coop_lists`) MUST get their turn within the same run. A run that only ever scrapes source 13 is the bug this cap fixes.
+   - If **all** sources of `current_phase` are in `completed_sources` → run **Phase transition logic** below. (Not "most", not "I think they're done" — every source id of this phase must literally be in the array.)
 7. Once you have processed ~20 candidates this invocation, persist state and EXIT. The launcher starts your next burst as a fresh process (resuming from `progress.json`).
 
 ## Phase transition logic
@@ -57,10 +58,11 @@ When all sources of `current_phase` are completed:
    - `phase_4_zero_yield_passes = 0` (reset — we got out of phase 4 dry-streak by escalating)
    - Continue processing.
 3. Else if `phase_yield > 0` AND `current_phase == max_phase`:
-   - We're in phase 4 (the deepest phase) and it found something. Re-enter phase 4 from the start.
+   - We're in phase 4 (the deepest phase) and it found something **across a full pass of ALL phase-4 sources** (this branch is only reached when every phase-4 source id is in `completed_sources` — guaranteed by Step 6's transition trigger; a partial pass that just churned source 13 never gets here). Re-enter phase 4 from the start.
    - `phase_start_count = added_count` (new yield window begins)
    - `current_source_idx = (first source idx of phase 4)`
    - `current_offset = 0`
+   - `bursts_on_current_source = 0`
    - `completed_sources = [s for s in completed_sources if (source.phase != 4)]` — un-mark phase-4 sources so we walk them again with current data.
    - `phase_4_zero_yield_passes = 0`
    - Continue processing. Sources are not deterministic across time: Steam tags update, Reddit threads appear, WebSearch index refreshes. A phase-4 source that gave 0 last hour may give a hit now.
@@ -270,6 +272,23 @@ For `verdict` — ≤120 chars English. Plain, factual, one sentence. No marketi
   - `last_added = <id>`
   - **`session_added_ids.append(<id>)`** — accumulator for the Final pass. Cleared only after the final push succeeds.
 
+## Phase-4 source exhaustion criteria (when to mark a source `completed`)
+
+Phase-4 sources are method-driven, not page-count-driven, so "exhausted" needs a concrete rule per method. Use `current_offset` as the cursor into each source's work-list. A source is exhausted (→ append to `completed_sources`, advance) when:
+
+| Source (idx) | Exhausted for this pass when… |
+|---|---|
+| `reeval_skipped` (12) | every eligible row of `skipped.tsv` (reason ∈ ambiguous/unclear_ending/not_enough_reviews) has been re-evaluated. Cursor = row index. |
+| `steam_more_like_this` (13) | all `top_n` (25) seed entries have had their "More like this" scanned. Cursor = seed index 0..24; done at 25. |
+| `websearch_niche_queries` (14) | all 8 `queries` have been run once. Cursor = query index; done at 8. |
+| `backloggd_top_completed_coop` (15) | `page > max_pages` (8) OR a fetched page yields 0 new candidates. |
+| `steam_community_recommendations` (16) | `page > max_pages` (5) OR a page yields 0 new candidates. |
+| `youtube_curator_playlists` (17) | all 8 `queries` have been run once. |
+| `reddit_just_finished` (18) | `page > max_pages` (4) OR the API returns no `after` cursor. |
+| `wikipedia_coop_lists` (19) | both `urls` have been fetched and parsed. |
+
+If you genuinely cannot tell whether a method-source is exhausted, the anti-stall cap (2 bursts) force-advances it anyway, so you never get stuck — but prefer the explicit criterion above. **Always WRITE the `completed_sources` update to progress.json**; a source you only "mentally" finished but didn't persist will be re-walked from scratch and the run will stall on it (this was the real 2026-05-29 bug: the log said "all phase-4 sources complete" while `completed_sources` held only `reeval_skipped`).
+
 ## Phase 4 source methods (exhaustive GROWTH search)
 
 These methods replace the standard "Per-candidate procedure" for sources in phase 4. They are only reached when `max_phase >= 4` (Mac mode). **Phase 4 is now GROWTH-only** — it finds NEW games via deeper sources. Re-validating EXISTING entries (endless re-check, broken media, drift) is NOT coop-hunter's job anymore; that moved to the `fact-checker` skill (single owner of existing-entry quality). This split removes the old double work that made coop-hunter spend hours re-walking the whole catalog before it could reach `done`.
@@ -336,13 +355,14 @@ If `state/progress.json` doesn't exist, create it with:
   "phase_4_zero_yield_passes": 0,
   "session_added_ids": [],
   "completed_sources": [],
+  "bursts_on_current_source": 0,
   "done": false,
   "last_added": null,
   "last_run_timestamp": null
 }
 ```
 
-If the file exists but is missing newer fields (`current_phase`, `max_phase`, `phase_start_count`, `auto_push_every_n`, `last_push_at`, `phase_4_zero_yield_passes`, `session_added_ids`), backfill them with the defaults above before proceeding. This preserves existing runs.
+If the file exists but is missing newer fields (`current_phase`, `max_phase`, `phase_start_count`, `auto_push_every_n`, `last_push_at`, `phase_4_zero_yield_passes`, `session_added_ids`, `bursts_on_current_source`), backfill them with the defaults above before proceeding. This preserves existing runs.
 
 ## Final pass before done (mandatory before push)
 

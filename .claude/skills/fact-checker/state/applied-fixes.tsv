@@ -346,3 +346,4 @@ timestamp	id	field	old_value	new_value	reason
 2026-05-28T08:11:06Z	iron-harvest	price	799	119
 2026-05-28T19:59:29Z	lego-batman-3-beyond-gotham	youtubeUrl	yk67MlUEStg	HqN5h1HdAx0	youtube_url_403_replaced
 2026-05-28T20:05:41Z	pixeljunk-monsters-2	youtubeUrl	7140KcZU_KI	VnEIBhiEP8g	youtube_url_404_replaced
+2026-05-28T21:31:13Z	daemon-x-machina-titanic-scion	price	1599	263

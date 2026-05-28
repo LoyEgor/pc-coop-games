@@ -382,3 +382,7 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-28T00:03:01Z	wizard-with-a-gun	Wizard with a Gun	reeval_skipped	515	80
 2026-05-28T00:03:12Z	drake-hollow	Drake Hollow	reeval_skipped	549	77
 2026-05-28T19:41:42Z	neon-inferno	Neon Inferno	phase4_steam_more_like_this	215	93
+2026-05-28T20:58:38Z	revenge-of-the-savage-planet	Revenge of the Savage Planet	phase4_websearch_niche_queries	555	86
+2026-05-28T20:58:58Z	windswept	Windswept	phase4_websearch_niche_queries	415	93
+2026-05-29T00:00:00Z	darkstone	Darkstone	phase4_wikipedia_coop_lists	99	79
+2026-05-28T21:31:18Z	daemon-x-machina-titanic-scion	Daemon X Machina: Titanic Scion	phase4_steam_more_like_this	263	63

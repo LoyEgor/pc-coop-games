@@ -22,6 +22,7 @@ set -u
 
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
 PROGRESS_FILE="$REPO_ROOT/.claude/skills/coop-hunter/state/progress.json"
+SOURCES_FILE="$REPO_ROOT/.claude/skills/coop-hunter/sources.json"
 TRANSCRIPT="$REPO_ROOT/coop-hunter-transcript.log"
 
 cd "$REPO_ROOT"
@@ -224,19 +225,35 @@ while true; do
   fi
 
   # Read everything we need from progress.json in ONE python call
-  # (cheaper than 5 separate subprocesses per burst).
-  read -r ADDED SKIPPED DONE PHASE SRC_IDX OFFSET <<<"$("$PY" -c "
+  # (cheaper than separate subprocesses per burst). EXHAUSTED is the key new
+  # signal: it is 1 only when the skill has TRULY worked through phase 4 — either
+  # every phase-4 source id is in completed_sources (a full pass finished), or it
+  # has already recorded >=1 dry phase-4 pass. Until then the skill is still
+  # cycling through the fresh drill sources (websearch/backloggd/reddit/wiki), so
+  # a low-yield burst is NOT stagnation — it just hasn't reached the new sources
+  # yet. This is the fix for "coop-hunter sat on steam_more_like_this and the
+  # stagnation guard killed it before it touched sources 14-19".
+  read -r ADDED SKIPPED DONE PHASE SRC_IDX OFFSET EXHAUSTED <<<"$("$PY" -c "
 import json
 p=json.load(open('$PROGRESS_FILE'))
+exhausted=0
+try:
+    srcs=json.load(open('$SOURCES_FILE'))['sources']
+    p4={s['id'] for s in srcs if s.get('phase')==4}
+    done_set=set(p.get('completed_sources',[]))
+    if (p4 and p4.issubset(done_set)) or p.get('phase_4_zero_yield_passes',0)>=1:
+        exhausted=1
+except Exception:
+    exhausted=1  # fail open: if we can't tell, don't block the guard
 print(p.get('added_count',0), p.get('skipped_count',0), p.get('done',False),
       p.get('current_phase','?'), p.get('current_source_idx','?'),
-      p.get('current_offset','?'))
+      p.get('current_offset','?'), exhausted)
 ")"
   DELTA=$((ADDED - PREV_ADDED))
   PREV_ADDED=$ADDED
 
   echo ""
-  echo "[$(date)] Burst #$BURST done. added=$ADDED (+$DELTA) skipped=$SKIPPED phase=$PHASE src_idx=$SRC_IDX off=$OFFSET done=$DONE"
+  echo "[$(date)] Burst #$BURST done. added=$ADDED (+$DELTA) skipped=$SKIPPED phase=$PHASE src_idx=$SRC_IDX off=$OFFSET exhausted=$EXHAUSTED done=$DONE"
 
   if [ "$DONE" = "True" ] || [ "$DONE" = "true" ]; then
     echo "[$(date)] SKILL DONE — catalog exhausted, Final pass + push completed by the skill."
@@ -251,16 +268,18 @@ print(p.get('added_count',0), p.get('skipped_count',0), p.get('done',False),
   fi
 
   # Stagnation guard: if N consecutive bursts each added <STAGNATION_MIN_DELTA
-  # games, we accept that coop-hunter is dry on the currently reachable sources
-  # and let run-all proceed to fact-checker. The skill itself also has its own
-  # "two dry phase-4 passes" stop, but this guard is the launcher-side belt+
-  # suspenders for cases where the skill keeps churning the same near-empty
-  # source without flipping done=true within MAX_BURSTS.
-  if [ "$DELTA" -lt "$STAGNATION_MIN_DELTA" ]; then
+  # games, we accept that coop-hunter is dry and let run-all proceed to
+  # fact-checker. The skill itself also has its own "two dry phase-4 passes" stop;
+  # this guard is the launcher-side belt+suspenders against churning forever.
+  # CRITICAL: only count a low-yield burst as stagnation once EXHAUSTED=1, i.e.
+  # the skill has actually walked all phase-4 sources (or logged a dry pass).
+  # While EXHAUSTED=0 the skill is still reaching the fresh drill sources, so a
+  # quiet burst is expected, not a reason to bail.
+  if [ "$DELTA" -lt "$STAGNATION_MIN_DELTA" ] && [ "$EXHAUSTED" -eq 1 ]; then
     STAGNANT_BURSTS=$((STAGNANT_BURSTS + 1))
-    echo "[$(date)] Stagnation: burst added $DELTA (<$STAGNATION_MIN_DELTA). streak=$STAGNANT_BURSTS/$STAGNATION_THRESHOLD"
+    echo "[$(date)] Stagnation: burst added $DELTA (<$STAGNATION_MIN_DELTA), sources exhausted. streak=$STAGNANT_BURSTS/$STAGNATION_THRESHOLD"
     if [ "$STAGNANT_BURSTS" -ge "$STAGNATION_THRESHOLD" ]; then
-      echo "[$(date)] STAGNATION STOP — $STAGNATION_THRESHOLD consecutive bursts each added <$STAGNATION_MIN_DELTA games. Yielding to fact-checker."
+      echo "[$(date)] STAGNATION STOP — $STAGNATION_THRESHOLD consecutive dry bursts after exhausting phase-4 sources. Yielding to fact-checker."
       break
     fi
   else

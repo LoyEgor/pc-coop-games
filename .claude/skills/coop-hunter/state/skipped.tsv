@@ -438,3 +438,49 @@ timestamp	candidate_name	reason	source	notes
 2026-05-28T19:41:42Z	dusk	DUSK	phase4_steam_more_like_this	no_coop	PvP only
 2026-05-28T19:41:42Z	doom-64	DOOM 64	phase4_steam_more_like_this	no_coop	Single-player only
 2026-05-28T19:41:42Z	r-type-dimensions-iii	R-Type Dimensions III	phase4_steam_more_like_this	low_quality	24% positive (12/50)
+2026-05-28T20:58:58Z	ys-x-nordics	Ys X: Nordics	phase4_websearch_niche_queries	no_coop	Single-player only per Steam categories
+2026-05-28T20:58:58Z	little-nightmares-3	Little Nightmares III	phase4_websearch_niche_queries	low_quality	46.5% positive (9219/19840) Mixed
+2026-05-28T20:58:58Z	monster-hunter-wilds	Monster Hunter Wilds	phase4_websearch_niche_queries	low_quality	48.4% positive (154325/318882) Mixed
+2026-05-28T20:58:58Z	once-human	Once Human	phase4_websearch_niche_queries	blocklisted_endless	MMO tag (Massively Multiplayer)
+2026-05-28T20:58:58Z	cabbie	Cabbie!	phase4_websearch_niche_queries	not_enough_reviews	No reviews yet
+2026-05-28T20:58:58Z	mailstrom	Mailstrom	phase4_websearch_niche_queries	not_released_yet	Closed Beta only, no full release
+2026-05-28T20:58:58Z	farm-together-2	Farm Together 2	phase4_websearch_niche_queries	unclear_ending	Endless farming sim; no defined win-condition
+2026-05-28T20:58:58Z	gnaughty-gnomes	Gnaughty Gnomes	phase4_websearch_niche_queries	no_coop	PvP-only, no co-op categories
+2026-05-28T20:58:58Z	toodee-and-topdee	Toodee and Topdee	phase4_websearch_niche_queries	taxonomy_ambiguous	Dual perspective (side-view + top-down simultaneously) — taxonomy.json requires exactly_one_per_game
+2026-05-28T20:58:58Z	paddle-paddle-paddle	Paddle Paddle Paddle	phase4_websearch_niche_queries	no_image	header.jpg 404 on cloudflare/fastly/akamai CDNs; only versioned hashed URL works, rot risk
+2026-05-29T00:00:00Z	storebound	Storebound	phase4_youtube_curator_playlists	low_fit	Early Access (Nov 2025); episodic 4 episodes with more planned, no 1.0/clear final ending
+2026-05-29T00:00:00Z	blood-refreshed-supply	Blood: Refreshed Supply	phase4_youtube_curator_playlists	low_fit	No UAH price (region-restricted on Steam UA), catalog is UAH-denominated
+2026-05-29T00:00:00Z	cave-story-plus	Cave Story+	phase4_youtube_curator_playlists	no_coop	Single-player only per Steam categories; no Remote Play Together
+2026-05-29T00:00:00Z	sync-or-sink	Sync Or Sink	phase4_youtube_curator_playlists	low_fit	Early Access Oct 2025 with only one 10-20 min mission; no firm 1.0 release, content still being added
+2026-05-29T00:00:00Z	solo-leveling-arise-overdrive	Solo Leveling: ARISE OVERDRIVE	phase4_youtube_curator_playlists	endless_misclassified	Netmarble gacha-derived; negative reviews cite endless grind, gacha mechanics, no clear story end
+2026-05-29T00:00:00Z	sonic-racing-crossworlds	Sonic Racing: CrossWorlds	phase4_youtube_curator_playlists	no_coop	PvP racing only; Steam shows Shared/Split Screen PvP, no Co-op categories
+2026-05-29T00:00:00Z	horizon-chase-turbo	Horizon Chase Turbo	phase4_youtube_curator_playlists	no_coop	PvP racing only; split-screen is competitive not cooperative
+2026-05-29T00:00:00Z	devour	DEVOUR	phase4_youtube_curator_playlists	endless_misclassified	Sessional ritual horror like Phasmophobia; randomized maps, no overall campaign ending
+2026-05-29T00:00:00Z	pacify	Pacify	phase4_youtube_curator_playlists	endless_misclassified	Sessional paranormal mission loop, no overarching story ending
+2026-05-29T00:00:00Z	jumanji-the-video-game	Jumanji: The Video Game	phase4_wikipedia_coop_lists	low_quality	44.5% positive (77/173) - below 50% threshold
+2026-05-29T00:00:00Z	battlezone-combat-commander	Battlezone: Combat Commander	phase4_wikipedia_coop_lists	no_coop	PvP only per Steam categories; no Co-op tag
+2026-05-29T00:00:00Z	battlezone-98-redux	Battlezone 98 Redux	phase4_wikipedia_coop_lists	no_coop	Multiplayer is PvP Deathmatch/Strategy; no co-op campaign
+2026-05-29T00:00:00Z	tom-clancys-the-division-2	Tom Clancy's The Division 2	phase4_wikipedia_coop_lists	endless_misclassified	Live-service shooter looter with seasons/battle pass/In-App Purchases; campaign exists but endgame grind dominates
+2026-05-29T01:00:00Z	shovel-knight-shovel-of-hope-dx	Shovel Knight: Shovel of Hope DX	phase4_steam_more_like_this	not_enough_reviews	0 reviews (new DX release, no user reviews yet)
+2026-05-29T01:00:00Z	party-animals	Party Animals	phase4_steam_more_like_this	pvp_primary	Primarily PvP party brawler; no finite campaign — no clear ending
+2026-05-29T01:00:00Z	call-of-duty-world-at-war	Call of Duty: World at War	phase4_steam_more_like_this	online_broken	2008 game; recent reviews confirm co-op + multiplayer don't work in 2025, no Activision support
+2026-05-29T01:00:00Z	call-of-duty-black-ops-1	Call of Duty: Black Ops	phase4_steam_more_like_this	online_broken	2010 game; servers dead, zombies/multiplayer unplayable per recent reviews; campaign is single-player only anyway
+2026-05-29T01:00:00Z	call-of-duty-black-ops-cold-war	Call of Duty: Black Ops Cold War	phase4_steam_more_like_this	endless_misclassified	Campaign single-player only; "Co-op" = Zombies wave-based mode (endless)
+2026-05-29T02:00:00Z	the-planet-crafter	The Planet Crafter	phase4_steam_more_like_this	blocklisted_endless	Planet Crafter is on hardcoded blocklist (open-ended terraforming sim)
+2026-05-29T02:00:00Z	factorio	Factorio	phase4_steam_more_like_this	blocklisted_endless	Factorio base game on hardcoded blocklist (endless, Space Age DLC excluded too)
+2026-05-29T02:00:00Z	palworld	Palworld	phase4_steam_more_like_this	blocklisted_endless	Palworld on hardcoded blocklist (live service, open-ended)
+2026-05-29T02:00:00Z	ark-survival-evolved	ARK: Survival Evolved	phase4_steam_more_like_this	blocklisted_endless	ARK on hardcoded blocklist (MMO tag, endless survival)
+2026-05-29T02:00:00Z	schedule-i	Schedule I	phase4_steam_more_like_this	blocklisted_endless	Schedule I on hardcoded blocklist (sandbox drug sim, no end)
+2026-05-29T02:05:00Z	starrupture	StarRupture	phase4_steam_more_like_this	endless_misclassified	Early Access (Jan 2026) open-world base-building + wave defense + roadmap of ongoing updates; no defined ending
+2026-05-29T02:06:00Z	foundry	FOUNDRY	phase4_steam_more_like_this	endless_misclassified	"Infinite voxel world" factory sandbox; no campaign/endgame/ending in description
+2026-05-29T02:06:00Z	hydroneer	Hydroneer	phase4_steam_more_like_this	endless_misclassified	Mining sandbox with no story/campaign/win-condition (Open World Survival Craft)
+2026-05-29T02:06:00Z	aska	ASKA	phase4_steam_more_like_this	endless_misclassified	Viking village builder sandbox, open-ended survival, no defined ending
+2026-05-29T02:06:00Z	soulmask	Soulmask	phase4_steam_more_like_this	endless_misclassified	Open World Survival Craft + PvP, no defined ending (similar to ARK)
+2026-05-29T02:10:00Z	s-box	s&box	phase4_steam_more_like_this	low_quality	60% positive Mixed; sandbox/Garry's Mod successor, Early Access mode, no defined ending
+2026-05-29T02:10:00Z	pvz-garden-warfare-2	Plants vs. Zombies Garden Warfare 2	phase4_steam_more_like_this	endless_misclassified	Multiplayer shooter (PvP/co-op), no campaign with ending; description has no story/campaign/ending mention
+2026-05-29T02:15:00Z	wh40k-space-marine-anniversary	Warhammer 40,000: Space Marine - Anniversary Edition	phase4_steam_more_like_this	no_coop	Single-player only (2011 game), no co-op category
+2026-05-29T02:15:00Z	blades-of-fire	Blades of Fire	phase4_steam_more_like_this	no_coop	Single-player only per Steam categories
+2026-05-29T02:15:00Z	god-of-war	God of War	phase4_steam_more_like_this	no_coop	Single-player only PC port
+2026-05-29T02:15:00Z	sniper-ghost-warrior-contracts-2	Sniper Ghost Warrior Contracts 2	phase4_steam_more_like_this	no_coop	Single-player only per Steam categories
+2026-05-29T02:15:00Z	mecha-break	Mecha BREAK	phase4_steam_more_like_this	endless_misclassified	Multiplayer PvP shooter with In-App Purchases (live service); no story/campaign with ending
+2026-05-29T02:15:00Z	primal-carnage-extinction	Primal Carnage: Extinction	phase4_steam_more_like_this	pvp_primary	"Chaotic prehistoric PvP" — pure PvP game, no campaign/ending

@@ -1,10 +1,10 @@
 timestamp	kind	a	b	detail
-2026-05-28T19:42:18Z	franchise_split	catastronauts	catastronauts (unclear_ending)	franchise 'catastronauts': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T19:42:18Z	franchise_split	painkiller-2025	painkiller-2025 (unclear_ending)	franchise 'painkiller': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T19:42:18Z	franchise_split	call-of-duty-black-ops-3	Call of Duty Black Ops 7 (low_quality)	franchise 'call of duty black ops': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T19:42:18Z	franchise_split	earthfall	earthfall (low_quality), earthfall (endless)	franchise 'earthfall': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T19:42:18Z	franchise_split	wizard-with-a-gun	wizard-with-a-gun (unclear_ending), wizard-with-a-gun (unclear_ending)	franchise 'wizard with a gun': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T19:42:18Z	franchise_split	drake-hollow	drake-hollow (unclear_ending)	franchise 'drake hollow': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T19:42:18Z	franchise_ending	sniper-elite-5	sniper-elite-4, sniper-elite-3	franchise 'sniper elite' has mixed endingType: sniper-elite-5=story; sniper-elite-4=levels; sniper-elite-3=levels
-2026-05-28T19:42:18Z	franchise_ending	for-the-king	for-the-king-2	franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
-2026-05-28T19:42:18Z	franchise_ending	hammerwatch-2	hammerwatch	franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels
+2026-05-28T21:32:49Z	franchise_split	catastronauts	catastronauts (unclear_ending)	franchise 'catastronauts': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-28T21:32:49Z	franchise_split	painkiller-2025	painkiller-2025 (unclear_ending)	franchise 'painkiller': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-28T21:32:49Z	franchise_split	call-of-duty-black-ops-3	Call of Duty Black Ops 7 (low_quality)	franchise 'call of duty black ops': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-28T21:32:49Z	franchise_split	earthfall	earthfall (low_quality), earthfall (endless)	franchise 'earthfall': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-28T21:32:49Z	franchise_split	wizard-with-a-gun	wizard-with-a-gun (unclear_ending), wizard-with-a-gun (unclear_ending)	franchise 'wizard with a gun': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-28T21:32:49Z	franchise_split	drake-hollow	drake-hollow (unclear_ending)	franchise 'drake hollow': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-28T21:32:49Z	franchise_ending	sniper-elite-5	sniper-elite-4, sniper-elite-3	franchise 'sniper elite' has mixed endingType: sniper-elite-5=story; sniper-elite-4=levels; sniper-elite-3=levels
+2026-05-28T21:32:49Z	franchise_ending	for-the-king	for-the-king-2	franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
+2026-05-28T21:32:49Z	franchise_ending	hammerwatch-2	hammerwatch	franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels
