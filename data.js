@@ -5580,7 +5580,7 @@ window.GAMES = [
     verdict: "DC heroes go to space against Brainiac; two-player drop-in co-op via Remote Play, story campaign with finale.",
     storeUrl: "https://store.steampowered.com/app/313690/",
     imageUrl: steamImage(313690),
-    youtubeUrl: youtube("yk67MlUEStg")
+    youtubeUrl: youtube("HqN5h1HdAx0")
   },
   {
     id: "lego-batman-2-dc-super-heroes",
@@ -6014,7 +6014,7 @@ window.GAMES = [
     verdict: "Charming tower-defense across discrete maps; up to four-player online co-op, clear set of stages with a last one.",
     storeUrl: "https://store.steampowered.com/app/749800/",
     imageUrl: steamImage(749800),
-    youtubeUrl: youtube("7140KcZU_KI"),
+    youtubeUrl: youtube("VnEIBhiEP8g"),
     "needs-review": true
   },
   {
@@ -6257,7 +6257,7 @@ window.GAMES = [
     verdict: "Grimdark isometric shooter-ARPG in the 40K universe; up to four-player online co-op, story campaign culminating in a final boss.",
     storeUrl: "https://store.steampowered.com/app/527430/",
     imageUrl: steamImage(527430),
-    youtubeUrl: youtube("ylpF45rdl2Y")
+    youtubeUrl: youtube("mUh0SM1Dc5U")
   },
   {
     id: "age-of-empires-4",
@@ -6997,7 +6997,7 @@ window.GAMES = [
     verdict: "Co-op story adventure; two kids and their bikes explore a 1980s island, solving puzzles and brawling to the finale.",
     storeUrl: "https://store.steampowered.com/app/592480/",
     imageUrl: steamImage(592480),
-    youtubeUrl: youtube("u_c20Xocdis")
+    youtubeUrl: youtube("HcaDijKkzx0")
   },
   {
     id: "tales-of-berseria",
@@ -7773,6 +7773,22 @@ window.GAMES = [
     storeUrl: "https://store.steampowered.com/app/739650/",
     imageUrl: steamImage(739650),
     youtubeUrl: youtube("PPJpLi2P4nY")
+  },
+  {
+    id: "neon-inferno",
+    title: "Neon Inferno",
+    year: 2025,
+    genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
+    endingType: "levels",
+    rating: 93,
+    playersMax: 2,
+    hours: 5,
+    oneCopy: "remote-play",
+    price: 215,
+    verdict: "Cyberpunk run-and-gun with gallery-shooter twists in stylish pixel art.",
+    storeUrl: "https://store.steampowered.com/app/2957720/",
+    imageUrl: steamImage(2957720),
+    youtubeUrl: youtube("mGc1airjhBc")
   },
   {
     id: "a-way-out",

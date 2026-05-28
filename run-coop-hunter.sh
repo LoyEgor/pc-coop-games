@@ -175,8 +175,14 @@ is_rate_limited() {
   # The session-cap line is THE one we missed before — without it the burst
   # returned in ~1s with the cap message, the loop counted it as a "normal
   # burst boundary", slept 3s, and tried again 600 times in ~30 minutes.
+  # IMPORTANT: every alternative here must be SPECIFIC enough not to match the
+  # skill's own progress output. The bare token "429" was a bug — it matched the
+  # entry index in lines like "[429/484] sine-mora-ex: ..." and triggered a false
+  # 30-min sleep at 45% session usage. HTTP 429 is already covered semantically by
+  # "too many requests"; the "hit your <X> limit" branches are scoped to the words
+  # Anthropic actually uses (session/usage/weekly) so game text can't trip them.
   tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
-    "rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429|you'?ve hit your session limit|session limit.*reset|hit your.*limit"
+    "rate limit|message limit|usage limit|weekly limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|error[: ]*429|you'?ve hit your (session|usage|weekly) limit|session limit.*reset|hit your (session|usage|weekly) limit"
 }
 
 cap_transcript() {
@@ -205,7 +211,11 @@ while true; do
   # on the terminal and BLOCKS waiting for input after finishing the burst,
   # instead of exiting (confirmed via lsof: fd 0 = /dev/ttysNNN). EOF on stdin
   # makes it exit cleanly. | tee keeps live output in this window + the log.
-  "$CLAUDE_CMD" -p --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee -a "$TRANSCRIPT"
+  # --model opus = the LATEST Opus alias (auto-tracks new releases, e.g. 4.8 today,
+  # 4.9 later — no edit needed). Pinned here because `claude -p` otherwise uses the
+  # CLI default (a Sonnet-class model), and a desktop-session /model switch does NOT
+  # propagate to these headless bursts.
+  "$CLAUDE_CMD" -p --model opus --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee -a "$TRANSCRIPT"
   cap_transcript
 
   if [ ! -f "$PROGRESS_FILE" ]; then

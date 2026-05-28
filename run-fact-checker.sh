@@ -159,8 +159,10 @@ STAGNANT_BURSTS=0         # rolling counter for stagnation guard
 is_rate_limited() {
   # See run-coop-hunter.sh for the full rationale; the session-limit branch is
   # what caught us out on 2026-05-28.
+  # See run-coop-hunter.sh: the bare "429" matched entry index "[429/484]" and
+  # caused a false 30-min sleep. Keep every alternative specific to limit wording.
   tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
-    "rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429|you'?ve hit your session limit|session limit.*reset|hit your.*limit"
+    "rate limit|message limit|usage limit|weekly limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|error[: ]*429|you'?ve hit your (session|usage|weekly) limit|session limit.*reset|hit your (session|usage|weekly) limit"
 }
 
 cap_transcript() {
@@ -186,7 +188,8 @@ while true; do
   # on the terminal and BLOCKS waiting for input after finishing the burst,
   # instead of exiting (confirmed via lsof: fd 0 = /dev/ttysNNN). EOF on stdin
   # makes it exit cleanly. | tee keeps live output in this window + the log.
-  "$CLAUDE_CMD" -p --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee -a "$TRANSCRIPT"
+  # --model opus = LATEST Opus alias (see run-coop-hunter.sh for the rationale).
+  "$CLAUDE_CMD" -p --model opus --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee -a "$TRANSCRIPT"
   cap_transcript
 
   if [ ! -f "$PROGRESS_FILE" ]; then

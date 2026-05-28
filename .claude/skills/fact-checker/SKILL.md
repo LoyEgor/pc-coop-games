@@ -26,6 +26,12 @@ You are walking `data.js` end-to-end and verifying every recorded field against 
 8. **Progress reporting.** After every entry, print a single line:
    `[N/TOTAL] <id>: rating <state> | hours <state> | genres <state> | media <state> | other <state>`
    Where `<state>` is `OK`, `drift`, `fix`, `propose`, or `fail`.
+   **`OK` is earned, not default.** Do NOT report `genres OK` / `perspective OK` /
+   `endingType OK` if your only basis was "the Steam tags didn't contradict it". `OK`
+   on these editorial fields requires the semantic judgment described in §8 (looked at
+   the screenshots/description for the camera) and §9 (ran the ending web search). If
+   you could not perform that judgment for an entry, report the field as `fail` and add
+   it to `partial_entries[]` so the next pass retries — never paper over it with `OK`.
 
 ## Per-entry procedure
 
@@ -110,31 +116,72 @@ If derived differs from current → propose.
 
 Read `taxonomy.json` once at start of run; cache the in-memory dict for every entry's classification.
 
+**Why this step needs JUDGMENT, not just tag-mapping.** Steam's popular tags are an
+unreliable signal for two of the most error-prone fields: `perspective` and `tier`.
+Steam tags almost never contain an explicit `First-person`/`Third-person`/`Isometric`/
+`Side-view`, so a tag-only check finds "no contradiction" and stamps `OK` — leaving a
+wrong perspective in place forever. **That is the bug we are fixing.** You must form a
+real opinion of how the game LOOKS and how it is STRUCTURED, using everything available
+(screenshots, description, your own knowledge of the game), not only the tag list.
+
 For each entry:
-1. Fetch Steam's user-defined tags for the app:
-   - Open `https://store.steampowered.com/app/<app_id>/` via WebFetch.
-   - Extract the top 10 popular tags from the `glance_tags` section.
+1. Fetch the Steam app page data via WebFetch of `https://store.steampowered.com/app/<app_id>/`:
+   - The top ~10 popular tags from the `glance_tags` section.
+   - The short + detailed **description** text.
+   - The **screenshot URLs** (and, when in doubt, look at 2-3 of them to judge the
+     camera). appdetails also exposes `screenshots[]` if the store page is hard to scrape.
 2. Map each Steam tag to taxonomy via the `steam_tags` array in each `taxonomy.json` entry. A single Steam tag may map to multiple taxonomy tags across axes (e.g. `"FPS"` → `First-person` AND `Shooter`).
 3. Apply axis rules from `taxonomy.axes`:
-   - `tier` — derive from publishers, exactly one. Already in entry.
-   - `perspective` — pick exactly one using `decision_tree`. Critical: every entry must have one. If the entry currently has none → log `proposed-fixes.tsv` with the derived perspective.
+   - `tier` — derive from publisher scale + budget (AAA = major publisher / big-budget;
+     AA = mid; Indie = small/self-published). Judge from developers/publishers, not tags.
+   - `perspective` — pick exactly one. **DO NOT rely on tags alone.** Determine the camera
+     VISUALLY: read the screenshots + description (e.g. "over-the-shoulder" → Third-person,
+     "first-person view" → First-person, top-down/Diablo-style → Isometric, 2D side
+     scroller → Side-view). Apply this check to EVERY entry, including ones that already
+     have a perspective — if the stored perspective contradicts what the screenshots show,
+     propose the corrected one. Only stamp perspective `OK` after you have actually judged
+     the visuals, never on tag-silence.
    - `mechanic` — at least one required. **Adventure has `narrowing_rule`** — apply ONLY to narrative-led + exploration + dialogue games. If the entry has `Adventure` but does not match the rule (e.g. it's actually an action game or pure puzzle), log a proposed REMOVAL of `Adventure`.
    - `setting`, `structure` — optional.
 
 Compare derived genres set to `entry.genres`:
 - Missing axis tag (especially perspective) → log to `proposed-fixes.tsv` (field=`genres`, new_value=what to add).
+- Wrong perspective vs the screenshots → log proposed change (old → corrected).
 - Extra tag that doesn't match any `decision_tree` from taxonomy → log proposed REMOVAL.
 - Tier mismatch → log proposed change.
 
 **Do not auto-modify the `genres` array.** Editorial choice — owner reviews `proposed-fixes.tsv` and decides which to apply via a separate migration step. Exception: there is a dedicated migration phase (see `taxonomy_migration` section below) that DOES auto-apply specific deterministic rewrites (e.g., split `FPS` → `First-person` + `Shooter`).
 
-### 9. endingType — derived from `taxonomy.json` decision_tree
+### 9. endingType — decision_tree PLUS a targeted web search
 
-Walk through `taxonomy.ending_types[*].decision_tree` for each ending type. Apply the first matching one to the entry.
+`endingType` cannot be read off Steam tags either — and getting it wrong is the most
+dangerous failure mode in this catalog, because a game with **no real ending** (endless)
+must not be here at all (CLAUDE.md §2). So this check has two parts:
 
-If derived ≠ stored → log to `state/proposed-fixes.tsv`. Do not auto-fix; endingType is editorial. The fact-checker SHOULD flag well-known confusions (e.g., a game tagged `levels` whose verdict says "single-session climb" → propose `arcade-goal`).
+1. **Decision_tree pass.** Walk `taxonomy.ending_types[*].decision_tree` and apply the
+   first matching type, using the verdict + Steam description + your knowledge.
+2. **Targeted web search — REQUIRED, do not skip.** Run a `WebSearch` (or 1-2 WebFetch
+   of the top results) to confirm the game actually ends:
+   - `"<title>" how does it end` / `"<title>" ending` / `"<title>" final boss` /
+     `"<title>" credits` / `"<title>" how long to beat campaign`.
+   - For `roguelite` and `survival-goal` entries especially: confirm there is a named
+     final boss / explicit win-condition (Mithrix, Moon Lord, "launch the rocket"), NOT
+     just "endless escalating runs/waves".
+   - Read 2-3 snippets and form a judgment. This is the step that catches an endless
+     game that slipped in looking finite.
 
-If the decision_tree matches multiple types (genuine ambiguity), log to `state/discrepancies.tsv` with reason `endingtype_ambiguous`. Owner decides.
+Outcomes:
+- Derived type ≠ stored type → log to `state/proposed-fixes.tsv` (old → corrected).
+  Do not auto-fix; endingType is editorial.
+- Web search shows the game has **no real ending** (procedurally endless, no final
+  boss, "no point/just keeps going") → this is an endless red flag: escalate to rule 7
+  (AUTO-REMOVE if it matches the blocklist / deterministic markers; otherwise log to
+  `state/proposed-removals.tsv` with the search evidence).
+- decision_tree matches multiple types (genuine ambiguity) → `state/discrepancies.tsv`
+  with reason `endingtype_ambiguous`. Owner decides.
+
+Flag well-known confusions explicitly (e.g. a game tagged `levels` whose verdict says
+"single-session climb" → propose `arcade-goal`).
 
 ## taxonomy_migration phase (special, one-time bulk fix)
 

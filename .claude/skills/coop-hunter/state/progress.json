@@ -1,15 +1,15 @@
 {
   "current_source_idx": 13,
-  "current_offset": 9,
-  "added_count": 391,
-  "skipped_count": 392,
+  "current_offset": 31,
+  "added_count": 392,
+  "skipped_count": 451,
   "last_validation_at": 200,
   "completed_sources": [
     "reeval_skipped"
   ],
   "done": false,
-  "last_added": "drake-hollow",
-  "last_run_timestamp": "2026-05-28T00:13:03Z",
+  "last_added": "neon-inferno",
+  "last_run_timestamp": "2026-05-28T09:20:00Z",
   "current_phase": 4,
   "max_phase": 4,
   "phase_start_count": 389,
@@ -163,6 +163,7 @@
     "baldurs-gate-2-enhanced-edition",
     "earthfall",
     "wizard-with-a-gun",
-    "drake-hollow"
+    "drake-hollow",
+    "neon-inferno"
   ]
 }
