@@ -186,7 +186,11 @@ while true; do
   echo ""
 
   # Headless single burst: fresh process, fresh transcript, exits when done.
-  "$CLAUDE_CMD" -p --dangerously-skip-permissions "$BURST_PROMPT" 2>&1 | tee -a "$TRANSCRIPT"
+  # < /dev/null is the fix for the burst hang: claude -p otherwise keeps stdin
+  # on the terminal and BLOCKS waiting for input after finishing the burst,
+  # instead of exiting (confirmed via lsof: fd 0 = /dev/ttysNNN). EOF on stdin
+  # makes it exit cleanly. | tee keeps live output in this window + the log.
+  "$CLAUDE_CMD" -p --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee -a "$TRANSCRIPT"
   cap_transcript
 
   if [ ! -f "$PROGRESS_FILE" ]; then

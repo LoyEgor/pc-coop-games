@@ -339,9 +339,19 @@ tbody tr:hover {
 
 /* Played rows are dimmed only in the "All" view (where they share space with
    unplayed). In the "Played" view it's literally the played-only list — full
-   opacity. In "To play" they're filtered out entirely. */
-body[data-view-mode="all"] tbody tr.is-played {
-  opacity: 0.55;
+   opacity. In "To play" they're filtered out entirely.
+
+   Dim the CELLS, not the <tr>. opacity on the <tr> would make it a stacking
+   context, which traps the image-zoom inside the row — so a played game's
+   hover behaved differently from an active one (zoom couldn't escape the
+   header/footer). Per-cell opacity keeps the <tr> context-free, so
+   .image-cell:hover (z-index 50) escapes identically for played and active
+   rows. Desktop only — mobile dims the whole card (no zoom there to trap), see
+   the mobile media query. */
+@media (min-width: 720.02px) {
+  body[data-view-mode="all"] tbody tr.is-played td {
+    opacity: 0.55;
+  }
 }
 
 .th-control {

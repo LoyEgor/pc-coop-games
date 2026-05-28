@@ -343,3 +343,41 @@ timestamp	id	title	source	price_uah	percent_positive
 2026-05-27T13:03:08Z	dead-rising-2	Dead Rising 2	phase4_wikipedia	162	78
 2026-05-27T13:03:08Z	fear-3	F.E.A.R. 3	phase4_wikipedia	279	71
 2026-05-27T13:04:58Z	dead-rising-2-off-the-record	Dead Rising 2: Off the Record	phase4_wikipedia	162	77
+2026-05-27T17:54:06Z	catastronauts	Catastronauts	phase4_reeval_skipped	239	72
+2026-05-27T18:02:45Z	toxic-commando	John Carpenter's Toxic Commando	phase4_reeval_skipped	949	76
+2026-05-27T18:06:11Z	painkiller-2025	Painkiller	phase4_reeval_skipped	199	57
+2026-05-27T18:33:40Z	call-of-duty-black-ops-3	Call of Duty: Black Ops III	phase4_steam_more_like_this	2552	85
+2026-05-27T18:36:44Z	shovel-knight-treasure-trove	Shovel Knight: Treasure Trove	phase4_steam_more_like_this	229	96
+2026-05-27T19:57:32Z	escape-simulator-2	Escape Simulator 2	websearch_niche_queries	399	92
+2026-05-27T19:59:24Z	tales-of-symphonia	Tales of Symphonia	websearch_niche_queries	189	85
+2026-05-27T20:04:29Z	police-stories	Police Stories	phase4_backloggd_substitute	83	85
+2026-05-27T20:08:10Z	double-dragon-revive	Double Dragon Revive	phase4_community_substitute	1109	63
+2026-05-27T20:08:10Z	double-dragon-neon	Double Dragon: Neon	phase4_community_substitute	225	77
+2026-05-27T20:44:38Z	evil-west	Evil West	phase4_steam_more_like_this	209	74
+2026-05-27T20:44:38Z	shootas-blood-and-teef	Warhammer 40,000: Shootas, Blood & Teef	phase4_steam_more_like_this	111	87
+2026-05-27T20:44:38Z	super-bunny-man	Super Bunny Man	phase4_steam_more_like_this	160	86
+2026-05-27T20:44:38Z	the-expendabros	The Expendabros	phase4_steam_more_like_this	0	97
+2026-05-27T20:44:38Z	scott-pilgrim-ex	Scott Pilgrim EX	phase4_steam_more_like_this	999	86
+2026-05-27T20:44:38Z	thunder-tier-one	Thunder Tier One	phase4_steam_more_like_this	0	69
+2026-05-27T21:58:02Z	door-kickers	Door Kickers	phase4_steam_more_like_this	62	94
+2026-05-27T21:59:33Z	metal-slug-2	METAL SLUG 2	phase4_steam_more_like_this	129	89
+2026-05-27T21:59:33Z	metal-slug-1	METAL SLUG	phase4_steam_more_like_this	149	89
+2026-05-27T22:02:56Z	tales-of-zestiria	Tales of Zestiria	phase4_websearch_niche_queries	450	80
+2026-05-27T22:18:15Z	obscure	Obscure	phase4_websearch_niche_queries	129	96
+2026-05-27T22:18:52Z	obscure-2	Obscure II (Obscure: The Aftermath)	phase4_websearch_niche_queries	169	82
+2026-05-27T22:22:05Z	legend-of-mana	Legend of Mana	phase4_websearch_niche_queries	600	78
+2026-05-27T22:34:05Z	fireboy-and-watergirl-elements	Fireboy & Watergirl: Elements	phase4_wikipedia_coop_lists	21	86
+2026-05-27T22:47:30Z	techtonica	Techtonica	phase4_steam_more_like_this	600	65
+2026-05-27T22:47:30Z	the-survivalists	The Survivalists	phase4_steam_more_like_this	419	76
+2026-05-27T22:54:01Z	gatekeeper	Gatekeeper	phase4_steam_more_like_this	211	84
+2026-05-27T22:54:01Z	nullpoint-protocol	Nullpoint Protocol	phase4_steam_more_like_this	325	66
+2026-05-27T23:03:18Z	lost-castle-2	Lost Castle 2	phase4_steam_more_like_this	375	79
+2026-05-27T23:13:15Z	fury-unleashed	Fury Unleashed	steam_more_like_this	415	87
+2026-05-27T23:32:28Z	cry-of-fear	Cry of Fear	websearch_niche_queries	0	89
+2026-05-27T23:44:43Z	avatar-frontiers-of-pandora	Avatar: Frontiers of Pandora	reddit_just_finished	859	78
+2026-05-27T23:44:43Z	all-hands-on-deck	All Hands on Deck	reddit_just_finished	285	81
+2026-05-27T23:48:55Z	baldurs-gate-enhanced-edition	Baldur's Gate: Enhanced Edition	wikipedia_coop_lists	415	92
+2026-05-27T23:48:55Z	baldurs-gate-2-enhanced-edition	Baldur's Gate II: Enhanced Edition	wikipedia_coop_lists	415	92
+2026-05-27T23:53:52Z	earthfall	Earthfall	wikipedia_coop_lists	279	65
+2026-05-28T00:03:01Z	wizard-with-a-gun	Wizard with a Gun	reeval_skipped	515	80
+2026-05-28T00:03:12Z	drake-hollow	Drake Hollow	reeval_skipped	549	77
