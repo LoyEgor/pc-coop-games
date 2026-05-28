@@ -145,14 +145,22 @@ PROMPT_EOF
 
 # -------- delta tracking --------
 INITIAL_ADDED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['added_count'])")
+PREV_ADDED=$INITIAL_ADDED   # used by per-burst delta check (stagnation guard)
 echo "Starting added_count: $INITIAL_ADDED"
 echo ""
 
 # -------- main loop: one claude -p burst per iteration --------
-MAX_BURSTS=600            # runaway guard (each burst ~ up to 20 candidates)
+MAX_BURSTS=80             # runaway guard. Each healthy burst ~ up to 20 candidates;
+                          # at catalog maturity (~490 games) yield is 2-5/burst, so
+                          # 80 bursts is generous and still finite. Earlier value 600
+                          # combined with the missing session-limit detector produced
+                          # the "600 instant-fail bursts in 30s" night-run pathology.
 RATE_LIMIT_SLEEP=1800     # 30 min — Anthropic 5h-window reset granularity
+STAGNATION_THRESHOLD=3    # N consecutive bursts adding <2 games each => stop early
+STAGNATION_MIN_DELTA=2    # "found more than one game" means delta>=2
 TRANSCRIPT_CAP_BYTES=$((20 * 1024 * 1024))   # cap the log at ~20 MB
 BURST=0
+STAGNANT_BURSTS=0         # rolling counter for stagnation guard
 
 # Start every run with a FRESH log (was: tee -a accumulated across all runs and
 # grew to ~70 MB). The transcript is just for live `tail -f` + rate-limit
@@ -160,8 +168,15 @@ BURST=0
 : > "$TRANSCRIPT"
 
 is_rate_limited() {
+  # NB: Anthropic surfaces two distinct kinds of "you must wait" message:
+  #   (1) per-request rate limits  -> "rate limit", "429", "too many requests"
+  #   (2) per-session usage caps   -> "You've hit your session limit ·
+  #                                    resets 6:10am (Europe/Kiev)"
+  # The session-cap line is THE one we missed before — without it the burst
+  # returned in ~1s with the cap message, the loop counted it as a "normal
+  # burst boundary", slept 3s, and tried again 600 times in ~30 minutes.
   tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
-    'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'
+    "rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429|you'?ve hit your session limit|session limit.*reset|hit your.*limit"
 }
 
 cap_transcript() {
@@ -198,13 +213,20 @@ while true; do
     break
   fi
 
-  ADDED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['added_count'])")
-  SKIPPED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['skipped_count'])")
-  DONE=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['done'])")
-  PHASE=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_phase'])")
+  # Read everything we need from progress.json in ONE python call
+  # (cheaper than 5 separate subprocesses per burst).
+  read -r ADDED SKIPPED DONE PHASE SRC_IDX OFFSET <<<"$("$PY" -c "
+import json
+p=json.load(open('$PROGRESS_FILE'))
+print(p.get('added_count',0), p.get('skipped_count',0), p.get('done',False),
+      p.get('current_phase','?'), p.get('current_source_idx','?'),
+      p.get('current_offset','?'))
+")"
+  DELTA=$((ADDED - PREV_ADDED))
+  PREV_ADDED=$ADDED
 
   echo ""
-  echo "[$(date)] Burst #$BURST done. added=$ADDED skipped=$SKIPPED phase=$PHASE done=$DONE"
+  echo "[$(date)] Burst #$BURST done. added=$ADDED (+$DELTA) skipped=$SKIPPED phase=$PHASE src_idx=$SRC_IDX off=$OFFSET done=$DONE"
 
   if [ "$DONE" = "True" ] || [ "$DONE" = "true" ]; then
     echo "[$(date)] SKILL DONE — catalog exhausted, Final pass + push completed by the skill."
@@ -212,9 +234,27 @@ while true; do
   fi
 
   if is_rate_limited; then
-    echo "[$(date)] Rate limit detected. Sleeping 30m before the next burst (Ctrl+C to stop)."
+    echo "[$(date)] Rate/session limit detected. Sleeping 30m before the next burst (Ctrl+C to stop)."
+    STAGNANT_BURSTS=0   # session-cap is NOT stagnation; reset counter
     sleep "$RATE_LIMIT_SLEEP"
     continue
+  fi
+
+  # Stagnation guard: if N consecutive bursts each added <STAGNATION_MIN_DELTA
+  # games, we accept that coop-hunter is dry on the currently reachable sources
+  # and let run-all proceed to fact-checker. The skill itself also has its own
+  # "two dry phase-4 passes" stop, but this guard is the launcher-side belt+
+  # suspenders for cases where the skill keeps churning the same near-empty
+  # source without flipping done=true within MAX_BURSTS.
+  if [ "$DELTA" -lt "$STAGNATION_MIN_DELTA" ]; then
+    STAGNANT_BURSTS=$((STAGNANT_BURSTS + 1))
+    echo "[$(date)] Stagnation: burst added $DELTA (<$STAGNATION_MIN_DELTA). streak=$STAGNANT_BURSTS/$STAGNATION_THRESHOLD"
+    if [ "$STAGNANT_BURSTS" -ge "$STAGNATION_THRESHOLD" ]; then
+      echo "[$(date)] STAGNATION STOP — $STAGNATION_THRESHOLD consecutive bursts each added <$STAGNATION_MIN_DELTA games. Yielding to fact-checker."
+      break
+    fi
+  else
+    STAGNANT_BURSTS=0
   fi
 
   # Normal burst boundary — brief pause, next fresh burst.

@@ -132,7 +132,8 @@ PROMPT_EOF
 # -------- delta tracking --------
 INITIAL_CHECKED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['checked_count'])")
 TOTAL=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['total_entries'])")
-echo "Starting at entry $("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_idx'])") / $TOTAL"
+PREV_IDX=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_idx'])")
+echo "Starting at entry $PREV_IDX / $TOTAL"
 echo ""
 
 # -------- consistency audit (cheap, no network) — refresh inconsistencies.tsv --------
@@ -143,17 +144,23 @@ echo "[$(date)] Running consistency audit (find_neighbors.py)..."
 echo ""
 
 # -------- main loop: one claude -p burst per iteration --------
-MAX_BURSTS=600
-RATE_LIMIT_SLEEP=1800
+MAX_BURSTS=80             # runaway guard. Earlier 600 combined with the missing
+                          # session-limit detector produced 600 instant-fail bursts
+                          # in ~30s when Anthropic capped the session overnight.
+RATE_LIMIT_SLEEP=1800     # 30 min — Anthropic 5h-window reset granularity
+STAGNATION_THRESHOLD=3    # N consecutive bursts where current_idx didn't move => stop
 TRANSCRIPT_CAP_BYTES=$((20 * 1024 * 1024))   # cap the log at ~20 MB
 BURST=0
+STAGNANT_BURSTS=0         # rolling counter for stagnation guard
 
 # Fresh log each run (transcript is for tail -f + rate-limit detection, not state).
 : > "$TRANSCRIPT"
 
 is_rate_limited() {
+  # See run-coop-hunter.sh for the full rationale; the session-limit branch is
+  # what caught us out on 2026-05-28.
   tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
-    'rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429'
+    "rate limit|message limit|usage limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|429|you'?ve hit your session limit|session limit.*reset|hit your.*limit"
 }
 
 cap_transcript() {
@@ -187,14 +194,17 @@ while true; do
     break
   fi
 
-  CHECKED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['checked_count'])")
-  FIXED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['fixed_count'])")
-  PROPOSED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['proposed_count'])")
-  DONE=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['done'])")
-  IDX=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_idx'])")
+  read -r CHECKED FIXED PROPOSED DONE IDX <<<"$("$PY" -c "
+import json
+p=json.load(open('$PROGRESS_FILE'))
+print(p.get('checked_count',0), p.get('fixed_count',0), p.get('proposed_count',0),
+      p.get('done',False), p.get('current_idx',0))
+")"
+  IDX_DELTA=$((IDX - PREV_IDX))
+  PREV_IDX=$IDX
 
   echo ""
-  echo "[$(date)] Burst #$BURST done. idx=$IDX/$TOTAL fixed=$FIXED proposed=$PROPOSED done=$DONE"
+  echo "[$(date)] Burst #$BURST done. idx=$IDX/$TOTAL (+$IDX_DELTA) fixed=$FIXED proposed=$PROPOSED done=$DONE"
 
   if [ "$DONE" = "True" ] || [ "$DONE" = "true" ]; then
     echo "[$(date)] FACT-CHECK COMPLETE."
@@ -202,9 +212,24 @@ while true; do
   fi
 
   if is_rate_limited; then
-    echo "[$(date)] Rate limit detected. Sleeping 30m before the next burst (Ctrl+C to stop)."
+    echo "[$(date)] Rate/session limit detected. Sleeping 30m before the next burst (Ctrl+C to stop)."
+    STAGNANT_BURSTS=0
     sleep "$RATE_LIMIT_SLEEP"
     continue
+  fi
+
+  # Stagnation guard: fact-checker should always move forward (idx increments
+  # per entry). If 3 consecutive bursts left idx unchanged, the skill is stuck
+  # or hitting some unhandled error — bail out instead of spinning.
+  if [ "$IDX_DELTA" -le 0 ]; then
+    STAGNANT_BURSTS=$((STAGNANT_BURSTS + 1))
+    echo "[$(date)] Stagnation: idx did not advance. streak=$STAGNANT_BURSTS/$STAGNATION_THRESHOLD"
+    if [ "$STAGNANT_BURSTS" -ge "$STAGNATION_THRESHOLD" ]; then
+      echo "[$(date)] STAGNATION STOP — $STAGNATION_THRESHOLD consecutive no-progress bursts. Aborting fact-checker."
+      break
+    fi
+  else
+    STAGNANT_BURSTS=0
   fi
 
   sleep 3
