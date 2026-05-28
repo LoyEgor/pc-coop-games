@@ -330,3 +330,17 @@ timestamp	id	field	old_value	new_value	reason
 2026-05-26T20:44:56Z	split-fiction	genres	["AA", "Action", "Platformer", "Sci-fi", "Fantasy"]	["AA", "Third-person", "Action", "Platformer", "Sci-fi", "Fantasy"]	perspective_added
 2026-05-27T08:09:31Z	company-of-heroes-2	price	970	97
 2026-05-27T08:09:33Z	gloomhaven	price	1680	168
+2026-05-28T07:57:36Z	powerwash-simulator	price	500	250
+2026-05-28T07:58:41Z	dead-island-de	price	533	53
+2026-05-28T07:59:21Z	echo-point-nova	price	515	309
+2026-05-28T08:00:13Z	powerwash-simulator-2	price	500	425
+2026-05-28T08:01:33Z	dead-island-2	price	1333	266
+2026-05-28T08:02:15Z	escape-the-backrooms	price	194	155
+2026-05-28T08:02:31Z	wartales	price	628	251
+2026-05-28T08:02:54Z	grim-dawn	price	515	103
+2026-05-28T08:05:18Z	outward	price	1066	127
+2026-05-28T08:07:46Z	lego-harry-potter-collection	price	1049	157
+2026-05-28T08:08:08Z	haven	price	515	206
+2026-05-28T08:08:32Z	the-takeover	price	279	69
+2026-05-28T08:09:20Z	kingdom-two-crowns	price	415	103
+2026-05-28T08:11:06Z	iron-harvest	price	799	119
