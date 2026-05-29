@@ -1,9 +1,9 @@
 {
-  "current_idx": 48,
-  "total_entries": 488,
-  "checked_count": 48,
+  "current_idx": 0,
+  "total_entries": 553,
+  "checked_count": 0,
   "fixed_count": 0,
-  "proposed_count": 8,
+  "proposed_count": 0,
   "partial_entries": [],
   "done": false,
   "last_run_timestamp": "2026-05-29T00:00:00Z",

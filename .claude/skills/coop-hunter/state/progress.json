@@ -1,13 +1,17 @@
 {
-  "current_source_idx": 13,
+  "current_source_idx": 15,
   "current_offset": 0,
-  "added_count": 455,
-  "skipped_count": 867,
+  "added_count": 456,
+  "skipped_count": 891,
   "last_validation_at": 200,
-  "completed_sources": ["reeval_skipped"],
+  "completed_sources": [
+    "reeval_skipped",
+    "steam_more_like_this",
+    "websearch_niche_queries"
+  ],
   "done": false,
-  "last_added": "pratfall",
-  "last_run_timestamp": "2026-05-29T19:25:00Z",
+  "last_added": "horizon-chase-turbo",
+  "last_run_timestamp": "2026-05-29T23:55:00Z",
   "current_phase": 4,
   "max_phase": 4,
   "phase_start_count": 453,
@@ -226,6 +230,7 @@
     "icewind-dale-enhanced-edition",
     "neverwinter-nights-enhanced-edition",
     "tetris-effect-connected",
-    "pratfall"
+    "pratfall",
+    "horizon-chase-turbo"
   ]
 }

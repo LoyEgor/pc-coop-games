@@ -7399,7 +7399,7 @@ window.GAMES = [
     price: 999,
     verdict: "New Tribute Games beat-em-up: up to 4-player co-op brawling through a story campaign of stages and bosses.",
     storeUrl: "https://store.steampowered.com/app/2640950/",
-    imageUrl: steamImage(2640950),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2640950/8c040ff56403fb179ef2d4310300d154aa443944/header.jpg?t=1775656823",
     youtubeUrl: youtube("_4RIUQlRG9g")
   },
   {
@@ -7851,7 +7851,7 @@ window.GAMES = [
     price: 263,
     verdict: "Mech action shooter with a story campaign and 3-player co-op boss missions.",
     storeUrl: "https://store.steampowered.com/app/1342490/",
-    imageUrl: steamImage(1342490),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1342490/2d181de76d76db99bb377ebaf69e3f4915f54fce/header.jpg?t=1779123309",
     youtubeUrl: youtube("BCghm7cNjX0"),
     "needs-review": true
   },
@@ -8676,7 +8676,7 @@ window.GAMES = [
     price: 195,
     verdict: "Asymmetric two-player puzzle. Pilot and air-traffic controller communicate to survive 20 in-flight emergencies.",
     storeUrl: "https://store.steampowered.com/app/4187140/",
-    imageUrl: steamImage(4187140),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4187140/c4a129e4e5c32ab8933eec6045b92d550754da40/header.jpg?t=1778851271",
     youtubeUrl: youtube("2VkgnB3yfAE"),
     "needs-review": true
   },
@@ -8808,6 +8808,22 @@ window.GAMES = [
     storeUrl: "https://store.steampowered.com/app/4244510/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/aa5134d11626034935daa974478c834d03d73f54/header.jpg?t=1779269102",
     youtubeUrl: youtube("vaRE3Xc2rqw")
+  },
+  {
+    id: "horizon-chase-turbo",
+    title: "Horizon Chase Turbo",
+    year: 2018,
+    genres: ["Indie", "Third-person", "Action"],
+    endingType: "levels",
+    rating: 93,
+    playersMax: 4,
+    hours: 10,
+    oneCopy: "remote-play",
+    price: 279,
+    verdict: "Arcade racer with split-screen co-op World Tour campaign of championships across the globe.",
+    storeUrl: "https://store.steampowered.com/app/389140/",
+    imageUrl: steamImage(389140),
+    youtubeUrl: youtube("xNpybifMhcA")
   },
   {
     id: "a-way-out",

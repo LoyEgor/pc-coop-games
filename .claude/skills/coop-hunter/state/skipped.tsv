@@ -40,13 +40,13 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	bellwright	Bellwright	steam_community	early_access	Early Access, ~3 years until 1.0 — no defined ending
 2026-05-29T00:00:00Z	billie-bust-up	billie-bust-up	phase4_steam_more_like_this	no_coop	Single-player only; also unreleased (release TBA, coming_soon)
 2026-05-29T00:00:00Z	birdseedvr-demo	demo	steam_more_like_this	unknown	
-2026-05-29T00:00:00Z	birdwatching-notebook	birdwatching-notebook	steam_more_like_this	endless_misclassified	app 4111370 explicitly idle game, no ending
+2026-05-29T00:00:00Z	birdwatching-notebook	Birdwatching Notebook	steam_more_like_this	endless_misclassified	app 4111370 unreleased May 2026 [seen 2x]
 2026-05-29T00:00:00Z	birdwatching-notebook-demo	demo	steam_more_like_this	unknown	
 2026-05-29T00:00:00Z	blades-of-fire	Blades of Fire	phase4_steam_more_like_this;steam_more_like_this	no_coop	Single-player only per Steam categories [seen 2x; reasons: no_coop]
 2026-05-29T00:00:00Z	blindsight-war-of-the-wardens	Blindsight: War of the Wardens	phase4_steam_more_like_this	no_coop	Single-player only per Steam categories
 2026-05-29T00:00:00Z	blood-and-bacon	Blood and Bacon	wikipedia_coop_lists	low_fit	wave_based_meme_horror_no_clear_ending
 2026-05-29T00:00:00Z	blood-refreshed-supply	Blood: Refreshed Supply	phase4_youtube_curator_playlists	low_fit	No UAH price (region-restricted on Steam UA), catalog is UAH-denominated
-2026-05-29T00:00:00Z	bloons-td-6	bloons-td-6	phase4_steam_more_like_this;steam_more_like_this	blocklisted_endless	hardcoded blocklist — endless tower defense [seen 3x; reasons: blocklisted_endless]
+2026-05-29T00:00:00Z	bloons-td-6	Bloons TD 6	steam_more_like_this	blocklisted_endless	app 960090 blocklist [seen 4x]
 2026-05-29T00:00:00Z	blue-estate	blue-estate	only Remote Play Together tag, no Co-op category; single-player rail shooter	no_coop	
 2026-05-29T00:00:00Z	bluey-the-videogame	local_only_no_remote	co-op is Shared/Split Screen only, no Remote Play Together or online (CLAUDE.md §3)	unknown	
 2026-05-29T00:00:00Z	bopl-battle	bopl-battle	phase4_steam_more_like_this	endless	party PvP brawler [seen 3x; reasons: endless,low_fit,no_coop]
@@ -83,7 +83,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	conflict-denied-ops	Conflict: Denied Ops	phase4_wikipedia_coop_lists;wikipedia_coop_lists	no_coop	Steam version is Single-player only [seen 2x; reasons: no_coop,unknown]
 2026-05-29T00:00:00Z	control-resonant	CONTROL Resonant	phase4_steam_more_like_this	no_coop	Single-player only; 2026 coming soon (Remedy sequel)
 2026-05-29T00:00:00Z	cooking-simulator-2	Cooking Simulator 2: Better Together	phase4_steam_more_like_this	low_fit	Sim sequel; original is sandbox with career mode but no clear credits — finite unverified, prefer skip
-2026-05-29T00:00:00Z	cooking-simulator-2-better-together	Cooking Simulator 2: Better Together	phase4_steam_more_like_this	low_quality	45pct positive 741 reviews (Mixed)
+2026-05-29T00:00:00Z	cooking-simulator-2-better-together	Cooking Simulator 2: Better Together	steam_more_like_this	low_quality	app 2455360 unreleased Mar 2026 [seen 2x]
 2026-05-29T00:00:00Z	counter-strike	counter-strike	phase4_steam_more_like_this	no_coop	PvP only
 2026-05-29T00:00:00Z	crackdown-3	Crackdown 3	phase4_wikipedia_coop_lists;websearch_drill;wikipedia_coop_lists	not_on_steam	Microsoft Store/Xbox only, not on Steam [seen 3x; reasons: not_on_steam]
 2026-05-29T00:00:00Z	craftopia	craftopia	phase4_steam_more_like_this	endless	Pocketpair open-world survival sandbox, no defined ending
@@ -103,7 +103,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	dark-hours	Dark Hours	websearch_horror_drill	endless	sessional contract-based heists, no narrative ending
 2026-05-29T00:00:00Z	dauntless	Dauntless	websearch_drill	online_broken	game shut down servers, no longer playable
 2026-05-29T00:00:00Z	dave-the-diver	dave-the-diver	phase4_steam_more_like_this	no_coop	single-player adventure [seen 2x; reasons: no_coop]
-2026-05-29T00:00:00Z	dayz	dayz	phase4_steam_more_like_this	blocklisted_endless	survival sandbox, blocklist
+2026-05-29T00:00:00Z	dayz	DayZ	steam_more_like_this	blocklisted_endless	app 221100 blocklist MMO [seen 2x]
 2026-05-29T00:00:00Z	dc-universe-online	dc-universe-online	phase4_steam_more_like_this	blocklisted_endless	MMO, no ending [seen 2x; reasons: blocklisted_endless]
 2026-05-29T00:00:00Z	dead-cells	dead-cells	phase4_steam_more_like_this	no_coop	no online co-op in base game [seen 3x; reasons: no_coop]
 2026-05-29T00:00:00Z	dead-or-alive-6-last-round	DEAD OR ALIVE 6: Last Round	phase4_steam_more_like_this	low_fit	fighting game, PvP-only, no co-op campaign
@@ -186,7 +186,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	gnaughty-gnomes	Gnaughty Gnomes	phase4_websearch_niche_queries	no_coop	PvP-only, no co-op categories
 2026-05-29T00:00:00Z	goblin-stone	Goblin Stone	websearch_drill	no_coop	steam categories show single-player only
 2026-05-29T00:00:00Z	god-of-war	God of War	phase4_steam_more_like_this	no_coop	Single-player only PC port
-2026-05-29T00:00:00Z	gogh-focus-with-your-avatar	gogh: Focus with Your Avatar	phase4_steam_more_like_this	low_fit	Focus / coworking app, not a co-op game
+2026-05-29T00:00:00Z	gogh-focus-with-your-avatar	gogh: Focus with Your Avatar	steam_more_like_this	low_fit	app 3213850 productivity app, not a game [seen 2x]
 2026-05-29T00:00:00Z	golf-with-your-friends	Golf With Your Friends	phase4_steam_more_like_this	endless	online multiplayer minigolf, PvP/competitive, no ending
 2026-05-29T00:00:00Z	golf-with-your-friends-2	Golf With Your Friends 2	phase4_steam_more_like_this	unknown	
 2026-05-29T00:00:00Z	goons-legends-mayhem	Goons: Legends & Mayhem	phase4_backloggd_substitute	unknown	
@@ -197,7 +197,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	ground-branch	GROUND BRANCH	reeval_skipped;steam_more_like_this	unclear_ending	Early Access tactical milsim; no finite campaign or ending, sandbox scenarios [seen 2x; reasons: unclear_ending]
 2026-05-29T00:00:00Z	gta-iv-complete-edition	Grand Theft Auto IV: The Complete Edition	phase4_steam_more_like_this	no_coop	No co-op category; SP campaign + PvP multiplayer
 2026-05-29T00:00:00Z	gta-v-enhanced	gta-v-enhanced	phase4_steam_more_like_this	endless	co-op is GTA Online (endless); story mode single-player
-2026-05-29T00:00:00Z	gtfo	GTFO	misc	blocklisted_endless	on hardcoded blocklist
+2026-05-29T00:00:00Z	gtfo	GTFO	steam_more_like_this	blocklisted_endless	app 493520 blocklist [seen 2x]
 2026-05-29T00:00:00Z	gunboat-god	Gunboat God	phase4_steam_more_like_this	low_fit	Niche 2024 shmup, only 63 reviews barely passes threshold; insufficient corroboration of finite ending
 2026-05-29T00:00:00Z	gunlord-x	not_found	Steam search returns no match under this name	unknown	
 2026-05-29T00:00:00Z	guns-gore-cannoli-2	guns-gore-cannoli-2	appdetails categories list no Co-op/Online Co-op/Remote Play Together (only generic Multi-player); co-op unconfirmable v	no_coop	
@@ -225,7 +225,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	how-asian-parents-went-to-school	How Asian Parents Went to School	phase4_steam_more_like_this	low_fit	obscure VN, unverified co-op
 2026-05-29T00:00:00Z	how-to-fish	How to Fish	phase4_steam_more_like_this	unknown	
 2026-05-29T00:00:00Z	how-to-survive-2	how-to-survive-2	open survival-sandbox base game, no explicit named win-condition, 69% mixed, doubt->skip;reeval_skipped	endless_misclassified	survival sandbox base-building, no defined story ending [seen 5x; reasons: endless_misclassified,low_fit,unclear_ending]
-2026-05-29T00:00:00Z	hozy	Hozy	phase4_steam_more_like_this	no_coop	Solo categories only per appdetails
+2026-05-29T00:00:00Z	hozy	Hozy	steam_more_like_this	no_coop	app 3326230 no co-op categories [seen 2x]
 2026-05-29T00:00:00Z	human-fall-flat-2	Human Fall Flat 2	phase4_steam_more_like_this	unknown	[seen 3x; reasons: unknown]
 2026-05-29T00:00:00Z	hunted-the-demons-forge	hunted-the-demons-forge	Steam version categories list no co-op/multiplayer (online co-op removed post-GFWL)	no_coop	
 2026-05-29T00:00:00Z	hydroneer	Hydroneer	phase4_steam_more_like_this;steam_more_like_this	endless	mining_sandbox_no_campaign_or_ending_set_your_own_goals [seen 2x; reasons: endless,endless_misclassified]
@@ -241,7 +241,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	invincible-vs	invincible-vs	phase4_steam_more_like_this	no_coop	PvP fighting game [seen 3x; reasons: no_coop,pvp_primary]
 2026-05-29T00:00:00Z	ion-fury	ion-fury	Steam appdetails single-player only (base game, no co-op)	no_coop	
 2026-05-29T00:00:00Z	is-this-seat-taken	Is This Seat Taken	phase4_steam_more_like_this	no_coop	Single-player puzzle
-2026-05-29T00:00:00Z	it-s-only-money	It's Only Money	reeval_skipped	low_fit	open-world co-op sandbox; overarching goal exists but mostly freeform/endless [seen 2x; reasons: low_fit]
+2026-05-29T00:00:00Z	it-s-only-money	It's Only Money	phase4_websearch_niche_queries	unclear_ending	app 1415220 open-world Saints-Row-like; 0 'ending/credits/finished' hits in 100 reviews; descriptions emphasize sandbox grind 'boring fast'; no HLTB Main Story verifiable [seen 3x]
 2026-05-29T00:00:00Z	it-takes-two-friend-s-pass	It Takes Two Friend's Pass	phase4_steam_more_like_this	duplicate	marketing variant of It Takes Two (already in catalog)
 2026-05-29T00:00:00Z	it-takes-two-friends-pass	It Takes Two Friend's Pass	phase4_steam_more_like_this	duplicate	Friend Pass companion app; main it-takes-two already in data.js with friend-pass oneCopy
 2026-05-29T00:00:00Z	its-only-money	It's Only Money	Early Access, sandbox-primary with only a light campaign; ending not confirmable to 100% per owner rule;phase4_backloggd	unclear_ending	open-world crime sandbox sim (Saints Row-like); "playground"/become-the-1% framing, no HLTB Main Story, no review ending confirmation - when-in-doubt skip [seen 5x; reasons: early_access,low_fit,unclear_ending]
@@ -252,7 +252,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	just-cause-4-reloaded	Just Cause 4 Reloaded	phase4_steam_more_like_this	no_coop	Single-player only per Steam categories
 2026-05-29T00:00:00Z	just-shapes-beats-more-like-this-batch	Just Shapes & Beats More-Like-This batch	phase4_steam_more_like_this	unknown	
 2026-05-29T00:00:00Z	killer-inn	KILLER INN	phase4_steam_more_like_this	pvp_primary	Social deduction multiplayer (Among Us-like); round-based PvP, no campaign/ending
-2026-05-29T00:00:00Z	killing-floor-2	Killing Floor 2	Killing Floor series on hardcoded blocklist (CLAUDE.md §6) — wave-based endless;misc	blocklisted_endless	on hardcoded blocklist [seen 2x; reasons: blocklisted_endless]
+2026-05-29T00:00:00Z	killing-floor-2	Killing Floor 2	steam_more_like_this	blocklisted_endless	app 232090 blocklist [seen 3x]
 2026-05-29T00:00:00Z	killing-floor-3	Killing Floor 3	websearch_drill	blocklisted_endless	wave-based KF lineage, no campaign ending
 2026-05-29T00:00:00Z	kletka	KLETKA	phase4_steam_more_like_this	endless	Roguelike descent into endless "Gigastructure"; no campaign, no final boss, escape-extraction loop
 2026-05-29T00:00:00Z	kovox-pitch	Kovox Pitch	phase4_steam_more_like_this	no_coop	Single-player only per Steam categories
@@ -296,7 +296,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	mouse-pi-for-hire	MOUSE: P.I. For Hire	phase4_steam_more_like_this	no_coop	single-player [seen 2x; reasons: no_coop]
 2026-05-29T00:00:00Z	muse-dash	muse-dash	phase4_steam_more_like_this	no_coop	single-player rhythm game
 2026-05-29T00:00:00Z	mycopunk	Mycopunk	phase4_steam_more_like_this;phase4_websearch_niche_queries;websearch_niche	endless	mission-based looter shooter with events/limited-time content, no defined ending [seen 3x; reasons: endless,low_fit]
-2026-05-29T00:00:00Z	myvoicezoo	MyVoiceZoo	phase4_steam_more_like_this;steam_more_like_this	no_coop	Solo voice-training app, not a co-op game [seen 2x; reasons: no_coop]
+2026-05-29T00:00:00Z	myvoicezoo	MyVoiceZoo	steam_more_like_this	no_coop	app 4015530 no co-op [seen 3x]
 2026-05-29T00:00:00Z	necesse	necesse	phase4_steam_more_like_this;steam_more_like_this	endless	Terraria-like sandbox, no Moon Lord equivalent / no named win-condition (classification.md explicit skip) [seen 2x; reasons: endless]
 2026-05-29T00:00:00Z	never-be-alone	Never Be Alone	phase4_steam_more_like_this	unknown	
 2026-05-29T00:00:00Z	newt-and-tess	newt-and-tess	websearch_niche_queries	not_on_steam	Steam search returns no match
@@ -315,8 +315,8 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	overkill-the-walking-dead	Overkill's The Walking Dead	wikipedia_coop_lists	unknown	
 2026-05-29T00:00:00Z	paddle-paddle-paddle	Paddle Paddle Paddle	phase4_websearch_niche_queries	unknown	
 2026-05-29T00:00:00Z	painkiller-black-edition	painkiller-black-edition	classic Painkiller is single-player only (no Co-op category in appdetails)	no_coop	
-2026-05-29T00:00:00Z	palia	Palia	phase4_steam_more_like_this	endless_misclassified	MMO life sim, live-service, no defined ending [seen 2x; reasons: endless_misclassified,low_fit]
-2026-05-29T00:00:00Z	palworld	Palworld	phase4_steam_more_like_this;steam_more_like_this	blocklisted_endless	Palworld on hardcoded blocklist (live service, open-ended) [seen 4x; reasons: blocklisted_endless]
+2026-05-29T00:00:00Z	palia	Palia	steam_more_like_this	blocklisted_endless	app 2707930 cozy MMO-style live service, no ending [seen 3x]
+2026-05-29T00:00:00Z	palworld	Palworld	steam_more_like_this	blocklisted_endless	app 1623730 blocklist [seen 5x]
 2026-05-29T00:00:00Z	paranoia-place	PARANOIA PLACE	websearch_2024_2025	endless	sessional rounds with random items, no narrative ending
 2026-05-29T00:00:00Z	party-animals	Party Animals	phase4_steam_more_like_this	endless	PvP party brawler, no ending [seen 2x; reasons: endless,pvp_primary]
 2026-05-29T00:00:00Z	path-of-exile-2	Path of Exile 2	websearch_drill	unknown	
@@ -380,12 +380,12 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	sker-ritual	sker-ritual	wave/horde round-based survival shooter (CoD-Zombies-style); core loop is endless waves, violates no-endless rule	endless	
 2026-05-29T00:00:00Z	skul-the-hero-slayer	skul-the-hero-slayer	phase4_steam_more_like_this	no_coop	single-player roguelite, no co-op category
 2026-05-29T00:00:00Z	skull-and-bones	Skull and Bones	websearch_drill	endless	Ubisoft live-service open-world pirate, no narrative conclusion
-2026-05-29T00:00:00Z	sky-children-of-the-light	Sky: Children of the Light	phase4_steam_more_like_this;websearch_drill	endless_misclassified	Free-to-play social MMO, ongoing seasonal content, no ending [seen 3x; reasons: endless_misclassified,low_fit,unknown]
+2026-05-29T00:00:00Z	sky-children-of-the-light	Sky: Children of the Light	steam_more_like_this	blocklisted_endless	app 2325290 MMO genre, no ending [seen 4x]
 2026-05-29T00:00:00Z	slap-city	Slap City	steamdb_coop_campaign	pvp_primary	smash-clone with primarily PvP content, limited co-op
-2026-05-29T00:00:00Z	sledding-game	Sledding Game	phase4_steam_more_like_this;steam_more_like_this	endless_misclassified	Snowsports hangout w/ proximity chat; social sandbox, no defined ending [seen 2x; reasons: endless_misclassified]
+2026-05-29T00:00:00Z	sledding-game	Sledding Game	steam_more_like_this	endless_misclassified	app 3438850 unreleased Apr 2026 [seen 3x]
 2026-05-29T00:00:00Z	slime-rancher	slime-rancher	phase4_steam_more_like_this	no_coop	single-player only
 2026-05-29T00:00:00Z	sniper-ghost-warrior-contracts-2	Sniper Ghost Warrior Contracts 2	misc;phase4_steam_more_like_this;steam_more_like_this	no_coop	Single-player only [seen 3x; reasons: no_coop]
-2026-05-29T00:00:00Z	solarpunk	Solarpunk	phase4_steam_more_like_this	low_fit	Early Access survival/airship sandbox, no defined ending [seen 2x; reasons: low_fit]
+2026-05-29T00:00:00Z	solarpunk	Solarpunk	steam_more_like_this	not_enough_reviews	app 1805110 unreleased Jun 2026 [seen 3x]
 2026-05-29T00:00:00Z	solasta-ii	Solasta II	wasdland;youtube_curator_playlists	no_coop	Single-player only, no Multi-player category [seen 2x; reasons: no_coop]
 2026-05-29T00:00:00Z	sonic-all-stars-racing-transformed	sonic-all-stars-racing-transformed	kart racer; no Racing mechanic; World Tour is single-player, MP is competitive PvP	taxonomy_gap	
 2026-05-29T00:00:00Z	sonic-racing-crossworlds	Sonic Racing: CrossWorlds	phase4_youtube_curator_playlists;wasdland;websearch_drill	no_coop	PvP-only racing [seen 3x; reasons: no_coop,pvp_primary]
@@ -426,9 +426,9 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	sword-game	Sword Game	phase4_steam_more_like_this	low_fit	tiny no-context indie; insufficient signal for a trustworthy add
 2026-05-29T00:00:00Z	sync-or-sink	sync-or-sink	phase4_youtube_curator_playlists	low_fit	Early Access + F2P; foundational 10-20min single mission, full ending not yet implemented [seen 2x; reasons: low_fit]
 2026-05-29T00:00:00Z	synthetik-2	synthetik-2	Early Access roguelite with halted development; defined final-boss endgame not confirmed (doubt->skip);reeval_skipped	unclear_ending	[seen 4x; reasons: early_access,unclear_ending]
-2026-05-29T00:00:00Z	tabletop-simulator	Tabletop Simulator	phase4_steam_more_like_this;steam_more_like_this	endless_misclassified	Sandbox / mod platform for board games — no ending [seen 3x; reasons: endless_misclassified,low_fit]
+2026-05-29T00:00:00Z	tabletop-simulator	Tabletop Simulator	steam_more_like_this	endless	app 286160 sandbox no ending [seen 4x]
 2026-05-29T00:00:00Z	tactical-breach-wizards	Tactical Breach Wizards	phase4_steam_more_like_this	no_coop	Single-player turn-based tactics
-2026-05-29T00:00:00Z	tales-of-graces-f-remastered	tales-of-graces-f-remastered	phase4_websearch_niche_queries;websearch_niche_queries	no_coop	Single-player only (remaster dropped battle co-op) [seen 4x; reasons: low_fit,no_coop]
+2026-05-29T00:00:00Z	tales-of-graces-f-remastered	Tales of Graces f Remastered	phase4_websearch_niche_queries	no_coop	app 2530980 Single-player only per Steam categories (no co-op or Remote Play category) [seen 5x]
 2026-05-29T00:00:00Z	tales-of-xillia-remastered	tales-of-xillia-remastered	phase4_websearch_niche_queries;websearch_niche_queries	low_fit	Remote Play Together blocked; local-only co-op fails criteria [seen 3x; reasons: low_fit,unknown]
 2026-05-29T00:00:00Z	tangy-td	tangy-td	phase4_steam_more_like_this	no_coop	single-player tower defense, no co-op
 2026-05-29T00:00:00Z	team-sonic-racing	Team Sonic Racing	kart racer; no Racing mechanic tag; co-op also weak (Steam lists only PvP/split-screen);phase4_websearch_niche_queries;w	no_coop	Steam categories list only PvP modes; no Co-op [seen 8x; reasons: low_fit,no_coop,pvp_primary,taxonomy_gap]
@@ -463,7 +463,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	tower-of-guns	tower-of-guns	Steam appdetails lists no co-op category	no_coop	
 2026-05-29T00:00:00Z	trash-goblin	Trash Goblin	websearch_drill	endless	"endless good vibes" cozy shopkeeping — explicitly no defined endpoint
 2026-05-29T00:00:00Z	trepang2	trepang2	Steam appdetails Single-player only (no co-op category)	no_coop	
-2026-05-29T00:00:00Z	trials-of-mana	Trials of Mana	phase4_websearch_niche_queries;websearch_niche;websearch_niche_queries	no_coop	Single-player only (remake dropped co-op) [seen 6x; reasons: no_coop]
+2026-05-29T00:00:00Z	trials-of-mana	Trials of Mana	phase4_websearch_niche_queries	no_coop	app 924980 Single-player only per Steam categories (2020 remake) [seen 7x]
 2026-05-29T00:00:00Z	trinity-fusion	Trinity Fusion	Steam appdetails lists Single-player only (no Co-op category);Steam appdetails lists Single-player only; roguelite metro	no_coop	steam categories show single-player only [seen 3x; reasons: no_coop]
 2026-05-29T00:00:00Z	twincop	TwinCop	reeval_skipped;websearch_drill	not_enough_reviews	33 reviews below 50 [seen 3x; reasons: not_enough_reviews]
 2026-05-29T00:00:00Z	ultrakill	ultrakill	phase4_steam_more_like_this	no_coop	single-player [seen 2x; reasons: no_coop]
@@ -479,7 +479,7 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	warstone-td	Warstone TD	phase4_websearch_niche_queries	no_coop	Single-player only per Steam categories
 2026-05-29T00:00:00Z	way-of-the-hunter-2	way-of-the-hunter-2	phase4_steam_more_like_this	no_coop	Steam categories single-player only; hunting sim sequel [seen 2x; reasons: low_fit,no_coop]
 2026-05-29T00:00:00Z	we-gotta-go	we-gotta-go	phase4_steam_more_like_this;steam_more_like_this	low_fit	chaotic co-op party, no confirmed ending [seen 2x; reasons: low_fit]
-2026-05-29T00:00:00Z	webfishing	WEBFISHING	phase4_steam_more_like_this;steamdb_coop_campaign	blocklisted_endless	Hardcoded blocklist — fishing hangout MMO, no goal [seen 3x; reasons: blocklisted_endless,endless]
+2026-05-29T00:00:00Z	webfishing	WEBFISHING	steam_more_like_this	blocklisted_endless	app 3146520 blocklist hangout MMO [seen 4x]
 2026-05-29T00:00:00Z	wh40k-space-marine-anniversary	Warhammer 40,000: Space Marine - Anniversary Edition	phase4_steam_more_like_this	no_coop	Single-player only (2011 game), no co-op category
 2026-05-29T00:00:00Z	where-winds-meet	where-winds-meet	phase4_steam_more_like_this	low_fit	open-world online live-service RPG, no clear ending [seen 2x; reasons: low_fit]
 2026-05-29T00:00:00Z	wild-hearts	Wild Hearts	46.7% positive (<50%), also monster-hunt mission grind;websearch_drill	low_quality	46.7%% positive — below 50%% threshold [seen 2x; reasons: low_quality]
@@ -494,3 +494,9 @@ timestamp	id	title	source	reason	notes
 2026-05-29T00:00:00Z	ys-x-nordics	Ys X: Nordics	phase4_websearch_niche_queries	no_coop	Single-player only per Steam categories
 2026-05-29T00:00:00Z	zero-caliber-2-remastered	Zero Caliber 2 Remastered	phase4_websearch_niche_queries	unknown	
 2026-05-29T00:00:00Z	ziggurat-2	ziggurat-2	Steam appdetails lists no co-op category	no_coop	
+2026-05-29T00:00:00Z	garry-s-mod	Garry's Mod	steam_more_like_this	endless	app 4000 sandbox no ending
+2026-05-29T00:00:00Z	hunt-showdown-1896	Hunt: Showdown 1896	steam_more_like_this	blocklisted_endless	app 594650 blocklist extraction PvPvE
+2026-05-29T00:00:00Z	resident-evil-7-biohazard	Resident Evil 7 Biohazard	steam_more_like_this	no_coop	app 418370 single-player only
+2026-05-29T00:00:00Z	bodycam	Bodycam	steam_more_like_this	no_coop	app 2406770 PvP only
+2026-05-29T00:00:00Z	online-404	Online: 404	steam_more_like_this	not_enough_reviews	app 4094350 unreleased Jul 2026
+2026-05-29T00:00:00Z	cave-story	Cave Story+	phase4_websearch_niche_queries	no_coop	app 200900 Steam categories list only Single-player; co-op patch reported by PC Gamer not yet reflected in Steam metadata (no Co-op/Remote Play category)
