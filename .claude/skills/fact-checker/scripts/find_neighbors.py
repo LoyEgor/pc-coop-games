@@ -85,6 +85,17 @@ def parse_catalog():
     return out
 
 
+# Every skip reason the pipeline emits — used to locate the reason column robustly
+# regardless of which skipped.tsv schema a row is in (legacy 5-col put reason at
+# index 2; canonical 6-col from reconcile_state.py puts it at index 4).
+ALL_REASONS = JUDGMENT_REASONS | {
+    "no_coop", "unclear_coop", "pvp_primary", "not_on_steam", "invalid_app_id",
+    "online_broken", "not_enough_reviews", "requires_base_game", "early_access",
+    "duplicate", "taxonomy_gap", "low_fit", "previously_removed_endless",
+    "live_service", "live_service_borderline", "unknown",
+}
+
+
 def parse_skipped():
     if not SKIPPED_TSV.exists():
         return []
@@ -93,9 +104,24 @@ def parse_skipped():
         if i == 0 or not line.strip():
             continue
         parts = line.split("\t")
-        if len(parts) >= 2:
+        if len(parts) < 3:
+            continue
+        # Locate the reason column by content (a known reason token), then infer
+        # the title from the layout: canonical 6-col is ts,id,title,source,reason,
+        # notes (reason at >=4, title at 2); legacy 5-col is ts,name,reason,...
+        # (reason at 2, name at 1).
+        ridx = next((j for j in range(2, len(parts)) if parts[j].strip() in ALL_REASONS), None)
+        if ridx is not None and ridx >= 4:
+            name = parts[2] or parts[1]
+            reason = parts[ridx].strip()
+        elif ridx == 2:
             name = parts[1]
-            reason = parts[2] if len(parts) > 2 else ""
+            reason = parts[2].strip()
+        else:
+            # no recognizable reason — assume canonical title position if present
+            name = parts[2] if len(parts) > 2 else parts[1]
+            reason = ""
+        if name:
             out.append({"title": name, "reason": reason, "fkey": franchise_key(name)})
     return out
 

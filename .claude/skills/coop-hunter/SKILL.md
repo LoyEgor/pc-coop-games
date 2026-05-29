@@ -19,6 +19,7 @@ You are systematically expanding `data.js` with new co-op games that fit the cri
 6. **Idempotent.** Before adding a candidate, check `data.js` for the Steam app id. If already present → skip.
 7. **Drill mode (never give up on the first failure).** If a WebSearch returns no clean match, run the next alternative query — §8 lists six. If a source page returns 403/404, write a substitute URL or use a different domain. If a YouTube video can't be found on the first try, exhaust Steam page scraping → direct YouTube search page → Reddit links → other phrasings before refusing. The user explicitly authorized out-of-the-box behavior: "пусть пытается до последнего и выходя out of the box, ища альтернативы". Treat "I couldn't find X" as a hypothesis to disprove, not an exit condition.
 8. **No broken media in `data.js`.** The table now opens a YouTube iframe in a modal — a `youtubeSearch(...)` placeholder cannot be embedded. `append_entry.py` exits 4 if you try to add an entry without a real 11-character `video_id`. Same for images: every row must have a working `imageUrl` (HTTP 200). If you can't satisfy both, skip the candidate; do not insert a half-broken row.
+9. **Log every skip through `scripts/log_skip.py` — never raw-append to `skipped.tsv`.** Call `python3 scripts/log_skip.py "<title>" <reason> <source> "<notes>"`. The helper enforces three invariants that a raw append breaks: (a) ONE row per game (upsert — it raises to the more decisive reason and bumps a seen-counter instead of writing a duplicate); (b) the canonical 6-column schema `timestamp,id,title,source,reason,notes`; (c) a catalog gate — if the game is already in `data.js` it exits **3** and writes nothing (a game in the catalog is not a skip candidate). If you get exit 3 on a HARD-NEGATIVE reason (endless / unclear_ending / no_coop / online_broken / low_quality), do NOT silently move on — the game is BOTH in the catalog and looks unfit, which is a contradiction; note it so the fact-checker reviews it (it owns the `reconcile-report.tsv` queue). This rule exists because `skipped.tsv` had drifted into two schemas, 177 duplicate games, and 42 catalog/skip collisions; `reconcile_state.py` cleaned it and `log_skip.py` keeps it clean.
 
 ## Each invocation — single cycle
 
@@ -31,7 +32,7 @@ When called:
 5. For each candidate in batch (sequentially):
    - Run the "Per-candidate procedure" below.
    - On success → append entry to `data.js`, update `progress.json`, append to `state/added.tsv`.
-   - On any skip → append to `state/skipped.tsv` with the reason, update progress, continue.
+   - On any skip → `python3 scripts/log_skip.py "<title>" <reason> <source> "<notes>"` (NOT a raw append — see Hard rule 9), update progress, continue. If it exits 3 the game is already in the catalog: don't log it as skipped; if the reason was hard-negative, flag it for the fact-checker instead.
    - **Do NOT push between adds.** See "Push policy" — pushing happens once, in the Final pass, at the very end.
 6. After the batch:
    - If `progress.added_count` crossed a multiple of 50 since last validation → run "Validation pass".

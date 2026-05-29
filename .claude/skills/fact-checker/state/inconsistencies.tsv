@@ -1,10 +1,30 @@
 timestamp	kind	a	b	detail
-2026-05-28T21:32:49Z	franchise_split	catastronauts	catastronauts (unclear_ending)	franchise 'catastronauts': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T21:32:49Z	franchise_split	painkiller-2025	painkiller-2025 (unclear_ending)	franchise 'painkiller': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T21:32:49Z	franchise_split	call-of-duty-black-ops-3	Call of Duty Black Ops 7 (low_quality)	franchise 'call of duty black ops': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T21:32:49Z	franchise_split	earthfall	earthfall (low_quality), earthfall (endless)	franchise 'earthfall': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T21:32:49Z	franchise_split	wizard-with-a-gun	wizard-with-a-gun (unclear_ending), wizard-with-a-gun (unclear_ending)	franchise 'wizard with a gun': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T21:32:49Z	franchise_split	drake-hollow	drake-hollow (unclear_ending)	franchise 'drake hollow': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-28T21:32:49Z	franchise_ending	sniper-elite-5	sniper-elite-4, sniper-elite-3	franchise 'sniper elite' has mixed endingType: sniper-elite-5=story; sniper-elite-4=levels; sniper-elite-3=levels
-2026-05-28T21:32:49Z	franchise_ending	for-the-king	for-the-king-2	franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
-2026-05-28T21:32:49Z	franchise_ending	hammerwatch-2	hammerwatch	franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels
+2026-05-29T19:48:17Z	franchise_split	endless-dungeon	ENDLESS Dungeon (unclear_ending)	franchise 'endless dungeon': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	sun-haven	Sun Haven (unclear_ending)	franchise 'sun haven': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	catastronauts	catastronauts (unclear_ending)	franchise 'catastronauts': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	toxic-commando	John Carpenter's Toxic Commando (unclear_ending)	franchise 'john carpenter s toxic commando': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	painkiller-2025	painkiller-2025 (unclear_ending)	franchise 'painkiller': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	call-of-duty-black-ops-3	Call of Duty Black Ops 7 (low_quality), Call of Duty: Black Ops 7 (low_quality)	franchise 'call of duty black ops': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	earthfall	earthfall (low_quality), earthfall (endless)	franchise 'earthfall': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	wizard-with-a-gun	wizard-with-a-gun (unclear_ending), wizard-with-a-gun (unclear_ending)	franchise 'wizard with a gun': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	drake-hollow	drake-hollow (unclear_ending)	franchise 'drake hollow': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	solo-leveling-arise-overdrive	Solo Leveling: ARISE OVERDRIVE (endless_misclassified)	franchise 'solo leveling arise overdrive': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	rotwood	Rotwood (unclear_ending)	franchise 'rotwood': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	necromunda-underhive-wars	necromunda-underhive-wars (unclear_ending)	franchise 'necromunda underhive wars': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	trailmakers	trailmakers (unclear_ending)	franchise 'trailmakers': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	pacify	pacify (unclear_ending), Pacify (endless_misclassified)	franchise 'pacify': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	scrapnaut	scrapnaut (unclear_ending)	franchise 'scrapnaut': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	bloody-trapland	Bloody Trapland (unclear_ending)	franchise 'bloody trapland': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	soulmask	Soulmask (endless_misclassified)	franchise 'soulmask': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	voidtrain	voidtrain (unclear_ending)	franchise 'voidtrain': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	alien-breed-impact	alien-breed-impact (ambiguous)	franchise 'alien breed impact': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	void-crew	void-crew (unclear_ending)	franchise 'void crew': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	orcs-must-die-deathtrap	orcs-must-die-deathtrap (unclear_ending)	franchise 'orcs must die deathtrap': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	killsquad	killsquad (unclear_ending)	franchise 'killsquad': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	luma-island	Luma Island (unclear_ending)	franchise 'luma island': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	tetris-effect-connected	tetris-effect-connected (unclear_ending)	franchise 'tetris effect connected': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_split	pratfall	pratfall (unclear_ending)	franchise 'pratfall': in catalog but a sibling was skipped on a judgment call — verify both
+2026-05-29T19:48:17Z	franchise_ending	sniper-elite-5	sniper-elite-4, sniper-elite-3	franchise 'sniper elite' has mixed endingType: sniper-elite-5=story; sniper-elite-4=levels; sniper-elite-3=levels
+2026-05-29T19:48:17Z	franchise_ending	portal-2	portal-reloaded	franchise 'portal' has mixed endingType: portal-2=story; portal-reloaded=levels
+2026-05-29T19:48:17Z	franchise_ending	for-the-king	for-the-king-2	franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
+2026-05-29T19:48:17Z	franchise_ending	hammerwatch-2	hammerwatch	franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels

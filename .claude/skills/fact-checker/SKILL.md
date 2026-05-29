@@ -289,6 +289,41 @@ review it every run. It is the answer to "no single result can be trusted": the
 system surfaces its own contradictions into one short queue instead of asking you
 to re-check all 400+ entries.
 
+## Reconcile-report queue (catalog↔skip contradictions — HIGH PRIORITY)
+
+`coop-hunter/scripts/reconcile_state.py` writes
+`coop-hunter/state/reconcile-report.tsv`: games that are **in `data.js` but were
+also skipped with a hard-negative reason** (`endless`, `endless_misclassified`,
+`unclear_ending`, `no_coop`, `online_broken`, `low_quality`, `pvp_primary`,
+`ambiguous`). Each line is a direct contradiction — the catalog says "keep", the
+skip log says "this isn't a fit". One side is wrong, and the dangerous case is an
+endless / no-coop game that slipped into the catalog.
+
+**At the START of every fact-check run, before the entry loop, drain this queue.**
+For each id in `reconcile-report.tsv`:
+
+1. Re-verify the disputed dimension with fresh sources:
+   - reason `endless*` / `unclear_ending` → run the §9 ending web search (does it
+     have a real ending / final boss / credits / named win-condition?).
+   - reason `no_coop` / `unclear_coop` → re-check Steam `categories[]` for a real
+     Online Co-op / Remote Play Together entry (§6).
+   - reason `online_broken` → check whether online actually works today (§ old-games).
+   - reason `low_quality` → re-pull %positive (§3) and compare to the 50% bar.
+2. Decide:
+   - **Catalog is wrong** (it really is endless / no-coop / dead-online / sub-50%):
+     remove it. Deterministic match (blocklist / MMO-BR tags / ≥3 endless review
+     hits) → `../coop-hunter/scripts/remove_entry.py <id>`. Judgment call →
+     `state/proposed-removals.tsv` with the evidence.
+   - **Skip was wrong/stale** (the game does fit — it has an ending, real co-op,
+     etc.): the catalog entry stays; the skip row is obsolete. The reconcile
+     already dropped it from `skipped.tsv`, so just note the resolution in
+     `state/discrepancies.tsv` with reason `reconcile_resolved_keep`.
+3. Either way the contradiction is now resolved; the next reconcile run won't
+   re-list it (it's no longer both in catalog AND skipped, or it got removed).
+
+This queue is the *first* thing to clear because it is the highest-signal source
+of "an endless game is live on the site" — exactly the owner's hardest constraint.
+
 ## Stopping condition
 
 `done = true` only when ALL of:
