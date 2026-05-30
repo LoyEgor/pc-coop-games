@@ -863,6 +863,13 @@ tbody tr:hover .youtube-link .yt-icon-play {
   box-shadow: var(--shadow-hover);
 }
 
+/* The option list (.checkbox-list) gets a JS-computed max-height that reserves
+   room for the Clear button below it, so the button is always visible and the
+   popover grows with content up to the viewport. */
+.filter-popover > .button {
+  margin-top: 10px;
+}
+
 .popover-title {
   margin-bottom: 10px;
   font-weight: 700;
@@ -897,8 +904,7 @@ tbody tr:hover .youtube-link .yt-icon-play {
 .checkbox-list {
   display: grid;
   gap: 6px;
-  max-height: 280px;
-  overflow: auto;
+  overflow: auto;       /* max-height set inline by openFilter (viewport-aware) */
   padding-right: 4px;
 }
 

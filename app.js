@@ -521,6 +521,29 @@ function openFilter(key, button) {
   els.popover.style.left = `${Math.min(window.innerWidth - width - 12, Math.max(12, rect.right - width))}px`;
   els.popover.style.top = `${rect.bottom + 8}px`;
   bindFilterControls(key, config);
+  capFilterHeight();
+}
+
+// Keep the popover within the viewport: it grows with content, but if there's a
+// scrollable option list, cap ITS height to the space from its top down to the
+// screen bottom MINUS room for the Clear button below it (reserve) — so the
+// popover grows yet the button stays on screen and the list scrolls when capped.
+// Range/text filters (no list) cap the popover itself. MUST be re-run whenever
+// the popover markup is rebuilt (the genres popover re-renders on every toggle,
+// which would otherwise drop this inline max-height and let it spill off-screen).
+function capFilterHeight() {
+  const vGap = 12;
+  const list = els.popover.querySelector(".checkbox-list");
+  if (list) {
+    const btn = els.popover.querySelector(".button");
+    const reserve = (btn ? btn.offsetHeight + 10 : 0) + 14; // button + its margin-top + popover bottom padding
+    const avail = window.innerHeight - list.getBoundingClientRect().top - reserve - vGap;
+    list.style.maxHeight = `${Math.max(120, avail)}px`;
+  } else {
+    const top = els.popover.getBoundingClientRect().top;
+    els.popover.style.maxHeight = `${Math.max(160, window.innerHeight - top - vGap)}px`;
+    els.popover.style.overflowY = "auto";
+  }
 }
 
 function renderFilterMarkup(key, config) {
@@ -643,6 +666,7 @@ function bindFilterControls(key, config) {
       if (key === "genres" && input.dataset.setFilter) {
         els.popover.innerHTML = renderFilterMarkup(key, config);
         bindFilterControls(key, config);
+        capFilterHeight();
       }
     });
   });
