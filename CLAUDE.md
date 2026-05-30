@@ -14,36 +14,28 @@ A **personal, hand-curated catalog of PC co-op games** that the owner and his pa
 
 **The catalog is opinionated.** Every entry was added by the owner (or by the `coop-hunter` skill following his rules). The catalog is NOT meant to be exhaustive — it is meant to be **trustworthy**: every game in it must satisfy strict criteria.
 
-## 2. The single most important rule: NO ENDLESS GAMES
+## 2. The single most important rule: a co-op run must FINISH — and how strongly
 
-The owner's hardest constraint: **a game must have an ending**. There has to be a clear, identifiable moment where the player can say "I have finished this game." Endless / sessional / live-service games are **explicitly excluded**, even if they're popular co-op games.
+The owner's hardest constraint is still that a co-op playthrough must have an end you can reach — not endless contracts, quotas, or repeatable matches forever. But "has an ending" is **not binary**: it has three strengths, and that decides both whether a game is added and whether its verdict carries a 🟠 marker. The full machine-readable version lives in `.claude/skills/shared/taxonomy.json` → `finish_strength`. **Never print the words "hard/soft/no finish" on the site** — they are reasoning labels only; what ships is the entry (optionally with a leading 🟠 in the verdict) or nothing.
 
-### A game has an ending if:
-- It has a story campaign with credits / cutscene finale (BG3, Halo, A Way Out).
-- It has a set of levels or missions with a defined last one (Castle Crashers, Streets of Rage 4, Cuphead boss rush).
-- It is a roguelite with a final boss that "wins" the run (Risk of Rain 2 / Mithrix, Hades / Hades, Spelunky / Hundun).
-- It is a survival / sandbox **with an explicit win-condition or endgame boss** (Terraria / Moon Lord, Valheim / Yagluth, Satisfactory / Project Assembly Phase 5, Stardew Valley / Grandpa's evaluation, Subnautica / launch the rocket).
-- It is a climbing / traversal / escape game with a defined endpoint (PEAK / reach the top, Operation Tango / complete the mission).
-- It has a Quest Mode or Story Mode that ends, even if the rest of the game is PvP (TowerFall Ascension).
+### Gate A — the co-op gate (check FIRST)
+- **Co-op must drive the PROGRESSION, not just the fights.** If two players co-op only in combat while one player owns the story / world / quest progression (many JRPGs — Tales of Berseria, Trials of Mana), that story-time is NOT co-op time → reject.
+- **Count finite CO-OP hours, not the whole game.** Forza Horizon is 80-120h overall, but only the co-op progression up to its milestone counts. Drive Beyond Horizons is endless, but its Scenario/Story route is ~1-2h — count only that.
+- **The co-op finish content must be > 1 hour.** If the only co-op goal is reached in ≤1h, or never, do not add.
 
-### A game does NOT have an ending if:
-- It is **mission-grind based** with no narrative arc, no final boss, just endless missions of escalating difficulty (Deep Rock Galactic, Helldivers 2, Earth Defense Force without acts).
-- It is **wave-based** with endless waves (Killing Floor, GTFO, Bloons TD 6, Crab Champions).
-- It is **live-service** with seasons, battle passes, ongoing content (Destiny 2, Diablo 4 seasons — though D4's main campaign IS finite, see nuance below).
-- It is **sessional** with quotas / scares / contracts (Lethal Company, Phasmophobia, Content Warning, R.E.P.O.).
-- It is a **sandbox** with no defined "you won" state (Minecraft creative, Don't Starve Together, Project Zomboid).
-- It is **MMORPG** with progression but no end (WoW, Path of Exile, New World).
-- It is **PvP-only** (Counter-Strike, Valorant, Dota, fighting games, Rocket League).
+### Gate B — finish strength
+- **Hard finish → ADD, no marker.** A real finish *event*: story credits, a defined last level/mission, a roguelite final boss that wins the run (Mithrix, Hades), a survival win-condition (Moon Lord, Yagluth, Project Assembly), a summit / escape / route endpoint (PEAK reach the top, Operation Tango complete the mission). After it the main branch is closed.
+- **Soft finish → ADD, but PREFIX the verdict with 🟠 and say briefly why.** A finish *exists* but it is an accumulated status / checklist / score-threshold *inside the same loop*, not a discrete final event, and the loop continues afterward. Examples: Forza Horizon 5 (Hall of Fame = a career milestone, not a final mission), Soulmask (Central Core boss gated behind a survival-endgame grind), Icarus (Operations / Great Hunts inside a repeatable cycle).
+- **No finish → EXCLUDE.** Only endless contracts/quotas (Lethal Company, Phasmophobia, R.E.P.O.), endless mission-grind (Deep Rock Galactic, Helldivers 2), endless waves (Killing Floor, GTFO, Bloons TD 6, Crab Champions), live-service seasons (Destiny 2), sandboxes with no win-state (Minecraft creative, Don't Starve Together, Project Zomboid), MMORPGs (WoW, Path of Exile, New World), or PvP-only (CS, Valorant, Dota, Rocket League).
 
-### Borderline cases — the owner's rule
+### The owner's borderline rule (unchanged in spirit)
 > "Если у игры нет сюжета, но явно есть чёткий и понятный конец, когда ты до него доходишь, это ощущается как конец — даже если нет заставки, сюжета и т.п. — такая игра подходит. Если же после какого-то босса следует случайно сгенерированный уровень или тот же уровень, и непонятно, как игру закончить — это не подходит."
 
-Translation: a game qualifies if there's a moment where you finish — even without cutscene. It does NOT qualify if you defeat one boss and the game continues with randomly generated levels indefinitely without telling you when to stop.
+A game qualifies if there is a moment where you finish — even without a cutscene. NG+ / replay-after-credits is **fine** (Max Payne, Cyberpunk 2077, Stardew Valley) — the point is there WAS a finish moment.
 
-NG+ / replay-after-credits is **fine**: Max Payne, Cyberpunk 2077, Stardew Valley all continue after their "credits moment". The point is: there WAS a credits moment.
-
-### When in doubt — SKIP
-If you're not 100% sure a game has an ending, **do not add it**. Quality > volume. The owner has explicitly said: «мне принципиально важно, чтобы в материалах не появлялись endless игры. Если такие будут находиться игры, то вычищать их».
+### When in doubt
+- Finish is real but **fuzzy** (status/checklist) → add with 🟠 (soft); don't agonize.
+- Can't find **any** finish, OR co-op is fights-only, OR co-op finish content is ≤1h, OR it's an endless loop → **SKIP**. Quality > volume; «мне принципиально важно, чтобы endless игры не появлялись, а если находятся — вычищать».
 
 ## 3. Other criteria
 

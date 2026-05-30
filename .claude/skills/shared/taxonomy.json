@@ -27,17 +27,15 @@
   },
 
   "tier": {
+    "$rule": "Judge the GAME's budget / production scale / ambition — NOT just who published it. Publisher is a strong signal, not the decision: a mid-tier publisher can ship a AAA-scale game, and a major publisher can ship a small one. When publisher and evident scale disagree, SCALE WINS. (This replaced the old 'single-element decision based on publishers[]' rule, which mis-tagged big-budget games like Dead Island 2 and Saints Row: The Third as AA just because Deep Silver published them.)",
     "AAA": {
-      "definition": "Major publisher (Activision, EA, Ubisoft, Sony, MS, Take-Two, Square Enix, Capcom, Konami, Sega, Bethesda, Bandai Namco, Larian post-2020, Warner Bros, THQ Nordic AAA imprint, 505 AAA, Focus AAA).",
-      "rule": "Single-element decision based on publishers[]."
+      "definition": "Big-budget blockbuster: large team, high production values, heavy marketing. Usually a major publisher (EA, Ubisoft, Sony, MS/Xbox, Take-Two, Square Enix, Capcom, Sega, Bethesda, Bandai Namco, Larian post-2020, Warner Bros) — but classify by the game's evident scale. Dead Island 2 and Saints Row: The Third are AAA despite a mid-tier publisher (Deep Silver/Plaion)."
     },
     "AA": {
-      "definition": "Mid-budget studio. Examples: Frozenbyte, Fatshark, Saber, Supermassive, Arrowhead, Techland, People Can Fly, Larian pre-2020, Coffee Stain, Focus, Plaion, Deep Silver, Devolver (some), Annapurna, tinyBuild.",
-      "rule": "If not AAA and not Indie, default AA. Studio size 20-100 → AA."
+      "definition": "Mid-budget: bigger than a hobbyist indie, smaller than a blockbuster (~20-100 devs). Examples: Frozenbyte, Fatshark, Saber, Supermassive, Arrowhead, Techland, People Can Fly, Coffee Stain, Focus, Annapurna, tinyBuild. Mid-scope games from large studios also land here — e.g. Grounded (Obsidian survival co-op, Xbox-published, but not a blockbuster)."
     },
     "Indie": {
-      "definition": "Self-published or small indie publisher; studio size <20.",
-      "rule": "Default if neither AAA nor AA applies."
+      "definition": "Small / self-published; studio < ~20. Default when neither AAA scale nor AA mid-budget applies."
     }
   },
 
@@ -45,8 +43,8 @@
     "First-person": {
       "definition": "Camera is the player character's eyes. Hands/weapons visible, no body.",
       "steam_tags": ["First-Person", "FPS"],
-      "examples_positive": ["portal-2", "dying-light", "talos-principle", "vermintide-2", "we-were-here-forever"],
-      "examples_negative": ["castle-crashers (2D), hades (isometric), peak (third-person climber)"],
+      "examples_positive": ["portal-2", "dying-light", "talos-principle", "vermintide-2", "we-were-here-forever", "peak"],
+      "examples_negative": ["castle-crashers (2D), hades (isometric)"],
       "decision_tree": [
         "Camera anchored at character eye level? → yes",
         "No visible body, only hands/weapons? → yes"
@@ -55,8 +53,8 @@
     "Third-person": {
       "definition": "Camera follows the player character from behind or over-the-shoulder. Full body visible.",
       "steam_tags": ["Third Person", "Third-Person Shooter"],
-      "examples_positive": ["gears-of-war-reloaded", "space-marine-2", "sniper-elite-5", "peak"],
-      "examples_negative": ["portal-2 (FP), monaco (top-down)"],
+      "examples_positive": ["gears-of-war-reloaded", "space-marine-2", "sniper-elite-5"],
+      "examples_negative": ["portal-2 (FP), monaco (top-down), peak (first-person climber)"],
       "decision_tree": [
         "Camera follows character from behind/shoulder? → yes",
         "Full player body visible? → yes"
@@ -66,7 +64,7 @@
       "definition": "Any fixed camera looking down at the play area — covers both 3/4 isometric/dimetric views (Hades, The Ascent) and strict bird's-eye top-down views (Monaco, Hotline-style twin-stick). Merged tag: we do not split isometric vs top-down because the boundary is fuzzy and the filter intent is the same ('show me games seen from above').",
       "steam_tags": ["Isometric", "Top-Down", "Top Down", "Twin Stick Shooter"],
       "examples_positive": ["the-ascent", "darksiders-genesis", "lara-croft-guardian-light", "hades", "monaco", "magicka-2", "death-squared"],
-      "examples_negative": ["peak (third-person), castle-crashers (side-view), portal-2 (first-person)"],
+      "examples_negative": ["castle-crashers (side-view), portal-2 (first-person)"],
       "decision_tree": [
         "Is the camera fixed ABOVE the play area (3/4 angle through straight-down)? → yes",
         "Player is rendered small, seen from above rather than behind? → yes"
@@ -76,7 +74,7 @@
       "definition": "2D camera viewing the action from the side. Classic platformer / fighter / beat-em-up layout.",
       "steam_tags": ["2D", "2D Platformer", "Side Scroller", "Fighting"],
       "examples_positive": ["castle-crashers", "cuphead", "streets-of-rage-4", "broforce", "trine-5"],
-      "examples_negative": ["portal-2 (3D FP), peak (3D TP)"],
+      "examples_negative": ["portal-2 (3D FP)"],
       "decision_tree": [
         "2D rendering with the camera at the side? → yes",
         "Player runs/jumps horizontally? → typically yes"
@@ -217,13 +215,14 @@
     "arcade-goal": {
       "table_label": "Goal",
       "filter_label": "Goal",
-      "filter_subtitle": "Single-session win in 5–60 min. Restart to retry. No persistent meta-progress.",
+      "filter_subtitle": "A single defined end-goal: reach the summit, complete the route, escape, defuse. Not a level-set, not a narrative campaign.",
       "decision_tree": [
-        "Can you finish a session in 5-60 min? → yes",
-        "Can you restart the run aiming for the SAME exact goal? → yes",
-        "Is there NO persistent unlock/stat track between runs? → yes (otherwise it's roguelite)"
+        "Is there ONE clear finish line — a summit / escape / completed route / final defuse — after which the main co-op goal is done? → yes",
+        "Is it NOT a numbered set of discrete levels/missions? (that is 'levels') → yes",
+        "Is it NOT a narrative campaign with character arcs and cutscenes? (that is 'story') → yes",
+        "Length is IRRELEVANT. A Goal run can be 30 minutes or several hours. The old '5-60 min single session, restart for same goal' threshold was WRONG (every Goal game in the catalog already runs 2-12h) and is removed."
       ],
-      "examples": ["peak", "operation-tango", "keep-talking-and-nobody-explodes", "we-were-here-forever"]
+      "examples": ["peak", "operation-tango", "keep-talking-and-nobody-explodes", "we-were-here-forever", "chained-together"]
     },
     "roguelite": {
       "table_label": "Roguelite",
@@ -247,6 +246,19 @@
       ],
       "examples": ["valheim", "terraria", "satisfactory", "grounded"]
     }
+  },
+
+  "finish_strength": {
+    "$note": "INTERNAL classifier for the ADD decision and the verdict marker. NOT a data field, NOT a tag, and the words hard/soft/none are NEVER shown on the site — they are only for the skill's reasoning. What actually ships: the game either qualifies (and may get a leading 🟠 in its verdict) or it doesn't.",
+    "co_op_finish_test": [
+      "1. Co-op must drive PROGRESSION, not just the fights. If two players co-op only in combat while one player owns the story / world / quest progression (many JRPGs: Tales of Berseria, Trials of Mana), that story-time is NOT co-op time → reject.",
+      "2. Count FINITE CO-OP HOURS — only the co-op content that leads to a finish, not the whole game. Forza Horizon is 80-120h overall, but only the co-op progression up to its milestone counts. Drive Beyond Horizons is endless, but its Scenario/Story route is ~1-2h — count only that.",
+      "3. The co-op finish content must be > 1 hour. If the only co-op goal is reached in an hour or less, or never, do not add.",
+      "4. Reject outright: endless contracts/quotas, repeatable-match grinds, co-op confined to isolated fights with no shared progression."
+    ],
+    "hard": "A real finish EVENT: summit, last boss, final mission/tournament/route, credits — after which the main branch is closed. → ADD, no marker. (PEAK = reach the top.)",
+    "soft": "A finish EXISTS but it is an accumulated status / checklist / score-threshold INSIDE the same loop, not a discrete final event, and the loop continues afterward. → ADD, but PREFIX the verdict with 🟠 and say briefly why. (Forza Horizon 5 Hall of Fame = a career milestone, not a final mission. Soulmask Central Core = a hidden final boss gated behind a survival-endgame grind.)",
+    "none": "No finish: only endless contracts/quotas, repeatable matches, or co-op that never resolves into a completed run. → do NOT add (this is the CLAUDE.md §2 endless ban)."
   },
 
   "one_copy_modes": {

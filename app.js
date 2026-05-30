@@ -213,6 +213,9 @@ function getSortValue(game, key) {
   if (key === "oneCopy") return ONE_COPY[game.oneCopy]?.rank || 0;
   if (key === "endingType") return ENDING_TYPE[game.endingType]?.rank || 0;
   if (key === "price") return game.price || 0;
+  // Verdict sorts by finish strength: a clear (hard) finish first, a fuzzy
+  // (soft) finish — marked with a leading 🟠 in the verdict — second.
+  if (key === "verdict") return (game.verdict || "").trimStart().startsWith("🟠") ? 1 : 0;
   return game[key];
 }
 
@@ -627,27 +630,31 @@ function clearAllFilters() {
   render();
 }
 
+function toggleSort(key) {
+  if (!key) return;
+  closeFilter();
+  if (state.sortKey === key) {
+    // Same column toggles direction. (Direction is not visualized but changes
+    // which end of the list shows up first.)
+    state.sortDirection = state.sortDirection === "asc" ? "desc" : "asc";
+  } else {
+    // New column: pick a sensible default direction per data type so the user
+    // rarely needs a second click. Numeric / rank-like columns start descending
+    // (newest/highest first); textual columns ascending. Verdict is ascending so
+    // a clear (hard) finish shows before a fuzzy (soft 🟠) one.
+    state.sortKey = key;
+    const numericDefaultDesc = new Set(["year", "rating", "playersMax", "hours", "price", "endingType", "oneCopy"]);
+    state.sortDirection = numericDefaultDesc.has(key) ? "desc" : "asc";
+  }
+  render();
+}
+
 function initEvents() {
   document.querySelectorAll(".th-control[data-filter]").forEach((control) => {
     const sortBtn = control.querySelector(".th-sort[data-sort]");
     control.addEventListener("click", (event) => {
       if (event.target.closest(".th-sort")) {
-        closeFilter();
-        const key = sortBtn?.dataset.sort;
-        if (!key) return;
-        if (state.sortKey === key) {
-          // Same column toggles direction. (Direction is not visualized but
-          // changes which end of the list shows up first.)
-          state.sortDirection = state.sortDirection === "asc" ? "desc" : "asc";
-        } else {
-          // New column: pick a sensible default direction per data type so
-          // the user rarely needs a second click. Numeric / rank-like columns
-          // start descending (newest/highest first); textual columns ascending.
-          state.sortKey = key;
-          const numericDefaultDesc = new Set(["year", "rating", "playersMax", "hours", "price", "endingType", "oneCopy"]);
-          state.sortDirection = numericDefaultDesc.has(key) ? "desc" : "asc";
-        }
-        render();
+        toggleSort(sortBtn?.dataset.sort);
         return;
       }
       if (!els.popover.hidden && els.popover.dataset.key === control.dataset.filter) {
@@ -657,6 +664,11 @@ function initEvents() {
       els.popover.dataset.key = control.dataset.filter;
       openFilter(control.dataset.filter, control);
     });
+  });
+
+  // Sort-only headers (no filter popover) — e.g. Verdict.
+  document.querySelectorAll(".th-sort-only[data-sort]").forEach((btn) => {
+    btn.addEventListener("click", () => toggleSort(btn.dataset.sort));
   });
 
   document.addEventListener("click", (event) => {

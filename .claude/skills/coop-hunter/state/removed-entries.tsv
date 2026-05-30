@@ -29,3 +29,5 @@ timestamp	id	title	reason	signals_matched
 2026-05-27T11:46:37Z	portal		t	
 2026-05-27T13:38:35Z	forza-horizon-5	Forza Horizon 5	blocklisted_endless	open-world racing festival, no credits/Hall-of-Fame finish; classification.md hardcoded blocklist; historical false positive
 2026-05-29T19:53:14Z	army-of-two	Army of Two	endless_misclassified	
+2026-05-30T15:28:26Z	solo-leveling-arise-overdrive	Solo Leveling: ARISE OVERDRIVE	endless_misclassified	
+2026-05-30T15:28:26Z	tales-of-berseria	Tales of Berseria	endless_misclassified	

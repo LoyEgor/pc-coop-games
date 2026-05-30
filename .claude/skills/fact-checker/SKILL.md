@@ -170,9 +170,23 @@ must not be here at all (CLAUDE.md §2). So this check has two parts:
    - Read 2-3 snippets and form a judgment. This is the step that catches an endless
      game that slipped in looking finite.
 
+3. **Finish-strength check** (read `taxonomy.json` → `finish_strength`). Decide hard vs
+   soft vs none for the entry:
+   - **Hard** (real finish event) → fine as-is.
+   - **Soft** (a finish exists but it is an accumulated status / checklist / score-
+     threshold inside the same loop — Forza Hall of Fame, Soulmask Central Core, Icarus
+     Operations) → the entry should KEEP, but its `verdict` should start with `🟠 ` and
+     say why. If the stored verdict has no `🟠`, log a `verdict` proposed-fix adding it.
+   - **None** (truly endless) → endless red flag (see below).
+   Also apply the co-op gate: if co-op is fights-only (one player owns the story, e.g.
+   Tales of Berseria) or the co-op finish content is ≤1h → the entry probably should not
+   be here; log to `state/proposed-removals.tsv` with reason `coop_fights_only` /
+   `coop_too_short`.
+
 Outcomes:
 - Derived type ≠ stored type → log to `state/proposed-fixes.tsv` (old → corrected).
   Do not auto-fix; endingType is editorial.
+- Soft finish but no `🟠` in verdict → log a `verdict` proposed-fix (add `🟠 ` + reason).
 - Web search shows the game has **no real ending** (procedurally endless, no final
   boss, "no point/just keeps going") → this is an endless red flag: escalate to rule 7
   (AUTO-REMOVE if it matches the blocklist / deterministic markers; otherwise log to
@@ -202,6 +216,35 @@ Triggered manually by setting `progress.mode = "taxonomy_migration"` in fact-che
    - If unable to derive → log to `proposed-fixes.tsv` with reason `perspective_undetermined`, don't auto-fix.
 
 This phase is reserved for the explicit taxonomy migration run. Normal fact-checker runs do NOT execute it — they only LOG proposed changes per §8 / §9.
+
+## finish_migration phase (special, one-time bulk fix — the finish-strength migration)
+
+Triggered by setting `progress.mode = "finish_migration"` (run via `./run-migration.sh`). This is the one-time pass that brings the whole catalog onto the `finish_strength` model (CLAUDE.md §2 + taxonomy.json `finish_strength`). Unlike a normal run it **AUTO-APPLIES editorial changes directly to data.js**; append every change to `state/migration-applied.tsv` (`id, field, old, new, reason`) so the owner can audit.
+
+For each non-hidden entry:
+
+1. **Co-op gate** (`taxonomy.finish_strength.co_op_finish_test`). Confirm co-op drives the PROGRESSION (not just the fights) and the co-op finish content is > 1h.
+   - Fails (co-op is fights-only — one player owns the story; or co-op content ≤1h) → the entry should not be here. Deterministic/clear → `../coop-hunter/scripts/remove_entry.py <id>`; judgment call → `state/proposed-removals.tsv`. Do nothing else for it.
+
+2. **Finish strength (hard / soft / none).**
+   - **none** (truly endless) → remove (deterministic) or proposed-removals (judgment), per rule 7.
+   - **soft** (finish exists but is an accumulated status/checklist/threshold inside the loop) → ensure `verdict` STARTS with `🟠 ` and briefly says why (rewrite per step 4 if missing).
+   - **hard** → no marker; leave the verdict unless step 3/4 require a rewrite.
+
+3. **Co-op hours recalc — CONSERVATIVE.** Recompute `hours` as the finite CO-OP progression length, NOT the whole game — but ONLY where they clearly differ:
+   - Linear story co-op (the campaign IS the co-op content: BG3, Halo, A Way Out) → co-op hours ≈ stored Main+Extras → **leave unchanged**.
+   - Open-ended / soft / survival where the whole game ≫ the co-op route (Forza, survival sandboxes) → set `hours` to the co-op-progression-to-finish estimate (Steam/HLTB/reviews + judgment), usually smaller. Integer only.
+   - Can't get a defensible co-op number → leave `hours`, log `state/discrepancies.tsv` reason `coop_hours_unclear`. Never guess wildly.
+
+4. **Verdict rewrite — ONLY WHERE NEEDED (owner's rule: not all 557).** Rewrite `verdict` (≤120 chars, a leading `🟠 ` for soft) so it explains the CO-OP experience and why the game qualifies, when ANY of these holds:
+   - the entry is soft (must carry 🟠 + reason);
+   - its `hours` changed in step 3;
+   - the current verdict doesn't actually describe the co-op (talks about the game in general / single-player).
+   Otherwise leave a good existing verdict alone.
+
+5. **endingType** per the current taxonomy decision_tree (e.g. an old `arcade-goal` whose real shape is a level set → `levels`). Apply directly; log to migration-applied.tsv.
+
+Resumable like a normal run (`current_idx`). When `current_idx >= total_entries` and `partial_entries` empty → `done=true`. Normal runs (`mode=normal`) do NOT execute this phase.
 
 ### 10. youtubeUrl
 
