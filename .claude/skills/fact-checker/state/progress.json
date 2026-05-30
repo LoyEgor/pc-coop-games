@@ -1,11 +1,15 @@
 {
-  "current_idx": 0,
+  "current_idx": 553,
   "total_entries": 553,
-  "checked_count": 0,
-  "fixed_count": 0,
-  "proposed_count": 0,
+  "checked_count": 565,
+  "fixed_count": 5,
+  "proposed_count": 61,
   "partial_entries": [],
-  "done": false,
-  "last_run_timestamp": "2026-05-29T00:00:00Z",
-  "mode": "normal"
+  "done": true,
+  "last_run_timestamp": "2026-05-30T12:36:00Z",
+  "mode": "normal",
+  "reconcile_drained_count": 28,
+  "reconcile_remaining": 5,
+  "cron_mode": "cron_healthy",
+  "last_burst_notes": "Entries 543-552 (icewind-dale-ee, neverwinter-nights-ee, tetris-effect-connected, pratfall, horizon-chase-turbo, bloodstained-curse-of-the-moon-2, timespinner, unepic, escape-memoirs-mini-stories, fling-to-the-finish). Cron healthy (last_success 2026-05-29T08:12:29Z, ~28h ago) -> rating+price SKIP-cron. All 10 youtubeUrl thumbnails HEAD=200, all 10 imageUrls HEAD=200. oneCopy: icewind-dale-ee/nwn-ee/tetris-effect-connected/pratfall/unepic/escape-memoirs/fling-to-the-finish='none' (Online Co-op confirmed); bloodstained-curse-of-the-moon-2/timespinner='remote-play' (Shared/Split Screen Co-op + RPT, no Online Co-op); horizon-chase-turbo='remote-play' stored but Steam categories show ONLY Shared/Split Screen PvP + RPT (NO Co-op category) -> LOGGED to discrepancies.tsv for owner review (entry just added 2026-05-30; verdict claims 'split-screen co-op campaign' but Steam disagrees). Perspective: icewind-dale-ee/nwn-ee=Isometric (classic CRPG); tetris-effect-connected=Side-view; pratfall=First-person; horizon-chase-turbo/fling-to-the-finish=Third-person; bloodstained-cotm2/timespinner/unepic=Side-view (2D); escape-memoirs=First-person (escape-room). Tier: tetris-effect=AA (Enhance Games mid-budget); rest=Indie. EndingType: icewind-dale-ee/nwn-ee/timespinner/unepic=story; tetris-effect/bloodstained-cotm2/horizon-chase-turbo/escape-memoirs/fling-to-the-finish=levels; pratfall=arcade-goal. HLTB JS-only, hours skipped. 0 AUTO-FIX. 1 discrepancy logged (horizon-chase-turbo coop ambiguity). 0 proposed-removals. 0 partial. Consistency audit after loop: 5 findings (1 franchise_split low_quality COD; 4 franchise_ending mismatches in sniper-elite/portal/for-the-king/hammerwatch series — left for owner review; sniper-elite-5 already in proposed-fixes.tsv). RUN COMPLETE: current_idx=553=total_entries, partial=[], done=true."
 }

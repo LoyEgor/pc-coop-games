@@ -3221,7 +3221,7 @@ window.GAMES = [
     verdict: "Co-op horror in the Backrooms: 30+ levels of liminal spaces, goal — get out.",
     storeUrl: "https://store.steampowered.com/app/1943950/",
     imageUrl: steamImage(1943950),
-    youtubeUrl: youtube("RPT9in5oKfE")
+    youtubeUrl: youtube("BZVP7xDKiZY")
   },
   {
     id: "brothers-tale-two-sons-remake",
@@ -4335,7 +4335,7 @@ window.GAMES = [
     verdict: "Frozenbyte co-op spell-blaster: 1-4 wizards aim and cast through a campaign of levels to a final showdown.",
     storeUrl: "https://store.steampowered.com/app/471550/",
     imageUrl: steamImage(471550),
-    youtubeUrl: youtube("wdtcXTwcOp0")
+    youtubeUrl: youtube("7Z4w4aRnY40")
   },
   {
     id: "gauntlet-slayer",
@@ -4497,7 +4497,7 @@ window.GAMES = [
     verdict: "Hardcore survival RPG: 2-player co-op online or split-screen across an open world to a faction storyline ending.",
     storeUrl: "https://store.steampowered.com/app/794260/",
     imageUrl: steamImage(794260),
-    youtubeUrl: youtube("Z3u4uZSIKJ0")
+    youtubeUrl: youtube("IGfbgGjKhfo")
   },
   {
     id: "god-eater-3",
@@ -4594,7 +4594,7 @@ window.GAMES = [
     verdict: "Warhammer Fantasy action-RPG: up to 4-player co-op smashing Chaos hordes through a story campaign.",
     storeUrl: "https://store.steampowered.com/app/774241/",
     imageUrl: steamImage(774241),
-    youtubeUrl: youtube("0SD1hGE02kE"),
+    youtubeUrl: youtube("nxu6VW0UGxQ"),
     "needs-review": true
   },
   {
@@ -4659,7 +4659,7 @@ window.GAMES = [
     verdict: "Voxel Earth Defense Force spin-off: up to 4-player co-op blasting giant bugs across a mission campaign.",
     storeUrl: "https://store.steampowered.com/app/1497950/",
     imageUrl: steamImage(1497950),
-    youtubeUrl: youtube("FFZw4rsesmg")
+    youtubeUrl: youtube("d9U62lc1-hM")
   },
   {
     id: "serious-sam-siberian-mayhem",
@@ -8824,6 +8824,86 @@ window.GAMES = [
     storeUrl: "https://store.steampowered.com/app/389140/",
     imageUrl: steamImage(389140),
     youtubeUrl: youtube("xNpybifMhcA")
+  },
+  {
+    id: "bloodstained-curse-of-the-moon-2",
+    title: "Bloodstained: Curse of the Moon 2",
+    year: 2020,
+    genres: ["Indie", "Side-view", "Action", "Platformer", "Fantasy"],
+    endingType: "levels",
+    rating: 85,
+    playersMax: 2,
+    hours: 6,
+    oneCopy: "remote-play",
+    price: 229,
+    verdict: "8-bit Castlevania-style action platformer with 2-player local co-op, multiple episodes and routes.",
+    storeUrl: "https://store.steampowered.com/app/1257360/",
+    imageUrl: steamImage(1257360),
+    youtubeUrl: youtube("_-enchY5GtI")
+  },
+  {
+    id: "timespinner",
+    title: "Timespinner",
+    year: 2018,
+    genres: ["Indie", "Side-view", "Action", "Platformer", "RPG", "Sci-fi"],
+    endingType: "story",
+    rating: 86,
+    playersMax: 2,
+    hours: 11,
+    oneCopy: "remote-play",
+    price: 279,
+    verdict: "Time-bending 2D metroidvania with asymmetric local co-op: player 2 controls the familiar to assist combat.",
+    storeUrl: "https://store.steampowered.com/app/368620/",
+    imageUrl: steamImage(368620),
+    youtubeUrl: youtube("MjeHMQtrGaA")
+  },
+  {
+    id: "unepic",
+    title: "Unepic",
+    year: 2014,
+    genres: ["Indie", "Side-view", "Action", "RPG", "Platformer", "Fantasy"],
+    endingType: "story",
+    rating: 91,
+    playersMax: 4,
+    hours: 16,
+    oneCopy: "none",
+    price: 209,
+    verdict: "Pixel-art 2D action RPG metroidvania with dedicated 4-player online co-op mode with separate maps and bosses.",
+    storeUrl: "https://store.steampowered.com/app/233980/",
+    imageUrl: steamImage(233980),
+    youtubeUrl: youtube("xzS6FKpPlg8")
+  },
+  {
+    id: "escape-memoirs-mini-stories",
+    title: "Escape Memoirs: Mini Stories",
+    year: 2022,
+    genres: ["Indie", "First-person", "Puzzle"],
+    endingType: "levels",
+    rating: 83,
+    playersMax: 4,
+    hours: 4,
+    oneCopy: "none",
+    price: 0,
+    verdict: "Free co-op escape-room game with several mini-story scenarios; up to 4 players solve puzzles to escape.",
+    storeUrl: "https://store.steampowered.com/app/2098350/",
+    imageUrl: steamImage(2098350),
+    youtubeUrl: youtube("5Lhgrlr7oOs")
+  },
+  {
+    id: "fling-to-the-finish",
+    title: "Fling to the Finish",
+    year: 2024,
+    genres: ["Indie", "Third-person", "Action", "Platformer"],
+    endingType: "levels",
+    rating: 86,
+    playersMax: 8,
+    hours: 5,
+    oneCopy: "none",
+    price: 379,
+    verdict: "Wacky cooperative racer where two players are tethered by a stretchy rope and roll, swing and fling through 4 worlds of obstacle courses.",
+    storeUrl: "https://store.steampowered.com/app/1054430/",
+    imageUrl: steamImage(1054430),
+    youtubeUrl: youtube("E42IdX_I2gQ")
   },
   {
     id: "a-way-out",
