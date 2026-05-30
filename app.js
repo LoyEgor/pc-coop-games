@@ -188,6 +188,52 @@ function savePrefs() {
   }));
 }
 
+// --- Shareable URL: reflect all active filters/sort/view in the query string so
+// a link reproduces the same view for someone else. Range params encode as
+// "min-max" (either side may be empty); sets as comma lists. Defaults are omitted
+// to keep the URL clean. history.replaceState avoids polluting back-history.
+const RANGE_PARAMS = [["year", "year"], ["rating", "rating"], ["playersMax", "players"], ["hours", "hours"], ["price", "price"]];
+
+function syncURL() {
+  const p = new URLSearchParams();
+  const f = state.filters;
+  if (f.title) p.set("q", f.title);
+  for (const [key, param] of RANGE_PARAMS) {
+    const r = f[key];
+    if (r.min !== "" || r.max !== "") p.set(param, `${r.min}-${r.max}`);
+  }
+  if (f.genres.size) p.set("genres", [...f.genres].join(","));
+  if (f.endingType.size) p.set("ending", [...f.endingType].join(","));
+  if (f.oneCopy.size) p.set("copies", [...f.oneCopy].join(","));
+  if (!(state.sortKey === "year" && state.sortDirection === "desc")) p.set("sort", `${state.sortKey}:${state.sortDirection}`);
+  if (state.viewMode !== "active") p.set("view", state.viewMode);
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
+}
+
+function applyFiltersFromURL() {
+  const p = new URLSearchParams(location.search);
+  if (![...p.keys()].length) return;
+  const f = state.filters;
+  if (p.has("q")) f.title = p.get("q");
+  for (const [key, param] of RANGE_PARAMS) {
+    if (p.has(param)) {
+      const idx = p.get(param).indexOf("-");
+      const raw = p.get(param);
+      f[key] = idx === -1 ? { min: raw, max: "" } : { min: raw.slice(0, idx), max: raw.slice(idx + 1) };
+    }
+  }
+  if (p.has("genres")) f.genres = new Set(p.get("genres").split(",").filter(Boolean));
+  if (p.has("ending")) f.endingType = new Set(p.get("ending").split(",").filter(Boolean));
+  if (p.has("copies")) f.oneCopy = new Set(p.get("copies").split(",").filter(Boolean));
+  if (p.has("sort")) {
+    const [k, d] = p.get("sort").split(":");
+    if (k) state.sortKey = k;
+    if (d === "asc" || d === "desc") state.sortDirection = d;
+  }
+  if (p.has("view") && ["active", "all", "played"].includes(p.get("view"))) state.viewMode = p.get("view");
+}
+
 function uniqueSorted(values) {
   return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, "ru"));
 }
@@ -312,6 +358,7 @@ function getVisibleGames() {
 }
 
 function render() {
+  syncURL();
   document.body.dataset.theme = state.theme;
   document.body.dataset.viewMode = state.viewMode;
   const themeLabel = els.themeButton.querySelector(".btn-label");
@@ -756,5 +803,6 @@ function showToast(message) {
 }
 
 loadPrefs();
+applyFiltersFromURL();
 initEvents();
 render();
