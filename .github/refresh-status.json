@@ -4,11 +4,12 @@
     "rating"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 551,
+  "entries_checked": 566,
   "updates_applied": {
-    "price": 9,
-    "rating": 0
+    "price": 8,
+    "rating": 0,
+    "image": 0
   },
   "fetch_failures": 0,
-  "last_success": "2026-05-31T08:03:20Z"
+  "last_success": "2026-05-31T19:21:17Z"
 }
