@@ -20,6 +20,7 @@ set -u
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
 PROGRESS_FILE="$REPO_ROOT/.claude/skills/fact-checker/state/progress.json"
 TRANSCRIPT="$REPO_ROOT/fact-checker-transcript.log"
+BURST_OUT="$REPO_ROOT/.fact-checker-burst.tmp"   # ONLY the latest burst's output — what is_rate_limited inspects
 
 cd "$REPO_ROOT"
 
@@ -161,8 +162,12 @@ is_rate_limited() {
   # what caught us out on 2026-05-28.
   # See run-coop-hunter.sh: the bare "429" matched entry index "[429/484]" and
   # caused a false 30-min sleep. Keep every alternative specific to limit wording.
-  tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
-    "rate limit|message limit|usage limit|weekly limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|error[: ]*429|you'?ve hit your (session|usage|weekly) limit|session limit.*reset|hit your (session|usage|weekly) limit"
+  # Inspect ONLY the latest burst's output ($BURST_OUT), NOT the accumulated
+  # transcript — a stale "session limit · resets 11:10pm" line from hours ago
+  # (already reset) must not re-trigger a sleep after a successful burst.
+  grep -qiE \
+    "rate limit|message limit|usage limit|weekly limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|error[: ]*429|you'?ve hit your (session|usage|weekly) limit|session limit.*reset|hit your (session|usage|weekly) limit" \
+    "$BURST_OUT" 2>/dev/null
 }
 
 cap_transcript() {
@@ -189,7 +194,10 @@ while true; do
   # instead of exiting (confirmed via lsof: fd 0 = /dev/ttysNNN). EOF on stdin
   # makes it exit cleanly. | tee keeps live output in this window + the log.
   # --model opus = LATEST Opus alias (see run-coop-hunter.sh for the rationale).
-  "$CLAUDE_CMD" -p --model opus --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee -a "$TRANSCRIPT"
+  # tee to a per-burst file (overwritten each burst) so is_rate_limited sees only
+  # THIS burst, then append to the accumulated transcript for live tail/history.
+  "$CLAUDE_CMD" -p --model opus --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee "$BURST_OUT"
+  cat "$BURST_OUT" >> "$TRANSCRIPT"
   cap_transcript
 
   if [ ! -f "$PROGRESS_FILE" ]; then

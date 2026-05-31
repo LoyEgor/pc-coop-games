@@ -162,6 +162,19 @@ def main():
         print(f"SKIP: id '{g['id']}' already present", file=sys.stderr)
         sys.exit(1)
 
+    # Check duplicate by Steam app_id. The SAME game can arrive under a different
+    # slug (e.g. lego-skywalker-saga vs lego-star-wars-skywalker-saga, both app
+    # 920210) — the id check above misses that, which is exactly how duplicates
+    # slipped in. Match the app id from app_id or the storeUrl.
+    app_id = g.get("app_id")
+    if not app_id:
+        m = re.search(r"app/(\d+)", g.get("storeUrl", ""))
+        if m:
+            app_id = m.group(1)
+    if app_id and re.search(r"app/" + re.escape(str(app_id)) + r"/", content):
+        print(f"SKIP: app_id {app_id} already present under another slug", file=sys.stderr)
+        sys.exit(1)
+
     # Reject ids that were previously auto-removed as endless. The skill ran
     # itself in circles earlier (removed and re-added the same 16 endless
     # games an hour apart); this gate prevents that.

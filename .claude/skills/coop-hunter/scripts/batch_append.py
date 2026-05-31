@@ -37,6 +37,16 @@ def main():
             if re.search(r'id:\s*"' + re.escape(gid) + r'"', content):
                 skipped.append(f"{gid} (duplicate)")
                 continue
+            # Gate: same game under a different slug — dedupe by Steam app_id too
+            # (e.g. lego-skywalker-saga vs lego-star-wars-skywalker-saga, app 920210).
+            app_id = g.get("app_id")
+            if not app_id:
+                m = re.search(r"app/(\d+)", g.get("storeUrl", ""))
+                if m:
+                    app_id = m.group(1)
+            if app_id and re.search(r"app/" + re.escape(str(app_id)) + r"/", content):
+                skipped.append(f"{gid} (duplicate app_id {app_id})")
+                continue
             # Gate: never re-add a game previously removed as endless.
             if gid in removed_ids:
                 skipped.append(f"{gid} (previously_removed_endless)")

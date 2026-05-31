@@ -92,9 +92,9 @@
     "Action": {
       "definition": "Real-time verb-driven gameplay with reflexes. Combat, dodging, timing.",
       "steam_tags": ["Action"],
-      "examples_positive": ["castle-crashers", "darksiders-genesis"],
-      "examples_negative": ["powerwash-simulator (relaxation), we-were-here-forever (puzzle)"],
-      "narrowing_rule": "Do NOT apply to pure puzzle games even when they have reflex elements. Reserve for combat/dodging/timing as the primary loop."
+      "examples_positive": ["darksiders-genesis", "dead-cells"],
+      "examples_negative": ["powerwash-simulator (relaxation), we-were-here-forever (puzzle), castle-crashers (use Brawler), dirt-5 (use Racing)"],
+      "narrowing_rule": "Do NOT apply to pure puzzle games even when they have reflex elements. AND Action is a FALLBACK: if a more specific mechanic fits (Brawler, Shooter, Platformer, Soulslike, Racing), use THAT and DROP the generic Action unless the game genuinely has a separate distinct real-time loop too. Action had become a catch-all (>50% of the catalog) — reserve it for real-time combat games that no narrower tag describes."
     },
     "Puzzle": {
       "definition": "Primary loop is solving puzzles. Logic, spatial, communication, or pattern-based.",
@@ -149,6 +149,18 @@
         "powerwash-simulator (puzzle/relax sim)"
       ],
       "narrowing_rule": "Apply ONLY if the game is BUILT AROUND narrative and exploration as the verb. If story is incidental (e.g. shooter campaign), DO NOT tag Adventure. After this rule is applied, expect ~10-15 entries to keep the tag (down from the historical ~120)."
+    },
+    "Brawler": {
+      "definition": "Side-scrolling beat-em-up: advance through stages punching/kicking waves of enemies. Lineage from Final Fight / Streets of Rage. Almost always Side-view perspective.",
+      "steam_tags": ["Beat 'em up", "Beat'em up", "Brawler", "Hack and Slash"],
+      "examples_positive": ["castle-crashers", "streets-of-rage-4", "tmnt-shredders-revenge", "scott-pilgrim-the-game", "double-dragon-neon"],
+      "examples_negative": ["cuphead (run-and-gun boss-rush), gears-of-war (shooter), guacamelee (metroidvania platformer — though it brawls, Platformer is its core)"]
+    },
+    "Racing": {
+      "definition": "Driving/racing is the core verb — race vehicles toward a finish line, championship, or fastest time.",
+      "steam_tags": ["Racing", "Driving", "Automobile Sim", "Arcade Racing"],
+      "examples_positive": ["dirt-5", "hotshot-racing", "horizon-chase-turbo"],
+      "examples_negative": ["fling-to-the-finish (physics co-op platformer, not a race), team-sonic-racing (PvP-primary, not in catalog)"]
     }
   },
 
@@ -236,8 +248,8 @@
       "examples": ["hades", "risk-of-rain-2", "spelunky-2", "deadzone-rogue"]
     },
     "survival-goal": {
-      "table_label": "Survival",
-      "filter_label": "Survival finale",
+      "table_label": "Survival win",
+      "filter_label": "Survival win",
       "filter_subtitle": "Open-ended survival with an explicit named win-condition (final boss / structure / rocket).",
       "decision_tree": [
         "Game is built around survival mechanics (resources/base/threats)? → yes",
@@ -249,16 +261,18 @@
   },
 
   "finish_strength": {
-    "$note": "INTERNAL classifier for the ADD decision and the verdict marker. NOT a data field, NOT a tag, and the words hard/soft/none are NEVER shown on the site — they are only for the skill's reasoning. What actually ships: the game either qualifies (and may get a leading 🟠 in its verdict) or it doesn't.",
+    "$note": "INTERNAL classifier for the ADD decision and the 🟠 verdict marker. NOT a data field, NOT a tag, and the reasoning labels are NEVER shown on the site. 🟠 is a CAVEAT marker with two independent triggers: a soft finish (fuzzy ending) OR a partial co-op (P2 episodic AND secondary). What ships: the entry (optionally a leading 🟠 + short reason in the verdict) or nothing.",
     "co_op_finish_test": [
-      "1. Co-op must drive PROGRESSION, not just the fights. If two players co-op only in combat while one player owns the story / world / quest progression (many JRPGs: Tales of Berseria, Trials of Mana), that story-time is NOT co-op time → reject.",
-      "2. Count FINITE CO-OP HOURS — only the co-op content that leads to a finish, not the whole game. Forza Horizon is 80-120h overall, but only the co-op progression up to its milestone counts. Drive Beyond Horizons is endless, but its Scenario/Story route is ~1-2h — count only that.",
-      "3. The co-op finish content must be > 1 hour. If the only co-op goal is reached in an hour or less, or never, do not add.",
-      "4. Reject outright: endless contracts/quotas, repeatable-match grinds, co-op confined to isolated fights with no shared progression."
+      "1. 2-player co-op must EXIST (online or Remote Play Together). None → not a co-op game → do not add (a plain 'not a fit', not a 🟠).",
+      "2. Asymmetry and helpers are FINE if P2 is present THROUGHOUT: different-but-constant roles (one drives, one shoots) and a permanent secondary companion always at your side (Tails alongside Sonic; Timespinner's familiar) = full co-op, NO marker.",
+      "3. 🟠 ONLY when P2 is BOTH episodic AND secondary: joins only part of the game (e.g. battles only) while one player owns story / world / exploration — the classic JRPG shape (Tales series, Ys, Legend of Mana). Still QUALIFIES (playable + finishable together) → ADD with a leading 🟠 saying co-op is battles-only / P2 is a helper. NOT a reject.",
+      "4. Count FINITE CO-OP HOURS — only the co-op content that leads to a finish, not the whole game (Forza Horizon ≈ co-op progression to its milestone, not 80-120h; Drive Beyond Horizons ≈ its ~1-2h Scenario route, not the endless part).",
+      "5. The co-op finish content must be > 1 hour, else do not add.",
+      "6. Reject outright ONLY: endless contracts/quotas, repeatable-match grinds, or no 2-player co-op at all."
     ],
-    "hard": "A real finish EVENT: summit, last boss, final mission/tournament/route, credits — after which the main branch is closed. → ADD, no marker. (PEAK = reach the top.)",
-    "soft": "A finish EXISTS but it is an accumulated status / checklist / score-threshold INSIDE the same loop, not a discrete final event, and the loop continues afterward. → ADD, but PREFIX the verdict with 🟠 and say briefly why. (Forza Horizon 5 Hall of Fame = a career milestone, not a final mission. Soulmask Central Core = a hidden final boss gated behind a survival-endgame grind.)",
-    "none": "No finish: only endless contracts/quotas, repeatable matches, or co-op that never resolves into a completed run. → do NOT add (this is the CLAUDE.md §2 endless ban)."
+    "hard": "Full co-op + a real finish EVENT (summit, last boss, final mission/route, credits) → ADD, no marker. (PEAK = reach the top.)",
+    "soft": "ADD with a leading 🟠 + reason, for EITHER trigger: (B) finish is fuzzy — an accumulated status / checklist / score-threshold inside the same loop, not a discrete event (Forza Horizon 5 Hall of Fame; Soulmask Central Core behind a survival grind); OR (A) co-op is partial — P2 episodic AND secondary (Tales/Ys-style battles-only co-op).",
+    "none": "No finish at all (endless contracts/quotas, repeatable matches, no completed run) OR no 2-player co-op → do NOT add. This is the CLAUDE.md §2 endless ban."
   },
 
   "one_copy_modes": {

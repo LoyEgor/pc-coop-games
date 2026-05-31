@@ -161,7 +161,7 @@ The owner has explicitly authorized this hard reject: «мне принципи�
 Read `taxonomy.json` → `finish_strength` (the authoritative version). Two gates, in order:
 
 **Gate A — co-op gate (check first):**
-- Co-op must drive the PROGRESSION, not just the fights. If co-op is combat-only while one player owns the story/world/quests (many JRPGs — Tales of Berseria, Trials of Mana), the story-time is NOT co-op time → skip `coop_fights_only`.
+- Co-op shape: asymmetry and permanent helpers are FINE, no marker (different-but-constant roles; a companion always at your side like Tails/Sonic). 🟠 ONLY when P2 is BOTH episodic AND secondary — joins only part of the game (e.g. battles only) while one player owns story/world/exploration (JRPGs: Tales, Ys, Legend of Mana). Such a game still QUALIFIES → ADD with a leading 🟠 in the verdict (co-op battles-only / P2 is a helper). NOT a skip.
 - Count FINITE CO-OP hours — only the co-op content that leads to a finish, not the whole game (Forza Horizon ≈ co-op progression to its milestone, not 80-120h). The co-op finish content must be **> 1 hour**, else skip `coop_too_short`.
 
 **Gate B — finish strength.** Run the three sub-checks; treat as having content if ≥2 pass:
@@ -174,7 +174,7 @@ Then classify the finish:
 - **Soft finish** (a finish exists but it is an accumulated status / checklist / score-threshold inside the same loop — Forza Hall of Fame, Soulmask Central Core) → add, but **prefix the `verdict` with `🟠 ` and state briefly why** (≤120 chars still; the 🟠 counts).
 - **No finish** (endless contracts/quotas, repeatable matches, co-op never resolves) → skip `endless`.
 
-If you cannot tell hard vs soft but a finish clearly exists → treat as soft (🟠). If no finish or co-op fails Gate A → skip (`endless` / `unclear_ending` / `coop_fights_only` / `coop_too_short`).
+If you cannot tell hard vs soft but a finish clearly exists → treat as soft (🟠). Episodic+secondary co-op → ADD with 🟠, NOT a skip. Skip ONLY: no finish at all (`endless` / `unclear_ending`), no 2-player co-op (`no_coop`), or co-op finish ≤1h (`coop_too_short`).
 
 ### 6. Old games online-broken check
 If `release_date.date` < 2015:
@@ -311,14 +311,23 @@ These methods replace the standard "Per-candidate procedure" for sources in phas
 > Removed 2026-05-27: `revalidate_existing`. If you find an endless game already in `data.js`, you may STILL auto-remove it via `scripts/remove_entry.py` (the hard rule against endless games stands), but do NOT systematically re-walk the catalog — the fact-checker does that.
 
 ### `reeval_skipped`
-1. Read `state/skipped.tsv`. Filter rows whose reason could be a FALSE reject under the new `finish_strength` rules: `ambiguous`, `unclear_ending`, `not_enough_reviews`, `endless`, `endless_misclassified`, `low_fit`. (The OLD rules rejected fuzzy-finish games outright; many of those are now addable as **soft** finishes.)
-2. For each row, re-run the full Per-candidate procedure with current data, applying §5's co-op gate + finish-strength check.
-3. If it now qualifies:
-   - **hard** finish → add normally.
-   - **soft** finish → add with a leading `🟠 ` in the verdict + the reason (a game once rejected as "endless/unclear" is often soft, not none — e.g. a Forza-style milestone). Counts toward phase_yield.
-4. Still fails the co-op gate, or is truly **none** (endless) → leave skipped (no double-log).
-5. SKIP rows whose reason is mechanical and objective — `duplicate`, `no_coop`, `not_on_steam`, `pvp_primary`, `invalid_app_id`, `online_broken`, `coop_fights_only`, `coop_too_short`. Those are not finish-strength calls; don't re-litigate them here.
-6. Exhausted when all eligible rows processed.
+
+> This procedure was BLIND and SHALLOW before (2026-05-31 audit): it had no log of
+> what it rejected (so its work couldn't be checked), it never re-opened
+> `blocklisted_endless` rows, and it trusted the old skip `notes` instead of fresh
+> facts — which is exactly how it missed Forza Horizon 6 (released with a Legend
+> milestone) and Drive Beyond Horizons (which actually has a Story Mode). The three
+> fixes below (eligible-set, fresh-factcheck, mandatory rejection log) close that.
+
+1. **Eligible reasons** (a FALSE reject is possible). Read `state/skipped.tsv` and take rows whose reason is: `ambiguous`, `unclear_ending`, `not_enough_reviews`, `endless`, `endless_misclassified`, `low_fit`, `coop_fights_only`, **and `blocklisted_endless` ONLY when the title is NOT actually on the hardcoded blocklist in `classification.md`** (a too-strict pass mis-tagged games like Forza Horizon as `blocklisted_endless` though they are not on the real list — those must be re-opened; titles genuinely on the list stay out). Mechanical/objective reasons are NOT eligible — never re-litigate `duplicate`, `no_coop`, `not_on_steam`, `pvp_primary`, `invalid_app_id`, `online_broken`, `coop_too_short`.
+
+2. **Verify with FRESH facts — do NOT trust the old `notes`.** The stored note is frequently wrong (it is what made reeval miss Forza H6 and Drive Beyond Horizons). For each candidate: Steam appdetails (released? not `coming_soon`? co-op categories — Online Co-op / Co-op+Remote Play Together? review count & %), AND a `WebSearch` for the finish (`"<title>" ending`, `"<title>" story mode campaign`, `"<title>" final boss / how to finish`). Then apply §5's co-op gate + finish-strength check on the EVIDENCE, not the note.
+
+3. If it now qualifies: **hard** finish → add normally; **soft** finish (fuzzy ending OR episodic+secondary co-op) → add with a leading `🟠 ` verdict + reason (e.g. a Forza-style Legend milestone). Counts toward phase_yield.
+
+4. If it still does NOT qualify → leave it skipped **AND append a line to `state/reeval-rejected.tsv`**: `<timestamp>\t<id>\t<reason_kept>\t<evidence>`. This is MANDATORY — without it reeval is a black box and its misses can't be audited. Every eligible row you process MUST end either added-to-data.js OR logged to `reeval-rejected.tsv`.
+
+5. Exhausted when every eligible row has been either added or logged to `reeval-rejected.tsv` (cross-check: eligible-count == added + rejected-logged).
 
 ### `reeval_only` mode (migration — re-evaluate skips, do NOT search for new games)
 

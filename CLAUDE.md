@@ -16,10 +16,16 @@ A **personal, hand-curated catalog of PC co-op games** that the owner and his pa
 
 ## 2. The single most important rule: a co-op run must FINISH — and how strongly
 
-The owner's hardest constraint is still that a co-op playthrough must have an end you can reach — not endless contracts, quotas, or repeatable matches forever. But "has an ending" is **not binary**: it has three strengths, and that decides both whether a game is added and whether its verdict carries a 🟠 marker. The full machine-readable version lives in `.claude/skills/shared/taxonomy.json` → `finish_strength`. **Never print the words "hard/soft/no finish" on the site** — they are reasoning labels only; what ships is the entry (optionally with a leading 🟠 in the verdict) or nothing.
+The owner's hardest constraint is still that a co-op playthrough must have an end you can reach — not endless contracts, quotas, or repeatable matches forever. But the catalog is **not pass/fail**: a game can ship with a leading 🟠 in its verdict — a **caveat marker** meaning "fine to play, just know this first". 🟠 has **two independent triggers**:
+- **(B) soft finish** — the ending is fuzzy (an accumulated status / checklist, not a discrete final event);
+- **(A) partial co-op** — the second player is *episodic AND secondary* (see Gate A).
+
+Hard finish + full co-op → no marker. No finish at all → excluded entirely. The machine-readable version lives in `.claude/skills/shared/taxonomy.json` → `finish_strength`. **Never print the reasoning labels ("hard/soft finish", "partial co-op") on the site** — what ships is the entry (optionally a leading 🟠 + a short reason in the verdict) or nothing.
 
 ### Gate A — the co-op gate (check FIRST)
-- **Co-op must drive the PROGRESSION, not just the fights.** If two players co-op only in combat while one player owns the story / world / quest progression (many JRPGs — Tales of Berseria, Trials of Mana), that story-time is NOT co-op time → reject.
+- **2-player co-op must exist** (online or Remote Play Together). If there is no real 2-player mode → not a co-op game → do not add. (This is a plain "not a fit", NOT a 🟠.)
+- **Asymmetry and helpers are FINE — as long as the second player is present THROUGHOUT.** Different-but-constant roles (one drives, one shoots) = full co-op. A permanent secondary companion always at your side (Tails alongside Sonic; Timespinner's familiar) = full co-op. No marker.
+- **🟠 only when P2 is BOTH episodic AND secondary.** If the second player joins only *part* of the game — the classic JRPG shape where P2 drops in for battles only while one player owns the story / world map / dialogue / exploration (Tales series, Ys, Legend of Mana) — the game STILL qualifies (you can play and finish it together), but PREFIX the verdict with 🟠 and say the co-op is battles-only / P2 is a helper. This is NOT a reject.
 - **Count finite CO-OP hours, not the whole game.** Forza Horizon is 80-120h overall, but only the co-op progression up to its milestone counts. Drive Beyond Horizons is endless, but its Scenario/Story route is ~1-2h — count only that.
 - **The co-op finish content must be > 1 hour.** If the only co-op goal is reached in ≤1h, or never, do not add.
 
@@ -35,7 +41,8 @@ A game qualifies if there is a moment where you finish — even without a cutsce
 
 ### When in doubt
 - Finish is real but **fuzzy** (status/checklist) → add with 🟠 (soft); don't agonize.
-- Can't find **any** finish, OR co-op is fights-only, OR co-op finish content is ≤1h, OR it's an endless loop → **SKIP**. Quality > volume; «мне принципиально важно, чтобы endless игры не появлялись, а если находятся — вычищать».
+- Co-op is **episodic + secondary** (P2 in battles only) → add with 🟠; NOT a skip.
+- Can't find **any** finish, OR there is **no 2-player co-op at all**, OR co-op finish content is ≤1h, OR it's an endless loop → **SKIP**. Quality > volume; «мне принципиально важно, чтобы endless игры не появлялись, а если находятся — вычищать».
 
 ## 3. Other criteria
 

@@ -55,8 +55,8 @@ const ENDING_TYPE = {
     subtitle: "Procedural runs with persistent meta-progress between attempts. Final boss = real ending."
   },
   "survival-goal": {
-    label: "Survival",
-    short: "Survival",
+    label: "Survival win",
+    short: "Survival win",
     tone: "bad",
     rank: 1,
     subtitle: "Open-ended survival with an explicit named win-condition (final boss / structure / rocket)."
@@ -74,7 +74,7 @@ const TIER_VALUES = new Set(["AAA", "AA", "Indie"]);
 const GENRE_AXES = [
   { key: "tier", label: "Tier", tags: ["AAA", "AA", "Indie"] },
   { key: "perspective", label: "View", tags: ["First-person", "Third-person", "Isometric", "Side-view", "FPS"] },
-  { key: "mechanic", label: "Genre", tags: ["Shooter", "Action", "Puzzle", "Platformer", "RPG", "Tactics", "Stealth", "Soulslike", "Loot", "Adventure"] },
+  { key: "mechanic", label: "Genre", tags: ["Shooter", "Action", "Brawler", "Racing", "Puzzle", "Platformer", "RPG", "Tactics", "Stealth", "Soulslike", "Loot", "Adventure"] },
   { key: "setting", label: "Setting", tags: ["Fantasy", "Sci-fi", "Horror", "Military"] },
   { key: "structure", label: "Structure", tags: ["Open World", "Survival"] }
 ];

@@ -168,16 +168,16 @@ Sea of Thieves, Rust, ARK Survival Evolved, ARK Survival Ascended,
 PUBG, Valorant, CS2, Counter-Strike, Overwatch, League of Legends,
 Dota 2, Rocket League, Fall Guys, Among Us, Goose Goose Duck,
 Stumble Guys, Brawlhalla, Multiversus, SMITE, Paladins, Splitgate,
-Forza Horizon, Forza Horizon 4, Forza Horizon 5, Forza Horizon 6,
 The Crew, The Crew 2, The Crew Motorfest, Test Drive Unlimited
 ```
 
-Forza Horizon (the whole series) and other open-world racing FESTIVALS are
-endless by our rule: they have no credits/Hall-of-Fame finish — the festival
-continues indefinitely with seasonal playlists. The devs of FH5 confirmed there
-is no ending. `forza-horizon-5` was a historical false positive; the
-`fact-checker` skill removes such entries and `removed-entries.tsv` blocks
-re-adding.
+NOTE (updated 2026-05-31): Forza Horizon is **no longer blocklisted**. Under the
+finish_strength rules, the Hall of Fame / "Horizon Legend" career milestone is a
+valid **soft finish (🟠)** — an accumulated status, not a final mission, but a
+real reachable endpoint. So Forza Horizon 5/6 ADD with a 🟠 verdict. Racing
+FESTIVALS that genuinely have NO such milestone and only run seasonal playlists
+(The Crew series, Test Drive Unlimited) stay out — verify a Hall-of-Fame/Legend-
+style milestone before adding any racing festival.
 
 Log skip reason as `blocklisted_endless`. Do not run any further checks.
 
@@ -193,7 +193,7 @@ Skip the candidate if Steam categories or tags include ANY of:
 - `Auto Battler`
 - `Card Game` combined with `PvP`
 - `Asymmetric VR Multiplayer` (out of scope)
-- **High-risk category — racing / open-world FESTIVAL** (`Racing` or `Driving` + `Open World` + `Seasons`/seasonal playlists) with no credits / Hall-of-Fame / final-event finish. These read as "story" but have no ending (Forza Horizon, The Crew). Skip unless a credits/finale is explicitly verifiable.
+- **High-risk category — racing / open-world FESTIVAL** (`Racing` or `Driving` + `Open World` + `Seasons`/seasonal playlists). Skip ONLY if there is no credits / Hall-of-Fame / Legend / final-event milestone (The Crew). If a Hall-of-Fame/Legend-style career milestone exists (Forza Horizon), it's a valid SOFT finish → add with 🟠.
 - **High-risk category — live-service** (`Seasons` + `Battle Pass` + ongoing content as the core loop). Skip unless a finite campaign with credits is explicitly verifiable.
 - **High-risk category — open-ended sim/sandbox** (city-builder / tycoon / colony / management with no named win-condition). Skip — "build forever" is not a finish.
 

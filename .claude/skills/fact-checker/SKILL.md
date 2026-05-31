@@ -178,10 +178,12 @@ must not be here at all (CLAUDE.md §2). So this check has two parts:
      Operations) → the entry should KEEP, but its `verdict` should start with `🟠 ` and
      say why. If the stored verdict has no `🟠`, log a `verdict` proposed-fix adding it.
    - **None** (truly endless) → endless red flag (see below).
-   Also apply the co-op gate: if co-op is fights-only (one player owns the story, e.g.
-   Tales of Berseria) or the co-op finish content is ≤1h → the entry probably should not
-   be here; log to `state/proposed-removals.tsv` with reason `coop_fights_only` /
-   `coop_too_short`.
+   Also apply the co-op gate: if P2 is BOTH episodic AND secondary (joins battles only
+   while one player owns story/world — Tales/Ys/Legend of Mana) → the entry KEEPS, but
+   its `verdict` must start with `🟠 ` (co-op battles-only / P2 is a helper); if it lacks
+   the 🟠, log a `verdict` proposed-fix. Asymmetric-but-constant roles and permanent
+   companions are full co-op (no marker). Only `coop_too_short` (≤1h) or no 2-player
+   co-op at all → `state/proposed-removals.tsv`.
 
 Outcomes:
 - Derived type ≠ stored type → log to `state/proposed-fixes.tsv` (old → corrected).
@@ -224,7 +226,7 @@ Triggered by setting `progress.mode = "finish_migration"` (run via `./run-migrat
 For each non-hidden entry:
 
 1. **Co-op gate** (`taxonomy.finish_strength.co_op_finish_test`). Confirm co-op drives the PROGRESSION (not just the fights) and the co-op finish content is > 1h.
-   - Fails (co-op is fights-only — one player owns the story; or co-op content ≤1h) → the entry should not be here. Deterministic/clear → `../coop-hunter/scripts/remove_entry.py <id>`; judgment call → `state/proposed-removals.tsv`. Do nothing else for it.
+   - P2 episodic AND secondary (battles-only JRPG — Tales/Ys/Legend of Mana) → KEEP; ensure the verdict starts with 🟠 (rewrite per step 4 if missing). Asymmetric-but-constant roles and permanent companions = full co-op, no marker. Only co-op finish ≤1h or NO 2-player co-op at all → remove (deterministic) or `state/proposed-removals.tsv` (judgment).
 
 2. **Finish strength (hard / soft / none).**
    - **none** (truly endless) → remove (deterministic) or proposed-removals (judgment), per rule 7.

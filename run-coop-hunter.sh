@@ -24,6 +24,7 @@ REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
 PROGRESS_FILE="$REPO_ROOT/.claude/skills/coop-hunter/state/progress.json"
 SOURCES_FILE="$REPO_ROOT/.claude/skills/coop-hunter/sources.json"
 TRANSCRIPT="$REPO_ROOT/coop-hunter-transcript.log"
+BURST_OUT="$REPO_ROOT/.coop-hunter-burst.tmp"   # ONLY the latest burst's output — what is_rate_limited inspects
 
 cd "$REPO_ROOT"
 
@@ -182,8 +183,12 @@ is_rate_limited() {
   # 30-min sleep at 45% session usage. HTTP 429 is already covered semantically by
   # "too many requests"; the "hit your <X> limit" branches are scoped to the words
   # Anthropic actually uses (session/usage/weekly) so game text can't trip them.
-  tail -n 200 "$TRANSCRIPT" 2>/dev/null | grep -qiE \
-    "rate limit|message limit|usage limit|weekly limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|error[: ]*429|you'?ve hit your (session|usage|weekly) limit|session limit.*reset|hit your (session|usage|weekly) limit"
+  # Inspect ONLY the latest burst's output ($BURST_OUT), NOT the accumulated
+  # transcript — a stale "session limit · resets 11:10pm" line from a burst hours
+  # ago (already reset) must not re-trigger a sleep after a successful burst.
+  grep -qiE \
+    "rate limit|message limit|usage limit|weekly limit|too many requests|try again in [0-9]+ ?(hour|hr|h)|quota exceeded|error[: ]*429|you'?ve hit your (session|usage|weekly) limit|session limit.*reset|hit your (session|usage|weekly) limit" \
+    "$BURST_OUT" 2>/dev/null
 }
 
 cap_transcript() {
@@ -216,7 +221,10 @@ while true; do
   # 4.9 later — no edit needed). Pinned here because `claude -p` otherwise uses the
   # CLI default (a Sonnet-class model), and a desktop-session /model switch does NOT
   # propagate to these headless bursts.
-  "$CLAUDE_CMD" -p --model opus --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee -a "$TRANSCRIPT"
+  # tee to a per-burst file (overwritten each burst) so is_rate_limited sees only
+  # THIS burst, then append to the accumulated transcript for live tail/history.
+  "$CLAUDE_CMD" -p --model opus --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee "$BURST_OUT"
+  cat "$BURST_OUT" >> "$TRANSCRIPT"
   cap_transcript
 
   if [ ! -f "$PROGRESS_FILE" ]; then
