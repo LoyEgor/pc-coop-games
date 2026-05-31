@@ -1,0 +1,21 @@
+id	title	category	why_borderline	recheck_when
+monster-hunter-wilds	Monster Hunter Wilds	rating_below_gate	Has a finishable co-op story, but Steam sits at ~48% (below the >=50% gate)	rating climbs back above 50%
+ammo-and-oxygen	Ammo & Oxygen	rating_below_gate	Co-op via RPT + likely finish, but only ~53 reviews (thin sample) and no documented final boss	review count grows / a final boss is confirmed
+aska	ASKA	ea_unfinished	Viking survival; no formal ending / final boss implemented yet	1.0 ships with a named win-condition
+craftopia	Craftopia	ea_unfinished	Early Access; Boss Rush dungeon is endless, no end boss	1.0 ships a defined finale
+far-far-west	Far Far West	ea_unfinished	EA mission/bounty co-op shooter, no announced finite endgame	endgame/finale announced + shipped
+foundry	FOUNDRY	ea_unfinished	"Infinite voxel" factory sandbox, EA, no endgame	1.0 ships an endgame goal
+starrupture	StarRupture	ea_unfinished	EA base-building + wave defense, ongoing roadmap, no defined ending	1.0 ships a defined ending
+no-more-room-in-hell-2	No More Room in Hell 2	ea_unfinished	EA co-op zombie survival; sessional waves, no campaign finale	1.0 ships a campaign with an ending
+sephiria	Sephiria	ea_unfinished	EA; only chapters 1-5 of 6 in game, final ending not yet shipped	chapter 6 / final ending ships
+sync-or-sink	Sync or Sink	ea_unfinished	EA + F2P; foundational single mission, full ending not implemented	1.0 ships the full campaign
+windrose	Windrose	ea_unfinished	EA; planned finale not yet shipped, currently survival sandbox	1.0 ships the planned finale
+sven-coop	Sven Co-op	finish_unverified	Free HL co-op campaign is finishable, but the product is an endless community-map platform	a distinct finite campaign mode is the main offering
+climber-animals-together	Climber: Animals Together	finish_unverified	PEAK-style climber, but no confirmable finite endpoint/final course + a PvP/race element	a defined final summit/course is confirmed
+cooking-simulator-2	Cooking Simulator 2	finish_unverified	Career = achievement/guild-rank progression, no credits/ending (sandbox-like)	a defined campaign finale is confirmed
+its-only-money	It's Only Money	finish_unverified	Open-world GTA-like; "liberate the city" is fuzzy/freeform with ongoing updates	a concrete finite finish is confirmed/added
+the-spell-brigade	The Spell Brigade	finish_unverified	Survivors-like with per-run bosses but an explicit Endless mode + tier-unlock loop	a single definitive game-finish is confirmed
+aloft	Aloft	finish_unverified	Cozy sky-survival sandbox; only a fuzzy "cure the corruption", no named win-condition	a named win-condition is confirmed
+panicore	PANICORE	finish_unverified	Repeatable escape-the-map sessional loop (buy maps, escape again); no overall finish	an overarching defined finish is confirmed
+monster-prom-3-monster-roadtrip	Monster Prom 3: Monster Roadtrip	below_1h_gate	Has co-op + RPT + a destination finish, but a single run is ~40-60 min (fails the >1h co-op gate)	a longer co-op finish route exists (e.g. a campaign mode)
+elden-ring	ELDEN RING	coop_workaround	Vanilla co-op can't run a continuous shared playthrough to the ending (phantoms return per boss); only the Seamless Co-op mod allows a full co-op finish	official continuous co-op-to-ending ships

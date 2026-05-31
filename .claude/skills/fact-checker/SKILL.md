@@ -369,6 +369,25 @@ For each id in `reconcile-report.tsv`:
 This queue is the *first* thing to clear because it is the highest-signal source
 of "an endless game is live on the site" — exactly the owner's hardest constraint.
 
+## Borderline watch-list (periodic re-check queue)
+
+`coop-hunter/state/borderline-watch.tsv` lists games REJECTED for a **changeable**
+reason — they may qualify later. Columns: `id, title, category, why_borderline,
+recheck_when`. Categories:
+- `ea_unfinished` — Early Access, finale not shipped → recheck when 1.0 ships.
+- `rating_below_gate` — has a finish + co-op but Steam <50% (or too few reviews) → recheck when the rating moves.
+- `finish_unverified` — a finish might exist but wasn't confirmable → recheck when evidence appears.
+- `below_1h_gate` — co-op finish content ≤1h → recheck if a longer mode appears.
+- `coop_workaround` — co-op-to-ending only via a mod/VPN → recheck if official co-op ships.
+
+This is DISTINCT from unconditional skips (endless / MMO / PvP-only / no-coop /
+delisted) which live in `skipped.tsv` and never need re-checking — they won't
+change. **When anything (this skill, coop-hunter reeval, or a manual review)
+rejects a game for one of the changeable reasons above, add it here** with the
+right `recheck_when` trigger — don't bury it in `skipped.tsv`. The owner skims this
+file periodically; when a `recheck_when` condition is met, re-run the per-candidate
+check and add the game if it now qualifies. Keep it deduped (one row per id).
+
 ## Stopping condition
 
 `done = true` only when ALL of:

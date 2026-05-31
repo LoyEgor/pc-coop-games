@@ -325,7 +325,7 @@ These methods replace the standard "Per-candidate procedure" for sources in phas
 
 3. If it now qualifies: **hard** finish → add normally; **soft** finish (fuzzy ending OR episodic+secondary co-op) → add with a leading `🟠 ` verdict + reason (e.g. a Forza-style Legend milestone). Counts toward phase_yield.
 
-4. If it still does NOT qualify → leave it skipped **AND append a line to `state/reeval-rejected.tsv`**: `<timestamp>\t<id>\t<reason_kept>\t<evidence>`. This is MANDATORY — without it reeval is a black box and its misses can't be audited. Every eligible row you process MUST end either added-to-data.js OR logged to `reeval-rejected.tsv`.
+4. If it still does NOT qualify → leave it skipped **AND append a line to `state/reeval-rejected.tsv`**: `<timestamp>\t<id>\t<reason_kept>\t<evidence>`. This is MANDATORY — without it reeval is a black box and its misses can't be audited. Every eligible row you process MUST end either added-to-data.js OR logged to `reeval-rejected.tsv`. **ALSO:** if the reason it failed is CHANGEABLE (Early Access with no shipped finale, Steam rating just under 50% / too few reviews, finish not yet confirmable, co-op finish ≤1h, or co-op only via mod/VPN), add a row to `state/borderline-watch.tsv` (see fact-checker SKILL.md "Borderline watch-list") with the recheck trigger — so it gets periodically re-checked, not buried.
 
 5. Exhausted when every eligible row has been either added or logged to `reeval-rejected.tsv` (cross-check: eligible-count == added + rejected-logged).
 
