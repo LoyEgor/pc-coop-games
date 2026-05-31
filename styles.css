@@ -407,10 +407,18 @@ tbody tr:hover {
   align-items: center;
   justify-content: center;
   flex: 0 0 18px;
+  border: 0;
+  padding: 0;
   border-radius: 4px;
+  background: transparent;
   color: var(--muted);
   overflow: hidden;
   transition: color 140ms ease, background-color 140ms ease;
+}
+
+.filter-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 
 .filter-button svg,
@@ -574,8 +582,6 @@ th:nth-child(13),
   color: var(--ink);
 }
 
-/* Numbers used to be inconsistent (rating 20px, others 15px). Unified. */
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -641,11 +647,6 @@ th:nth-child(13),
   font-weight: 500;
 }
 
-.detail.block {
-  display: block;
-  margin: 4px 0 0;
-}
-
 .verdict-col,
 .verdict-cell {
   min-width: 0;
@@ -653,10 +654,6 @@ th:nth-child(13),
   color: var(--ink);
   font-size: 13px;
   line-height: 1.45;
-}
-
-.link-col {
-  width: auto;
 }
 
 .youtube-link {
@@ -1361,8 +1358,7 @@ tbody tr:hover .youtube-link .yt-icon-play {
   }
 
   /* Numeric chip row: year/rating/players/hours/price */
-  tr td.number-cell,
-  tr td:nth-child(3) {
+  tr td.number-cell {
     flex: 0 0 auto;
     width: auto;
     display: inline-flex;

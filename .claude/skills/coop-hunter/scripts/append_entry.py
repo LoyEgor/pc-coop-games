@@ -90,11 +90,23 @@ def render_entry(g):
         # integer instead of crashing int() (only `hours` was protected before).
         return int(round(float(v)))
 
-    # imageUrl: prefer the steamImage helper if app_id is given; else literal.
-    if g.get("app_id"):
+    # imageUrl: prefer Steam's authoritative header_image (a literal URL, with
+    # the ?t= cache-buster stripped). The legacy steamImage() CDN path
+    # `/steam/apps/<id>/header.jpg` is GONE for newer apps (hard 404), so it is
+    # only a last-resort fallback when no resolved header_image is available.
+    header_image = g.get("header_image") or ""
+    raw_image = g.get("imageUrl", "") or ""
+    literal_url = ""
+    if isinstance(header_image, str) and header_image.startswith("http"):
+        literal_url = header_image.split("?")[0]
+    elif isinstance(raw_image, str) and raw_image.startswith("http"):
+        literal_url = raw_image.split("?")[0]
+
+    if literal_url:
+        image_expr = js_str(literal_url)
+    elif g.get("app_id"):
         image_expr = f"steamImage({g['app_id']})"
     else:
-        raw_image = g.get("imageUrl", "")
         # The skill sometimes passes the helper call itself as a literal string
         # (e.g. "steamImage(429660)"). Quoting that makes it a string value, so
         # the UI renders a broken <img src>. Emit it as a bare call instead.

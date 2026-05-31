@@ -1,9 +1,11 @@
 name: refresh-prices
 
-# Owned-by-cron: this workflow keeps `price` (UAH) and `rating` (Steam %positive)
-# on every non-hidden entry in data.js fresh. Drift thresholds:
+# Owned-by-cron: this workflow keeps `price` (UAH), `rating` (Steam %positive)
+# and `imageUrl` (header image) on every non-hidden entry in data.js fresh.
+# Thresholds:
 #   - rating >= 5pp
 #   - price  >= 10% relative
+#   - image  hard 404/410 only (a 301 redirect still renders, so it's left alone)
 # Below threshold = silent. Above = auto-update + commit + push.
 #
 # Skills (coop-hunter, fact-checker) read .github/refresh-status.json and skip
@@ -67,7 +69,8 @@ jobs:
             # Real updates landed. Extract counts from status file.
             PRICE_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied']['price'])")
             RATING_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied']['rating'])")
-            git commit -m "refresh: ${PRICE_N} price, ${RATING_N} rating updates"
+            IMAGE_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied'].get('image', 0))")
+            git commit -m "refresh: ${PRICE_N} price, ${RATING_N} rating, ${IMAGE_N} image updates"
           fi
 
           # Pull/rebase in case coop-hunter pushed during our run. On a conflict,

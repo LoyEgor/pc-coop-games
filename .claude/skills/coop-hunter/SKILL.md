@@ -135,9 +135,9 @@ The owner has explicitly authorized this hard reject: «мне принципи�
 - If response is `INVALID` (no game) → skip with reason `invalid_app_id`.
 
 ### 2b. Image validation
-- The standard `imageUrl` is `steamImage(<app_id>)` which expands to `https://cdn.cloudflare.steamstatic.com/steam/apps/<id>/header.jpg`. This URL is stable for any live Steam app.
-- Issue a `HEAD` (or short `curl -sI`) request to that URL. Must return HTTP 200 and `Content-Type: image/*`.
-- If the helper URL fails: fall back to `header_image` from appdetails. Re-check 200. If that also fails → skip with reason `no_image`. The user explicitly wants no rows with broken images.
+- The canonical `imageUrl` is the `header_image` URL from appdetails (a literal string), with any `?t=` cache-buster stripped. Pass it to append_entry.py as `header_image` (or as a literal `imageUrl`) and the helper stores it verbatim.
+- Do NOT default to the `steamImage(<app_id>)` helper. The legacy CDN path it builds — `https://cdn.cloudflare.steamstatic.com/steam/apps/<id>/header.jpg` — is GONE for newer apps (hard 404), and is the exact cause of the recurring broken-image rows. It is only a last-resort fallback when appdetails returns no `header_image`.
+- Issue a `HEAD` (or short `curl -sI`) request to the chosen URL. Must return HTTP 200 and `Content-Type: image/*`. If it fails → skip with reason `no_image`. The user explicitly wants no rows with broken images.
 
 ### 3. Quality threshold (Steam reviews)
 - Fetch `https://store.steampowered.com/appreviews/<id>?json=1&language=all&purchase_type=all&filter=summary` (no auth needed).
@@ -266,7 +266,7 @@ Entry shape (post-2026-05 minimal schema — see CLAUDE.md WHY-1/2/3):
   "price": 599,
   "verdict": "One-line description in English.",
   "storeUrl": "https://store.steampowered.com/app/<id>/",
-  "imageUrl": "steamImage(<id>)",
+  "imageUrl": "<header_image from appdetails, ?t= stripped>",
   "youtubeUrl": "youtube(\"VIDEO_ID\")"
 }
 ```
@@ -410,7 +410,7 @@ If `session_added_ids` is empty (e.g., the session started already done) → ski
 
 For each id in `session_added_ids`:
 
-1. **Image check.** `HEAD` request to the resolved `imageUrl`. If non-200 → call `scripts/fix_image.py <id> <app_id>` to fall back to the canonical `steamImage(<id>)` helper. If still 404 → log to `state/bad-existing.tsv` with reason `no_image_after_final_pass`.
+1. **Image check.** `HEAD` request to the resolved `imageUrl`. If non-200 → call `scripts/fix_image.py <id> <app_id>`, which repoints it to the authoritative `header_image` from appdetails (a literal URL — NOT the legacy `steamImage()` helper, which 404s for newer apps). If `fix_image.py` exits non-zero (no usable header_image) → log to `state/bad-existing.tsv` with reason `no_image_after_final_pass`.
 
 2. **YouTube check.** If `youtubeUrl` is `youtubeSearch(...)` (forbidden — should never have been allowed by `append_entry.py` exit 4, but verify defensively) → run §8 6-query drill cascade and `scripts/fix_youtube.py <id> <video_id>`. If a real `youtube("X")` URL: WebFetch the URL, verify the title contains the game name (≥30% token overlap, case-insensitive). If unrelated → run cascade, fix.
 

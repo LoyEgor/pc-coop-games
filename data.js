@@ -2931,7 +2931,7 @@ window.GAMES = [
     price: 95,
     verdict: "Overcooked-with-forklifts; a finite ~9h campaign of 20+ contracts with a defined end.",
     storeUrl: "https://store.steampowered.com/app/3583210/",
-    imageUrl: steamImage(3583210),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3583210/9eb7862ff717a04dcc02123ce1e773a3e1c226af/header.jpg",
     youtubeUrl: youtube("aHtM_np-XLQ")
   },
   {
@@ -2947,7 +2947,7 @@ window.GAMES = [
     price: 2299,
     verdict: "🟠 Horizon Legend is a career-status milestone in the open-world festival loop, not a final mission.",
     storeUrl: "https://store.steampowered.com/app/2483190/",
-    imageUrl: steamImage(2483190),
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2483190/27abb1584a118d50d0e3950fd48d557c51981db7/header.jpg",
     youtubeUrl: youtube("DfKtEuhBuyM")
   },
   {

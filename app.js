@@ -87,8 +87,6 @@ const TAG_TO_AXIS = (() => {
 })();
 const OTHER_AXIS = "_other";
 
-// 'FIT_RANK' has been removed as the 'Попадание' column is deleted
-
 const state = {
   sortKey: "year",
   sortDirection: "desc",
@@ -381,9 +379,7 @@ function render() {
 function renderRow(game) {
   const played = isPlayed(game);
   const oneCopy = ONE_COPY[game.oneCopy] || ONE_COPY.none;
-  const priceDisplay = game.price > 0
-    ? `<a class="price-link" href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">${game.price}&nbsp;₴</a>`
-    : `<span class="detail">—</span>`;
+  const priceDisplay = `<a class="price-link" href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">${game.price}&nbsp;₴</a>`;
 
   return `
     <tr class="${played ? "is-played" : ""}">
@@ -508,6 +504,10 @@ function filterIsActive(key) {
   return Boolean(value);
 }
 
+// Tracks the filter trigger that opened the popover, so Escape can return focus
+// there (keyboard a11y). Set in openFilter, read by the Escape handler.
+let lastFilterTrigger = null;
+
 function openFilter(key, button) {
   const config = filterConfig[key];
   if (!config) return;
@@ -522,6 +522,10 @@ function openFilter(key, button) {
   els.popover.style.top = `${rect.bottom + 8}px`;
   bindFilterControls(key, config);
   capFilterHeight();
+  lastFilterTrigger = button.querySelector(".filter-button");
+  // Move focus into the popover so keyboard users land on the first control
+  // (text/range input or first checkbox). preventScroll avoids a page jump.
+  els.popover.querySelector("input, button")?.focus({ preventScroll: true });
 }
 
 // Keep the popover within the viewport: it grows with content, but if there's a
@@ -618,7 +622,7 @@ function renderFilterMarkup(key, config) {
 
   // Simple single-list set filter (endingType, oneCopy) with optional subtitle.
   const options = config.options();
-  const renderRow = (value) => {
+  const renderOptionRow = (value) => {
     const labelText = config.labelFor ? config.labelFor(value) : value;
     const subtitleText = config.subtitleFor ? config.subtitleFor(value) : "";
     const subtitleHtml = subtitleText
@@ -637,7 +641,7 @@ function renderFilterMarkup(key, config) {
   return `
     <div class="popover-title">${escapeHtml(config.label)}</div>
     <div class="checkbox-list">
-      ${options.map(renderRow).join("")}
+      ${options.map(renderOptionRow).join("")}
     </div>
     <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
   `;
@@ -664,9 +668,13 @@ function bindFilterControls(key, config) {
       // The faceted Genres popover shows live counts that depend on the
       // current selection, so re-render it in place after each toggle.
       if (key === "genres" && input.dataset.setFilter) {
+        const toggledValue = input.value;
         els.popover.innerHTML = renderFilterMarkup(key, config);
         bindFilterControls(key, config);
         capFilterHeight();
+        // The rebuild dropped the focused checkbox; restore focus to it so
+        // keyboard users can keep toggling without losing their place.
+        els.popover.querySelector(`input[data-set-filter="genres"][value="${CSS.escape(toggledValue)}"]`)?.focus({ preventScroll: true });
       }
     });
   });
@@ -781,7 +789,15 @@ function initEvents() {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !els.videoModal.hidden) closeVideo();
+    if (event.key !== "Escape") return;
+    if (!els.videoModal.hidden) {
+      closeVideo();
+      return;
+    }
+    if (!els.popover.hidden) {
+      closeFilter();
+      lastFilterTrigger?.focus();
+    }
   });
 
   els.viewMode.addEventListener("click", (event) => {

@@ -5,7 +5,9 @@ Update a single scalar field on a single entry in data.js.
 Usage:
     python update_field.py <id> <field> <value>
 
-Supported fields: rating, price, year, playersMax, hours (all ints).
+Supported fields:
+  - ints:   rating, price, year, playersMax, hours
+  - string: imageUrl (written as a quoted JS literal; must be an https:// URL)
 Refuses arrays (genres) and unknown fields — those need editorial review.
 
 Logs every applied fix to state/applied-fixes.tsv.
@@ -31,7 +33,9 @@ def atomic_write_text(path, text):
     tmp.write_text(text, encoding="utf-8")
     os.replace(tmp, path)
 
-ALLOWED_FIELDS = {"rating", "price", "year", "playersMax", "hours"}
+ALLOWED_INT_FIELDS = {"rating", "price", "year", "playersMax", "hours"}
+ALLOWED_STR_FIELDS = {"imageUrl"}
+ALLOWED_FIELDS = ALLOWED_INT_FIELDS | ALLOWED_STR_FIELDS
 
 
 def ensure_log_header():
@@ -80,18 +84,29 @@ def main():
         )
         sys.exit(2)
 
-    try:
-        int_value = int(value)
-    except ValueError:
-        print(f"ERROR: value '{value}' is not an integer", file=sys.stderr)
-        sys.exit(2)
+    # Int fields are validated then written bare; string fields (imageUrl) are
+    # written as a quoted JS literal. `write_value` is the exact text placed
+    # after the colon; `log_value` is the human-readable new value for the log.
+    if field in ALLOWED_INT_FIELDS:
+        try:
+            log_value = str(int(value))
+        except ValueError:
+            print(f"ERROR: value '{value}' is not an integer", file=sys.stderr)
+            sys.exit(2)
+        write_value = log_value
+    else:
+        if field == "imageUrl" and not value.startswith("https://"):
+            print(f"ERROR: imageUrl must be an https:// URL, got '{value}'", file=sys.stderr)
+            sys.exit(2)
+        log_value = value
+        write_value = '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
     if not DATA_JS.exists():
         print(f"ERROR: data.js not found at {DATA_JS}", file=sys.stderr)
         sys.exit(2)
 
     content = DATA_JS.read_text(encoding="utf-8")
-    new_content, old_value = update(content, game_id, field, str(int_value))
+    new_content, old_value = update(content, game_id, field, write_value)
     if new_content is None:
         print(f"NOT FOUND: '{game_id}.{field}'", file=sys.stderr)
         sys.exit(1)
@@ -100,8 +115,8 @@ def main():
     ensure_log_header()
     with LOG_TSV.open("a", encoding="utf-8") as f:
         ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        f.write(f"{ts}\t{game_id}\t{field}\t{old_value}\t{int_value}\n")
-    print(f"OK: {game_id}.{field}: {old_value} -> {int_value}")
+        f.write(f"{ts}\t{game_id}\t{field}\t{old_value}\t{log_value}\n")
+    print(f"OK: {game_id}.{field}: {old_value} -> {log_value}")
 
 
 if __name__ == "__main__":

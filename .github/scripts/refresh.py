@@ -4,13 +4,18 @@ Refresh `price` and `rating` for every non-hidden entry in data.js by hitting
 Steam's storefront API (cc=ua) and appreviews endpoint. Designed to run on a
 GitHub Actions cron — see .github/workflows/refresh-prices.yml.
 
-This script OWNS the two drift-prone fields:
-  - `price`  (UAH, from /api/appdetails?cc=ua → price_overview.final / 100)
-  - `rating` (Steam %positive, from /appreviews/<id>?json=1)
+This script OWNS the drift-prone / breakable fields:
+  - `price`    (UAH, from /api/appdetails?cc=ua → price_overview.final / 100)
+  - `rating`   (Steam %positive, from /appreviews/<id>?json=1)
+  - `imageUrl` (auto-heals header images that 404 — the legacy steamImage() CDN
+                path `/steam/apps/<id>/header.jpg` is gone for newer apps; the
+                authoritative URL is `header_image` from appdetails)
 
-Drift thresholds (match fact-checker conservative auto-fix):
+Drift / breakage thresholds (match fact-checker conservative auto-fix):
   - rating: apply update if |new - old| >= 5pp
   - price:  apply update if relative |new - old| / old >= 10%
+  - image:  replace only when the CURRENT image is a hard 404/410 (a 301
+            redirect still renders in the browser, so it's left alone)
 
 For NEW entries: this script never inserts. The coop-hunter skill does that,
 including the initial price/rating values.
@@ -32,6 +37,7 @@ Exit 0 on success (with or without updates), 1 if any unrecoverable error.
 import datetime
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -86,6 +92,41 @@ def compute_rating(reviews_summary):
     if total < 50:  # too few to trust; same threshold as coop-hunter §3
         return None
     return round(positive / total * 100)
+
+
+def head_status(url):
+    """HEAD a URL following redirects; return the final HTTP status (or None on
+    a network error). A browser follows redirects on <img>, so a 301 to a live
+    asset is NOT broken — only a final 404/410 is."""
+    req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": UA})
+    try:
+        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as r:
+            return r.status
+    except urllib.error.HTTPError as e:
+        return e.code
+    except (urllib.error.URLError, TimeoutError, OSError):
+        return None
+
+
+def current_image_url(entry):
+    """The URL the page actually renders. The stored imageUrl is either a
+    steamImage(<id>) helper call (legacy CDN path) or a literal URL string."""
+    raw = entry.get("imageUrl", "") or ""
+    m = re.search(r"steamImage\((\d+)\)", raw)
+    if m:
+        return f"https://cdn.cloudflare.steamstatic.com/steam/apps/{m.group(1)}/header.jpg"
+    if raw.startswith("http"):
+        return raw
+    return None
+
+
+def canonical_image_url(details):
+    """Steam's authoritative header image (already in `details` via the basic
+    filter), with the ?t= cache-buster stripped for a stable stored URL."""
+    header = (details or {}).get("header_image")
+    if not header:
+        return None
+    return header.split("?")[0]
 
 
 def list_entries():
@@ -146,12 +187,12 @@ def main():
         entries = list_entries()
     except Exception as e:
         print(f"FATAL: list_entries failed: {e}", file=sys.stderr)
-        write_status(False, 0, {"price": 0, "rating": 0}, 0, error=f"list_entries: {e}")
+        write_status(False, 0, {"price": 0, "rating": 0, "image": 0}, 0, error=f"list_entries: {e}")
         sys.exit(1)
 
     print(f"Loaded {len(entries)} non-hidden entries from data.js")
 
-    updates = {"price": 0, "rating": 0}
+    updates = {"price": 0, "rating": 0, "image": 0}
     failures = 0
     consecutive_failures = 0
     checked = 0
@@ -217,9 +258,19 @@ def main():
                     updates["rating"] += 1
                     print(f"  [{i}/{len(entries)}] {game_id}: rating {old_rating} -> {new_rating} ({abs(new_rating-old_rating)}pp drift)")
 
+        # Image healing — replace only a CURRENT image that hard-404s, so diffs
+        # stay limited to actually-broken rows. canonical comes from `details`
+        # (header_image, already fetched above) — no extra appdetails call.
+        cur_img = current_image_url(entry)
+        canon_img = canonical_image_url(details)
+        if cur_img and canon_img and canon_img != cur_img and head_status(cur_img) in (404, 410):
+            if apply_update(game_id, "imageUrl", canon_img):
+                updates["image"] += 1
+                print(f"  [{i}/{len(entries)}] {game_id}: image 404 -> {canon_img}")
+
     print(f"\n[{datetime.datetime.utcnow().isoformat()}Z] Refresh complete")
     print(f"  entries_checked: {checked}/{len(entries)}")
-    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}")
+    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, image={updates['image']}")
     print(f"  fetch_failures:  {failures}")
 
     write_status(True, checked, updates, failures)

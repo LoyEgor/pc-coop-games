@@ -69,7 +69,7 @@ A game qualifies if there is a moment where you finish — even without a cutsce
   price: 599,                             // UAH integer from Steam cc=ua
   verdict: "Short description.",          // ≤120 chars English
   storeUrl: "https://store.steampowered.com/app/<id>/",
-  imageUrl: steamImage(<id>),             // helper; expands to header.jpg
+  imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/.../header.jpg", // canonical: header_image from appdetails (?t= stripped). steamImage(<id>) is a legacy fallback that 404s for newer apps.
   youtubeUrl: youtube("VIDEO_ID")         // helper; MUST be a real gameplay video, NOT a search URL
 }
 ```

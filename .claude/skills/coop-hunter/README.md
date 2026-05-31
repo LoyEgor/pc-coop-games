@@ -59,7 +59,7 @@ scripts/
   batch_append.py     Bulk insert from a JSON array (same gates as append_entry)
   remove_entry.py     Removes an entry (phase 4 endless cleanup)
   fix_youtube.py      Replaces a broken/placeholder youtubeUrl with a real video id
-  fix_image.py        Repoints a broken imageUrl to the steamImage() helper
+  fix_image.py        Repoints a broken imageUrl to the authoritative header_image from appdetails
 state/
   progress.json       Current source/offset, counters, session_added_ids, phase_4_zero_yield_passes
   added.tsv           Log of every game added
