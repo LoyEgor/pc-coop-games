@@ -2832,7 +2832,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 25,
     oneCopy: "none",
-    price: 36,
+    price: 32,
     verdict: "Amazon survival: Story Mode finale about Jake Higgins + Spirit of Amazonia DLC. Co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/815370/",
     imageUrl: steamImage(815370),
