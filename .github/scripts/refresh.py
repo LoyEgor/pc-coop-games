@@ -233,18 +233,28 @@ def main():
         # cc=ua can fall back to another currency for region-restricted apps;
         # writing that as UAH would be wrong, so skip anything that isn't UAH.
         po = details.get("price_overview") if details else None
-        if po and po.get("currency") == "UAH" and isinstance(po.get("final"), int):
-            new_price = round(po["final"] / 100)
-            try:
-                old_price = int(entry.get("price", 0))
-            except (ValueError, TypeError):
-                old_price = 0
-            if old_price > 0:
-                rel_drift = abs(new_price - old_price) / old_price
-                if rel_drift >= PRICE_DRIFT_REL:
-                    if apply_update(game_id, "price", new_price):
-                        updates["price"] += 1
-                        print(f"  [{i}/{len(entries)}] {game_id}: price {old_price} -> {new_price} ({rel_drift*100:.0f}% drift)")
+        if po and po.get("currency") == "UAH":
+            # Use the REGULAR (pre-discount) price so a Steam sale doesn't make
+            # the cron commit the sale price and then revert it when the sale
+            # ends. `initial` is the full price; `final` is post-discount and is
+            # only a fallback when `initial` is absent/0.
+            raw_price = po.get("initial") or 0
+            if not isinstance(raw_price, int) or raw_price <= 0:
+                raw_price = po.get("final") or 0
+            new_price = round(raw_price / 100) if isinstance(raw_price, int) else 0
+            # Never overwrite with 0 (free weekend / 100%-off promo). Skip the
+            # price this run rather than freezing the catalog at 0 forever.
+            if new_price > 0:
+                try:
+                    old_price = int(entry.get("price", 0))
+                except (ValueError, TypeError):
+                    old_price = 0
+                if old_price > 0:
+                    rel_drift = abs(new_price - old_price) / old_price
+                    if rel_drift >= PRICE_DRIFT_REL:
+                        if apply_update(game_id, "price", new_price):
+                            updates["price"] += 1
+                            print(f"  [{i}/{len(entries)}] {game_id}: price {old_price} -> {new_price} ({rel_drift*100:.0f}% drift)")
 
         # Rating drift
         new_rating = compute_rating(reviews)

@@ -53,7 +53,10 @@ def main():
                 continue
             # Gate: render_entry raises ValueError without a real video_id.
             new_entry = render_entry(g) + ","
-        except (ValueError, KeyError) as e:
+        except (ValueError, KeyError, TypeError) as e:
+            # TypeError = a null/non-numeric numeric field. Skip-and-log this one
+            # entry instead of letting it abort the batch and discard every
+            # in-memory insert made so far.
             skipped.append(f"{g.get('id', '<no id>')} (rejected: {e})")
             continue
         new_content = insert_entry(content, new_entry)

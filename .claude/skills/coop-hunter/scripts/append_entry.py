@@ -93,7 +93,14 @@ def drop_from_reeval(game_id):
 def render_entry(g):
     """Render a game dict into JS object literal text matching existing style."""
     def js_str(s):
-        return '"' + (s or "").replace("\\", "\\\\").replace('"', '\\"') + '"'
+        # json.dumps emits a fully-escaped JSON/JS string literal: it handles
+        # \n \t \r \" \\ and other control chars. The hand-rolled version only
+        # escaped backslash + double-quote, so a real newline (a JSON "\n" on
+        # stdin decodes to one) produced an invalid JS literal and broke the
+        # line-based insert_entry. ensure_ascii=False keeps Unicode readable in
+        # data.js — the soft-finish marker 🟠 and accented titles stay as-is
+        # instead of becoming \uXXXX escapes.
+        return json.dumps(s or "", ensure_ascii=False)
 
     def js_arr(a):
         return "[" + ", ".join(js_str(x) for x in a) + "]"
@@ -101,7 +108,14 @@ def render_entry(g):
     def js_int(v):
         # Round defensively: a value arriving as "87.6" or 8.5 becomes a clean
         # integer instead of crashing int() (only `hours` was protected before).
-        return int(round(float(v)))
+        # A present-but-null ("rating": null) or non-numeric ("year": "soon")
+        # field would raise TypeError/ValueError from float(); re-raise as a
+        # single TypeError with a clear message so main() can map it to the
+        # generic data-error exit (2), NOT exit 1 (no-op) or exit 4 (video gate).
+        try:
+            return int(round(float(v)))
+        except (TypeError, ValueError):
+            raise TypeError(f"non-numeric value {v!r} for a numeric field")
 
     # imageUrl: prefer Steam's authoritative header_image (a literal URL, with
     # the ?t= cache-buster stripped). The legacy steamImage() CDN path
@@ -216,6 +230,13 @@ def main():
         sys.exit(4)
     except KeyError as e:
         print(f"ERROR: '{g.get('id')}' is missing required field {e}", file=sys.stderr)
+        sys.exit(2)
+    except TypeError as e:
+        # A null/non-numeric numeric field (rating/year/price/hours/playersMax).
+        # Must NOT fall through to the bare exit 1 (which means "already present,
+        # no-op" and would silently lose the candidate), and must NOT hit exit 4
+        # (reserved for the video-id gate). Generic data error → exit 2.
+        print(f"ERROR: '{g.get('id')}' has a bad numeric field: {e}", file=sys.stderr)
         sys.exit(2)
 
     new_content = insert_entry(content, new_entry)

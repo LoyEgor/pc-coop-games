@@ -21,6 +21,7 @@ a missed trailing skipped.tsv line just shows up next run).
 Usage:  python find_neighbors.py
 """
 
+import os
 import re
 from pathlib import Path
 from itertools import combinations
@@ -163,8 +164,10 @@ def main():
     # just tags.
 
     # --- write into shared/owner-review.tsv (id, action, detail) as UPSERT ---
-    # owner-review also holds fix/remove rows from log_event.py — preserve those,
-    # regenerate only our contradiction rows.
+    # owner-review also holds fix/remove/contradiction rows from log_event.py —
+    # preserve ALL of those. We only own auto-derived rows, which we tag with the
+    # action `auto-contradiction`; regenerate only those, never log_event's
+    # manually-logged `contradiction` rows.
     OUT_TSV.parent.mkdir(parents=True, exist_ok=True)
     san = lambda s: (s or "").replace("\t", " ").replace("\r", " ").replace("\n", " ")
     rows, order = {}, []
@@ -173,24 +176,30 @@ def main():
             if i == 0 or not ln.strip():
                 continue
             c = ln.split("\t")
-            if len(c) >= 2 and c[1] != "contradiction":   # keep fix/remove, drop old contradictions
+            # keep every manually-logged row (fix / remove / contradiction);
+            # drop only our own auto-derived rows so we can regenerate them.
+            if len(c) >= 2 and c[1] != "auto-contradiction":
                 rows[(c[0], c[1])] = ln
                 order.append((c[0], c[1]))
     for kind, a, b, detail in findings:
         # key includes kind+b so two distinct contradictions sharing the same
         # leading id (e.g. a franchise_split AND a franchise_ending on the same
         # game) don't overwrite each other.
-        key = (a, "contradiction", kind, b)
+        key = (a, "auto-contradiction", kind, b)
         if key not in order:
             order.append(key)
-        rows[key] = "\t".join([a, "contradiction", san(f"{kind}: {detail}")])
-    with OUT_TSV.open("w", encoding="utf-8") as f:
+        rows[key] = "\t".join([a, "auto-contradiction", san(f"{kind}: {detail}")])
+    # Atomic write: temp file + os.replace (mirrors mark_reviewed.py / update_field.py)
+    # so a crash mid-write can't truncate owner-review.tsv to an empty/partial file.
+    tmp = OUT_TSV.with_name(OUT_TSV.name + ".tmp")
+    with tmp.open("w", encoding="utf-8") as f:
         f.write("id\taction\tdetail\n")
         for k in order:
             f.write(rows[k] + "\n")
+    os.replace(tmp, OUT_TSV)
 
     print(f"catalog={len(catalog)} reeval={len(skipped)} -> {len(findings)} contradictions")
-    print(f"  written to {OUT_TSV} (fix/remove rows preserved)")
+    print(f"  written to {OUT_TSV} (fix/remove/contradiction rows preserved)")
 
 
 if __name__ == "__main__":
