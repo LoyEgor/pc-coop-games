@@ -4288,7 +4288,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "remote-play",
     price: 700,
-    verdict: "Pixel-art JRPG — Dawn of Equinox update adds 1-3 local co-op (Remote Play works) for the full Solstice Warriors campaign.",
+    verdict: "Pixel-art JRPG — Dawn of Equinox update adds 1-3 local co-op (Remote Play) for the full Solstice Warriors campaign.",
     storeUrl: "https://store.steampowered.com/app/1244090/",
     imageUrl: steamImage(1244090),
     youtubeUrl: youtube("zj0YPoVxbvU")
@@ -4336,7 +4336,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "remote-play",
     price: 360,
-    verdict: "Retro run-n-gun in the Contra/Metal Slug tradition — 2-player local co-op (Remote Play) through six stages and a final showdown.",
+    verdict: "Contra/Metal Slug-style run-n-gun — 2-player local co-op (Remote Play) through six stages to a final showdown.",
     storeUrl: "https://store.steampowered.com/app/609110/",
     imageUrl: steamImage(609110),
     youtubeUrl: youtube("USSLSkMeXtE")
@@ -4401,7 +4401,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 600,
-    verdict: "Base-building action TD with Story Campaign for 1-4 players online — 2.0 update added a Megastructure endgame with a new ending.",
+    verdict: "Base-building action TD, 1-4 player online Story Campaign — 2.0 added a Megastructure endgame with a new ending.",
     storeUrl: "https://store.steampowered.com/app/780310/",
     imageUrl: steamImage(780310),
     youtubeUrl: youtube("qi9JnewY41Q")
@@ -4433,7 +4433,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 197,
-    verdict: "Rogue-life action RPG with town-building — 3-player online campaign across chapters 1-9 ending in the Combot Network finale.",
+    verdict: "Rogue-lite action RPG with town-building — 3-player online campaign, chapters 1-9 ending in the Combot Network finale.",
     storeUrl: "https://store.steampowered.com/app/3159570/",
     imageUrl: steamImage(3159570),
     youtubeUrl: youtube("hLXbid_25u4")
@@ -4449,7 +4449,7 @@ window.GAMES = [
     hours: 30,
     oneCopy: "none",
     price: 700,
-    verdict: "ARPG with 10-chapter time-travel campaign and 4-player online co-op — finite story ends; optional Monoliths endgame after credits.",
+    verdict: "ARPG with 10-chapter time-travel campaign, 4-player online co-op — finite story ends; optional Monoliths after credits.",
     storeUrl: "https://store.steampowered.com/app/899770/",
     imageUrl: steamImage(899770),
     youtubeUrl: youtube("R583gpKBp5s")
@@ -5918,7 +5918,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Two-player puzzle-platformer of fire and ice manipulating heat to progress; local co-op via Remote Play, narrated story end.",
+    verdict: "Two-player puzzle-platformer of fire and ice, manipulating heat to progress; local co-op (RPT), narrated story end.",
     storeUrl: "https://store.steampowered.com/app/809880/",
     imageUrl: steamImage(809880),
     youtubeUrl: youtube("ZQdkYuzLepc")
@@ -5934,7 +5934,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 375,
-    verdict: "Story-driven vertical shoot-em-up with squadron upgrades; up to four-player local co-op via Remote Play, mission campaign with bosses.",
+    verdict: "Story-driven vertical shmup with squadron upgrades; up to 4-player local co-op (RPT), mission campaign with bosses.",
     storeUrl: "https://store.steampowered.com/app/859350/",
     imageUrl: steamImage(859350),
     youtubeUrl: youtube("YMFCOk7or5s"),
@@ -5999,7 +5999,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Two-player Victorian puzzle adventure crewing an unreliable spaceship to Mars; local co-op via Remote Play, reach Mars to finish.",
+    verdict: "Two-player Victorian puzzle adventure crewing a ship to Mars; local co-op (Remote Play), reach Mars to finish.",
     storeUrl: "https://store.steampowered.com/app/504920/",
     imageUrl: steamImage(504920),
     youtubeUrl: youtube("hZLHqmmf4gY")
@@ -6064,7 +6064,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "remote-play",
     price: 69,
-    verdict: "Streets of Rage-style brawler with hand-drawn stages; two-player local co-op via Remote Play, campaign with a final boss.",
+    verdict: "Streets of Rage-style brawler with hand-drawn stages; 2-player local co-op (Remote Play), campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/418620/",
     imageUrl: steamImage(418620),
     youtubeUrl: youtube("KV5EDoTY4sk")
@@ -6096,7 +6096,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "remote-play",
     price: 259,
-    verdict: "Steampunk vertical shmup set on colonial Mars; up to four-player local co-op via Remote Play, staged campaign with a final boss.",
+    verdict: "Steampunk vertical shmup set on colonial Mars; up to 4-player local co-op (RPT), staged campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/377950/",
     imageUrl: steamImage(377950),
     youtubeUrl: youtube("127HE8TgHgw")
@@ -6112,7 +6112,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 225,
-    verdict: "Polished top-down shmup with upgradeable craft across themed stages; two-player local co-op via Remote Play, final-stage boss.",
+    verdict: "Polished top-down shmup with upgradeable craft across themed stages; 2-player local co-op (RPT), final-stage boss.",
     storeUrl: "https://store.steampowered.com/app/667600/",
     imageUrl: steamImage(667600),
     youtubeUrl: youtube("n-BPbItmXuQ")
@@ -6128,7 +6128,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 325,
-    verdict: "Twin-stick shooter pitting Tesla against eldritch hordes; up to four-player local co-op via Remote Play, campaign with a final boss.",
+    verdict: "Twin-stick shooter pitting Tesla against eldritch hordes; up to 4-player local co-op (RPT), campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/636100/",
     imageUrl: steamImage(636100),
     youtubeUrl: youtube("jWqUoPVZFvs")
@@ -6192,7 +6192,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "remote-play",
     price: 225,
-    verdict: "Fast bullet-dodging run-and-gun starring hero Wryn; two-player local co-op via Remote Play, short campaign with a final boss.",
+    verdict: "Fast bullet-dodging run-and-gun starring hero Wryn; 2-player local co-op (RPT), short campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/396350/",
     imageUrl: steamImage(396350),
     youtubeUrl: youtube("efeY-GJBZyo")
@@ -6224,7 +6224,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 239,
-    verdict: "Co-op submarine roguelite diving a Verne-inspired abyss; up to four-player online crew, expeditions ending at a final boss.",
+    verdict: "Co-op submarine roguelite diving a Verne-inspired abyss; up to 4-player online crew, expeditions ending at a final boss.",
     storeUrl: "https://store.steampowered.com/app/307110/",
     imageUrl: steamImage(307110),
     youtubeUrl: youtube("xmGC0HKRP-c")
@@ -6290,7 +6290,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "remote-play",
     price: 279,
-    verdict: "Reboot of the toads as a comedic beat-em-up with varied minigame stages; three-player local co-op via Remote Play, story finale.",
+    verdict: "Comedic beat-em-up reboot with varied minigame stages; 3-player local co-op (Remote Play), story finale.",
     storeUrl: "https://store.steampowered.com/app/1244950/",
     imageUrl: steamImage(1244950),
     youtubeUrl: youtube("UBYwBMgHAIA"),
@@ -6307,7 +6307,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "remote-play",
     price: 215,
-    verdict: "Gory Contra-style run-and-gun against biomechanical horrors; two-player local co-op via Remote Play, staged campaign with bosses.",
+    verdict: "Gory Contra-style run-and-gun against biomechanical horrors; 2-player local co-op (RPT), staged campaign with bosses.",
     storeUrl: "https://store.steampowered.com/app/1157740/",
     imageUrl: steamImage(1157740),
     youtubeUrl: youtube("2m2BZPccOXs")
@@ -6323,7 +6323,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "remote-play",
     price: 515,
-    verdict: "Fast 2D roguelite of escaping a magical prison; two-player local co-op via Remote Play, runs end by beating the four Zodiacs.",
+    verdict: "Fast 2D roguelite of escaping a magical prison; 2-player local co-op (RPT), runs end by beating the four Zodiacs.",
     storeUrl: "https://store.steampowered.com/app/1280930/",
     imageUrl: steamImage(1280930),
     youtubeUrl: youtube("AXDUxImCWF0")
@@ -6339,7 +6339,7 @@ window.GAMES = [
     hours: 40,
     oneCopy: "none",
     price: 515,
-    verdict: "Fantasy farming-life RPG with towns, dungeons and a main story; online co-op for up to eight, story arc with a final boss.",
+    verdict: "Fantasy farming-life RPG with towns, dungeons and a main story; online co-op for up to 8, story arc with a final boss.",
     storeUrl: "https://store.steampowered.com/app/1432860/",
     imageUrl: steamImage(1432860),
     youtubeUrl: youtube("KdLJrr-PpNY")
@@ -6387,7 +6387,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Twin-stick roguelite with risky item gambits and quirky birds; two-player local co-op story via Remote Play, final-boss runs.",
+    verdict: "Twin-stick roguelite with risky item gambits and quirky birds; 2-player local co-op story (RPT), final-boss runs.",
     storeUrl: "https://store.steampowered.com/app/585710/",
     imageUrl: steamImage(585710),
     youtubeUrl: youtube("5YZtG5Gfpnc")
@@ -6403,7 +6403,7 @@ window.GAMES = [
     hours: 15,
     oneCopy: "none",
     price: 103,
-    verdict: "Minimalist side-on kingdom builder; two-player online co-op monarchs, win by razing every Greed portal across the islands.",
+    verdict: "Minimalist side-on kingdom builder; 2-player online co-op monarchs, win by razing every Greed portal across the islands.",
     storeUrl: "https://store.steampowered.com/app/701160/",
     imageUrl: steamImage(701160),
     youtubeUrl: youtube("ynRVEGpXTv4")
@@ -6419,7 +6419,7 @@ window.GAMES = [
     hours: 25,
     oneCopy: "none",
     price: 310,
-    verdict: "Pixel-art Diablo-like with deep loot and classes; up to four-player online co-op, story campaign culminating in a final boss.",
+    verdict: "Pixel-art Diablo-like with deep loot and classes; up to 4-player online co-op, story campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/375480/",
     imageUrl: steamImage(375480),
     youtubeUrl: youtube("5iTDvObm8ik")
@@ -6435,7 +6435,7 @@ window.GAMES = [
     hours: 8,
     oneCopy: "none",
     price: 55,
-    verdict: "Original FPS/tower-defense hybrid defending the Core across discrete maps; up to four-player online co-op, finite map campaign.",
+    verdict: "Original FPS/tower-defense hybrid defending the Core; up to 4-player online co-op, finite map campaign.",
     storeUrl: "https://store.steampowered.com/app/91600/",
     imageUrl: steamImage(91600),
     youtubeUrl: youtube("m15PR3FW2cI")
@@ -6451,7 +6451,7 @@ window.GAMES = [
     hours: 4,
     oneCopy: "remote-play",
     price: 225,
-    verdict: "Modern revival of the Pang bubble-busting arcade game; two-player local co-op via Remote Play, world tour of stages with bosses.",
+    verdict: "Modern revival of the Pang bubble-busting arcade game; 2-player local co-op (RPT), world tour of stages with bosses.",
     storeUrl: "https://store.steampowered.com/app/415150/",
     imageUrl: steamImage(415150),
     youtubeUrl: youtube("Q6-OLfdbCGA")
@@ -6467,7 +6467,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 229,
-    verdict: "Brutal Roman-Britain beat-em-up with hand-drawn art; two-player local co-op via Remote Play, story campaign across stages.",
+    verdict: "Brutal Roman-Britain beat-em-up with hand-drawn art; 2-player local co-op (Remote Play), story campaign across stages.",
     storeUrl: "https://store.steampowered.com/app/587180/",
     imageUrl: steamImage(587180),
     youtubeUrl: youtube("phKBuRLXVYc")
@@ -6483,7 +6483,7 @@ window.GAMES = [
     hours: 20,
     oneCopy: "none",
     price: 925,
-    verdict: "Grimdark isometric shooter-ARPG in the 40K universe; up to four-player online co-op, story campaign culminating in a final boss.",
+    verdict: "Grimdark isometric shooter-ARPG in the 40K universe; up to 4-player online co-op, story campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/527430/",
     imageUrl: steamImage(527430),
     youtubeUrl: youtube("mUh0SM1Dc5U")
@@ -6531,7 +6531,7 @@ window.GAMES = [
     hours: 50,
     oneCopy: "none",
     price: 849,
-    verdict: "Workshop crafting-life RPG with a full story campaign rebuilding a desert town; online co-op shared world with a story ending.",
+    verdict: "Workshop crafting-life RPG, full story campaign rebuilding a desert town; online co-op shared world with a story ending.",
     storeUrl: "https://store.steampowered.com/app/1084600/",
     imageUrl: steamImage(1084600),
     youtubeUrl: youtube("duWSycotwXs")
@@ -6563,7 +6563,7 @@ window.GAMES = [
     hours: 2,
     oneCopy: "remote-play",
     price: 169,
-    verdict: "Treasure's legendary polarity-switching shmup; two-player local co-op via Remote Play, five chapters ending in a final boss.",
+    verdict: "Treasure's legendary polarity-switching shmup; 2-player local co-op (Remote Play), five chapters ending in a final boss.",
     storeUrl: "https://store.steampowered.com/app/253750/",
     imageUrl: steamImage(253750),
     youtubeUrl: youtube("aMVepo5MBpA")
@@ -6627,7 +6627,7 @@ window.GAMES = [
     hours: 3,
     oneCopy: "remote-play",
     price: 415,
-    verdict: "Remake of the SNES beat-em-up with cyber-ninjas; two-player local co-op via Remote Play, stage-based campaign with a final boss.",
+    verdict: "Remake of the SNES beat-em-up with cyber-ninjas; 2-player local co-op (RPT), stage-based campaign with a final boss.",
     storeUrl: "https://store.steampowered.com/app/2288070/",
     imageUrl: steamImage(2288070),
     youtubeUrl: youtube("UiKWav5DthA")
@@ -6643,7 +6643,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "remote-play",
     price: 225,
-    verdict: "Predecessor to Sky Force Reloaded; polished top-down shmup, two-player local co-op via Remote Play, finite stages with bosses.",
+    verdict: "Predecessor to Sky Force Reloaded; polished top-down shmup, 2-player local co-op (RPT), finite stages with bosses.",
     storeUrl: "https://store.steampowered.com/app/355050/",
     imageUrl: steamImage(355050),
     youtubeUrl: youtube("1PUW_9MGmZE")
@@ -6659,7 +6659,7 @@ window.GAMES = [
     hours: 12,
     oneCopy: "none",
     price: 225,
-    verdict: "Polished sci-fi tower defense with a story campaign; two-player online co-op across discrete missions with a defined last one.",
+    verdict: "Polished sci-fi tower defense with a story campaign; 2-player online co-op across discrete missions, defined last one.",
     storeUrl: "https://store.steampowered.com/app/221540/",
     imageUrl: steamImage(221540),
     youtubeUrl: youtube("FWuQU_Tm4MA")
@@ -8159,7 +8159,7 @@ window.GAMES = [
     hours: 18,
     oneCopy: "none",
     price: 789,
-    verdict: "Open-zone Soulslike with seamless drop-in co-op summoning, ashen-grey art direction, and a melancholy quest to relight the world.",
+    verdict: "Open-zone Soulslike with seamless drop-in co-op summoning and a melancholy quest to relight the world.",
     storeUrl: "https://store.steampowered.com/app/649950/",
     imageUrl: steamImage(649950),
     youtubeUrl: youtube("mNMBCXNfAY4"),
@@ -8873,7 +8873,7 @@ window.GAMES = [
     hours: 6,
     oneCopy: "none",
     price: 229,
-    verdict: "Three-player side-scrolling brawler about a Viking band reopening the gates to Valhalla by stopping Loki across hand-drawn stages.",
+    verdict: "3-player side-scrolling brawler: a Viking band stops Loki to reopen the gates to Valhalla across hand-drawn stages.",
     storeUrl: "https://store.steampowered.com/app/325930/",
     imageUrl: steamImage(325930),
     youtubeUrl: youtube("EHf9MEsqa4U")
@@ -9049,7 +9049,7 @@ window.GAMES = [
     hours: 5,
     oneCopy: "none",
     price: 56,
-    verdict: "Wacky cooperative racer where two players are tethered by a stretchy rope and roll, swing and fling through 4 worlds of obstacle courses.",
+    verdict: "Wacky co-op racer: two players tethered by a stretchy rope roll, swing and fling through 4 worlds of obstacle courses.",
     storeUrl: "https://store.steampowered.com/app/1054430/",
     imageUrl: steamImage(1054430),
     youtubeUrl: youtube("E42IdX_I2gQ")

@@ -221,6 +221,20 @@ def main():
         print(f"BLOCKED: id '{g['id']}' was previously removed as endless — refusing to re-add", file=sys.stderr)
         sys.exit(3)
 
+    # Enforce the ≤120-char verdict cap (CLAUDE.md §4, both SKILL.md). Validate
+    # HERE — before render_entry — and exit 2 (generic data error), NOT a bare
+    # ValueError: render_entry's only deliberate ValueError is the YouTube
+    # video-id gate, which main() maps to exit 4. A verdict-length ValueError
+    # would be caught by that branch and mis-exit 4. Count display chars (the
+    # 🟠 soft-finish marker is one char; Python len() already treats it as 1).
+    verdict = g.get("verdict") or ""
+    if len(verdict) > 120:
+        print(
+            f"ERROR: verdict too long ({len(verdict)}>120): {verdict!r}",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+
     try:
         new_entry = render_entry(g) + ","
     except ValueError as e:

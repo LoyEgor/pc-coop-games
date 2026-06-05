@@ -150,7 +150,7 @@ const filterConfig = {
     labelFor: (value) => ONE_COPY[value]?.label || value,
     subtitleFor: (value) => ONE_COPY[value]?.subtitle || ""
   },
-  price: { type: "range", label: "Price", step: 50, min: 49 }
+  price: { type: "range", label: "Price", step: 50, min: 0 }
 };
 
 function getRangeExtents(key) {
@@ -242,7 +242,8 @@ function applyFiltersFromURL() {
   if (p.has("copies")) f.oneCopy = new Set(p.get("copies").split(",").filter(Boolean));
   if (p.has("sort")) {
     const [k, d] = p.get("sort").split(":");
-    if (k) state.sortKey = k;
+    const SORT_KEYS = ["year", "rating", "playersMax", "hours", "price", "genres", "endingType", "oneCopy", "title", "verdict"];
+    if (SORT_KEYS.includes(k)) state.sortKey = k;
     if (d === "asc" || d === "desc") state.sortDirection = d;
   }
   if (p.has("view") && ["active", "all", "played"].includes(p.get("view"))) state.viewMode = p.get("view");
@@ -379,7 +380,9 @@ function render() {
   if (themeLabel) themeLabel.textContent = state.theme === "dark" ? " Light" : " Dark";
 
   els.viewMode.querySelectorAll(".view-mode-btn").forEach((btn) => {
-    btn.classList.toggle("is-active", btn.dataset.view === state.viewMode);
+    const isActive = btn.dataset.view === state.viewMode;
+    btn.classList.toggle("is-active", isActive);
+    btn.setAttribute("aria-selected", String(isActive));
   });
 
   const visibleGames = getVisibleGames();
@@ -492,9 +495,9 @@ function renderSortIcons() {
   // and the user explicitly said direction doesn't matter to them visually).
   // Active sort column is marked with .is-active-sort on the <th> itself,
   // so the underline spans the full column width — not just the inner chip.
-  document.querySelectorAll(".th-control[data-filter]").forEach((control) => {
-    const key = control.querySelector("[data-sort]")?.dataset.sort;
-    const th = control.closest("th");
+  document.querySelectorAll("[data-sort]").forEach((sorter) => {
+    const key = sorter.dataset.sort;
+    const th = sorter.closest("th");
     if (th) th.classList.toggle("is-active-sort", key === state.sortKey);
   });
 }

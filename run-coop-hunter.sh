@@ -259,6 +259,20 @@ p=json.load(open('$PROGRESS_FILE'))
 print(p.get('added_count',0), p.get('skipped_count',0), p.get('current_phase','?'),
       p.get('current_source_idx','?'), p.get('current_offset','?'))
 ")"
+  # The python print can come back empty (transient JSON read error, progress.json
+  # corrupted mid-write, interpreter hiccup) — `read -r` still returns 0, leaving
+  # ADDED empty. Empty in $(( )) silently behaves as 0, which would corrupt the
+  # push delta / push timing. If the counter we do arithmetic on is non-numeric,
+  # skip this burst's push accounting rather than let empty propagate.
+  if ! [[ "$ADDED" =~ ^[0-9]+$ ]]; then
+    echo "[$(date)] WARNING: burst #$BURST produced no readable added_count (got '$ADDED') — skipping push accounting this burst." >&2
+    if is_rate_limited; then
+      echo "[$(date)] Rate/session limit detected. Sleeping 30m (Ctrl+C to stop)."
+      sleep "$RATE_LIMIT_SLEEP"
+    fi
+    sleep 3
+    continue
+  fi
   echo ""
   echo "[$(date)] Burst #$BURST done. added=$ADDED (+$((ADDED-LAST_PUSH_ADDED)) since push) skipped=$SKIPPED phase=$PHASE src_idx=$SRC_IDX off=$OFFSET"
 

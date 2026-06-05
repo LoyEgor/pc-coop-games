@@ -266,6 +266,22 @@ p=json.load(open('$PROGRESS_FILE'))
 print(p.get('checked_count',0), p.get('fixed_count',0), p.get('proposed_count',0),
       p.get('done',False), p.get('current_idx',0))
 ")"
+  # The python print can come back empty (transient JSON read error, progress.json
+  # corrupted mid-write, interpreter hiccup) — `read -r` still returns 0, leaving
+  # CHECKED empty. Empty in $(( )) silently behaves as 0, so CHECKED_DELTA would be
+  # negative/zero and trip the stagnation guard on bad data (false STAGNATION STOP).
+  # If the counter we do arithmetic on is non-numeric, skip this burst's delta /
+  # stagnation accounting rather than treat a read error as "no progress".
+  if ! [[ "$CHECKED" =~ ^[0-9]+$ ]]; then
+    echo "[$(date)] WARNING: burst #$BURST produced no readable checked_count (got '$CHECKED') — skipping stagnation accounting this burst." >&2
+    if is_rate_limited; then
+      echo "[$(date)] Rate/session limit detected. Sleeping 30m before the next burst (Ctrl+C to stop)."
+      STAGNANT_BURSTS=0
+      sleep "$RATE_LIMIT_SLEEP"
+    fi
+    sleep 3
+    continue
+  fi
   # checked_count advances per verified entry in BOTH scopes, so it (not idx, which
   # stays put in new-scope) is the universal "did we make progress" signal.
   CHECKED_DELTA=$((CHECKED - PREV_CHECKED))
