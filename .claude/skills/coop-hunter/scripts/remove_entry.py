@@ -26,7 +26,15 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3].parent
 DATA_JS = REPO_ROOT / "data.js"
-REMOVED_TSV = REPO_ROOT / ".claude" / "skills" / "coop-hunter" / "state" / "removed-entries.tsv"
+SHARED = REPO_ROOT / ".claude" / "skills" / "shared"
+REEVAL_TSV = SHARED / "reeval.tsv"          # default destination — re-checkable
+HARDBLOCK_TSV = SHARED / "hard-block.tsv"   # --block / mechanical reason — never re-add
+
+# Mechanical reasons go to hard-block; everything else stays re-checkable (reeval).
+MECHANICAL = {
+    "no_coop", "unclear_coop", "pvp_primary", "not_on_steam", "not_steam",
+    "invalid_app_id", "delisted", "mmo", "massively_multiplayer", "battle_royale",
+}
 
 
 def atomic_write_text(path, text):
@@ -35,12 +43,6 @@ def atomic_write_text(path, text):
     tmp = path.with_name(path.name + ".tmp")
     tmp.write_text(text, encoding="utf-8")
     os.replace(tmp, path)
-
-
-def ensure_log_header():
-    REMOVED_TSV.parent.mkdir(parents=True, exist_ok=True)
-    if not REMOVED_TSV.exists():
-        REMOVED_TSV.write_text("timestamp\tid\ttitle\treason\tsignals_matched\n", encoding="utf-8")
 
 
 def find_entry_span(content, game_id):
@@ -107,11 +109,50 @@ def remove_entry(content, game_id, reason="endless_misclassified", signals=""):
     new_lines = lines[:start] + lines[end:]
     new_content = "\n".join(new_lines)
 
-    # Log.
-    ensure_log_header()
-    with REMOVED_TSV.open("a", encoding="utf-8") as f:
-        ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        f.write(f"{ts}\t{game_id}\t{title}\t{reason}\t{signals}\n")
+    # Record where the removed game now lives (one-place invariant). Mechanical
+    # reason -> hard-block (never re-add); anything else -> reeval (re-checkable,
+    # so a rules change / game update can bring it back — the Forza principle).
+    block = (reason in MECHANICAL)
+    dest = HARDBLOCK_TSV if block else REEVAL_TSV
+    other = REEVAL_TSV if block else HARDBLOCK_TSV
+    hdr = "id\ttitle\treason\tnotes\n" if block else "id\ttitle\treason\tsource\tnotes\n"
+    san = lambda s: (s or "").replace("\t", " ").replace("\r", " ").replace("\n", " ")
+
+    def load(path):
+        out, head = {}, None
+        if path.exists():
+            for i, ln in enumerate(path.read_text(encoding="utf-8").splitlines()):
+                if i == 0:
+                    head = ln + "\n"
+                    continue
+                if not ln.strip():
+                    continue
+                c = ln.split("\t")
+                if c and c[0]:
+                    out[c[0]] = ln
+        return out, head
+
+    # Cross-list one-place invariant: remove this id from the OTHER list so it
+    # can never live in both reeval AND hard-block (a dual-listing would make
+    # append_entry's hard-block gate permanently refuse a re-checkable game).
+    other.parent.mkdir(parents=True, exist_ok=True)
+    other_rows, other_head = load(other)
+    if game_id in other_rows:
+        other_rows.pop(game_id, None)
+        if other_head:
+            with other.open("w", encoding="utf-8") as f:
+                f.write(other_head)
+                for gid in sorted(other_rows):
+                    f.write(other_rows[gid] + "\n")
+
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    rows, _ = load(dest)
+    rows[game_id] = (f"{game_id}\t{san(title)}\t{reason}\t{san(signals)}" if block
+                     else f"{game_id}\t{san(title)}\t{reason}\tremoved\t{san(signals)}")
+    with dest.open("w", encoding="utf-8") as f:
+        f.write(hdr)
+        for gid in sorted(rows):
+            f.write(rows[gid] + "\n")
 
     return new_content, True, title
 

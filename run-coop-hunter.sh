@@ -9,9 +9,11 @@
 #   bash loop then starts the next burst (fresh transcript). No evaluator, no
 #   overflow, no hang — truly hands-off.
 #
-#   - max_phase=4 (cascading); resumes from state/progress.json each burst.
-#   - PUSH POLICY: zero interim pushes; ONE commit + push at the very end (Final
-#     pass), done by the skill when the catalog is exhausted.
+#   - ETERNAL: there is no "done". The skill walks the structured sources, then
+#     switches to creative discovery (invents fresh search angles) and keeps
+#     going. Resumes from state/progress.json each burst. Stop with Ctrl+C.
+#   - PUSH POLICY: the LAUNCHER pushes periodically (this loop's do_push), every
+#     ~PUSH_EVERY_SEC seconds OR every PUSH_EVERY_N new adds — not the skill.
 #   - Classification reads .claude/skills/shared/taxonomy.json (authoritative).
 #
 # Usage:   ./run-coop-hunter.sh      (chmod +x once)
@@ -69,12 +71,10 @@ defaults = {
   "added_count": 0,
   "skipped_count": 0,
   "last_validation_at": 0,
-  "auto_push_every_n": 0,
   "last_push_at": 0,
-  "phase_4_zero_yield_passes": 0,
   "session_added_ids": [],
   "completed_sources": [],
-  "done": False,
+  "source_pass_log": [],
   "last_added": None,
   "last_run_timestamp": None,
 }
@@ -87,20 +87,24 @@ for k, v in defaults.items():
     if k not in cur:
         cur[k] = v
 cur["max_phase"] = 4
-cur["auto_push_every_n"] = 0
 
-# An explicit launch means "go again". A previous run may have set done=true
-# after two dry phase-4 passes; the owner re-launches precisely because sources
-# refresh over time. Clear done + reset the dry-pass counter so a new burst run
-# resumes hunting from current_offset.
-if cur.get("done"):
-    cur["done"] = False
-    cur["phase_4_zero_yield_passes"] = 0
+# ETERNAL model: there is no "done". Older runs may have persisted done=true (a
+# now-removed exit condition) — strip it so it can never short-circuit a burst.
+cur.pop("done", None)
+cur.pop("auto_push_every_n", None)
+cur.pop("phase_4_zero_yield_passes", None)
 
 with open(path, "w") as f:
     json.dump(cur, f, indent=2)
-print(f"progress.json: added={cur['added_count']}, phase={cur['current_phase']}, p4dry={cur.get('phase_4_zero_yield_passes',0)}, done={cur['done']}")
+print(f"progress.json: added={cur['added_count']}, phase={cur['current_phase']}, src_idx={cur.get('current_source_idx',0)}")
 PYEOF
+
+# -------- tunables (defined BEFORE the header, which prints them) --------
+RATE_LIMIT_SLEEP=1800        # 30 min — wait out an Anthropic session/usage cap
+PUSH_EVERY_SEC=3600          # push at least hourly...
+PUSH_EVERY_N=10              # ...or every 10 new games, whichever comes first
+RUNAWAY_BURSTS=100000        # NOT a real stop — just a sanity backstop against an infinite tight loop
+TRANSCRIPT_CAP_BYTES=$((20 * 1024 * 1024))   # cap the log at ~20 MB
 
 # -------- header --------
 echo ""
@@ -113,9 +117,9 @@ echo "  Claude CLI: $CLAUDE_CMD"
 echo "  Transcript: $TRANSCRIPT"
 echo ""
 echo "  Each burst = one fresh 'claude -p' process (~20 candidates) that exits."
-echo "  No /goal, no evaluator overflow, no hang. Loop ends when done=true."
-echo "  Push: NONE until the very end (skill Final pass makes one commit + push)."
-echo "  Rate-limit pauses are uncapped; Ctrl+C stops; state resumes on restart."
+echo "  ETERNAL: no done — sources, then creative discovery, forever. Ctrl+C stops."
+echo "  Push: periodic (every ~${PUSH_EVERY_SEC}s or ${PUSH_EVERY_N} new adds), by this launcher."
+echo "  Rate-limit pauses sleep ${RATE_LIMIT_SLEEP}s; state resumes on restart."
 echo "================================================================"
 echo ""
 
@@ -129,40 +133,38 @@ THIS BURST:
 - Resume from progress.json (current_source_idx / current_offset / current_phase). Process AT MOST 20 candidates (added + skipped) this invocation, sequentially, 1.5s sleep between Steam API calls.
 - Persist progress.json + added.tsv / skipped.tsv after EACH candidate. Append every added id to session_added_ids.
 - After ~20 candidates (or at a source/phase boundary), STOP and exit. The loop starts your next burst fresh.
+- Append every added id to session_added_ids. (append_entry.py adds entries WITHOUT a `reviewed` flag, so `fact-checker new` picks them up automatically — no separate queue file.)
 
 RULES:
-1. data.js only via scripts/append_entry.py (exit 4 = no real 11-char video_id; exit 3 = id in removed-entries.tsv). Find a REAL gameplay video via SKILL.md §8 drill cascade — never a youtubeSearch placeholder.
-2. CRON COORDINATION: the GitHub Actions cron owns price + rating on EXISTING entries. If .github/refresh-status.json last_success is < 30h old, SKIP price/rating checks for existing entries. NEW entries: fetch fresh once. NEVER overwrite cron-owned fields otherwise.
+1. data.js only via scripts/append_entry.py (exit 4 = no real 11-char video_id; exit 3 = id in removed-entries.tsv; it also dedupes by Steam app_id). Find a REAL gameplay video via SKILL.md §8 drill cascade — never a youtubeSearch placeholder.
+2. CRON COORDINATION: the GitHub Actions cron owns price + rating on EXISTING entries. If .github/refresh-status.json last_success is < 30h old, SKIP price/rating checks for existing entries. NEW entries: fetch fresh once.
 3. NEVER touch app.js / index.html / styles.css.
-4. GROWTH ONLY. Phase cascade 1->4 (SKILL.md). Phase 4 = reeval_skipped + steam_more_like_this + websearch_niche_queries + drill sources. coop-hunter NO LONGER re-validates existing entries (that moved to the fact-checker skill) — do not re-walk the catalog.
-5. FINAL FIT-GATE before every add (SKILL.md §8b): confirm PC+Steam, real 2+ co-op, a CLEAR finite ending, >=50 reviews & >=50% positive, not blocklisted, real video+image. On ANY doubt -> SKIP (skipped.tsv reason low_fit / taxonomy_gap). Prevention beats cleanup; the owner wants a small trustworthy catalog, not volume.
-6. NEVER ASK QUESTIONS. Ambiguous classification -> skipped.tsv reason taxonomy_ambiguous. Owner is asleep.
-7. DRILL MODE: exhaust alternative queries / sources before giving up; treat "cannot find X" as a hypothesis to disprove.
+4. GROWTH ONLY (no re-validating existing entries — that's the fact-checker). Walk the structured sources (phase cascade 1->4); when they run dry, switch to CREATIVE DISCOVERY (SKILL.md) — invent fresh search angles (recent Steam releases, YouTube, niche subreddits, 2026 articles, More-like-this) and log them in discovery-log.tsv. There is NO done — keep finding.
+5. FINAL FIT-GATE before every add (SKILL.md §8b + finish_strength): PC+Steam, real 2+ co-op, a finish (hard, or soft -> leading 🟠 in verdict), >=50 reviews & >=50% positive, not blocklisted, real video+image. On doubt -> SKIP (low_fit). A changeable-reason reject (EA/rating/finish-unverified) -> also log to borderline-watch.tsv.
+6. NEVER ASK QUESTIONS. Ambiguous -> skipped.tsv via scripts/log_skip.py. Owner is asleep.
+7. DRILL MODE: exhaust alternatives before giving up; "cannot find X" is a hypothesis to disprove.
 
-COMPLETION: only when the catalog is exhausted — TWO consecutive dry phase-4 passes (phase_4_zero_yield_passes >= 2) — run the Final pass on session_added_ids (verify image + youtube only, NEVER price/rating), make ONE git commit + push, then set progress.done=true and session_added_ids=[]. Otherwise leave done=false; the loop runs the next burst.
+NO COMPLETION: never set progress.done in normal hunting — there is no "finished". Persist after each candidate; the launcher pushes periodically. Just keep searching, burst after burst.
 
-End with one line: [P=phase N=added K=skipped p4dry=X last=<title>]
+End with one line: [P=phase N=added K=skipped src=<id> last=<title>]
 PROMPT_EOF
 )
 
 # -------- delta tracking --------
 INITIAL_ADDED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['added_count'])")
-PREV_ADDED=$INITIAL_ADDED   # used by per-burst delta check (stagnation guard)
 echo "Starting added_count: $INITIAL_ADDED"
 echo ""
 
-# -------- main loop: one claude -p burst per iteration --------
-MAX_BURSTS=80             # runaway guard. Each healthy burst ~ up to 20 candidates;
-                          # at catalog maturity (~490 games) yield is 2-5/burst, so
-                          # 80 bursts is generous and still finite. Earlier value 600
-                          # combined with the missing session-limit detector produced
-                          # the "600 instant-fail bursts in 30s" night-run pathology.
-RATE_LIMIT_SLEEP=1800     # 30 min — Anthropic 5h-window reset granularity
-STAGNATION_THRESHOLD=3    # N consecutive bursts adding <2 games each => stop early
-STAGNATION_MIN_DELTA=2    # "found more than one game" means delta>=2
-TRANSCRIPT_CAP_BYTES=$((20 * 1024 * 1024))   # cap the log at ~20 MB
+# -------- main loop: ETERNAL — one claude -p burst per iteration, never stops --------
+# coop-hunter is a never-stop searcher: it walks the structured sources, then invents
+# its own discovery angles (SKILL.md "Creative discovery"). There is NO done/stagnation/
+# max-bursts stop — only Ctrl+C (or a rate-limit wait) pauses it. The launcher pushes
+# periodically so finds reach the site without a "final" push.
+# (RATE_LIMIT_SLEEP / PUSH_EVERY_* / RUNAWAY_BURSTS / TRANSCRIPT_CAP_BYTES are
+#  defined above the header so the header can print them under `set -u`.)
 BURST=0
-STAGNANT_BURSTS=0         # rolling counter for stagnation guard
+LAST_PUSH_EPOCH=$(date +%s)
+LAST_PUSH_ADDED=$INITIAL_ADDED
 
 # Start every run with a FRESH log (was: tee -a accumulated across all runs and
 # grew to ~70 MB). The transcript is just for live `tail -f` + rate-limit
@@ -201,10 +203,35 @@ cap_transcript() {
   fi
 }
 
+do_push() {
+  # Periodic commit + rebase-onto-cron + push, called between bursts on a cadence.
+  # On any failure it leaves the commit in place and retries next cadence — finds
+  # are never lost. Reads $ADDED / updates $LAST_PUSH_* (loop-scope vars).
+  git add data.js \
+          .claude/skills/shared/reeval.tsv \
+          .claude/skills/shared/hard-block.tsv \
+          .claude/skills/shared/owner-review.tsv \
+          .claude/skills/coop-hunter/state/progress.json 2>/dev/null
+  if git diff --cached --quiet; then return; fi
+  local n=$((ADDED - LAST_PUSH_ADDED))
+  git commit -m "coop-hunter: +${n} games (total ${ADDED})" >/dev/null 2>&1
+  if ! git pull --rebase origin main >/dev/null 2>&1; then
+    echo "[$(date)] push deferred — rebase conflict; committed locally, will retry next cadence." >&2
+    git rebase --abort >/dev/null 2>&1 || true
+    return
+  fi
+  if git push origin main >/dev/null 2>&1; then
+    echo "[$(date)] pushed +${n} games (total ${ADDED})"
+    LAST_PUSH_EPOCH=$(date +%s); LAST_PUSH_ADDED=$ADDED
+  else
+    echo "[$(date)] push failed — committed locally, will retry next cadence." >&2
+  fi
+}
+
 while true; do
   BURST=$((BURST + 1))
-  if [ "$BURST" -gt "$MAX_BURSTS" ]; then
-    echo "[$(date)] Reached MAX_BURSTS=$MAX_BURSTS. Stopping (runaway guard)." >&2
+  if [ "$BURST" -gt "$RUNAWAY_BURSTS" ]; then
+    echo "[$(date)] Hit RUNAWAY_BURSTS backstop ($RUNAWAY_BURSTS). Stopping." >&2
     break
   fi
 
@@ -212,17 +239,11 @@ while true; do
   echo "[$(date)] ================= Burst #$BURST ================="
   echo ""
 
-  # Headless single burst: fresh process, fresh transcript, exits when done.
-  # < /dev/null is the fix for the burst hang: claude -p otherwise keeps stdin
-  # on the terminal and BLOCKS waiting for input after finishing the burst,
-  # instead of exiting (confirmed via lsof: fd 0 = /dev/ttysNNN). EOF on stdin
-  # makes it exit cleanly. | tee keeps live output in this window + the log.
-  # --model opus = the LATEST Opus alias (auto-tracks new releases, e.g. 4.8 today,
-  # 4.9 later — no edit needed). Pinned here because `claude -p` otherwise uses the
-  # CLI default (a Sonnet-class model), and a desktop-session /model switch does NOT
-  # propagate to these headless bursts.
-  # tee to a per-burst file (overwritten each burst) so is_rate_limited sees only
-  # THIS burst, then append to the accumulated transcript for live tail/history.
+  # Headless single burst: fresh process, exits when its burst is done.
+  # < /dev/null fixes the stdin-TTY hang (claude -p would otherwise block on the
+  # terminal after finishing instead of exiting). --model opus = latest-Opus alias.
+  # tee to a per-burst file ($BURST_OUT, overwritten each burst) so is_rate_limited
+  # sees ONLY this burst, then append to the accumulated transcript for tail/history.
   "$CLAUDE_CMD" -p --model opus --dangerously-skip-permissions "$BURST_PROMPT" < /dev/null 2>&1 | tee "$BURST_OUT"
   cat "$BURST_OUT" >> "$TRANSCRIPT"
   cap_transcript
@@ -232,69 +253,30 @@ while true; do
     break
   fi
 
-  # Read everything we need from progress.json in ONE python call
-  # (cheaper than separate subprocesses per burst). EXHAUSTED is the key new
-  # signal: it is 1 only when the skill has TRULY worked through phase 4 — either
-  # every phase-4 source id is in completed_sources (a full pass finished), or it
-  # has already recorded >=1 dry phase-4 pass. Until then the skill is still
-  # cycling through the fresh drill sources (websearch/backloggd/reddit/wiki), so
-  # a low-yield burst is NOT stagnation — it just hasn't reached the new sources
-  # yet. This is the fix for "coop-hunter sat on steam_more_like_this and the
-  # stagnation guard killed it before it touched sources 14-19".
-  read -r ADDED SKIPPED DONE PHASE SRC_IDX OFFSET EXHAUSTED <<<"$("$PY" -c "
+  read -r ADDED SKIPPED PHASE SRC_IDX OFFSET <<<"$("$PY" -c "
 import json
 p=json.load(open('$PROGRESS_FILE'))
-exhausted=0
-try:
-    srcs=json.load(open('$SOURCES_FILE'))['sources']
-    p4={s['id'] for s in srcs if s.get('phase')==4}
-    done_set=set(p.get('completed_sources',[]))
-    if (p4 and p4.issubset(done_set)) or p.get('phase_4_zero_yield_passes',0)>=1:
-        exhausted=1
-except Exception:
-    exhausted=1  # fail open: if we can't tell, don't block the guard
-print(p.get('added_count',0), p.get('skipped_count',0), p.get('done',False),
-      p.get('current_phase','?'), p.get('current_source_idx','?'),
-      p.get('current_offset','?'), exhausted)
+print(p.get('added_count',0), p.get('skipped_count',0), p.get('current_phase','?'),
+      p.get('current_source_idx','?'), p.get('current_offset','?'))
 ")"
-  DELTA=$((ADDED - PREV_ADDED))
-  PREV_ADDED=$ADDED
-
   echo ""
-  echo "[$(date)] Burst #$BURST done. added=$ADDED (+$DELTA) skipped=$SKIPPED phase=$PHASE src_idx=$SRC_IDX off=$OFFSET exhausted=$EXHAUSTED done=$DONE"
+  echo "[$(date)] Burst #$BURST done. added=$ADDED (+$((ADDED-LAST_PUSH_ADDED)) since push) skipped=$SKIPPED phase=$PHASE src_idx=$SRC_IDX off=$OFFSET"
 
-  if [ "$DONE" = "True" ] || [ "$DONE" = "true" ]; then
-    echo "[$(date)] SKILL DONE — catalog exhausted, Final pass + push completed by the skill."
-    break
-  fi
-
+  # NO done/stagnation/max-bursts stop — coop-hunter is an eternal searcher. The
+  # only pauses are a rate-limit wait and the owner's Ctrl+C.
   if is_rate_limited; then
-    echo "[$(date)] Rate/session limit detected. Sleeping 30m before the next burst (Ctrl+C to stop)."
-    STAGNANT_BURSTS=0   # session-cap is NOT stagnation; reset counter
+    echo "[$(date)] Rate/session limit detected. Pushing pending finds, then sleeping 30m (Ctrl+C to stop)."
+    do_push    # don't sit on unpushed finds through a 30m wait
     sleep "$RATE_LIMIT_SLEEP"
     continue
   fi
 
-  # Stagnation guard: if N consecutive bursts each added <STAGNATION_MIN_DELTA
-  # games, we accept that coop-hunter is dry and let run-all proceed to
-  # fact-checker. The skill itself also has its own "two dry phase-4 passes" stop;
-  # this guard is the launcher-side belt+suspenders against churning forever.
-  # CRITICAL: only count a low-yield burst as stagnation once EXHAUSTED=1, i.e.
-  # the skill has actually walked all phase-4 sources (or logged a dry pass).
-  # While EXHAUSTED=0 the skill is still reaching the fresh drill sources, so a
-  # quiet burst is expected, not a reason to bail.
-  if [ "$DELTA" -lt "$STAGNATION_MIN_DELTA" ] && [ "$EXHAUSTED" -eq 1 ]; then
-    STAGNANT_BURSTS=$((STAGNANT_BURSTS + 1))
-    echo "[$(date)] Stagnation: burst added $DELTA (<$STAGNATION_MIN_DELTA), sources exhausted. streak=$STAGNANT_BURSTS/$STAGNATION_THRESHOLD"
-    if [ "$STAGNANT_BURSTS" -ge "$STAGNATION_THRESHOLD" ]; then
-      echo "[$(date)] STAGNATION STOP — $STAGNATION_THRESHOLD consecutive dry bursts after exhausting phase-4 sources. Yielding to fact-checker."
-      break
-    fi
-  else
-    STAGNANT_BURSTS=0
+  # Periodic push: at least hourly OR every PUSH_EVERY_N adds, whichever first.
+  NOW=$(date +%s)
+  if [ $((NOW - LAST_PUSH_EPOCH)) -ge "$PUSH_EVERY_SEC" ] || [ $((ADDED - LAST_PUSH_ADDED)) -ge "$PUSH_EVERY_N" ]; then
+    do_push
   fi
 
-  # Normal burst boundary — brief pause, next fresh burst.
   sleep 3
 done
 

@@ -1,8 +1,0 @@
-timestamp	id	field	old_value	new_value	reason
-2026-05-30T15:00:00Z	lego-city-undercover	verdict	A coherent LEGO game with an open city.	LEGO open-city romp with full story. Local + Remote Play co-op.	verdict_did_not_describe_coop
-2026-05-30T15:00:00Z	lego-marvel-superheroes	verdict	A beloved LEGO Marvel campaign.	LEGO Marvel co-op campaign. Local + Remote Play, full story.	verdict_did_not_describe_coop
-2026-05-30T16:30:00Z	towerfall-ascension	endingType	arcade-goal	levels	quest_mode_and_dark_world_are_discrete_level_sets_not_a_single_goal_line
-2026-05-30T17:00:00Z	remnant-1	verdict	Soulslike with guns. Predecessor to Remnant II.	Soulslike with guns. Online co-op campaign up to 3, predecessor to Remnant II.	verdict_did_not_describe_coop
-2026-05-30T17:15:00Z	satisfactory	verdict	Build an automated factory on an alien planet to assemble the Project Assembly Space Elevator.	Build an automated factory together to assemble the Project Assembly Space Elevator. Online co-op up to 4.	verdict_did_not_describe_coop
-2026-05-30T22:00:00Z	tribes-of-midgard	endingType	story	roguelite	procedural_saga_runs_with_persistent_meta_progress_and_named_final_bosses_fit_roguelite_better_than_story
-2026-05-30T17:31:45Z	daemon-x-machina-titanic-scion	verdict	Mech action shooter with a story campaign and 3-player co-op boss missions.	Mech action shooter; 3-player online co-op throughout the full mercenary-mech story campaign.	verdict_understated_coop_scope_research_confirms_full_campaign_coop_not_just_bosses

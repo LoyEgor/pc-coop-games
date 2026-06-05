@@ -1,7 +1,0 @@
-timestamp	id	field	old_value	new_value	reason
-2026-05-28T20:11:37Z	defense-grid-2	hours	12	32	HLTB main+extras ~25-40h (midpoint 32h) per web search; catalog 12h may undercount side missions. Owner verifies.
-2026-05-28T20:21:26Z	risk-of-rain-2013	oneCopy	none	remote-play	steam_categories_no_online_coop
-2026-05-28T21:35:12Z	operation-tango	perspective	Third-person	First-person	Gameplay is asymmetric UI-based: field agent has first-person view, hacker uses terminals/screens. Stored 'Third-person' looks wrong; closest taxonomy match is First-person. Owner verify against screenshots.
-2026-05-30T05:10:43Z	icarus	endingType	levels		endingType_questionable — even if kept, 'levels' is the wrong type: the missions are repeatable and have no defined last one. Closer to 'arcade-goal' per-session, but no clear umbrella ending. See linked proposed-removal row.
-2026-05-30T09:41:19Z	trine-3	perspective	Side-view	Third-person (or discrepancy)	Trine 3 went fully 3D with a fixed-position camera (Mario 3D Land-style), not 2D side-scrolling. Perspective is borderline — owner to confirm Side-view vs Third-person.
-2026-05-30T11:23:25Z	synthetik-legion-rising	hours	12	25	HLTB Main+Extras ~37h (run-based roguelite, accumulates). Stored 12h reflects a single completed run; HLTB inflated by replay. Propose 25h as duo midpoint.

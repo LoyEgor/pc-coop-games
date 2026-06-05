@@ -1,3 +1,0 @@
-timestamp	id	title	reason	detail
-2026-05-27T13:20:00Z	wolfenstein-youngblood	Wolfenstein: Youngblood	quality_drop	stored rating 43 < 50 (cron-owned, not modified); owner review whether to keep
-2026-05-27T13:39:15Z	forza-horizon-5	Forza Horizon 5	endless_removed	open-world racing festival, no credits/finale; blocklist + historical false positive; auto-removed in revalidate_existing

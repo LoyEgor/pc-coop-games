@@ -19,7 +19,6 @@ Exits 0 on success, 1 if id not found in data.js, 3 if no usable header_image
 could be resolved (caller should log `no_image`), 2 on usage/other error.
 """
 
-import datetime
 import json
 import os
 import re
@@ -30,7 +29,6 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3].parent
 DATA_JS = REPO_ROOT / "data.js"
-LOG_TSV = REPO_ROOT / ".claude" / "skills" / "coop-hunter" / "state" / "image-fixes.tsv"
 
 UA = "Mozilla/5.0 (compatible; pc-coop-games-coop-hunter/1.0)"
 HTTP_TIMEOUT = 20
@@ -44,12 +42,6 @@ def atomic_write_text(path, text):
     os.replace(tmp, path)
 
 
-def ensure_log_header():
-    LOG_TSV.parent.mkdir(parents=True, exist_ok=True)
-    if not LOG_TSV.exists():
-        LOG_TSV.write_text(
-            "timestamp\tid\told_url_kind\tnew_url\n", encoding="utf-8"
-        )
 
 
 def resolve_header_image(app_id):
@@ -132,10 +124,7 @@ def main():
         sys.exit(1)
 
     atomic_write_text(DATA_JS, new_content)
-    ensure_log_header()
-    with LOG_TSV.open("a", encoding="utf-8") as f:
-        ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        f.write(f"{ts}\t{game_id}\t{old_kind}\t{new_url}\n")
+    # No separate fix-log — the change is in data.js; git diff is the record.
     print(f"OK: {game_id} {old_kind} -> {new_url}")
 
 

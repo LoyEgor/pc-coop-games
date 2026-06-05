@@ -18,7 +18,9 @@ import re
 from pathlib import Path
 
 DATA_JS = Path(__file__).resolve().parents[3].parent / "data.js"
-REMOVED_TSV = Path(__file__).resolve().parents[1] / "state" / "removed-entries.tsv"
+SHARED = Path(__file__).resolve().parents[2] / "shared"
+HARDBLOCK_TSV = SHARED / "hard-block.tsv"   # never re-add these (mechanical)
+REEVAL_TSV = SHARED / "reeval.tsv"          # re-checkable; drop an id once it enters the catalog
 
 
 def atomic_write_text(path, text):
@@ -59,22 +61,33 @@ def insert_entry(content, entry_text):
 
 
 def previously_removed_ids():
-    """Return set of ids ever auto-removed by remove_entry.py.
+    """Return set of ids that are HARD-BLOCKED (mechanically impossible — no co-op /
+    PvP-only / not on Steam / MMO / delisted). These must never be added.
 
-    Any id in this file was once judged endless and must never be re-added,
-    even if a later source disagrees. This is the secondary gate behind the
-    classification.md hardcoded blocklist (§0 of SKILL.md).
+    NOTE: this is intentionally ONLY the hard-block list. Games on `reeval.tsv`
+    (endless-by-judgment, Early Access, low rating, etc.) are RE-CHECKABLE — they
+    are allowed to be added when they now qualify, so they are NOT a gate here.
     """
-    if not REMOVED_TSV.exists():
+    if not HARDBLOCK_TSV.exists():
         return set()
     ids = set()
-    for i, line in enumerate(REMOVED_TSV.read_text(encoding="utf-8").splitlines()):
+    for i, line in enumerate(HARDBLOCK_TSV.read_text(encoding="utf-8").splitlines()):
         if i == 0 or not line.strip():
             continue
         parts = line.split("\t")
-        if len(parts) >= 2 and parts[1]:
-            ids.add(parts[1])
+        if parts and parts[0]:
+            ids.add(parts[0])
     return ids
+
+
+def drop_from_reeval(game_id):
+    """Once a game enters the catalog it must leave reeval (one-place invariant)."""
+    if not REEVAL_TSV.exists():
+        return
+    lines = REEVAL_TSV.read_text(encoding="utf-8").splitlines()
+    kept = [lines[0]] if lines else []
+    kept += [ln for ln in lines[1:] if ln.strip() and ln.split("\t")[0] != game_id]
+    REEVAL_TSV.write_text("\n".join(kept) + "\n", encoding="utf-8")
 
 
 def render_entry(g):
@@ -211,6 +224,7 @@ def main():
         sys.exit(2)
 
     atomic_write_text(DATA_JS, new_content)
+    drop_from_reeval(g["id"])  # one-place invariant: now in the catalog, leave reeval
     print(f"OK: appended '{g['id']}'")
 
 

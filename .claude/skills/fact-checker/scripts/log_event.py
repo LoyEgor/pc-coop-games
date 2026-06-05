@@ -1,70 +1,71 @@
 #!/usr/bin/env python3
 """
-Append a row to one of the fact-checker TSV logs.
+Append a fact-checker finding to shared/owner-review.tsv — the owner's todo queue.
 
-Usage:
-    python log_event.py <kind> <id> <field> <old> <new> <reason>
+Usage (unchanged 6-arg interface so update_field.py / SKILL.md calls still work):
+    python3 log_event.py <kind> <id> <field> <old> <new> <reason>
 
-<kind> selects the destination TSV:
-    discrepancies      → state/discrepancies.tsv      (info-level mismatch, no fix needed)
-    proposed-fixes     → state/proposed-fixes.tsv     (would auto-fix but field is editorial)
-    proposed-removals  → state/proposed-removals.tsv  (game now looks blocklist-worthy)
-    applied-fixes      → state/applied-fixes.tsv      (already auto-applied — update_field.py logs here too)
+<kind> maps to an owner-review action:
+    proposed-fixes     -> action=fix           (editorial change the owner should apply)
+    proposed-removals  -> action=remove        (entry the owner should consider removing)
+    contradiction      -> action=contradiction (catalog contradicts itself)
+    discrepancies      -> NO-OP (info-level; git history + transcript already record it)
+    applied-fixes      -> NO-OP (auto-applied; git diff is the record)
 
-<old> and <new> can be empty strings if the row only carries a reason
-(e.g. proposed-removals where the action is "remove the entire entry").
-
-Exits 0 always (logging is append-only and best-effort).
+owner-review is a TODO OVERLAY: keep it small. Only log things the owner must
+actually decide. Upsert by (id, action) so the same finding isn't duplicated.
+Exits 0 always (logging is best-effort).
 """
 
 import sys
-import datetime
 from pathlib import Path
 
-STATE = Path(__file__).resolve().parents[1] / "state"
-
-TARGETS = {
-    "discrepancies": STATE / "discrepancies.tsv",
-    "proposed-fixes": STATE / "proposed-fixes.tsv",
-    "proposed-removals": STATE / "proposed-removals.tsv",
-    "applied-fixes": STATE / "applied-fixes.tsv",
-}
-
-HEADER = "timestamp\tid\tfield\told_value\tnew_value\treason\n"
+SHARED = Path(__file__).resolve().parents[2] / "shared"
+OWNER = SHARED / "owner-review.tsv"
+HDR = "id\taction\tdetail\n"
+ACTION = {"proposed-fixes": "fix", "proposed-removals": "remove", "contradiction": "contradiction"}
+NOOP = {"discrepancies", "applied-fixes"}
 
 
 def main():
     if len(sys.argv) != 7:
         print(__doc__, file=sys.stderr)
         sys.exit(2)
-
-    kind, game_id, field, old, new, reason = sys.argv[1:]
-    if kind not in TARGETS:
-        print(f"ERROR: unknown kind '{kind}'. Expected one of: {sorted(TARGETS)}", file=sys.stderr)
+    kind, gid, field, old, new, reason = sys.argv[1:]
+    if kind in NOOP:
+        sys.exit(0)  # no longer a stored list — git + transcript are the record
+    action = ACTION.get(kind)
+    if not action:
+        print(f"ERROR: unknown kind '{kind}'. Expected: {sorted(set(ACTION) | NOOP)}", file=sys.stderr)
         sys.exit(2)
 
-    target = TARGETS[kind]
-    target.parent.mkdir(parents=True, exist_ok=True)
-    if not target.exists():
-        target.write_text(HEADER, encoding="utf-8")
+    san = lambda s: (s or "").replace("\t", " ").replace("\r", " ").replace("\n", " ")
+    if field and (old or new):
+        detail = f"{san(field)}: {san(old)} -> {san(new)} ({san(reason)})"
+    else:
+        detail = san(reason) or san(field)
 
-    # Sanitize tab/newline so the TSV stays well-formed.
-    sanitize = lambda s: s.replace("\t", " ").replace("\n", " ").replace("\r", " ")
-
-    with target.open("a", encoding="utf-8") as f:
-        ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        f.write(
-            "\t".join([
-                ts,
-                sanitize(game_id),
-                sanitize(field),
-                sanitize(old),
-                sanitize(new),
-                sanitize(reason),
-            ])
-            + "\n"
-        )
-    print(f"OK: logged {kind}: {game_id}.{field}")
+    OWNER.parent.mkdir(parents=True, exist_ok=True)
+    rows, order = {}, []
+    if OWNER.exists():
+        for i, ln in enumerate(OWNER.read_text(encoding="utf-8").splitlines()):
+            if i == 0 or not ln.strip():
+                continue
+            c = ln.split("\t")
+            if len(c) >= 2:
+                key = (c[0], c[1])
+                rows[key] = ln
+                if key not in order:
+                    order.append(key)
+    key = (gid, action)
+    if key not in order:
+        order.append(key)
+    rows[key] = "\t".join([gid, action, detail])
+    with OWNER.open("w", encoding="utf-8") as f:
+        f.write(HDR)
+        for k in order:
+            f.write(rows[k] + "\n")
+    print(f"owner-review: {gid} [{action}]")
 
 
 if __name__ == "__main__":

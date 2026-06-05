@@ -7,7 +7,30 @@ description: Systematically expand the PC co-op games database in data.js. Crawl
 
 You are systematically expanding `data.js` with new co-op games that fit the criteria.
 
-**Execution model:** the launcher `./run-coop-hunter.sh` invokes you ONE BURST at a time as a headless `claude -p` process. Each burst: resume from `state/progress.json`, process ~20 candidates, persist state after EACH, then EXIT. The bash loop starts the next burst fresh. (This replaced an older `/goal`-driven model whose evaluator overflowed on long runs.) Work slowly and persist after every game, so a crash never costs more than one game.
+**Execution model — you are an ETERNAL SEARCHER. There is no "done".** The launcher
+`./run-coop-hunter.sh` runs you as repeated headless `claude -p` bursts and never
+stops on its own. Each burst: resume from `state/progress.json`, search + validate
+~20 candidates, persist after EACH, then EXIT; the loop starts the next burst. The
+owner runs you for a night / a day / several days and you just keep finding games.
+
+The structured sources in `sources.json` (phases 1–4) are FINITE — you will walk
+through them. That is **information, not a finish line**: when they stop yielding,
+you switch to **CREATIVE DISCOVERY** (invent fresh search angles yourself — see that
+section) because the internet keeps producing new co-op games. You never set
+`done=true` in normal mode. Only a rate-limit (wait) or the owner's Ctrl+C pauses
+you. The launcher commits + pushes periodically (~hourly / every N adds), so finds
+reach the site without you ever "finishing". Persist after every game so a crash
+costs at most one.
+
+## State files (canonical model: CLAUDE.md §6b)
+
+Four lists, each game in exactly one state — plus this skill's cursor `state/progress.json`:
+- **`data.js`** — the catalog. You ADD here (via `append_entry.py`, WITHOUT a `reviewed` field so `fact-checker new` picks it up).
+- **`shared/reeval.tsv`** — re-checkable rejects. You READ it (dedup: don't re-find these) and `reeval_skipped` RE-JUDGES it.
+- **`shared/hard-block.tsv`** — never-add (mechanical). You READ it as a gate (don't re-find); `append_entry.py` refuses these (exit 3).
+- **`shared/owner-review.tsv`** — the owner's queue; you don't normally write it.
+
+Log a reject ONLY via `scripts/log_skip.py "<title>" <reason> <source> "<notes>"` — it routes to reeval (judgment reasons) or hard-block (mechanical: no_coop/pvp_primary/not_on_steam/invalid_app_id/MMO/delisted) and upserts (one row per game). NEVER write these lists by hand. Before searching, dedup a candidate against all three (data.js + reeval + hard-block).
 
 ## Hard rules (never violate)
 
@@ -26,15 +49,14 @@ You are systematically expanding `data.js` with new co-op games that fit the cri
 When called:
 
 1. Read `.claude/skills/coop-hunter/state/progress.json` (create with defaults if missing — see "Initial state").
-2. If `progress.done === true` → exit immediately with "DONE" (the launcher loop will stop).
-2b. **If `progress.reeval_only === true`** → process ONLY `reeval_skipped` (see "`reeval_only` mode"); skip steps 3–6's source walk and all new-game search. When skipped.tsv is exhausted → `done=true`.
+2. **There is no `done` exit in normal mode** — always search this burst. (The only `done` left is the one-time migration helper: **if `progress.reeval_only === true`**, process ONLY `reeval_skipped` (see "`reeval_only` mode"), skip the source walk + new-game search, and set `done=true` when skipped.tsv is exhausted. That flag is set only by `run-migration.sh`, never in a normal hunt.)
 3. Identify the current source (`progress.current_source_idx`) from `sources.json`. The current source MUST have `phase == progress.current_phase`. If not, advance `current_source_idx` to the next source with matching phase (or trigger phase transition — see below).
 4. From that source, pull the next batch of candidates starting at `progress.current_offset`. Batch size = 5.
 5. For each candidate in batch (sequentially):
    - Run the "Per-candidate procedure" below.
    - On success → append entry to `data.js`, update `progress.json`, append to `state/added.tsv`.
    - On any skip → `python3 scripts/log_skip.py "<title>" <reason> <source> "<notes>"` (NOT a raw append — see Hard rule 9), update progress, continue. If it exits 3 the game is already in the catalog: don't log it as skipped; if the reason was hard-negative, flag it for the fact-checker instead.
-   - **Do NOT push between adds.** See "Push policy" — pushing happens once, in the Final pass, at the very end.
+   - **Don't push mid-burst.** The launcher pushes periodically between bursts (see "Push policy"); you just keep adding.
 6. After the batch:
    - If `progress.added_count` crossed a multiple of 50 since last validation → run "Validation pass".
    - **Mark source progress EXPLICITLY — this is mandatory, not optional.** A source is "exhausted for this pass" when its per-method done-criterion is met (see "Phase-4 source exhaustion criteria" below for the exact rule per method — e.g. `steam_more_like_this` is done after all 25 seed entries are scanned, `websearch_niche_queries` after all 8 queries run). When exhausted: **append its id to `completed_sources` in progress.json** (write the JSON, don't just say it), set `current_offset = 0`, reset `bursts_on_current_source = 0`, and advance `current_source_idx` to the next source IN THE SAME PHASE whose id is NOT already in `completed_sources`.
@@ -42,57 +64,73 @@ When called:
    - If **all** sources of `current_phase` are in `completed_sources` → run **Phase transition logic** below. (Not "most", not "I think they're done" — every source id of this phase must literally be in the array.)
 7. Once you have processed ~20 candidates this invocation, persist state and EXIT. The launcher starts your next burst as a fresh process (resuming from `progress.json`).
 
-## Phase transition logic
+## When the structured sources run out → keep going (NEVER "done")
+
+Maintain in progress.json: `current_phase` (default 1), `max_phase` (4 on Mac),
+`phase_start_count` (added_count when this phase started), and `source_pass_log`
+(a short list of `{pass, yield}` recording how each full phase-4 pass did).
+
+When all sources of `current_phase` are in `completed_sources`:
+1. `phase_yield = added_count - phase_start_count`.
+2. If `current_phase < max_phase`: advance to the next phase (`current_phase += 1`,
+   `phase_start_count = added_count`, `current_source_idx` = first source of the new
+   phase, `current_offset = 0`) and continue. Advance even if phase_yield was 0 — later
+   phases are DIFFERENT sources, not a retry of the same ones.
+3. If `current_phase == max_phase`: append `{pass, yield}` to `source_pass_log`, then
+   **re-enter phase 4 with fresh data** — un-mark the phase-4 entries in
+   `completed_sources`, reset offsets + `bursts_on_current_source`,
+   `phase_start_count = added_count`. Sources are not static (Steam tags update, Reddit
+   threads appear, new games release): a pass that gave 0 last hour may give 5 next.
+   **NEVER set `done`.**
+4. **When structured re-walks keep coming up dry** (the last ~2–3 entries in
+   `source_pass_log` each ≈0): that is the signal to spend the next burst on
+   **CREATIVE DISCOVERY** (below) rather than re-walking the same list again. Alternate
+   — a structured re-walk, then a discovery burst, then structured — so you are always
+   searching *somewhere new*.
+
+`source_pass_log` is CONTEXT (how thoroughly the easy sources were walked recently), NOT
+a stop button. "Dry 3 times" ≠ "catalog complete" — the owner's experience is that a
+restart finds another 5–15 games. It means "the easy sources are tapped, go hunt wider".
+
+## Creative discovery (invent new search angles — the real "never stop")
+
+You are an LLM, not a fixed crawler. When `sources.json` is yielding little, GENERATE
+your own search angles and chase them. Each discovery burst: pick an angle you have NOT
+recently tried (check `state/discovery-log.tsv`), search it, run the Per-candidate
+procedure on hits, then append the angle + result to `state/discovery-log.tsv`
+(`timestamp\tangle\tqueries\tadded\tnotes`) so you VARY instead of repeating. Angle
+ideas (not exhaustive — invent more):
+- **Fresh Steam releases**: co-op games by recent release date via Steam search / "New &
+  Trending" + the Co-op tag (catches things published since the last pass).
+- **YouTube**: co-op-focused channels & "best co-op 2026" playlists — parse titles.
+- **Reddit**: niche/newer subreddits + recent "just finished a co-op game" posts.
+- **Articles**: 2026 "best co-op" / "hidden gem co-op" / genre-specific roundups.
+- **X / social**: co-op recommendation threads.
+- **Adjacency**: "More like this" / "players also liked" from the NEWEST catalog adds.
+- **Genre gaps**: target axes thin in the catalog (e.g. co-op Tactics, co-op Racing).
+Treat "found nothing on this angle" as a reason to try a DIFFERENT angle next burst —
+never as a reason to stop. The internet does not run out of new co-op games.
+
+The launcher sets `max_phase=4`, so the skill cascades through phases 1→4. Phase 4 is NOT a terminus: a dry phase-4 pass is the trigger to start creative discovery (above), not to stop. There is no dry-pass exit — keep going until Ctrl+C. (`max_phase=1` is a legacy single-pass mode; the only launcher today is the macOS/Linux `./run-coop-hunter.sh`.)
+
+## Push policy: PERIODIC (an eternal run has no "end" to push at)
+
+Since the hunt never stops (no `done`), there is no final push. Instead push
+periodically so finds reach the site and nothing is lost to a crash, while keeping
+commit noise low. **The launcher (`run-coop-hunter.sh`) owns the push cadence** — it
+commits + pushes after a burst when EITHER ~1 hour has passed since the last push OR
+≥ N games were added since (whichever comes first), then continues looping. So the
+skill itself just keeps adding to `data.js` and the launcher batches the pushes.
 
 Maintain in progress.json:
-- `current_phase` (default 1)
-- `max_phase` (default 1 — Windows behavior; Mac launcher sets 4)
-- `phase_start_count` (added_count when current phase started; default 0)
+- `session_added_ids: []` — ids added since the last push (the push batch). The launcher
+  clears it after a successful push.
+- `last_push_at` — unix-ish marker / added_count at last push, used by the launcher to
+  decide when the next push is due.
 
-When all sources of `current_phase` are completed:
-
-1. Compute `phase_yield = added_count - phase_start_count`.
-2. If `phase_yield > 0` AND `current_phase < max_phase`:
-   - `current_phase += 1`
-   - `phase_start_count = added_count`
-   - `current_source_idx` advances to the first source of the new phase
-   - `current_offset = 0`
-   - `phase_4_zero_yield_passes = 0` (reset — we got out of phase 4 dry-streak by escalating)
-   - Continue processing.
-3. Else if `phase_yield > 0` AND `current_phase == max_phase`:
-   - We're in phase 4 (the deepest phase) and it found something **across a full pass of ALL phase-4 sources** (this branch is only reached when every phase-4 source id is in `completed_sources` — guaranteed by Step 6's transition trigger; a partial pass that just churned source 13 never gets here). Re-enter phase 4 from the start.
-   - `phase_start_count = added_count` (new yield window begins)
-   - `current_source_idx = (first source idx of phase 4)`
-   - `current_offset = 0`
-   - `bursts_on_current_source = 0`
-   - `completed_sources = [s for s in completed_sources if (source.phase != 4)]` — un-mark phase-4 sources so we walk them again with current data.
-   - `phase_4_zero_yield_passes = 0`
-   - Continue processing. Sources are not deterministic across time: Steam tags update, Reddit threads appear, WebSearch index refreshes. A phase-4 source that gave 0 last hour may give a hit now.
-4. Else (yield is 0 in `current_phase`):
-   - If `current_phase < max_phase` → `done = true` (cascade can't escalate without proof of life). Trigger the **Final pass before done** below.
-   - If `current_phase == max_phase` (phase 4 dry-run): increment `phase_4_zero_yield_passes`. **STOP-CONDITION CHANGE — require TWO consecutive dry passes**:
-     - If `phase_4_zero_yield_passes < 2`: do NOT declare done. Reset phase 4 (same as case 3 above), permute the source order if possible (or try alternative WebSearch phrasings on `websearch_niche_queries`), continue processing. The premise is: a 0-yield pass might be due to transient rate-limits, exhausted single-query phrasings, or stale Reddit caches; one more pass with the same data sources but fresh fetches often surfaces 1–5 more games.
-     - If `phase_4_zero_yield_passes >= 2`: NOW trigger the **Final pass before done**, then `done = true`.
-
-This means: a single dry pass through phase 4 is NOT enough to declare the catalog complete. The skill must prove there's nothing left by repeating phase 4 with fresh fetches and getting 0 twice in a row. The owner's empirical observation — "I restart and it finds another 15 games" — is exactly the case this fixes.
-
-The launcher sets `max_phase=4`, so the skill cascades through phases 1→4 and then loops phase 4 until two consecutive dry passes. (`max_phase=1` is a legacy single-pass mode; the only launcher today is the macOS/Linux `./run-coop-hunter.sh`.)
-
-## Push policy: ZERO pushes during the run, ONE at the end
-
-This is a deliberate change from earlier versions. Auto-push during the run is **disabled**. Reasons:
-1. Constant `github-actions[bot]` + `coop-hunter:bot` commits create noise that's hard to review.
-2. The owner wants to inspect what the skill found before it lands on `main`.
-3. Push race conditions between the skill and the daily `refresh-prices.yml` cron are easier to avoid if the skill pushes exactly once.
-
-**Maintain in progress.json:**
-- `auto_push_every_n: 0` — interim push DISABLED. The launcher seeds this. Do NOT raise.
-- `last_push_at: int` — kept only for backward compatibility, unused in this push policy.
-- `session_added_ids: []` — ids appended this session, accumulator for the final pass (see below). Cleared only after the final push succeeds.
-
-Therefore: **do NOT commit or push between batches**. Just append entries to `data.js` and persist state to `state/progress.json` after each add. The single commit + push happens in the "Final pass" section below, fired by the stop condition.
-
-If you find yourself in a situation where the working tree has grown large and you're worried about losing work to a crash: don't push — instead, the next launcher restart will simply read `state/progress.json` and resume. `data.js` is local in the worktree and survives crashes. The state/added.tsv log is the audit trail.
+Each push = `commit` → `git pull --rebase origin main` (the daily `refresh-prices.yml`
+cron may have landed) → `push`. If the push fails, keep the work-tree dirty and retry on
+the next cadence — never lose adds. (Cron owns price/rating; rebasing avoids races.)
 
 ## Coordination with the GitHub Actions refresh cron
 
@@ -280,12 +318,15 @@ For `rating` — always Steam % positive (from `/appreviews/<id>?json=1`). Never
 For `verdict` — ≤120 chars English. Plain, factual, one sentence. No marketing fluff. The site is English-only.
 
 ### 10. Persist
-- Append to `state/added.tsv`: `<timestamp>\t<id>\t<title>\t<source>\t<price>\t<%positive>`
+- `append_entry.py` writes the entry to `data.js` **WITHOUT a `reviewed` field** — that
+  absence IS the fact-checker handoff: `fact-checker new` verifies every entry lacking
+  `reviewed: true`, then stamps it. No queue file (see CLAUDE.md §6b). It also drops the
+  id from `shared/reeval.tsv` if it was there (one-place invariant).
 - Update `state/progress.json`:
   - `current_offset += 1`
   - `added_count += 1`
   - `last_added = <id>`
-  - **`session_added_ids.append(<id>)`** — accumulator for the Final pass. Cleared only after the final push succeeds.
+  - **`session_added_ids.append(<id>)`** — running accumulator of this run's adds (the launcher reports it).
 
 ## Phase-4 source exhaustion criteria (when to mark a source `completed`)
 
@@ -385,74 +426,40 @@ If `state/progress.json` doesn't exist, create it with:
   "last_validation_at": 0,
   "auto_push_every_n": 0,
   "last_push_at": 0,
-  "phase_4_zero_yield_passes": 0,
   "session_added_ids": [],
   "completed_sources": [],
   "bursts_on_current_source": 0,
+  "source_pass_log": [],
+  "last_push_at": 0,
   "done": false,
   "last_added": null,
   "last_run_timestamp": null
 }
 ```
+`done` stays `false` in normal hunting — it is only flipped by the one-time
+`reeval_only` migration mode. `source_pass_log` records full phase-4 passes (context
+for when to switch to creative discovery). If the file is missing newer fields, backfill
+with the defaults above before proceeding (preserves existing runs).
 
-If the file exists but is missing newer fields (`current_phase`, `max_phase`, `phase_start_count`, `auto_push_every_n`, `last_push_at`, `phase_4_zero_yield_passes`, `session_added_ids`, `bursts_on_current_source`), backfill them with the defaults above before proceeding. This preserves existing runs.
+## Git: you NEVER commit or push — the launcher does
 
-## Final pass before done (mandatory before push)
+In the eternal model the **launcher** (`run-coop-hunter.sh`) owns git entirely: it
+commits, rebases onto the cron, and pushes on a cadence (~hourly or every N adds)
+BETWEEN bursts. As the skill running inside a burst, you must **never** call
+`git commit` / `git push` / `git pull`. Your only job is:
 
-When the stop condition (Phase transition logic case 4 with `phase_4_zero_yield_passes >= 2`) fires, do NOT immediately set `done=true` and exit. First run this final pass on the entries this session added.
+1. Add games (`append_entry.py`, which adds WITHOUT a `reviewed` flag) and persist state after each.
+2. Append every added id to `session_added_ids`.
+3. Keep hunting until the burst's ~20-candidate budget is spent, then EXIT.
 
-### Step 1: scope
-Read `progress.session_added_ids`. These are the ids appended during this session. The Final pass operates ONLY on these — not the whole catalog. The owner runs the separate `fact-checker` skill for whole-catalog audits; coop-hunter's Final pass is the "vet the work you just did" gate.
+**Verifying your own additions is NOT your job either.** Media checks (image/youtube
+resolve), the delisted-after-add check, and editorial re-checks all happen in the
+**`fact-checker` skill's `new` mode**, which verifies every entry lacking
+`reviewed: true`. Run `./run-fact-checker.sh new` after a hunt. Do not re-fetch
+`price`/`rating` (cron-owned) and do not write a `state/summary.md` — the audit trail
+is `git log data.js` + the launcher transcript (state model: CLAUDE.md §6b).
 
-If `session_added_ids` is empty (e.g., the session started already done) → skip Step 2, go straight to Step 3.
-
-### Step 2: focused fact-check per session-added id
-
-For each id in `session_added_ids`:
-
-1. **Image check.** `HEAD` request to the resolved `imageUrl`. If non-200 → call `scripts/fix_image.py <id> <app_id>`, which repoints it to the authoritative `header_image` from appdetails (a literal URL — NOT the legacy `steamImage()` helper, which 404s for newer apps). If `fix_image.py` exits non-zero (no usable header_image) → log to `state/bad-existing.tsv` with reason `no_image_after_final_pass`.
-
-2. **YouTube check.** If `youtubeUrl` is `youtubeSearch(...)` (forbidden — should never have been allowed by `append_entry.py` exit 4, but verify defensively) → run §8 6-query drill cascade and `scripts/fix_youtube.py <id> <video_id>`. If a real `youtube("X")` URL: WebFetch the URL, verify the title contains the game name (≥30% token overlap, case-insensitive). If unrelated → run cascade, fix.
-
-3. **Steam app id is alive.** One `appdetails` call (sleep 1.5s). If `success: false` → the game got delisted between when you added it and now. Log to `state/bad-existing.tsv` with reason `delisted_after_add` so the owner reviews before merge.
-
-4. **DO NOT touch `price` or `rating`.** Those are owned by `.github/workflows/refresh-prices.yml`. The cron will reconcile them on its next daily run. If you fetched these during the initial add (§3, §4 of per-candidate procedure), good — they're the initial values, the cron takes over from here. The Final pass MUST NOT call `update_field.py <id> rating ...` or `update_field.py <id> price ...`.
-
-5. **Do not re-check genres / endingType / playersMax / oneCopy.** Those are editorial; the `fact-checker` skill audits them at the catalog level. Re-checking here would cost LLM tokens for marginal value.
-
-### Step 3: single final commit + push
-
-After Step 2 completes (whether or not it surfaced fixes):
-
-```bash
-git add data.js \
-        .claude/skills/coop-hunter/state/added.tsv \
-        .claude/skills/coop-hunter/state/skipped.tsv \
-        .claude/skills/coop-hunter/state/progress.json \
-        .claude/skills/coop-hunter/state/bad-existing.tsv \
-        .claude/skills/coop-hunter/state/removed-entries.tsv \
-        .claude/skills/coop-hunter/state/youtube-fixes.tsv \
-        .claude/skills/coop-hunter/state/image-fixes.tsv 2>/dev/null
-
-# If nothing staged (no adds + no fixes), skip commit entirely
-git diff --cached --quiet && echo "Nothing to commit" || \
-  git commit -m "coop-hunter: session +N games, M fixes (total T)"
-
-# Pull/rebase in case the refresh-prices cron landed during our run
-git pull --rebase origin main || true
-git push origin main
-```
-
-If push fails: log to `state/push-fails.tsv` and KEEP the work-tree dirty. Do NOT clear `session_added_ids` — the next invocation will retry the push. Do NOT mark `done=true` until push succeeds (otherwise the next session loses track of which adds need fact-checking).
-
-If push succeeds:
-- `session_added_ids = []`
-- `done = true`
-
-Do NOT write a `state/summary.md` report file. The audit trail already lives in
-`added.tsv` / `skipped.tsv` / `removed-entries.tsv` and the launcher prints a
-final summary to the terminal. This project does not keep regenerable report
-artifacts.
+`done` is never set in normal hunting (only the one-time `reeval_only` migration sets it).
 
 ## Tools to use
 

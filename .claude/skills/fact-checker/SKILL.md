@@ -5,7 +5,24 @@ description: Walk every non-hidden entry in data.js and verify the recorded fiel
 
 # Fact-checker
 
-You are walking `data.js` end-to-end and verifying every recorded field against authoritative sources. This is a separate skill from `coop-hunter` with its own state. The launcher `./run-fact-checker.sh` invokes you ONE BURST at a time as a headless `claude -p` process: resume from `state/progress.json`, verify ~12 entries, persist after EACH, then EXIT — the bash loop starts your next burst fresh. Persist after every entry checked.
+You are walking `data.js` and verifying every recorded field against authoritative sources. This is a separate skill from `coop-hunter` with its own state. The launcher `./run-fact-checker.sh` invokes you ONE BURST at a time as a headless `claude -p` process: resume from `state/progress.json`, verify ~12 entries, persist after EACH, then EXIT — the bash loop starts your next burst fresh. Persist after every entry checked.
+
+## State files (canonical model: CLAUDE.md §6b)
+
+Four lists, each game in exactly one state — plus this skill's cursor `state/progress.json`:
+- **`data.js`** — the catalog. You verify and FIX here. A fresh entry has NO `reviewed` field; once you've fully checked it, stamp it with `scripts/mark_reviewed.py <id>`.
+- **`shared/reeval.tsv`** — re-checkable rejects. `find_neighbors.py` reads it for franchise contradictions; you don't add games (coop-hunter does), but you may flag a reeval game for return.
+- **`shared/hard-block.tsv`** — never-add (mechanical). You don't touch it (coop-hunter's gate).
+- **`shared/owner-review.tsv`** — the owner's queue. You WRITE it via `scripts/log_event.py` (action fix/remove/contradiction) ONLY for things the owner must decide; **auto-apply anything you're confident about** (perspective from screenshots, tag by decision_tree, media fixes) and **self-clean** owner-review of resolved items — the queue should trend to empty.
+
+## Scope: `new` vs `all` (read `progress.scope` FIRST)
+
+The launcher sets `progress.scope`. It decides WHICH entries you walk; the per-entry verification (§0–§12) is identical either way.
+
+- **`scope == "all"` (default, `./run-fact-checker.sh`)** — verify the WHOLE catalog in `data.js` order. Resume from `progress.current_idx`; after each entry `current_idx += 1`. This is the periodic full audit. **Done when `current_idx >= total_entries` and `partial_entries` is empty.**
+- **`scope == "new"` (`./run-fact-checker.sh new`)** — verify ONLY entries that LACK `reviewed: true` in `data.js` (the games coop-hunter just added — it appends without the flag). Take up to 12 unreviewed entries this burst, verify each, and as soon as one is fully checked stamp it via `scripts/mark_reviewed.py <id>` so it leaves the queue. **Done when every non-hidden entry has `reviewed: true`.** The flag lives on the game, so this is reliable across pauses (no git-timestamp guessing). This is the cheap targeted pass to run right after an overnight hunt.
+
+In BOTH scopes increment `checked_count` per verified entry (the launcher's stagnation guard watches it). Everything below (auto-fix scope, endless-removal enforcement, cron coordination, logging) applies unchanged in either scope.
 
 ## Hard rules
 
@@ -390,10 +407,12 @@ check and add the game if it now qualifies. Keep it deduped (one row per id).
 
 ## Stopping condition
 
-`done = true` only when ALL of:
-1. `current_idx >= len(non_hidden_entries)`.
-2. `partial_entries` is empty (every entry got a complete check, not just partial).
-3. Every entry with a `bad_video` or `no_image` flag was either fixed-and-logged or logged as irrecoverable.
+Depends on `progress.scope` (see the Scope section at the top):
+- **`scope == "all"`** — `done = true` only when ALL of:
+  1. `current_idx >= len(non_hidden_entries)`.
+  2. `partial_entries` is empty (every entry got a complete check, not just partial).
+  3. Every entry with a `bad_video` or `no_image` flag was either fixed-and-logged or logged as irrecoverable.
+- **`scope == "new"`** — `done = true` when every non-hidden `data.js` entry has `reviewed: true` (you stamped each one you verified via `scripts/mark_reviewed.py`), and `partial_entries` is empty.
 
 The fact-checker auto-removes deterministic endless/blocklist matches (rule 7) and logs judgment-call removals to `proposed-removals.tsv` for the owner. coop-hunter no longer re-validates existing entries.
 
@@ -409,8 +428,10 @@ If `state/progress.json` doesn't exist, create it with:
   "proposed_count": 0,
   "partial_entries": [],
   "done": false,
+  "mode": "normal",
+  "scope": "all",
   "last_run_timestamp": null
 }
 ```
 
-On first run, fill `total_entries` from `list_entries.py | wc -l`.
+On first run, fill `total_entries` from `list_entries.py | wc -l`. `scope` is set by the launcher each run (`all` default, `new` from `./run-fact-checker.sh new`).

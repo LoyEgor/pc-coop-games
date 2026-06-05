@@ -1,0 +1,15 @@
+id	action	detail
+defense-grid-2	fix	hours: 12 -> 32 (HLTB main+extras ~25-40h (midpoint 32h) per web search; catalog 12h may undercount side missions. Owner verifies.)
+risk-of-rain-2013	fix	oneCopy: none -> remote-play (steam_categories_no_online_coop)
+operation-tango	fix	perspective: Third-person -> First-person (Gameplay is asymmetric UI-based: field agent has first-person view, hacker uses terminals/screens. Stored 'Third-person' looks wrong; closest taxonomy match is First-person. Owner verify against screenshots.)
+icarus	fix	endingType: levels ->  (endingType_questionable — even if kept, 'levels' is the wrong type: the missions are repeatable and have no defined last one. Closer to 'arcade-goal' per-session, but no clear umbrella ending. See linked proposed-removal row.)
+trine-3	fix	perspective: Side-view -> Third-person (or discrepancy) (Trine 3 went fully 3D with a fixed-position camera (Mario 3D Land-style), not 2D side-scrolling. Perspective is borderline — owner to confirm Side-view vs Third-person.)
+synthetik-legion-rising	fix	hours: 12 -> 25 (HLTB Main+Extras ~37h (run-based roguelite, accumulates). Stored 12h reflects a single completed run; HLTB inflated by replay. Propose 25h as duo midpoint.)
+portal-2, portal-reloaded	contradiction	franchise_split: franchise 'portal': in catalog but a sibling was skipped on a judgment call — verify both
+the-division-2	contradiction	franchise_split: franchise 'tom clancy s the division': in catalog but a sibling was skipped on a judgment call — verify both
+call-of-duty-black-ops-3	contradiction	franchise_split: franchise 'call of duty black ops': in catalog but a sibling was skipped on a judgment call — verify both
+revenge-of-the-savage-planet	contradiction	franchise_split: franchise 'revenge of the savage planet': in catalog but a sibling was skipped on a judgment call — verify both
+lego-star-wars-skywalker-saga	contradiction	franchise_split: franchise 'lego star wars the skywalker saga': in catalog but a sibling was skipped on a judgment call — verify both
+portal-2	contradiction	franchise_ending: franchise 'portal' has mixed endingType: portal-2=story; portal-reloaded=levels
+for-the-king	contradiction	franchise_ending: franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
+hammerwatch-2	contradiction	franchise_ending: franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels

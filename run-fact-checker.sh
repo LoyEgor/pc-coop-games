@@ -11,14 +11,26 @@
 #     LOGGED to proposed-fixes.tsv, never auto-written.
 #   - Leaves changes in the working tree for you to review + commit.
 #
-# Usage:   ./run-fact-checker.sh      (chmod +x once)
-# Stop:    Ctrl+C. State persists; restart resumes at current_idx.
+# Usage:   ./run-fact-checker.sh [new|all]   (chmod +x once)
+#            all (default) — verify the WHOLE catalog, resuming at current_idx.
+#            new           — verify ONLY entries that lack `reviewed: true` in
+#                            data.js (the games coop-hunter just added), stamping
+#                            each via mark_reviewed.py, then exits. Cheap pass to
+#                            run right after an overnight hunt.
+# Stop:    Ctrl+C. State persists; restart resumes (all: at current_idx; new: by flag).
 # Watch:   tail -f fact-checker-transcript.log
 
 set -u
 
+SCOPE="${1:-all}"
+case "$SCOPE" in
+  new|all) ;;
+  *) echo "Usage: $0 [new|all]   (new = only games coop-hunter just added; all = whole catalog, default)" >&2; exit 1 ;;
+esac
+
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
 PROGRESS_FILE="$REPO_ROOT/.claude/skills/fact-checker/state/progress.json"
+DATA_JS="$REPO_ROOT/data.js"   # 'new' scope = entries in data.js lacking `reviewed: true`
 TRANSCRIPT="$REPO_ROOT/fact-checker-transcript.log"
 BURST_OUT="$REPO_ROOT/.fact-checker-burst.tmp"   # ONLY the latest burst's output — what is_rate_limited inspects
 
@@ -51,14 +63,20 @@ fi
 
 # -------- seed progress.json --------
 mkdir -p "$(dirname "$PROGRESS_FILE")"
-"$PY" - "$PROGRESS_FILE" <<'PYEOF'
-import json, os, sys, subprocess
+"$PY" - "$PROGRESS_FILE" "$SCOPE" "$DATA_JS" <<'PYEOF'
+import json, os, re, sys, subprocess
 from pathlib import Path
-path = sys.argv[1]
+path, scope, data_js = sys.argv[1], sys.argv[2], sys.argv[3]
+
+def count_unreviewed():
+    # entries WITHOUT `reviewed: true` = not yet checked by the fact-checker
+    txt = open(data_js, encoding="utf-8").read()
+    blocks = re.findall(r"\n  \{\n.*?\n  \}", txt, re.DOTALL)
+    return sum(1 for b in blocks if "hidden: true" not in b and not re.search(r"\n    reviewed:\s*true", b))
 defaults = {
   "current_idx": 0, "total_entries": None, "checked_count": 0,
   "fixed_count": 0, "proposed_count": 0, "partial_entries": [],
-  "done": False, "mode": "normal", "last_run_timestamp": None,
+  "done": False, "mode": "normal", "scope": "all", "last_run_timestamp": None,
 }
 if os.path.exists(path):
     with open(path) as f:
@@ -76,18 +94,47 @@ out = subprocess.check_output(["python3", str(list_script), "--count"]).decode()
 cur["total_entries"] = int(out)
 
 # An explicit launch means "go". Clear stale done; this launcher is NORMAL mode
-# (run-migration.sh handles taxonomy_migration). If the previous run finished
-# (idx past the end), rewind for a fresh full pass; else resume at current_idx.
+# (run-migration.sh handles taxonomy_migration).
 cur["done"] = False
 cur["mode"] = "normal"
-if cur["current_idx"] >= cur["total_entries"]:
-    cur["current_idx"] = 0
-    cur["partial_entries"] = []
+cur["scope"] = scope
+
+queue_n = 0
+if scope == "new":
+    # The skill verifies ONLY entries lacking `reviewed: true`, stamping each as it
+    # goes (mark_reviewed.py) — progress is the flag itself, so current_idx is N/A.
+    queue_n = count_unreviewed()
+else:
+    # all-scope: if the previous full pass finished (idx past the end), rewind for
+    # a fresh pass; else resume at current_idx.
+    if cur["current_idx"] >= cur["total_entries"]:
+        cur["current_idx"] = 0
+        cur["partial_entries"] = []
 
 with open(path, "w") as f:
     json.dump(cur, f, indent=2)
-print(f"progress.json: mode={cur['mode']}, current_idx={cur['current_idx']}, total={cur['total_entries']}, done={cur['done']}")
+if scope == "new":
+    print(f"progress.json: scope=new, queue={queue_n} games to verify, total_catalog={cur['total_entries']}")
+else:
+    print(f"progress.json: scope=all, current_idx={cur['current_idx']}, total={cur['total_entries']}")
 PYEOF
+
+# -------- new-scope: nothing unreviewed => nothing to do --------
+if [ "$SCOPE" = "new" ]; then
+  QUEUE_N=$("$PY" -c "
+import re
+t=open('$DATA_JS',encoding='utf-8').read()
+b=re.findall(r'\n  \{\n.*?\n  \}', t, re.DOTALL)
+print(sum(1 for x in b if 'hidden: true' not in x and not re.search(r'\n    reviewed:\s*true', x)))
+")
+  if [ "$QUEUE_N" -eq 0 ]; then
+    echo ""
+    echo "fact-checker (new): every entry already has 'reviewed: true' — nothing new to verify."
+    echo "  Run coop-hunter to add games, or use './run-fact-checker.sh all'."
+    echo ""
+    exit 0
+  fi
+fi
 
 # -------- header --------
 echo ""
@@ -95,6 +142,7 @@ echo "================================================================"
 echo "  fact-checker — headless-burst runner (macOS)"
 echo "================================================================"
 echo "  Started:    $(date)"
+echo "  Scope:      $SCOPE$([ "$SCOPE" = "new" ] && echo " ($QUEUE_N games queued by coop-hunter)" || echo " (whole catalog)")"
 echo "  Repo:       $REPO_ROOT"
 echo "  Claude CLI: $CLAUDE_CMD"
 echo "  Transcript: $TRANSCRIPT"
@@ -112,9 +160,11 @@ Run the fact-checker skill (.claude/skills/fact-checker/) for ONE BURST, then EX
 
 Read first: SKILL.md; .claude/skills/shared/taxonomy.json (AUTHORITATIVE for genre + endingType — classify by axis, never invent tags); state/progress.json.
 
-THIS BURST:
-- Resume from progress.json.current_idx. Verify AT MOST 12 entries this invocation, sequentially, 1.5s sleep between Steam API calls. After each entry: current_idx += 1 and persist progress.json.
-- After ~12 entries, STOP and exit. The loop starts your next burst.
+SCOPE — read progress.json.scope (the launcher set it):
+- scope=="all": verify the WHOLE catalog in catalog order. Resume from progress.json.current_idx; after each entry current_idx += 1 and persist. COMPLETION: when current_idx >= total_entries AND partial_entries is empty, set progress.done=true.
+- scope=="new": verify ONLY entries in data.js that LACK a `reviewed: true` field (the games coop-hunter just added — it appends without the flag). Verify up to 12 such entries this burst; after EACH is fully verified, stamp it via `python3 .claude/skills/fact-checker/scripts/mark_reviewed.py <id>` so it drops out of the unreviewed set. Ignore current_idx in this scope. COMPLETION: when every non-hidden entry has `reviewed: true`, set progress.done=true. The flag lives on the game, so progress survives pauses without any queue file.
+
+THIS BURST: verify AT MOST 12 entries, sequentially, 1.5s sleep between Steam API calls. Persist progress.json after each. After ~12 entries, STOP and exit; the loop starts your next burst.
 
 PER ENTRY, verify vs Steam / HowLongToBeat / YouTube: rating, price, hours, playersMax, oneCopy, genres (by taxonomy axes), tier, endingType, youtubeUrl, imageUrl.
 
@@ -124,9 +174,9 @@ CRON COORDINATION (priority: cron > fact-checker): read .github/refresh-status.j
 
 ENDLESS REMOVAL (you are the enforcer now): if an entry matches the hardcoded blocklist OR has Steam tags MMO/Massively Multiplayer/Battle Royale OR >=3 negative-review endless hits -> AUTO-REMOVE via ../coop-hunter/scripts/remove_entry.py <id>. Borderline/judgment cases -> log to state/proposed-removals.tsv only. NEVER touch app.js / index.html / styles.css. NEVER ASK QUESTIONS — ambiguous -> discrepancies.tsv, continue.
 
-COMPLETION: when current_idx >= total_entries AND partial_entries is empty, set progress.done=true. Otherwise leave done=false; the loop runs the next burst.
+COMPLETION: per the SCOPE rules above (all: current_idx past the end; new: queue drained). When complete set progress.done=true; otherwise leave done=false and the loop runs the next burst.
 
-End with one line: [N/TOTAL checked | F fixed | P proposed]
+End with one line: [scope=<all|new> checked=N fixed=F proposed=P]
 PROMPT_EOF
 )
 
@@ -134,7 +184,12 @@ PROMPT_EOF
 INITIAL_CHECKED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['checked_count'])")
 TOTAL=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['total_entries'])")
 PREV_IDX=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['current_idx'])")
-echo "Starting at entry $PREV_IDX / $TOTAL"
+PREV_CHECKED=$INITIAL_CHECKED   # mode-agnostic progress signal for the stagnation guard
+if [ "$SCOPE" = "new" ]; then
+  echo "Starting: scope=new, $QUEUE_N games queued by coop-hunter"
+else
+  echo "Starting: scope=all, at entry $PREV_IDX / $TOTAL"
+fi
 echo ""
 
 # -------- consistency audit (cheap, no network) — refresh inconsistencies.tsv --------
@@ -211,11 +266,25 @@ p=json.load(open('$PROGRESS_FILE'))
 print(p.get('checked_count',0), p.get('fixed_count',0), p.get('proposed_count',0),
       p.get('done',False), p.get('current_idx',0))
 ")"
-  IDX_DELTA=$((IDX - PREV_IDX))
+  # checked_count advances per verified entry in BOTH scopes, so it (not idx, which
+  # stays put in new-scope) is the universal "did we make progress" signal.
+  CHECKED_DELTA=$((CHECKED - PREV_CHECKED))
+  PREV_CHECKED=$CHECKED
   PREV_IDX=$IDX
 
   echo ""
-  echo "[$(date)] Burst #$BURST done. idx=$IDX/$TOTAL (+$IDX_DELTA) fixed=$FIXED proposed=$PROPOSED done=$DONE"
+  if [ "$SCOPE" = "new" ]; then
+    # new-scope progress = entries in data.js still lacking `reviewed: true`.
+    QUEUE_LEFT=$("$PY" -c "
+import re
+t=open('$DATA_JS',encoding='utf-8').read()
+b=re.findall(r'\n  \{\n.*?\n  \}', t, re.DOTALL)
+print(sum(1 for x in b if 'hidden: true' not in x and not re.search(r'\n    reviewed:\s*true', x)))
+" 2>/dev/null || echo "?")
+    echo "[$(date)] Burst #$BURST done. scope=new unreviewed_left=$QUEUE_LEFT (+$CHECKED_DELTA checked) fixed=$FIXED proposed=$PROPOSED done=$DONE"
+  else
+    echo "[$(date)] Burst #$BURST done. idx=$IDX/$TOTAL (+$CHECKED_DELTA checked) fixed=$FIXED proposed=$PROPOSED done=$DONE"
+  fi
 
   if [ "$DONE" = "True" ] || [ "$DONE" = "true" ]; then
     echo "[$(date)] FACT-CHECK COMPLETE."
@@ -229,12 +298,13 @@ print(p.get('checked_count',0), p.get('fixed_count',0), p.get('proposed_count',0
     continue
   fi
 
-  # Stagnation guard: fact-checker should always move forward (idx increments
-  # per entry). If 3 consecutive bursts left idx unchanged, the skill is stuck
-  # or hitting some unhandled error — bail out instead of spinning.
-  if [ "$IDX_DELTA" -le 0 ]; then
+  # Stagnation guard: fact-checker should always move forward (checked_count
+  # increments per verified entry, in BOTH scopes). If 3 consecutive bursts left
+  # it unchanged, the skill is stuck or hitting some unhandled error — bail out
+  # instead of spinning.
+  if [ "$CHECKED_DELTA" -le 0 ]; then
     STAGNANT_BURSTS=$((STAGNANT_BURSTS + 1))
-    echo "[$(date)] Stagnation: idx did not advance. streak=$STAGNANT_BURSTS/$STAGNATION_THRESHOLD"
+    echo "[$(date)] Stagnation: checked_count did not advance. streak=$STAGNANT_BURSTS/$STAGNATION_THRESHOLD"
     if [ "$STAGNANT_BURSTS" -ge "$STAGNATION_THRESHOLD" ]; then
       echo "[$(date)] STAGNATION STOP — $STAGNATION_THRESHOLD consecutive no-progress bursts. Aborting fact-checker."
       break

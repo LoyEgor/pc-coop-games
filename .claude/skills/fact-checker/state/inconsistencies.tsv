@@ -1,6 +1,0 @@
-timestamp	kind	a	b	detail
-2026-05-30T12:35:45Z	franchise_split	call-of-duty-black-ops-3	Call of Duty: Black Ops 7 (low_quality)	franchise 'call of duty black ops': in catalog but a sibling was skipped on a judgment call — verify both
-2026-05-30T12:35:45Z	franchise_ending	sniper-elite-5	sniper-elite-4, sniper-elite-3	franchise 'sniper elite' has mixed endingType: sniper-elite-5=story; sniper-elite-4=levels; sniper-elite-3=levels
-2026-05-30T12:35:45Z	franchise_ending	portal-2	portal-reloaded	franchise 'portal' has mixed endingType: portal-2=story; portal-reloaded=levels
-2026-05-30T12:35:45Z	franchise_ending	for-the-king	for-the-king-2	franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
-2026-05-30T12:35:45Z	franchise_ending	hammerwatch-2	hammerwatch	franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels

@@ -1,5 +1,5 @@
 {
-  "_comment": "Crawl order. Sources are grouped into 4 phases. The skill processes phase 1 first; when all sources of a phase are completed AND that phase added > 0 games, it escalates to the next phase. When a phase adds 0 games (or current_phase > max_phase), the skill marks done=true. Windows runs typically use max_phase=1 (single pass); Mac runs use max_phase=4 (cascading + re-evaluation).",
+  "_comment": "Crawl order. Sources are grouped into 4 phases. The skill processes phase 1 first; when all sources of a phase are completed it escalates to the next. Reaching the end of phase 4 is NOT 'done' — it is the trigger to start CREATIVE DISCOVERY (SKILL.md): the skill invents fresh search angles and keeps going. coop-hunter is eternal; only Ctrl+C (or the one-time reeval_only migration) stops it.",
   "sources": [
     {
       "id": "steamdb_coop_campaign",

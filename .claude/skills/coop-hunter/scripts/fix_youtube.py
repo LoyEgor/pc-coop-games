@@ -17,12 +17,10 @@ Exits 0 on success, 1 if id not found, 2 on error.
 import os
 import sys
 import re
-import datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3].parent
 DATA_JS = REPO_ROOT / "data.js"
-LOG_TSV = REPO_ROOT / ".claude" / "skills" / "coop-hunter" / "state" / "youtube-fixes.tsv"
 
 
 def atomic_write_text(path, text):
@@ -35,12 +33,6 @@ def atomic_write_text(path, text):
 VIDEO_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 
 
-def ensure_log_header():
-    LOG_TSV.parent.mkdir(parents=True, exist_ok=True)
-    if not LOG_TSV.exists():
-        LOG_TSV.write_text(
-            "timestamp\tid\told_url_kind\tnew_video_id\n", encoding="utf-8"
-        )
 
 
 def fix(content, game_id, video_id):
@@ -92,10 +84,7 @@ def main():
         sys.exit(1)
 
     atomic_write_text(DATA_JS, new_content)
-    ensure_log_header()
-    with LOG_TSV.open("a", encoding="utf-8") as f:
-        ts = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        f.write(f"{ts}\t{game_id}\t{old_kind}\t{video_id}\n")
+    # No separate fix-log — the change is in data.js; git diff is the record.
     print(f"OK: {game_id} {old_kind}(...) -> youtube({video_id})")
 
 

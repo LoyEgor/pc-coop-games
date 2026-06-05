@@ -123,22 +123,24 @@ Run the launcher (macOS / Linux):
 ./run-coop-hunter.sh
 ```
 
-**Execution model (changed 2026-05-27): headless bursts, NOT `/goal`.** The
-launcher is a bash loop; each iteration runs ONE `claude -p` (headless) burst
-that processes ~20 candidates, persists state, and EXITS — then the loop starts
-the next burst with a fresh process. (Earlier the launcher used `/goal`, but its
-evaluator reads the whole transcript every turn and overflowed on multi-hour
-runs — "Prompt is too long" — so the project moved to headless bursts.) The
-skill is resumable from `state/progress.json`, cascades phases 1-4, and stops
-only after TWO consecutive phase-4 passes yield 0 new games. Push policy: NO
-interim pushes — exactly ONE commit + push at the end (the skill's Final pass).
-Windows `.ps1` launcher was removed — this is a macOS/Linux project now.
+**Execution model: headless bursts, NOT `/goal`.** The launcher is a bash loop;
+each iteration runs ONE `claude -p` (headless) burst that processes ~20
+candidates, persists state, and EXITS — then the loop starts the next burst with
+a fresh process. (Earlier the launcher used `/goal`, but its evaluator reads the
+whole transcript every turn and overflowed on multi-hour runs — "Prompt is too
+long" — so the project moved to headless bursts.) The skill is resumable from
+`state/progress.json` and cascades phases 1-4. **coop-hunter is ETERNAL — there
+is no "done":** when the structured sources run dry it switches to creative
+discovery (invents fresh search angles, logs them to `discovery-log.tsv`) and
+keeps going until you Ctrl+C. **Push policy: the LAUNCHER pushes periodically** —
+every ~hour OR every 10 new games (commit → rebase onto cron → push). Windows
+`.ps1` launcher was removed — this is a macOS/Linux project now.
 
 See [`.claude/skills/README.md`](.claude/skills/README.md) for the full picture.
 
 **There are two skills + three launchers + one cron in this project:**
-- `coop-hunter` (skill) — grows the catalog. Launch: `./run-coop-hunter.sh`.
-- `fact-checker` (skill) — verifies existing entries. Launch: `./run-fact-checker.sh`.
+- `coop-hunter` (skill) — grows the catalog, eternally. Launch: `./run-coop-hunter.sh`. Every added game starts WITHOUT a `reviewed` flag, so `fact-checker new` picks it up automatically (no queue file — see §6b).
+- `fact-checker` (skill) — verifies entries + removes endless games. Launch: `./run-fact-checker.sh [new|all]` (`new` = just the hunter's latest finds via the queue; `all` = whole catalog, default).
 - taxonomy migration — fact-checker in a special mode, one-time. Launch: `./run-migration.sh`.
 - `refresh-prices` (GitHub Actions cron) — owns `price`/`rating`, runs daily on GitHub, no LLM.
 
@@ -149,12 +151,12 @@ Quick brief covering all of them, with watch-progress commands: [`.claude/skills
 - Persist `state/progress.json` after EVERY game added.
 - Resumable: if interrupted, `progress.json` records where to pick up.
 - Idempotent: skip if Steam app id already in `data.js`.
-- Never asks the user questions — uses `classification.md` rules; logs `ambiguous` to `state/skipped.tsv` and moves on.
+- Never asks the user questions — uses `classification.md` rules; logs rejects via `scripts/log_skip.py` (routes to `shared/reeval.tsv` or `shared/hard-block.tsv` — see §6b) and moves on.
 - **coop-hunter is GROWTH-only** (changed 2026-05-27). It finds new games and applies strict ADD-TIME gates so junk never gets in (see SKILL.md §8b Final fit-gate). It no longer re-walks the catalog — re-validating existing entries (endless re-check, broken media, drift) is the **`fact-checker`** skill's job. See section 6.
 
 ## 6. Auto-removal of endless games (false positive cleanup)
 
-The owner has been explicit: **if an endless game ends up in `data.js`, it must be removed**. As of 2026-05-27 the **`fact-checker` skill is the enforcer** (it owns existing-entry verification; coop-hunter's old `revalidate_existing` was removed to end the double work). The fact-checker auto-removes deterministic blocklist/endless matches via `remove_entry.py` and logs judgment-call removals to `proposed-removals.tsv`.
+The owner has been explicit: **if a truly endless (no-finish) game ends up in `data.js`, it must be removed**. The **`fact-checker` skill is the enforcer** (it owns existing-entry verification). It removes via `remove_entry.py`, which routes the game to `shared/hard-block.tsv` (mechanical) or `shared/reeval.tsv` (re-checkable — endless-by-judgment, since rules can change; see §6b). Judgment-call removals go to `shared/owner-review.tsv`. **Note:** "endless" is almost never `hard-block` — a fuzzy finish (Forza) is now a soft 🟠 add, not a ban. Only mechanical impossibility (no co-op / PvP-only / not Steam / MMO) is hard-block.
 
 For each existing entry, the skill checks for endless markers:
 
@@ -169,7 +171,7 @@ For each existing entry, the skill checks for endless markers:
 | Steam description mentions "ongoing content", "seasons", "battle pass" | Strong signal |
 | Released as **Early Access** without announced endgame | Strong signal |
 
-Three or more strong signals → entry is removed from `data.js` via `scripts/remove_entry.py`, removal is logged to `state/removed-entries.tsv` with the reasons.
+Three or more strong signals → entry is removed from `data.js` via `scripts/remove_entry.py` (routes to `shared/hard-block.tsv` or `shared/reeval.tsv` per §6b).
 
 ### Known endless games — never add (hardcoded blocklist)
 These have appeared as false positives historically. The skill maintains a blocklist:
@@ -197,6 +199,32 @@ These have appeared as false positives historically. The skill maintains a block
 - Any MMO
 
 If a game appears on this list, **never add it**, regardless of what Steam categories or reviews say.
+
+## 6b. State model — the four lists (canonical; read this before touching state)
+
+Every game lives in **exactly one** state. There are only four lists, plus two per-skill cursors:
+
+| List | Meaning | Writer | Reader |
+|---|---|---|---|
+| `data.js` | IN the catalog (playable; hard finish or soft 🟠) | coop-hunter adds; fact-checker fixes | the site, both skills |
+| `.claude/skills/shared/reeval.tsv` | rejected but **RE-CHECKABLE** — judgment/threshold reasons (unclear_ending, Early Access, low rating, too-few-reviews, endless-with-a-milestone like Forza) | `log_skip.py` / `remove_entry.py` | coop-hunter (dedup + `reeval_skipped`), `find_neighbors.py` |
+| `.claude/skills/shared/hard-block.tsv` | **NEVER add** — mechanical only (no co-op / PvP-only / not on Steam / MMO / delisted) | `log_skip.py` / `remove_entry.py --block` | coop-hunter gate (`append_entry.py` exit 3) |
+| `.claude/skills/shared/owner-review.tsv` | the **owner's TODO** queue (`action` = fix / remove / contradiction) | `log_event.py` / `find_neighbors.py` / fact-checker | the OWNER |
+
+Cursors (NOT lists of games — just "where the skill stopped"): `coop-hunter/state/progress.json`, `fact-checker/state/progress.json`.
+
+**Invariant:** a game id is in EXACTLY ONE of {`data.js`, `reeval`, `hard-block`}. Helper scripts enforce it — `append_entry.py` drops the id from reeval on add and refuses hard-blocked ids; `log_skip.py` won't list a game that's already in `data.js`. `owner-review` is a TODO **overlay** — it may point at a game living in any of the three; it is not a place of residence (so an id may be both in `data.js` and in owner-review as "remove?").
+
+**The `reviewed` flag.** A fresh entry in `data.js` has **no** `reviewed` field = "fact-checker hasn't checked it yet". `fact-checker new` processes every entry lacking `reviewed: true`, then stamps it (`mark_reviewed.py`). This is reliable because it lives on the game, not on git timestamps.
+
+**Lifecycle — who moves a game where:**
+- coop-hunter finds a candidate → `data.js` (qualifies; added WITHOUT `reviewed`) | `reeval` (maybe later) | `hard-block` (mechanically impossible).
+- coop-hunter `reeval_skipped` re-judges `reeval` rows → promotes to `data.js` when they now qualify (hard, or soft with leading 🟠).
+- `fact-checker new` checks unreviewed `data.js` entries → stamps `reviewed: true`; a problem → `owner-review`.
+- `fact-checker all` re-checks the whole catalog → auto-applies confident editorial fixes, routes real judgment calls to `owner-review`, and **self-cleans** owner-review of what it's now sure about (the queue should trend toward empty).
+- `remove_entry.py` pulls a game out of `data.js` → `reeval` (re-checkable) or `hard-block` (`--block`, mechanical).
+
+No other state files exist. Audit history = `git log data.js` + the launcher transcripts. (Historical note: this replaced ~18 sprawling lists — added/skipped/removed/borderline/bad-existing/image-fixes/youtube-fixes/applied-fixes/discrepancies/inconsistencies/reconcile-report/proposed-* — folded down on 2026-05-31.)
 
 ## 7. UI / table changes
 

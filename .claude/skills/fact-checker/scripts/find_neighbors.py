@@ -22,15 +22,15 @@ Usage:  python find_neighbors.py
 """
 
 import re
-import datetime
 from pathlib import Path
 from itertools import combinations
 from collections import defaultdict
 
 REPO_ROOT = Path(__file__).resolve().parents[3].parent
 DATA_JS = REPO_ROOT / "data.js"
-SKIPPED_TSV = REPO_ROOT / ".claude" / "skills" / "coop-hunter" / "state" / "skipped.tsv"
-OUT_TSV = Path(__file__).resolve().parents[1] / "state" / "inconsistencies.tsv"
+SHARED = REPO_ROOT / ".claude" / "skills" / "shared"
+SKIPPED_TSV = SHARED / "reeval.tsv"       # re-checkable rejects (was coop-hunter/skipped.tsv)
+OUT_TSV = SHARED / "owner-review.tsv"     # contradictions land in the owner's queue
 
 TIER = {"AAA", "AA", "Indie"}
 EDITION_WORDS = r"\b(definitive|anniversary|enhanced|complete|goty|remastered|reloaded|edition|deluxe|ultimate|standalone|de)\b"
@@ -97,6 +97,7 @@ ALL_REASONS = JUDGMENT_REASONS | {
 
 
 def parse_skipped():
+    """Read shared/reeval.tsv — schema: id, title, reason, source, notes."""
     if not SKIPPED_TSV.exists():
         return []
     out = []
@@ -106,21 +107,8 @@ def parse_skipped():
         parts = line.split("\t")
         if len(parts) < 3:
             continue
-        # Locate the reason column by content (a known reason token), then infer
-        # the title from the layout: canonical 6-col is ts,id,title,source,reason,
-        # notes (reason at >=4, title at 2); legacy 5-col is ts,name,reason,...
-        # (reason at 2, name at 1).
-        ridx = next((j for j in range(2, len(parts)) if parts[j].strip() in ALL_REASONS), None)
-        if ridx is not None and ridx >= 4:
-            name = parts[2] or parts[1]
-            reason = parts[ridx].strip()
-        elif ridx == 2:
-            name = parts[1]
-            reason = parts[2].strip()
-        else:
-            # no recognizable reason — assume canonical title position if present
-            name = parts[2] if len(parts) > 2 else parts[1]
-            reason = ""
+        name = parts[1] or parts[0]
+        reason = parts[2].strip()
         if name:
             out.append({"title": name, "reason": reason, "fkey": franchise_key(name)})
     return out
@@ -174,19 +162,35 @@ def main():
     # similarity is not. If revisited, it needs hours+playersMax+verdict, not
     # just tags.
 
-    # --- write ---
+    # --- write into shared/owner-review.tsv (id, action, detail) as UPSERT ---
+    # owner-review also holds fix/remove rows from log_event.py — preserve those,
+    # regenerate only our contradiction rows.
     OUT_TSV.parent.mkdir(parents=True, exist_ok=True)
-    ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    san = lambda s: (s or "").replace("\t", " ").replace("\r", " ").replace("\n", " ")
+    rows, order = {}, []
+    if OUT_TSV.exists():
+        for i, ln in enumerate(OUT_TSV.read_text(encoding="utf-8").splitlines()):
+            if i == 0 or not ln.strip():
+                continue
+            c = ln.split("\t")
+            if len(c) >= 2 and c[1] != "contradiction":   # keep fix/remove, drop old contradictions
+                rows[(c[0], c[1])] = ln
+                order.append((c[0], c[1]))
+    for kind, a, b, detail in findings:
+        # key includes kind+b so two distinct contradictions sharing the same
+        # leading id (e.g. a franchise_split AND a franchise_ending on the same
+        # game) don't overwrite each other.
+        key = (a, "contradiction", kind, b)
+        if key not in order:
+            order.append(key)
+        rows[key] = "\t".join([a, "contradiction", san(f"{kind}: {detail}")])
     with OUT_TSV.open("w", encoding="utf-8") as f:
-        f.write("timestamp\tkind\ta\tb\tdetail\n")
-        for kind, a, b, detail in findings:
-            f.write(f"{ts}\t{kind}\t{a}\t{b}\t{detail}\n")
+        f.write("id\taction\tdetail\n")
+        for k in order:
+            f.write(rows[k] + "\n")
 
-    print(f"catalog={len(catalog)} skipped={len(skipped)} -> {len(findings)} inconsistencies")
-    fr = sum(1 for x in findings if x[0].startswith('franchise'))
-    si = sum(1 for x in findings if x[0] == 'similarity_ending')
-    print(f"  franchise conflicts: {fr} | similarity conflicts: {si}")
-    print(f"  written to {OUT_TSV}")
+    print(f"catalog={len(catalog)} reeval={len(skipped)} -> {len(findings)} contradictions")
+    print(f"  written to {OUT_TSV} (fix/remove rows preserved)")
 
 
 if __name__ == "__main__":
