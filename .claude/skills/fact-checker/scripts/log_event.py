@@ -17,6 +17,7 @@ actually decide. Upsert by (id, action) so the same finding isn't duplicated.
 Exits 0 always (logging is best-effort).
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -61,10 +62,10 @@ def main():
     if key not in order:
         order.append(key)
     rows[key] = "\t".join([gid, action, detail])
-    with OWNER.open("w", encoding="utf-8") as f:
-        f.write(HDR)
-        for k in order:
-            f.write(rows[k] + "\n")
+    out = HDR + "".join(rows[k] + "\n" for k in order)
+    tmp = OWNER.with_name(OWNER.name + ".tmp")
+    tmp.write_text(out, encoding="utf-8")
+    os.replace(tmp, OWNER)
     print(f"owner-review: {gid} [{action}]")
 
 

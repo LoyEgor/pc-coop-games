@@ -210,7 +210,7 @@ def main():
         m = re.search(r"app/(\d+)", g.get("storeUrl", ""))
         if m:
             app_id = m.group(1)
-    if app_id and re.search(r"app/" + re.escape(str(app_id)) + r"/", content):
+    if app_id and re.search(r"app/" + re.escape(str(app_id)) + r"(?:/|\"|\?|$)", content):
         print(f"SKIP: app_id {app_id} already present under another slug", file=sys.stderr)
         sys.exit(1)
 

@@ -209,6 +209,14 @@ function syncURL() {
   history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
 }
 
+// Sanitize a range bound parsed from the URL: a negative value would invert the
+// filter (e.g. max=-100 hides every row), so drop it to "" (no constraint).
+// Mirrors the live-input guard in bindFilterControls.
+function clampRangeBound(raw) {
+  if (raw === "") return "";
+  return parseFloat(raw) < 0 ? "" : raw;
+}
+
 function applyFiltersFromURL() {
   const p = new URLSearchParams(location.search);
   if (![...p.keys()].length) return;
@@ -216,12 +224,20 @@ function applyFiltersFromURL() {
   if (p.has("q")) f.title = p.get("q");
   for (const [key, param] of RANGE_PARAMS) {
     if (p.has(param)) {
-      const idx = p.get(param).indexOf("-");
       const raw = p.get(param);
-      f[key] = idx === -1 ? { min: raw, max: "" } : { min: raw.slice(0, idx), max: raw.slice(idx + 1) };
+      const idx = raw.indexOf("-");
+      if (idx === -1) {
+        f[key] = { min: clampRangeBound(raw), max: "" };
+      } else if (raw.indexOf("-", idx + 1) !== -1) {
+        // More than one '-' (e.g. "50--100") would mis-split into a negative
+        // bound; treat the whole range as malformed and ignore it.
+        continue;
+      } else {
+        f[key] = { min: clampRangeBound(raw.slice(0, idx)), max: clampRangeBound(raw.slice(idx + 1)) };
+      }
     }
   }
-  if (p.has("genres")) f.genres = new Set(p.get("genres").split(",").filter(Boolean));
+  if (p.has("genres")) f.genres = new Set(p.get("genres").split(",").filter((t) => TAG_TO_AXIS[t]));
   if (p.has("ending")) f.endingType = new Set(p.get("ending").split(",").filter(Boolean));
   if (p.has("copies")) f.oneCopy = new Set(p.get("copies").split(",").filter(Boolean));
   if (p.has("sort")) {
@@ -537,6 +553,11 @@ function openFilter(key, button) {
 // which would otherwise drop this inline max-height and let it spill off-screen).
 function capFilterHeight() {
   const vGap = 12;
+  // Reset any inline clamp left by a previous range/text popover so only the
+  // active branch's computation applies (otherwise a set/list filter inherits
+  // the old max-height and clips its option list + Clear button).
+  els.popover.style.maxHeight = "";
+  els.popover.style.overflowY = "";
   const list = els.popover.querySelector(".checkbox-list");
   if (list) {
     const btn = els.popover.querySelector(".button");

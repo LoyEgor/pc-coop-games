@@ -227,6 +227,21 @@ def main():
             print(f"  [{i}/{len(entries)}] ERROR {game_id} (app {app_id}): {type(e).__name__}: {e}")
             continue
 
+        # Soft failure: Steam frequently throttles with HTTP 200 + success:false
+        # (appdetails -> None) and an empty review summary (appreviews -> {}), so
+        # NO exception fires. If BOTH come back empty there is nothing to verify
+        # for this entry — count it like a real failure so a mass-throttled run
+        # is reported unhealthy instead of "all good".
+        if not details and not reviews:
+            failures += 1
+            consecutive_failures += 1
+            print(f"  [{i}/{len(entries)}] NO-DATA {game_id} (app {app_id}): appdetails+appreviews both empty (likely throttled)")
+            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                print(f"FATAL: {consecutive_failures} consecutive failures — aborting", file=sys.stderr)
+                write_status(False, checked, updates, failures, error=f"too_many_failures:{consecutive_failures}")
+                sys.exit(1)
+            continue
+
         checked += 1
 
         # Price drift — only trust a UAH price_overview with a numeric `final`.
@@ -282,6 +297,18 @@ def main():
     print(f"  entries_checked: {checked}/{len(entries)}")
     print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, image={updates['image']}")
     print(f"  fetch_failures:  {failures}")
+
+    # A run is only healthy if we actually verified something. If every attempt
+    # returned no data (checked==0) or more than half the attempted entries came
+    # back empty/failed, Steam was throttling us — mark the heartbeat unhealthy
+    # so the skills run their own price/rating checks instead of trusting it.
+    attempted = checked + failures
+    nodata_ratio = (failures / attempted) if attempted else 1.0
+    if checked == 0 or nodata_ratio > 0.50:
+        error = f"mass_no_data:{failures}/{attempted}_failed" if attempted else "no_entries_attempted"
+        print(f"UNHEALTHY: {error} (checked={checked}, nodata_ratio={nodata_ratio:.0%})", file=sys.stderr)
+        write_status(False, checked, updates, failures, error=error)
+        sys.exit(1)
 
     write_status(True, checked, updates, failures)
 
