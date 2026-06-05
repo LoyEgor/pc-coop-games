@@ -7,6 +7,7 @@ a-valley-without-wind	A Valley Without Wind	endless_misclassified	phase4_wikiped
 a-valley-without-wind-2	A Valley Without Wind 2	low_quality	phase4_wikipedia_coop_lists;wikipedia_coop_lists	Steam %positive 45.8% (227 reviews) — below 50% threshold [seen 2x; reasons: low_quality]
 abc-audio-reactive-beat-circle	ABC: AUDIO REACTIVE BEAT CIRCLE	endless_misclassified	phase4_steam_more_like_this	Audio-reactive arcade dodger — score-based with no campaign/credits, sessional
 abyss-crew	Abyss Crew	not_enough_reviews	reeval_skipped	still 18 reviews (<50 threshold) [seen 4x]
+ace-combat-8-wings-of-the-v	ACE COMBAT 8: WINGS OF THE V	early_access	steam_topsellers_coop	Upcoming Oct 2026 release; not yet shipped, no reviews; recheck after launch.
 active-matter	Active Matter	low_fit	phase4_steam_more_like_this	Unreleased 2026, F2P, MMO+PvP+Co-op tags; hard-block category (MMO)
 agefield-high-rock-the-school	Agefield High: Rock the School	low_fit	phase4_steam_more_like_this	obscure VN, unverified co-op
 ale-and-tale-tavern	ale-and-tale-tavern	endless	phase4_reddit_just_finished;reddit_just_finished	Open-ended tavern management sandbox; no win-condition/story finale per Steam page [seen 2x; reasons: endless,low_fit]
@@ -53,6 +54,7 @@ capsule-force	Capsule Force	not_enough_reviews	creative_discovery	Only 37 Steam 
 car-service-together	Car Service Together	endless_misclassified	steam_more_like_this	sandbox simulation, no ending [seen 2x]
 cartel-pilots-wanted	Cartel Pilots Wanted	low_fit	steam_more_like_this	Coming soon — release TBA. Steam app 4614080.
 catto-pew-pew	Catto Pew Pew	low_fit	phase4_steam_more_like_this	obscure casual, unverified
+chefs-together	Chefs Together	endless	creative_discovery	Open-ended restaurant level-up loop; no campaign ending — customers keep coming, levels scale forever (Steam page confirms).
 chicken-fight	Chicken Fight	low_fit	phase4_steam_more_like_this	PvP party brawler; no finite co-op campaign
 chrono-bullet	Chrono Bullet	unreleased	creative_discovery	coming_soon, no release date
 climber-animals-together	Climber Animals: Together	finish_unverified	reeval_skipped	Parkour climber 1-8 players with race/PvP element, leaderboards; 'reach the top' goal but no defined final course/finale (verified 2026-06-06)
@@ -178,6 +180,7 @@ lego-movie-2-videogame	region_restricted	unknown	appdetails success=false for cc
 lego-skywalker-saga	LEGO Star Wars: The Skywalker Saga	endless	removed-entries	
 lego-worlds	lego-worlds	endless_misclassified	open-ended build sandbox (Minecraft-like); Master Builder is a progression milestone, not a finite finale; CLAUDE.md exc	Minecraft-like Lego sandbox builder [seen 4x; reasons: endless_misclassified,low_fit,unclear_ending]
 let-it-die	LET IT DIE	endless	phase4_steam_more_like_this	free-to-play arena, ongoing/live-service
+let-s-cook-together-2	Let's Cook Together 2	not_enough_reviews	creative_discovery	45 reviews on Steam (below 50 threshold) but 77.8% positive; recheck after review count grows
 lethal-company	Lethal Company	endless	removed-entries	hardcoded_blocklist+manual_audit
 levelhead	Levelhead	endless	steamdb_coop_campaign	Massively Multiplayer + Free To Play
 limbs	Limbs	online_broken	phase4_youtube_curator_playlists	70% / 67 reviews; multiple recent reviews say co-op controller/remote play is broken or unplayable; finish exists but co-op delivery unreliable
@@ -203,6 +206,7 @@ monster-mop-up-demo	Monster Mop Up Demo	low_fit	phase4_steam_more_like_this;stea
 monster-prom-3-monster-roadtrip	Monster Prom 3: Monster Roadtrip	below_1h_gate	borderline-watch	Has co-op + RPT + a destination finish, but a single run is ~40-60 min (fails the >1h co-op gate)
 moonglow-bay	local_only_no_remote	unknown	co-op is local Shared/Split Screen only, no Remote Play Together or online; CLAUDE.md §3 excludes pure local-only	
 murky-divers	Murky Divers	endless	creative_discovery	Lethal Company-style endless roguelike loot loop, no defined ending, app 2963880
+my-time-at-evershine	My Time at Evershine	unreleased	creative_discovery	coming_soon=True, no release date set (Pathea Games next title)
 mycopunk	Mycopunk	endless	phase4_steam_more_like_this;phase4_websearch_niche_queries;websearch_niche	mission-based looter shooter with events/limited-time content, no defined ending [seen 3x; reasons: endless,low_fit]
 never-be-alone	Never Be Alone	unknown	phase4_steam_more_like_this	
 no-more-room-in-hell-2	No More Room in Hell 2	endless	steam_more_like_this	Round-based co-op survival, no campaign/finish. Multiplayer-only, no SP category. Steam app 292000.
@@ -233,6 +237,7 @@ pixel-gun-2	Pixel Gun 2	unknown	phase4_steam_more_like_this
 pixel-paint-together	Pixel Paint Together	low_fit	phase4_steam_more_like_this	collaborative painting sandbox tool
 pixel-worlds	Pixel Worlds MMO Sandbox	blocklisted_endless	phase4_steam_more_like_this	MMO sandbox, blocklist [seen 2x; reasons: blocklisted_endless]
 pixel-worlds-mmo-sandbox	Pixel Worlds: MMO Sandbox	blocklisted_endless	phase4_steam_more_like_this	MMO sandbox; auto-block by category
+pizza-possum	Pizza Possum	coop_too_short	creative_discovery	Single playthrough <1h (basic ending). Tasty Ending (3-crown clears) extends to 3-5h, but the main co-op finish is sub-hour; CLAUDE.md rule says skip if co-op finish content ≤1h
 planet-crafter	The Planet Crafter	endless	removed-entries	hardcoded_blocklist+manual_audit
 plants-vs-zombies-garden-warfare-2	Plants vs. Zombies Garden Warfare 2	endless	steam_more_like_this	PvP+PvE shooter; Garden Ops co-op is wave defense horde, no campaign end
 plush-time	Plush Time	low_fit	phase4_steam_more_like_this	obscure, unverified
@@ -284,6 +289,7 @@ splinter-cell-conviction	Tom Clancy's Splinter Cell: Conviction	online_broken	we
 squirreled-away	Squirreled Away	endless	phase4_websearch_niche_queries;websearch_niche_queries	app 2977620 cozy squirrel sandbox/life sim, no ending mentioned [seen 2x; reasons: endless,low_fit]
 stage-fright	Stage Fright	unknown	phase4_steam_more_like_this	
 starrupture	StarRupture	ea_unfinished	reeval_skipped	Released Jan 2026 but still Early Access; base-building + wave defense, no announced finale (verified 2026-06-06)
+starship-troopers-extermination	Starship Troopers: Extermination	endless	steam_topsellers_coop	Extraction shooter — wave-based objectives, no story finale per Steam page; ongoing war effort like Helldivers 2.
 stick-fight-the-game	Stick Fight: The Game	low_fit	phase4_steam_more_like_this	PvP party brawler; no finite co-op campaign
 stolen-realm-survivors	stolen-realm-survivors	endless	phase4_steam_more_like_this	survivors-like auto-battler, sessional, no finite ending [seen 2x; reasons: endless,low_fit]
 storebound	Storebound	early_access	youtube_curator_playlists	Early Access; episodic horror with chapters 1-4 released, more planned. No announced finale. App 3417410. [seen 3x]

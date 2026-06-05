@@ -2,6 +2,7 @@ id	title	reason	notes
 100-animals-on-an-island	100-animals-on-an-island	no_coop	app 3209400 single-player only
 a-dance-of-fire-and-ice	A Dance of Fire and Ice	no_coop	Single-player only per Steam categories
 aliens-versus-predator-classic	aliens-versus-predator-classic	no_coop	
+anomaly-agent	Anomaly Agent	no_coop	Steam categories list only Single-player; no co-op category present
 anomaly-warzone-earth	anomaly-warzone-earth	no_coop	
 armored-battle-crew	Armored Battle Crew	no_coop	Single-player only despite article claims; no Co-op/Multi-player categories
 astebreed	astebreed	no_coop	
@@ -61,18 +62,25 @@ doom-64	doom-64	no_coop	[seen 2x; reasons: no_coop]
 doom-eternal	DOOM Eternal	no_coop	App 782330 (2020). Steam categories show only Single-player + PvP/Online PvP (Battlemode). No co-op category. Campaign is solo. [seen 3x]
 doom-the-dark-ages	DOOM: The Dark Ages	no_coop	single-player [seen 2x; reasons: no_coop]
 drawquarium	drawquarium	no_coop	app 4045480 single-player only, coming soon
+drop-duchy	Drop Duchy	no_coop	Steam appdetails: Single-player only, no co-op category
 dunecrawl	DuneCrawl	no_coop	Steam categories list PvP/Online PvP/LAN PvP only — no co-op category [seen 2x; reasons: low_fit,no_coop]
 dungeon-siege	dungeon-siege	no_coop	Steam build is single-player only; original LAN/GameSpy co-op not present [seen 2x; reasons: no_coop]
 dungeon-siege-2	Dungeon Siege II	no_coop	Steam version lists only Single-player; GameSpy/LAN multiplayer stripped, no Co-op or Remote Play Together category [seen 2x; reasons: no_coop]
 dungeon-siege-3	region_restricted	invalid_app_id	[seen 3x; reasons: invalid_app_id,unknown]
 dungeon-warfare-2	Dungeon Warfare 2	no_coop	Single-player only per Steam categories
 dusk	dusk	no_coop	single-player; MP is PvP [seen 2x; reasons: no_coop]
+earth-2150-trilogy	Earth 2150 Trilogy	no_coop	Steam appdetails returns no categories (very old game, GameSpy-era multiplayer dead); no current online co-op.
+earth-2160	Earth 2160	no_coop	Steam appdetails returns no categories (old game, GameSpy-era multiplayer); no current online co-op.
 echoes-of-mystralia	echoes-of-mystralia	no_coop	single-player, no co-op category (also unreleased)
 efootball	eFootball	pvp_primary	Free-to-play PvP football sim, no co-op campaign with ending [seen 2x; reasons: low_fit,pvp_primary]
 eiyuden-chronicle	Eiyuden Chronicle: Hundred Heroes	no_coop	Steam categories show single-player only — no Co-op tag
+eragon	Eragon	not_on_steam	Steam search returns only 'Eragon's Tale' (unrelated indie). Original 2006 Eragon movie tie-in was not released on Steam.
 everything-is-crab	Everything is Crab	no_coop	no co-op category listed on Steam
+evil-islands	Evil Islands	not_on_steam	Empty Steam search; 2000 Russian RPG, no Steam release.
 f1-23	F1 23	delisted	No UAH or USD price — appears delisted (F1 yearly cycle replaces previous title)
+fable-iii	Fable III	not_on_steam	Steam search returns no exact match; only Rogue Fable III + Endless Fables 3 (unrelated games). Original Fable III was Microsoft Store/GFWL only.
 fae-farm	Fae Farm	no_coop	online multiplayer shut down Sept 2025; now single-player only [seen 4x; reasons: ambiguous,no_coop,online_broken]
+fairytale-fights	Fairytale Fights	not_on_steam	Empty Steam search; Eidos 2009 console game, never released on Steam.
 fallout-3	Fallout 3	no_coop	Single-player only per Steam categories
 far-cry-4	far-cry-4	no_coop	
 folgore	Folgore	no_coop	Single-player only per Steam categories
@@ -132,6 +140,7 @@ ninja-gaiden-ragebound	NINJA GAIDEN: Ragebound	no_coop	Single-player only; no Co
 oceaneers	Oceaneers	no_coop	Early Access; no co-op category listed on Steam
 one-piece-pirate-warriors-4	ONE PIECE: PIRATE WARRIORS 4	no_coop	only PvP/Online PvP category; no co-op or Remote Play Together
 orcs-must-die	Orcs Must Die!	no_coop	App 102600 (2011). Steam categories: Single-player only. The original game had no co-op; co-op added in OMD2.
+out-of-sight	Out of Sight	no_coop	Single-player only horror/puzzle (The Gang, blind girl premise); no co-op category
 outland	Outland	not_on_steam	Delisted: 'Outland is no longer available on the Steam store.' (app 305050) [seen 4x]
 ova-magica	Ova Magica	no_coop	single-player only in Steam categories
 painkiller-black-edition	painkiller-black-edition	no_coop	
@@ -202,6 +211,7 @@ tower-of-babel-survivors-of-chaos	tower-of-babel-survivors-of-chaos	no_coop	sing
 tower-of-guns	tower-of-guns	no_coop	
 trepang2	trepang2	no_coop	
 trials-of-mana	Trials of Mana	no_coop	app 924980 Single-player only per Steam categories (2020 remake) [seen 7x]
+tribe-nine	TRIBE NINE	no_coop	Steam appdetails shows Single-player only; no co-op category (also In-App Purchases, gacha-style)
 trinity-fusion	Trinity Fusion	no_coop	steam categories show single-player only [seen 3x; reasons: no_coop]
 turbo-sliders-unlimited	Turbo Sliders Unlimited	pvp_primary	All multiplayer modes are PvP (Online/LAN/Shared Split PvP + RPT); no Co-op
 ultimate-chicken-horse	Ultimate Chicken Horse	no_coop	PvP party platformer, not co-op

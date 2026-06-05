@@ -1,15 +1,15 @@
 {
-  "current_source_idx": 18,
+  "current_source_idx": 13,
   "current_offset": 0,
-  "added_count": 491,
-  "skipped_count": 658,
+  "added_count": 500,
+  "skipped_count": 675,
   "last_validation_at": 200,
-  "completed_sources": ["reeval_skipped", "steam_more_like_this", "websearch_niche_queries", "backloggd_top_completed_coop", "steam_community_recommendations", "youtube_curator_playlists"],
-  "last_added": "linebound",
-  "last_run_timestamp": "2026-06-06T01:00:00Z",
+  "completed_sources": ["reeval_skipped", "steam_more_like_this", "websearch_niche_queries", "backloggd_top_completed_coop", "steam_community_recommendations", "youtube_curator_playlists", "reddit_just_finished", "wikipedia_coop_lists"],
+  "last_added": "fallen-city-brawl",
+  "last_run_timestamp": "2026-06-06T02:00:00Z",
   "current_phase": 4,
   "max_phase": 4,
-  "phase_start_count": 474,
+  "phase_start_count": 499,
   "last_push_at": 109,
   "bursts_on_current_source": 0,
   "session_added_ids": [
@@ -259,8 +259,17 @@
     "unboxing-the-cryptic-killer",
     "emissary-zero",
     "100-cats-lost-in-china",
-    "linebound"
+    "linebound",
+    "mechwarrior-5-clans",
+    "research-and-destroy",
+    "abyssus",
+    "ink-inside",
+    "lets-cook-together",
+    "spirit-mancer",
+    "unrailed",
+    "call-of-duty-modern-warfare-2-2009",
+    "fallen-city-brawl"
   ],
   "reeval_only": false,
-  "source_pass_log": [{"pass": 1, "yield": 13}]
+  "source_pass_log": [{"pass": 1, "yield": 13}, {"pass": 2, "yield": 25}]
 }
