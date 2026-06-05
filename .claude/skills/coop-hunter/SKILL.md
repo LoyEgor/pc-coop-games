@@ -35,27 +35,27 @@ Log a reject ONLY via `scripts/log_skip.py "<title>" <reason> <source> "<notes>"
 ## Hard rules (never violate)
 
 1. **Sequential, not parallel.** One candidate at a time. Don't batch Steam API calls across more than 5 IDs per turn. Sleep 1.5s between Steam appdetails fetches (we hit rate-limits earlier).
-2. **Persist state after EVERY game added.** Update `state/progress.json` and append to `state/added.tsv` before moving to the next candidate. If you crash mid-game, the next run resumes from `progress.json`.
-3. **No questions.** Decide based on the rules in `classification.md`. If a candidate is genuinely ambiguous, log it to `state/skipped.tsv` with reason `ambiguous` and move on.
+2. **Persist state after EVERY game added.** Update `state/progress.json` (and append the new id to `session_added_ids`) before moving to the next candidate. If you crash mid-game, the next run resumes from `progress.json`. The audit trail of what was added is `git log data.js` (CLAUDE.md §6b) — there is no separate added-list file.
+3. **No questions.** Decide based on the rules in `classification.md`. If a candidate is genuinely ambiguous, log it via `log_skip.py` (reason `ambiguous`) and move on.
 4. **Bounded burst.** Process ~20 candidates per invocation, then persist state and EXIT. The launcher (`./run-coop-hunter.sh`) starts your next burst as a fresh headless process. Do not try to finish the whole catalog in one invocation.
 5. **Validate every 50 added games** by spawning a fresh Agent (see "Validation pass" below).
 6. **Idempotent.** Before adding a candidate, check `data.js` for the Steam app id. If already present → skip.
 7. **Drill mode (never give up on the first failure).** If a WebSearch returns no clean match, run the next alternative query — §8 lists six. If a source page returns 403/404, write a substitute URL or use a different domain. If a YouTube video can't be found on the first try, exhaust Steam page scraping → direct YouTube search page → Reddit links → other phrasings before refusing. The user explicitly authorized out-of-the-box behavior: "пусть пытается до последнего и выходя out of the box, ища альтернативы". Treat "I couldn't find X" as a hypothesis to disprove, not an exit condition.
 8. **No broken media in `data.js`.** The table now opens a YouTube iframe in a modal — a `youtubeSearch(...)` placeholder cannot be embedded. `append_entry.py` exits 4 if you try to add an entry without a real 11-character `video_id`. Same for images: every row must have a working `imageUrl` (HTTP 200). If you can't satisfy both, skip the candidate; do not insert a half-broken row.
-9. **Log every skip through `scripts/log_skip.py` — never raw-append to `skipped.tsv`.** Call `python3 scripts/log_skip.py "<title>" <reason> <source> "<notes>"`. The helper enforces three invariants that a raw append breaks: (a) ONE row per game (upsert — it raises to the more decisive reason and bumps a seen-counter instead of writing a duplicate); (b) the canonical 6-column schema `timestamp,id,title,source,reason,notes`; (c) a catalog gate — if the game is already in `data.js` it exits **3** and writes nothing (a game in the catalog is not a skip candidate). If you get exit 3 on a HARD-NEGATIVE reason (endless / unclear_ending / no_coop / online_broken / low_quality), do NOT silently move on — the game is BOTH in the catalog and looks unfit, which is a contradiction; note it so the fact-checker reviews it (it owns the `reconcile-report.tsv` queue). This rule exists because `skipped.tsv` had drifted into two schemas, 177 duplicate games, and 42 catalog/skip collisions; `reconcile_state.py` cleaned it and `log_skip.py` keeps it clean.
+9. **Log every reject through `scripts/log_skip.py` — never hand-write the shared lists.** Call `python3 scripts/log_skip.py "<title>" <reason> <source> "<notes>"`. It is the ONE writer for the not-in-catalog lists: it routes the reject to `shared/reeval.tsv` (judgment / threshold reasons — re-checkable) or `shared/hard-block.tsv` (mechanical: no_coop / pvp_primary / not_on_steam / invalid_app_id / MMO / delisted), and enforces three invariants a raw append would break: (a) ONE row per game (upsert — it raises to the more decisive reason and bumps a seen-counter instead of writing a duplicate); (b) the canonical schema of whichever list it routes to; (c) a catalog gate — if the game is already in `data.js` it exits **3** and writes nothing (a game in the catalog is not a reject candidate). If you get exit 3 on a HARD-NEGATIVE reason (endless / unclear_ending / no_coop / online_broken / low_quality), do NOT silently move on — the game is BOTH in the catalog and looks unfit, which is a contradiction; note it so the fact-checker reviews it (it owns the `shared/owner-review.tsv` queue, action=contradiction). The single-writer rule exists because the old skip log had drifted into two schemas and hundreds of duplicate / catalog-collision rows; the state model was folded down to the four canonical lists (CLAUDE.md §6b) and `log_skip.py` keeps them clean.
 
 ## Each invocation — single cycle
 
 When called:
 
 1. Read `.claude/skills/coop-hunter/state/progress.json` (create with defaults if missing — see "Initial state").
-2. **There is no `done` exit in normal mode** — always search this burst. (The only `done` left is the one-time migration helper: **if `progress.reeval_only === true`**, process ONLY `reeval_skipped` (see "`reeval_only` mode"), skip the source walk + new-game search, and set `done=true` when skipped.tsv is exhausted. That flag is set only by `run-migration.sh`, never in a normal hunt.)
+2. **There is no `done` exit in normal mode** — always search this burst. (The only `done` left is the one-time migration helper: **if `progress.reeval_only === true`**, process ONLY `reeval_skipped` (see "`reeval_only` mode"), skip the source walk + new-game search, and set `done=true` when every eligible row of `shared/reeval.tsv` is exhausted. That flag is set only by `run-migration.sh`, never in a normal hunt.)
 3. Identify the current source (`progress.current_source_idx`) from `sources.json`. The current source MUST have `phase == progress.current_phase`. If not, advance `current_source_idx` to the next source with matching phase (or trigger phase transition — see below).
 4. From that source, pull the next batch of candidates starting at `progress.current_offset`. Batch size = 5.
 5. For each candidate in batch (sequentially):
    - Run the "Per-candidate procedure" below.
-   - On success → append entry to `data.js`, update `progress.json`, append to `state/added.tsv`.
-   - On any skip → `python3 scripts/log_skip.py "<title>" <reason> <source> "<notes>"` (NOT a raw append — see Hard rule 9), update progress, continue. If it exits 3 the game is already in the catalog: don't log it as skipped; if the reason was hard-negative, flag it for the fact-checker instead.
+   - On success → append entry to `data.js`, update `progress.json` (push the new id onto `session_added_ids`).
+   - On any skip → `python3 scripts/log_skip.py "<title>" <reason> <source> "<notes>"` (the single writer — see Hard rule 9), update progress, continue. If it exits 3 the game is already in the catalog: don't log it as a reject; if the reason was hard-negative, flag it for the fact-checker instead (it owns the contradiction queue in `shared/owner-review.tsv`).
    - **Don't push mid-burst.** The launcher pushes periodically between bursts (see "Push policy"); you just keep adding.
 6. After the batch:
    - If `progress.added_count` crossed a multiple of 50 since last validation → run "Validation pass".
@@ -156,7 +156,7 @@ Before ANY other check, run BOTH of these gates. If either matches → **skip im
 
 Examples of names that must trigger this skip: Deep Rock Galactic, Lethal Company, R.E.P.O., Helldivers 2, Bloons TD 6, Crab Champions, Don't Starve Together, Project Zomboid, Brotato, Vampire Survivors, Palworld, V Rising, Enshrouded, Core Keeper, Sea of Thieves, Boomerang Fu, Planet Crafter, Schedule I, Path of Exile, Diablo Immortal, any MMO/Battle Royale, and many more (see classification.md for the full list).
 
-**Gate B — previously-removed gate.** Read `state/removed-entries.tsv` (skip header row). Slugify the candidate's title (lowercase, non-alphanumerics → hyphen, collapse runs) and compare to the `id` column. If it matches → skip with reason `previously_removed_endless`. This gate exists because the skill once removed and then re-added the same 16 endless games an hour apart; do not let that happen again. `scripts/append_entry.py` enforces this with exit code 3, but you must filter earlier to avoid wasted API calls.
+**Gate B — previously-removed gate.** Read `shared/hard-block.tsv` (skip header row). Slugify the candidate's title (lowercase, non-alphanumerics → hyphen, collapse runs) and compare to the `id` column. If it matches → skip with reason `previously_removed_endless`. This gate exists because the skill once removed and then re-added the same 16 endless games an hour apart; do not let that happen again. `scripts/append_entry.py` enforces this with exit code 3 (it refuses hard-blocked ids), but you must filter earlier to avoid wasted API calls.
 
 The owner has explicitly authorized this hard reject: «мне принципиально важно, чтобы в материалах не появлялись endless игры». No exceptions.
 
@@ -228,7 +228,7 @@ Procedure for each candidate:
 
 1. **Read `.claude/skills/shared/taxonomy.json` once per turn.**
 2. **Tier** — apply `tier` rules based on `publishers[]`. Exactly one tier, prepended to the `genres` array.
-3. **Perspective** — `taxonomy.json` axes rule: `exactly_one_per_game`. Pick ONE of `First-person`, `Third-person`, `Isometric`, `Side-view`, `Top-down` using the per-tag `decision_tree`. If none clearly applies → log `taxonomy_ambiguous` to skipped.tsv with the candidate name; do NOT guess.
+3. **Perspective** — `taxonomy.json` axes rule: `exactly_one_per_game`. Pick ONE of `First-person`, `Third-person`, `Isometric`, `Side-view`, `Top-down` using the per-tag `decision_tree`. If none clearly applies → log via `log_skip.py` (reason `taxonomy_ambiguous`) with the candidate name; do NOT guess.
 4. **Mechanic(s)** — at least one required. Walk through the `mechanic` section, apply each tag's `decision_tree`. Multiple allowed but be conservative. **Especially for `Adventure`**: the tag has a strict `narrowing_rule` — apply ONLY to narrative-led + exploration + dialogue games (Chicory-style). If the game has a story but the verb is shooting / fighting / puzzle — do NOT tag Adventure.
 5. **Setting** — optional, multiple. Walk through `setting` section, apply where `decision_tree` matches.
 6. **Structure** — optional, multiple. Same procedure.
@@ -236,7 +236,7 @@ Procedure for each candidate:
 
 Final genres array example: `["AAA", "First-person", "Shooter", "Sci-fi"]` (tier first, then perspective, then mechanics, then settings, then structures).
 
-If you find yourself wanting to introduce a tag not present in `taxonomy.json` → STOP. Log to skipped.tsv with reason `taxonomy_gap` and a one-line description of what was missing. Do not edit `taxonomy.json` yourself; that's an owner decision.
+If you find yourself wanting to introduce a tag not present in `taxonomy.json` → STOP. Log via `log_skip.py` (reason `taxonomy_gap`) with a one-line description of what was missing. Do not edit `taxonomy.json` yourself; that's an owner decision.
 
 The legacy `classification.md` file is kept for prose explanations (audit-friendly), but in case of conflict, **`taxonomy.json` wins**.
 
@@ -266,7 +266,7 @@ Drill the search in this order. Stop at the first cascade level that yields a cl
    - WebFetch the game's Steam page (`https://store.steampowered.com/app/<id>/`) — Steam often embeds an official trailer/gameplay video. Look for `youtube.com/embed/<id>` or `data-youtube-id` markers in the markup.
    - WebFetch `https://www.youtube.com/results?search_query=<urlencoded title>+co-op+gameplay` directly and scrape the first watch URL.
    - WebSearch `<title> co-op site:reddit.com` — Reddit threads often link to gameplay clips.
-6. **Only after all of the above produce nothing**: refuse to add this entry. Log to `state/skipped.tsv` with reason `no_video_found`. Do NOT fall back to `youtubeSearch(...)` — that placeholder is forbidden.
+6. **Only after all of the above produce nothing**: refuse to add this entry. Log via `log_skip.py` (reason `no_video_found`). Do NOT fall back to `youtubeSearch(...)` — that placeholder is forbidden.
 
 The `fact-checker` skill uses the same cascade to fix any broken/placeholder YouTube URLs on existing entries. For coop-hunter, this matters at ADD time: be patient finding a real video — a single skip costs less than a broken modal.
 
@@ -274,7 +274,7 @@ The `fact-checker` skill uses the same cascade to fix any broken/placeholder You
 
 Since coop-hunter no longer re-walks the catalog to clean up mistakes (that's the fact-checker now), the ADD-TIME gates are the main defense. Before calling `append_entry.py`, run this final fit-check and SKIP on ANY doubt. A skipped good game costs nothing; a wrong added game costs manual cleanup later — the owner explicitly prefers a smaller, trustworthy catalog over a larger noisy one.
 
-Confirm ALL of these hold (you already gathered the evidence in §0–§8); if any is uncertain → skip to `state/skipped.tsv` with reason `low_fit` + a one-line why:
+Confirm ALL of these hold (you already gathered the evidence in §0–§8); if any is uncertain → skip via `log_skip.py` (reason `low_fit`) + a one-line why:
 
 - **On Steam, PC** (not Epic/console-only).
 - **Real multiplayer co-op for 2+** — online co-op OR Remote Play Together. NOT single-player-only, NOT PvP-only.
@@ -334,7 +334,7 @@ Phase-4 sources are method-driven, not page-count-driven, so "exhausted" needs a
 
 | Source (idx) | Exhausted for this pass when… |
 |---|---|
-| `reeval_skipped` (12) | every eligible row of `skipped.tsv` (reason ∈ ambiguous/unclear_ending/not_enough_reviews) has been re-evaluated. Cursor = row index. |
+| `reeval_skipped` (12) | every eligible row of `shared/reeval.tsv` (reason ∈ ambiguous/unclear_ending/not_enough_reviews) has been re-evaluated. Cursor = row index. |
 | `steam_more_like_this` (13) | all `top_n` (25) seed entries have had their "More like this" scanned. Cursor = seed index 0..24; done at 25. |
 | `websearch_niche_queries` (14) | all 8 `queries` have been run once. Cursor = query index; done at 8. |
 | `backloggd_top_completed_coop` (15) | `page > max_pages` (8) OR a fetched page yields 0 new candidates. |
@@ -360,21 +360,21 @@ These methods replace the standard "Per-candidate procedure" for sources in phas
 > milestone) and Drive Beyond Horizons (which actually has a Story Mode). The three
 > fixes below (eligible-set, fresh-factcheck, mandatory rejection log) close that.
 
-1. **Eligible reasons** (a FALSE reject is possible). Read `state/skipped.tsv` and take rows whose reason is: `ambiguous`, `unclear_ending`, `not_enough_reviews`, `endless`, `endless_misclassified`, `low_fit`, `coop_fights_only`, **and `blocklisted_endless` ONLY when the title is NOT actually on the hardcoded blocklist in `classification.md`** (a too-strict pass mis-tagged games like Forza Horizon as `blocklisted_endless` though they are not on the real list — those must be re-opened; titles genuinely on the list stay out). Mechanical/objective reasons are NOT eligible — never re-litigate `duplicate`, `no_coop`, `not_on_steam`, `pvp_primary`, `invalid_app_id`, `online_broken`, `coop_too_short`.
+1. **Eligible reasons** (a FALSE reject is possible). Read `shared/reeval.tsv` (schema: `id, title, reason, source, notes`; skip the header row) and take rows whose reason is: `ambiguous`, `unclear_ending`, `not_enough_reviews`, `endless`, `endless_misclassified`, `low_fit`, `coop_fights_only`, **and `blocklisted_endless` ONLY when the title is NOT actually on the hardcoded blocklist in `classification.md`** (a too-strict pass mis-tagged games like Forza Horizon as `blocklisted_endless` though they are not on the real list — those must be re-opened; titles genuinely on the list stay out). Mechanical/objective reasons never reach `reeval.tsv` (they route to `hard-block.tsv` instead) — so you will not see, and must never re-litigate, `duplicate`, `no_coop`, `not_on_steam`, `pvp_primary`, `invalid_app_id`, `online_broken`, `coop_too_short`.
 
 2. **Verify with FRESH facts — do NOT trust the old `notes`.** The stored note is frequently wrong (it is what made reeval miss Forza H6 and Drive Beyond Horizons). For each candidate: Steam appdetails (released? not `coming_soon`? co-op categories — Online Co-op / Co-op+Remote Play Together? review count & %), AND a `WebSearch` for the finish (`"<title>" ending`, `"<title>" story mode campaign`, `"<title>" final boss / how to finish`). Then apply §5's co-op gate + finish-strength check on the EVIDENCE, not the note.
 
 3. If it now qualifies: **hard** finish → add normally; **soft** finish (fuzzy ending OR episodic+secondary co-op) → add with a leading `🟠 ` verdict + reason (e.g. a Forza-style Legend milestone). Counts toward phase_yield.
 
-4. If it still does NOT qualify → leave it skipped **AND append a line to `state/reeval-rejected.tsv`**: `<timestamp>\t<id>\t<reason_kept>\t<evidence>`. This is MANDATORY — without it reeval is a black box and its misses can't be audited. Every eligible row you process MUST end either added-to-data.js OR logged to `reeval-rejected.tsv`. **ALSO:** if the reason it failed is CHANGEABLE (Early Access with no shipped finale, Steam rating just under 50% / too few reviews, finish not yet confirmable, co-op finish ≤1h, or co-op only via mod/VPN), add a row to `state/borderline-watch.tsv` (see fact-checker SKILL.md "Borderline watch-list") with the recheck trigger — so it gets periodically re-checked, not buried.
+4. If it still does NOT qualify → it STAYS in `shared/reeval.tsv` (re-checkable). Re-log it via `python3 scripts/log_skip.py "<title>" <reason_kept> reeval_skipped "<fresh evidence>"` so the row is upserted with the kept reason + the evidence you just gathered (the helper bumps a seen-counter instead of duplicating). This is MANDATORY — without the refreshed note reeval is a black box and its misses can't be audited. Every eligible row you process MUST end either added-to-data.js OR re-logged to `reeval.tsv` with fresh evidence. Reasons that are CHANGEABLE (Early Access with no shipped finale, Steam rating just under 50% / too few reviews, finish not yet confirmable, co-op finish ≤1h, or co-op only via mod/VPN) already live in `reeval.tsv` and are re-judged on the next pass — record the recheck trigger in the notes so it isn't buried.
 
-5. Exhausted when every eligible row has been either added or logged to `reeval-rejected.tsv` (cross-check: eligible-count == added + rejected-logged).
+5. Exhausted when every eligible row has been either added to `data.js` or re-logged to `reeval.tsv` with fresh evidence (cross-check: eligible-count == added + re-logged).
 
 ### `reeval_only` mode (migration — re-evaluate skips, do NOT search for new games)
 
-When `progress.reeval_only == true` (set by `run-migration.sh` Stage 2): process ONLY the `reeval_skipped` source above. Do **NOT** run any phase 1–3 source, and do NOT run `steam_more_like_this` / `websearch_*` / any other phase-4 source. When every eligible `skipped.tsv` row has been re-evaluated, set `done=true` and stop — there is no "search for new" step in this mode.
+When `progress.reeval_only == true` (set by `run-migration.sh` Stage 2): process ONLY the `reeval_skipped` source above. Do **NOT** run any phase 1–3 source, and do NOT run `steam_more_like_this` / `websearch_*` / any other phase-4 source. When every eligible `shared/reeval.tsv` row has been re-evaluated, set `done=true` and stop — there is no "search for new" step in this mode.
 
-Rationale: the catalog's discovery sources are exhausted (many full runs found nothing new), and the finish-strength change did not widen WHAT we want — it only re-classifies endings. So the valuable work now is re-judging what we already have. This mode is the skipped-list half of the one-time migration; the catalog half is the fact-checker `finish_migration` phase. Both run from `run-migration.sh`, which is deleted afterward (back to normal coop-hunter / fact-checker).
+Rationale: the catalog's discovery sources are exhausted (many full runs found nothing new), and the finish-strength change did not widen WHAT we want — it only re-classifies endings. So the valuable work now is re-judging what we already have. This mode is the reeval-list half of the one-time migration; the catalog half is the fact-checker `finish_migration` phase. Both run from `run-migration.sh`, which is deleted afterward (back to normal coop-hunter / fact-checker).
 
 ### `steam_more_like_this`
 1. Read `data.js`. Take top `top_n` non-hidden entries by `rating` (default 25).
@@ -477,4 +477,4 @@ is `git log data.js` + the launcher transcript (state model: CLAUDE.md §6b).
 - ❌ Do not modify `app.js`, `index.html`, or `styles.css` — only `data.js`.
 - ❌ Do not add entries for games not on Steam (free games on epic etc. are out of scope).
 - ❌ Do not skip persisting state — every game added must hit `progress.json`.
-- ❌ Do not ask the user questions. Use the rules. If truly stuck, log to skipped and move on.
+- ❌ Do not ask the user questions. Use the rules. If truly stuck, log the reject via `log_skip.py` and move on.

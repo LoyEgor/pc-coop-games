@@ -166,6 +166,18 @@ BURST=0
 LAST_PUSH_EPOCH=$(date +%s)
 LAST_PUSH_ADDED=$INITIAL_ADDED
 
+# Fast-fail backoff (#8): the only long pause is the rate-limit branch. A burst
+# that dies FAST for a non-rate-limit reason (bad API key, network down, script
+# crash) returns in ~2s with no "limit" string, so without this the loop would
+# relaunch every ~5s forever, hammering the API unattended. We measure per-burst
+# PROGRESS = growth of (added+skipped); a healthy ~20-candidate burst grows it by
+# >0, a dead/empty burst grows it by 0. On zero progress we double the pre-burst
+# sleep (3->6->12->...->300s cap); any productive burst resets it to 3. This is
+# NOT a stop — the loop stays eternal and recovers instantly once finds resume.
+BACKOFF=3
+PREV_ADDED=$INITIAL_ADDED
+PREV_SKIPPED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE')).get('skipped_count',0))")
+
 # Start every run with a FRESH log (was: tee -a accumulated across all runs and
 # grew to ~70 MB). The transcript is just for live `tail -f` + rate-limit
 # detection; it is not state, so resetting it costs nothing.
@@ -269,8 +281,12 @@ print(p.get('added_count',0), p.get('skipped_count',0), p.get('current_phase','?
     if is_rate_limited; then
       echo "[$(date)] Rate/session limit detected. Sleeping 30m (Ctrl+C to stop)."
       sleep "$RATE_LIMIT_SLEEP"
+      continue
     fi
-    sleep 3
+    # Unreadable counters == no progress this burst -> back off (do NOT reset).
+    BACKOFF=$(( BACKOFF * 2 )); [ "$BACKOFF" -gt 300 ] && BACKOFF=300
+    echo "[$(date)] no progress this burst; backing off to ${BACKOFF}s"
+    sleep "$BACKOFF"
     continue
   fi
   echo ""
@@ -291,7 +307,20 @@ print(p.get('added_count',0), p.get('skipped_count',0), p.get('current_phase','?
     do_push
   fi
 
-  sleep 3
+  # Fast-fail backoff: PROGRESS = growth of (added+skipped) vs the previous burst.
+  # SKIPPED is already validated numeric by the guard above? No — only ADDED was;
+  # default a non-numeric SKIPPED to 0 so the arithmetic stays set -u / numeric-safe.
+  [[ "$SKIPPED" =~ ^[0-9]+$ ]] || SKIPPED=0
+  PROGRESS=$(( (ADDED - PREV_ADDED) + (SKIPPED - PREV_SKIPPED) ))
+  PREV_ADDED=$ADDED; PREV_SKIPPED=$SKIPPED
+  if [ "$PROGRESS" -gt 0 ]; then
+    BACKOFF=3
+    sleep 3
+  else
+    BACKOFF=$(( BACKOFF * 2 )); [ "$BACKOFF" -gt 300 ] && BACKOFF=300
+    echo "[$(date)] no progress this burst; backing off to ${BACKOFF}s"
+    sleep "$BACKOFF"
+  fi
 done
 
 # -------- final report --------
