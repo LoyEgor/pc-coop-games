@@ -30,6 +30,7 @@ atomic-heart-2	Atomic Heart 2	unknown	phase4_steam_more_like_this
 backrooms-escape-together	Backrooms: Escape Together	unclear_ending	reeval_skipped	Procedural levels with Hub system, no defined win-condition (just 'progress deeper'); wiki confirms levels but no real finish event (verified 2026-06-06)
 battlemon	Battlemon	low_fit	phase4_steam_more_like_this	PvP party game; no finite co-op campaign
 bellwright	Bellwright	early_access	steam_community	Early Access, ~3 years until 1.0 — no defined ending
+big-walk	Big Walk	finish_unverified	creative-discovery	Unreleased (Coming Soon 2026, Steam app 1478500) — re-check post-launch
 birdseedvr-demo	demo	unknown	steam_more_like_this	
 birdwatching-notebook	Birdwatching Notebook	endless_misclassified	steam_more_like_this	cozy idle game, no ending [seen 3x]
 birdwatching-notebook-demo	demo	unknown	steam_more_like_this	
@@ -41,6 +42,7 @@ bopl-battle	bopl-battle	endless	phase4_steam_more_like_this	party PvP brawler [s
 brawlhalla	brawlhalla	blocklisted_endless	phase4_steam_more_like_this	hardcoded blocklist (PvP platform fighter)
 brief-karate-foolish	Brief Karate Foolish	low_fit	phase4_steam_more_like_this	free PvP fighter
 brotato	Brotato	endless	removed-entries	hardcoded_blocklist+manual_audit
+brothers-in-blood-ww2	Brothers in Blood WW2	low_quality	creative-discovery	14% positive only 7 reviews (Steam app 1270820) — fails both quality and review-count gates
 burglin-gnomes	Burglin Gnomes	unknown	phase4_steam_more_like_this	
 bus-bound	Bus Bound	unclear_ending	reeval_skipped	Bus simulator sandbox 'transform city one stop at a time'; no defined campaign finale (verified 2026-06-06)
 cabbie	Cabbie!	not_enough_reviews	reeval_skipped	still unreleased TBA [seen 3x]
@@ -97,6 +99,7 @@ dreadmoor	DREADMOOR	unknown	phase4_steam_more_like_this
 drox-operative	Drox Operative	endless_misclassified	phase4_wikipedia_coop_lists	Same Soldak design as DO2 — procedural sectors with per-sector wins, no global "beat the game" state
 drox-operative-2	Drox Operative 2	endless_misclassified	phase4_wikipedia_coop_lists	Steam page: "finite per sector but infinite overall, no final boss or mandatory conclusion" — no global ending
 drunkslop-pub-crawl-coop	Drunkslop Pub crawl COOP	unknown	phase4_steam_more_like_this	
+dune-awakening	Dune Awakening	MMO	creative-discovery	Up to 40 players per server, persistent MMO survival sandbox — fails endless ban
 dungeon-siege-iii	Dungeon Siege III	unknown	wikipedia_coop_lists	
 dunk-dunk	Dunk Dunk	not_enough_reviews	reeval_skipped	still 24 reviews (<50 threshold) [seen 2x]
 elden-ring	ELDEN RING	coop_workaround	borderline-watch	Vanilla co-op can't run a continuous shared playthrough to the ending (phantoms return per boss); only the Seamless Co-op mod allows a full co-op finish
@@ -171,6 +174,7 @@ jelly-brawl-classic	Jelly Brawl Classic	endless	phase4_steam_more_like_this	part
 jump-space	jump-space	endless	phase4_steam_more_like_this	Mission-based extraction-style co-op; no linear campaign, no narrative conclusion, no final boss [seen 3x; reasons: endless,endless_misclassified,low_fit]
 just-shapes-beats-more-like-this-batch	Just Shapes & Beats More-Like-This batch	unknown	phase4_steam_more_like_this	
 kane-and-lynch-dead-men	Kane and Lynch: Dead Men	online_broken	youtube_curator_playlists	2007 game, Steam discussions report removal/delisting issues; mixed 65% reviews. <2015 online-broken gate.
+keep-digging	Keep Digging	endless	creative-discovery	Procedural 5000m underground survival-craft loop, no defined finish event
 killing-floor-2	Killing Floor 2	blocklisted_endless	steam_more_like_this	app 232090 blocklist [seen 3x]
 killing-floor-3	Killing Floor 3	blocklisted_endless	websearch_drill	wave-based KF lineage, no campaign ending
 killsquad	Killsquad	endless	removed-entries	
@@ -199,6 +203,7 @@ mecha-break	Mecha BREAK	endless_misclassified	phase4_steam_more_like_this	Multip
 meowgic	Meowgic	not_enough_reviews	reeval_skipped	app 4252290 TBA, 0 reviews [seen 5x]
 meteor-60-seconds	Meteor 60 Seconds!	low_fit	phase4_steam_more_like_this	short single-session app, no co-op
 minecraft-dungeons-ii	Minecraft Dungeons II	not_enough_reviews	reeval_skipped	app 1912410 still coming soon (2026 TBA) [seen 5x]
+mirage-a-biplane-adventure	Mirage A Biplane Adventure	not_enough_reviews	creative-discovery	Released Apr 2024 (Steam app 2909720) but only 1 review — fails ≥50 gate; re-check later
 misery	MISERY	endless_misclassified	phase4_steam_more_like_this	Sessional rogue-lite raids like Lethal Company per dev description; "no explicit story ending", persistent bunker building, no win condition
 mojo-party	Mojo Party	endless	phase4_steam_more_like_this	party brawler / mini-games, no ending
 monster-hunter-wilds	Monster Hunter Wilds	rating_below_gate	borderline-watch	Has a finishable co-op story, but Steam sits at ~48% (below the >=50% gate)
@@ -221,7 +226,6 @@ outward-2	Outward 2	coming_soon	phase4_youtube_curator_playlists	Steam release d
 over-the-hill	over the hill	low_fit	phase4_steam_more_like_this	release date TBA 2026 coming_soon, no reviews/finite signal
 overcooked-2	Overcooked 2	duplicate	steam_more_like_this	Bundled in Overcooked! All You Can Eat already in catalog (1243830)
 overkill-the-walking-dead	Overkill's The Walking Dead	unknown	wikipedia_coop_lists	
-paddle-paddle-paddle	Paddle Paddle Paddle	unknown	phase4_websearch_niche_queries	
 palia	Palia	blocklisted_endless	steam_more_like_this	MMO category on Steam; live service [seen 4x]
 palworld	Palworld	endless	removed-entries	hardcoded_blocklist+manual_audit
 panicore	PANICORE	endless	reeval_skipped	Survival horror with permadeath escape sessions; repeatable maps, no overall campaign finale (verified 2026-06-06)
@@ -271,6 +275,7 @@ schedule-i	Schedule I	endless	removed-entries	hardcoded_blocklist+manual_audit
 scp-containment-breach-multiplayer	SCP Containment Breach Multiplayer	endless	steam_more_like_this	Round-based escape-the-facility matches; sessional PvP/co-op hybrid without a campaign finish
 sea-of-thieves	Sea of Thieves	endless	removed-entries	hardcoded_blocklist+manual_audit
 sephiria	Sephiria	ea_unfinished	reeval_skipped	Steam EA, 'currently includes Chapters 1-5' of 6; chapter 6 finale not yet shipped (verified appdetails 2026-06-06)
+shift-at-midnight	Shift At Midnight	endless	creative-discovery	Coming soon 2026 (Steam app 3722330), randomly generated shifts pattern (Lethal/Phasmo-like) — likely endless
 shovel-knight-shovel-of-hope-dx	Shovel Knight: Shovel of Hope DX	not_enough_reviews	reeval_skipped	app 2661310 still TBA [seen 3x]
 silktrails-cats-in-the-grove	silktrails-cats-in-the-grove	low_fit	steam_more_like_this	app 3623120 no Online Co-op category (Remote Play Together only), free-to-play complications
 sineus-arena-survivors	Sineus Arena Survivors	not_enough_reviews	reeval_skipped	unreleased survivors-like, 0 reviews [seen 3x]
@@ -310,6 +315,8 @@ the-adventures-of-elliot-the-millennium-tales	The Adventures of Elliot: The Mill
 the-anacrusis	the-anacrusis	low_quality	46.7% positive (below 50% threshold)	
 the-break-in	The Break-In	endless_misclassified	phase4_websearch_niche_queries	Heist progression with randomized layouts; 'progressively riskier heists' loop, no defined campaign ending
 the-crew-2	the-crew-2	blocklisted_endless	phase4_websearch_niche_queries	open-world racing festival (blocklist)
+the-enigma-cases	The Enigma Cases	finish_unverified	creative-discovery	Unreleased (Coming Soon, Steam app 3062170) — re-check post-launch
+the-escape-together	The Escape Together	finish_unverified	creative-discovery	Steam app 2242760 — still Early Access 3 years after launch (original summer 2023 target missed), no shipped 1.0; re-check if it ever leaves EA
 the-first-descendant	The First Descendant	endless_misclassified	phase4_steam_more_like_this	Free-to-play live-service looter shooter with In-App Purchases; no finite campaign ending
 the-jackbox-party-pack-11	The Jackbox Party Pack 11	unclear_ending	steam_more_like_this	PvP trivia party game, no ending
 the-mound-omen-of-cthulhu	The Mound: Omen of Cthulhu	unreleased	creative_discovery	release scheduled 2026-07-15 coming_soon
