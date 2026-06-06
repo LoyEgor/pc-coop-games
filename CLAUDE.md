@@ -63,6 +63,7 @@ A game qualifies if there is a moment where you finish — even without a cutsce
   genres: ["AAA", "Action", "Shooter"],   // first item is tier: "AAA" | "AA" | "Indie"; rest are from the existing taxonomy
   endingType: "story",                    // one of: story | levels | arcade-goal | roguelite | survival-goal
   rating: 87,                             // Steam % positive (0-100). Always Steam — see WHY-1 below
+  ratingCount: 1234,                      // Steam total_reviews. Site computes a Wilson score from rating+ratingCount — see WHY-4
   playersMax: 4,                          // max co-op count
   hours: 12,                              // "Main + a bit" — typical playthrough time. INTEGER only, no fractions — see WHY-3
   oneCopy: "none",                        // "none" (each needs a copy) | "remote-play" | "friend-pass"
@@ -86,6 +87,8 @@ Optional flags:
 **WHY-2: `playersMax` is a number, not a label.** Previously there was a `playersLabel` like `"до 4, кампания"` or `"2, локально"` rendered as a sub-line. The owner decided this duplicated information: the number is already visible (`4`), and the multiplayer mode (local vs online vs Friend Pass) is already encoded in the `oneCopy` field which has its own column. So `playersLabel` was deleted. Show just `playersMax` as a single integer.
 
 **WHY-3: `hours` is one integer, not a range and not a float.** Previously there was a `hoursLabel` like `"10-15"` rendered as a sub-line. The owner decided that for "should we play this tonight" a single representative number is more useful than a range. The number represents "Main Story + a bit" (a.k.a. HowLongToBeat's **Main + Extras**) — what a typical co-op duo will spend if they do the campaign plus a few side activities but don't go for 100% completion. This is also approximately what the previous `hours` field already stored, so removing `hoursLabel` was lossless. Use HowLongToBeat's "Main + Extras" if available; otherwise estimate. **Always store as an integer** — round HLTB values to the nearest whole hour. Fractional values like `8.5` are not allowed; the rendering layer and `append_entry.py` both round defensively, but skills must not emit fractions in the first place.
+
+**WHY-4: `ratingCount` exists so the site can rank by a Wilson score, not raw %.** A game with 100% of 10 reviews is not better than a AAA with 96% of 40 000 — raw %positive ignores sample size, so tiny indies floated to the top of the table. `ratingCount` is Steam `total_reviews`; `app.js` computes the **Wilson lower-bound of the positive fraction** (95% confidence) from `rating` + `ratingCount` and **sorts the Rating column by that**, while the cell still DISPLAYS the Wilson score big with a sub-caption (`<reviews in K/M> · <Steam %>`). Few reviews → the lower bound sits well below the raw %, so under-reviewed games sink; well-reviewed games keep ~their raw %. `rating` and `ratingCount` are BOTH owned by the cron (`refresh.py`): rating updates at ≥2pp drift (tightened from 5pp because a stale % skews Wilson), count at ≥12% relative drift (Wilson is flat at large n, so a coarse count keeps diffs small). The score is derived on the client — it is NOT stored. Do NOT reintroduce Metacritic/OpenCritic (see WHY-1); Wilson is computed purely from Steam data.
 
 ### Genre taxonomy — defined in `.claude/skills/shared/taxonomy.json`
 
@@ -143,7 +146,7 @@ See [`.claude/skills/README.md`](.claude/skills/README.md) for the full picture.
 - `coop-hunter` (skill) — grows the catalog, eternally. Launch: `./run-coop-hunter.sh`. Every added game starts WITHOUT a `reviewed` flag, so `fact-checker new` picks it up automatically (no queue file — see §6b).
 - `fact-checker` (skill) — verifies entries + removes endless games. Launch: `./run-fact-checker.sh [new|all]` (`new` = just the hunter's latest finds via the queue; `all` = whole catalog, default).
 - taxonomy migration — fact-checker in a special mode, one-time. Launch: `./run-migration.sh`.
-- `refresh-prices` (GitHub Actions cron) — owns `price`/`rating`, runs daily on GitHub, no LLM.
+- `refresh-prices` (GitHub Actions cron) — owns `price`/`rating`/`ratingCount`, runs daily on GitHub, no LLM.
 
 Quick brief covering all of them, with watch-progress commands: [`.claude/skills/README.md`](.claude/skills/README.md). Read that first if you're new to the repo.
 
@@ -235,7 +238,7 @@ No other state files exist. Audit history = `git log data.js` + the launcher tra
 
 `index.html`, `app.js`, `styles.css` are the rendering layer. The skill **does not touch them** — only `data.js`. If you (as a future LLM) are asked to change UI:
 
-- 13 columns, all English: Image, Game, Year, Genres, Ending, Rating, Players, Hours, Copies, Price, Verdict, YouTube, Played. (There is NO "reviews count" column — `rating` is the only Steam-derived score; see WHY-1.)
+- 13 columns, all English: Image, Game, Year, Genres, Ending, Rating, Players, Hours, Copies, Price, Verdict, YouTube, Played. There is no separate "reviews count" column: the **Rating** cell shows the **Wilson score** big with a sub-caption (`<reviews K/M> · <Steam %>`) and **sorts by Wilson** (see WHY-4). The Rating filter popover has TWO range controls — Steam % and minimum reviews.
 - Filter logic in `app.js` (`gameMatchesFilters`, `filterConfig`, and the faceted Genres model: OR within an axis, AND across axes — see `GENRE_AXES`).
 - Sort logic in `app.js` (`getSortValue`).
 - Row template in `app.js` (`renderRow`, `renderEndingType`).
@@ -261,6 +264,7 @@ When asked to make changes:
 - Don't refactor without permission.
 - Don't add comments to code unless the WHY is genuinely non-obvious.
 - Test in the Claude Preview server (use `preview_*` tools, never browser MCPs) before claiming UI changes work.
+- **Leave no temp files behind.** If you create a throwaway script, scratch file, dumped log, or a one-off migration/backfill helper to get a task done — run it, then **delete it** before you finish. Do not commit it, do not leave it in the working tree. The ONLY files that may persist are ones wired into a workflow/skill or that the owner explicitly asked to keep. This covers `*.tmp`, ad-hoc `*.py`/`*.sh` scripts, debug dumps, etc. The owner should never have to discover a stray file and guess what it was for — there is no standing tolerance for "temporary" artifacts in the repo.
 
 ## 10. What this file is NOT
 

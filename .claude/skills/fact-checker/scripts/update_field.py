@@ -6,9 +6,13 @@ Usage:
     python update_field.py <id> <field> <value>
 
 Supported fields:
-  - ints:   rating, price, year, playersMax, hours
+  - ints:   rating, ratingCount, price, year, playersMax, hours
   - string: imageUrl (written as a quoted JS literal; must be an https:// URL)
 Refuses arrays (genres) and unknown fields — those need editorial review.
+
+If the field is absent on the target entry it is INSERTED (right after the
+`id:` line, which always carries a trailing comma) — this is how a NEW field
+such as `ratingCount` gets backfilled onto entries that predate it.
 
 Logs every applied fix to state/applied-fixes.tsv.
 
@@ -31,7 +35,7 @@ def atomic_write_text(path, text):
     tmp.write_text(text, encoding="utf-8")
     os.replace(tmp, path)
 
-ALLOWED_INT_FIELDS = {"rating", "price", "year", "playersMax", "hours"}
+ALLOWED_INT_FIELDS = {"rating", "ratingCount", "price", "year", "playersMax", "hours"}
 ALLOWED_STR_FIELDS = {"imageUrl"}
 ALLOWED_FIELDS = ALLOWED_INT_FIELDS | ALLOWED_STR_FIELDS
 
@@ -60,7 +64,12 @@ def update(content, game_id, field, value):
         lines[j] = f"{indent}{field}: {value}{trailing}"
         return "\n".join(lines), old_value
 
-    return None, None
+    # Field not present on this entry — insert it right after the id: line.
+    # The id line always carries a trailing comma, so inserting after it can
+    # never create a missing or duplicate comma. old_value None signals insert.
+    indent = re.match(r"^(\s*)", lines[id_line]).group(1)
+    lines.insert(id_line + 1, f"{indent}{field}: {value},")
+    return "\n".join(lines), None
 
 
 def main():
@@ -106,7 +115,7 @@ def main():
     atomic_write_text(DATA_JS, new_content)
     # No separate applied-fixes log anymore — the change is in data.js and the
     # `git diff` / commit is the record (see the 4-list state model).
-    print(f"OK: {game_id}.{field}: {old_value} -> {log_value}")
+    print(f"OK: {game_id}.{field}: {old_value if old_value is not None else '(absent)'} -> {log_value}")
 
 
 if __name__ == "__main__":

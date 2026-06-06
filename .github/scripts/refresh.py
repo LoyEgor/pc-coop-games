@@ -52,8 +52,15 @@ UPDATE_FIELD = REPO_ROOT / ".claude" / "skills" / "fact-checker" / "scripts" / "
 
 UA = "Mozilla/5.0 (compatible; pc-coop-games-refresh-bot/1.0)"
 SLEEP_BETWEEN_CALLS = 1.0  # seconds; Steam's IP rate-limit needs a small pause
-RATING_DRIFT_PP = 5         # apply rating update if >= 5pp drift
+RATING_DRIFT_PP = 2         # apply rating update if >= 2pp drift. Tightened from
+                            # 5pp: %positive is a stable ratio so this adds almost
+                            # no commit noise, and a stale rating skews the site's
+                            # Wilson score (computed from rating + ratingCount).
 PRICE_DRIFT_REL = 0.10      # apply price update if >= 10% relative drift
+COUNT_DRIFT_REL = 0.12      # apply ratingCount update if >= 12% relative drift.
+                            # Wilson barely moves at large n, so a coarse count is
+                            # fine — keeps data.js diffs small even though a
+                            # popular game gains reviews every day.
 HTTP_TIMEOUT = 20
 
 # Limits for one cron run — if Steam returns errors past these caps,
@@ -150,7 +157,7 @@ def apply_update(game_id, field, new_value):
 def write_status(success, entries_checked, updates, failures, error=None):
     STATUS_FILE.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "owned_fields": ["price", "rating"],
+        "owned_fields": ["price", "rating", "ratingCount"],
         "next_expected_window_hours": 30,
         "entries_checked": entries_checked,
         "updates_applied": updates,
@@ -187,12 +194,12 @@ def main():
         entries = list_entries()
     except Exception as e:
         print(f"FATAL: list_entries failed: {e}", file=sys.stderr)
-        write_status(False, 0, {"price": 0, "rating": 0, "image": 0}, 0, error=f"list_entries: {e}")
+        write_status(False, 0, {"price": 0, "rating": 0, "count": 0, "image": 0}, 0, error=f"list_entries: {e}")
         sys.exit(1)
 
     print(f"Loaded {len(entries)} non-hidden entries from data.js")
 
-    updates = {"price": 0, "rating": 0, "image": 0}
+    updates = {"price": 0, "rating": 0, "count": 0, "image": 0}
     failures = 0
     consecutive_failures = 0
     checked = 0
@@ -283,6 +290,23 @@ def main():
                     updates["rating"] += 1
                     print(f"  [{i}/{len(entries)}] {game_id}: rating {old_rating} -> {new_rating} ({abs(new_rating-old_rating)}pp drift)")
 
+        # Review count — the site computes a Wilson lower-bound score (Steam
+        # %positive discounted for sample size) from `rating` + `ratingCount`.
+        # The exact count isn't needed (Wilson is flat at large n), so rewrite
+        # only on >= COUNT_DRIFT_REL relative change. update_field.py inserts the
+        # field on entries that predate it. Never write 0 (throttle / no reviews)
+        # over a real stored count.
+        new_count = reviews.get("total_reviews", 0) if reviews else 0
+        if isinstance(new_count, int) and new_count > 0:
+            try:
+                old_count = int(entry.get("ratingCount", 0) or 0)
+            except (ValueError, TypeError):
+                old_count = 0
+            if old_count <= 0 or abs(new_count - old_count) / old_count >= COUNT_DRIFT_REL:
+                if apply_update(game_id, "ratingCount", new_count):
+                    updates["count"] += 1
+                    print(f"  [{i}/{len(entries)}] {game_id}: ratingCount {old_count or '-'} -> {new_count}")
+
         # Image healing — replace only a CURRENT image that hard-404s, so diffs
         # stay limited to actually-broken rows. canonical comes from `details`
         # (header_image, already fetched above) — no extra appdetails call.
@@ -295,7 +319,7 @@ def main():
 
     print(f"\n[{datetime.datetime.utcnow().isoformat()}Z] Refresh complete")
     print(f"  entries_checked: {checked}/{len(entries)}")
-    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, image={updates['image']}")
+    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, count={updates['count']}, image={updates['image']}")
     print(f"  fetch_failures:  {failures}")
 
     # A run is only healthy if we actually verified something. If every attempt

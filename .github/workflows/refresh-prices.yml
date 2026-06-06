@@ -69,8 +69,9 @@ jobs:
             # Real updates landed. Extract counts from status file.
             PRICE_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied']['price'])")
             RATING_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied']['rating'])")
+            COUNT_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied'].get('count', 0))")
             IMAGE_N=$(python3 -c "import json; print(json.load(open('.github/refresh-status.json'))['updates_applied'].get('image', 0))")
-            git commit -m "refresh: ${PRICE_N} price, ${RATING_N} rating, ${IMAGE_N} image updates"
+            git commit -m "refresh: ${PRICE_N} price, ${RATING_N} rating, ${COUNT_N} count, ${IMAGE_N} image updates"
           fi
 
           # Pull/rebase in case coop-hunter pushed during our run. On a conflict,

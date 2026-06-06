@@ -101,6 +101,7 @@ const state = {
     title: "",
     year: { min: "", max: "" },
     rating: { min: "", max: "" },
+    ratingCount: { min: "", max: "" },
     playersMax: { min: "", max: "" },
     hours: { min: "", max: "" },
     price: { min: "", max: "" },
@@ -133,6 +134,10 @@ const filterConfig = {
   title: { type: "text", label: "Game", placeholder: "Title or verdict" },
   year: { type: "range", label: "Year", step: 1, min: 0 },
   rating: { type: "range", label: "Rating", step: 5, min: 0 },
+  // ratingCount has no column header of its own — it's rendered as a second
+  // range control inside the Rating popover. Config is used by the range
+  // helpers (extents / active-state) and the URL sync.
+  ratingCount: { type: "range", label: "Reviews", step: 50, min: 0 },
   playersMax: { type: "range", label: "Players", step: 1, min: 0 },
   hours: { type: "range", label: "Hours", step: 1, min: 0 },
   genres: { type: "set", label: "Genres", options: () => uniqueSorted(games.flatMap((game) => game.genres)) },
@@ -190,7 +195,7 @@ function savePrefs() {
 // a link reproduces the same view for someone else. Range params encode as
 // "min-max" (either side may be empty); sets as comma lists. Defaults are omitted
 // to keep the URL clean. history.replaceState avoids polluting back-history.
-const RANGE_PARAMS = [["year", "year"], ["rating", "rating"], ["playersMax", "players"], ["hours", "hours"], ["price", "price"]];
+const RANGE_PARAMS = [["year", "year"], ["rating", "rating"], ["ratingCount", "reviews"], ["playersMax", "players"], ["hours", "hours"], ["price", "price"]];
 
 function syncURL() {
   const p = new URLSearchParams();
@@ -274,6 +279,9 @@ function getSortValue(game, key) {
   if (key === "oneCopy") return ONE_COPY[game.oneCopy]?.rank || 0;
   if (key === "endingType") return ENDING_TYPE[game.endingType]?.rank || 0;
   if (key === "price") return game.price || 0;
+  // The Rating column sorts by the Wilson lower-bound score (Steam %positive
+  // discounted for review count), not the raw %. See WHY-4 in CLAUDE.md.
+  if (key === "rating") return wilsonScore(game);
   // Verdict sorts by finish strength: a clear (hard) finish first, a fuzzy
   // (soft) finish — marked with a leading 🟠 in the verdict — second.
   if (key === "verdict") return (game.verdict || "").trimStart().startsWith("🟠") ? 1 : 0;
@@ -325,9 +333,14 @@ function gameMatchesFilters(game, opts) {
     if (!haystack.includes(text)) return false;
   }
 
-  for (const key of ["year", "rating", "playersMax", "hours", "price"]) {
+  for (const key of ["year", "rating", "ratingCount", "playersMax", "hours", "price"]) {
     const filter = state.filters[key];
+    if (filter.min === "" && filter.max === "") continue;
     const value = Number(game[key]);
+    // An ACTIVE range can't admit an unknown value (e.g. a fresh add with no
+    // ratingCount yet): NaN comparisons are always false, which would wrongly
+    // let it slip past a "min reviews" filter. Exclude it instead.
+    if (isNaN(value)) return false;
     if (filter.min !== "" && value < Number(filter.min)) return false;
     if (filter.max !== "" && value > Number(filter.max)) return false;
   }
@@ -413,7 +426,7 @@ function renderRow(game) {
       <td class="number-cell">${game.year}</td>
       <td><div class="tag-list">${game.genres.map((genre) => `<span class="tag${TIER_VALUES.has(genre) ? " tier" : ""}">${escapeHtml(genre)}</span>`).join("")}</div></td>
       <td>${renderEndingType(game.endingType)}</td>
-      <td class="number-cell rating">${game.rating}</td>
+      <td class="number-cell rating" title="Wilson score — Steam %positive adjusted for how many reviews back it (95% confidence lower bound); the column sorts by this. Sub-line: review count · raw Steam %.">${renderRatingCell(game)}</td>
       <td class="number-cell">${game.playersMax}</td>
       <td class="number-cell">${trimNumber(game.hours)}&nbsp;h</td>
       <td><span class="badge ${oneCopy.tone}">${escapeHtml(oneCopy.label)}</span></td>
@@ -431,6 +444,53 @@ function renderRow(game) {
 
 function trimNumber(value) {
   return Math.round(value);
+}
+
+// Wilson lower bound of the positive fraction at 95% confidence, scaled to
+// 0-100. This is what the Rating column sorts by: it discounts a high %positive
+// that rests on few reviews (a 100%-of-10 indie scores well below a 96%-of-40k
+// AAA), while a well-reviewed game stays near its raw %. Returns 0 when the
+// review count is missing/zero so such rows sort to the bottom. See WHY-4.
+function wilsonScore(game) {
+  const n = Number(game.ratingCount);
+  const pct = Number(game.rating);
+  if (!(n > 0) || isNaN(pct)) return 0;
+  const z = 1.96;
+  const p = pct / 100;
+  const denom = 1 + (z * z) / n;
+  const centre = p + (z * z) / (2 * n);
+  const margin = z * Math.sqrt((p * (1 - p) + (z * z) / (4 * n)) / n);
+  return ((centre - margin) / denom) * 100;
+}
+
+// Compact review-count label: 640, 1.2K, 25K, 1.5M (3 zeros collapse to K/M so
+// it fits under the score). Returns "—" when there's no count.
+function formatReviewCount(value) {
+  const n = Number(value);
+  if (!(n > 0)) return "—";
+  if (n < 1000) return String(n);
+  if (n < 1000000) {
+    const k = n / 1000;
+    const r = k < 10 ? Math.round(k * 10) / 10 : Math.round(k);
+    // r === 1000 only for n in [999500, 999999]; fall through so it reads "1M".
+    if (r < 1000) return (Number.isInteger(r) ? String(r) : r.toFixed(1)) + "K";
+  }
+  const m = n / 1000000;
+  const r = m < 10 ? Math.round(m * 10) / 10 : Math.round(m);
+  return (Number.isInteger(r) ? String(r) : r.toFixed(1)) + "M";
+}
+
+// Rating cell: the Wilson score big, with a sub-caption of "<reviews> · <Steam %>"
+// — the raw inputs the score is computed from. If a row has no review count yet
+// (a fresh add the cron hasn't reached), fall back to showing the raw % big and
+// "—" below; it still sorts to the bottom via wilsonScore() === 0.
+function renderRatingCell(game) {
+  const count = Number(game.ratingCount);
+  const pct = Number(game.rating);
+  const hasData = count > 0 && !isNaN(pct);
+  const big = hasData ? Math.round(wilsonScore(game)) : (isNaN(pct) ? "—" : pct);
+  const sub = hasData ? `${formatReviewCount(count)} · ${pct}%` : "—";
+  return `<span class="wilson-score">${big}</span><span class="rating-sub">${sub}</span>`;
 }
 
 function extractYoutubeId(url) {
@@ -509,16 +569,22 @@ function renderActiveFilterButtons() {
   });
 }
 
+function rangeFilterActive(key) {
+  const value = state.filters[key];
+  const { min: dataMin, max: dataMax } = getRangeExtents(key);
+  const minActive = value.min !== "" && Number(value.min) > dataMin;
+  const maxActive = value.max !== "" && Number(value.max) < dataMax;
+  return minActive || maxActive;
+}
+
 function filterIsActive(key) {
   const value = state.filters[key];
   if (value instanceof Set) return value.size > 0;
+  // The Rating header trigger also covers the Reviews (ratingCount) control that
+  // shares its popover, so it lights up if either bound is set.
+  if (key === "rating") return rangeFilterActive("rating") || rangeFilterActive("ratingCount");
   const config = filterConfig[key];
-  if (config && config.type === "range") {
-    const { min: dataMin, max: dataMax } = getRangeExtents(key);
-    const minActive = value.min !== "" && Number(value.min) > dataMin;
-    const maxActive = value.max !== "" && Number(value.max) < dataMax;
-    return minActive || maxActive;
-  }
+  if (config && config.type === "range") return rangeFilterActive(key);
   if (typeof value === "object") return value.min !== "" || value.max !== "";
   return Boolean(value);
 }
@@ -574,6 +640,26 @@ function capFilterHeight() {
   }
 }
 
+// The min/max input pair for one range field. Extracted so the Rating popover
+// can stack two of them (Steam % + Reviews). Each input carries its OWN field
+// key in data-range-min/max, so bindFilterControls routes edits to the right
+// filter even when several ranges share one popover.
+function rangeInputs(key) {
+  const config = filterConfig[key];
+  const filter = state.filters[key];
+  const { min: dataMin, max: dataMax } = getRangeExtents(key);
+  const step = config.step || 1;
+  const inputMin = config.min !== undefined ? config.min : 0;
+  const minValue = filter.min !== "" ? filter.min : String(dataMin);
+  const maxValue = filter.max !== "" ? filter.max : String(dataMax);
+  return `
+    <div class="range-grid">
+      <input class="filter-input" type="number" inputmode="numeric" data-range-min="${escapeHtml(key)}" value="${escapeHtml(minValue)}" placeholder="${dataMin}" min="${inputMin}" step="${step}">
+      <input class="filter-input" type="number" inputmode="numeric" data-range-max="${escapeHtml(key)}" value="${escapeHtml(maxValue)}" placeholder="${dataMax}" min="${inputMin}" step="${step}">
+    </div>
+  `;
+}
+
 function renderFilterMarkup(key, config) {
   if (config.type === "text") {
     return `
@@ -583,19 +669,23 @@ function renderFilterMarkup(key, config) {
     `;
   }
 
+  // The Rating popover is special: TWO range controls — Steam % (the raw
+  // `rating`) and minimum Reviews (`ratingCount`) — so you can ask for "highly
+  // rated AND well-reviewed". The column itself still SORTS by the Wilson score.
+  if (key === "rating") {
+    return `
+      <div class="popover-title">Rating — Steam % (min / max)</div>
+      ${rangeInputs("rating")}
+      <div class="popover-subhead">Reviews (min / max)</div>
+      ${rangeInputs("ratingCount")}
+      <button class="button full" type="button" data-clear-filter="rating">Clear</button>
+    `;
+  }
+
   if (config.type === "range") {
-    const filter = state.filters[key];
-    const { min: dataMin, max: dataMax } = getRangeExtents(key);
-    const step = config.step || 1;
-    const inputMin = config.min !== undefined ? config.min : 0;
-    const minValue = filter.min !== "" ? filter.min : String(dataMin);
-    const maxValue = filter.max !== "" ? filter.max : String(dataMax);
     return `
       <div class="popover-title">${escapeHtml(config.label)}: min / max</div>
-      <div class="range-grid">
-        <input class="filter-input" type="number" inputmode="numeric" data-range-min="${escapeHtml(key)}" value="${escapeHtml(minValue)}" placeholder="${dataMin}" min="${inputMin}" step="${step}">
-        <input class="filter-input" type="number" inputmode="numeric" data-range-max="${escapeHtml(key)}" value="${escapeHtml(maxValue)}" placeholder="${dataMax}" min="${inputMin}" step="${step}">
-      </div>
+      ${rangeInputs(key)}
       <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
     `;
   }
@@ -681,8 +771,8 @@ function bindFilterControls(key, config) {
         if (input.value !== "" && parseFloat(input.value) < 0) {
           input.value = "0";
         }
-        if (input.dataset.rangeMin) state.filters[key].min = input.value;
-        if (input.dataset.rangeMax) state.filters[key].max = input.value;
+        if (input.dataset.rangeMin) state.filters[input.dataset.rangeMin].min = input.value;
+        if (input.dataset.rangeMax) state.filters[input.dataset.rangeMax].max = input.value;
       }
       if (input.dataset.setFilter) {
         if (input.checked) state.filters[key].add(input.value);
@@ -724,6 +814,12 @@ function clearFilter(key) {
     value.max = "";
   } else {
     state.filters[key] = "";
+  }
+  // The Rating popover's Clear also resets the Reviews (ratingCount) control
+  // that shares it.
+  if (key === "rating") {
+    state.filters.ratingCount.min = "";
+    state.filters.ratingCount.max = "";
   }
 }
 

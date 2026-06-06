@@ -305,6 +305,7 @@ Entry shape (post-2026-05 minimal schema — see CLAUDE.md WHY-1/2/3):
   "genres": ["AAA", "First-person", "Shooter", "Sci-fi"],
   "endingType": "story",
   "rating": 87,
+  "ratingCount": 1234,
   "playersMax": 4,
   "hours": 12,
   "oneCopy": "none",
@@ -315,6 +316,8 @@ Entry shape (post-2026-05 minimal schema — see CLAUDE.md WHY-1/2/3):
   "youtubeUrl": "youtube(\"VIDEO_ID\")"
 }
 ```
+
+`ratingCount` is Steam `query_summary.total_reviews` — the same number you already fetched to compute `%positive` (§ "Steam review scan"). The site uses it to compute a **Wilson lower-bound score** (Steam %positive discounted for sample size) so a 100%-of-10-reviews indie can't outrank a 96%-of-40k AAA. It is optional at insert time (the cron / backfill fills it if you omit it), but you SHOULD pass it since you have it. `append_entry.py` also accepts it under the key `total_reviews`.
 
 Do NOT include `ratingSource`, `ratingLabel`, `playersLabel`, or `hoursLabel` — these were intentionally removed from the schema. The append_entry.py helper enforces this.
 

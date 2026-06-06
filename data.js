@@ -5,6 +5,7 @@ const youtubeSearch = (q) => `https://www.youtube.com/results?search_query=${enc
 window.GAMES = [
   {
     id: "gears-of-war-reloaded",
+    ratingCount: 3244,
     reviewed: true,
     title: "Gears of War: Reloaded",
     year: 2025,
@@ -22,12 +23,13 @@ window.GAMES = [
   },
   {
     id: "space-marine-2",
+    ratingCount: 212948,
     reviewed: true,
     title: "Warhammer 40,000: Space Marine 2",
     year: 2024,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Sci-fi"],
     endingType: "story",
-    rating: 82,
+    rating: 84,
     playersMax: 3,
     hours: 11,
     oneCopy: "none",
@@ -39,6 +41,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-3",
+    ratingCount: 841803,
     reviewed: true,
     title: "Baldur's Gate 3",
     year: 2023,
@@ -56,12 +59,13 @@ window.GAMES = [
   },
   {
     id: "remnant-2",
+    ratingCount: 66931,
     reviewed: true,
     title: "Remnant II",
     year: 2023,
     genres: ["AA", "Third-person", "Shooter", "Action", "RPG", "Soulslike"],
     endingType: "story",
-    rating: 80,
+    rating: 82,
     playersMax: 3,
     hours: 22,
     oneCopy: "none",
@@ -73,6 +77,7 @@ window.GAMES = [
   },
   {
     id: "trine-5",
+    ratingCount: 3331,
     reviewed: true,
     title: "Trine 5: A Clockwork Conspiracy",
     year: 2023,
@@ -90,6 +95,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-5",
+    ratingCount: 29220,
     reviewed: true,
     title: "Sniper Elite 5",
     year: 2022,
@@ -107,6 +113,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-forever",
+    ratingCount: 18235,
     reviewed: true,
     title: "We Were Here Forever",
     year: 2022,
@@ -124,6 +131,7 @@ window.GAMES = [
   },
   {
     id: "operation-tango",
+    ratingCount: 8659,
     reviewed: true,
     title: "Operation: Tango",
     year: 2021,
@@ -142,6 +150,7 @@ window.GAMES = [
   },
   {
     id: "the-ascent",
+    ratingCount: 24310,
     reviewed: true,
     title: "The Ascent",
     year: 2021,
@@ -159,6 +168,7 @@ window.GAMES = [
   },
   {
     id: "outriders",
+    ratingCount: 61136,
     reviewed: true,
     title: "Outriders",
     year: 2021,
@@ -176,6 +186,7 @@ window.GAMES = [
   },
   {
     id: "wasteland-3",
+    ratingCount: 22092,
     reviewed: true,
     title: "Wasteland 3",
     year: 2020,
@@ -193,6 +204,7 @@ window.GAMES = [
   },
   {
     id: "gears-5",
+    ratingCount: 24127,
     reviewed: true,
     title: "Gears 5",
     year: 2019,
@@ -210,6 +222,7 @@ window.GAMES = [
   },
   {
     id: "halo-mcc",
+    ratingCount: 258876,
     reviewed: true,
     title: "Halo: The Master Chief Collection",
     year: 2019,
@@ -227,6 +240,7 @@ window.GAMES = [
   },
   {
     id: "darksiders-genesis",
+    ratingCount: 13433,
     reviewed: true,
     title: "Darksiders Genesis",
     year: 2019,
@@ -244,6 +258,7 @@ window.GAMES = [
   },
   {
     id: "wolfenstein-youngblood",
+    ratingCount: 15636,
     reviewed: true,
     title: "Wolfenstein: Youngblood",
     year: 2019,
@@ -261,12 +276,13 @@ window.GAMES = [
   },
   {
     id: "far-cry-5",
+    ratingCount: 186216,
     reviewed: true,
     title: "Far Cry 5",
     year: 2018,
     genres: ["AAA", "First-person", "Shooter", "Action", "Open World"],
     endingType: "story",
-    rating: 78,
+    rating: 81,
     playersMax: 2,
     hours: 22,
     oneCopy: "none",
@@ -278,12 +294,13 @@ window.GAMES = [
   },
   {
     id: "divinity-original-sin-2",
+    ratingCount: 203137,
     reviewed: true,
     title: "Divinity: Original Sin II",
     year: 2017,
     genres: ["AAA", "Isometric", "RPG", "Tactics", "Fantasy"],
     endingType: "story",
-    rating: 93,
+    rating: 96,
     playersMax: 4,
     hours: 75,
     oneCopy: "none",
@@ -295,6 +312,7 @@ window.GAMES = [
   },
   {
     id: "ghost-recon-wildlands",
+    ratingCount: 104684,
     reviewed: true,
     title: "Ghost Recon Wildlands",
     year: 2017,
@@ -312,13 +330,14 @@ window.GAMES = [
   },
   {
     id: "portal-2",
+    ratingCount: 460318,
     reviewed: true,
     title: "Portal 2",
     year: 2011,
     genres: ["AAA", "First-person", "Puzzle", "Sci-fi"],
     endingType: "levels",
     ownerConfirmed: true,
-    rating: 95,
+    rating: 99,
     playersMax: 2,
     hours: 6,
     oneCopy: "none",
@@ -330,6 +349,7 @@ window.GAMES = [
   },
   {
     id: "lara-croft-guardian-light",
+    ratingCount: 4737,
     reviewed: true,
     title: "Lara Croft and the Guardian of Light",
     year: 2010,
@@ -347,6 +367,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-3",
+    ratingCount: 162776,
     reviewed: true,
     title: "Borderlands 3",
     year: 2019,
@@ -364,6 +385,7 @@ window.GAMES = [
   },
   {
     id: "tiny-tinas-wonderlands",
+    ratingCount: 24438,
     reviewed: true,
     title: "Tiny Tina's Wonderlands",
     year: 2022,
@@ -381,6 +403,7 @@ window.GAMES = [
   },
   {
     id: "dying-light",
+    ratingCount: 488032,
     reviewed: true,
     title: "Dying Light",
     year: 2015,
@@ -398,12 +421,13 @@ window.GAMES = [
   },
   {
     id: "dying-light-2",
+    ratingCount: 213502,
     reviewed: true,
     title: "Dying Light 2 Stay Human",
     year: 2022,
     genres: ["AAA", "First-person", "Action", "RPG", "Horror", "Open World"],
     endingType: "story",
-    rating: 77,
+    rating: 79,
     playersMax: 4,
     hours: 24,
     oneCopy: "none",
@@ -415,6 +439,7 @@ window.GAMES = [
   },
   {
     id: "shadow-warrior-2",
+    ratingCount: 28030,
     reviewed: true,
     title: "Shadow Warrior 2",
     year: 2016,
@@ -432,6 +457,7 @@ window.GAMES = [
   },
   {
     id: "strange-brigade",
+    ratingCount: 11205,
     reviewed: true,
     title: "Strange Brigade",
     year: 2018,
@@ -449,6 +475,7 @@ window.GAMES = [
   },
   {
     id: "aliens-fireteam-elite",
+    ratingCount: 26650,
     reviewed: true,
     title: "Aliens: Fireteam Elite",
     year: 2021,
@@ -466,6 +493,7 @@ window.GAMES = [
   },
   {
     id: "back-4-blood",
+    ratingCount: 72642,
     reviewed: true,
     title: "Back 4 Blood",
     year: 2021,
@@ -483,6 +511,7 @@ window.GAMES = [
   },
   {
     id: "grounded",
+    ratingCount: 93973,
     reviewed: true,
     title: "Grounded",
     year: 2022,
@@ -500,6 +529,7 @@ window.GAMES = [
   },
   {
     id: "nobody-saves-the-world",
+    ratingCount: 6770,
     reviewed: true,
     title: "Nobody Saves the World",
     year: 2022,
@@ -517,6 +547,7 @@ window.GAMES = [
   },
   {
     id: "styx-shards-of-darkness",
+    ratingCount: 6864,
     reviewed: true,
     title: "Styx: Shards of Darkness",
     year: 2017,
@@ -534,12 +565,13 @@ window.GAMES = [
   },
   {
     id: "saints-row-4",
+    ratingCount: 77479,
     reviewed: true,
     title: "Saints Row IV: Re-Elected",
     year: 2013,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Sci-fi", "Open World"],
     endingType: "story",
-    rating: 86,
+    rating: 88,
     playersMax: 2,
     hours: 16,
     oneCopy: "none",
@@ -551,12 +583,13 @@ window.GAMES = [
   },
   {
     id: "borderlands-2",
+    ratingCount: 310910,
     reviewed: true,
     title: "Borderlands 2",
     year: 2012,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot", "Sci-fi", "Open World"],
     endingType: "story",
-    rating: 91,
+    rating: 89,
     playersMax: 4,
     hours: 54,
     oneCopy: "none",
@@ -568,6 +601,7 @@ window.GAMES = [
   },
   {
     id: "diablo-4",
+    ratingCount: 72301,
     reviewed: true,
     title: "Diablo IV",
     year: 2023,
@@ -585,12 +619,13 @@ window.GAMES = [
   },
   {
     id: "vermintide-2",
+    ratingCount: 146378,
     reviewed: true,
     title: "Warhammer: Vermintide 2",
     year: 2018,
     genres: ["AA", "First-person", "Action", "Fantasy"],
     endingType: "levels",
-    rating: 82,
+    rating: 85,
     playersMax: 4,
     hours: 22,
     oneCopy: "none",
@@ -602,6 +637,7 @@ window.GAMES = [
   },
   {
     id: "left-4-dead-2",
+    ratingCount: 1036287,
     reviewed: true,
     title: "Left 4 Dead 2",
     year: 2009,
@@ -619,6 +655,7 @@ window.GAMES = [
   },
   {
     id: "the-forest",
+    ratingCount: 671031,
     reviewed: true,
     title: "The Forest",
     year: 2018,
@@ -636,12 +673,13 @@ window.GAMES = [
   },
   {
     id: "sons-of-the-forest",
+    ratingCount: 305891,
     reviewed: true,
     title: "Sons of the Forest",
     year: 2024,
     genres: ["Indie", "First-person", "Horror", "Survival", "Open World"],
     endingType: "survival-goal",
-    rating: 86,
+    rating: 88,
     playersMax: 8,
     hours: 25,
     oneCopy: "none",
@@ -653,6 +691,7 @@ window.GAMES = [
   },
   {
     id: "man-of-medan",
+    ratingCount: 586,
     reviewed: true,
     title: "The Dark Pictures: Man of Medan",
     year: 2019,
@@ -670,6 +709,7 @@ window.GAMES = [
   },
   {
     id: "magicka-2",
+    ratingCount: 13787,
     reviewed: true,
     title: "Magicka 2",
     year: 2015,
@@ -687,6 +727,7 @@ window.GAMES = [
   },
   {
     id: "peak",
+    ratingCount: 326733,
     reviewed: true,
     title: "PEAK",
     year: 2025,
@@ -704,6 +745,7 @@ window.GAMES = [
   },
   {
     id: "raft",
+    ratingCount: 372665,
     reviewed: true,
     title: "Raft",
     year: 2022,
@@ -721,12 +763,13 @@ window.GAMES = [
   },
   {
     id: "broforce",
+    ratingCount: 60547,
     reviewed: true,
     title: "Broforce",
     year: 2015,
     genres: ["Indie", "Side-view", "Action", "Platformer", "Shooter"],
     endingType: "levels",
-    rating: 95,
+    rating: 97,
     playersMax: 4,
     hours: 6,
     oneCopy: "none",
@@ -738,6 +781,7 @@ window.GAMES = [
   },
   {
     id: "castle-crashers",
+    ratingCount: 137503,
     reviewed: true,
     title: "Castle Crashers",
     year: 2012,
@@ -755,12 +799,13 @@ window.GAMES = [
   },
   {
     id: "cuphead",
+    ratingCount: 210406,
     reviewed: true,
     title: "Cuphead",
     year: 2017,
     genres: ["Indie", "Side-view", "Action", "Platformer", "Shooter"],
     endingType: "levels",
-    rating: 93,
+    rating: 96,
     playersMax: 2,
     hours: 12,
     oneCopy: "remote-play",
@@ -772,6 +817,7 @@ window.GAMES = [
   },
   {
     id: "tmnt-shredders-revenge",
+    ratingCount: 14523,
     reviewed: true,
     title: "TMNT: Shredder's Revenge",
     year: 2022,
@@ -789,12 +835,13 @@ window.GAMES = [
   },
   {
     id: "cat-quest-2",
+    ratingCount: 7094,
     reviewed: true,
     title: "Cat Quest II",
     year: 2019,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
     endingType: "story",
-    rating: 92,
+    rating: 95,
     playersMax: 2,
     hours: 10,
     oneCopy: "remote-play",
@@ -806,12 +853,13 @@ window.GAMES = [
   },
   {
     id: "lovers-spacetime",
+    ratingCount: 4036,
     reviewed: true,
     title: "Lovers in a Dangerous Spacetime",
     year: 2015,
     genres: ["Indie", "Side-view", "Action", "Sci-fi"],
     endingType: "levels",
-    rating: 90,
+    rating: 93,
     playersMax: 4,
     hours: 5,
     oneCopy: "remote-play",
@@ -823,6 +871,7 @@ window.GAMES = [
   },
   {
     id: "children-of-morta",
+    ratingCount: 22828,
     reviewed: true,
     title: "Children of Morta",
     year: 2019,
@@ -840,12 +889,13 @@ window.GAMES = [
   },
   {
     id: "full-metal-furies",
+    ratingCount: 2904,
     reviewed: true,
     title: "Full Metal Furies",
     year: 2018,
     genres: ["Indie", "Side-view", "Brawler", "RPG"],
     endingType: "story",
-    rating: 87,
+    rating: 91,
     playersMax: 4,
     hours: 10,
     oneCopy: "none",
@@ -857,6 +907,7 @@ window.GAMES = [
   },
   {
     id: "escape-academy",
+    ratingCount: 1289,
     reviewed: true,
     title: "Escape Academy",
     year: 2022,
@@ -874,12 +925,13 @@ window.GAMES = [
   },
   {
     id: "journey-savage-planet",
+    ratingCount: 6873,
     reviewed: true,
     title: "Journey to the Savage Planet",
     year: 2021,
     genres: ["AA", "First-person", "Action", "Sci-fi"],
     endingType: "story",
-    rating: 84,
+    rating: 87,
     playersMax: 2,
     hours: 10,
     oneCopy: "none",
@@ -891,6 +943,7 @@ window.GAMES = [
   },
   {
     id: "trine-2",
+    ratingCount: 21975,
     reviewed: true,
     title: "Trine 2: Complete Story",
     year: 2013,
@@ -908,12 +961,13 @@ window.GAMES = [
   },
   {
     id: "guacamelee-2",
+    ratingCount: 3321,
     reviewed: true,
     title: "Guacamelee! 2",
     year: 2018,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
     endingType: "story",
-    rating: 88,
+    rating: 91,
     playersMax: 4,
     hours: 10,
     oneCopy: "remote-play",
@@ -925,6 +979,7 @@ window.GAMES = [
   },
   {
     id: "risk-of-rain-2",
+    ratingCount: 348221,
     reviewed: true,
     title: "Risk of Rain 2",
     year: 2020,
@@ -942,6 +997,7 @@ window.GAMES = [
   },
   {
     id: "overcooked-all-you-can-eat",
+    ratingCount: 7755,
     reviewed: true,
     title: "Overcooked! All You Can Eat",
     year: 2021,
@@ -959,6 +1015,7 @@ window.GAMES = [
   },
   {
     id: "terraria",
+    ratingCount: 1526585,
     reviewed: true,
     title: "Terraria",
     year: 2011,
@@ -976,12 +1033,13 @@ window.GAMES = [
   },
   {
     id: "stardew-valley",
+    ratingCount: 1010959,
     reviewed: true,
     title: "Stardew Valley",
     year: 2016,
     genres: ["Indie", "Isometric", "RPG"],
     endingType: "survival-goal",
-    rating: 95,
+    rating: 98,
     playersMax: 8,
     hours: 50,
     oneCopy: "none",
@@ -993,6 +1051,7 @@ window.GAMES = [
   },
   {
     id: "magicka",
+    ratingCount: 31951,
     reviewed: true,
     title: "Magicka",
     year: 2011,
@@ -1010,12 +1069,13 @@ window.GAMES = [
   },
   {
     id: "we-were-here",
+    ratingCount: 32480,
     reviewed: true,
     title: "We Were Here",
     year: 2017,
     genres: ["Indie", "First-person", "Puzzle"],
     endingType: "arcade-goal",
-    rating: 93,
+    rating: 90,
     playersMax: 2,
     hours: 2,
     oneCopy: "none",
@@ -1027,6 +1087,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-together",
+    ratingCount: 17434,
     reviewed: true,
     title: "We Were Here Together",
     year: 2019,
@@ -1044,6 +1105,7 @@ window.GAMES = [
   },
   {
     id: "streets-of-rage-4",
+    ratingCount: 19387,
     reviewed: true,
     title: "Streets of Rage 4",
     year: 2020,
@@ -1061,12 +1123,13 @@ window.GAMES = [
   },
   {
     id: "enter-the-gungeon",
+    ratingCount: 88759,
     reviewed: true,
     title: "Enter the Gungeon",
     year: 2016,
     genres: ["Indie", "Isometric", "Action", "Shooter"],
     endingType: "roguelite",
-    rating: 92,
+    rating: 95,
     playersMax: 2,
     hours: 25,
     oneCopy: "remote-play",
@@ -1078,6 +1141,7 @@ window.GAMES = [
   },
   {
     id: "spelunky-2",
+    ratingCount: 21692,
     reviewed: true,
     title: "Spelunky 2",
     year: 2020,
@@ -1095,12 +1159,13 @@ window.GAMES = [
   },
   {
     id: "spelunky",
+    ratingCount: 16592,
     reviewed: true,
     title: "Spelunky",
     year: 2013,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
     endingType: "roguelite",
-    rating: 88,
+    rating: 92,
     playersMax: 4,
     hours: 10,
     oneCopy: "remote-play",
@@ -1112,12 +1177,13 @@ window.GAMES = [
   },
   {
     id: "battleblock-theater",
+    ratingCount: 72616,
     reviewed: true,
     title: "BattleBlock Theater",
     year: 2014,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
     endingType: "levels",
-    rating: 93,
+    rating: 97,
     playersMax: 2,
     hours: 8,
     oneCopy: "none",
@@ -1129,6 +1195,7 @@ window.GAMES = [
   },
   {
     id: "lego-city-undercover",
+    ratingCount: 11127,
     reviewed: true,
     title: "LEGO City Undercover",
     year: 2017,
@@ -1146,6 +1213,7 @@ window.GAMES = [
   },
   {
     id: "lego-marvel-superheroes",
+    ratingCount: 29877,
     reviewed: true,
     title: "LEGO Marvel Super Heroes",
     year: 2013,
@@ -1163,6 +1231,7 @@ window.GAMES = [
   },
   {
     id: "a-hat-in-time",
+    ratingCount: 53106,
     reviewed: true,
     title: "A Hat in Time",
     year: 2017,
@@ -1180,6 +1249,7 @@ window.GAMES = [
   },
   {
     id: "rayman-legends",
+    ratingCount: 11967,
     reviewed: true,
     title: "Rayman Legends",
     year: 2013,
@@ -1197,12 +1267,13 @@ window.GAMES = [
   },
   {
     id: "rayman-origins",
+    ratingCount: 5987,
     reviewed: true,
     title: "Rayman Origins",
     year: 2012,
     genres: ["AAA", "Side-view", "Action", "Platformer"],
     endingType: "levels",
-    rating: 92,
+    rating: 94,
     playersMax: 4,
     hours: 12,
     oneCopy: "remote-play",
@@ -1214,12 +1285,13 @@ window.GAMES = [
   },
   {
     id: "sackboy-big-adventure",
+    ratingCount: 4308,
     reviewed: true,
     title: "Sackboy: A Big Adventure",
     year: 2022,
     genres: ["AAA", "Third-person", "Action", "Platformer"],
     endingType: "story",
-    rating: 81,
+    rating: 84,
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
@@ -1231,6 +1303,7 @@ window.GAMES = [
   },
   {
     id: "orcs-must-die-2",
+    ratingCount: 19557,
     reviewed: true,
     title: "Orcs Must Die! 2",
     year: 2012,
@@ -1248,6 +1321,7 @@ window.GAMES = [
   },
   {
     id: "dungeon-defenders",
+    ratingCount: 18861,
     reviewed: true,
     title: "Dungeon Defenders",
     year: 2011,
@@ -1265,6 +1339,7 @@ window.GAMES = [
   },
   {
     id: "sanctum-2",
+    ratingCount: 14378,
     reviewed: true,
     title: "Sanctum 2",
     year: 2013,
@@ -1282,12 +1357,13 @@ window.GAMES = [
   },
   {
     id: "world-war-z",
+    ratingCount: 31143,
     reviewed: true,
     title: "World War Z: Aftermath",
     year: 2021,
     genres: ["AA", "Third-person", "Shooter", "Action", "Horror"],
     endingType: "levels",
-    rating: 80,
+    rating: 83,
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
@@ -1299,6 +1375,7 @@ window.GAMES = [
   },
   {
     id: "zombie-army-trilogy",
+    ratingCount: 18442,
     reviewed: true,
     title: "Zombie Army Trilogy",
     year: 2015,
@@ -1316,12 +1393,13 @@ window.GAMES = [
   },
   {
     id: "serious-sam-3",
+    ratingCount: 28437,
     reviewed: true,
     title: "Serious Sam 3: BFE",
     year: 2011,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi"],
     endingType: "story",
-    rating: 85,
+    rating: 88,
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
@@ -1333,6 +1411,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-4",
+    ratingCount: 17385,
     reviewed: true,
     title: "Serious Sam 4",
     year: 2020,
@@ -1350,12 +1429,13 @@ window.GAMES = [
   },
   {
     id: "alien-swarm-reactive-drop",
+    ratingCount: 23573,
     reviewed: true,
     title: "Alien Swarm: Reactive Drop",
     year: 2017,
     genres: ["Indie", "Isometric", "Shooter", "Action", "Sci-fi", "Horror"],
     endingType: "levels",
-    rating: 92,
+    rating: 95,
     playersMax: 4,
     hours: 10,
     oneCopy: "none",
@@ -1367,6 +1447,7 @@ window.GAMES = [
   },
   {
     id: "powerwash-simulator",
+    ratingCount: 58051,
     reviewed: true,
     title: "PowerWash Simulator",
     year: 2022,
@@ -1384,6 +1465,7 @@ window.GAMES = [
   },
   {
     id: "teardown",
+    ratingCount: 131076,
     reviewed: true,
     title: "Teardown",
     year: 2022,
@@ -1401,6 +1483,7 @@ window.GAMES = [
   },
   {
     id: "human-fall-flat",
+    ratingCount: 224524,
     reviewed: true,
     title: "Human Fall Flat",
     year: 2016,
@@ -1418,6 +1501,7 @@ window.GAMES = [
   },
   {
     id: "for-the-king",
+    ratingCount: 43411,
     reviewed: true,
     title: "For The King",
     year: 2018,
@@ -1436,6 +1520,7 @@ window.GAMES = [
   },
   {
     id: "streets-of-rogue",
+    ratingCount: 22836,
     reviewed: true,
     title: "Streets of Rogue",
     year: 2019,
@@ -1453,6 +1538,7 @@ window.GAMES = [
   },
   {
     id: "nuclear-throne",
+    ratingCount: 19564,
     reviewed: true,
     title: "Nuclear Throne",
     year: 2015,
@@ -1470,12 +1556,13 @@ window.GAMES = [
   },
   {
     id: "binding-of-isaac-rebirth",
+    ratingCount: 394195,
     reviewed: true,
     title: "The Binding of Isaac: Rebirth",
     year: 2014,
     genres: ["Indie", "Isometric", "Action", "Shooter"],
     endingType: "roguelite",
-    rating: 95,
+    rating: 97,
     playersMax: 4,
     hours: 50,
     oneCopy: "remote-play",
@@ -1487,12 +1574,13 @@ window.GAMES = [
   },
   {
     id: "keywe",
+    ratingCount: 2372,
     reviewed: true,
     title: "KeyWe",
     year: 2021,
     genres: ["Indie", "Isometric", "Puzzle"],
     endingType: "levels",
-    rating: 86,
+    rating: 90,
     playersMax: 2,
     hours: 6,
     oneCopy: "none",
@@ -1504,6 +1592,7 @@ window.GAMES = [
   },
   {
     id: "moving-out",
+    ratingCount: 2273,
     reviewed: true,
     title: "Moving Out",
     year: 2020,
@@ -1521,6 +1610,7 @@ window.GAMES = [
   },
   {
     id: "roboquest",
+    ratingCount: 24021,
     reviewed: true,
     title: "Roboquest",
     year: 2023,
@@ -1538,12 +1628,13 @@ window.GAMES = [
   },
   {
     id: "gunfire-reborn",
+    ratingCount: 103026,
     reviewed: true,
     title: "Gunfire Reborn",
     year: 2021,
     genres: ["Indie", "First-person", "Action", "Shooter"],
     endingType: "roguelite",
-    rating: 95,
+    rating: 93,
     playersMax: 4,
     hours: 25,
     oneCopy: "none",
@@ -1555,6 +1646,7 @@ window.GAMES = [
   },
   {
     id: "ravenswatch",
+    ratingCount: 21529,
     reviewed: true,
     title: "Ravenswatch",
     year: 2024,
@@ -1572,12 +1664,13 @@ window.GAMES = [
   },
   {
     id: "wizard-of-legend",
+    ratingCount: 20945,
     reviewed: true,
     title: "Wizard of Legend",
     year: 2018,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
     endingType: "roguelite",
-    rating: 88,
+    rating: 91,
     playersMax: 2,
     hours: 12,
     oneCopy: "remote-play",
@@ -1589,12 +1682,13 @@ window.GAMES = [
   },
   {
     id: "death-road-to-canada",
+    ratingCount: 10268,
     reviewed: true,
     title: "Death Road to Canada",
     year: 2016,
     genres: ["Indie", "Isometric", "Action"],
     endingType: "roguelite",
-    rating: 89,
+    rating: 93,
     playersMax: 4,
     hours: 8,
     oneCopy: "remote-play",
@@ -1606,12 +1700,13 @@ window.GAMES = [
   },
   {
     id: "kane-lynch-2",
+    ratingCount: 9497,
     reviewed: true,
     title: "Kane & Lynch 2: Dog Days",
     year: 2010,
     genres: ["AAA", "Third-person", "Shooter", "Action"],
     endingType: "story",
-    rating: 65,
+    rating: 67,
     playersMax: 2,
     hours: 6,
     oneCopy: "none",
@@ -1623,6 +1718,7 @@ window.GAMES = [
   },
   {
     id: "towerfall-ascension",
+    ratingCount: 3574,
     reviewed: true,
     title: "TowerFall Ascension",
     year: 2014,
@@ -1640,12 +1736,13 @@ window.GAMES = [
   },
   {
     id: "capcom-beat-em-up-bundle",
+    ratingCount: 1443,
     reviewed: true,
     title: "Capcom Beat 'Em Up Bundle",
     year: 2018,
     genres: ["AAA", "Side-view", "Brawler"],
     endingType: "levels",
-    rating: 84,
+    rating: 88,
     playersMax: 4,
     hours: 8,
     oneCopy: "none",
@@ -1657,12 +1754,13 @@ window.GAMES = [
   },
   {
     id: "metal-slug-3",
+    ratingCount: 9026,
     reviewed: true,
     title: "METAL SLUG 3",
     year: 2014,
     genres: ["AAA", "Side-view", "Action", "Shooter", "Platformer"],
     endingType: "levels",
-    rating: 87,
+    rating: 90,
     playersMax: 2,
     hours: 4,
     oneCopy: "none",
@@ -1674,6 +1772,7 @@ window.GAMES = [
   },
   {
     id: "monaco",
+    ratingCount: 8518,
     reviewed: true,
     title: "Monaco: What's Yours Is Mine",
     year: 2013,
@@ -1691,6 +1790,7 @@ window.GAMES = [
   },
   {
     id: "the-cave",
+    ratingCount: 2895,
     reviewed: true,
     title: "The Cave",
     year: 2013,
@@ -1708,12 +1808,13 @@ window.GAMES = [
   },
   {
     id: "20xx",
+    ratingCount: 4540,
     reviewed: true,
     title: "20XX",
     year: 2017,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
     endingType: "roguelite",
-    rating: 87,
+    rating: 91,
     playersMax: 2,
     hours: 10,
     oneCopy: "none",
@@ -1725,12 +1826,13 @@ window.GAMES = [
   },
   {
     id: "vagante",
+    ratingCount: 5004,
     reviewed: true,
     title: "Vagante",
     year: 2018,
     genres: ["Indie", "Side-view", "Action", "RPG", "Platformer", "Fantasy"],
     endingType: "roguelite",
-    rating: 86,
+    rating: 89,
     playersMax: 4,
     hours: 12,
     oneCopy: "none",
@@ -1742,6 +1844,7 @@ window.GAMES = [
   },
   {
     id: "barony",
+    ratingCount: 14991,
     reviewed: true,
     title: "Barony",
     year: 2015,
@@ -1759,6 +1862,7 @@ window.GAMES = [
   },
   {
     id: "across-the-obelisk",
+    ratingCount: 12902,
     reviewed: true,
     title: "Across the Obelisk",
     year: 2022,
@@ -1776,6 +1880,7 @@ window.GAMES = [
   },
   {
     id: "escape-simulator",
+    ratingCount: 19093,
     reviewed: true,
     title: "Escape Simulator",
     year: 2021,
@@ -1793,12 +1898,13 @@ window.GAMES = [
   },
   {
     id: "keep-talking-nobody-explodes",
+    ratingCount: 16858,
     reviewed: true,
     title: "Keep Talking and Nobody Explodes",
     year: 2015,
     genres: ["Indie", "First-person", "Puzzle"],
     endingType: "arcade-goal",
-    rating: 95,
+    rating: 97,
     playersMax: 2,
     hours: 6,
     oneCopy: "friend-pass",
@@ -1810,12 +1916,13 @@ window.GAMES = [
   },
   {
     id: "remnant-1",
+    ratingCount: 56690,
     reviewed: true,
     title: "Remnant: From the Ashes",
     year: 2019,
     genres: ["AA", "Third-person", "Shooter", "Action", "RPG", "Soulslike"],
     endingType: "story",
-    rating: 80,
+    rating: 84,
     playersMax: 3,
     hours: 25,
     oneCopy: "none",
@@ -1827,6 +1934,7 @@ window.GAMES = [
   },
   {
     id: "dead-island-de",
+    ratingCount: 27633,
     reviewed: true,
     title: "Dead Island Definitive Edition",
     year: 2016,
@@ -1844,12 +1952,13 @@ window.GAMES = [
   },
   {
     id: "portal-knights",
+    ratingCount: 22238,
     reviewed: true,
     title: "Portal Knights",
     year: 2017,
     genres: ["AA", "Third-person", "Action", "RPG", "Fantasy"],
     endingType: "survival-goal",
-    rating: 80,
+    rating: 83,
     playersMax: 4,
     hours: 30,
     oneCopy: "none",
@@ -1861,12 +1970,13 @@ window.GAMES = [
   },
   {
     id: "chained-together",
+    ratingCount: 61549,
     reviewed: true,
     title: "Chained Together",
     year: 2024,
     genres: ["Indie", "Third-person", "Action"],
     endingType: "arcade-goal",
-    rating: 87,
+    rating: 90,
     playersMax: 4,
     hours: 5,
     oneCopy: "none",
@@ -1878,6 +1988,7 @@ window.GAMES = [
   },
   {
     id: "pico-park",
+    ratingCount: 29751,
     reviewed: true,
     title: "PICO PARK",
     year: 2021,
@@ -1895,12 +2006,13 @@ window.GAMES = [
   },
   {
     id: "road-redemption",
+    ratingCount: 13395,
     reviewed: true,
     title: "Road Redemption",
     year: 2017,
     genres: ["Indie", "Third-person", "Action"],
     endingType: "levels",
-    rating: 80,
+    rating: 83,
     playersMax: 4,
     hours: 8,
     oneCopy: "remote-play",
@@ -1912,6 +2024,7 @@ window.GAMES = [
   },
   {
     id: "edf-4-1",
+    ratingCount: 10419,
     reviewed: true,
     title: "Earth Defense Force 4.1",
     year: 2016,
@@ -1929,6 +2042,7 @@ window.GAMES = [
   },
   {
     id: "assault-android-cactus",
+    ratingCount: 2003,
     reviewed: true,
     title: "Assault Android Cactus+",
     year: 2015,
@@ -1946,12 +2060,13 @@ window.GAMES = [
   },
   {
     id: "fightn-rage",
+    ratingCount: 3175,
     reviewed: true,
     title: "Fight'N Rage",
     year: 2017,
     genres: ["Indie", "Side-view", "Brawler"],
     endingType: "levels",
-    rating: 95,
+    rating: 91,
     playersMax: 3,
     hours: 5,
     oneCopy: "remote-play",
@@ -1963,12 +2078,13 @@ window.GAMES = [
   },
   {
     id: "door-kickers-action-squad",
+    ratingCount: 10520,
     reviewed: true,
     title: "Door Kickers: Action Squad",
     year: 2018,
     genres: ["Indie", "Side-view", "Action", "Shooter", "Tactics"],
     endingType: "levels",
-    rating: 92,
+    rating: 95,
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
@@ -1980,6 +2096,7 @@ window.GAMES = [
   },
   {
     id: "satisfactory",
+    ratingCount: 271671,
     reviewed: true,
     title: "Satisfactory",
     year: 2024,
@@ -1997,6 +2114,7 @@ window.GAMES = [
   },
   {
     id: "just-shapes-and-beats",
+    ratingCount: 25429,
     reviewed: true,
     title: "Just Shapes & Beats",
     year: 2018,
@@ -2014,6 +2132,7 @@ window.GAMES = [
   },
   {
     id: "madness-project-nexus",
+    ratingCount: 17165,
     reviewed: true,
     title: "MADNESS: Project Nexus",
     year: 2021,
@@ -2031,6 +2150,7 @@ window.GAMES = [
   },
   {
     id: "chicory-colorful-tale",
+    ratingCount: 3938,
     reviewed: true,
     title: "Chicory: A Colorful Tale",
     year: 2021,
@@ -2048,6 +2168,7 @@ window.GAMES = [
   },
   {
     id: "rabbit-and-steel",
+    ratingCount: 11030,
     reviewed: true,
     title: "Rabbit and Steel",
     year: 2024,
@@ -2065,6 +2186,7 @@ window.GAMES = [
   },
   {
     id: "door-kickers-2",
+    ratingCount: 13133,
     reviewed: true,
     title: "Door Kickers 2: Task Force North",
     year: 2025,
@@ -2082,6 +2204,7 @@ window.GAMES = [
   },
   {
     id: "heavenly-bodies",
+    ratingCount: 4345,
     reviewed: true,
     title: "Heavenly Bodies",
     year: 2021,
@@ -2099,6 +2222,7 @@ window.GAMES = [
   },
   {
     id: "bang-on-balls-chronicles",
+    ratingCount: 5071,
     reviewed: true,
     title: "Bang-On Balls: Chronicles",
     year: 2023,
@@ -2116,6 +2240,7 @@ window.GAMES = [
   },
   {
     id: "echo-point-nova",
+    ratingCount: 7676,
     reviewed: true,
     title: "Echo Point Nova",
     year: 2024,
@@ -2133,6 +2258,7 @@ window.GAMES = [
   },
   {
     id: "stick-it-to-the-stickman",
+    ratingCount: 7710,
     reviewed: true,
     title: "Stick It to the Stickman",
     year: 2025,
@@ -2150,6 +2276,7 @@ window.GAMES = [
   },
   {
     id: "age-of-empires-2-de",
+    ratingCount: 178592,
     reviewed: true,
     title: "Age of Empires II: Definitive Edition",
     year: 2019,
@@ -2167,6 +2294,7 @@ window.GAMES = [
   },
   {
     id: "mindustry",
+    ratingCount: 26762,
     reviewed: true,
     title: "Mindustry",
     year: 2019,
@@ -2184,6 +2312,7 @@ window.GAMES = [
   },
   {
     id: "crypt-of-the-necrodancer",
+    ratingCount: 26324,
     reviewed: true,
     title: "Crypt of the NecroDancer",
     year: 2015,
@@ -2201,6 +2330,7 @@ window.GAMES = [
   },
   {
     id: "trine-1",
+    ratingCount: 15849,
     reviewed: true,
     title: "Trine Enchanted Edition",
     year: 2009,
@@ -2218,6 +2348,7 @@ window.GAMES = [
   },
   {
     id: "outlast-trials",
+    ratingCount: 104020,
     reviewed: true,
     title: "The Outlast Trials",
     year: 2024,
@@ -2235,6 +2366,7 @@ window.GAMES = [
   },
   {
     id: "cook-serve-delicious",
+    ratingCount: 5698,
     reviewed: true,
     title: "Cook, Serve, Delicious!",
     year: 2013,
@@ -2252,6 +2384,7 @@ window.GAMES = [
   },
   {
     id: "mosa-lina",
+    ratingCount: 2063,
     reviewed: true,
     title: "Mosa Lina",
     year: 2023,
@@ -2269,6 +2402,7 @@ window.GAMES = [
   },
   {
     id: "dishwasher-vampire-smile",
+    ratingCount: 1809,
     reviewed: true,
     title: "The Dishwasher: Vampire Smile",
     year: 2017,
@@ -2286,6 +2420,7 @@ window.GAMES = [
   },
   {
     id: "astroneer",
+    ratingCount: 138093,
     reviewed: true,
     title: "ASTRONEER",
     year: 2019,
@@ -2303,6 +2438,7 @@ window.GAMES = [
   },
   {
     id: "valheim",
+    ratingCount: 534632,
     reviewed: true,
     title: "Valheim",
     year: 2021,
@@ -2320,6 +2456,7 @@ window.GAMES = [
   },
   {
     id: "lotr-return-to-moria",
+    ratingCount: 11947,
     reviewed: true,
     title: "The Lord of the Rings: Return to Moria",
     year: 2024,
@@ -2337,6 +2474,7 @@ window.GAMES = [
   },
   {
     id: "heroes-of-hammerwatch-2",
+    ratingCount: 6133,
     reviewed: true,
     title: "Heroes of Hammerwatch II",
     year: 2025,
@@ -2354,6 +2492,7 @@ window.GAMES = [
   },
   {
     id: "reanimal",
+    ratingCount: 22302,
     reviewed: true,
     title: "REANIMAL",
     year: 2026,
@@ -2371,6 +2510,7 @@ window.GAMES = [
   },
   {
     id: "elden-ring-nightreign",
+    ratingCount: 184371,
     reviewed: true,
     title: "Elden Ring Nightreign",
     year: 2025,
@@ -2388,6 +2528,7 @@ window.GAMES = [
   },
   {
     id: "marvel-cosmic-invasion",
+    ratingCount: 2158,
     reviewed: true,
     title: "MARVEL Cosmic Invasion",
     year: 2025,
@@ -2405,6 +2546,7 @@ window.GAMES = [
   },
   {
     id: "slay-the-spire-2",
+    ratingCount: 154800,
     reviewed: true,
     title: "Slay the Spire 2",
     year: 2026,
@@ -2423,6 +2565,7 @@ window.GAMES = [
   },
   {
     id: "absolum",
+    ratingCount: 9897,
     reviewed: true,
     title: "Absolum",
     year: 2025,
@@ -2440,6 +2583,7 @@ window.GAMES = [
   },
   {
     id: "cult-of-the-lamb",
+    ratingCount: 124045,
     reviewed: true,
     title: "Cult of the Lamb",
     year: 2022,
@@ -2457,6 +2601,7 @@ window.GAMES = [
   },
   {
     id: "rv-there-yet",
+    ratingCount: 79133,
     reviewed: true,
     title: "RV There Yet?",
     year: 2025,
@@ -2474,6 +2619,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-resistance",
+    ratingCount: 5537,
     reviewed: true,
     title: "Sniper Elite: Resistance",
     year: 2025,
@@ -2491,6 +2637,7 @@ window.GAMES = [
   },
   {
     id: "powerwash-simulator-2",
+    ratingCount: 10835,
     reviewed: true,
     title: "PowerWash Simulator 2",
     year: 2025,
@@ -2508,6 +2655,7 @@ window.GAMES = [
   },
   {
     id: "abiotic-factor",
+    ratingCount: 55543,
     reviewed: true,
     title: "Abiotic Factor",
     year: 2025,
@@ -2525,6 +2673,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-4",
+    ratingCount: 79564,
     reviewed: true,
     title: "Borderlands 4",
     year: 2025,
@@ -2543,6 +2692,7 @@ window.GAMES = [
   },
   {
     id: "risk-of-rain-returns",
+    ratingCount: 28600,
     reviewed: true,
     title: "Risk of Rain Returns",
     year: 2023,
@@ -2560,6 +2710,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-4",
+    ratingCount: 62269,
     reviewed: true,
     title: "Sniper Elite 4",
     year: 2017,
@@ -2577,6 +2728,7 @@ window.GAMES = [
   },
   {
     id: "saints-row-3-remastered",
+    ratingCount: 4451,
     reviewed: true,
     title: "Saints Row: The Third Remastered",
     year: 2021,
@@ -2594,6 +2746,7 @@ window.GAMES = [
   },
   {
     id: "edf-6",
+    ratingCount: 7046,
     reviewed: true,
     title: "Earth Defense Force 6",
     year: 2024,
@@ -2612,6 +2765,7 @@ window.GAMES = [
   },
   {
     id: "far-cry-6",
+    ratingCount: 34251,
     reviewed: true,
     title: "Far Cry 6",
     year: 2023,
@@ -2629,6 +2783,7 @@ window.GAMES = [
   },
   {
     id: "trine-4",
+    ratingCount: 14146,
     reviewed: true,
     title: "Trine 4: The Nightmare Prince",
     year: 2019,
@@ -2646,6 +2801,7 @@ window.GAMES = [
   },
   {
     id: "monster-hunter-world",
+    ratingCount: 508941,
     reviewed: true,
     title: "Monster Hunter: World",
     year: 2018,
@@ -2663,6 +2819,7 @@ window.GAMES = [
   },
   {
     id: "unravel-two",
+    ratingCount: 8854,
     reviewed: true,
     title: "Unravel Two",
     year: 2020,
@@ -2680,6 +2837,7 @@ window.GAMES = [
   },
   {
     id: "state-of-decay-2",
+    ratingCount: 68188,
     reviewed: true,
     title: "State of Decay 2: Juggernaut Edition",
     year: 2020,
@@ -2697,6 +2855,7 @@ window.GAMES = [
   },
   {
     id: "space-hulk-deathwing",
+    ratingCount: 10734,
     reviewed: true,
     title: "Space Hulk: Deathwing Enhanced Edition",
     year: 2018,
@@ -2714,6 +2873,7 @@ window.GAMES = [
   },
   {
     id: "divinity-original-sin-1",
+    ratingCount: 32178,
     reviewed: true,
     title: "Divinity: Original Sin - Enhanced Edition",
     year: 2015,
@@ -2731,6 +2891,7 @@ window.GAMES = [
   },
   {
     id: "vermintide-1",
+    ratingCount: 21415,
     reviewed: true,
     title: "Warhammer: End Times - Vermintide",
     year: 2015,
@@ -2748,6 +2909,7 @@ window.GAMES = [
   },
   {
     id: "lego-voyagers",
+    ratingCount: 2873,
     reviewed: true,
     title: "LEGO Voyagers",
     year: 2025,
@@ -2765,6 +2927,7 @@ window.GAMES = [
   },
   {
     id: "together-moon-escape",
+    ratingCount: 640,
     reviewed: true,
     title: "Together: Moon Escape",
     year: 2026,
@@ -2782,6 +2945,7 @@ window.GAMES = [
   },
   {
     id: "parallel-experiment",
+    ratingCount: 723,
     reviewed: true,
     title: "Parallel Experiment",
     year: 2025,
@@ -2799,6 +2963,7 @@ window.GAMES = [
   },
   {
     id: "hellcard",
+    ratingCount: 4604,
     reviewed: true,
     title: "HELLCARD",
     year: 2024,
@@ -2816,6 +2981,7 @@ window.GAMES = [
   },
   {
     id: "secrets-of-grindea",
+    ratingCount: 8539,
     reviewed: true,
     title: "Secrets of Grindea",
     year: 2024,
@@ -2833,6 +2999,7 @@ window.GAMES = [
   },
   {
     id: "dying-light-the-beast",
+    ratingCount: 68176,
     reviewed: true,
     title: "Dying Light: The Beast",
     year: 2025,
@@ -2850,6 +3017,7 @@ window.GAMES = [
   },
   {
     id: "ready-or-not",
+    ratingCount: 331599,
     reviewed: true,
     title: "Ready or Not",
     year: 2023,
@@ -2867,6 +3035,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-legacy",
+    ratingCount: 10004,
     reviewed: true,
     title: "LEGO Batman: Legacy of the Dark Knight",
     year: 2026,
@@ -2884,12 +3053,13 @@ window.GAMES = [
   },
   {
     id: "thick-as-thieves",
+    ratingCount: 891,
     reviewed: true,
     title: "Thick As Thieves",
     year: 2026,
     genres: ["AA", "First-person", "Action", "Stealth"],
     endingType: "levels",
-    rating: 73,
+    rating: 71,
     playersMax: 2,
     hours: 12,
     oneCopy: "none",
@@ -2901,6 +3071,7 @@ window.GAMES = [
   },
   {
     id: "in-sink",
+    ratingCount: 1524,
     reviewed: true,
     title: "In Sink: A Co-op Escape Adventure",
     year: 2024,
@@ -2918,6 +3089,7 @@ window.GAMES = [
   },
   {
     id: "bokura",
+    ratingCount: 12612,
     reviewed: true,
     title: "BOKURA",
     year: 2023,
@@ -2935,6 +3107,7 @@ window.GAMES = [
   },
   {
     id: "the-past-within",
+    ratingCount: 16515,
     reviewed: true,
     title: "The Past Within",
     year: 2022,
@@ -2952,6 +3125,7 @@ window.GAMES = [
   },
   {
     id: "pampas-selene",
+    ratingCount: 423,
     reviewed: true,
     title: "Pampas & Selene: The Maze of Demons",
     year: 2024,
@@ -2969,6 +3143,7 @@ window.GAMES = [
   },
   {
     id: "blood-typers",
+    ratingCount: 1030,
     reviewed: true,
     title: "Blood Typers",
     year: 2025,
@@ -2986,6 +3161,7 @@ window.GAMES = [
   },
   {
     id: "generation-zero",
+    ratingCount: 41866,
     reviewed: true,
     title: "Generation Zero",
     year: 2019,
@@ -3003,6 +3179,7 @@ window.GAMES = [
   },
   {
     id: "green-hell",
+    ratingCount: 97754,
     reviewed: true,
     title: "Green Hell",
     year: 2019,
@@ -3020,6 +3197,7 @@ window.GAMES = [
   },
   {
     id: "necesse",
+    ratingCount: 27291,
     reviewed: true,
     title: "Necesse",
     year: 2025,
@@ -3037,6 +3215,7 @@ window.GAMES = [
   },
   {
     id: "barotrauma",
+    ratingCount: 86675,
     reviewed: true,
     title: "Barotrauma",
     year: 2023,
@@ -3054,6 +3233,7 @@ window.GAMES = [
   },
   {
     id: "kletka",
+    ratingCount: 7275,
     reviewed: true,
     title: "KLETKA",
     year: 2026,
@@ -3071,6 +3251,7 @@ window.GAMES = [
   },
   {
     id: "blood-and-bacon",
+    ratingCount: 36074,
     reviewed: true,
     title: "Blood and Bacon",
     year: 2016,
@@ -3088,6 +3269,7 @@ window.GAMES = [
   },
   {
     id: "mass-builder",
+    ratingCount: 4071,
     reviewed: true,
     title: "M.A.S.S. Builder",
     year: 2025,
@@ -3105,6 +3287,7 @@ window.GAMES = [
   },
   {
     id: "crashout-crew",
+    ratingCount: 753,
     reviewed: true,
     title: "Crashout Crew",
     year: 2026,
@@ -3122,6 +3305,7 @@ window.GAMES = [
   },
   {
     id: "forza-horizon-6",
+    ratingCount: 70748,
     reviewed: true,
     title: "Forza Horizon 6",
     year: 2026,
@@ -3139,6 +3323,7 @@ window.GAMES = [
   },
   {
     id: "forza-horizon-5",
+    ratingCount: 274058,
     reviewed: true,
     title: "Forza Horizon 5",
     year: 2021,
@@ -3156,6 +3341,7 @@ window.GAMES = [
   },
   {
     id: "drive-beyond-horizons",
+    ratingCount: 18935,
     reviewed: true,
     title: "Drive Beyond Horizons",
     year: 2025,
@@ -3173,6 +3359,7 @@ window.GAMES = [
   },
   {
     id: "the-division-2",
+    ratingCount: 34133,
     reviewed: true,
     title: "Tom Clancy’s The Division 2",
     year: 2019,
@@ -3191,6 +3378,7 @@ window.GAMES = [
   },
   {
     id: "how-to-survive-2",
+    ratingCount: 11002,
     reviewed: true,
     title: "How to Survive 2",
     year: 2016,
@@ -3209,6 +3397,7 @@ window.GAMES = [
   },
   {
     id: "ripout",
+    ratingCount: 1202,
     reviewed: true,
     title: "RIPOUT",
     year: 2024,
@@ -3227,6 +3416,7 @@ window.GAMES = [
   },
   {
     id: "synthetik-2",
+    ratingCount: 3385,
     reviewed: true,
     title: "SYNTHETIK 2",
     year: 2021,
@@ -3244,6 +3434,7 @@ window.GAMES = [
   },
   {
     id: "deep-rock-galactic-rogue-core",
+    ratingCount: 12736,
     reviewed: true,
     title: "Deep Rock Galactic: Rogue Core",
     year: 2026,
@@ -3262,6 +3453,7 @@ window.GAMES = [
   },
   {
     id: "broventure",
+    ratingCount: 447,
     reviewed: true,
     title: "Broventure: The Wild Co-op",
     year: 2025,
@@ -3279,6 +3471,7 @@ window.GAMES = [
   },
   {
     id: "alien-strike-blasting-the-intruders",
+    ratingCount: 145,
     reviewed: true,
     title: "Alien Strike: Blasting the Intruders",
     year: 2026,
@@ -3296,6 +3489,7 @@ window.GAMES = [
   },
   {
     id: "voidigo",
+    ratingCount: 4792,
     reviewed: true,
     title: "Voidigo",
     year: 2023,
@@ -3313,6 +3507,7 @@ window.GAMES = [
   },
   {
     id: "sos-ops",
+    ratingCount: 3491,
     reviewed: true,
     title: "SOS OPS!",
     year: 2023,
@@ -3330,6 +3525,7 @@ window.GAMES = [
   },
   {
     id: "carry-the-glass",
+    ratingCount: 3165,
     reviewed: true,
     title: "Carry The Glass",
     year: 2024,
@@ -3347,6 +3543,7 @@ window.GAMES = [
   },
   {
     id: "hello-kitty-island-adventure",
+    ratingCount: 11667,
     reviewed: true,
     title: "Hello Kitty Island Adventure",
     year: 2025,
@@ -3364,6 +3561,7 @@ window.GAMES = [
   },
   {
     id: "the-spell-brigade",
+    ratingCount: 15543,
     reviewed: true,
     title: "The Spell Brigade",
     year: 2026,
@@ -3381,6 +3579,7 @@ window.GAMES = [
   },
   {
     id: "cinnabunny",
+    ratingCount: 530,
     reviewed: true,
     title: "Cinnabunny",
     year: 2025,
@@ -3398,6 +3597,7 @@ window.GAMES = [
   },
   {
     id: "never-grave",
+    ratingCount: 593,
     reviewed: true,
     title: "Never Grave: The Witch and The Curse",
     year: 2026,
@@ -3415,6 +3615,7 @@ window.GAMES = [
   },
   {
     id: "commandos-origins",
+    ratingCount: 2368,
     reviewed: true,
     title: "Commandos: Origins",
     year: 2025,
@@ -3432,6 +3633,7 @@ window.GAMES = [
   },
   {
     id: "united-heist",
+    ratingCount: 1984,
     reviewed: true,
     title: "United Heist",
     year: 2023,
@@ -3449,6 +3651,7 @@ window.GAMES = [
   },
   {
     id: "whispers-in-the-west",
+    ratingCount: 104,
     reviewed: true,
     title: "Whispers in the West - Co-op Murder Mystery",
     year: 2023,
@@ -3467,6 +3670,7 @@ window.GAMES = [
   },
   {
     id: "pulsar-lost-colony",
+    ratingCount: 5711,
     reviewed: true,
     title: "PULSAR: Lost Colony",
     year: 2021,
@@ -3484,6 +3688,7 @@ window.GAMES = [
   },
   {
     id: "eresys",
+    ratingCount: 469,
     reviewed: true,
     title: "Eresys",
     year: 2023,
@@ -3502,6 +3707,7 @@ window.GAMES = [
   },
   {
     id: "split-brain",
+    ratingCount: 194,
     reviewed: true,
     title: "Split Brain",
     year: 2024,
@@ -3519,6 +3725,7 @@ window.GAMES = [
   },
   {
     id: "azoove",
+    ratingCount: 58,
     reviewed: true,
     title: "Azoove",
     year: 2025,
@@ -3536,6 +3743,7 @@ window.GAMES = [
   },
   {
     id: "astroloot",
+    ratingCount: 557,
     reviewed: true,
     title: "Astroloot",
     year: 2025,
@@ -3553,6 +3761,7 @@ window.GAMES = [
   },
   {
     id: "windowkill",
+    ratingCount: 3621,
     reviewed: true,
     title: "Windowkill",
     year: 2024,
@@ -3570,6 +3779,7 @@ window.GAMES = [
   },
   {
     id: "dawn-of-the-monsters",
+    ratingCount: 147,
     reviewed: true,
     title: "Dawn of the Monsters",
     year: 2022,
@@ -3587,6 +3797,7 @@ window.GAMES = [
   },
   {
     id: "samurai-riot",
+    ratingCount: 71,
     reviewed: true,
     title: "Samurai Riot Definitive Edition",
     year: 2017,
@@ -3604,6 +3815,7 @@ window.GAMES = [
   },
   {
     id: "call-of-duty-world-at-war",
+    ratingCount: 52800,
     reviewed: true,
     title: "Call of Duty: World at War",
     year: 2008,
@@ -3621,6 +3833,7 @@ window.GAMES = [
   },
   {
     id: "relic-hunters-zero-remix",
+    ratingCount: 6756,
     reviewed: true,
     title: "Relic Hunters Zero: Remix",
     year: 2015,
@@ -3638,6 +3851,7 @@ window.GAMES = [
   },
   {
     id: "escape-memoirs-questionable-side-stories",
+    ratingCount: 1640,
     reviewed: true,
     title: "Escape Memoirs: Questionable Side Stories",
     year: 2023,
@@ -3655,6 +3869,7 @@ window.GAMES = [
   },
   {
     id: "unboxing-the-cryptic-killer",
+    ratingCount: 2636,
     reviewed: true,
     title: "Unboxing the Cryptic Killer",
     year: 2023,
@@ -3672,6 +3887,7 @@ window.GAMES = [
   },
   {
     id: "emissary-zero",
+    ratingCount: 2989,
     reviewed: true,
     title: "Emissary Zero",
     year: 2025,
@@ -3689,6 +3905,7 @@ window.GAMES = [
   },
   {
     id: "100-cats-lost-in-china",
+    ratingCount: 153,
     reviewed: true,
     title: "100 Cats Lost in China Find & Color",
     year: 2025,
@@ -3706,6 +3923,7 @@ window.GAMES = [
   },
   {
     id: "linebound",
+    ratingCount: 54,
     reviewed: true,
     title: "Linebound",
     year: 2026,
@@ -3723,6 +3941,7 @@ window.GAMES = [
   },
   {
     id: "mechwarrior-5-clans",
+    ratingCount: 5682,
     reviewed: true,
     title: "MechWarrior 5: Clans",
     year: 2024,
@@ -3740,6 +3959,7 @@ window.GAMES = [
   },
   {
     id: "research-and-destroy",
+    ratingCount: 51,
     reviewed: true,
     title: "RESEARCH and DESTROY",
     year: 2022,
@@ -3757,6 +3977,7 @@ window.GAMES = [
   },
   {
     id: "abyssus",
+    ratingCount: 4788,
     reviewed: true,
     title: "Abyssus",
     year: 2025,
@@ -3774,6 +3995,7 @@ window.GAMES = [
   },
   {
     id: "ink-inside",
+    ratingCount: 70,
     reviewed: true,
     title: "Ink Inside",
     year: 2024,
@@ -3791,6 +4013,7 @@ window.GAMES = [
   },
   {
     id: "lets-cook-together",
+    ratingCount: 241,
     reviewed: true,
     title: "Let's Cook Together",
     year: 2020,
@@ -3808,6 +4031,7 @@ window.GAMES = [
   },
   {
     id: "spirit-mancer",
+    ratingCount: 82,
     reviewed: true,
     title: "Spirit Mancer",
     year: 2024,
@@ -3825,6 +4049,7 @@ window.GAMES = [
   },
   {
     id: "unrailed",
+    ratingCount: 19575,
     reviewed: true,
     title: "Unrailed!",
     year: 2020,
@@ -3842,6 +4067,7 @@ window.GAMES = [
   },
   {
     id: "call-of-duty-modern-warfare-2-2009",
+    ratingCount: 60378,
     reviewed: true,
     title: "Call of Duty: Modern Warfare 2 (2009)",
     year: 2009,
@@ -3859,6 +4085,7 @@ window.GAMES = [
   },
   {
     id: "fallen-city-brawl",
+    ratingCount: 74,
     reviewed: true,
     title: "Fallen City Brawl",
     year: 2025,
@@ -3876,6 +4103,7 @@ window.GAMES = [
   },
   {
     id: "diner-bros-2",
+    ratingCount: 143,
     reviewed: true,
     title: "Diner Bros 2",
     year: 2025,
@@ -3893,6 +4121,7 @@ window.GAMES = [
   },
   {
     id: "slopecrashers",
+    ratingCount: 106,
     reviewed: true,
     title: "Slopecrashers",
     year: 2024,
@@ -3910,6 +4139,7 @@ window.GAMES = [
   },
   {
     id: "paddle-paddle-paddle",
+    ratingCount: 1533,
     reviewed: true,
     title: "Paddle Paddle Paddle",
     year: 2025,
@@ -3927,6 +4157,7 @@ window.GAMES = [
   },
   {
     id: "dogfight-1942",
+    ratingCount: 1161,
     reviewed: true,
     title: "Dogfight 1942",
     year: 2012,
@@ -3944,6 +4175,7 @@ window.GAMES = [
   },
   {
     id: "starbound",
+    ratingCount: 123013,
     reviewed: true,
     title: "Starbound",
     year: 2016,
@@ -3961,6 +4193,7 @@ window.GAMES = [
   },
   {
     id: "unrailed-2-back-on-track",
+    ratingCount: 1857,
     reviewed: true,
     title: "Unrailed 2: Back on Track",
     year: 2024,
@@ -3978,6 +4211,7 @@ window.GAMES = [
   },
   {
     id: "brok-the-investigator",
+    ratingCount: 1262,
     reviewed: true,
     title: "BROK the InvestiGator",
     year: 2022,
@@ -3995,6 +4229,7 @@ window.GAMES = [
   },
   {
     id: "section-13",
+    ratingCount: 883,
     reviewed: true,
     title: "Section 13",
     year: 2025,
@@ -4013,6 +4248,7 @@ window.GAMES = [
   },
   {
     id: "potion-party",
+    ratingCount: 130,
     reviewed: true,
     title: "Potion Party",
     year: 2021,
@@ -4030,6 +4266,7 @@ window.GAMES = [
   },
   {
     id: "potion-shop-simulator",
+    ratingCount: 85,
     reviewed: true,
     title: "Potion Shop Simulator",
     year: 2025,
@@ -4047,6 +4284,7 @@ window.GAMES = [
   },
   {
     id: "graven",
+    ratingCount: 1499,
     reviewed: true,
     title: "GRAVEN",
     year: 2024,
@@ -4065,6 +4303,7 @@ window.GAMES = [
   },
   {
     id: "konami-arcade-classics-anniversary",
+    ratingCount: 401,
     reviewed: true,
     title: "Arcade Classics Anniversary Collection",
     year: 2019,
@@ -4083,6 +4322,7 @@ window.GAMES = [
   },
   {
     id: "eigengrau",
+    ratingCount: 91,
     reviewed: true,
     title: "Eigengrau",
     year: 2023,
@@ -4100,6 +4340,7 @@ window.GAMES = [
   },
   {
     id: "princess-farmer",
+    ratingCount: 234,
     reviewed: true,
     title: "Princess Farmer",
     year: 2022,
@@ -4117,6 +4358,7 @@ window.GAMES = [
   },
   {
     id: "under-defeat",
+    ratingCount: 83,
     reviewed: true,
     title: "UNDER DEFEAT",
     year: 2025,
@@ -4134,6 +4376,7 @@ window.GAMES = [
   },
   {
     id: "micro-mages",
+    ratingCount: 428,
     reviewed: true,
     title: "Micro Mages",
     year: 2019,
@@ -4151,6 +4394,7 @@ window.GAMES = [
   },
   {
     id: "darius-cozmic-collection-arcade",
+    ratingCount: 153,
     reviewed: true,
     title: "Darius Cozmic Collection Arcade",
     year: 2021,
@@ -4168,6 +4412,7 @@ window.GAMES = [
   },
   {
     id: "abathor",
+    ratingCount: 361,
     reviewed: true,
     title: "Abathor",
     year: 2024,
@@ -4185,6 +4430,7 @@ window.GAMES = [
   },
   {
     id: "cygni-all-guns-blazing",
+    ratingCount: 500,
     reviewed: true,
     title: "CYGNI: All Guns Blazing",
     year: 2024,
@@ -4203,6 +4449,7 @@ window.GAMES = [
   },
   {
     id: "deathsmiles-1-2",
+    ratingCount: 109,
     reviewed: true,
     title: "Deathsmiles I・II",
     year: 2022,
@@ -4220,6 +4467,7 @@ window.GAMES = [
   },
   {
     id: "counterattack-uprising",
+    ratingCount: 346,
     reviewed: true,
     title: "CounterAttack: Uprising",
     year: 2019,
@@ -4237,6 +4485,7 @@ window.GAMES = [
   },
   {
     id: "returnal",
+    ratingCount: 10321,
     reviewed: true,
     title: "Returnal",
     year: 2023,
@@ -4254,6 +4503,7 @@ window.GAMES = [
   },
   {
     id: "chippy",
+    ratingCount: 1173,
     reviewed: true,
     title: "Chippy",
     year: 2019,
@@ -4271,6 +4521,7 @@ window.GAMES = [
   },
   {
     id: "nex-machina",
+    ratingCount: 2180,
     reviewed: true,
     title: "Nex Machina",
     year: 2017,
@@ -4288,6 +4539,7 @@ window.GAMES = [
   },
   {
     id: "temtem-swarm",
+    ratingCount: 2658,
     reviewed: true,
     title: "Temtem: Swarm",
     year: 2026,
@@ -4305,6 +4557,7 @@ window.GAMES = [
   },
   {
     id: "goat-simulator-3",
+    ratingCount: 15188,
     reviewed: true,
     title: "Goat Simulator 3",
     year: 2024,
@@ -4322,6 +4575,7 @@ window.GAMES = [
   },
   {
     id: "sedap-a-culinary-adventure",
+    ratingCount: 608,
     reviewed: true,
     title: "SEDAP! A Culinary Adventure",
     year: 2025,
@@ -4340,6 +4594,7 @@ window.GAMES = [
   },
   {
     id: "fossil-hunters",
+    ratingCount: 76,
     reviewed: true,
     title: "Fossil Hunters",
     year: 2018,
@@ -4357,6 +4612,7 @@ window.GAMES = [
   },
   {
     id: "morkredd",
+    ratingCount: 499,
     reviewed: true,
     title: "Morkredd",
     year: 2020,
@@ -4374,6 +4630,7 @@ window.GAMES = [
   },
   {
     id: "gal-guardians-servants-of-the-dark",
+    ratingCount: 580,
     reviewed: true,
     title: "Gal Guardians: Servants of the Dark",
     year: 2025,
@@ -4392,6 +4649,7 @@ window.GAMES = [
   },
   {
     id: "muck",
+    ratingCount: 183330,
     reviewed: true,
     title: "Muck",
     year: 2021,
@@ -4409,6 +4667,7 @@ window.GAMES = [
   },
   {
     id: "spectral-scream",
+    ratingCount: 733,
     reviewed: true,
     title: "Spectral Scream",
     year: 2024,
@@ -4426,6 +4685,7 @@ window.GAMES = [
   },
   {
     id: "cosmos-quickstop",
+    ratingCount: 115,
     reviewed: true,
     title: "Cosmo's Quickstop",
     year: 2021,
@@ -4443,6 +4703,7 @@ window.GAMES = [
   },
   {
     id: "boat-together",
+    ratingCount: 350,
     reviewed: true,
     title: "Boat Together",
     year: 2025,
@@ -4460,6 +4721,7 @@ window.GAMES = [
   },
   {
     id: "dead-island-riptide-de",
+    ratingCount: 12777,
     reviewed: true,
     title: "Dead Island: Riptide Definitive Edition",
     year: 2016,
@@ -4477,6 +4739,7 @@ window.GAMES = [
   },
   {
     id: "henry-halfhead",
+    ratingCount: 220,
     reviewed: true,
     title: "Henry Halfhead",
     year: 2025,
@@ -4494,6 +4757,7 @@ window.GAMES = [
   },
   {
     id: "lost-twins-2",
+    ratingCount: 52,
     reviewed: true,
     title: "Lost Twins 2",
     year: 2025,
@@ -4511,6 +4775,7 @@ window.GAMES = [
   },
   {
     id: "cato-buttered-cat",
+    ratingCount: 2928,
     reviewed: true,
     title: "CATO: Buttered Cat",
     year: 2024,
@@ -4528,6 +4793,7 @@ window.GAMES = [
   },
   {
     id: "platypus-reclayed",
+    ratingCount: 653,
     reviewed: true,
     title: "Platypus Reclayed",
     year: 2025,
@@ -4545,6 +4811,7 @@ window.GAMES = [
   },
   {
     id: "garbanzo-quest",
+    ratingCount: 637,
     reviewed: true,
     title: "Garbanzo Quest",
     year: 2024,
@@ -4562,6 +4829,7 @@ window.GAMES = [
   },
   {
     id: "monster-prom-4-monster-con",
+    ratingCount: 2067,
     reviewed: true,
     title: "Monster Prom 4: Monster Con",
     year: 2025,
@@ -4579,6 +4847,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-4",
+    ratingCount: 601,
     reviewed: true,
     title: "Chicken Invaders 4: Ultimate Omelette",
     year: 2014,
@@ -4596,6 +4865,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-2",
+    ratingCount: 598,
     reviewed: true,
     title: "Chicken Invaders 2",
     year: 2016,
@@ -4613,6 +4883,7 @@ window.GAMES = [
   },
   {
     id: "real-rtcw",
+    ratingCount: 2136,
     reviewed: true,
     title: "RealRTCW",
     year: 2020,
@@ -4630,6 +4901,7 @@ window.GAMES = [
   },
   {
     id: "twin-shot-deluxe",
+    ratingCount: 1078,
     reviewed: true,
     title: "Twin Shot Deluxe",
     year: 2026,
@@ -4647,6 +4919,7 @@ window.GAMES = [
   },
   {
     id: "gum-squad",
+    ratingCount: 89,
     reviewed: true,
     title: "Gum Squad",
     year: 2026,
@@ -4664,6 +4937,7 @@ window.GAMES = [
   },
   {
     id: "a-world-of-keflings",
+    ratingCount: 458,
     reviewed: true,
     title: "A World of Keflings",
     year: 2025,
@@ -4681,6 +4955,7 @@ window.GAMES = [
   },
   {
     id: "kickback-shoot-to-move",
+    ratingCount: 67,
     reviewed: true,
     title: "Kickback: Shoot to Move!",
     year: 2025,
@@ -4698,6 +4973,7 @@ window.GAMES = [
   },
   {
     id: "unless",
+    ratingCount: 148,
     reviewed: true,
     title: "Unless",
     year: 2025,
@@ -4715,6 +4991,7 @@ window.GAMES = [
   },
   {
     id: "brave-escape",
+    ratingCount: 169,
     reviewed: true,
     title: "Brave Escape",
     year: 2025,
@@ -4732,6 +5009,7 @@ window.GAMES = [
   },
   {
     id: "pitfall-planet",
+    ratingCount: 99,
     reviewed: true,
     title: "Pitfall Planet",
     year: 2016,
@@ -4749,6 +5027,7 @@ window.GAMES = [
   },
   {
     id: "speed-crew",
+    ratingCount: 85,
     reviewed: true,
     title: "Speed Crew",
     year: 2024,
@@ -4766,6 +5045,7 @@ window.GAMES = [
   },
   {
     id: "goliath-depot",
+    ratingCount: 65,
     reviewed: true,
     title: "Goliath Depot",
     year: 2023,
@@ -4783,6 +5063,7 @@ window.GAMES = [
   },
   {
     id: "heads-adventures-chibichibi",
+    ratingCount: 375,
     reviewed: true,
     title: "Head's Adventures: chibichibi",
     year: 2025,
@@ -4800,6 +5081,7 @@ window.GAMES = [
   },
   {
     id: "cometstriker-dx",
+    ratingCount: 64,
     reviewed: true,
     title: "CometStriker DX",
     year: 2018,
@@ -4817,6 +5099,7 @@ window.GAMES = [
   },
   {
     id: "gregory-horror-show-soul-of-roses",
+    ratingCount: 126,
     reviewed: true,
     title: "Gregory Horror Show: Soul of Roses",
     year: 2024,
@@ -4834,6 +5117,7 @@ window.GAMES = [
   },
   {
     id: "witchs-apocalyptic-journey",
+    ratingCount: 337,
     reviewed: true,
     title: "Witch's Apocalyptic Journey",
     year: 2026,
@@ -4851,6 +5135,7 @@ window.GAMES = [
   },
   {
     id: "traumacore-violence",
+    ratingCount: 154,
     reviewed: true,
     title: "TraumaCore Violence",
     year: 2023,
@@ -4868,6 +5153,7 @@ window.GAMES = [
   },
   {
     id: "cryptid-farm",
+    ratingCount: 185,
     reviewed: true,
     title: "Cryptid Farm",
     year: 2024,
@@ -4885,6 +5171,7 @@ window.GAMES = [
   },
   {
     id: "goodboy-galaxy",
+    ratingCount: 145,
     reviewed: true,
     title: "Goodboy Galaxy",
     year: 2024,
@@ -4902,6 +5189,7 @@ window.GAMES = [
   },
   {
     id: "tipston-salvage",
+    ratingCount: 89,
     reviewed: true,
     title: "Tipston Salvage",
     year: 2024,
@@ -4919,6 +5207,7 @@ window.GAMES = [
   },
   {
     id: "two-the-top",
+    ratingCount: 73,
     reviewed: true,
     title: "Two the Top",
     year: 2025,
@@ -4936,6 +5225,7 @@ window.GAMES = [
   },
   {
     id: "akai-katana-shin",
+    ratingCount: 107,
     reviewed: true,
     title: "Akai Katana Shin",
     year: 2022,
@@ -4953,6 +5243,7 @@ window.GAMES = [
   },
   {
     id: "super-cable-boy",
+    ratingCount: 127,
     reviewed: true,
     title: "Super Cable Boy",
     year: 2020,
@@ -4970,6 +5261,7 @@ window.GAMES = [
   },
   {
     id: "very-very-valet",
+    ratingCount: 96,
     reviewed: true,
     title: "Very Very Valet",
     year: 2022,
@@ -4987,6 +5279,7 @@ window.GAMES = [
   },
   {
     id: "desecrators",
+    ratingCount: 390,
     reviewed: true,
     title: "Desecrators",
     year: 2025,
@@ -5004,6 +5297,7 @@ window.GAMES = [
   },
   {
     id: "vectronom",
+    ratingCount: 325,
     reviewed: true,
     title: "Vectronom",
     year: 2019,
@@ -5021,6 +5315,7 @@ window.GAMES = [
   },
   {
     id: "castle-on-the-coast",
+    ratingCount: 184,
     reviewed: true,
     title: "Castle on the Coast",
     year: 2021,
@@ -5038,6 +5333,7 @@ window.GAMES = [
   },
   {
     id: "thy-sword",
+    ratingCount: 72,
     reviewed: true,
     title: "Thy Sword",
     year: 2017,
@@ -5055,6 +5351,7 @@ window.GAMES = [
   },
   {
     id: "grand-brix-shooter",
+    ratingCount: 84,
     reviewed: true,
     title: "Grand Brix Shooter",
     year: 2019,
@@ -5072,6 +5369,7 @@ window.GAMES = [
   },
   {
     id: "meowgun-hell-denizen",
+    ratingCount: 101,
     reviewed: true,
     title: "MeowGun: Hell Denizen",
     year: 2026,
@@ -5089,6 +5387,7 @@ window.GAMES = [
   },
   {
     id: "spirits-abyss",
+    ratingCount: 423,
     reviewed: true,
     title: "Spirits Abyss",
     year: 2020,
@@ -5106,6 +5405,7 @@ window.GAMES = [
   },
   {
     id: "arcade-mayhem-juanito",
+    ratingCount: 364,
     reviewed: true,
     title: "Arcade Mayhem Juanito",
     year: 2017,
@@ -5123,6 +5423,7 @@ window.GAMES = [
   },
   {
     id: "two-cubes",
+    ratingCount: 139,
     reviewed: true,
     title: "Two Cubes",
     year: 2023,
@@ -5140,6 +5441,7 @@ window.GAMES = [
   },
   {
     id: "button-button-up",
+    ratingCount: 180,
     reviewed: true,
     title: "Button Button Up!",
     year: 2019,
@@ -5157,6 +5459,7 @@ window.GAMES = [
   },
   {
     id: "sigma-impact",
+    ratingCount: 101,
     reviewed: true,
     title: "Sigma Impact",
     year: 2021,
@@ -5174,6 +5477,7 @@ window.GAMES = [
   },
   {
     id: "this-is-no-cave",
+    ratingCount: 148,
     reviewed: true,
     title: "This Is No Cave",
     year: 2025,
@@ -5191,6 +5495,7 @@ window.GAMES = [
   },
   {
     id: "step-by-step",
+    ratingCount: 104,
     reviewed: true,
     title: "Step By Step",
     year: 2023,
@@ -5208,6 +5513,7 @@ window.GAMES = [
   },
   {
     id: "unaccessible",
+    ratingCount: 61,
     reviewed: true,
     title: "Unaccessible",
     year: 2025,
@@ -5225,6 +5531,7 @@ window.GAMES = [
   },
   {
     id: "adventure-bit",
+    ratingCount: 63,
     reviewed: true,
     title: "Adventure Bit",
     year: 2021,
@@ -5242,6 +5549,7 @@ window.GAMES = [
   },
   {
     id: "calcium-chaos-derailed",
+    ratingCount: 68,
     reviewed: true,
     title: "Calcium Chaos: Derailed",
     year: 2024,
@@ -5259,6 +5567,7 @@ window.GAMES = [
   },
   {
     id: "gundroid",
+    ratingCount: 62,
     reviewed: true,
     title: "Gundroid",
     year: 2025,
@@ -5276,6 +5585,7 @@ window.GAMES = [
   },
   {
     id: "flat-heroes",
+    ratingCount: 563,
     reviewed: true,
     title: "Flat Heroes",
     year: 2016,
@@ -5293,6 +5603,7 @@ window.GAMES = [
   },
   {
     id: "ganablade",
+    ratingCount: 163,
     reviewed: true,
     title: "GanaBlade",
     year: 2023,
@@ -5310,6 +5621,7 @@ window.GAMES = [
   },
   {
     id: "tiny-lands-2",
+    ratingCount: 148,
     reviewed: true,
     title: "Tiny Lands 2",
     year: 2025,
@@ -5327,6 +5639,7 @@ window.GAMES = [
   },
   {
     id: "gensokyo-defenders",
+    ratingCount: 136,
     reviewed: true,
     title: "Gensokyo Defenders",
     year: 2019,
@@ -5344,6 +5657,7 @@ window.GAMES = [
   },
   {
     id: "polygunners",
+    ratingCount: 111,
     reviewed: true,
     title: "Polygunners",
     year: 2022,
@@ -5361,6 +5675,7 @@ window.GAMES = [
   },
   {
     id: "putty-pals",
+    ratingCount: 113,
     reviewed: true,
     title: "Putty Pals",
     year: 2017,
@@ -5378,6 +5693,7 @@ window.GAMES = [
   },
   {
     id: "ruins-of-mitriom",
+    ratingCount: 101,
     reviewed: true,
     title: "Ruins Of Mitriom",
     year: 2022,
@@ -5395,6 +5711,7 @@ window.GAMES = [
   },
   {
     id: "kinduo",
+    ratingCount: 101,
     reviewed: true,
     title: "Kinduo",
     year: 2021,
@@ -5412,6 +5729,7 @@ window.GAMES = [
   },
   {
     id: "parking-together",
+    ratingCount: 115,
     reviewed: true,
     title: "Parking Together!",
     year: 2025,
@@ -5429,6 +5747,7 @@ window.GAMES = [
   },
   {
     id: "robodunk",
+    ratingCount: 93,
     reviewed: true,
     title: "RoboDunk",
     year: 2023,
@@ -5446,6 +5765,7 @@ window.GAMES = [
   },
   {
     id: "oeuf",
+    ratingCount: 96,
     reviewed: true,
     title: "Oeuf",
     year: 2026,
@@ -5463,6 +5783,7 @@ window.GAMES = [
   },
   {
     id: "foodslingers",
+    ratingCount: 88,
     reviewed: true,
     title: "Foodslingers",
     year: 2026,
@@ -5480,6 +5801,7 @@ window.GAMES = [
   },
   {
     id: "project-starship-x",
+    ratingCount: 94,
     reviewed: true,
     title: "Project Starship X",
     year: 2020,
@@ -5497,6 +5819,7 @@ window.GAMES = [
   },
   {
     id: "beacon-patrol",
+    ratingCount: 85,
     reviewed: true,
     title: "Beacon Patrol",
     year: 2025,
@@ -5514,6 +5837,7 @@ window.GAMES = [
   },
   {
     id: "jedi-power-battles-remaster",
+    ratingCount: 397,
     reviewed: true,
     title: "STAR WARS: Episode I - Jedi Power Battles",
     year: 2025,
@@ -5531,6 +5855,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-5",
+    ratingCount: 1103,
     reviewed: true,
     title: "Chicken Invaders 5: Cluck of the Dark Side",
     year: 2015,
@@ -5548,6 +5873,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-3",
+    ratingCount: 432,
     reviewed: true,
     title: "Chicken Invaders 3: Revenge of the Yolk",
     year: 2015,
@@ -5565,6 +5891,7 @@ window.GAMES = [
   },
   {
     id: "f1-25",
+    ratingCount: 25787,
     reviewed: true,
     title: "F1 25",
     year: 2025,
@@ -5582,6 +5909,7 @@ window.GAMES = [
   },
   {
     id: "survivor-mercs",
+    ratingCount: 170,
     reviewed: true,
     title: "Survivor Mercs",
     year: 2026,
@@ -5619,6 +5947,7 @@ window.GAMES = [
   },
   {
     id: "smalland",
+    ratingCount: 10115,
     reviewed: true,
     title: "Smalland: Survive the Wilds",
     year: 2024,
@@ -5636,6 +5965,7 @@ window.GAMES = [
   },
   {
     id: "dead-island-2",
+    ratingCount: 26252,
     reviewed: true,
     title: "Dead Island 2",
     year: 2024,
@@ -5653,6 +5983,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-vesperia",
+    ratingCount: 4833,
     reviewed: true,
     title: "Tales of Vesperia: Definitive Edition",
     year: 2019,
@@ -5670,6 +6001,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-berseria",
+    ratingCount: 18848,
     reviewed: true,
     title: "Tales of Berseria",
     year: 2017,
@@ -5687,6 +6019,7 @@ window.GAMES = [
   },
   {
     id: "secret-of-mana",
+    ratingCount: 2890,
     reviewed: true,
     title: "Secret of Mana",
     year: 2018,
@@ -5705,6 +6038,7 @@ window.GAMES = [
   },
   {
     id: "moon-hunters",
+    ratingCount: 5201,
     reviewed: true,
     title: "Moon Hunters",
     year: 2016,
@@ -5722,6 +6056,7 @@ window.GAMES = [
   },
   {
     id: "spiritfarer",
+    ratingCount: 52373,
     reviewed: true,
     title: "Spiritfarer",
     year: 2020,
@@ -5739,6 +6074,7 @@ window.GAMES = [
   },
   {
     id: "wildermyth",
+    ratingCount: 18153,
     reviewed: true,
     title: "Wildermyth",
     year: 2021,
@@ -5756,6 +6092,7 @@ window.GAMES = [
   },
   {
     id: "anima-flux",
+    ratingCount: 124,
     reviewed: true,
     title: "Anima Flux",
     year: 2024,
@@ -5773,6 +6110,7 @@ window.GAMES = [
   },
   {
     id: "escapists-2",
+    ratingCount: 33457,
     reviewed: true,
     title: "The Escapists 2",
     year: 2017,
@@ -5790,6 +6128,7 @@ window.GAMES = [
   },
   {
     id: "aragami",
+    ratingCount: 12950,
     reviewed: true,
     title: "Aragami",
     year: 2016,
@@ -5807,6 +6146,7 @@ window.GAMES = [
   },
   {
     id: "aragami-2",
+    ratingCount: 4532,
     reviewed: true,
     title: "Aragami 2",
     year: 2021,
@@ -5824,6 +6164,7 @@ window.GAMES = [
   },
   {
     id: "ibb-and-obb",
+    ratingCount: 6796,
     reviewed: true,
     title: "ibb & obb",
     year: 2014,
@@ -5841,6 +6182,7 @@ window.GAMES = [
   },
   {
     id: "dungeon-of-the-endless",
+    ratingCount: 14003,
     reviewed: true,
     title: "Dungeon of the Endless",
     year: 2014,
@@ -5858,6 +6200,7 @@ window.GAMES = [
   },
   {
     id: "out-of-space",
+    ratingCount: 2926,
     reviewed: true,
     title: "Out of Space",
     year: 2020,
@@ -5875,6 +6218,7 @@ window.GAMES = [
   },
   {
     id: "clandestine",
+    ratingCount: 510,
     reviewed: true,
     title: "Clandestine",
     year: 2015,
@@ -5892,6 +6236,7 @@ window.GAMES = [
   },
   {
     id: "tick-tock-tale-for-two",
+    ratingCount: 11756,
     reviewed: true,
     title: "Tick Tock: A Tale for Two",
     year: 2019,
@@ -5909,6 +6254,7 @@ window.GAMES = [
   },
   {
     id: "toejam-earl-groove",
+    ratingCount: 1125,
     reviewed: true,
     title: "ToeJam & Earl: Back in the Groove!",
     year: 2019,
@@ -5926,6 +6272,7 @@ window.GAMES = [
   },
   {
     id: "death-squared",
+    ratingCount: 711,
     reviewed: true,
     title: "Death Squared",
     year: 2017,
@@ -5943,6 +6290,7 @@ window.GAMES = [
   },
   {
     id: "pico-park-2",
+    ratingCount: 4569,
     reviewed: true,
     title: "PICO PARK 2",
     year: 2024,
@@ -5960,6 +6308,7 @@ window.GAMES = [
   },
   {
     id: "escape-the-backrooms",
+    ratingCount: 142059,
     reviewed: true,
     title: "Escape the Backrooms",
     year: 2025,
@@ -5977,6 +6326,7 @@ window.GAMES = [
   },
   {
     id: "brothers-tale-two-sons-remake",
+    ratingCount: 1248,
     reviewed: true,
     title: "Brothers: A Tale of Two Sons Remake",
     year: 2024,
@@ -5994,6 +6344,7 @@ window.GAMES = [
   },
   {
     id: "flyknight",
+    ratingCount: 11400,
     reviewed: true,
     title: "FlyKnight",
     year: 2025,
@@ -6011,6 +6362,7 @@ window.GAMES = [
   },
   {
     id: "unsighted",
+    ratingCount: 2167,
     reviewed: true,
     title: "UNSIGHTED",
     year: 2021,
@@ -6028,6 +6380,7 @@ window.GAMES = [
   },
   {
     id: "as-dusk-falls",
+    ratingCount: 4242,
     reviewed: true,
     title: "As Dusk Falls",
     year: 2022,
@@ -6045,6 +6398,7 @@ window.GAMES = [
   },
   {
     id: "bread-and-fred",
+    ratingCount: 5085,
     reviewed: true,
     title: "Bread & Fred",
     year: 2023,
@@ -6062,6 +6416,7 @@ window.GAMES = [
   },
   {
     id: "labyrinthine",
+    ratingCount: 17329,
     reviewed: true,
     title: "Labyrinthine",
     year: 2023,
@@ -6079,6 +6434,7 @@ window.GAMES = [
   },
   {
     id: "wartales",
+    ratingCount: 34898,
     reviewed: true,
     title: "Wartales",
     year: 2023,
@@ -6096,6 +6452,7 @@ window.GAMES = [
   },
   {
     id: "infernax",
+    ratingCount: 2188,
     reviewed: true,
     title: "Infernax",
     year: 2022,
@@ -6113,6 +6470,7 @@ window.GAMES = [
   },
   {
     id: "monaco-2",
+    ratingCount: 184,
     reviewed: true,
     title: "Monaco 2",
     year: 2025,
@@ -6131,6 +6489,7 @@ window.GAMES = [
   },
   {
     id: "hacktag",
+    ratingCount: 427,
     reviewed: true,
     title: "Hacktag",
     year: 2018,
@@ -6149,6 +6508,7 @@ window.GAMES = [
   },
   {
     id: "nikoderiko",
+    ratingCount: 384,
     reviewed: true,
     title: "Nikoderiko: The Magical World",
     year: 2024,
@@ -6166,6 +6526,7 @@ window.GAMES = [
   },
   {
     id: "suicide-squad-kjl",
+    ratingCount: 17686,
     reviewed: true,
     title: "Suicide Squad: Kill the Justice League",
     year: 2024,
@@ -6184,6 +6545,7 @@ window.GAMES = [
   },
   {
     id: "lego-horizon-adventures",
+    ratingCount: 621,
     reviewed: true,
     title: "LEGO Horizon Adventures",
     year: 2024,
@@ -6202,6 +6564,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-expeditions-friendship",
+    ratingCount: 23864,
     reviewed: true,
     title: "We Were Here Expeditions: The FriendShip",
     year: 2023,
@@ -6219,6 +6582,7 @@ window.GAMES = [
   },
   {
     id: "atlas-fallen",
+    ratingCount: 4389,
     reviewed: true,
     title: "Atlas Fallen: Reign Of Sand",
     year: 2023,
@@ -6236,6 +6600,7 @@ window.GAMES = [
   },
   {
     id: "diablo-2-resurrected",
+    ratingCount: 5197,
     reviewed: true,
     title: "Diablo II: Resurrected",
     year: 2026,
@@ -6253,6 +6618,7 @@ window.GAMES = [
   },
   {
     id: "grim-dawn",
+    ratingCount: 105812,
     reviewed: true,
     title: "Grim Dawn",
     year: 2016,
@@ -6270,6 +6636,7 @@ window.GAMES = [
   },
   {
     id: "lara-croft-temple-osiris",
+    ratingCount: 4388,
     reviewed: true,
     title: "Lara Croft and the Temple of Osiris",
     year: 2014,
@@ -6288,6 +6655,7 @@ window.GAMES = [
   },
   {
     id: "ember-knights",
+    ratingCount: 6868,
     reviewed: true,
     title: "Ember Knights",
     year: 2023,
@@ -6305,6 +6673,7 @@ window.GAMES = [
   },
   {
     id: "sworn",
+    ratingCount: 4590,
     reviewed: true,
     title: "SWORN",
     year: 2025,
@@ -6322,6 +6691,7 @@ window.GAMES = [
   },
   {
     id: "shape-of-dreams",
+    ratingCount: 19140,
     reviewed: true,
     title: "Shape of Dreams",
     year: 2025,
@@ -6339,6 +6709,7 @@ window.GAMES = [
   },
   {
     id: "dyo",
+    ratingCount: 1889,
     reviewed: true,
     title: "DYO",
     year: 2018,
@@ -6356,6 +6727,7 @@ window.GAMES = [
   },
   {
     id: "cassette-beasts",
+    ratingCount: 10700,
     reviewed: true,
     title: "Cassette Beasts",
     year: 2023,
@@ -6373,6 +6745,7 @@ window.GAMES = [
   },
   {
     id: "heroes-of-hammerwatch",
+    ratingCount: 9473,
     reviewed: true,
     title: "Heroes of Hammerwatch",
     year: 2018,
@@ -6390,6 +6763,7 @@ window.GAMES = [
   },
   {
     id: "hammerwatch-2",
+    ratingCount: 2208,
     reviewed: true,
     title: "Hammerwatch II",
     year: 2023,
@@ -6409,6 +6783,7 @@ window.GAMES = [
   },
   {
     id: "plateup",
+    ratingCount: 26390,
     reviewed: true,
     title: "PlateUp!",
     year: 2022,
@@ -6426,6 +6801,7 @@ window.GAMES = [
   },
   {
     id: "with-you",
+    ratingCount: 2831,
     reviewed: true,
     title: "With You",
     year: 2022,
@@ -6443,6 +6819,7 @@ window.GAMES = [
   },
   {
     id: "resident-evil-revelations-2",
+    ratingCount: 31431,
     reviewed: true,
     title: "Resident Evil Revelations 2",
     year: 2015,
@@ -6460,6 +6837,7 @@ window.GAMES = [
   },
   {
     id: "wizard-of-legend-2",
+    ratingCount: 2455,
     reviewed: true,
     title: "Wizard of Legend 2",
     year: 2025,
@@ -6478,6 +6856,7 @@ window.GAMES = [
   },
   {
     id: "edf-5",
+    ratingCount: 11396,
     reviewed: true,
     title: "Earth Defense Force 5",
     year: 2019,
@@ -6495,6 +6874,7 @@ window.GAMES = [
   },
   {
     id: "inkbound",
+    ratingCount: 3981,
     reviewed: true,
     title: "Inkbound",
     year: 2024,
@@ -6512,6 +6892,7 @@ window.GAMES = [
   },
   {
     id: "stranger-of-paradise-ff-origin",
+    ratingCount: 4443,
     reviewed: true,
     title: "Stranger of Paradise: Final Fantasy Origin",
     year: 2023,
@@ -6530,6 +6911,7 @@ window.GAMES = [
   },
   {
     id: "lumencraft",
+    ratingCount: 1274,
     reviewed: true,
     title: "Lumencraft",
     year: 2023,
@@ -6547,6 +6929,7 @@ window.GAMES = [
   },
   {
     id: "stranded-deep",
+    ratingCount: 47450,
     reviewed: true,
     title: "Stranded Deep",
     year: 2022,
@@ -6564,6 +6947,7 @@ window.GAMES = [
   },
   {
     id: "bloodstained-rotn",
+    ratingCount: 41106,
     reviewed: true,
     title: "Bloodstained: Ritual of the Night",
     year: 2019,
@@ -6581,6 +6965,7 @@ window.GAMES = [
   },
   {
     id: "trinity-trigger",
+    ratingCount: 115,
     reviewed: true,
     title: "Trinity Trigger",
     year: 2023,
@@ -6599,6 +6984,7 @@ window.GAMES = [
   },
   {
     id: "monster-hunter-rise",
+    ratingCount: 122717,
     reviewed: true,
     title: "Monster Hunter Rise",
     year: 2022,
@@ -6616,6 +7002,7 @@ window.GAMES = [
   },
   {
     id: "tribes-of-midgard",
+    ratingCount: 23146,
     reviewed: true,
     title: "Tribes of Midgard",
     year: 2021,
@@ -6633,6 +7020,7 @@ window.GAMES = [
   },
   {
     id: "rhythm-doctor",
+    ratingCount: 26378,
     reviewed: true,
     title: "Rhythm Doctor",
     year: 2025,
@@ -6650,6 +7038,7 @@ window.GAMES = [
   },
   {
     id: "super-crazy-rhythm-castle",
+    ratingCount: 498,
     reviewed: true,
     title: "SUPER CRAZY RHYTHM CASTLE",
     year: 2023,
@@ -6667,6 +7056,7 @@ window.GAMES = [
   },
   {
     id: "company-of-heroes-2",
+    ratingCount: 112647,
     reviewed: true,
     title: "Company of Heroes 2",
     year: 2013,
@@ -6684,6 +7074,7 @@ window.GAMES = [
   },
   {
     id: "gloomhaven",
+    ratingCount: 15927,
     reviewed: true,
     title: "Gloomhaven",
     year: 2021,
@@ -6701,6 +7092,7 @@ window.GAMES = [
   },
   {
     id: "wargroove",
+    ratingCount: 5240,
     reviewed: true,
     title: "Wargroove",
     year: 2019,
@@ -6718,6 +7110,7 @@ window.GAMES = [
   },
   {
     id: "wargroove-2",
+    ratingCount: 440,
     reviewed: true,
     title: "Wargroove 2",
     year: 2023,
@@ -6735,6 +7128,7 @@ window.GAMES = [
   },
   {
     id: "sunderfolk",
+    ratingCount: 2115,
     reviewed: true,
     title: "Sunderfolk",
     year: 2025,
@@ -6752,6 +7146,7 @@ window.GAMES = [
   },
   {
     id: "stolen-realm",
+    ratingCount: 3843,
     reviewed: true,
     title: "Stolen Realm",
     year: 2024,
@@ -6769,6 +7164,7 @@ window.GAMES = [
   },
   {
     id: "jagged-alliance-3",
+    ratingCount: 14462,
     reviewed: true,
     title: "Jagged Alliance 3",
     year: 2023,
@@ -6786,6 +7182,7 @@ window.GAMES = [
   },
   {
     id: "popucom",
+    ratingCount: 4130,
     reviewed: true,
     title: "POPUCOM",
     year: 2025,
@@ -6803,6 +7200,7 @@ window.GAMES = [
   },
   {
     id: "deadzone-rogue",
+    ratingCount: 15542,
     reviewed: true,
     title: "Deadzone: Rogue",
     year: 2025,
@@ -6820,6 +7218,7 @@ window.GAMES = [
   },
   {
     id: "godbreakers",
+    ratingCount: 971,
     reviewed: true,
     title: "GODBREAKERS",
     year: 2025,
@@ -6837,6 +7236,7 @@ window.GAMES = [
   },
   {
     id: "unsolved-case",
+    ratingCount: 6426,
     reviewed: true,
     title: "Unsolved Case",
     year: 2022,
@@ -6854,6 +7254,7 @@ window.GAMES = [
   },
   {
     id: "sea-of-stars",
+    ratingCount: 14487,
     reviewed: true,
     title: "Sea of Stars",
     year: 2023,
@@ -6871,6 +7272,7 @@ window.GAMES = [
   },
   {
     id: "river-city-girls-2",
+    ratingCount: 1972,
     reviewed: true,
     title: "River City Girls 2",
     year: 2022,
@@ -6888,6 +7290,7 @@ window.GAMES = [
   },
   {
     id: "mayhem-brawler",
+    ratingCount: 864,
     reviewed: true,
     title: "Mayhem Brawler",
     year: 2021,
@@ -6905,6 +7308,7 @@ window.GAMES = [
   },
   {
     id: "blazing-chrome",
+    ratingCount: 1941,
     reviewed: true,
     title: "Blazing Chrome",
     year: 2019,
@@ -6922,6 +7326,7 @@ window.GAMES = [
   },
   {
     id: "bokura-planet",
+    ratingCount: 1553,
     reviewed: true,
     title: "BOKURA: planet",
     year: 2025,
@@ -6939,6 +7344,7 @@ window.GAMES = [
   },
   {
     id: "get-together",
+    ratingCount: 101,
     reviewed: true,
     title: "Get Together: A Coop Adventure",
     year: 2021,
@@ -6957,6 +7363,7 @@ window.GAMES = [
   },
   {
     id: "tmnt-splintered-fate",
+    ratingCount: 4133,
     reviewed: true,
     title: "Teenage Mutant Ninja Turtles: Splintered Fate",
     year: 2024,
@@ -6974,6 +7381,7 @@ window.GAMES = [
   },
   {
     id: "the-riftbreaker",
+    ratingCount: 23872,
     reviewed: true,
     title: "The Riftbreaker",
     year: 2021,
@@ -6991,6 +7399,7 @@ window.GAMES = [
   },
   {
     id: "steel-division-2",
+    ratingCount: 9500,
     reviewed: true,
     title: "Steel Division 2",
     year: 2019,
@@ -7008,6 +7417,7 @@ window.GAMES = [
   },
   {
     id: "lynked-banner-of-the-spark",
+    ratingCount: 446,
     reviewed: true,
     title: "Lynked: Banner of the Spark",
     year: 2025,
@@ -7025,6 +7435,7 @@ window.GAMES = [
   },
   {
     id: "last-epoch",
+    ratingCount: 118120,
     reviewed: true,
     title: "Last Epoch",
     year: 2024,
@@ -7042,6 +7453,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-pre-sequel",
+    ratingCount: 43024,
     reviewed: true,
     title: "Borderlands: The Pre-Sequel",
     year: 2014,
@@ -7059,6 +7471,7 @@ window.GAMES = [
   },
   {
     id: "torchlight-2",
+    ratingCount: 45317,
     reviewed: true,
     title: "Torchlight II",
     year: 2012,
@@ -7076,6 +7489,7 @@ window.GAMES = [
   },
   {
     id: "code-vein",
+    ratingCount: 61596,
     reviewed: true,
     title: "CODE VEIN",
     year: 2019,
@@ -7093,6 +7507,7 @@ window.GAMES = [
   },
   {
     id: "zombie-army-4",
+    ratingCount: 10811,
     reviewed: true,
     title: "Zombie Army 4: Dead War",
     year: 2021,
@@ -7110,6 +7525,7 @@ window.GAMES = [
   },
   {
     id: "orcs-must-die-3",
+    ratingCount: 14767,
     reviewed: true,
     title: "Orcs Must Die! 3",
     year: 2021,
@@ -7127,6 +7543,7 @@ window.GAMES = [
   },
   {
     id: "titan-quest-ae",
+    ratingCount: 37542,
     reviewed: true,
     title: "Titan Quest Anniversary Edition",
     year: 2016,
@@ -7144,6 +7561,7 @@ window.GAMES = [
   },
   {
     id: "nine-parchments",
+    ratingCount: 4673,
     reviewed: true,
     title: "Nine Parchments",
     year: 2017,
@@ -7161,6 +7579,7 @@ window.GAMES = [
   },
   {
     id: "gauntlet-slayer",
+    ratingCount: 10239,
     reviewed: true,
     title: "Gauntlet: Slayer Edition",
     year: 2014,
@@ -7178,6 +7597,7 @@ window.GAMES = [
   },
   {
     id: "trine-3",
+    ratingCount: 9143,
     reviewed: true,
     title: "Trine 3: The Artifacts of Power",
     year: 2015,
@@ -7197,6 +7617,7 @@ window.GAMES = [
   },
   {
     id: "hammerwatch",
+    ratingCount: 6497,
     reviewed: true,
     title: "Hammerwatch",
     year: 2013,
@@ -7215,6 +7636,7 @@ window.GAMES = [
   },
   {
     id: "contra-operation-galuga",
+    ratingCount: 939,
     reviewed: true,
     title: "Contra: Operation Galuga",
     year: 2024,
@@ -7232,6 +7654,7 @@ window.GAMES = [
   },
   {
     id: "scott-pilgrim-the-game",
+    ratingCount: 3580,
     reviewed: true,
     title: "Scott Pilgrim vs. The World: The Game - Complete Edition",
     year: 2023,
@@ -7249,6 +7672,7 @@ window.GAMES = [
   },
   {
     id: "river-city-girls",
+    ratingCount: 3759,
     reviewed: true,
     title: "River City Girls",
     year: 2019,
@@ -7266,6 +7690,7 @@ window.GAMES = [
   },
   {
     id: "double-dragon-gaiden",
+    ratingCount: 1607,
     reviewed: true,
     title: "Double Dragon Gaiden: Rise of the Dragons",
     year: 2023,
@@ -7283,6 +7708,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-3",
+    ratingCount: 28186,
     reviewed: true,
     title: "Sniper Elite 3",
     year: 2014,
@@ -7300,6 +7726,7 @@ window.GAMES = [
   },
   {
     id: "gotham-knights",
+    ratingCount: 24876,
     reviewed: true,
     title: "Gotham Knights",
     year: 2022,
@@ -7318,6 +7745,7 @@ window.GAMES = [
   },
   {
     id: "outward",
+    ratingCount: 30934,
     reviewed: true,
     title: "Outward Definitive Edition",
     year: 2022,
@@ -7335,6 +7763,7 @@ window.GAMES = [
   },
   {
     id: "god-eater-3",
+    ratingCount: 9864,
     reviewed: true,
     title: "God Eater 3",
     year: 2019,
@@ -7352,6 +7781,7 @@ window.GAMES = [
   },
   {
     id: "tunche",
+    ratingCount: 777,
     reviewed: true,
     title: "Tunche",
     year: 2021,
@@ -7369,6 +7799,7 @@ window.GAMES = [
   },
   {
     id: "biped",
+    ratingCount: 11000,
     reviewed: true,
     title: "Biped",
     year: 2020,
@@ -7386,6 +7817,7 @@ window.GAMES = [
   },
   {
     id: "tools-up",
+    ratingCount: 1093,
     reviewed: true,
     title: "Tools Up!",
     year: 2019,
@@ -7403,6 +7835,7 @@ window.GAMES = [
   },
   {
     id: "vikings-wolves-of-midgard",
+    ratingCount: 4478,
     reviewed: true,
     title: "Vikings - Wolves of Midgard",
     year: 2017,
@@ -7421,6 +7854,7 @@ window.GAMES = [
   },
   {
     id: "warhammer-chaosbane",
+    ratingCount: 6326,
     reviewed: true,
     title: "Warhammer: Chaosbane",
     year: 2019,
@@ -7439,6 +7873,7 @@ window.GAMES = [
   },
   {
     id: "victor-vran",
+    ratingCount: 6438,
     reviewed: true,
     title: "Victor Vran",
     year: 2015,
@@ -7456,6 +7891,7 @@ window.GAMES = [
   },
   {
     id: "river-city-saga-three-kingdoms",
+    ratingCount: 283,
     reviewed: true,
     title: "River City Saga: Three Kingdoms",
     year: 2022,
@@ -7473,6 +7909,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-goty",
+    ratingCount: 27387,
     reviewed: true,
     title: "Borderlands Game of the Year Enhanced",
     year: 2023,
@@ -7490,6 +7927,7 @@ window.GAMES = [
   },
   {
     id: "edf-world-brothers",
+    ratingCount: 798,
     reviewed: true,
     title: "Earth Defense Force: World Brothers",
     year: 2021,
@@ -7507,6 +7945,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-siberian-mayhem",
+    ratingCount: 4976,
     reviewed: true,
     title: "Serious Sam: Siberian Mayhem",
     year: 2022,
@@ -7524,6 +7963,7 @@ window.GAMES = [
   },
   {
     id: "saints-row-gat-out-of-hell",
+    ratingCount: 9736,
     reviewed: true,
     title: "Saints Row: Gat out of Hell",
     year: 2015,
@@ -7541,6 +7981,7 @@ window.GAMES = [
   },
   {
     id: "warriors-orochi-4",
+    ratingCount: 5576,
     reviewed: true,
     title: "Warriors Orochi 4",
     year: 2018,
@@ -7558,6 +7999,7 @@ window.GAMES = [
   },
   {
     id: "renegade-ops",
+    ratingCount: 2851,
     reviewed: true,
     title: "Renegade Ops",
     year: 2011,
@@ -7575,6 +8017,7 @@ window.GAMES = [
   },
   {
     id: "quake",
+    ratingCount: 15453,
     reviewed: true,
     title: "Quake",
     year: 2021,
@@ -7592,6 +8035,7 @@ window.GAMES = [
   },
   {
     id: "quake-2",
+    ratingCount: 10111,
     reviewed: true,
     title: "Quake II",
     year: 2023,
@@ -7609,6 +8053,7 @@ window.GAMES = [
   },
   {
     id: "doom-plus-doom-2",
+    ratingCount: 28196,
     reviewed: true,
     title: "DOOM + DOOM II",
     year: 2024,
@@ -7626,6 +8071,7 @@ window.GAMES = [
   },
   {
     id: "sacred-citadel",
+    ratingCount: 1194,
     reviewed: true,
     title: "Sacred Citadel",
     year: 2013,
@@ -7644,6 +8090,7 @@ window.GAMES = [
   },
   {
     id: "nioh-2",
+    ratingCount: 49957,
     reviewed: true,
     title: "Nioh 2 - The Complete Edition",
     year: 2021,
@@ -7661,6 +8108,7 @@ window.GAMES = [
   },
   {
     id: "wo-long-fallen-dynasty",
+    ratingCount: 28828,
     reviewed: true,
     title: "Wo Long: Fallen Dynasty",
     year: 2023,
@@ -7679,6 +8127,7 @@ window.GAMES = [
   },
   {
     id: "lords-of-the-fallen-2023",
+    ratingCount: 52533,
     reviewed: true,
     title: "Lords of the Fallen",
     year: 2023,
@@ -7697,6 +8146,7 @@ window.GAMES = [
   },
   {
     id: "samurai-warriors-5",
+    ratingCount: 1548,
     reviewed: true,
     title: "Samurai Warriors 5",
     year: 2021,
@@ -7714,6 +8164,7 @@ window.GAMES = [
   },
   {
     id: "edf-iron-rain",
+    ratingCount: 1506,
     reviewed: true,
     title: "Earth Defense Force: Iron Rain",
     year: 2019,
@@ -7732,6 +8183,7 @@ window.GAMES = [
   },
   {
     id: "samurai-warriors-4-2",
+    ratingCount: 1433,
     reviewed: true,
     title: "Samurai Warriors 4-II",
     year: 2015,
@@ -7749,6 +8201,7 @@ window.GAMES = [
   },
   {
     id: "dynasty-warriors-8-xl",
+    ratingCount: 13999,
     reviewed: true,
     title: "Dynasty Warriors 8: Xtreme Legends Complete Edition",
     year: 2014,
@@ -7766,6 +8219,7 @@ window.GAMES = [
   },
   {
     id: "salt-and-sacrifice",
+    ratingCount: 1859,
     reviewed: true,
     title: "Salt and Sacrifice",
     year: 2023,
@@ -7784,6 +8238,7 @@ window.GAMES = [
   },
   {
     id: "pode",
+    ratingCount: 603,
     reviewed: true,
     title: "Pode",
     year: 2020,
@@ -7801,6 +8256,7 @@ window.GAMES = [
   },
   {
     id: "tiny-tinas-assault-dragon-keep",
+    ratingCount: 3648,
     reviewed: true,
     title: "Tiny Tina's Assault on Dragon Keep",
     year: 2021,
@@ -7819,6 +8275,7 @@ window.GAMES = [
   },
   {
     id: "dnd-chronicles-of-mystara",
+    ratingCount: 1977,
     reviewed: true,
     title: "Dungeons & Dragons: Chronicles of Mystara",
     year: 2013,
@@ -7836,6 +8293,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-dark-alliance",
+    ratingCount: 1001,
     reviewed: true,
     title: "Baldur's Gate: Dark Alliance",
     year: 2021,
@@ -7853,6 +8311,7 @@ window.GAMES = [
   },
   {
     id: "metal-slug-x",
+    ratingCount: 3918,
     reviewed: true,
     title: "METAL SLUG X",
     year: 2014,
@@ -7870,6 +8329,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-dark-alliance-2",
+    ratingCount: 649,
     reviewed: true,
     title: "Baldur's Gate: Dark Alliance II",
     year: 2022,
@@ -7887,6 +8347,7 @@ window.GAMES = [
   },
   {
     id: "far-cry-new-dawn",
+    ratingCount: 34612,
     reviewed: true,
     title: "Far Cry New Dawn",
     year: 2019,
@@ -7904,6 +8365,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-2",
+    ratingCount: 13869,
     reviewed: true,
     title: "Serious Sam 2",
     year: 2012,
@@ -7921,6 +8383,7 @@ window.GAMES = [
   },
   {
     id: "synthetik-legion-rising",
+    ratingCount: 13047,
     reviewed: true,
     title: "SYNTHETIK: Legion Rising",
     year: 2018,
@@ -7939,6 +8402,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-hd-tfe",
+    ratingCount: 8797,
     reviewed: true,
     title: "Serious Sam HD: The First Encounter",
     year: 2009,
@@ -7956,6 +8420,7 @@ window.GAMES = [
   },
   {
     id: "cat-quest-3",
+    ratingCount: 4007,
     reviewed: true,
     title: "Cat Quest III",
     year: 2024,
@@ -7973,6 +8438,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-little-hope",
+    ratingCount: 10438,
     reviewed: true,
     title: "The Dark Pictures Anthology: Little Hope",
     year: 2020,
@@ -7990,6 +8456,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-house-of-ashes",
+    ratingCount: 10577,
     reviewed: true,
     title: "The Dark Pictures Anthology: House of Ashes",
     year: 2021,
@@ -8007,6 +8474,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-devil-in-me",
+    ratingCount: 5990,
     reviewed: true,
     title: "The Dark Pictures Anthology: The Devil in Me",
     year: 2022,
@@ -8025,6 +8493,7 @@ window.GAMES = [
   },
   {
     id: "30xx",
+    ratingCount: 2777,
     reviewed: true,
     title: "30XX",
     year: 2023,
@@ -8042,6 +8511,7 @@ window.GAMES = [
   },
   {
     id: "huntdown",
+    ratingCount: 4297,
     reviewed: true,
     title: "Huntdown",
     year: 2021,
@@ -8059,6 +8529,7 @@ window.GAMES = [
   },
   {
     id: "mighty-goose",
+    ratingCount: 1047,
     reviewed: true,
     title: "Mighty Goose",
     year: 2021,
@@ -8076,6 +8547,7 @@ window.GAMES = [
   },
   {
     id: "moving-out-2",
+    ratingCount: 568,
     reviewed: true,
     title: "Moving Out 2",
     year: 2023,
@@ -8093,6 +8565,7 @@ window.GAMES = [
   },
   {
     id: "pit-people",
+    ratingCount: 8132,
     reviewed: true,
     title: "Pit People",
     year: 2018,
@@ -8110,6 +8583,7 @@ window.GAMES = [
   },
   {
     id: "alien-hominid-invasion",
+    ratingCount: 1726,
     reviewed: true,
     title: "Alien Hominid Invasion",
     year: 2023,
@@ -8127,6 +8601,7 @@ window.GAMES = [
   },
   {
     id: "guns-gore-cannoli",
+    ratingCount: 4254,
     reviewed: true,
     title: "Guns, Gore & Cannoli",
     year: 2015,
@@ -8144,6 +8619,7 @@ window.GAMES = [
   },
   {
     id: "shadow-puppeteer",
+    ratingCount: 223,
     reviewed: true,
     title: "Shadow Puppeteer",
     year: 2014,
@@ -8161,6 +8637,7 @@ window.GAMES = [
   },
   {
     id: "curse-of-the-sea-rats",
+    ratingCount: 218,
     reviewed: true,
     title: "Curse of the Sea Rats",
     year: 2023,
@@ -8179,6 +8656,7 @@ window.GAMES = [
   },
   {
     id: "a-robot-named-fight",
+    ratingCount: 888,
     reviewed: true,
     title: "A Robot Named Fight!",
     year: 2017,
@@ -8196,6 +8674,7 @@ window.GAMES = [
   },
   {
     id: "wuppo",
+    ratingCount: 5928,
     reviewed: true,
     title: "Wuppo: Definitive Edition",
     year: 2019,
@@ -8213,6 +8692,7 @@ window.GAMES = [
   },
   {
     id: "sundered",
+    ratingCount: 5139,
     reviewed: true,
     title: "Sundered: Eldritch Edition",
     year: 2017,
@@ -8230,6 +8710,7 @@ window.GAMES = [
   },
   {
     id: "mother-russia-bleeds",
+    ratingCount: 5351,
     reviewed: true,
     title: "Mother Russia Bleeds",
     year: 2016,
@@ -8247,6 +8728,7 @@ window.GAMES = [
   },
   {
     id: "raging-justice",
+    ratingCount: 160,
     reviewed: true,
     title: "Raging Justice",
     year: 2018,
@@ -8264,6 +8746,7 @@ window.GAMES = [
   },
   {
     id: "final-vendetta",
+    ratingCount: 531,
     reviewed: true,
     title: "Final Vendetta",
     year: 2022,
@@ -8281,6 +8764,7 @@ window.GAMES = [
   },
   {
     id: "neon-chrome",
+    ratingCount: 1171,
     reviewed: true,
     title: "Neon Chrome",
     year: 2016,
@@ -8298,6 +8782,7 @@ window.GAMES = [
   },
   {
     id: "halo-wars-de",
+    ratingCount: 9294,
     reviewed: true,
     title: "Halo Wars: Definitive Edition",
     year: 2017,
@@ -8315,6 +8800,7 @@ window.GAMES = [
   },
   {
     id: "guacamelee-stce",
+    ratingCount: 7030,
     reviewed: true,
     title: "Guacamelee! Super Turbo Championship Edition",
     year: 2014,
@@ -8332,6 +8818,7 @@ window.GAMES = [
   },
   {
     id: "van-helsing-final-cut",
+    ratingCount: 3858,
     reviewed: true,
     title: "The Incredible Adventures of Van Helsing: Final Cut",
     year: 2015,
@@ -8349,6 +8836,7 @@ window.GAMES = [
   },
   {
     id: "lego-jurassic-world",
+    ratingCount: 10979,
     reviewed: true,
     title: "LEGO Jurassic World",
     year: 2015,
@@ -8366,6 +8854,7 @@ window.GAMES = [
   },
   {
     id: "lego-dc-super-villains",
+    ratingCount: 7968,
     reviewed: true,
     title: "LEGO DC Super-Villains",
     year: 2018,
@@ -8383,6 +8872,7 @@ window.GAMES = [
   },
   {
     id: "lego-the-incredibles",
+    ratingCount: 2478,
     reviewed: true,
     title: "LEGO The Incredibles",
     year: 2018,
@@ -8400,6 +8890,7 @@ window.GAMES = [
   },
   {
     id: "lego-harry-potter-collection",
+    ratingCount: 1417,
     reviewed: true,
     title: "LEGO Harry Potter Collection",
     year: 2024,
@@ -8417,6 +8908,7 @@ window.GAMES = [
   },
   {
     id: "lego-the-hobbit",
+    ratingCount: 10488,
     reviewed: true,
     title: "LEGO The Hobbit",
     year: 2014,
@@ -8434,6 +8926,7 @@ window.GAMES = [
   },
   {
     id: "lego-marvel-super-heroes-2",
+    ratingCount: 9972,
     reviewed: true,
     title: "LEGO Marvel Super Heroes 2",
     year: 2017,
@@ -8451,6 +8944,7 @@ window.GAMES = [
   },
   {
     id: "saints-row-2022",
+    ratingCount: 8392,
     reviewed: true,
     title: "Saints Row",
     year: 2022,
@@ -8469,6 +8963,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-3-beyond-gotham",
+    ratingCount: 10244,
     reviewed: true,
     title: "LEGO Batman 3: Beyond Gotham",
     year: 2014,
@@ -8486,6 +8981,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-2-dc-super-heroes",
+    ratingCount: 9176,
     reviewed: true,
     title: "LEGO Batman 2: DC Super Heroes",
     year: 2012,
@@ -8503,6 +8999,7 @@ window.GAMES = [
   },
   {
     id: "painkiller-hell-and-damnation",
+    ratingCount: 4327,
     reviewed: true,
     title: "Painkiller Hell & Damnation",
     year: 2012,
@@ -8520,6 +9017,7 @@ window.GAMES = [
   },
   {
     id: "lego-marvels-avengers",
+    ratingCount: 8733,
     reviewed: true,
     title: "LEGO Marvel's Avengers",
     year: 2016,
@@ -8537,6 +9035,7 @@ window.GAMES = [
   },
   {
     id: "left-4-dead-1",
+    ratingCount: 66885,
     reviewed: true,
     title: "Left 4 Dead",
     year: 2008,
@@ -8554,6 +9053,7 @@ window.GAMES = [
   },
   {
     id: "salt-and-sanctuary",
+    ratingCount: 21635,
     reviewed: true,
     title: "Salt and Sanctuary",
     year: 2016,
@@ -8571,6 +9071,7 @@ window.GAMES = [
   },
   {
     id: "haven",
+    ratingCount: 6019,
     reviewed: true,
     title: "Haven",
     year: 2020,
@@ -8588,6 +9089,7 @@ window.GAMES = [
   },
   {
     id: "degrees-of-separation",
+    ratingCount: 1310,
     reviewed: true,
     title: "Degrees of Separation",
     year: 2019,
@@ -8605,6 +9107,7 @@ window.GAMES = [
   },
   {
     id: "aces-of-the-luftwaffe-squadron",
+    ratingCount: 150,
     reviewed: true,
     title: "Aces of the Luftwaffe - Squadron",
     year: 2018,
@@ -8623,6 +9126,7 @@ window.GAMES = [
   },
   {
     id: "tmnt-cowabunga-collection",
+    ratingCount: 1003,
     reviewed: true,
     title: "Teenage Mutant Ninja Turtles: The Cowabunga Collection",
     year: 2022,
@@ -8640,6 +9144,7 @@ window.GAMES = [
   },
   {
     id: "9-monkeys-of-shaolin",
+    ratingCount: 909,
     reviewed: true,
     title: "9 Monkeys of Shaolin",
     year: 2020,
@@ -8657,6 +9162,7 @@ window.GAMES = [
   },
   {
     id: "young-souls",
+    ratingCount: 602,
     reviewed: true,
     title: "Young Souls",
     year: 2022,
@@ -8674,6 +9180,7 @@ window.GAMES = [
   },
   {
     id: "39-days-to-mars",
+    ratingCount: 329,
     reviewed: true,
     title: "39 Days to Mars",
     year: 2018,
@@ -8691,6 +9198,7 @@ window.GAMES = [
   },
   {
     id: "code-of-princess-ex",
+    ratingCount: 64,
     reviewed: true,
     title: "Code of Princess EX",
     year: 2020,
@@ -8709,6 +9217,7 @@ window.GAMES = [
   },
   {
     id: "die-for-valhalla",
+    ratingCount: 142,
     reviewed: true,
     title: "Die for Valhalla!",
     year: 2018,
@@ -8726,6 +9235,7 @@ window.GAMES = [
   },
   {
     id: "phantom-breaker-battle-grounds-ultimate",
+    ratingCount: 187,
     reviewed: true,
     title: "Phantom Breaker: Battle Grounds Ultimate",
     year: 2025,
@@ -8743,6 +9253,7 @@ window.GAMES = [
   },
   {
     id: "the-takeover",
+    ratingCount: 1167,
     reviewed: true,
     title: "The TakeOver",
     year: 2019,
@@ -8760,6 +9271,7 @@ window.GAMES = [
   },
   {
     id: "splinter-cell-blacklist",
+    ratingCount: 21360,
     reviewed: true,
     title: "Tom Clancy's Splinter Cell Blacklist",
     year: 2013,
@@ -8777,6 +9289,7 @@ window.GAMES = [
   },
   {
     id: "jamestown-plus",
+    ratingCount: 247,
     reviewed: true,
     title: "Jamestown+",
     year: 2019,
@@ -8794,6 +9307,7 @@ window.GAMES = [
   },
   {
     id: "sky-force-reloaded",
+    ratingCount: 2692,
     reviewed: true,
     title: "Sky Force Reloaded",
     year: 2017,
@@ -8811,6 +9325,7 @@ window.GAMES = [
   },
   {
     id: "tesla-vs-lovecraft",
+    ratingCount: 1233,
     reviewed: true,
     title: "Tesla vs Lovecraft",
     year: 2018,
@@ -8828,6 +9343,7 @@ window.GAMES = [
   },
   {
     id: "livelock",
+    ratingCount: 901,
     reviewed: true,
     title: "Livelock",
     year: 2016,
@@ -8845,6 +9361,7 @@ window.GAMES = [
   },
   {
     id: "greedy-guns",
+    ratingCount: 81,
     reviewed: true,
     title: "Greedy Guns",
     year: 2017,
@@ -8862,6 +9379,7 @@ window.GAMES = [
   },
   {
     id: "phogs",
+    ratingCount: 1400,
     reviewed: true,
     title: "PHOGS!",
     year: 2020,
@@ -8879,6 +9397,7 @@ window.GAMES = [
   },
   {
     id: "bleed-2",
+    ratingCount: 898,
     reviewed: true,
     title: "Bleed 2",
     year: 2017,
@@ -8896,6 +9415,7 @@ window.GAMES = [
   },
   {
     id: "neurovoider",
+    ratingCount: 889,
     reviewed: true,
     title: "NeuroVoider",
     year: 2016,
@@ -8913,6 +9433,7 @@ window.GAMES = [
   },
   {
     id: "we-need-to-go-deeper",
+    ratingCount: 6029,
     reviewed: true,
     title: "We Need to Go Deeper",
     year: 2019,
@@ -8930,6 +9451,7 @@ window.GAMES = [
   },
   {
     id: "pixeljunk-monsters-2",
+    ratingCount: 280,
     reviewed: true,
     title: "PixelJunk Monsters 2",
     year: 2018,
@@ -8948,6 +9470,7 @@ window.GAMES = [
   },
   {
     id: "endless-dungeon",
+    ratingCount: 3818,
     reviewed: true,
     title: "ENDLESS Dungeon",
     year: 2023,
@@ -8966,6 +9489,7 @@ window.GAMES = [
   },
   {
     id: "dragon-marked-for-death",
+    ratingCount: 1083,
     reviewed: true,
     title: "Dragon Marked for Death",
     year: 2020,
@@ -8983,6 +9507,7 @@ window.GAMES = [
   },
   {
     id: "battletoads-2020",
+    ratingCount: 2364,
     reviewed: true,
     title: "Battletoads",
     year: 2020,
@@ -9001,6 +9526,7 @@ window.GAMES = [
   },
   {
     id: "iron-meat",
+    ratingCount: 1073,
     reviewed: true,
     title: "Iron Meat",
     year: 2024,
@@ -9018,6 +9544,7 @@ window.GAMES = [
   },
   {
     id: "astral-ascent",
+    ratingCount: 8353,
     reviewed: true,
     title: "Astral Ascent",
     year: 2023,
@@ -9035,6 +9562,7 @@ window.GAMES = [
   },
   {
     id: "sun-haven",
+    ratingCount: 24888,
     reviewed: true,
     title: "Sun Haven",
     year: 2023,
@@ -9052,6 +9580,7 @@ window.GAMES = [
   },
   {
     id: "mercenary-kings",
+    ratingCount: 2436,
     reviewed: true,
     title: "Mercenary Kings: Reloaded Edition",
     year: 2014,
@@ -9069,6 +9598,7 @@ window.GAMES = [
   },
   {
     id: "steredenn-binary-stars",
+    ratingCount: 959,
     reviewed: true,
     title: "Steredenn: Binary Stars",
     year: 2015,
@@ -9086,6 +9616,7 @@ window.GAMES = [
   },
   {
     id: "blazing-beaks",
+    ratingCount: 2607,
     reviewed: true,
     title: "Blazing Beaks",
     year: 2019,
@@ -9103,6 +9634,7 @@ window.GAMES = [
   },
   {
     id: "kingdom-two-crowns",
+    ratingCount: 38418,
     reviewed: true,
     title: "Kingdom Two Crowns",
     year: 2018,
@@ -9120,6 +9652,7 @@ window.GAMES = [
   },
   {
     id: "chronicon",
+    ratingCount: 9638,
     reviewed: true,
     title: "Chronicon",
     year: 2020,
@@ -9137,6 +9670,7 @@ window.GAMES = [
   },
   {
     id: "sanctum-1",
+    ratingCount: 3344,
     reviewed: true,
     title: "Sanctum",
     year: 2011,
@@ -9154,6 +9688,7 @@ window.GAMES = [
   },
   {
     id: "pang-adventures",
+    ratingCount: 448,
     reviewed: true,
     title: "Pang Adventures",
     year: 2016,
@@ -9171,6 +9706,7 @@ window.GAMES = [
   },
   {
     id: "wulverblade",
+    ratingCount: 227,
     reviewed: true,
     title: "Wulverblade",
     year: 2018,
@@ -9188,6 +9724,7 @@ window.GAMES = [
   },
   {
     id: "warhammer-40k-inquisitor-martyr",
+    ratingCount: 22103,
     reviewed: true,
     title: "Warhammer 40,000: Inquisitor - Martyr",
     year: 2018,
@@ -9205,6 +9742,7 @@ window.GAMES = [
   },
   {
     id: "age-of-empires-4",
+    ratingCount: 93017,
     reviewed: true,
     title: "Age of Empires IV",
     year: 2021,
@@ -9222,6 +9760,7 @@ window.GAMES = [
   },
   {
     id: "age-of-mythology-retold",
+    ratingCount: 22539,
     reviewed: true,
     title: "Age of Mythology: Retold",
     year: 2024,
@@ -9239,6 +9778,7 @@ window.GAMES = [
   },
   {
     id: "my-time-at-sandrock",
+    ratingCount: 28578,
     reviewed: true,
     title: "My Time at Sandrock",
     year: 2023,
@@ -9256,6 +9796,7 @@ window.GAMES = [
   },
   {
     id: "coral-island",
+    ratingCount: 26600,
     reviewed: true,
     title: "Coral Island",
     year: 2023,
@@ -9273,6 +9814,7 @@ window.GAMES = [
   },
   {
     id: "ikaruga",
+    ratingCount: 2322,
     reviewed: true,
     title: "Ikaruga",
     year: 2014,
@@ -9290,6 +9832,7 @@ window.GAMES = [
   },
   {
     id: "r-type-dimensions-ex",
+    ratingCount: 329,
     reviewed: true,
     title: "R-Type Dimensions EX",
     year: 2018,
@@ -9307,6 +9850,7 @@ window.GAMES = [
   },
   {
     id: "achilles-legends-untold",
+    ratingCount: 2538,
     reviewed: true,
     title: "Achilles: Legends Untold",
     year: 2023,
@@ -9324,6 +9868,7 @@ window.GAMES = [
   },
   {
     id: "contra-anniversary-collection",
+    ratingCount: 1454,
     reviewed: true,
     title: "Contra Anniversary Collection",
     year: 2019,
@@ -9341,6 +9886,7 @@ window.GAMES = [
   },
   {
     id: "the-ninja-saviors-return-of-the-warriors",
+    ratingCount: 422,
     reviewed: true,
     title: "The Ninja Saviors: Return of the Warriors",
     year: 2023,
@@ -9358,6 +9904,7 @@ window.GAMES = [
   },
   {
     id: "sky-force-anniversary",
+    ratingCount: 2149,
     reviewed: true,
     title: "Sky Force Anniversary",
     year: 2015,
@@ -9375,6 +9922,7 @@ window.GAMES = [
   },
   {
     id: "defense-grid-2",
+    ratingCount: 3400,
     reviewed: true,
     title: "Defense Grid 2",
     year: 2014,
@@ -9393,6 +9941,7 @@ window.GAMES = [
   },
   {
     id: "ship-of-fools",
+    ratingCount: 6011,
     reviewed: true,
     title: "Ship of Fools",
     year: 2022,
@@ -9410,6 +9959,7 @@ window.GAMES = [
   },
   {
     id: "rogue-heroes-ruins-of-tasos",
+    ratingCount: 3679,
     reviewed: true,
     title: "Rogue Heroes: Ruins of Tasos",
     year: 2021,
@@ -9427,6 +9977,7 @@ window.GAMES = [
   },
   {
     id: "for-the-king-2",
+    ratingCount: 15644,
     reviewed: true,
     title: "For The King II",
     year: 2023,
@@ -9445,6 +9996,7 @@ window.GAMES = [
   },
   {
     id: "blanc",
+    ratingCount: 1413,
     reviewed: true,
     title: "Blanc",
     year: 2023,
@@ -9462,6 +10014,7 @@ window.GAMES = [
   },
   {
     id: "untitled-goose-game",
+    ratingCount: 24431,
     reviewed: true,
     title: "Untitled Goose Game",
     year: 2020,
@@ -9479,6 +10032,7 @@ window.GAMES = [
   },
   {
     id: "dungeon-defenders-awakened",
+    ratingCount: 4811,
     reviewed: true,
     title: "Dungeon Defenders: Awakened",
     year: 2020,
@@ -9497,6 +10051,7 @@ window.GAMES = [
   },
   {
     id: "ghost-recon-breakpoint",
+    ratingCount: 42616,
     reviewed: true,
     title: "Ghost Recon Breakpoint",
     year: 2019,
@@ -9514,6 +10069,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-man-of-medan",
+    ratingCount: 13574,
     reviewed: true,
     title: "The Dark Pictures Anthology: Man of Medan",
     year: 2019,
@@ -9531,6 +10087,7 @@ window.GAMES = [
   },
   {
     id: "the-bug-butcher",
+    ratingCount: 1201,
     reviewed: true,
     title: "The Bug Butcher",
     year: 2016,
@@ -9548,6 +10105,7 @@ window.GAMES = [
   },
   {
     id: "hellpoint",
+    ratingCount: 4471,
     reviewed: true,
     title: "Hellpoint",
     year: 2020,
@@ -9565,6 +10123,7 @@ window.GAMES = [
   },
   {
     id: "mechwarrior-5-mercenaries",
+    ratingCount: 15025,
     reviewed: true,
     title: "MechWarrior 5: Mercenaries",
     year: 2021,
@@ -9582,6 +10141,7 @@ window.GAMES = [
   },
   {
     id: "aground",
+    ratingCount: 1989,
     reviewed: true,
     title: "Aground",
     year: 2020,
@@ -9599,6 +10159,7 @@ window.GAMES = [
   },
   {
     id: "lego-indiana-jones",
+    ratingCount: 4322,
     reviewed: true,
     title: "LEGO Indiana Jones: The Original Adventures",
     year: 2008,
@@ -9616,6 +10177,7 @@ window.GAMES = [
   },
   {
     id: "lego-pirates-of-the-caribbean",
+    ratingCount: 5587,
     reviewed: true,
     title: "LEGO Pirates of the Caribbean: The Video Game",
     year: 2011,
@@ -9633,6 +10195,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-3-clone-wars",
+    ratingCount: 9186,
     reviewed: true,
     title: "LEGO Star Wars III: The Clone Wars",
     year: 2011,
@@ -9650,6 +10213,7 @@ window.GAMES = [
   },
   {
     id: "cook-serve-delicious-3",
+    ratingCount: 2276,
     reviewed: true,
     title: "Cook, Serve, Delicious! 3?!",
     year: 2020,
@@ -9667,6 +10231,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-the-complete-saga",
+    ratingCount: 25206,
     reviewed: true,
     title: "LEGO Star Wars: The Complete Saga",
     year: 2009,
@@ -9684,6 +10249,7 @@ window.GAMES = [
   },
   {
     id: "lego-the-lord-of-the-rings",
+    ratingCount: 15697,
     reviewed: true,
     title: "LEGO The Lord of the Rings",
     year: 2012,
@@ -9701,6 +10267,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-the-force-awakens",
+    ratingCount: 6986,
     reviewed: true,
     title: "LEGO Star Wars: The Force Awakens",
     year: 2016,
@@ -9718,6 +10285,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-the-videogame",
+    ratingCount: 15737,
     reviewed: true,
     title: "LEGO Batman: The Videogame",
     year: 2008,
@@ -9735,6 +10303,7 @@ window.GAMES = [
   },
   {
     id: "the-lego-movie-videogame",
+    ratingCount: 5888,
     reviewed: true,
     title: "The LEGO Movie Videogame",
     year: 2014,
@@ -9752,6 +10321,7 @@ window.GAMES = [
   },
   {
     id: "the-lego-ninjago-movie-video-game",
+    ratingCount: 7942,
     reviewed: true,
     title: "The LEGO Ninjago Movie Video Game",
     year: 2017,
@@ -9769,6 +10339,7 @@ window.GAMES = [
   },
   {
     id: "minecraft-legends",
+    ratingCount: 2822,
     reviewed: true,
     title: "Minecraft Legends",
     year: 2023,
@@ -9787,6 +10358,7 @@ window.GAMES = [
   },
   {
     id: "gigantosaurus-the-game",
+    ratingCount: 69,
     reviewed: true,
     title: "Gigantosaurus The Game",
     year: 2020,
@@ -9804,6 +10376,7 @@ window.GAMES = [
   },
   {
     id: "prodeus",
+    ratingCount: 8099,
     reviewed: true,
     title: "Prodeus",
     year: 2022,
@@ -9821,6 +10394,7 @@ window.GAMES = [
   },
   {
     id: "heave-ho",
+    ratingCount: 2556,
     reviewed: true,
     title: "Heave Ho",
     year: 2019,
@@ -9838,6 +10412,7 @@ window.GAMES = [
   },
   {
     id: "pikuniku",
+    ratingCount: 11077,
     reviewed: true,
     title: "Pikuniku",
     year: 2019,
@@ -9855,6 +10430,7 @@ window.GAMES = [
   },
   {
     id: "house-of-the-dead-remake",
+    ratingCount: 2880,
     reviewed: true,
     title: "The House of the Dead: Remake",
     year: 2022,
@@ -9873,6 +10449,7 @@ window.GAMES = [
   },
   {
     id: "iron-harvest",
+    ratingCount: 15845,
     reviewed: true,
     title: "Iron Harvest",
     year: 2020,
@@ -9890,6 +10467,7 @@ window.GAMES = [
   },
   {
     id: "sine-mora-ex",
+    ratingCount: 683,
     reviewed: true,
     title: "Sine Mora EX",
     year: 2017,
@@ -9908,6 +10486,7 @@ window.GAMES = [
   },
   {
     id: "foul-play",
+    ratingCount: 650,
     reviewed: true,
     title: "Foul Play",
     year: 2013,
@@ -9925,6 +10504,7 @@ window.GAMES = [
   },
   {
     id: "charlie-murder",
+    ratingCount: 2823,
     reviewed: true,
     title: "Charlie Murder",
     year: 2017,
@@ -9942,6 +10522,7 @@ window.GAMES = [
   },
   {
     id: "dungeons-3",
+    ratingCount: 18644,
     reviewed: true,
     title: "Dungeons 3",
     year: 2017,
@@ -9959,6 +10540,7 @@ window.GAMES = [
   },
   {
     id: "risk-of-rain-2013",
+    ratingCount: 29815,
     reviewed: true,
     title: "Risk of Rain",
     year: 2013,
@@ -9977,6 +10559,7 @@ window.GAMES = [
   },
   {
     id: "knights-and-bikes",
+    ratingCount: 624,
     reviewed: true,
     title: "Knights and Bikes",
     year: 2019,
@@ -9994,6 +10577,7 @@ window.GAMES = [
   },
   {
     id: "never-alone",
+    ratingCount: 8648,
     reviewed: true,
     title: "Never Alone (Kisima Ingitchuna)",
     year: 2014,
@@ -10011,6 +10595,7 @@ window.GAMES = [
   },
   {
     id: "rain-world",
+    ratingCount: 52089,
     reviewed: true,
     title: "Rain World",
     year: 2017,
@@ -10028,6 +10613,7 @@ window.GAMES = [
   },
   {
     id: "heretic-hexen",
+    ratingCount: 1814,
     reviewed: true,
     title: "Heretic + Hexen",
     year: 2025,
@@ -10045,6 +10631,7 @@ window.GAMES = [
   },
   {
     id: "tristoy",
+    ratingCount: 230,
     reviewed: true,
     title: "TRISTOY",
     year: 2015,
@@ -10063,6 +10650,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-too",
+    ratingCount: 10989,
     reviewed: true,
     title: "We Were Here Too",
     year: 2018,
@@ -10080,6 +10668,7 @@ window.GAMES = [
   },
   {
     id: "pile-up-box-by-box",
+    ratingCount: 98,
     reviewed: true,
     title: "Pile Up! Box by Box",
     year: 2021,
@@ -10097,6 +10686,7 @@ window.GAMES = [
   },
   {
     id: "dead-rising-2",
+    ratingCount: 8705,
     reviewed: true,
     title: "Dead Rising 2",
     year: 2010,
@@ -10114,6 +10704,7 @@ window.GAMES = [
   },
   {
     id: "fear-3",
+    ratingCount: 13545,
     reviewed: true,
     title: "F.E.A.R. 3",
     year: 2011,
@@ -10131,6 +10722,7 @@ window.GAMES = [
   },
   {
     id: "dead-rising-2-off-the-record",
+    ratingCount: 4220,
     reviewed: true,
     title: "Dead Rising 2: Off the Record",
     year: 2011,
@@ -10148,6 +10740,7 @@ window.GAMES = [
   },
   {
     id: "catastronauts",
+    ratingCount: 229,
     reviewed: true,
     title: "Catastronauts",
     year: 2018,
@@ -10165,6 +10758,7 @@ window.GAMES = [
   },
   {
     id: "toxic-commando",
+    ratingCount: 6657,
     reviewed: true,
     title: "John Carpenter's Toxic Commando",
     year: 2026,
@@ -10182,6 +10776,7 @@ window.GAMES = [
   },
   {
     id: "painkiller-2025",
+    ratingCount: 1120,
     reviewed: true,
     title: "Painkiller",
     year: 2025,
@@ -10200,6 +10795,7 @@ window.GAMES = [
   },
   {
     id: "call-of-duty-black-ops-3",
+    ratingCount: 229395,
     reviewed: true,
     title: "Call of Duty: Black Ops III",
     year: 2015,
@@ -10218,6 +10814,7 @@ window.GAMES = [
   },
   {
     id: "shovel-knight-treasure-trove",
+    ratingCount: 16723,
     reviewed: true,
     title: "Shovel Knight: Treasure Trove",
     year: 2014,
@@ -10235,6 +10832,7 @@ window.GAMES = [
   },
   {
     id: "escape-simulator-2",
+    ratingCount: 4242,
     reviewed: true,
     title: "Escape Simulator 2",
     year: 2025,
@@ -10252,6 +10850,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-symphonia",
+    ratingCount: 5130,
     reviewed: true,
     title: "Tales of Symphonia",
     year: 2016,
@@ -10269,6 +10868,7 @@ window.GAMES = [
   },
   {
     id: "police-stories",
+    ratingCount: 9587,
     reviewed: true,
     title: "Police Stories",
     year: 2019,
@@ -10286,6 +10886,7 @@ window.GAMES = [
   },
   {
     id: "double-dragon-revive",
+    ratingCount: 178,
     reviewed: true,
     title: "Double Dragon Revive",
     year: 2025,
@@ -10304,6 +10905,7 @@ window.GAMES = [
   },
   {
     id: "double-dragon-neon",
+    ratingCount: 2554,
     reviewed: true,
     title: "Double Dragon: Neon",
     year: 2014,
@@ -10321,6 +10923,7 @@ window.GAMES = [
   },
   {
     id: "evil-west",
+    ratingCount: 13030,
     reviewed: true,
     title: "Evil West",
     year: 2022,
@@ -10338,6 +10941,7 @@ window.GAMES = [
   },
   {
     id: "shootas-blood-and-teef",
+    ratingCount: 3061,
     reviewed: true,
     title: "Warhammer 40,000: Shootas, Blood & Teef",
     year: 2022,
@@ -10355,6 +10959,7 @@ window.GAMES = [
   },
   {
     id: "super-bunny-man",
+    ratingCount: 11885,
     reviewed: true,
     title: "Super Bunny Man",
     year: 2023,
@@ -10372,6 +10977,7 @@ window.GAMES = [
   },
   {
     id: "the-expendabros",
+    ratingCount: 18246,
     reviewed: true,
     title: "The Expendabros",
     year: 2014,
@@ -10389,6 +10995,7 @@ window.GAMES = [
   },
   {
     id: "scott-pilgrim-ex",
+    ratingCount: 458,
     reviewed: true,
     title: "Scott Pilgrim EX",
     year: 2026,
@@ -10406,6 +11013,7 @@ window.GAMES = [
   },
   {
     id: "thunder-tier-one",
+    ratingCount: 5598,
     reviewed: true,
     title: "Thunder Tier One",
     year: 2021,
@@ -10424,6 +11032,7 @@ window.GAMES = [
   },
   {
     id: "door-kickers",
+    ratingCount: 10019,
     reviewed: true,
     title: "Door Kickers",
     year: 2014,
@@ -10441,6 +11050,7 @@ window.GAMES = [
   },
   {
     id: "metal-slug-2",
+    ratingCount: 1376,
     reviewed: true,
     title: "METAL SLUG 2",
     year: 2016,
@@ -10458,6 +11068,7 @@ window.GAMES = [
   },
   {
     id: "metal-slug-1",
+    ratingCount: 5086,
     reviewed: true,
     title: "METAL SLUG",
     year: 2015,
@@ -10475,6 +11086,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-zestiria",
+    ratingCount: 9264,
     reviewed: true,
     title: "Tales of Zestiria",
     year: 2015,
@@ -10492,6 +11104,7 @@ window.GAMES = [
   },
   {
     id: "obscure",
+    ratingCount: 3161,
     reviewed: true,
     title: "Obscure",
     year: 2014,
@@ -10509,6 +11122,7 @@ window.GAMES = [
   },
   {
     id: "obscure-2",
+    ratingCount: 1606,
     reviewed: true,
     title: "Obscure II (Obscure: The Aftermath)",
     year: 2014,
@@ -10526,6 +11140,7 @@ window.GAMES = [
   },
   {
     id: "legend-of-mana",
+    ratingCount: 1245,
     reviewed: true,
     title: "Legend of Mana",
     year: 2021,
@@ -10543,6 +11158,7 @@ window.GAMES = [
   },
   {
     id: "fireboy-and-watergirl-elements",
+    ratingCount: 1143,
     reviewed: true,
     title: "Fireboy & Watergirl: Elements",
     year: 2019,
@@ -10560,6 +11176,7 @@ window.GAMES = [
   },
   {
     id: "techtonica",
+    ratingCount: 3207,
     reviewed: true,
     title: "Techtonica",
     year: 2024,
@@ -10578,6 +11195,7 @@ window.GAMES = [
   },
   {
     id: "the-survivalists",
+    ratingCount: 10018,
     reviewed: true,
     title: "The Survivalists",
     year: 2020,
@@ -10595,6 +11213,7 @@ window.GAMES = [
   },
   {
     id: "gatekeeper",
+    ratingCount: 3226,
     reviewed: true,
     title: "Gatekeeper",
     year: 2025,
@@ -10612,6 +11231,7 @@ window.GAMES = [
   },
   {
     id: "nullpoint-protocol",
+    ratingCount: 74,
     reviewed: true,
     title: "Nullpoint Protocol",
     year: 2026,
@@ -10630,6 +11250,7 @@ window.GAMES = [
   },
   {
     id: "lost-castle-2",
+    ratingCount: 11182,
     reviewed: true,
     title: "Lost Castle 2",
     year: 2024,
@@ -10647,6 +11268,7 @@ window.GAMES = [
   },
   {
     id: "fury-unleashed",
+    ratingCount: 2864,
     reviewed: true,
     title: "Fury Unleashed",
     year: 2020,
@@ -10664,6 +11286,7 @@ window.GAMES = [
   },
   {
     id: "cry-of-fear",
+    ratingCount: 84507,
     reviewed: true,
     title: "Cry of Fear",
     year: 2013,
@@ -10681,6 +11304,7 @@ window.GAMES = [
   },
   {
     id: "avatar-frontiers-of-pandora",
+    ratingCount: 14190,
     reviewed: true,
     title: "Avatar: Frontiers of Pandora",
     year: 2023,
@@ -10698,6 +11322,7 @@ window.GAMES = [
   },
   {
     id: "all-hands-on-deck",
+    ratingCount: 96,
     reviewed: true,
     title: "All Hands on Deck",
     year: 2025,
@@ -10715,6 +11340,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-enhanced-edition",
+    ratingCount: 17667,
     reviewed: true,
     title: "Baldur's Gate: Enhanced Edition",
     year: 2013,
@@ -10732,6 +11358,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-2-enhanced-edition",
+    ratingCount: 10721,
     reviewed: true,
     title: "Baldur's Gate II: Enhanced Edition",
     year: 2013,
@@ -10749,6 +11376,7 @@ window.GAMES = [
   },
   {
     id: "earthfall",
+    ratingCount: 2292,
     reviewed: true,
     title: "Earthfall",
     year: 2018,
@@ -10767,6 +11395,7 @@ window.GAMES = [
   },
   {
     id: "wizard-with-a-gun",
+    ratingCount: 3865,
     reviewed: true,
     title: "Wizard with a Gun",
     year: 2023,
@@ -10784,6 +11413,7 @@ window.GAMES = [
   },
   {
     id: "drake-hollow",
+    ratingCount: 1797,
     reviewed: true,
     title: "Drake Hollow",
     year: 2020,
@@ -10801,6 +11431,7 @@ window.GAMES = [
   },
   {
     id: "neon-inferno",
+    ratingCount: 373,
     reviewed: true,
     title: "Neon Inferno",
     year: 2025,
@@ -10818,6 +11449,7 @@ window.GAMES = [
   },
   {
     id: "revenge-of-the-savage-planet",
+    ratingCount: 3400,
     reviewed: true,
     title: "Revenge of the Savage Planet",
     year: 2025,
@@ -10836,6 +11468,7 @@ window.GAMES = [
   },
   {
     id: "windswept",
+    ratingCount: 529,
     reviewed: true,
     title: "Windswept",
     year: 2025,
@@ -10853,6 +11486,7 @@ window.GAMES = [
   },
   {
     id: "darkstone",
+    ratingCount: 589,
     reviewed: true,
     title: "Darkstone",
     year: 2014,
@@ -10870,6 +11504,7 @@ window.GAMES = [
   },
   {
     id: "daemon-x-machina-titanic-scion",
+    ratingCount: 2317,
     reviewed: true,
     title: "Daemon X Machina: Titanic Scion",
     year: 2025,
@@ -10888,6 +11523,7 @@ window.GAMES = [
   },
   {
     id: "warhammer-40k-rogue-trader",
+    ratingCount: 44180,
     reviewed: true,
     title: "Warhammer 40,000: Rogue Trader",
     year: 2023,
@@ -10905,6 +11541,7 @@ window.GAMES = [
   },
   {
     id: "dodonpachi-resurrection",
+    ratingCount: 1064,
     reviewed: true,
     title: "DoDonPachi Resurrection",
     year: 2016,
@@ -10922,6 +11559,7 @@ window.GAMES = [
   },
   {
     id: "g-darius-hd",
+    ratingCount: 161,
     reviewed: true,
     title: "G-Darius HD",
     year: 2022,
@@ -10939,6 +11577,7 @@ window.GAMES = [
   },
   {
     id: "frogun-encore",
+    ratingCount: 133,
     reviewed: true,
     title: "Frogun Encore",
     year: 2024,
@@ -10956,6 +11595,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-skywalker-saga",
+    ratingCount: 47902,
     reviewed: true,
     title: "LEGO Star Wars: The Skywalker Saga",
     year: 2022,
@@ -10974,6 +11614,7 @@ window.GAMES = [
   },
   {
     id: "ashen",
+    ratingCount: 3810,
     reviewed: true,
     title: "Ashen",
     year: 2018,
@@ -10992,6 +11633,7 @@ window.GAMES = [
   },
   {
     id: "63-days",
+    ratingCount: 568,
     reviewed: true,
     title: "63 Days",
     year: 2024,
@@ -11009,6 +11651,7 @@ window.GAMES = [
   },
   {
     id: "tank-squad",
+    ratingCount: 820,
     reviewed: true,
     title: "Tank Squad",
     year: 2025,
@@ -11026,6 +11669,7 @@ window.GAMES = [
   },
   {
     id: "lizards-must-die-2",
+    ratingCount: 2422,
     reviewed: true,
     title: "LIZARDS MUST DIE 2",
     year: 2025,
@@ -11043,6 +11687,7 @@ window.GAMES = [
   },
   {
     id: "cats-love-boxes",
+    ratingCount: 432,
     reviewed: true,
     title: "Cats Love Boxes",
     year: 2024,
@@ -11060,6 +11705,7 @@ window.GAMES = [
   },
   {
     id: "sheepherds",
+    ratingCount: 344,
     reviewed: true,
     title: "Sheepherds!",
     year: 2025,
@@ -11077,12 +11723,13 @@ window.GAMES = [
   },
   {
     id: "phantom-squad",
+    ratingCount: 516,
     reviewed: true,
     title: "Phantom Squad",
     year: 2025,
     genres: ["Indie", "Isometric", "Tactics", "Shooter", "Military"],
     endingType: "levels",
-    rating: 80,
+    rating: 83,
     playersMax: 4,
     hours: 10,
     oneCopy: "none",
@@ -11094,6 +11741,7 @@ window.GAMES = [
   },
   {
     id: "legion-td-2",
+    ratingCount: 15035,
     reviewed: true,
     title: "Legion TD 2 - Multiplayer Tower Defense",
     year: 2021,
@@ -11111,6 +11759,7 @@ window.GAMES = [
   },
   {
     id: "wayfinder",
+    ratingCount: 26281,
     reviewed: true,
     title: "Wayfinder",
     year: 2024,
@@ -11129,6 +11778,7 @@ window.GAMES = [
   },
   {
     id: "rotwood",
+    ratingCount: 8031,
     reviewed: true,
     title: "Rotwood",
     year: 2026,
@@ -11146,6 +11796,7 @@ window.GAMES = [
   },
   {
     id: "joe-n-jo",
+    ratingCount: 1266,
     reviewed: true,
     title: "Joe 'n Jo",
     year: 2024,
@@ -11164,6 +11815,7 @@ window.GAMES = [
   },
   {
     id: "flock-around",
+    ratingCount: 1415,
     reviewed: true,
     title: "Flock Around",
     year: 2026,
@@ -11181,6 +11833,7 @@ window.GAMES = [
   },
   {
     id: "that-one-otter-game",
+    ratingCount: 1177,
     reviewed: true,
     title: "That One Otter Game",
     year: 2025,
@@ -11198,6 +11851,7 @@ window.GAMES = [
   },
   {
     id: "grenouilles-3d",
+    ratingCount: 145,
     reviewed: true,
     title: "Grenouilles 3D",
     year: 2026,
@@ -11215,6 +11869,7 @@ window.GAMES = [
   },
   {
     id: "ants-took-my-eyeball",
+    ratingCount: 252,
     reviewed: true,
     title: "Ants Took My Eyeball",
     year: 2024,
@@ -11232,6 +11887,7 @@ window.GAMES = [
   },
   {
     id: "bloody-trapland-2-curiosity",
+    ratingCount: 992,
     reviewed: true,
     title: "Bloody Trapland 2: Curiosity",
     year: 2019,
@@ -11249,6 +11905,7 @@ window.GAMES = [
   },
   {
     id: "geometry-wars-3-dimensions-evolved",
+    ratingCount: 1586,
     reviewed: true,
     title: "Geometry Wars 3: Dimensions Evolved",
     year: 2014,
@@ -11266,6 +11923,7 @@ window.GAMES = [
   },
   {
     id: "necromunda-underhive-wars",
+    ratingCount: 2968,
     reviewed: true,
     title: "Necromunda: Underhive Wars",
     year: 2020,
@@ -11284,6 +11942,7 @@ window.GAMES = [
   },
   {
     id: "trailmakers",
+    ratingCount: 35933,
     reviewed: true,
     title: "Trailmakers",
     year: 2019,
@@ -11301,6 +11960,7 @@ window.GAMES = [
   },
   {
     id: "pacify",
+    ratingCount: 42523,
     reviewed: true,
     title: "Pacify",
     year: 2019,
@@ -11318,6 +11978,7 @@ window.GAMES = [
   },
   {
     id: "scrapnaut",
+    ratingCount: 829,
     reviewed: true,
     title: "Scrapnaut",
     year: 2021,
@@ -11336,6 +11997,7 @@ window.GAMES = [
   },
   {
     id: "shift-happens",
+    ratingCount: 4341,
     reviewed: true,
     title: "Shift Happens",
     year: 2017,
@@ -11353,6 +12015,7 @@ window.GAMES = [
   },
   {
     id: "ys-ix-monstrum-nox",
+    ratingCount: 1888,
     reviewed: true,
     title: "Ys IX: Monstrum Nox",
     year: 2021,
@@ -11370,6 +12033,7 @@ window.GAMES = [
   },
   {
     id: "portal-reloaded",
+    ratingCount: 21901,
     reviewed: true,
     title: "Portal Reloaded",
     year: 2021,
@@ -11387,6 +12051,7 @@ window.GAMES = [
   },
   {
     id: "streets-of-fury-ex",
+    ratingCount: 859,
     reviewed: true,
     title: "Streets of Fury EX",
     year: 2015,
@@ -11404,6 +12069,7 @@ window.GAMES = [
   },
   {
     id: "death-in-unison",
+    ratingCount: 731,
     reviewed: true,
     title: "DEATH IN UNISON",
     year: 2024,
@@ -11421,6 +12087,7 @@ window.GAMES = [
   },
   {
     id: "tonight-we-riot",
+    ratingCount: 564,
     reviewed: true,
     title: "Tonight We Riot",
     year: 2020,
@@ -11438,6 +12105,7 @@ window.GAMES = [
   },
   {
     id: "alien-hominid-hd",
+    ratingCount: 593,
     reviewed: true,
     title: "Alien Hominid HD",
     year: 2023,
@@ -11455,6 +12123,7 @@ window.GAMES = [
   },
   {
     id: "we-escaped-a-twisted-game",
+    ratingCount: 787,
     reviewed: true,
     title: "We Escaped a Twisted Game",
     year: 2025,
@@ -11472,6 +12141,7 @@ window.GAMES = [
   },
   {
     id: "bloody-trapland",
+    ratingCount: 4028,
     reviewed: true,
     title: "Bloody Trapland",
     year: 2013,
@@ -11489,6 +12159,7 @@ window.GAMES = [
   },
   {
     id: "soulmask",
+    ratingCount: 21612,
     reviewed: true,
     title: "Soulmask",
     year: 2026,
@@ -11506,6 +12177,7 @@ window.GAMES = [
   },
   {
     id: "schrodingers-cat-burglar",
+    ratingCount: 454,
     reviewed: true,
     title: "Schrodinger's Cat Burglar",
     year: 2026,
@@ -11523,6 +12195,7 @@ window.GAMES = [
   },
   {
     id: "paint-the-town-red",
+    ratingCount: 32000,
     reviewed: true,
     title: "Paint the Town Red",
     year: 2021,
@@ -11540,6 +12213,7 @@ window.GAMES = [
   },
   {
     id: "bionic-commando-rearmed",
+    ratingCount: 1148,
     reviewed: true,
     title: "Bionic Commando Rearmed",
     year: 2009,
@@ -11558,6 +12232,7 @@ window.GAMES = [
   },
   {
     id: "super-bomberman-r",
+    ratingCount: 644,
     reviewed: true,
     title: "Super Bomberman R",
     year: 2018,
@@ -11576,6 +12251,7 @@ window.GAMES = [
   },
   {
     id: "aliens-colonial-marines",
+    ratingCount: 12023,
     reviewed: true,
     title: "Aliens: Colonial Marines",
     year: 2013,
@@ -11594,6 +12270,7 @@ window.GAMES = [
   },
   {
     id: "voidtrain",
+    ratingCount: 9496,
     reviewed: true,
     title: "Voidtrain",
     year: 2025,
@@ -11611,6 +12288,7 @@ window.GAMES = [
   },
   {
     id: "alien-breed-impact",
+    ratingCount: 1886,
     reviewed: true,
     title: "Alien Breed: Impact",
     year: 2010,
@@ -11628,6 +12306,7 @@ window.GAMES = [
   },
   {
     id: "orcs-must-die-deathtrap",
+    ratingCount: 4531,
     reviewed: true,
     title: "Orcs Must Die! Deathtrap",
     year: 2025,
@@ -11645,6 +12324,7 @@ window.GAMES = [
   },
   {
     id: "minecraft-dungeons",
+    ratingCount: 16832,
     reviewed: true,
     title: "Minecraft Dungeons",
     year: 2021,
@@ -11662,6 +12342,7 @@ window.GAMES = [
   },
   {
     id: "luma-island",
+    ratingCount: 12348,
     reviewed: true,
     title: "Luma Island",
     year: 2024,
@@ -11679,6 +12360,7 @@ window.GAMES = [
   },
   {
     id: "dont-panic-it-is-just-turbulence",
+    ratingCount: 310,
     reviewed: true,
     title: "Don't Panic! It is Just Turbulence",
     year: 2026,
@@ -11697,6 +12379,7 @@ window.GAMES = [
   },
   {
     id: "dirt-5",
+    ratingCount: 6938,
     reviewed: true,
     title: "DIRT 5",
     year: 2020,
@@ -11715,6 +12398,7 @@ window.GAMES = [
   },
   {
     id: "hotshot-racing",
+    ratingCount: 2353,
     reviewed: true,
     title: "Hotshot Racing",
     year: 2020,
@@ -11732,6 +12416,7 @@ window.GAMES = [
   },
   {
     id: "viking-squad",
+    ratingCount: 277,
     reviewed: true,
     title: "Viking Squad",
     year: 2016,
@@ -11749,6 +12434,7 @@ window.GAMES = [
   },
   {
     id: "mai-child-of-ages",
+    ratingCount: 266,
     reviewed: true,
     title: "Mai: Child of Ages",
     year: 2025,
@@ -11766,6 +12452,7 @@ window.GAMES = [
   },
   {
     id: "icewind-dale-enhanced-edition",
+    ratingCount: 3580,
     reviewed: true,
     title: "Icewind Dale: Enhanced Edition",
     year: 2014,
@@ -11783,6 +12470,7 @@ window.GAMES = [
   },
   {
     id: "neverwinter-nights-enhanced-edition",
+    ratingCount: 9393,
     reviewed: true,
     title: "Neverwinter Nights: Enhanced Edition",
     year: 2018,
@@ -11800,6 +12488,7 @@ window.GAMES = [
   },
   {
     id: "tetris-effect-connected",
+    ratingCount: 8837,
     reviewed: true,
     title: "Tetris Effect: Connected",
     year: 2021,
@@ -11817,6 +12506,7 @@ window.GAMES = [
   },
   {
     id: "pratfall",
+    ratingCount: 1700,
     reviewed: true,
     title: "Pratfall",
     year: 2026,
@@ -11834,6 +12524,7 @@ window.GAMES = [
   },
   {
     id: "horizon-chase-turbo",
+    ratingCount: 5879,
     reviewed: true,
     title: "Horizon Chase Turbo",
     year: 2018,
@@ -11851,6 +12542,7 @@ window.GAMES = [
   },
   {
     id: "bloodstained-curse-of-the-moon-2",
+    ratingCount: 1606,
     reviewed: true,
     title: "Bloodstained: Curse of the Moon 2",
     year: 2020,
@@ -11868,6 +12560,7 @@ window.GAMES = [
   },
   {
     id: "timespinner",
+    ratingCount: 3125,
     reviewed: true,
     title: "Timespinner",
     year: 2018,
@@ -11885,6 +12578,7 @@ window.GAMES = [
   },
   {
     id: "unepic",
+    ratingCount: 8152,
     reviewed: true,
     title: "Unepic",
     year: 2014,
@@ -11902,6 +12596,7 @@ window.GAMES = [
   },
   {
     id: "escape-memoirs-mini-stories",
+    ratingCount: 6000,
     reviewed: true,
     title: "Escape Memoirs: Mini Stories",
     year: 2022,
@@ -11919,6 +12614,7 @@ window.GAMES = [
   },
   {
     id: "fling-to-the-finish",
+    ratingCount: 1390,
     reviewed: true,
     title: "Fling to the Finish",
     year: 2024,
@@ -11936,6 +12632,7 @@ window.GAMES = [
   },
   {
     id: "abyss-odyssey",
+    ratingCount: 2531,
     reviewed: true,
     title: "Abyss Odyssey",
     year: 2014,
@@ -11954,6 +12651,7 @@ window.GAMES = [
   },
   {
     id: "ghostlore",
+    ratingCount: 737,
     reviewed: true,
     title: "Ghostlore",
     year: 2023,
@@ -11971,6 +12669,7 @@ window.GAMES = [
   },
   {
     id: "haste-landfall",
+    ratingCount: 13050,
     reviewed: true,
     title: "Haste",
     year: 2025,
@@ -11988,6 +12687,7 @@ window.GAMES = [
   },
   {
     id: "gunboat-god",
+    ratingCount: 66,
     reviewed: true,
     title: "Gunboat God",
     year: 2026,
@@ -12005,6 +12705,7 @@ window.GAMES = [
   },
   {
     id: "no-mans-sky",
+    ratingCount: 408830,
     reviewed: true,
     title: "No Man's Sky",
     year: 2016,
@@ -12136,6 +12837,7 @@ window.GAMES = [
   },
   {
     id: "icarus",
+    ratingCount: 64210,
     title: "ICARUS",
     year: 2021,
     genres: ["Indie", "First-person", "Sci-fi", "Survival"],
@@ -12153,6 +12855,7 @@ window.GAMES = [
   },
   {
     id: "the-division",
+    ratingCount: 96368,
     title: "Tom Clancy's The Division",
     year: 2016,
     genres: ["AAA", "Third-person", "Shooter", "RPG", "Loot", "Open World"],
@@ -12170,6 +12873,7 @@ window.GAMES = [
   },
   {
     id: "dunecrawl",
+    ratingCount: 584,
     title: "DuneCrawl",
     year: 2026,
     genres: ["Indie", "Third-person", "Action", "RPG", "Sci-fi"],

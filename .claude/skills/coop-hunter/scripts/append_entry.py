@@ -161,6 +161,12 @@ def render_entry(g):
     needs_review = g.get("needs_review") or g.get("needs-review")
     review_line = ',\n    "needs-review": true' if needs_review else ""
 
+    # ratingCount = Steam total_reviews. Optional at insert time (the cron /
+    # backfill fills it if absent), but the skill SHOULD pass it — it already
+    # fetches total_reviews to compute %positive. Powers the site's Wilson score.
+    rating_count = g.get("ratingCount") or g.get("rating_count") or g.get("total_reviews")
+    count_line = f"\n    ratingCount: {js_int(rating_count)}," if rating_count not in (None, "") else ""
+
     # NOTE: data shape was trimmed in 2026-05. We no longer store ratingSource,
     # ratingLabel, playersLabel, or hoursLabel. Rating is always Steam %positive
     # (see CLAUDE.md section "Data shape" for rationale). Do not re-add those
@@ -171,7 +177,7 @@ def render_entry(g):
     year: {js_int(g["year"])},
     genres: {js_arr(g["genres"])},
     endingType: {js_str(g["endingType"])},
-    rating: {js_int(g["rating"])},
+    rating: {js_int(g["rating"])},{count_line}
     playersMax: {js_int(g["playersMax"])},
     hours: {js_int(g["hours"])},
     oneCopy: {js_str(g["oneCopy"])},
