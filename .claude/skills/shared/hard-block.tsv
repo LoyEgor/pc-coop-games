@@ -13,7 +13,9 @@ battlefield-6	Battlefield 6	no_coop	categories list PvP/Online PvP only, no Co-o
 battlezone-98-redux	Battlezone 98 Redux	no_coop	Multiplayer is PvP Deathmatch/Strategy; no co-op campaign
 battlezone-combat-commander	Battlezone: Combat Commander	no_coop	PvP only per Steam categories; no Co-op tag [seen 3x; reasons: low_fit,no_coop]
 beat-saber	Beat Saber	no_coop	VR_single_player_rhythm
+beyond-citadel	Beyond Citadel	no_coop	SP only per Steam categories — anime-style retro FPS
 billie-bust-up	billie-bust-up	no_coop	Single-player only; also unreleased (release TBA, coming_soon)
+blade-chimera	Blade Chimera	no_coop	Metroidvania SP only per genre
 blades-of-fire	Blades of Fire	no_coop	Single-player only per Steam categories [seen 2x; reasons: no_coop]
 blindsight-war-of-the-wardens	Blindsight: War of the Wardens	no_coop	Single-player only per Steam categories
 blood-fresh-supply	Blood Fresh Supply	delisted	Delisted from Steam Dec 2025 in favor of Blood: Refreshed Supply (3884520)
@@ -27,6 +29,7 @@ campoca	campoca	no_coop	app 3476950 single-player only
 capcom-fighting-collection	Capcom Fighting Collection	no_coop	PvP-only categories
 cave-story	Cave Story+	no_coop	Steam categories Single-player only; no Co-op/RPT despite article claiming co-op update [seen 3x]
 cave-story-plus	cave-story-plus	no_coop	Steam categories list only Single-player; the co-op feature is Switch-only, not present on Steam store page (no Co-op/Remote Play Together category) [seen 8x; reasons: low_fit,no_coop]
+chronigma	Chronigma	no_coop	Single-player only per Steam categories — despite 'co-op time travel' framing in articles, store page shows no multi-player tag
 cod-black-ops-2	cod-black-ops-2	no_coop	campaign single-player; co-op modes endless zombies
 command-and-conquer-red-alert-3	Command & Conquer: Red Alert 3	no_coop	Steam categories list Single-player only on current EA re-release — no co-op category surface
 command-conquer-red-alert-3	Command & Conquer Red Alert 3	no_coop	Steam version lists no Co-op/Multi-player category; original GameSpy online co-op campaign defunct [seen 2x; reasons: no_coop,unknown]
@@ -121,6 +124,7 @@ jumanji-the-video-game	Jumanji: The Video Game	invalid_app_id	appdetails success
 just-cause-4-reloaded	Just Cause 4 Reloaded	no_coop	Single-player only per Steam categories
 kaiju-big-battel-fighto-fantasy	Kaiju Big Battel: Fighto Fantasy	no_coop	Single-player turn-based RPG only, app 611710
 kaiju-wars	Kaiju Wars	pvp_primary	Turn-based strategy PvP only, no Co-op category, app 1508400
+keep-driving	Keep Driving	no_coop	SP only per Steam categories
 killer-inn	KILLER INN	pvp_primary	Social deduction multiplayer (Among Us-like); round-based PvP, no campaign/ending
 kovox-pitch	Kovox Pitch	no_coop	Single-player only per Steam categories
 loco-motive	Loco Motive	no_coop	Single-player only point-and-click murder mystery (Steam app 1709880)
@@ -138,14 +142,18 @@ mouse-pi-for-hire	MOUSE: P.I. For Hire	no_coop	single-player [seen 2x; reasons: 
 muse-dash	muse-dash	no_coop	single-player rhythm game
 myvoicezoo	MyVoiceZoo	no_coop	single-player idle game [seen 4x]
 newt-and-tess	newt-and-tess	not_on_steam	Steam search returns no match
+nightmare-kart	Nightmare Kart	pvp_primary	App 2930160, free vehicular combat racer; Steam categories list PvP/Shared-Split PvP only — no Co-op category
 ninja-gaiden-ragebound	NINJA GAIDEN: Ragebound	no_coop	Single-player only; no Co-op or Multi-player categories
 oceaneers	Oceaneers	no_coop	Early Access; no co-op category listed on Steam
+of-ash-and-steel	Of Ash and Steel	no_coop	Single-player only per Steam categories; medieval fantasy RPG, no multiplayer mode
 one-piece-pirate-warriors-4	ONE PIECE: PIRATE WARRIORS 4	no_coop	only PvP/Online PvP category; no co-op or Remote Play Together
 orcs-must-die	Orcs Must Die!	no_coop	App 102600 (2011). Steam categories: Single-player only. The original game had no co-op; co-op added in OMD2.
 out-of-sight	Out of Sight	no_coop	Single-player only horror/puzzle (The Gang, blind girl premise); no co-op category
 outland	Outland	not_on_steam	Delisted: 'Outland is no longer available on the Steam store.' (app 305050) [seen 4x]
 ova-magica	Ova Magica	no_coop	single-player only in Steam categories
 painkiller-black-edition	painkiller-black-edition	no_coop	
+plunder-panic	Plunder Panic	pvp_primary	12-player party game with 2 rival crews PvP battling for treasure; co-op is co-op-vs-AI within team, fundamentally PvP
+poco	Poco	no_coop	SP only per Steam categories
 primal-carnage-extinction	Primal Carnage: Extinction	pvp_primary	"Chaotic prehistoric PvP" — pure PvP game, no campaign/ending
 project-wingman	Project Wingman	no_coop	Single-player only flight combat (Steam app 895870)
 r-type-final-2	R-Type Final 2	no_coop	Single-player only per Steam categories
@@ -163,7 +171,9 @@ rise-of-the-triad-ludicrous	rise-of-the-triad-ludicrous	no_coop
 rivals-of-aether	rivals-of-aether	no_coop	PvP platform fighter [seen 2x; reasons: low_fit,no_coop]
 rivals-of-aether-ii	rivals-of-aether-ii	no_coop	PvP platform fighter
 rocksmith-2014	Rocksmith 2014 Edition REMASTERED	no_coop	music_learning_tool_not_a_coop_game
+rogue-remastered	Rogue Remastered	no_coop	App 3316990, Single-player category only — no co-op support
 sacred-2-gold	sacred-2-gold	no_coop	
+saga-emerald-beyond	SaGa Emerald Beyond	no_coop	SP only per Steam categories
 scourgebringer	ScourgeBringer	no_coop	Single-player only per Steam categories
 sephonie	sephonie	no_coop	
 shadow-complex-remastered	Shadow Complex Remastered	no_coop	App 385560. Steam categories: Single-player only. Metroidvania, no co-op support.
@@ -188,6 +198,7 @@ spongebob-titans-of-the-tide	SpongeBob SquarePants Titans of the Tide	no_coop	St
 spyro-reignited-trilogy	Spyro Reignited Trilogy	no_coop	app 996580, no Co-op category, only Remote Play streaming (solo)
 star-ocean-second-story-r	star-ocean-second-story-r	no_coop	
 starward	Starward	no_coop	Single-player only per Steam categories
+steel-crew	Steel Crew	pvp_primary	App 905970, Steam categories list PvP/Online PvP only — no Co-op category
 stick-fight	stick-fight	no_coop	PvP party brawler
 stray	stray	no_coop	single-player only
 subnautica	Subnautica	no_coop	categories list Single-player only, no Multi-player
@@ -231,5 +242,7 @@ warstone-td	Warstone TD	no_coop	Single-player only per Steam categories
 way-of-the-hunter-2	Way of the Hunter 2	no_coop	Single-player only per Steam categories
 wh40k-space-marine-anniversary	Warhammer 40,000: Space Marine - Anniversary Edition	no_coop	Single-player only (2011 game), no co-op category
 wolcen-lords-of-mayhem	wolcen-lords-of-mayhem	no_coop	
+wrath-aeon-of-ruin	WRATH: Aeon of Ruin	no_coop	SP only per Steam categories — Quake-style boomer FPS
+ys-vs-trails-in-the-sky-alternative-saga	Ys vs. Trails in the Sky: Alternative Saga	pvp_primary	Fighting game crossover with Online PvP category; co-op is co-op-vs-AI within fighting bouts, fundamentally PvP-primary
 ys-x-nordics	Ys X: Nordics	no_coop	Single-player only per Steam categories
 ziggurat-2	ziggurat-2	no_coop	
