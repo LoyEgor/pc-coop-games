@@ -12,6 +12,7 @@ ace-combat-8-wings-of-the-v	ACE COMBAT 8: WINGS OF THE V	early_access	steam_tops
 active-matter	Active Matter	low_fit	phase4_steam_more_like_this	Unreleased 2026, F2P, MMO+PvP+Co-op tags; hard-block category (MMO)
 agefield-high-rock-the-school	Agefield High: Rock the School	low_fit	phase4_steam_more_like_this	obscure VN, unverified co-op
 airport-security-sucks	Airport Security Sucks!	not_enough_reviews	steam-released-desc	45 reviews, below 50 threshold
+airranger	Airranger	low_fit	steam_coop_deep_scan	VR Only — outside catalog scope per CLAUDE.md (PC, non-VR audience)
 ale-and-tale-tavern	ale-and-tale-tavern	endless	phase4_reddit_just_finished;reddit_just_finished	Open-ended tavern management sandbox; no win-condition/story finale per Steam page [seen 2x; reasons: endless,low_fit]
 alehundred	Alehundred	not_enough_reviews	steam-released-desc	0 reviews
 alien-swarm	Alien Swarm	duplicate	phase4_websearch_niche_queries	Alien Swarm: Reactive Drop (the community-maintained successor) already in catalog; original is functionally the same game.
@@ -225,6 +226,7 @@ jelly-brawl-classic	Jelly Brawl Classic	endless	phase4_steam_more_like_this	part
 jump-space	jump-space	endless	phase4_steam_more_like_this	Mission-based extraction-style co-op; no linear campaign, no narrative conclusion, no final boss [seen 3x; reasons: endless,endless_misclassified,low_fit]
 just-shapes-beats-more-like-this-batch	Just Shapes & Beats More-Like-This batch	unknown	phase4_steam_more_like_this	
 kane-and-lynch-dead-men	Kane and Lynch: Dead Men	online_broken	youtube_curator_playlists	2007 game, Steam discussions report removal/delisting issues; mixed 65% reviews. <2015 online-broken gate.
+kasi	Kasi	endless	steam_coop_deep_scan	plant simulator — grow tree/hedge/vines, no defined endpoint, meditative chill sim
 keep-digging	Keep Digging	endless	creative-discovery	Procedural 5000m underground survival-craft loop, no defined finish event
 killing-floor-2	Killing Floor 2	blocklisted_endless	steam_more_like_this	app 232090 blocklist [seen 3x]
 killing-floor-3	Killing Floor 3	blocklisted_endless	websearch_drill	wave-based KF lineage, no campaign ending
@@ -278,6 +280,7 @@ murky-divers	Murky Divers	endless	creative_discovery	Lethal Company-style endles
 my-time-at-evershine	My Time at Evershine	unreleased	creative_discovery	coming_soon=True, no release date set (Pathea Games next title)
 mycopunk	Mycopunk	endless	phase4_steam_more_like_this;phase4_websearch_niche_queries;websearch_niche	mission-based looter shooter with events/limited-time content, no defined ending [seen 3x; reasons: endless,low_fit]
 mythmatch	Mythmatch	low_fit	creative_discovery	Narrative anti-capitalist merge game starring Artemis — co-op category exists but description casts P2 as a helper, not a primary partner; primarily single-player
+nasty-zombies	Nasty Zombies	endless	steam_coop_deep_scan	wave-based zombie survival, Highest Wave leaderboards, Prestige, dynamically generated endless replayability
 nekokami-the-human-restoration-project	Nekokami - The Human Restoration Project	endless	creative_discovery	Open-ended world-building sandbox where cats restore humans — no defined finish/credits; 98%/53 reviews
 never-be-alone	Never Be Alone	unknown	phase4_steam_more_like_this	
 no-more-room-in-hell-2	No More Room in Hell 2	endless	steam_more_like_this	Round-based co-op survival, no campaign/finish. Multiplayer-only, no SP category. Steam app 292000.
@@ -290,6 +293,7 @@ once-human	Once Human	blocklisted_endless	phase4_websearch_niche_queries	MMO tag
 online-404	Online: 404	not_enough_reviews	reeval_skipped	app 4094350 still coming soon (July 2026) [seen 2x]
 operation-dogfight	Operation DogFight	not_enough_reviews	creative_discovery	Only 16 Steam reviews (2021 release), free local PvP+Co-op dogfighter; app 1266900
 out-of-words	Out of Words	low_fit	websearch_niche_queries	epic_only_on_pc_unreleased_2026
+outlive-25	Outlive 25	low_fit	steam_coop_deep_scan	2000 RTS remaster — campaign appears SP-only (Campaign Editor for custom maps), co-op category likely 16p skirmish vs AI; no co-op campaign confirmed
 outward-2	Outward 2	coming_soon	phase4_youtube_curator_playlists	Steam release date 7 Jul 2026; coming_soon=true. Re-check after release.
 over-the-hill	over the hill	low_fit	phase4_steam_more_like_this	release date TBA 2026 coming_soon, no reviews/finite signal
 overcooked-2	Overcooked 2	duplicate	steam_more_like_this	Bundled in Overcooked! All You Can Eat already in catalog (1243830)
@@ -323,8 +327,10 @@ potion-brew-co-op	Potion Brew: Co-op	unclear_ending	creative_discovery	Sandbox a
 powerwash-simulator-demo	PowerWash Simulator Demo	low_fit	phase4_steam_more_like_this;steam_more_like_this	demo only [seen 2x; reasons: low_fit,unknown]
 project-microchip	Project Microchip	not_enough_reviews	steam-released-desc	0 reviews
 project-rhombus-free	Project Rhombus (Free)	low_fit	phase4_steam_more_like_this	Steam type=demo, not a game
+project-x-light-years	Project X: Light Years	low_fit	steam_coop_deep_scan	side-scrolling shmup with bosses BUT no Remote Play Together and no Online Co-op — pure local Shared/Split Screen only; CLAUDE.md §3
 project-zomboid	Project Zomboid	blocklisted_endless	curated	on hardcoded blocklist
 projekt-z-beyond-order	Projekt Z: Beyond Order	unreleased	creative_discovery	coming_soon=True, release date To be announced
+puffin-planes	Puffin Planes	endless	steam_coop_deep_scan	airline-building economic simulator on globe of Earth, hub-and-spoke optimization, no defined ending
 pummel-party	Pummel Party	endless	steam_more_like_this	PvP party game, not co-op [seen 4x]
 puzzle-bobble-everybubble	Puzzle Bobble Everybubble!	not_enough_reviews	reeval_skipped	still 19 reviews (<50 threshold) [seen 6x]
 pvz-battle-for-neighborville	pvz-battle-for-neighborville	endless	live-service PvE/PvP shooter, region-based open content with no campaign finale	
@@ -337,6 +343,7 @@ rayman-legends-retold	Rayman Legends Retold	low_fit	steam_more_like_this	Coming 
 realm-of-the-mad-god	realm-of-the-mad-god	blocklisted_endless	phase4_steam_more_like_this	MMO — blocklist (any MMO)
 realm-of-the-mad-god-exalt	realm-of-the-mad-god-exalt	blocklisted_endless	phase4_steam_more_like_this	free MMO bullet-hell, blocklist (MMO)
 realmlords	Realmlords	not_enough_reviews	steam-released-desc	0 reviews
+recharge-rc-high-voltage	ReCharge RC: High Voltage	endless	steam_coop_deep_scan	custom race tracks + global online leaderboards, no campaign/finale — endless arcade racer
 repo	R.E.P.O.	endless	removed-entries	hardcoded_blocklist+manual_audit
 rest-area-simulator-prologue	prologue	unknown	steam_more_like_this	
 restaurats	Restaurats	endless	reeval_skipped	appid 2870920, Nov 2025 release, 90% 1519 reviews — but Career has no defined endpoint ('can be played for as long as you want, no time limits'), Friendslop is a 21-day session with unlocks then loop. No finale/credits/boss.
@@ -400,6 +407,7 @@ sync-or-sink	Sync or Sink	ea_unfinished	borderline-watch	EA + F2P; foundational 
 tabletop-simulator	Tabletop Simulator	endless	steam_more_like_this	physics sandbox no goals [seen 5x]
 taiko-no-tatsujin-rhythm-festival	Taiko no Tatsujin: Rhythm Festival	endless	websearch_niche_queries	appid 2288630 — rhythm game, 42 DLC + Taiko Music Pass (700+ songs added monthly = live service), no defined campaign ending
 tales-of-xillia-remastered	tales-of-xillia-remastered	low_fit	phase4_websearch_niche_queries;websearch_niche_queries	Remote Play Together blocked; local-only co-op fails criteria [seen 3x; reasons: low_fit,unknown]
+tanks	TANKS	low_fit	steam_coop_deep_scan	free Battle City clone, level editor + RPT, but no clear finite campaign described — just 'destroy all enemy tanks' goal with no endgame mention
 tape-to-tape	Tape to Tape	ambiguous	steam_more_like_this	Hockey roguelite; co-op category exists but PvP-primary, no clear co-op finish content
 target		endless	removed-entries	
 tears-of-metal	Tears of Metal	not_enough_reviews	creative_discovery	Just released June 2026, 0 reviews on Steam — re-check in a few weeks
@@ -430,8 +438,10 @@ too-deep-to-quit	Too Deep To Quit	unknown	phase4_steam_more_like_this
 toodee-and-topdee	taxonomy_ambiguous	unknown	perspective by design mixes Side-view (Toodee) + top-down (Topdee) simultaneously; perspective axis not cleanly assignab	[seen 2x; reasons: unknown]
 totally-safe-moon-project	unreleased	unknown	steam_more_like_this	
 touhou-crisis	Touhou Crisis	coop_too_short	creative_discovery	1989990; 354 reviews 96% positive but single-boss arcade lightgun (72-hour game jam title); main loop is one Reimu vs boss fight ~5-15min; no campaign with stages
+tower-networking-inc	Tower Networking Inc.	endless	steam_coop_deep_scan	ISP simulator — 'Your goal is to ensure your internet service provider runs as long as possible' explicit endless
 trackmania-turbo	Trackmania Turbo	MMO	websearch_niche_queries	app 375900 Genre tag includes Massively Multiplayer; no Co-op category
 trash-goblin	Trash Goblin	endless	websearch_drill	"endless good vibes" cozy shopkeeping — explicitly no defined endpoint
+tumbleweed-destiny	Tumbleweed Destiny	endless	steam_coop_deep_scan	tumbleweed life simulator clicker — earn TP, explore wilderness, no defined endpoint
 twincop	TwinCop	not_enough_reviews	reeval_skipped	still 33 reviews (<50 threshold) [seen 5x]
 undercrewed	Undercrewed	not_enough_reviews	creative_discovery	36 reviews 2019 release
 underling-uprising	Underling Uprising	not_enough_reviews	phase4_youtube_curator_playlists	Released 14 May 2026, only 16 reviews (need 50). Has local Co-op + RPT (no online). App 1896760. Re-check later.

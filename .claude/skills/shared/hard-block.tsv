@@ -26,6 +26,7 @@ bodycam	Bodycam	pvp_primary	Multiplayer / PvP / Online PvP only — no co-op cat
 bpm-bullets-per-minute	bpm-bullets-per-minute	no_coop	
 bubsy-4d	Bubsy 4D	no_coop	app 3237970, only Single-player category, no co-op
 bung-ball	Bung Ball	pvp_primary	Free arena ball game, PvP+Co-op mixed but PvP-primary, garbled description
+bunny-hill	Bunny Hill	pvp_primary	8p Online PvP skiing with Time Trial co-op only — competitive skiing, no campaign or finite content
 call-of-duty-4-modern-warfare	call-of-duty-4-modern-warfare	no_coop	no co-op campaign; MP is PvP
 call-of-duty-black-ops	Call of Duty Black Ops	no_coop	Campaign is single-player only; only co-op mode is Zombies (endless wave-based). Steam app 42700.
 campoca	campoca	no_coop	app 3476950 single-player only
@@ -163,6 +164,7 @@ nekomew-s-nightmares	Nekomew's Nightmares	no_coop	Local-only Shared/Split Screen
 newt-and-tess	newt-and-tess	not_on_steam	Steam search returns no match
 nightmare-kart	Nightmare Kart	pvp_primary	App 2930160, free vehicular combat racer; Steam categories list PvP/Shared-Split PvP only — no Co-op category
 ninja-gaiden-ragebound	NINJA GAIDEN: Ragebound	no_coop	Single-player only; no Co-op or Multi-player categories
+ninza	Ninza	pvp_primary	competitive brawler/fighter 4p PvP main mode, co-op is just training; rollback netcode for vs play
 oceaneers	Oceaneers	no_coop	Early Access; no co-op category listed on Steam
 of-ash-and-steel	Of Ash and Steel	no_coop	Single-player only per Steam categories; medieval fantasy RPG, no multiplayer mode
 one-piece-pirate-warriors-4	ONE PIECE: PIRATE WARRIORS 4	no_coop	only PvP/Online PvP category; no co-op or Remote Play Together
