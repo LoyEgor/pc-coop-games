@@ -42,6 +42,7 @@ crackdown-3	Crackdown 3	not_on_steam	Microsoft Store/Xbox only, not on Steam [se
 crash-bandicoot-4	Crash Bandicoot 4 It's About Time	no_coop	single-player; only local pass-n-play/PvP, no co-op campaign [seen 2x; reasons: no_coop]
 crash-bandicoot-4-it-s-about-time	Crash Bandicoot 4 It's About Time	no_coop	app 1378990, Steam version Single-player only
 crash-bandicoot-n-sane-trilogy	crash-bandicoot-n-sane-trilogy	no_coop	single-player platformer collection, no co-op
+crawl	Crawl	pvp_primary	App 293780 — Steam categories PvP + Shared/Split Screen PvP only, no co-op category
 crazy-wheels	Crazy Wheels	pvp_primary	Multiplayer PvP only (Online + Shared Split); no Co-op category
 crimson-desert	Crimson Desert	no_coop	Single-player only per Steam categories
 crimzon-clover-world-explosion	Crimzon Clover: World EXplosion	no_coop	Multi-player but no Co-op category; competitive shmup
@@ -206,6 +207,7 @@ spider-man-miles-morales	Marvel's Spider-Man: Miles Morales	no_coop	Single-playe
 spider-man-remastered	Marvel's Spider-Man Remastered	no_coop	Single-player only
 spirit-of-the-north-2	Spirit of the North 2	no_coop	single-player only, no co-op category [seen 3x; reasons: no_coop]
 spitchlings	spitchlings	not_on_steam	no Steam match found
+splitgate	Splitgate	pvp_primary	app 677620 PvP-primary arena portal shooter — wrong recommendation for co-op puzzle
 spongebob-squarepants-titans-of-the-tide	SpongeBob SquarePants: Titans of the Tide	no_coop	Steam categories: Single-player only. No co-op. Steam app 2479650.
 spongebob-titans-of-the-tide	SpongeBob SquarePants Titans of the Tide	no_coop	Steam categories list Single-player only, no Co-op/Remote Play Together [seen 2x; reasons: no_coop]
 spyro-reignited-trilogy	Spyro Reignited Trilogy	no_coop	app 996580, no Co-op category, only Remote Play streaming (solo)

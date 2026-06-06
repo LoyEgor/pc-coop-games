@@ -1,20 +1,23 @@
 {
-  "current_source_idx": 14,
-  "current_offset": 0,
-  "added_count": 528,
-  "skipped_count": 763,
+  "current_source_idx": 17,
+  "current_offset": 2,
+  "added_count": 535,
+  "skipped_count": 775,
   "last_validation_at": 200,
   "completed_sources": [
     "reeval_skipped",
-    "steam_more_like_this"
+    "steam_more_like_this",
+    "websearch_niche_queries",
+    "backloggd_top_completed_coop",
+    "steam_community_recommendations"
   ],
-  "last_added": "fossil-hunters",
-  "last_run_timestamp": "2026-06-06T05:55:00Z",
+  "last_added": "dead-island-riptide-de",
+  "last_run_timestamp": "2026-06-06T08:30:00Z",
   "current_phase": 4,
   "max_phase": 4,
   "phase_start_count": 507,
   "last_push_at": 109,
-  "bursts_on_current_source": 0,
+  "bursts_on_current_source": 1,
   "session_added_ids": [
     "halo-wars-de",
     "guacamelee-stce",
@@ -299,7 +302,14 @@
     "temtem-swarm",
     "goat-simulator-3",
     "sedap-a-culinary-adventure",
-    "fossil-hunters"
+    "fossil-hunters",
+    "morkredd",
+    "gal-guardians-servants-of-the-dark",
+    "muck",
+    "spectral-scream",
+    "cosmos-quickstop",
+    "boat-together",
+    "dead-island-riptide-de"
   ],
   "reeval_only": false,
   "source_pass_log": [

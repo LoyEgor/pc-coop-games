@@ -11,6 +11,7 @@ ace-combat-8-wings-of-the-v	ACE COMBAT 8: WINGS OF THE V	early_access	steam_tops
 active-matter	Active Matter	low_fit	phase4_steam_more_like_this	Unreleased 2026, F2P, MMO+PvP+Co-op tags; hard-block category (MMO)
 agefield-high-rock-the-school	Agefield High: Rock the School	low_fit	phase4_steam_more_like_this	obscure VN, unverified co-op
 ale-and-tale-tavern	ale-and-tale-tavern	endless	phase4_reddit_just_finished;reddit_just_finished	Open-ended tavern management sandbox; no win-condition/story finale per Steam page [seen 2x; reasons: endless,low_fit]
+alien-swarm	Alien Swarm	duplicate	phase4_websearch_niche_queries	Alien Swarm: Reactive Drop (the community-maintained successor) already in catalog; original is functionally the same game.
 aliens-fireteam-elite-2	Aliens: Fireteam Elite 2	not_enough_reviews	reeval_skipped	Still coming_soon=true, TBA release; no reviews yet (verified appdetails 2026-06-06)
 aliens-vs-predator-2010	Aliens vs. Predator (2010)	endless	phase4_wikipedia_coop_lists;wikipedia_coop_lists	Co-op = endless wave Survivor mode; no campaign co-op [seen 2x; reasons: endless,unknown]
 aliens-vs-predator-classic-2000	Aliens versus Predator Classic 2000	unknown	wikipedia_coop_lists	
@@ -69,6 +70,7 @@ chroma-climb-reclaim-your-color	Chroma Climb Reclaim Your Color	not_enough_revie
 chrono-bullet	Chrono Bullet	unreleased	creative_discovery	coming_soon, no release date
 climber-animals-together	Climber Animals: Together	finish_unverified	reeval_skipped	Parkour climber 1-8 players with race/PvP element, leaderboards; 'reach the top' goal but no defined final course/finale (verified 2026-06-06)
 cloudheim	Cloudheim	ea_unfinished	reeval_skipped	Released Dec 2025 but tagged Early Access (genre 70); 1623 reviews 83% positive but Norse action-RPG with active roadmap, no announced finale yet (verified 2026-06-06)
+co-op-twins	CO-OP TWINS	not_enough_reviews	websearch_niche_queries	appid 3883280 — coming_soon, 0 reviews, no release date
 cod-world-at-war	Call of Duty: World at War	low_fit	phase4_steam_more_like_this	2008 pre-2015; co-op campaign exists but online status unverified, deferred
 commandos-3-hd-remaster	Commandos 3 - HD Remaster	low_fit	steam_more_like_this	co-op is standalone PvP/co-op maps; finite campaign is single-player only; 62% reviews
 conan-exiles	Conan Exiles	endless	curated	Massively Multiplayer category, sandbox survival no win-condition
@@ -184,11 +186,13 @@ hunt-showdown-1896	Hunt: Showdown 1896	blocklisted_endless	steam_more_like_this	
 hydroneer	Hydroneer	endless	phase4_steam_more_like_this;steam_more_like_this	mining_sandbox_no_campaign_or_ending_set_your_own_goals [seen 2x; reasons: endless,endless_misclassified]
 hypercore-demo	HyperCore Demo	low_fit	phase4_steam_more_like_this	Steam type=demo, not a game
 hypercore-rhythm-bullet-hell	HyperCore : Rhythm Bullet Hell	not_enough_reviews	phase4_steam_more_like_this;reeval_skipped	0 reviews on Steam — below 50-review threshold [seen 2x; reasons: not_enough_reviews,unknown]
+hyperspaced	Hyperspaced	not_enough_reviews	youtube_curator_playlists	app 1125830 only 35 reviews (94% positive) — below 50 minimum
 icarus	ICARUS	endless	removed-entries	
 igs-classic-arcade-collection	IGS Classic Arcade Collection	coming_soon	discovery	Coming soon 2026; no reviews yet; appid 3417140
 ikuma-frozen-compass	IKUMA Frozen Compass	unknown	wasdland	
 ikuma-the-frozen-compass	IKUMA - The Frozen Compass	unknown	phase4_steam_more_like_this	
 in-sink-a-co-op-escape-prologue	In Sink: A Co-Op Escape Prologue	low_fit	phase4_steam_more_like_this	prologue/demo only - main game has its own entry
+in-the-same-boat	In the Same Boat	not_enough_reviews	creative_discovery	App 2548410 — coming_soon TBA, 0 reviews
 incursion-red-river	Incursion Red River	endless	creative_discovery	App 2116120, PvE extract shooter Vietnam setting, 8621 reviews 76.1% but core loop is endless extraction with deployments/factions — no campaign finish
 infinity-nikki	infinity-nikki	endless_misclassified	steam_more_like_this	app 3164330 live-service gacha with seasons/in-app purchases, 55.9% positive
 into-the-fire	Into the Fire	unknown	phase4_steam_more_like_this	
@@ -223,6 +227,7 @@ lost-planet-2	region_restricted	unknown	appdetails success=false for cc=ua (no U
 lost-railway	Lost Railway	not_enough_reviews	reeval_skipped	app 862750 still coming soon [seen 5x]
 lotr-war-in-the-north	lotr-war-in-the-north	low_fit	phase4_wikipedia	delisted from Steam (LOTR license expired); not purchasable, out of scope
 mailstrom	Mailstrom	unknown	phase4_websearch_niche_queries	
+malice	Malice	low_quality	websearch_niche_queries	appid 1799220, Nov 2022 Japanese horror co-op puzzle escape — 994 reviews, 24% positive (Mostly Negative)
 marvel-avengers	Marvel's Avengers	endless	websearch_drill	live-service shut down, dead online
 marvel-vs-capcom-fighting-collection	marvel-vs-capcom-fighting-collection	low_fit	phase4_steam_more_like_this	PvP fighting-game collection; no co-op campaign
 mayhem-brawler-ii-best-of-both-worlds	Mayhem Brawler II: Best of Both Worlds	finish_unverified	creative_discovery	Coming Soon TBA, app 1826380
@@ -233,6 +238,7 @@ meteor-60-seconds	Meteor 60 Seconds!	low_fit	phase4_steam_more_like_this	short s
 minecraft-dungeons-ii	Minecraft Dungeons II	not_enough_reviews	reeval_skipped	app 1912410 still coming soon (2026 TBA) [seen 5x]
 mirage-a-biplane-adventure	Mirage A Biplane Adventure	not_enough_reviews	creative-discovery	Released Apr 2024 (Steam app 2909720) but only 1 review — fails ≥50 gate; re-check later
 misery	MISERY	endless_misclassified	phase4_steam_more_like_this	Sessional rogue-lite raids like Lethal Company per dev description; "no explicit story ending", persistent bunker building, no win condition
+mitsume	Mitsume (みつめ)	endless	websearch_niche_queries	appid 4113260, Feb 2026 release, 84% 129 reviews — but loop-based structure (find anomalies → loop back), 20-40min per playthrough, no finite ending, sessional like Phasmophobia
 mojo-party	Mojo Party	endless	phase4_steam_more_like_this	party brawler / mini-games, no ending
 monster-hunter-wilds	Monster Hunter Wilds	rating_below_gate	borderline-watch	Has a finishable co-op story, but Steam sits at ~48% (below the >=50% gate)
 monster-mop-up-demo	Monster Mop Up Demo	low_fit	phase4_steam_more_like_this;steam_more_like_this	demo entry on Steam [seen 2x; reasons: low_fit,unknown]
@@ -297,7 +303,7 @@ realm-of-the-mad-god	realm-of-the-mad-god	blocklisted_endless	phase4_steam_more_
 realm-of-the-mad-god-exalt	realm-of-the-mad-god-exalt	blocklisted_endless	phase4_steam_more_like_this	free MMO bullet-hell, blocklist (MMO)
 repo	R.E.P.O.	endless	removed-entries	hardcoded_blocklist+manual_audit
 rest-area-simulator-prologue	prologue	unknown	steam_more_like_this	
-restaurats	Restaurats	unclear_ending	reeval_skipped	roguelike cooking with procedural runs — no documented final endpoint [seen 3x]
+restaurats	Restaurats	endless	reeval_skipped	appid 2870920, Nov 2025 release, 90% 1519 reviews — but Career has no defined endpoint ('can be played for as long as you want, no time limits'), Friendslop is a 21-day session with unlocks then loop. No finale/credits/boss.
 revenge-savage-planet	Revenge of the Savage Planet	endless	removed-entries	
 rift-fishing-demo	demo	unknown	steam_more_like_this	
 rivals-of-aether-2	Rivals of Aether II	low_fit	phase4_steam_more_like_this	PvP platform fighter sequel; no finite co-op campaign
@@ -329,7 +335,7 @@ species-unknown	Species: Unknown	endless	phase4_steam_more_like_this	Sessional m
 speedrunners-2-king-of-speed	SpeedRunners 2: King of Speed	low_fit	phase4_steam_more_like_this	PvP racing, no co-op campaign [seen 2x; reasons: low_fit,unknown]
 spirit-of-the-island	Spirit of the Island	endless	creative_discovery	Open-ended life sim — Steam page emphasises sandbox 'free to do anything', no defined finish; 1888 reviews 66% positive
 splinter-cell-conviction	Tom Clancy's Splinter Cell: Conviction	online_broken	websearch_niche_queries	2010_uplay_era_coop_sync_errors_reported_in_recent_2026_discussions
-spongebob-squarepants-battle-for-bikini-bottom-rehydrated	SpongeBob SquarePants: Battle for Bikini Bottom - Rehydrated	finish_unverified	discovery	Co-op limited to Horde Mode wave defense across 26 islands; no Sweet Victory/credits per reviews; main campaign is SP-only
+spongebob-squarepants-battle-for-bikini-bottom-rehydrated	SpongeBob SquarePants: Battle for Bikini Bottom - Rehydrated	coop_too_short	phase4_websearch_niche_queries	Co-op is Horde Mode (26 wave-based arena islands) only; main campaign is single-player. Wave-based co-op has no finish event.
 squirreled-away	Squirreled Away	endless	phase4_websearch_niche_queries;websearch_niche_queries	app 2977620 cozy squirrel sandbox/life sim, no ending mentioned [seen 2x; reasons: endless,low_fit]
 stage-fright	Stage Fright	unknown	phase4_steam_more_like_this	
 starrupture	StarRupture	ea_unfinished	reeval_skipped	Released Jan 2026 but still Early Access; base-building + wave defense, no announced finale (verified 2026-06-06)
@@ -342,12 +348,15 @@ storebound	Storebound	early_access	youtube_curator_playlists	Early Access; episo
 streets-of-rogue-2	Streets of Rogue 2	early_access	misc	still Coming soon — no reviews
 subnautica-2	Subnautica 2	early_access	gamerant_2025;phase4_steam_more_like_this	Early Access launched May 2026, no 1.0 ending confirmed yet [seen 2x; reasons: early_access,low_fit]
 super-battle-golf	Super Battle Golf	low_fit	steam_more_like_this	Released 2026-02-19. PvP+Co-op golf party game; no clear co-op finish/campaign. Steam app 4069520.
+superliminal	Superliminal	low_fit	youtube_curator_playlists	app 1049410 Steam categories list Co-op/Online Co-op but Steam page text explicitly says single-player only with no co-op campaign description — categories appear to refer to Workshop multiplayer levels, not a real co-op mode
 supermarket-together	Supermarket Together	endless	creative_discovery	Sim/sandbox grocery store management with franchise points and ongoing updates; no campaign or named end-goal
 sven-co-op	sven-co-op	low_fit	phase4_backloggd_substitute;phase4_websearch_niche_queries;websearch_niche_queries	free Half-Life co-op mod / community map-host platform; no defined finish state, endless map collection [seen 3x; reasons: low_fit]
 sven-coop	Sven Co-op	finish_unverified	borderline-watch	Free HL co-op campaign is finishable, but the product is an endless community-map platform
+swapmeat	SWAPMEAT	ea_unfinished	websearch_niche_queries	appid 2790700 — entered Steam Early Access Oct 2025; full release planned 2026. Re-check after 1.0.
 sword-game	Sword Game	low_fit	phase4_steam_more_like_this	tiny no-context indie; insufficient signal for a trustworthy add
 sync-or-sink	Sync or Sink	ea_unfinished	borderline-watch	EA + F2P; foundational single mission, full ending not implemented
 tabletop-simulator	Tabletop Simulator	endless	steam_more_like_this	physics sandbox no goals [seen 5x]
+taiko-no-tatsujin-rhythm-festival	Taiko no Tatsujin: Rhythm Festival	endless	websearch_niche_queries	appid 2288630 — rhythm game, 42 DLC + Taiko Music Pass (700+ songs added monthly = live service), no defined campaign ending
 tales-of-xillia-remastered	tales-of-xillia-remastered	low_fit	phase4_websearch_niche_queries;websearch_niche_queries	Remote Play Together blocked; local-only co-op fails criteria [seen 3x; reasons: low_fit,unknown]
 tape-to-tape	Tape to Tape	ambiguous	steam_more_like_this	Hockey roguelite; co-op category exists but PvP-primary, no clear co-op finish content
 target		endless	removed-entries	
@@ -396,6 +405,7 @@ wilmots-warehouse	Wilmot's Warehouse	endless	wikipedia_coop_lists	sandbox_wareho
 windblown	Windblown	early_access	Still in Early Access (genres include Early Access); no announced 1.0 endgame, per soft-signal rule;websearch_drill	Motion Twin's roguelite still in EA — ending planned but not yet shipped [seen 2x; reasons: early_access]
 windrose	Windrose	ea_unfinished	reeval_skipped	Released Apr 2026 but still Early Access; survival sandbox, planned finale not yet shipped (verified 2026-06-06)
 windward	Windward	endless	creative_discovery	sandbox 'how you shape your journey is entirely up to you' no defined finish
+wingspan	Wingspan	low_fit	phase4_websearch_niche_queries	Board game adaptation; primary loop is PvP score game (single match) not a co-op campaign with a finish; no co-op story to complete.
 wires-and-whiskers	Wires And Whiskers	coop_too_short	discovery	20-30 minute student project; co-op finish content <1h
 witchspire	Witchspire	finish_unverified	creative_discovery	Coming Soon 2026-06-10; open-world witch sandbox — re-check post-launch with story mode confirmation
 witherbloom	Witherbloom	not_enough_reviews	creative_discovery	Unreleased coming_soon=true as of 2026-06-06, app 2838030
