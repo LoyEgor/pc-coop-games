@@ -25,6 +25,7 @@ blue-estate	blue-estate	no_coop
 bodycam	Bodycam	pvp_primary	Multiplayer / PvP / Online PvP only — no co-op category. Steam app 2406770.
 bpm-bullets-per-minute	bpm-bullets-per-minute	no_coop	
 bubsy-4d	Bubsy 4D	no_coop	app 3237970, only Single-player category, no co-op
+bung-ball	Bung Ball	pvp_primary	Free arena ball game, PvP+Co-op mixed but PvP-primary, garbled description
 call-of-duty-4-modern-warfare	call-of-duty-4-modern-warfare	no_coop	no co-op campaign; MP is PvP
 call-of-duty-black-ops	Call of Duty Black Ops	no_coop	Campaign is single-player only; only co-op mode is Zombies (endless wave-based). Steam app 42700.
 campoca	campoca	no_coop	app 3476950 single-player only
@@ -51,6 +52,7 @@ critical-zone-demo	Critical Zone Demo	invalid_app_id	Demo entry, not the full ga
 crusader-kings-iii	Crusader Kings III	no_coop	Categories show only PvP/Online PvP - no Co-op category. Grand strategy is PvP-only multiplayer.
 curse-of-the-dead-gods	Curse of the Dead Gods	no_coop	Steam categories show single-player only [seen 2x; reasons: no_coop]
 cursed-castilla	cursed-castilla	no_coop	
+cursed-deal	Cursed Deal	pvp_primary	4v1 asymmetric horror — primary identity is PvP team vs hunter, not co-op campaign; categories list Online PvP first
 cyber-shadow	Cyber Shadow	no_coop	Single-player only per Steam categories
 cyberbots-full-metal-madness	Cyberbots Full Metal Madness	not_on_steam	1995 Capcom arcade title, not available on Steam
 cyberpunk-2077	Cyberpunk 2077	no_coop	CDPR single-player only
@@ -86,6 +88,7 @@ echoes-of-mystralia	echoes-of-mystralia	no_coop	single-player, no co-op category
 efootball	eFootball	pvp_primary	Free-to-play PvP football sim, no co-op campaign with ending [seen 2x; reasons: low_fit,pvp_primary]
 eiyuden-chronicle	Eiyuden Chronicle: Hundred Heroes	no_coop	Steam categories show single-player only — no Co-op tag
 eragon	Eragon	not_on_steam	Steam search returns only 'Eragon's Tale' (unrelated indie). Original 2006 Eragon movie tie-in was not released on Steam.
+eterspire	Eterspire	mmo	Free-to-play MMORPG with Massively Multiplayer Steam tag and biweekly content updates
 everything-is-crab	Everything is Crab	no_coop	no co-op category listed on Steam
 evil-islands	Evil Islands	not_on_steam	Empty Steam search; 2000 Russian RPG, no Steam release.
 f1-23	F1 23	delisted	No UAH or USD price — appears delisted (F1 yearly cycle replaces previous title)
@@ -156,6 +159,7 @@ monster-sanctuary	monster-sanctuary	no_coop
 mouse-pi-for-hire	MOUSE: P.I. For Hire	no_coop	single-player [seen 2x; reasons: no_coop]
 muse-dash	muse-dash	no_coop	single-player rhythm game
 myvoicezoo	MyVoiceZoo	no_coop	single-player idle game [seen 4x]
+nekomew-s-nightmares	Nekomew's Nightmares	no_coop	Local-only Shared/Split Screen, no Remote Play Together
 newt-and-tess	newt-and-tess	not_on_steam	Steam search returns no match
 nightmare-kart	Nightmare Kart	pvp_primary	App 2930160, free vehicular combat racer; Steam categories list PvP/Shared-Split PvP only — no Co-op category
 ninja-gaiden-ragebound	NINJA GAIDEN: Ragebound	no_coop	Single-player only; no Co-op or Multi-player categories
@@ -234,6 +238,7 @@ team-sonic-racing	Team Sonic Racing	no_coop	Steam categories list only PvP modes
 tempest-rising	tempest-rising	no_coop	
 tetris-forever	Tetris Forever	pvp_primary	Multiplayer is PvP only (Shared/Split Screen PvP + Remote Play Together); no Co-op category
 the-august-before-chapter-one	The August Before: Chapter One	no_coop	app 2516940 single-player only [seen 2x; reasons: low_fit,no_coop]
+the-black-heart	The Black Heart	pvp_primary	1431780; 2D versus fighting game (Street Fighter-like); co-op shared/split listed but the game is PvP fighter w/ solo story; no real co-op campaign
 the-finals	the-finals	no_coop	PvP-only live-service shooter, no co-op campaign
 the-haunting-of-joni-evers	The Haunting of Joni Evers	no_coop	Single-player only walking sim horror (Steam app 2828590)
 the-lord-of-the-rings-war-in-the-north	The Lord of the Rings: War in the North	not_on_steam	

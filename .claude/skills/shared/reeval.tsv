@@ -1,5 +1,5 @@
 id	title	reason	source	notes
-17-waves-td	17.waves TD	not_enough_reviews	creative_discovery	18 reviews May 2026 release
+17-waves-td	17.waves TD	not_enough_reviews	reeval_skipped	Still 19 reviews (May 2026 release; below 50 gate)
 33-immortals	33-immortals	blocklisted_endless	Steam tag includes Massively Multiplayer (HARD BLOCK per CLAUDE.md §6); also unreleased (no reviews)	
 7-days-to-die	7 Days to Die	endless	phase4_youtube_curator_playlists	Confirmed open-ended survival sandbox, no You-win screen, player-defined goals only
 a-corgi-s-cozy-hike	A Corgi's Cozy Hike	finish_unverified	creative_discovery	open-world collectathon, 5 regions; 'everything is optional, choose your own path' — no discrete finale confirmable; cozy bite-sized but loop ends only on player choice to stop collecting
@@ -11,14 +11,16 @@ abyss-crew	Abyss Crew	not_enough_reviews	reeval_skipped	still 18 reviews (<50 th
 ace-combat-8-wings-of-the-v	ACE COMBAT 8: WINGS OF THE V	early_access	steam_topsellers_coop	Upcoming Oct 2026 release; not yet shipped, no reviews; recheck after launch.
 active-matter	Active Matter	low_fit	phase4_steam_more_like_this	Unreleased 2026, F2P, MMO+PvP+Co-op tags; hard-block category (MMO)
 agefield-high-rock-the-school	Agefield High: Rock the School	low_fit	phase4_steam_more_like_this	obscure VN, unverified co-op
+airport-security-sucks	Airport Security Sucks!	not_enough_reviews	steam-released-desc	45 reviews, below 50 threshold
 ale-and-tale-tavern	ale-and-tale-tavern	endless	phase4_reddit_just_finished;reddit_just_finished	Open-ended tavern management sandbox; no win-condition/story finale per Steam page [seen 2x; reasons: endless,low_fit]
+alehundred	Alehundred	not_enough_reviews	steam-released-desc	0 reviews
 alien-swarm	Alien Swarm	duplicate	phase4_websearch_niche_queries	Alien Swarm: Reactive Drop (the community-maintained successor) already in catalog; original is functionally the same game.
-aliens-fireteam-elite-2	Aliens: Fireteam Elite 2	not_enough_reviews	reeval_skipped	Still coming_soon=true, TBA release; no reviews yet (verified appdetails 2026-06-06)
+aliens-fireteam-elite-2	Aliens: Fireteam Elite 2	not_enough_reviews	reeval_skipped	Still coming_soon=true TBA — 0 reviews (verified appdetails 2026-06-06)
 aliens-vs-predator-2010	Aliens vs. Predator (2010)	endless	phase4_wikipedia_coop_lists;wikipedia_coop_lists	Co-op = endless wave Survivor mode; no campaign co-op [seen 2x; reasons: endless,unknown]
 aliens-vs-predator-classic-2000	Aliens versus Predator Classic 2000	unknown	wikipedia_coop_lists	
-aloft	Aloft	finish_unverified	reeval_skipped	Released Jan 2025 but still EA cozy sky-survival sandbox; 'cure the fungal corruption' remains a fuzzy mission not a named win-condition (verified 2026-06-06)
-aloof	Aloof	not_enough_reviews	reeval_skipped	Still only 36 Steam reviews (below 50 threshold) — 92% positive but volume too low (verified 2026-06-06)
-ammo-and-oxygen	Ammo & Oxygen	rating_below_gate	borderline-watch	Co-op via RPT + likely finish, but only ~53 reviews (thin sample) and no documented final boss
+aloft	Aloft	ea_unfinished	reeval_skipped	Still Early Access (genres include EA); fungal-corruption arc remains unresolved per devs roadmap (verified 2026-06-06)
+aloof	Aloof	not_enough_reviews	reeval_skipped	Still 36 reviews (below 50 gate)
+ammo-and-oxygen	Ammo and Oxygen	endless	reeval_skipped	Crossed 50 reviews (54, 72% pos) and confirmed RPT — but Steam pitch is 'survive another terrifying night' shooter-roguelike on procedural planet; no win-condition stated and 0 finish hits in 20 positive reviews
 ancient-dungeon	Ancient Dungeon	unknown	steamdb_coop_campaign	
 aniimo	Aniimo	low_fit	steam_more_like_this	Coming soon, F2P, PvP+co-op — looks live-service/MMO. Steam app 4126040.
 anthem	Anthem	endless	websearch_drill	live-service shut down
@@ -33,7 +35,9 @@ aska	ASKA	ea_unfinished	reeval_skipped	Released Jun 2024 but still Viking surviv
 astro-duel-2	Astro Duel 2	low_fit	creative_discovery	primarily a platform fighter (PvP Versus + Cash Grab); Bounty Mode is a few-hour add-on co-op mini-campaign with 'no additional content after last unlock' — borderline ≤1h co-op, primary identity PvP
 atomic-heart-2	Atomic Heart 2	unknown	phase4_steam_more_like_this	
 awaysis	Awaysis	finish_unverified	creative_discovery	Coming Soon (Day of the Devs 2025 demo only), app 3334760
-backrooms-escape-together	Backrooms: Escape Together	unclear_ending	reeval_skipped	Procedural levels with Hub system, no defined win-condition (just 'progress deeper'); wiki confirms levels but no real finish event (verified 2026-06-06)
+b-a-n-k	B.A.N.K.	endless	creative_discovery	Open-ended career sandbox: serve customers and climb the corporate ladder — no defined final mission, loop continues; 98%/58 reviews
+backrooms-blackhole	Backrooms: Blackhole	not_enough_reviews	steam-released-desc	0 reviews, just released
+backrooms-escape-together	Backrooms: Escape Together	unclear_ending	reeval_skipped	38726 reviews 88% but still EA — 11 procedurally-generated levels, no defined win-condition; positive reviews ask devs for 'continuation', negative ones mention 'repetition'/'same task each level'
 bang-bang-barrage	Bang Bang Barrage	endless	discovery	15-minute roguelite runs; reviewer describes endless sessional structure, no narrative finish or final boss
 battlecap	BattleCap	endless_misclassified	discovery	Naval roguelite Sea Monster Fishing mode: waves of enemies defend Nymph camp + relics/blessings system; no confirmed final boss event
 battlemon	Battlemon	low_fit	phase4_steam_more_like_this	PvP party game; no finite co-op campaign
@@ -47,6 +51,7 @@ blood-refreshed-supply	Blood Refreshed Supply	low_fit	steam_more_like_this	Mixed
 bloons-td-6	Bloons TD 6	endless	removed-entries	hardcoded_blocklist+manual_audit
 blue-ridge-hunting	Blue Ridge Hunting	early_access	phase4_youtube_curator_playlists	Phasmophobia-like co-op cryptid hunting (Appalachia); freeplay + story campaign targeting EA 2026. Re-check post-1.0 — story arc may give a real finish if it ships.
 bluey-the-videogame	local_only_no_remote	unknown	co-op is Shared/Split Screen only, no Remote Play Together or online (CLAUDE.md §3)	
+bone-s-cafe	Bone's Cafe	finish_unverified	creative_discovery	1739070; 360 reviews 96%; cooking sim w/ Skull Ranking campaign expansions; no defined endpoint confirmed in reviews; 1-4 RPT; recheck for win-condition
 boomerang-fu	Boomerang Fu	endless	removed-entries	hardcoded_blocklist+manual_audit
 bopl-battle	bopl-battle	endless	phase4_steam_more_like_this	party PvP brawler [seen 3x; reasons: endless,low_fit,no_coop]
 brawlhalla	brawlhalla	blocklisted_endless	phase4_steam_more_like_this	hardcoded blocklist (PvP platform fighter)
@@ -68,12 +73,13 @@ cargo-co-op-delivery-simulator	CARGO Co-Op Delivery Simulator	unreleased	creativ
 cartel-pilots-wanted	Cartel Pilots Wanted	low_fit	steam_more_like_this	Coming soon — release TBA. Steam app 4614080.
 catto-pew-pew	Catto Pew Pew	low_fit	phase4_steam_more_like_this	obscure casual, unverified
 chains-of-fury	Chains of Fury	low_quality	creative_discovery	32.9% positive (25/76 reviews) — below 50% gate; also SP-only no co-op
+cheapskate	cheapskate	early_access	steam-coop-page12	Pre-alpha EA, dev explicitly warns it's not complete; no shipped finale
 chefs-together	Chefs Together	endless	creative_discovery	Open-ended restaurant level-up loop; no campaign ending — customers keep coming, levels scale forever (Steam page confirms).
 chicken-fight	Chicken Fight	low_fit	phase4_steam_more_like_this	PvP party brawler; no finite co-op campaign
 chroma-climb-reclaim-your-color	Chroma Climb Reclaim Your Color	not_enough_reviews	creative_discovery	Steam app 4629610; 3 reviews 66% (June 2026 release); too few to judge
 chrono-bullet	Chrono Bullet	unreleased	creative_discovery	coming_soon, no release date
 climber-animals-together	Climber Animals: Together	finish_unverified	reeval_skipped	Parkour climber 1-8 players with race/PvP element, leaderboards; 'reach the top' goal but no defined final course/finale (verified 2026-06-06)
-cloudheim	Cloudheim	ea_unfinished	reeval_skipped	Released Dec 2025 but tagged Early Access (genre 70); 1623 reviews 83% positive but Norse action-RPG with active roadmap, no announced finale yet (verified 2026-06-06)
+cloudheim	Cloudheim	ea_unfinished	reeval_skipped	Released 4 Dec 2025 but Steam still tags Early Access (genre 70); 1631 reviews 83% positive but no shipped finale (verified appdetails 2026-06-06)
 co-op-twins	CO-OP TWINS	not_enough_reviews	websearch_niche_queries	appid 3883280 — coming_soon, 0 reviews, no release date
 cod-world-at-war	Call of Duty: World at War	low_fit	phase4_steam_more_like_this	2008 pre-2015; co-op campaign exists but online status unverified, deferred
 commandos-3-hd-remaster	Commandos 3 - HD Remaster	low_fit	steam_more_like_this	co-op is standalone PvP/co-op maps; finite campaign is single-player only; 62% reviews
@@ -120,16 +126,19 @@ dreadmoor	DREADMOOR	unknown	phase4_steam_more_like_this
 drox-operative	Drox Operative	endless_misclassified	phase4_wikipedia_coop_lists	Same Soldak design as DO2 — procedural sectors with per-sector wins, no global "beat the game" state
 drox-operative-2	Drox Operative 2	endless_misclassified	phase4_wikipedia_coop_lists	Steam page: "finite per sector but infinite overall, no final boss or mandatory conclusion" — no global ending
 drunkslop-pub-crawl-coop	Drunkslop Pub crawl COOP	unknown	phase4_steam_more_like_this	
+dudes-on-a-map-virtual-grid-paper	Dudes on a Map: Virtual Grid Paper	low_fit	steam-coop-page12	Tabletop RPG tool (VTT), not a game
 dune-awakening	Dune Awakening	MMO	creative-discovery	Up to 40 players per server, persistent MMO survival sandbox — fails endless ban
 dungeon-escape	Dungeon Escape	not_enough_reviews	creative_discovery	App 3575380, released Sep 2025 by NyXart, 3 reviews 66.7% — below 50-review gate
 dungeon-siege-iii	Dungeon Siege III	unknown	wikipedia_coop_lists	
 dunk-dunk	Dunk Dunk	not_enough_reviews	reeval_skipped	still 24 reviews (<50 threshold) [seen 2x]
 elden-ring	ELDEN RING	coop_workaround	borderline-watch	Vanilla co-op can't run a continuous shared playthrough to the ending (phantoms return per boss); only the Seamless Co-op mod allows a full co-op finish
+endgame-road-to-salvation	Endgame: Road To Salvation	early_access	creative_discovery	1264920; co-op shared/split + RPT; 158 reviews 97%; EA over 90% complete; procedural Storyteller AI; verify finish on 1.0 release
 enginefall	Enginefall	blocklisted_endless	phase4_steam_more_like_this	MMO + PvP categories, coming soon 2026; hardcoded blocklist (any MMO)
 enshrouded	Enshrouded	endless	removed-entries	hardcoded_blocklist+manual_audit
 enter-the-gungeon-2	Enter the Gungeon 2	not_enough_reviews	reeval_skipped	still unreleased TBA [seen 3x]
 eon-rush	Eon Rush	not_enough_reviews	reeval_skipped	still unreleased TBA [seen 3x]
 escape-from-crimson-manor-trapped-together	Escape From Crimson Manor: Trapped Together	not_enough_reviews	reeval_skipped	still 2 reviews (just released) [seen 2x]
+escape-from-mandrillia	Escape From Mandrillia	low_fit	steam-coop-page12	VR Only — out of scope for this catalog
 exorcist-simulator	Exorcist Simulator	endless	creative_discovery	Steam app 2487140; 1-4 asymmetric horror, time-based rounds banish-the-Devil — sessional, no campaign
 f1-2023	f1-2023	low_fit	phase4_websearch_niche_queries	open-ended multi-season career, no defined ending
 faces-of-war	Faces of War	online_broken	phase4_wikipedia_coop_lists	GameSpy shutdown — online matchmaking broken; coop only via LAN/DirectIP/GameRanger
@@ -146,8 +155,8 @@ femboy-sleepover-episode-1	FEMBOY SLEEPOVER Episode 1	low_fit	phase4_steam_more_
 ferra	FERRA	unknown	phase4_steam_more_like_this	
 fire-pit-throw-things-into-the-fire	Fire Pit Throw Things Into The Fire	not_enough_reviews	creative_discovery	Steam app 4300660; 2 reviews (June 2026 release); too few to judge
 firefighting-simulator-ignite	Firefighting Simulator: Ignite	low_fit	phase4_websearch_niche_queries	30+ missions but mix of Major/Main/random emergencies; sim-style endless response loop, no credits/finale confirmable
-fish-hunters-most-lethal-fishing-simulator	Fish Hunters: Most Lethal Fishing Simulator	unclear_ending	creative_discovery	Released Jan 2026 by Pmdk23, 640 reviews 62.5%; description emphasizes 140 species collector atlas + relax mode, no defined finish event
-forgotten-seas	Forgotten Seas	finish_unverified	creative_discovery	Pirate survival 'escape Bermuda Void' goal — Steam page hints at finale but reviews suggest devs AWOL ~3mo; 582 reviews 77% positive — re-check after dev signals
+fish-hunters-most-lethal-fishing-simulator	Fish Hunters: Most Lethal Fishing Simulator	endless	creative_discovery;reeval_skipped	640 reviews 62% pos (2026-06-06 reeval); co-op fishing collectathon ('complete fish atlas' / 'kick back by the campfire'); no defined finale event, score-attack loop [seen 2x; reasons: unclear_ending,endless]
+forgotten-seas	Forgotten Seas	finish_unverified	reeval_skipped	582 reviews 77% pos; pitch is 'rule the seas' on endless ocean — no win-condition documented in Steam page; co-op survival/exploration loop
 fortification-tower-defence	Fortification: tower defence	not_enough_reviews	creative_discovery	28 reviews June 2021 release
 foundry	FOUNDRY	ea_unfinished	reeval_skipped	Released May 2024 but still tagged Early Access; voxel factory sandbox, no announced finale (verified 2026-06-06)
 foxhole	Foxhole	blocklisted_endless	websearch_drill	MMO persistent war
@@ -178,6 +187,7 @@ halo-campaign-evolved	Halo: Campaign Evolved	unknown	phase4_steam_more_like_this
 ham-the-game	HAM: The Game	endless	creative_discovery	Endless gameplay with escalating difficulty per Steam page — 'orders just never stop coming', no defined ending or campaign
 handshakes	Handshakes	coop_too_short	phase4_creative_steam_topcoop	30 sokoban puzzles, ~1h finish per Steam descriptions — fails the >1h co-op gate
 haunted-paws	unreleased	unknown	phase4_websearch_niche_queries	
+heartless-dreadful-return-by-72-hours	Heartless & Dreadful : Return by 72 Hours	low_fit	creative_discovery	Solo-dev character action game; description emphasizes single-player short story campaign; co-op category exists but is not a featured mode
 hela-of-mice-magic	Hela: of Mice & Magic	low_fit	creative_discovery	Coming Soon 2026 (verified appdetails 2026-06-06) — re-check post-launch
 hellbreach-vegas	hellbreach-vegas	endless	wave/horde-based co-op shooter (CoD-zombies style); endless waves, violates no-endless rule	
 helldivers-1	HELLDIVERS Dive Harder Edition	endless	websearch_drill	Galactic War sessional structure — same live-service feel as HD2 blocklist
@@ -193,6 +203,7 @@ hydroneer	Hydroneer	endless	phase4_steam_more_like_this;steam_more_like_this	min
 hyperbeat	HYPERBEAT	finish_unverified	creative_discovery	rhythm game with 60 charts; story mode appears solo-focused; multiplayer is 250-player social hangout with shared scores (Wellspring lobby), not a co-op campaign
 hypercore-demo	HyperCore Demo	low_fit	phase4_steam_more_like_this	Steam type=demo, not a game
 hypercore-rhythm-bullet-hell	HyperCore : Rhythm Bullet Hell	not_enough_reviews	phase4_steam_more_like_this;reeval_skipped	0 reviews on Steam — below 50-review threshold [seen 2x; reasons: not_enough_reviews,unknown]
+hyperrogue	HyperRogue	endless	steam-coop-page12	Co-op only in shmup score-attack mode; Orbs of Yendor finish is SP-only; co-op is endless
 hyperspaced	Hyperspaced	not_enough_reviews	youtube_curator_playlists	app 1125830 only 35 reviews (94% positive) — below 50 minimum
 icarus	ICARUS	endless	removed-entries	
 igs-classic-arcade-collection	IGS Classic Arcade Collection	coming_soon	discovery	Coming soon 2026; no reviews yet; appid 3417140
@@ -217,23 +228,27 @@ killing-floor-3	Killing Floor 3	blocklisted_endless	websearch_drill	wave-based K
 killsquad	Killsquad	endless	removed-entries	
 kingdoms-reborn	Kingdoms Reborn	endless	creative_discovery	Open-ended city builder — Steam page describes sandbox with no win condition or scenarios; app 1307890; 9613 reviews 90.6% positive
 klonoa-phantasy-reverie-series	Klonoa Phantasy Reverie Series	coop_too_short	reeval_skipped	P2 = support assist only (single button to trigger Klonoa's support jump); no real second-player gameplay. Local-only, no online. Fails co-op gate (verified Co-Optimus 2026-06-06)
+knights-within	Knights Within	early_access	creative_discovery	2406180; 289 reviews 96%; EA since May 2024 ~1yr more dev; multi-act + endless climber modes; recheck on 1.0
 krater	krater	low_quality	55.5% positive, co-op added post-launch (no online-coop tag), 2012	
+kromex	Kromex	not_enough_reviews	steam-released-desc	1 review at check, just released
 lego-movie-2-videogame	region_restricted	unknown	appdetails success=false for cc=ua (not sold in Ukraine), no UAH price; only 19 reviews	
 lego-skywalker-saga	LEGO Star Wars: The Skywalker Saga	endless	removed-entries	
 lego-worlds	lego-worlds	endless_misclassified	open-ended build sandbox (Minecraft-like); Master Builder is a progression milestone, not a finite finale; CLAUDE.md exc	Minecraft-like Lego sandbox builder [seen 4x; reasons: endless_misclassified,low_fit,unclear_ending]
 let-it-die	LET IT DIE	endless	phase4_steam_more_like_this	free-to-play arena, ongoing/live-service
-let-s-cook-together-2	Let's Cook Together 2	not_enough_reviews	creative_discovery	45 reviews on Steam (below 50 threshold) but 77.8% positive; recheck after review count grows
+let-s-cook-together-2	Let's Cook Together 2	not_enough_reviews	reeval_skipped	Still 45 reviews 78% pos (below 50 gate, very close — recheck in ~1 month)
 lethal-company	Lethal Company	endless	removed-entries	hardcoded_blocklist+manual_audit
 levelhead	Levelhead	endless	steamdb_coop_campaign	Massively Multiplayer + Free To Play
 limbs	Limbs	online_broken	phase4_youtube_curator_playlists	70% / 67 reviews; multiple recent reviews say co-op controller/remote play is broken or unplayable; finish exists but co-op delivery unreliable
 little-nightmares-3	Little Nightmares III	low_quality	phase4_websearch_niche_queries;phase4_youtube_curator;steam_more_like_this;websearch_horror_drill;youtube_curator_playli	46.5%% positive (below 50%% threshold) [seen 6x; reasons: low_quality]
 little-nightmares-iii	Little Nightmares III	low_quality	creative_discovery	Steam %positive 46.5% (19910 reviews) — Mixed; below 50% threshold
 loftia	Loftia	low_fit	phase4_steam_more_like_this	MMO cozy farming sim
-lonely-mountains-snow-riders	Lonely Mountains: Snow Riders	finish_unverified	reeval_skipped	Skiing arcade racing, leaderboard-focused; co-op mode is descend-together or race; no co-op-specific finite endpoint, individual medals only (verified 2026-06-06)
+lonely-mountains-snow-riders	Lonely Mountains: Snow Riders	finish_unverified	reeval_skipped	781 reviews 93% pos — but description is 'master the mountain', leaderboard+race focus, no campaign endpoint; co-op is descend-together / vs race only. Per reviewer: 'stop trying to win, treat it like a real ski hill'
+lost-frontier	Lost Frontier	low_fit	creative_discovery	Turn-based tactics game with PvP+Co-op skirmish modes — no clear cooperative campaign endpoint, primary identity is single-player TBS; 98%/54
 lost-planet-2	region_restricted	unknown	appdetails success=false for cc=ua (no UAH price); also 2010 GFWL-era online co-op likely broken; 65.8%;wikipedia_coop_l	[seen 2x; reasons: unknown]
 lost-railway	Lost Railway	not_enough_reviews	reeval_skipped	app 862750 still coming soon [seen 5x]
 lotr-war-in-the-north	lotr-war-in-the-north	low_fit	phase4_wikipedia	delisted from Steam (LOTR license expired); not purchasable, out of scope
-mad-king-redemption	Mad King Redemption	early_access	phase4_youtube_curator_playlists	EA released 14 May 2026, 6-9 months to 1.0. 88% (93 reviews). 20-min roguelite beat-em-up runs, Mad King boss not confirmed defeatable in current EA build. App 2369580. Re-check post-1.0.
+mad-king-redemption	Mad King Redemption	early_access	reeval_skipped	Still EA (genre 70); 93 reviews 88% pos but 'Relieve the king from his madness' arc not yet shipped (still 20-min roguelite runs)
+maid-cafe-coop	Maid Cafe Coop	endless	creative_discovery	Cafe service loop: prepare and serve customers indefinitely; no campaign finale stated; 98%/57 reviews
 mailstrom	Mailstrom	unknown	phase4_websearch_niche_queries	
 malice	Malice	low_quality	websearch_niche_queries	appid 1799220, Nov 2022 Japanese horror co-op puzzle escape — 994 reviews, 24% positive (Mostly Negative)
 marvel-avengers	Marvel's Avengers	endless	websearch_drill	live-service shut down, dead online
@@ -244,11 +259,13 @@ mecha-break	Mecha BREAK	endless_misclassified	phase4_steam_more_like_this	Multip
 meowgic	Meowgic	not_enough_reviews	reeval_skipped	app 4252290 TBA, 0 reviews [seen 5x]
 meteor-60-seconds	Meteor 60 Seconds!	low_fit	phase4_steam_more_like_this	short single-session app, no co-op
 minecraft-dungeons-ii	Minecraft Dungeons II	not_enough_reviews	reeval_skipped	app 1912410 still coming soon (2026 TBA) [seen 5x]
+minesweeper-together	Minesweeper Together	endless	creative_discovery	Cooperative/competitive Minesweeper puzzle board game — endless loop, no campaign finish; 98%/52
 mirage-a-biplane-adventure	Mirage A Biplane Adventure	not_enough_reviews	creative-discovery	Released Apr 2024 (Steam app 2909720) but only 1 review — fails ≥50 gate; re-check later
 misery	MISERY	endless_misclassified	phase4_steam_more_like_this	Sessional rogue-lite raids like Lethal Company per dev description; "no explicit story ending", persistent bunker building, no win condition
 mitsume	Mitsume (みつめ)	endless	websearch_niche_queries	appid 4113260, Feb 2026 release, 84% 129 reviews — but loop-based structure (find anomalies → loop back), 20-40min per playthrough, no finite ending, sessional like Phasmophobia
 mojo-party	Mojo Party	endless	phase4_steam_more_like_this	party brawler / mini-games, no ending
 monster-hunter-wilds	Monster Hunter Wilds	rating_below_gate	borderline-watch	Has a finishable co-op story, but Steam sits at ~48% (below the >=50% gate)
+monster-meals	Monster Meals	endless	creative_discovery	Cooking food-truck Overcooked-clone: serve indefinitely or be on the menu — no campaign finale stated; 98%/74
 monster-mop-up-demo	Monster Mop Up Demo	low_fit	phase4_steam_more_like_this;steam_more_like_this	demo entry on Steam [seen 2x; reasons: low_fit,unknown]
 monster-prom-2-monster-camp	Monster Prom 2: Monster Camp	coop_too_short	phase4_creative_steam_topcoop	30-60min runs per playthrough — fails >1h co-op gate (same reason MP3 was skipped); MP4 added separately at 2h+
 monster-prom-3-monster-roadtrip	Monster Prom 3: Monster Roadtrip	below_1h_gate	borderline-watch	Has co-op + RPT + a destination finish, but a single run is ~40-60 min (fails the >1h co-op gate)
@@ -257,6 +274,8 @@ mothman	Mothman	not_enough_reviews	phase4_youtube_curator_playlists	1-4p hunt-Mo
 murky-divers	Murky Divers	endless	creative_discovery	Lethal Company-style endless roguelike loot loop, no defined ending, app 2963880
 my-time-at-evershine	My Time at Evershine	unreleased	creative_discovery	coming_soon=True, no release date set (Pathea Games next title)
 mycopunk	Mycopunk	endless	phase4_steam_more_like_this;phase4_websearch_niche_queries;websearch_niche	mission-based looter shooter with events/limited-time content, no defined ending [seen 3x; reasons: endless,low_fit]
+mythmatch	Mythmatch	low_fit	creative_discovery	Narrative anti-capitalist merge game starring Artemis — co-op category exists but description casts P2 as a helper, not a primary partner; primarily single-player
+nekokami-the-human-restoration-project	Nekokami - The Human Restoration Project	endless	creative_discovery	Open-ended world-building sandbox where cats restore humans — no defined finish/credits; 98%/53 reviews
 never-be-alone	Never Be Alone	unknown	phase4_steam_more_like_this	
 no-more-room-in-hell-2	No More Room in Hell 2	endless	steam_more_like_this	Round-based co-op survival, no campaign/finish. Multiplayer-only, no SP category. Steam app 292000.
 no-rest-for-the-wicked	no-rest-for-the-wicked	early_access	genres include Early Access (Moon Studios ARPG); campaign incomplete, no 1.0 ending yet	
@@ -298,6 +317,7 @@ plush-time	Plush Time	low_fit	phase4_steam_more_like_this	obscure, unverified
 portal		endless	removed-entries	
 potion-brew-co-op	Potion Brew: Co-op	unclear_ending	creative_discovery	Sandbox alchemy shop sim; no campaign ending or story arc confirmable per Steam page/reviews
 powerwash-simulator-demo	PowerWash Simulator Demo	low_fit	phase4_steam_more_like_this;steam_more_like_this	demo only [seen 2x; reasons: low_fit,unknown]
+project-microchip	Project Microchip	not_enough_reviews	steam-released-desc	0 reviews
 project-rhombus-free	Project Rhombus (Free)	low_fit	phase4_steam_more_like_this	Steam type=demo, not a game
 project-zomboid	Project Zomboid	blocklisted_endless	curated	on hardcoded blocklist
 projekt-z-beyond-order	Projekt Z: Beyond Order	unreleased	creative_discovery	coming_soon=True, release date To be announced
@@ -312,6 +332,7 @@ raiden-iv-x-mutant-storm	not_found	unknown	Steam search returns no match under t
 rayman-legends-retold	Rayman Legends Retold	low_fit	steam_more_like_this	Coming soon — release 2026-10-01. Steam app 4084710.
 realm-of-the-mad-god	realm-of-the-mad-god	blocklisted_endless	phase4_steam_more_like_this	MMO — blocklist (any MMO)
 realm-of-the-mad-god-exalt	realm-of-the-mad-god-exalt	blocklisted_endless	phase4_steam_more_like_this	free MMO bullet-hell, blocklist (MMO)
+realmlords	Realmlords	not_enough_reviews	steam-released-desc	0 reviews
 repo	R.E.P.O.	endless	removed-entries	hardcoded_blocklist+manual_audit
 rest-area-simulator-prologue	prologue	unknown	steam_more_like_this	
 restaurats	Restaurats	endless	reeval_skipped	appid 2870920, Nov 2025 release, 90% 1519 reviews — but Career has no defined endpoint ('can be played for as long as you want, no time limits'), Friendslop is a 21-day session with unlocks then loop. No finale/credits/boss.
@@ -357,8 +378,10 @@ stitchlings	Stitchlings	coop_too_short	discovery	~1 hour campaign per review; co
 stolen-realm-survivors	stolen-realm-survivors	endless	phase4_steam_more_like_this	survivors-like auto-battler, sessional, no finite ending [seen 2x; reasons: endless,low_fit]
 stoned-to-death	Stoned to Death	not_enough_reviews	creative_discovery	Steam app 4346450; 1 review (June 2026 release); too few to judge
 storebound	Storebound	early_access	youtube_curator_playlists	Early Access; episodic horror with chapters 1-4 released, more planned. No announced finale. App 3417410. [seen 3x]
+strange-pong	Strange Pong	unclear_ending	steam-coop-page12	Pong variant with level features but no documented finish; likely score-attack
 streets-of-rogue-2	Streets of Rogue 2	early_access	misc	still Coming soon — no reviews
 subnautica-2	Subnautica 2	early_access	gamerant_2025;phase4_steam_more_like_this	Early Access launched May 2026, no 1.0 ending confirmed yet [seen 2x; reasons: early_access,low_fit]
+sunny-place	sunny-place	endless	creative_discovery	1489120; cute-girls + speedy-cars sandbox; race tracks + apartment furnishing + social hangout; no campaign endpoint
 super-battle-golf	Super Battle Golf	low_fit	steam_more_like_this	Released 2026-02-19. PvP+Co-op golf party game; no clear co-op finish/campaign. Steam app 4069520.
 superliminal	Superliminal	low_fit	youtube_curator_playlists	app 1049410 Steam categories list Co-op/Online Co-op but Steam page text explicitly says single-player only with no co-op campaign description — categories appear to refer to Workshop multiplayer levels, not a real co-op mode
 supermarket-together	Supermarket Together	endless	creative_discovery	Sim/sandbox grocery store management with franchise points and ongoing updates; no campaign or named end-goal
@@ -389,14 +412,18 @@ the-mound-omen-of-cthulhu	The Mound: Omen of Cthulhu	unreleased	creative_discove
 the-other-side	The Other Side	endless	creative_discovery	Phasmophobia-style contracts loop with seasonal events planned — no campaign or finale; 1081 reviews 93.7% positive
 the-planet-crafter	The Planet Crafter	blocklisted_endless	phase4_steam_more_like_this	Planet Crafter is on hardcoded blocklist (open-ended terraforming sim)
 the-quarry	local_only_no_remote	low_fit	co-op is couch-only (Shared/Split Screen); online Wolf Pack is spectate/vote only, no Remote Play Together; CLAUDE.md §3	local_split_only_no_online_no_RPT [seen 2x; reasons: low_fit,unknown]
+the-reserve	The Reserve	not_enough_reviews	steam-released-desc	2 reviews
+the-zone-fpv-drone-simulator	The Zone - FPV Drone Simulator	endless	creative_discovery	FPV drone freestyle simulator with leaderboards — no campaign or win-state; sandbox training
 threads-of-time	Threads of Time	unknown	phase4_steam_more_like_this	
 ticking-together	Ticking Together	not_enough_reviews	reeval_skipped	still 44 reviews (<50 threshold) [seen 4x]
+time-to-love	Time to Love	not_enough_reviews	steam-released-desc	0 reviews
 titan-quest-2	Titan Quest II	early_access	websearch_drill	released Aug 2025 as EA; multiplayer in 'early preview state'
 toasterball	no_finite_content	unknown	reddit_just_finished	
 tom-clancys-the-division-2	Tom Clancy's The Division 2	endless_misclassified	phase4_wikipedia_coop_lists;reddit_just_finished	Live-service shooter looter with seasons/battle pass/In-App Purchases; campaign exists but endgame grind dominates [seen 2x; reasons: endless_misclassified,low_fit]
 too-deep-to-quit	Too Deep To Quit	unknown	phase4_steam_more_like_this	
 toodee-and-topdee	taxonomy_ambiguous	unknown	perspective by design mixes Side-view (Toodee) + top-down (Topdee) simultaneously; perspective axis not cleanly assignab	[seen 2x; reasons: unknown]
 totally-safe-moon-project	unreleased	unknown	steam_more_like_this	
+touhou-crisis	Touhou Crisis	coop_too_short	creative_discovery	1989990; 354 reviews 96% positive but single-boss arcade lightgun (72-hour game jam title); main loop is one Reimu vs boss fight ~5-15min; no campaign with stages
 trackmania-turbo	Trackmania Turbo	MMO	websearch_niche_queries	app 375900 Genre tag includes Massively Multiplayer; no Co-op category
 trash-goblin	Trash Goblin	endless	websearch_drill	"endless good vibes" cozy shopkeeping — explicitly no defined endpoint
 twincop	TwinCop	not_enough_reviews	reeval_skipped	still 33 reviews (<50 threshold) [seen 5x]
@@ -404,6 +431,7 @@ undercrewed	Undercrewed	not_enough_reviews	creative_discovery	36 reviews 2019 re
 underling-uprising	Underling Uprising	not_enough_reviews	phase4_youtube_curator_playlists	Released 14 May 2026, only 16 reviews (need 50). Has local Co-op + RPT (no online). App 1896760. Re-check later.
 v-rising	V Rising	endless	removed-entries	hardcoded_blocklist+manual_audit
 vibrant-venture	Vibrant Venture	finish_unverified	phase4_creative_steam_topcoop	EA since Jul 2020, Beta 7.0 Nov 2025 — no 1.0 yet, no shipped ending; level editor included but campaign incomplete
+virtual-cottage-2	Virtual Cottage 2	low_fit	steam-coop-page12	Productivity / pomodoro app with chill music, not a game
 vital-shell	Vital Shell	low_fit	phase4_creative_steam_topcoop	Steam categories list Co-op but description says 'single player top-down arena shooter' — co-op meaningfulness unclear
 void-crew	Void Crew	endless	removed-entries	
 voodoo-fishin	Voodoo Fishin'	endless	steam_more_like_this	app 3071240, Early Access, 'Play Forever' explicit endless co-op fishing
