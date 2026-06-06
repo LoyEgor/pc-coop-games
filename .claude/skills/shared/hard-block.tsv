@@ -228,6 +228,7 @@ stick-fight	stick-fight	no_coop	PvP party brawler
 stray	stray	no_coop	single-player only
 subnautica	Subnautica	no_coop	categories list Single-player only, no Multi-player
 subnautica-below-zero	Subnautica: Below Zero	no_coop	Steam categories list Single-player only, no Co-op category.
+suika-shapes	Suika Shapes	pvp_primary	Suika watermelon clone — PvP versus modes are the marketed core; co-op is the relaxing side mode without finish. app 2686690
 super-bomberman-r-2	Super Bomberman R 2	no_coop	
 super-woden-gp-2	Super Woden GP 2	pvp_primary	Multi-player is PvP only (Shared/Split Screen PvP + RPT); no Co-op category
 tactical-breach-wizards	Tactical Breach Wizards	no_coop	Single-player turn-based tactics
@@ -238,7 +239,7 @@ team-sonic-racing	Team Sonic Racing	no_coop	Steam categories list only PvP modes
 tempest-rising	tempest-rising	no_coop	
 tetris-forever	Tetris Forever	pvp_primary	Multiplayer is PvP only (Shared/Split Screen PvP + Remote Play Together); no Co-op category
 the-august-before-chapter-one	The August Before: Chapter One	no_coop	app 2516940 single-player only [seen 2x; reasons: low_fit,no_coop]
-the-black-heart	The Black Heart	pvp_primary	1431780; 2D versus fighting game (Street Fighter-like); co-op shared/split listed but the game is PvP fighter w/ solo story; no real co-op campaign
+the-black-heart	The Black Heart	pvp_primary	VS 2D fighting game in the tradition of Street Fighter; PvP-primary. app 1431780
 the-finals	the-finals	no_coop	PvP-only live-service shooter, no co-op campaign
 the-haunting-of-joni-evers	The Haunting of Joni Evers	no_coop	Single-player only walking sim horror (Steam app 2828590)
 the-lord-of-the-rings-war-in-the-north	The Lord of the Rings: War in the North	not_on_steam	
@@ -264,6 +265,7 @@ uncharted-legacy-of-thieves-collection	UNCHARTED: Legacy of Thieves Collection	n
 undefeated	UNDEFEATED	no_coop	Single-player only per Steam categories
 undertale	undertale	no_coop	single-player RPG
 victory-heat-rally	Victory Heat Rally	no_coop	PvP-only racing, no co-op category
+wand-wars	Wand Wars	pvp_primary	Magic broom sports party game; PvP primary, no co-op campaign. app 422110
 warhammer-40-000-space-marine-anniversary-edition	Warhammer 40,000: Space Marine - Anniversary Edition	pvp_primary	MP categories only Single-player + Multi-player (PvP); Exterminatus co-op DLC is endless wave defense
 warhammer-40k-boltgun	Warhammer 40,000: Boltgun	no_coop	[seen 3x; reasons: no_coop]
 warhammer-quest-2	warhammer-quest-2	no_coop	

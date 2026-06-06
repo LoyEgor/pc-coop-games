@@ -25,6 +25,7 @@ ancient-dungeon	Ancient Dungeon	unknown	steamdb_coop_campaign
 aniimo	Aniimo	low_fit	steam_more_like_this	Coming soon, F2P, PvP+co-op — looks live-service/MMO. Steam app 4126040.
 anthem	Anthem	endless	websearch_drill	live-service shut down
 anvil-vault-breakers	not_found	unknown	Steam search returns no match under this name	
+apocalypse-party-20-minutes-till-dawn-free-thanking-dlc	Apocalypse Party & 20 Minutes Till Dawn Free Thanking DLC	low_fit	steam-coop-deep-scan-offset-325	Free DLC for Apocalypse Party + 20 Minutes Till Dawn, not a standalone game (type=DLC). app 2685140
 arc-raiders	ARC Raiders	endless_misclassified	phase4_websearch_niche_queries	Extraction-shooter live-service with In-App Purchases + PvPvE; no finite campaign ending
 archrobo-robotic-annihilation	ArchRobo - Robotic Annihilation	not_enough_reviews	phase4_steam_more_like_this	Only 22 Steam reviews; free game
 ark-survival-evolved	ARK: Survival Evolved	blocklisted_endless	curated;phase4_steam_more_like_this;steam_more_like_this	on hardcoded blocklist [seen 3x; reasons: blocklisted_endless]
@@ -169,6 +170,7 @@ garrys-mod	Garry's Mod	endless_misclassified	phase4_steam_more_like_this	Sandbox
 gears-of-war-eday	Gears of War: E-Day	unknown	phase4_steam_more_like_this	
 general-practice	General Practice	low_fit	phase4_steam_more_like_this	obscure, unverified co-op/ending; skip per fit-gate
 ghost-exorcism-inc	Ghost Exorcism INC.	endless	creative_discovery	Steam app 1618540; Phasmophobia-clone — endless contracts/sessional ghost-hunting missions, no campaign with finish
+go-morse-go-arcade-edition	Go Morse Go! Arcade Edition	low_fit	steam-coop-deep-scan-offset-375	Morse-code telegraph party game; campaign is single-player only, co-op 'Pep Rally' is a short hype-meter round with no finish. app 797570
 gogh-focus-with-your-avatar	gogh: Focus with Your Avatar	low_fit	steam_more_like_this	Focus/productivity app for studying with avatars; no gameplay finish. Steam app 3213850.
 golf-with-your-friends	Golf With Your Friends	endless	phase4_steam_more_like_this	online multiplayer minigolf, PvP/competitive, no ending
 golf-with-your-friends-2	Golf With Your Friends 2	unknown	phase4_steam_more_like_this	
@@ -186,6 +188,7 @@ gymbeasts	GymBeasts	low_fit	phase4_steam_more_like_this	obscure, unverified
 halo-campaign-evolved	Halo: Campaign Evolved	unknown	phase4_steam_more_like_this	
 ham-the-game	HAM: The Game	endless	creative_discovery	Endless gameplay with escalating difficulty per Steam page — 'orders just never stop coming', no defined ending or campaign
 handshakes	Handshakes	coop_too_short	phase4_creative_steam_topcoop	30 sokoban puzzles, ~1h finish per Steam descriptions — fails the >1h co-op gate
+handy-dandy	Handy Dandy	coop_too_short	steam-coop-deep-scan-offset-325	Dev advertises ~1h of content; fails the >1h co-op finish gate. Free, 374 reviews 96% positive. app 1234400
 haunted-paws	unreleased	unknown	phase4_websearch_niche_queries	
 heartless-dreadful-return-by-72-hours	Heartless & Dreadful : Return by 72 Hours	low_fit	creative_discovery	Solo-dev character action game; description emphasizes single-player short story campaign; co-op category exists but is not a featured mode
 hela-of-mice-magic	Hela: of Mice & Magic	low_fit	creative_discovery	Coming Soon 2026 (verified appdetails 2026-06-06) — re-check post-launch
@@ -300,6 +303,7 @@ party-animals	Party Animals	endless	steam_more_like_this	PvP brawler, no co-op c
 party-club	Party Club	endless	phase4_creative_discovery	app 2796010 free-to-play party management game; 'keep the party going' endless customer flow, no finite campaign
 party-pirates	Party Pirates	not_enough_reviews	creative_discovery	9 reviews May 2024 couch co-op pirate
 path-of-exile-2	Path of Exile 2	unknown	websearch_drill	
+petal-crash	Petal Crash	low_fit	steam-coop-deep-scan-offset-325	Story Mode is per-character single-player; co-op exists only in Versus and arcade score-attack modes with no finish event. app 1211110
 pew-dew-redemption	Pew Dew Redemption	low_fit	phase4_steam_more_like_this	obscure FPS, unverified co-op campaign
 pga-tour-2k25	PGA TOUR 2K25	coop_too_short	creative_discovery	Steam app 2385530; co-op limited to casual round-of-golf (~30min sessions); MyCareer is solo only — no co-op campaign progression
 pico-park-classic-edition	PICO PARK Classic Edition	duplicate	steam_more_like_this	PICO PARK (1509960) and PICO PARK 2 already in catalog
@@ -338,6 +342,7 @@ rest-area-simulator-prologue	prologue	unknown	steam_more_like_this
 restaurats	Restaurats	endless	reeval_skipped	appid 2870920, Nov 2025 release, 90% 1519 reviews — but Career has no defined endpoint ('can be played for as long as you want, no time limits'), Friendslop is a 21-day session with unlocks then loop. No finale/credits/boss.
 revenge-savage-planet	Revenge of the Savage Planet	endless	removed-entries	
 rift-fishing-demo	demo	unknown	steam_more_like_this	
+riftborne	Riftborne	endless	steam-coop-deep-scan-offset-375	Terminal-based grand strategy 4X — construct/raid neighbors loop, no announced campaign finale. app 4301130
 rivals-of-aether-2	Rivals of Aether II	low_fit	phase4_steam_more_like_this	PvP platform fighter sequel; no finite co-op campaign
 romestead	Romestead	endless	creative_discovery	Early Access sandbox survival/builder, no defined ending — primarily sandbox-oriented per Steam page; 1-2 years in EA
 runcscape-dragonwilds	RuneScape: Dragonwilds	early_access	steam_more_like_this	still_EA_per_steam_genre_2025_release_dragon_queen_planned_endboss
@@ -351,6 +356,7 @@ sea-of-thieves	Sea of Thieves	endless	removed-entries	hardcoded_blocklist+manual
 sephiria	Sephiria	ea_unfinished	reeval_skipped	Steam EA, 'currently includes Chapters 1-5' of 6; chapter 6 finale not yet shipped (verified appdetails 2026-06-06)
 shift-at-midnight	Shift At Midnight	endless	creative-discovery	Coming soon 2026 (Steam app 3722330), randomly generated shifts pattern (Lethal/Phasmo-like) — likely endless
 shovel-knight-shovel-of-hope-dx	Shovel Knight: Shovel of Hope DX	not_enough_reviews	reeval_skipped	app 2661310 still TBA [seen 3x]
+shrimp-game-krill-confirmed	SHRIMP GAME: KRILL CONFIRMED	low_fit	steam-coop-deep-scan-offset-375	Marketed as an 'intro to SHRIMP GAME' (the full project) — appears to be a free demo/teaser. app 4597330
 silktrails-cats-in-the-grove	silktrails-cats-in-the-grove	low_fit	steam_more_like_this	app 3623120 no Online Co-op category (Remote Play Together only), free-to-play complications
 sineus-arena-survivors	Sineus Arena Survivors	not_enough_reviews	reeval_skipped	unreleased survivors-like, 0 reviews [seen 3x]
 sitting-ducks	Sitting Ducks	not_enough_reviews	creative_discovery	Steam app 4397060; 13 reviews 76% (June 2026 release); too few to judge
