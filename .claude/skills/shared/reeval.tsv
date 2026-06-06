@@ -42,6 +42,7 @@ birdwatching-notebook	Birdwatching Notebook	endless_misclassified	steam_more_lik
 birdwatching-notebook-demo	demo	unknown	steam_more_like_this	
 blood-refreshed-supply	Blood Refreshed Supply	low_fit	steam_more_like_this	Mixed 69.7% reviews + no UAH price (region-locked); too new (Dec 2025), retry later
 bloons-td-6	Bloons TD 6	endless	removed-entries	hardcoded_blocklist+manual_audit
+blue-ridge-hunting	Blue Ridge Hunting	early_access	phase4_youtube_curator_playlists	Phasmophobia-like co-op cryptid hunting (Appalachia); freeplay + story campaign targeting EA 2026. Re-check post-1.0 — story arc may give a real finish if it ships.
 bluey-the-videogame	local_only_no_remote	unknown	co-op is Shared/Split Screen only, no Remote Play Together or online (CLAUDE.md §3)	
 boomerang-fu	Boomerang Fu	endless	removed-entries	hardcoded_blocklist+manual_audit
 bopl-battle	bopl-battle	endless	phase4_steam_more_like_this	party PvP brawler [seen 3x; reasons: endless,low_fit,no_coop]
@@ -226,6 +227,7 @@ lonely-mountains-snow-riders	Lonely Mountains: Snow Riders	finish_unverified	ree
 lost-planet-2	region_restricted	unknown	appdetails success=false for cc=ua (no UAH price); also 2010 GFWL-era online co-op likely broken; 65.8%;wikipedia_coop_l	[seen 2x; reasons: unknown]
 lost-railway	Lost Railway	not_enough_reviews	reeval_skipped	app 862750 still coming soon [seen 5x]
 lotr-war-in-the-north	lotr-war-in-the-north	low_fit	phase4_wikipedia	delisted from Steam (LOTR license expired); not purchasable, out of scope
+mad-king-redemption	Mad King Redemption	early_access	phase4_youtube_curator_playlists	EA released 14 May 2026, 6-9 months to 1.0. 88% (93 reviews). 20-min roguelite beat-em-up runs, Mad King boss not confirmed defeatable in current EA build. App 2369580. Re-check post-1.0.
 mailstrom	Mailstrom	unknown	phase4_websearch_niche_queries	
 malice	Malice	low_quality	websearch_niche_queries	appid 1799220, Nov 2022 Japanese horror co-op puzzle escape — 994 reviews, 24% positive (Mostly Negative)
 marvel-avengers	Marvel's Avengers	endless	websearch_drill	live-service shut down, dead online
@@ -244,6 +246,7 @@ monster-hunter-wilds	Monster Hunter Wilds	rating_below_gate	borderline-watch	Has
 monster-mop-up-demo	Monster Mop Up Demo	low_fit	phase4_steam_more_like_this;steam_more_like_this	demo entry on Steam [seen 2x; reasons: low_fit,unknown]
 monster-prom-3-monster-roadtrip	Monster Prom 3: Monster Roadtrip	below_1h_gate	borderline-watch	Has co-op + RPT + a destination finish, but a single run is ~40-60 min (fails the >1h co-op gate)
 moonglow-bay	local_only_no_remote	unknown	co-op is local Shared/Split Screen only, no Remote Play Together or online; CLAUDE.md §3 excludes pure local-only	
+mothman	Mothman	not_enough_reviews	phase4_youtube_curator_playlists	1-4p hunt-Mothman Phasmophobia-style; 63% with only 44 reviews. App 2612230. Likely sessional/endless loop too. Re-check if reviews grow.
 murky-divers	Murky Divers	endless	creative_discovery	Lethal Company-style endless roguelike loot loop, no defined ending, app 2963880
 my-time-at-evershine	My Time at Evershine	unreleased	creative_discovery	coming_soon=True, no release date set (Pathea Games next title)
 mycopunk	Mycopunk	endless	phase4_steam_more_like_this;phase4_websearch_niche_queries;websearch_niche	mission-based looter shooter with events/limited-time content, no defined ending [seen 3x; reasons: endless,low_fit]
@@ -388,6 +391,7 @@ trackmania-turbo	Trackmania Turbo	MMO	websearch_niche_queries	app 375900 Genre t
 trash-goblin	Trash Goblin	endless	websearch_drill	"endless good vibes" cozy shopkeeping — explicitly no defined endpoint
 twincop	TwinCop	not_enough_reviews	reeval_skipped	still 33 reviews (<50 threshold) [seen 5x]
 undercrewed	Undercrewed	not_enough_reviews	creative_discovery	36 reviews 2019 release
+underling-uprising	Underling Uprising	not_enough_reviews	phase4_youtube_curator_playlists	Released 14 May 2026, only 16 reviews (need 50). Has local Co-op + RPT (no online). App 1896760. Re-check later.
 v-rising	V Rising	endless	removed-entries	hardcoded_blocklist+manual_audit
 void-crew	Void Crew	endless	removed-entries	
 voodoo-fishin	Voodoo Fishin'	endless	steam_more_like_this	app 3071240, Early Access, 'Play Forever' explicit endless co-op fishing

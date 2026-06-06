@@ -21,3 +21,4 @@ lego-star-wars-skywalker-saga	auto-contradiction	franchise_split: franchise 'leg
 portal-2	auto-contradiction	franchise_ending: franchise 'portal' has mixed endingType: portal-2=story; portal-reloaded=levels
 for-the-king	auto-contradiction	franchise_ending: franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
 hammerwatch-2	auto-contradiction	franchise_ending: franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels
+dunecrawl	contradiction	status: hard-block -> in-catalog-candidate (hard-block says no_coop but appdetails 2026-06-06 shows Online Co-op + LAN Co-op + Remote Play Together; game released 5 Jan 2026 with 75% 584 reviews and final boss Ceramicist — re-evaluate, likely should be added)
