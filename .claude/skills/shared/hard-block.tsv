@@ -81,6 +81,7 @@ doom-64	doom-64	no_coop	[seen 2x; reasons: no_coop]
 doom-eternal	DOOM Eternal	no_coop	App 782330 (2020). Steam categories show only Single-player + PvP/Online PvP (Battlemode). No co-op category. Campaign is solo. [seen 3x]
 doom-the-dark-ages	DOOM: The Dark Ages	no_coop	single-player [seen 2x; reasons: no_coop]
 dr-fetus-mean-meat-machine	Dr. Fetus' Mean Meat Machine	no_coop	Single-player only puzzle game
+dragon-s-crown	Dragon's Crown	not_on_steam	Vanillaware beat-em-up RPG, PS3/PS4/Vita exclusive — no Steam release.
 drawquarium	drawquarium	no_coop	app 4045480 single-player only, coming soon
 drop-duchy	Drop Duchy	no_coop	Steam appdetails: Single-player only, no co-op category
 dunecrawl	DuneCrawl	no_coop	Steam categories list PvP/Online PvP/LAN PvP only — no co-op category [seen 2x; reasons: low_fit,no_coop]
@@ -252,7 +253,7 @@ tactical-breach-wizards	Tactical Breach Wizards	no_coop	Single-player turn-based
 tales-of-graces-f-remastered	Tales of Graces f Remastered	no_coop	app 2530980 Single-player only per Steam categories (no co-op or Remote Play category) [seen 5x]
 tangy-td	tangy-td	no_coop	single-player tower defense, no co-op
 tank-team	Tank Team	pvp_primary	Steam app 2587450; free-to-play 8-player PvP team-tank shooter, no co-op campaign, last-team-standing matches
-team-sonic-racing	Team Sonic Racing	no_coop	Steam categories list only PvP modes; no Co-op [seen 8x; reasons: low_fit,no_coop,pvp_primary,taxonomy_gap]
+team-sonic-racing	Team Sonic Racing	pvp_primary	Steam categories list PvP only (no Co-op tag); taxonomy.json examples_negative explicitly excludes 'team-sonic-racing (PvP-primary, not in catalog)'. Team Adventure mode is team-vs-AI racing, still competitive kart format.
 tempest-rising	tempest-rising	no_coop	
 tetris-forever	Tetris Forever	pvp_primary	Multiplayer is PvP only (Shared/Split Screen PvP + Remote Play Together); no Co-op category
 the-august-before-chapter-one	The August Before: Chapter One	no_coop	app 2516940 single-player only [seen 2x; reasons: low_fit,no_coop]
@@ -272,7 +273,7 @@ tower-of-babel-survivors-of-chaos	tower-of-babel-survivors-of-chaos	no_coop	sing
 tower-of-guns	tower-of-guns	no_coop	
 transport-fever-2	Transport Fever 2	no_coop	Single-player only in Steam categories — multiplayer mod exists but not official
 trepang2	trepang2	no_coop	
-trials-of-mana	Trials of Mana	no_coop	app 924980 Single-player only per Steam categories (2020 remake) [seen 7x]
+trials-of-mana	Trials of Mana	no_coop	2020 Square Enix remake removed the original SNES 3-player co-op; Steam categories show Single-player only.
 tribe-nine	TRIBE NINE	no_coop	Steam appdetails shows Single-player only; no co-op category (also In-App Purchases, gacha-style)
 trinity-fusion	Trinity Fusion	no_coop	steam categories show single-player only [seen 3x; reasons: no_coop]
 turbo-sliders-unlimited	Turbo Sliders Unlimited	pvp_primary	All multiplayer modes are PvP (Online/LAN/Shared Split PvP + RPT); no Co-op

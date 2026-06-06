@@ -49,7 +49,7 @@ birdseedvr-demo	demo	unknown	steam_more_like_this
 birdwatching-notebook	Birdwatching Notebook	endless_misclassified	steam_more_like_this	cozy idle game, no ending [seen 3x]
 birdwatching-notebook-demo	demo	unknown	steam_more_like_this	
 black-ice	Black Ice	finish_unverified	creative_discovery	Early Access since 2014 — Acts 1 and 2 done, full story still not shipped as of June 2026; procedural loot loop with no confirmed finale
-blood-refreshed-supply	Blood Refreshed Supply	low_fit	steam_more_like_this	Mixed 69.7% reviews + no UAH price (region-locked); too new (Dec 2025), retry later
+blood-refreshed-supply	Blood: Refreshed Supply	low_fit	websearch_niche_queries	Region-locked in UA (cc=ua returns empty data); Mixed (69.8%) reviews. Co-op campaign exists but UA owner can't buy directly. Revisit if unlocked.
 bloons-td-6	Bloons TD 6	endless	removed-entries	hardcoded_blocklist+manual_audit
 blue-ridge-hunting	Blue Ridge Hunting	early_access	phase4_youtube_curator_playlists	Phasmophobia-like co-op cryptid hunting (Appalachia); freeplay + story campaign targeting EA 2026. Re-check post-1.0 — story arc may give a real finish if it ships.
 bluey-the-videogame	local_only_no_remote	unknown	co-op is Shared/Split Screen only, no Remote Play Together or online (CLAUDE.md §3)	
@@ -146,6 +146,7 @@ escape-from-crimson-manor-trapped-together	Escape From Crimson Manor: Trapped To
 escape-from-mandrillia	Escape From Mandrillia	low_fit	steam-coop-page12	VR Only — out of scope for this catalog
 exorcist-simulator	Exorcist Simulator	endless	creative_discovery	Steam app 2487140; 1-4 asymmetric horror, time-based rounds banish-the-Devil — sessional, no campaign
 f1-2023	f1-2023	low_fit	phase4_websearch_niche_queries	open-ended multi-season career, no defined ending
+f1-24	F1 24	low_fit	websearch_niche_queries	Annual F1 release; catalog already has f1-25 (latest). UA region returns no price (likely region-locked). Adding older yearly iterations is redundant when current entry is present.
 faces-of-war	Faces of War	online_broken	phase4_wikipedia_coop_lists	GameSpy shutdown — online matchmaking broken; coop only via LAN/DirectIP/GameRanger
 factorio	Factorio	blocklisted_endless	phase4_steam_more_like_this;steam_more_like_this;steamdb_coop_campaign	Factorio base game on hardcoded blocklist (endless, Space Age DLC excluded too) [seen 3x; reasons: blocklisted_endless,endless]
 fandominion	Fandominion	low_fit	phase4_steam_more_like_this	PvP/co-op fandom brawler party game; no finite campaign ending
@@ -180,7 +181,7 @@ golf-with-your-friends	Golf With Your Friends	endless	phase4_steam_more_like_thi
 golf-with-your-friends-2	Golf With Your Friends 2	unknown	phase4_steam_more_like_this	
 gone-fishing	GONE Fishing	endless	creative_discovery	EA since 2024 by GONE Studios, lake-monster sessional survival loop with leaderboard, no campaign end — Lethal-style
 goons-legends-mayhem	Goons: Legends & Mayhem	unknown	phase4_backloggd_substitute	
-granblue-fantasy-relink	Granblue Fantasy: Relink	low_fit	youtube_curator_playlists	Story campaign is SOLO ONLY; co-op is side-mission grind for gear after story. Co-op does not lead to a finish — fails CLAUDE.md §5 Gate A.
+granblue-fantasy-relink	Granblue Fantasy: Relink	low_fit	websearch_niche_queries	Main story missions are single-player only (~12-18h); co-op unlocks for side quests + post-game farming, which is endless. Campaign cannot be played together.
 grand-theft-auto-v-enhanced	Grand Theft Auto V Enhanced	low_fit	phase4_steam_more_like_this	GTA Online co-op is endless live-service sandbox; SP campaign not co-op
 greedland	Greedland	endless	phase4_steam_more_like_this	Vampire Survivors-like; ongoing waves with no defined ending described on Steam page
 grindset-tv	Grindset TV	unknown	phase4_steam_more_like_this	
@@ -226,6 +227,7 @@ ironclad	Ironclad	early_access	youtube_curator_playlists	Coming soon (TBA); unre
 it-s-only-money	It's Only Money	unclear_ending	reeval_skipped	app 1415220 unchanged — open-world Saints-Row-like sandbox, no HLTB Main Story, no ending markers; when-in-doubt skip [seen 4x]
 it-takes-two-friends-pass	It Takes Two Friends Pass	duplicate	steam_more_like_this	Friend Pass version of It Takes Two (already in catalog as 1426210)
 its-only-money	It's Only Money	finish_unverified	borderline-watch	Open-world GTA-like; "liberate the city" is fuzzy/freeform with ongoing updates
+jay-and-silent-bob-chronic-blunt-punch	Jay and Silent Bob: Chronic Blunt Punch	low_fit	websearch_niche_queries	Released Apr 2026; 65% positive (Mixed, 112 reviews); UA region returns appdetails success:false — likely region-locked; Atari publisher. Marginal quality + can't easily buy.
 jelly-brawl-classic	Jelly Brawl Classic	endless	phase4_steam_more_like_this	party PvP brawler
 jump-space	jump-space	endless	phase4_steam_more_like_this	Mission-based extraction-style co-op; no linear campaign, no narrative conclusion, no final boss [seen 3x; reasons: endless,endless_misclassified,low_fit]
 just-shapes-beats-more-like-this-batch	Just Shapes & Beats More-Like-This batch	unknown	phase4_steam_more_like_this	
@@ -307,7 +309,7 @@ pacs-post-apocalypse-courier-service	PACS - Post Apocalypse Courier Service	unre
 palia	Palia	blocklisted_endless	steam_more_like_this	MMO category on Steam; live service [seen 4x]
 palworld	Palworld	endless	removed-entries	hardcoded_blocklist+manual_audit
 panicore	PANICORE	endless	reeval_skipped	Survival horror with permadeath escape sessions; repeatable maps, no overall campaign finale (verified 2026-06-06)
-paranoia-place	PARANOIA PLACE	endless	websearch_2024_2025	sessional rounds with random items, no narrative ending
+paranoia-place	PARANOIA PLACE	endless	websearch_niche_queries	Procedurally generated session-based survival horror; escape rooms with random item placement, no narrative ending. Phasmo-shape.
 party-animals	Party Animals	endless	steam_more_like_this	PvP brawler, no co-op campaign [seen 3x]
 party-club	Party Club	endless	phase4_creative_discovery	app 2796010 free-to-play party management game; 'keep the party going' endless customer flow, no finite campaign
 party-pirates	Party Pirates	not_enough_reviews	creative_discovery	9 reviews May 2024 couch co-op pirate
@@ -396,7 +398,7 @@ stick-fight-the-game	Stick Fight: The Game	low_fit	phase4_steam_more_like_this	P
 stitchlings	Stitchlings	coop_too_short	discovery	~1 hour campaign per review; co-op finish content at/below 1h threshold
 stolen-realm-survivors	stolen-realm-survivors	endless	phase4_steam_more_like_this	survivors-like auto-battler, sessional, no finite ending [seen 2x; reasons: endless,low_fit]
 stoned-to-death	Stoned to Death	not_enough_reviews	creative_discovery	Steam app 4346450; 1 review (June 2026 release); too few to judge
-storebound	Storebound	early_access	youtube_curator_playlists	Early Access; episodic horror with chapters 1-4 released, more planned. No announced finale. App 3417410. [seen 3x]
+storebound	Storebound	unclear_ending	websearch_niche_queries	Early Access (Nov 2025); 4 episodes (~3-4h) live now with more planned via free updates — no announced finale yet. Co-op horror puzzle. Revisit after EA exits.
 strange-pong	Strange Pong	unclear_ending	steam-coop-page12	Pong variant with level features but no documented finish; likely score-attack
 streets-of-rogue-2	Streets of Rogue 2	early_access	misc	still Coming soon — no reviews
 subnautica-2	Subnautica 2	early_access	gamerant_2025;phase4_steam_more_like_this	Early Access launched May 2026, no 1.0 ending confirmed yet [seen 2x; reasons: early_access,low_fit]

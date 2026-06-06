@@ -5250,6 +5250,23 @@ window.GAMES = [
     youtubeUrl: youtube("VP2ayUhRbNo")
   },
   {
+    id: "survivor-mercs",
+    title: "Survivor Mercs",
+    year: 2026,
+    genres: ["Indie", "Isometric", "Shooter", "Action", "Military"],
+    endingType: "roguelite",
+    rating: 73,
+    playersMax: 4,
+    hours: 12,
+    oneCopy: "remote-play",
+    price: 225,
+    verdict: "4P couch/RPT twin-stick survivor-like; story operations cap with M.E.G.A. Corp boss fights.",
+    storeUrl: "https://store.steampowered.com/app/2141520/Survivor_Mercs/",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2141520/header.jpg",
+    youtubeUrl: youtube("-VFgfPvMnuo"),
+    "needs-review": true
+  },
+  {
     id: "grounded-2",
     title: "Grounded 2",
     year: 2025,
