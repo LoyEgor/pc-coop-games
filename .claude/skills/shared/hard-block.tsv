@@ -6,8 +6,10 @@ aliens-versus-predator-classic	aliens-versus-predator-classic	no_coop
 anomaly-agent	Anomaly Agent	no_coop	Steam categories list only Single-player; no co-op category present
 anomaly-warzone-earth	anomaly-warzone-earth	no_coop	
 antonball-deluxe	Antonball Deluxe	pvp_primary	30-stage brick-breaker is SP only; the multiplayer mode is VS. Antonball competitive (1v1, 2v2, 2v1); no dedicated co-op campaign even though categories list Co-op
+antonblast	ANTONBLAST	no_coop	Single-player platformer per Steam categories
 armored-battle-crew	Armored Battle Crew	no_coop	Single-player only despite article claims; no Co-op/Multi-player categories
 astebreed	astebreed	no_coop	
+astro-duel	Astro Duel	pvp_primary	PvP party game - Pilot Hunters/Ship Hunters/TDM only, no co-op campaign
 ball-x-pit	BALL x PIT	no_coop	no co-op category listed on Steam
 barro-racing	Barro Racing	pvp_primary	Multiplayer PvP only (Shared Split PvP + RPT); no Co-op
 batman-arkham-knight	Batman: Arkham Knight	no_coop	single-player only [seen 2x; reasons: no_coop]
@@ -15,6 +17,7 @@ battlefield-6	Battlefield 6	no_coop	categories list PvP/Online PvP only, no Co-o
 battlezone-98-redux	Battlezone 98 Redux	no_coop	Multiplayer is PvP Deathmatch/Strategy; no co-op campaign
 battlezone-combat-commander	Battlezone: Combat Commander	no_coop	PvP only per Steam categories; no Co-op tag [seen 3x; reasons: low_fit,no_coop]
 beat-saber	Beat Saber	no_coop	VR_single_player_rhythm
+beat-the-song	Beat the Song	no_coop	Local split-screen co-op only, no Online Co-op and no Remote Play Together support
 beyond-citadel	Beyond Citadel	no_coop	SP only per Steam categories — anime-style retro FPS
 billie-bust-up	billie-bust-up	no_coop	Single-player only; also unreleased (release TBA, coming_soon)
 blade-chimera	Blade Chimera	no_coop	Metroidvania SP only per genre
@@ -25,6 +28,7 @@ blue-estate	blue-estate	no_coop
 bodycam	Bodycam	pvp_primary	Multiplayer / PvP / Online PvP only — no co-op category. Steam app 2406770.
 bpm-bullets-per-minute	bpm-bullets-per-minute	no_coop	
 bubsy-4d	Bubsy 4D	no_coop	app 3237970, only Single-player category, no co-op
+bullet-party	BULLET PARTY	no_coop	Local split-screen only; Remote Play on Phone/Tablet/TV doesn't enable remote co-op, no RPT or Online
 bung-ball	Bung Ball	pvp_primary	Free arena ball game, PvP+Co-op mixed but PvP-primary, garbled description
 bunny-hill	Bunny Hill	pvp_primary	8p Online PvP skiing with Time Trial co-op only — competitive skiing, no campaign or finite content
 call-of-duty-4-modern-warfare	call-of-duty-4-modern-warfare	no_coop	no co-op campaign; MP is PvP
@@ -59,11 +63,13 @@ cyberbots-full-metal-madness	Cyberbots Full Metal Madness	not_on_steam	1995 Capc
 cyberpunk-2077	Cyberpunk 2077	no_coop	CDPR single-player only
 daikatana	Daikatana	no_coop	Steam categories single-player only; no co-op campaign
 dangerous-waters	Dangerous Waters	no_coop	PvP-only multi-player; no Co-op category
+date-everything	Date Everything	no_coop	Single-player only sandbox dating sim per Steam categories
 dave-the-diver	dave-the-diver	no_coop	single-player adventure [seen 2x; reasons: no_coop]
 dead-cells	Dead Cells	no_coop	app 588650, Single-player only
 dead-rising-deluxe-remaster	Dead Rising Deluxe Remaster	no_coop	Steam categories: Single-player only (no Co-op in remaster of DR1, which was SP)
 dead-static-drive	Dead Static Drive	no_coop	single_player_only_no_co_op_category_also_38pct_low_quality [seen 2x; reasons: no_coop,not_enough_reviews]
 deep-rock-galactic-survivor	Deep Rock Galactic: Survivor	no_coop	app 2321470, Single-player only auto-shooter
+deer-boy	Deer & Boy	no_coop	Single-player only per Steam categories; cinematic platformer June 2026 release (Dear Villagers); not a co-op game
 deltarune	deltarune	no_coop	single-player RPG
 dispatch	Dispatch	no_coop	single-player only per Steam categories
 distance	Distance	pvp_primary	app 233610 Racing PvP-only multiplayer (Online PvP + Shared/Split Screen PvP); no co-op category
@@ -74,6 +80,7 @@ doom-3-bfg-edition	DOOM 3 BFG Edition	no_coop	App 208200 (2012, BFG re-release).
 doom-64	doom-64	no_coop	[seen 2x; reasons: no_coop]
 doom-eternal	DOOM Eternal	no_coop	App 782330 (2020). Steam categories show only Single-player + PvP/Online PvP (Battlemode). No co-op category. Campaign is solo. [seen 3x]
 doom-the-dark-ages	DOOM: The Dark Ages	no_coop	single-player [seen 2x; reasons: no_coop]
+dr-fetus-mean-meat-machine	Dr. Fetus' Mean Meat Machine	no_coop	Single-player only puzzle game
 drawquarium	drawquarium	no_coop	app 4045480 single-player only, coming soon
 drop-duchy	Drop Duchy	no_coop	Steam appdetails: Single-player only, no co-op category
 dunecrawl	DuneCrawl	no_coop	Steam categories list PvP/Online PvP/LAN PvP only — no co-op category [seen 2x; reasons: low_fit,no_coop]
@@ -83,6 +90,7 @@ dungeon-siege-3	region_restricted	invalid_app_id	[seen 3x; reasons: invalid_app_
 dungeon-warfare-2	Dungeon Warfare 2	no_coop	Single-player only per Steam categories
 dusk	dusk	no_coop	single-player; MP is PvP [seen 2x; reasons: no_coop]
 dusty-derby	Dusty Derby	pvp_primary	32-player online PvP battle royale party game; no co-op campaign or finite ending; Early Access
+ea-sports-wrc	EA Sports WRC	no_coop	Online PvP only - no co-op or split-screen co-op per devs (despite community requests; older WRC 6-10 had splitscreen but EA Sports WRC dropped it)
 earth-2150-trilogy	Earth 2150 Trilogy	no_coop	Steam appdetails returns no categories (very old game, GameSpy-era multiplayer dead); no current online co-op.
 earth-2160	Earth 2160	no_coop	Steam appdetails returns no categories (old game, GameSpy-era multiplayer); no current online co-op.
 echoes-of-mystralia	echoes-of-mystralia	no_coop	single-player, no co-op category (also unreleased)
@@ -102,6 +110,7 @@ folgore	Folgore	no_coop	Single-player only per Steam categories
 fragpunk	fragpunk	no_coop	PvP hero shooter
 fraymakers	Fraymakers	pvp_primary	Smash-style PvP fighter; co-op mode is a minor side feature
 fz-formation-z	FZ: Formation Z	no_coop	Single-player only per Steam categories
+genome-guardian	Genome Guardian	no_coop	Single-player only roguelite turret shooter; no co-op categories
 geometry-dash	geometry-dash	no_coop	single-player rhythm platformer; no co-op [seen 2x; reasons: no_coop]
 geometry-wars-3	geometry-wars-3	no_coop	[seen 5x; reasons: duplicate,no_coop,unclear_ending]
 gigabash	GigaBash	pvp_primary	Kaiju fighting game, PvP-only categories, no Co-op, app 1546400
@@ -116,6 +125,7 @@ grind-survivors	Grind Survivors	no_coop	Single-player only per Steam categories
 gta-iv-complete-edition	Grand Theft Auto IV: The Complete Edition	no_coop	No co-op category; SP campaign + PvP multiplayer
 guns-gore-cannoli-2	guns-gore-cannoli-2	no_coop	
 hades-ii	Hades II	no_coop	app 1145350, Single-player only
+hail-to-the-rainbow	Hail to the Rainbow	no_coop	Single-player only per Steam categories; post-apocalyptic cyberpunk Nov 2025 release
 half-life	half-life	no_coop	single-player [seen 2x; reasons: no_coop]
 halo-infinite	Halo Infinite	no_coop	Steam categories list PvP only — campaign co-op not surfaced [seen 4x; reasons: low_fit,no_coop]
 halo-wars-2	halo-wars-2	not_on_steam	[seen 2x; reasons: not_on_steam]
@@ -126,8 +136,10 @@ hogwarts-legacy	Hogwarts Legacy	no_coop	Known single-player only
 hollow-knight	hollow-knight	no_coop	single-player metroidvania [seen 2x; reasons: no_coop]
 hollow-knight-silksong	hollow-knight-silksong	no_coop	single-player metroidvania [seen 2x; reasons: no_coop]
 hotline-miami	hotline-miami	no_coop	single-player only, no co-op
+hotloop	Hotloop	no_coop	Single-player only per Steam categories, no co-op tag
 hozy	Hozy	no_coop	single-player only [seen 3x]
 hunted-the-demons-forge	hunted-the-demons-forge	no_coop	
+hyper-demon	HYPER DEMON	pvp_primary	Online PvP only, no co-op
 i-wanna-maker	I Wanna Maker	no_coop	no Co-op category; user-content level maker
 indigo-park-chapter-1	Indigo Park: Chapter 1	no_coop	single-player only
 invincible-vs	invincible-vs	no_coop	PvP fighting game [seen 3x; reasons: no_coop,pvp_primary]
@@ -155,7 +167,9 @@ marvels-spider-man-2	marvels-spider-man-2	no_coop	single-player only (Insomniac)
 marvels-spider-man-miles-morales	marvels-spider-man-miles-morales	no_coop	single-player only
 marvels-spider-man-remastered	marvels-spider-man-remastered	no_coop	single-player only
 mega-man-11	Mega Man 11	no_coop	Single-player only per Steam categories
+melatonin	Melatonin	no_coop	Single-player only per Steam categories
 modern-naval-warfare	Modern Naval Warfare	no_coop	Steam categories list Single-player only despite reviews mentioning crew positions; app 1816640
+monster-prom	Monster Prom	pvp_primary	Multi-player is PvP/Online PvP/Shared-Split PvP only - no co-op category. The MP4 game (in catalog) added a co-op story; MP1 didn't.
 monster-sanctuary	monster-sanctuary	no_coop	
 mouse-pi-for-hire	MOUSE: P.I. For Hire	no_coop	single-player [seen 2x; reasons: no_coop]
 muse-dash	muse-dash	no_coop	single-player rhythm game
@@ -165,6 +179,7 @@ newt-and-tess	newt-and-tess	not_on_steam	Steam search returns no match
 nightmare-kart	Nightmare Kart	pvp_primary	App 2930160, free vehicular combat racer; Steam categories list PvP/Shared-Split PvP only — no Co-op category
 ninja-gaiden-ragebound	NINJA GAIDEN: Ragebound	no_coop	Single-player only; no Co-op or Multi-player categories
 ninza	Ninza	pvp_primary	competitive brawler/fighter 4p PvP main mode, co-op is just training; rollback netcode for vs play
+nova-drift	Nova Drift	no_coop	Single-player shooter per Steam categories
 oceaneers	Oceaneers	no_coop	Early Access; no co-op category listed on Steam
 of-ash-and-steel	Of Ash and Steel	no_coop	Single-player only per Steam categories; medieval fantasy RPG, no multiplayer mode
 one-piece-pirate-warriors-4	ONE PIECE: PIRATE WARRIORS 4	no_coop	only PvP/Online PvP category; no co-op or Remote Play Together
@@ -245,6 +260,7 @@ the-black-heart	The Black Heart	pvp_primary	VS 2D fighting game in the tradition
 the-finals	the-finals	no_coop	PvP-only live-service shooter, no co-op campaign
 the-haunting-of-joni-evers	The Haunting of Joni Evers	no_coop	Single-player only walking sim horror (Steam app 2828590)
 the-lord-of-the-rings-war-in-the-north	The Lord of the Rings: War in the North	not_on_steam	
+the-midnight-walk	The Midnight Walk	no_coop	Single-player only per Steam categories (VR Supported); dark adventure from Lost in Random devs
 the-plucky-squire	the-plucky-squire	no_coop	
 the-slormancer	the-slormancer	no_coop	
 the-talos-principle-2	The Talos Principle 2	no_coop	Single-player only — sequel did not add co-op
@@ -280,3 +296,4 @@ wrath-aeon-of-ruin	WRATH: Aeon of Ruin	no_coop	SP only per Steam categories — 
 ys-vs-trails-in-the-sky-alternative-saga	Ys vs. Trails in the Sky: Alternative Saga	pvp_primary	Fighting game crossover with Online PvP category; co-op is co-op-vs-AI within fighting bouts, fundamentally PvP-primary
 ys-x-nordics	Ys X: Nordics	no_coop	Single-player only per Steam categories
 ziggurat-2	ziggurat-2	no_coop	
+zuma-deluxe	Zuma Deluxe	no_coop	Single-player casual puzzle, no co-op
