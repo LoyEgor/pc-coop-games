@@ -108,6 +108,13 @@ ideas (not exhaustive — invent more):
 - **X / social**: co-op recommendation threads.
 - **Adjacency**: "More like this" / "players also liked" from the NEWEST catalog adds.
 - **Genre gaps**: target axes thin in the catalog (e.g. co-op Tactics, co-op Racing).
+- **Franchise completeness** (high-yield): for any catalog entry that is part of a series,
+  check its siblings — prequels, sequels, spin-offs, remasters. If a sequel is in the
+  catalog but the original (or another entry) is NOT, that missing game is a strong
+  candidate — evaluate it. (The Division 2 was in the catalog while the original The
+  Division was missing for no reason.) Works both directions: a new sequel of a catalogued
+  game is also a lead. `find_neighbors.py` already surfaces franchise contradictions —
+  mine that output too.
 Treat "found nothing on this angle" as a reason to try a DIFFERENT angle next burst —
 never as a reason to stop. The internet does not run out of new co-op games.
 

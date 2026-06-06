@@ -77,6 +77,7 @@ A game qualifies if there is a moment where you finish — even without a cutsce
 Optional flags:
 - `hidden: true` + `hiddenReason: "..."` — keeps game in DB but hides from default view (used for "уже прошли" / referenced games).
 - `"needs-review": true` — Steam reviews 50-70%, flagged for manual quality check.
+- `ownerConfirmed: true` — the OWNER hand-decided this entry (e.g. a soft 🟠 finish like Icarus). **fact-checker must never remove, propose-removal, or re-classify endingType/genres on it** — only media fixes + cron price/rating are allowed. Stops the round-trip where the skill deletes what the owner just confirmed.
 
 ### Why the schema is this minimal
 
