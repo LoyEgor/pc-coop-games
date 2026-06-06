@@ -5,6 +5,7 @@ const youtubeSearch = (q) => `https://www.youtube.com/results?search_query=${enc
 window.GAMES = [
   {
     id: "gears-of-war-reloaded",
+    reviewed: true,
     title: "Gears of War: Reloaded",
     year: 2025,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Sci-fi"],
@@ -21,6 +22,7 @@ window.GAMES = [
   },
   {
     id: "space-marine-2",
+    reviewed: true,
     title: "Warhammer 40,000: Space Marine 2",
     year: 2024,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Sci-fi"],
@@ -37,6 +39,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-3",
+    reviewed: true,
     title: "Baldur's Gate 3",
     year: 2023,
     genres: ["AAA", "Isometric", "RPG", "Tactics", "Fantasy"],
@@ -53,6 +56,7 @@ window.GAMES = [
   },
   {
     id: "remnant-2",
+    reviewed: true,
     title: "Remnant II",
     year: 2023,
     genres: ["AA", "Third-person", "Shooter", "Action", "RPG", "Soulslike"],
@@ -69,6 +73,7 @@ window.GAMES = [
   },
   {
     id: "trine-5",
+    reviewed: true,
     title: "Trine 5: A Clockwork Conspiracy",
     year: 2023,
     genres: ["AA", "Side-view", "Puzzle", "Platformer", "Fantasy"],
@@ -85,6 +90,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-5",
+    reviewed: true,
     title: "Sniper Elite 5",
     year: 2022,
     genres: ["AA", "Third-person", "Shooter", "Stealth", "Tactics", "Military"],
@@ -101,6 +107,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-forever",
+    reviewed: true,
     title: "We Were Here Forever",
     year: 2022,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -117,6 +124,7 @@ window.GAMES = [
   },
   {
     id: "operation-tango",
+    reviewed: true,
     title: "Operation: Tango",
     year: 2021,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -133,6 +141,7 @@ window.GAMES = [
   },
   {
     id: "the-ascent",
+    reviewed: true,
     title: "The Ascent",
     year: 2021,
     genres: ["AA", "Isometric", "Shooter", "Action", "RPG", "Sci-fi"],
@@ -149,6 +158,7 @@ window.GAMES = [
   },
   {
     id: "outriders",
+    reviewed: true,
     title: "Outriders",
     year: 2021,
     genres: ["AAA", "Third-person", "Shooter", "Action", "RPG", "Loot", "Sci-fi"],
@@ -165,6 +175,7 @@ window.GAMES = [
   },
   {
     id: "wasteland-3",
+    reviewed: true,
     title: "Wasteland 3",
     year: 2020,
     genres: ["AA", "Isometric", "RPG", "Tactics"],
@@ -181,6 +192,7 @@ window.GAMES = [
   },
   {
     id: "gears-5",
+    reviewed: true,
     title: "Gears 5",
     year: 2019,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Sci-fi"],
@@ -197,6 +209,7 @@ window.GAMES = [
   },
   {
     id: "halo-mcc",
+    reviewed: true,
     title: "Halo: The Master Chief Collection",
     year: 2019,
     genres: ["AAA", "First-person", "Shooter", "Sci-fi"],
@@ -213,6 +226,7 @@ window.GAMES = [
   },
   {
     id: "darksiders-genesis",
+    reviewed: true,
     title: "Darksiders Genesis",
     year: 2019,
     genres: ["AA", "Isometric", "Action", "Fantasy"],
@@ -229,6 +243,7 @@ window.GAMES = [
   },
   {
     id: "wolfenstein-youngblood",
+    reviewed: true,
     title: "Wolfenstein: Youngblood",
     year: 2019,
     genres: ["AAA", "First-person", "Shooter", "Action", "Sci-fi"],
@@ -245,6 +260,7 @@ window.GAMES = [
   },
   {
     id: "far-cry-5",
+    reviewed: true,
     title: "Far Cry 5",
     year: 2018,
     genres: ["AAA", "First-person", "Shooter", "Action", "Open World"],
@@ -261,6 +277,7 @@ window.GAMES = [
   },
   {
     id: "divinity-original-sin-2",
+    reviewed: true,
     title: "Divinity: Original Sin II",
     year: 2017,
     genres: ["AAA", "Isometric", "RPG", "Tactics", "Fantasy"],
@@ -277,6 +294,7 @@ window.GAMES = [
   },
   {
     id: "ghost-recon-wildlands",
+    reviewed: true,
     title: "Ghost Recon Wildlands",
     year: 2017,
     genres: ["AAA", "Third-person", "Shooter", "Tactics", "Military", "Open World"],
@@ -293,6 +311,7 @@ window.GAMES = [
   },
   {
     id: "portal-2",
+    reviewed: true,
     title: "Portal 2",
     year: 2011,
     genres: ["AAA", "First-person", "Puzzle", "Sci-fi"],
@@ -309,6 +328,7 @@ window.GAMES = [
   },
   {
     id: "lara-croft-guardian-light",
+    reviewed: true,
     title: "Lara Croft and the Guardian of Light",
     year: 2010,
     genres: ["AAA", "Isometric", "Action", "Puzzle"],
@@ -325,6 +345,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-3",
+    reviewed: true,
     title: "Borderlands 3",
     year: 2019,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot", "Sci-fi", "Open World"],
@@ -341,6 +362,7 @@ window.GAMES = [
   },
   {
     id: "tiny-tinas-wonderlands",
+    reviewed: true,
     title: "Tiny Tina's Wonderlands",
     year: 2022,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot", "Fantasy"],
@@ -357,6 +379,7 @@ window.GAMES = [
   },
   {
     id: "dying-light",
+    reviewed: true,
     title: "Dying Light",
     year: 2015,
     genres: ["AAA", "First-person", "Action", "RPG", "Horror", "Open World"],
@@ -373,6 +396,7 @@ window.GAMES = [
   },
   {
     id: "dying-light-2",
+    reviewed: true,
     title: "Dying Light 2 Stay Human",
     year: 2022,
     genres: ["AAA", "First-person", "Action", "RPG", "Horror", "Open World"],
@@ -389,6 +413,7 @@ window.GAMES = [
   },
   {
     id: "shadow-warrior-2",
+    reviewed: true,
     title: "Shadow Warrior 2",
     year: 2016,
     genres: ["AA", "First-person", "Shooter", "Action", "Loot"],
@@ -405,6 +430,7 @@ window.GAMES = [
   },
   {
     id: "strange-brigade",
+    reviewed: true,
     title: "Strange Brigade",
     year: 2018,
     genres: ["AA", "Third-person", "Shooter", "Action"],
@@ -421,6 +447,7 @@ window.GAMES = [
   },
   {
     id: "aliens-fireteam-elite",
+    reviewed: true,
     title: "Aliens: Fireteam Elite",
     year: 2021,
     genres: ["AA", "Third-person", "Shooter", "Action", "Horror", "Sci-fi"],
@@ -437,6 +464,7 @@ window.GAMES = [
   },
   {
     id: "back-4-blood",
+    reviewed: true,
     title: "Back 4 Blood",
     year: 2021,
     genres: ["AAA", "First-person", "Shooter", "Action", "Horror"],
@@ -453,6 +481,7 @@ window.GAMES = [
   },
   {
     id: "grounded",
+    reviewed: true,
     title: "Grounded",
     year: 2022,
     genres: ["AA", "First-person", "Survival", "Open World"],
@@ -469,6 +498,7 @@ window.GAMES = [
   },
   {
     id: "nobody-saves-the-world",
+    reviewed: true,
     title: "Nobody Saves the World",
     year: 2022,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -485,6 +515,7 @@ window.GAMES = [
   },
   {
     id: "styx-shards-of-darkness",
+    reviewed: true,
     title: "Styx: Shards of Darkness",
     year: 2017,
     genres: ["AA", "Third-person", "Stealth", "Action", "Fantasy"],
@@ -501,6 +532,7 @@ window.GAMES = [
   },
   {
     id: "saints-row-4",
+    reviewed: true,
     title: "Saints Row IV: Re-Elected",
     year: 2013,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Sci-fi", "Open World"],
@@ -517,6 +549,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-2",
+    reviewed: true,
     title: "Borderlands 2",
     year: 2012,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot", "Sci-fi", "Open World"],
@@ -533,6 +566,7 @@ window.GAMES = [
   },
   {
     id: "diablo-4",
+    reviewed: true,
     title: "Diablo IV",
     year: 2023,
     genres: ["AAA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -549,6 +583,7 @@ window.GAMES = [
   },
   {
     id: "vermintide-2",
+    reviewed: true,
     title: "Warhammer: Vermintide 2",
     year: 2018,
     genres: ["AA", "First-person", "Action", "Fantasy"],
@@ -565,6 +600,7 @@ window.GAMES = [
   },
   {
     id: "left-4-dead-2",
+    reviewed: true,
     title: "Left 4 Dead 2",
     year: 2009,
     genres: ["AAA", "First-person", "Shooter", "Action", "Horror"],
@@ -581,6 +617,7 @@ window.GAMES = [
   },
   {
     id: "the-forest",
+    reviewed: true,
     title: "The Forest",
     year: 2018,
     genres: ["Indie", "First-person", "Horror", "Survival", "Open World"],
@@ -597,6 +634,7 @@ window.GAMES = [
   },
   {
     id: "sons-of-the-forest",
+    reviewed: true,
     title: "Sons of the Forest",
     year: 2024,
     genres: ["Indie", "First-person", "Horror", "Survival", "Open World"],
@@ -613,6 +651,7 @@ window.GAMES = [
   },
   {
     id: "man-of-medan",
+    reviewed: true,
     title: "The Dark Pictures: Man of Medan",
     year: 2019,
     genres: ["AA", "Third-person", "Adventure", "Horror"],
@@ -629,6 +668,7 @@ window.GAMES = [
   },
   {
     id: "magicka-2",
+    reviewed: true,
     title: "Magicka 2",
     year: 2015,
     genres: ["AA", "Isometric", "Action", "Fantasy"],
@@ -645,6 +685,7 @@ window.GAMES = [
   },
   {
     id: "peak",
+    reviewed: true,
     title: "PEAK",
     year: 2025,
     genres: ["Indie", "First-person", "Action"],
@@ -661,6 +702,7 @@ window.GAMES = [
   },
   {
     id: "raft",
+    reviewed: true,
     title: "Raft",
     year: 2022,
     genres: ["Indie", "First-person", "Survival", "Open World"],
@@ -677,6 +719,7 @@ window.GAMES = [
   },
   {
     id: "broforce",
+    reviewed: true,
     title: "Broforce",
     year: 2015,
     genres: ["Indie", "Side-view", "Action", "Platformer", "Shooter"],
@@ -693,6 +736,7 @@ window.GAMES = [
   },
   {
     id: "castle-crashers",
+    reviewed: true,
     title: "Castle Crashers",
     year: 2012,
     genres: ["Indie", "Side-view", "Brawler", "RPG", "Fantasy"],
@@ -709,6 +753,7 @@ window.GAMES = [
   },
   {
     id: "cuphead",
+    reviewed: true,
     title: "Cuphead",
     year: 2017,
     genres: ["Indie", "Side-view", "Action", "Platformer", "Shooter"],
@@ -725,6 +770,7 @@ window.GAMES = [
   },
   {
     id: "tmnt-shredders-revenge",
+    reviewed: true,
     title: "TMNT: Shredder's Revenge",
     year: 2022,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -741,6 +787,7 @@ window.GAMES = [
   },
   {
     id: "cat-quest-2",
+    reviewed: true,
     title: "Cat Quest II",
     year: 2019,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
@@ -757,6 +804,7 @@ window.GAMES = [
   },
   {
     id: "lovers-spacetime",
+    reviewed: true,
     title: "Lovers in a Dangerous Spacetime",
     year: 2015,
     genres: ["Indie", "Side-view", "Action", "Sci-fi"],
@@ -773,6 +821,7 @@ window.GAMES = [
   },
   {
     id: "children-of-morta",
+    reviewed: true,
     title: "Children of Morta",
     year: 2019,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
@@ -789,6 +838,7 @@ window.GAMES = [
   },
   {
     id: "full-metal-furies",
+    reviewed: true,
     title: "Full Metal Furies",
     year: 2018,
     genres: ["Indie", "Side-view", "Brawler", "RPG"],
@@ -805,6 +855,7 @@ window.GAMES = [
   },
   {
     id: "escape-academy",
+    reviewed: true,
     title: "Escape Academy",
     year: 2022,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -821,6 +872,7 @@ window.GAMES = [
   },
   {
     id: "journey-savage-planet",
+    reviewed: true,
     title: "Journey to the Savage Planet",
     year: 2021,
     genres: ["AA", "First-person", "Action", "Sci-fi"],
@@ -837,6 +889,7 @@ window.GAMES = [
   },
   {
     id: "trine-2",
+    reviewed: true,
     title: "Trine 2: Complete Story",
     year: 2013,
     genres: ["AA", "Side-view", "Puzzle", "Platformer", "Fantasy"],
@@ -853,6 +906,7 @@ window.GAMES = [
   },
   {
     id: "guacamelee-2",
+    reviewed: true,
     title: "Guacamelee! 2",
     year: 2018,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -869,6 +923,7 @@ window.GAMES = [
   },
   {
     id: "risk-of-rain-2",
+    reviewed: true,
     title: "Risk of Rain 2",
     year: 2020,
     genres: ["Indie", "Third-person", "Action", "Shooter", "Sci-fi"],
@@ -885,6 +940,7 @@ window.GAMES = [
   },
   {
     id: "overcooked-all-you-can-eat",
+    reviewed: true,
     title: "Overcooked! All You Can Eat",
     year: 2021,
     genres: ["AA", "Isometric", "Puzzle", "Action"],
@@ -901,6 +957,7 @@ window.GAMES = [
   },
   {
     id: "terraria",
+    reviewed: true,
     title: "Terraria",
     year: 2011,
     genres: ["Indie", "Side-view", "Survival", "Open World"],
@@ -917,6 +974,7 @@ window.GAMES = [
   },
   {
     id: "stardew-valley",
+    reviewed: true,
     title: "Stardew Valley",
     year: 2016,
     genres: ["Indie", "Isometric", "RPG"],
@@ -933,6 +991,7 @@ window.GAMES = [
   },
   {
     id: "magicka",
+    reviewed: true,
     title: "Magicka",
     year: 2011,
     genres: ["Indie", "Isometric", "Action", "Fantasy"],
@@ -949,6 +1008,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here",
+    reviewed: true,
     title: "We Were Here",
     year: 2017,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -965,6 +1025,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-together",
+    reviewed: true,
     title: "We Were Here Together",
     year: 2019,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -981,6 +1042,7 @@ window.GAMES = [
   },
   {
     id: "streets-of-rage-4",
+    reviewed: true,
     title: "Streets of Rage 4",
     year: 2020,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -997,6 +1059,7 @@ window.GAMES = [
   },
   {
     id: "enter-the-gungeon",
+    reviewed: true,
     title: "Enter the Gungeon",
     year: 2016,
     genres: ["Indie", "Isometric", "Action", "Shooter"],
@@ -1013,6 +1076,7 @@ window.GAMES = [
   },
   {
     id: "spelunky-2",
+    reviewed: true,
     title: "Spelunky 2",
     year: 2020,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -1029,6 +1093,7 @@ window.GAMES = [
   },
   {
     id: "spelunky",
+    reviewed: true,
     title: "Spelunky",
     year: 2013,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -1045,6 +1110,7 @@ window.GAMES = [
   },
   {
     id: "battleblock-theater",
+    reviewed: true,
     title: "BattleBlock Theater",
     year: 2014,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -1061,6 +1127,7 @@ window.GAMES = [
   },
   {
     id: "lego-city-undercover",
+    reviewed: true,
     title: "LEGO City Undercover",
     year: 2017,
     genres: ["AAA", "Third-person", "Action", "Open World"],
@@ -1077,6 +1144,7 @@ window.GAMES = [
   },
   {
     id: "lego-marvel-superheroes",
+    reviewed: true,
     title: "LEGO Marvel Super Heroes",
     year: 2013,
     genres: ["AAA", "Third-person", "Action"],
@@ -1093,6 +1161,7 @@ window.GAMES = [
   },
   {
     id: "a-hat-in-time",
+    reviewed: true,
     title: "A Hat in Time",
     year: 2017,
     genres: ["Indie", "Third-person", "Action", "Platformer"],
@@ -1109,6 +1178,7 @@ window.GAMES = [
   },
   {
     id: "rayman-legends",
+    reviewed: true,
     title: "Rayman Legends",
     year: 2013,
     genres: ["AAA", "Side-view", "Action", "Platformer"],
@@ -1125,6 +1195,7 @@ window.GAMES = [
   },
   {
     id: "rayman-origins",
+    reviewed: true,
     title: "Rayman Origins",
     year: 2012,
     genres: ["AAA", "Side-view", "Action", "Platformer"],
@@ -1141,6 +1212,7 @@ window.GAMES = [
   },
   {
     id: "sackboy-big-adventure",
+    reviewed: true,
     title: "Sackboy: A Big Adventure",
     year: 2022,
     genres: ["AAA", "Third-person", "Action", "Platformer"],
@@ -1157,6 +1229,7 @@ window.GAMES = [
   },
   {
     id: "orcs-must-die-2",
+    reviewed: true,
     title: "Orcs Must Die! 2",
     year: 2012,
     genres: ["AA", "Third-person", "Action", "Tactics", "Fantasy"],
@@ -1173,6 +1246,7 @@ window.GAMES = [
   },
   {
     id: "dungeon-defenders",
+    reviewed: true,
     title: "Dungeon Defenders",
     year: 2011,
     genres: ["AA", "Third-person", "Action", "Tactics", "RPG", "Fantasy"],
@@ -1189,6 +1263,7 @@ window.GAMES = [
   },
   {
     id: "sanctum-2",
+    reviewed: true,
     title: "Sanctum 2",
     year: 2013,
     genres: ["AA", "First-person", "Shooter", "Tactics", "Sci-fi"],
@@ -1205,6 +1280,7 @@ window.GAMES = [
   },
   {
     id: "world-war-z",
+    reviewed: true,
     title: "World War Z: Aftermath",
     year: 2021,
     genres: ["AA", "Third-person", "Shooter", "Action", "Horror"],
@@ -1221,6 +1297,7 @@ window.GAMES = [
   },
   {
     id: "zombie-army-trilogy",
+    reviewed: true,
     title: "Zombie Army Trilogy",
     year: 2015,
     genres: ["AA", "Third-person", "Shooter", "Action", "Horror"],
@@ -1237,6 +1314,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-3",
+    reviewed: true,
     title: "Serious Sam 3: BFE",
     year: 2011,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi"],
@@ -1253,6 +1331,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-4",
+    reviewed: true,
     title: "Serious Sam 4",
     year: 2020,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi"],
@@ -1269,6 +1348,7 @@ window.GAMES = [
   },
   {
     id: "alien-swarm-reactive-drop",
+    reviewed: true,
     title: "Alien Swarm: Reactive Drop",
     year: 2017,
     genres: ["Indie", "Isometric", "Shooter", "Action", "Sci-fi", "Horror"],
@@ -1285,6 +1365,7 @@ window.GAMES = [
   },
   {
     id: "powerwash-simulator",
+    reviewed: true,
     title: "PowerWash Simulator",
     year: 2022,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -1301,6 +1382,7 @@ window.GAMES = [
   },
   {
     id: "teardown",
+    reviewed: true,
     title: "Teardown",
     year: 2022,
     genres: ["Indie", "First-person", "Action"],
@@ -1317,6 +1399,7 @@ window.GAMES = [
   },
   {
     id: "human-fall-flat",
+    reviewed: true,
     title: "Human Fall Flat",
     year: 2016,
     genres: ["Indie", "Third-person", "Puzzle", "Platformer"],
@@ -1333,6 +1416,7 @@ window.GAMES = [
   },
   {
     id: "for-the-king",
+    reviewed: true,
     title: "For The King",
     year: 2018,
     genres: ["Indie", "Isometric", "RPG", "Tactics", "Fantasy"],
@@ -1349,6 +1433,7 @@ window.GAMES = [
   },
   {
     id: "streets-of-rogue",
+    reviewed: true,
     title: "Streets of Rogue",
     year: 2019,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -1365,6 +1450,7 @@ window.GAMES = [
   },
   {
     id: "nuclear-throne",
+    reviewed: true,
     title: "Nuclear Throne",
     year: 2015,
     genres: ["Indie", "Isometric", "Action", "Shooter", "RPG"],
@@ -1381,6 +1467,7 @@ window.GAMES = [
   },
   {
     id: "binding-of-isaac-rebirth",
+    reviewed: true,
     title: "The Binding of Isaac: Rebirth",
     year: 2014,
     genres: ["Indie", "Isometric", "Action", "Shooter"],
@@ -1397,6 +1484,7 @@ window.GAMES = [
   },
   {
     id: "keywe",
+    reviewed: true,
     title: "KeyWe",
     year: 2021,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -1413,6 +1501,7 @@ window.GAMES = [
   },
   {
     id: "moving-out",
+    reviewed: true,
     title: "Moving Out",
     year: 2020,
     genres: ["Indie", "Isometric", "Puzzle", "Action"],
@@ -1429,6 +1518,7 @@ window.GAMES = [
   },
   {
     id: "roboquest",
+    reviewed: true,
     title: "Roboquest",
     year: 2023,
     genres: ["Indie", "First-person", "Action", "Shooter", "Sci-fi"],
@@ -1445,6 +1535,7 @@ window.GAMES = [
   },
   {
     id: "gunfire-reborn",
+    reviewed: true,
     title: "Gunfire Reborn",
     year: 2021,
     genres: ["Indie", "First-person", "Action", "Shooter"],
@@ -1461,6 +1552,7 @@ window.GAMES = [
   },
   {
     id: "ravenswatch",
+    reviewed: true,
     title: "Ravenswatch",
     year: 2024,
     genres: ["AA", "Isometric", "Action", "RPG", "Fantasy"],
@@ -1477,6 +1569,7 @@ window.GAMES = [
   },
   {
     id: "wizard-of-legend",
+    reviewed: true,
     title: "Wizard of Legend",
     year: 2018,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
@@ -1493,6 +1586,7 @@ window.GAMES = [
   },
   {
     id: "death-road-to-canada",
+    reviewed: true,
     title: "Death Road to Canada",
     year: 2016,
     genres: ["Indie", "Isometric", "Action"],
@@ -1509,6 +1603,7 @@ window.GAMES = [
   },
   {
     id: "kane-lynch-2",
+    reviewed: true,
     title: "Kane & Lynch 2: Dog Days",
     year: 2010,
     genres: ["AAA", "Third-person", "Shooter", "Action"],
@@ -1525,6 +1620,7 @@ window.GAMES = [
   },
   {
     id: "towerfall-ascension",
+    reviewed: true,
     title: "TowerFall Ascension",
     year: 2014,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -1541,6 +1637,7 @@ window.GAMES = [
   },
   {
     id: "capcom-beat-em-up-bundle",
+    reviewed: true,
     title: "Capcom Beat 'Em Up Bundle",
     year: 2018,
     genres: ["AAA", "Side-view", "Brawler"],
@@ -1557,6 +1654,7 @@ window.GAMES = [
   },
   {
     id: "metal-slug-3",
+    reviewed: true,
     title: "METAL SLUG 3",
     year: 2014,
     genres: ["AAA", "Side-view", "Action", "Shooter", "Platformer"],
@@ -1573,6 +1671,7 @@ window.GAMES = [
   },
   {
     id: "monaco",
+    reviewed: true,
     title: "Monaco: What's Yours Is Mine",
     year: 2013,
     genres: ["Indie", "Isometric", "Action", "Stealth"],
@@ -1589,6 +1688,7 @@ window.GAMES = [
   },
   {
     id: "the-cave",
+    reviewed: true,
     title: "The Cave",
     year: 2013,
     genres: ["AA", "Side-view", "Puzzle", "Adventure", "Platformer"],
@@ -1605,6 +1705,7 @@ window.GAMES = [
   },
   {
     id: "20xx",
+    reviewed: true,
     title: "20XX",
     year: 2017,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -1621,6 +1722,7 @@ window.GAMES = [
   },
   {
     id: "vagante",
+    reviewed: true,
     title: "Vagante",
     year: 2018,
     genres: ["Indie", "Side-view", "Action", "RPG", "Platformer", "Fantasy"],
@@ -1637,6 +1739,7 @@ window.GAMES = [
   },
   {
     id: "barony",
+    reviewed: true,
     title: "Barony",
     year: 2015,
     genres: ["Indie", "First-person", "Action", "RPG", "Fantasy"],
@@ -1653,6 +1756,7 @@ window.GAMES = [
   },
   {
     id: "across-the-obelisk",
+    reviewed: true,
     title: "Across the Obelisk",
     year: 2022,
     genres: ["Indie", "Side-view", "RPG", "Tactics", "Fantasy"],
@@ -1669,6 +1773,7 @@ window.GAMES = [
   },
   {
     id: "escape-simulator",
+    reviewed: true,
     title: "Escape Simulator",
     year: 2021,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -1685,6 +1790,7 @@ window.GAMES = [
   },
   {
     id: "keep-talking-nobody-explodes",
+    reviewed: true,
     title: "Keep Talking and Nobody Explodes",
     year: 2015,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -1701,6 +1807,7 @@ window.GAMES = [
   },
   {
     id: "remnant-1",
+    reviewed: true,
     title: "Remnant: From the Ashes",
     year: 2019,
     genres: ["AA", "Third-person", "Shooter", "Action", "RPG", "Soulslike"],
@@ -1717,6 +1824,7 @@ window.GAMES = [
   },
   {
     id: "dead-island-de",
+    reviewed: true,
     title: "Dead Island Definitive Edition",
     year: 2016,
     genres: ["AAA", "First-person", "Action", "RPG", "Horror", "Open World"],
@@ -1733,6 +1841,7 @@ window.GAMES = [
   },
   {
     id: "portal-knights",
+    reviewed: true,
     title: "Portal Knights",
     year: 2017,
     genres: ["AA", "Third-person", "Action", "RPG", "Fantasy"],
@@ -1749,6 +1858,7 @@ window.GAMES = [
   },
   {
     id: "chained-together",
+    reviewed: true,
     title: "Chained Together",
     year: 2024,
     genres: ["Indie", "Third-person", "Action"],
@@ -1765,6 +1875,7 @@ window.GAMES = [
   },
   {
     id: "pico-park",
+    reviewed: true,
     title: "PICO PARK",
     year: 2021,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -1781,6 +1892,7 @@ window.GAMES = [
   },
   {
     id: "road-redemption",
+    reviewed: true,
     title: "Road Redemption",
     year: 2017,
     genres: ["Indie", "Third-person", "Action"],
@@ -1797,6 +1909,7 @@ window.GAMES = [
   },
   {
     id: "edf-4-1",
+    reviewed: true,
     title: "Earth Defense Force 4.1",
     year: 2016,
     genres: ["AA", "Third-person", "Shooter", "Action", "Sci-fi"],
@@ -1813,6 +1926,7 @@ window.GAMES = [
   },
   {
     id: "assault-android-cactus",
+    reviewed: true,
     title: "Assault Android Cactus+",
     year: 2015,
     genres: ["Indie", "Isometric", "Action", "Shooter"],
@@ -1829,6 +1943,7 @@ window.GAMES = [
   },
   {
     id: "fightn-rage",
+    reviewed: true,
     title: "Fight'N Rage",
     year: 2017,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -1845,6 +1960,7 @@ window.GAMES = [
   },
   {
     id: "door-kickers-action-squad",
+    reviewed: true,
     title: "Door Kickers: Action Squad",
     year: 2018,
     genres: ["Indie", "Side-view", "Action", "Shooter", "Tactics"],
@@ -1861,6 +1977,7 @@ window.GAMES = [
   },
   {
     id: "satisfactory",
+    reviewed: true,
     title: "Satisfactory",
     year: 2024,
     genres: ["AA", "First-person", "Survival", "Open World"],
@@ -1877,6 +1994,7 @@ window.GAMES = [
   },
   {
     id: "just-shapes-and-beats",
+    reviewed: true,
     title: "Just Shapes & Beats",
     year: 2018,
     genres: ["Indie", "Side-view", "Action"],
@@ -1893,6 +2011,7 @@ window.GAMES = [
   },
   {
     id: "madness-project-nexus",
+    reviewed: true,
     title: "MADNESS: Project Nexus",
     year: 2021,
     genres: ["Indie", "Side-view", "Brawler", "Shooter"],
@@ -1909,6 +2028,7 @@ window.GAMES = [
   },
   {
     id: "chicory-colorful-tale",
+    reviewed: true,
     title: "Chicory: A Colorful Tale",
     year: 2021,
     genres: ["Indie", "Isometric", "Adventure", "Puzzle"],
@@ -1925,6 +2045,7 @@ window.GAMES = [
   },
   {
     id: "rabbit-and-steel",
+    reviewed: true,
     title: "Rabbit and Steel",
     year: 2024,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -1941,6 +2062,7 @@ window.GAMES = [
   },
   {
     id: "door-kickers-2",
+    reviewed: true,
     title: "Door Kickers 2: Task Force North",
     year: 2025,
     genres: ["Indie", "Isometric", "Tactics"],
@@ -1957,6 +2079,7 @@ window.GAMES = [
   },
   {
     id: "heavenly-bodies",
+    reviewed: true,
     title: "Heavenly Bodies",
     year: 2021,
     genres: ["Indie", "Side-view", "Puzzle"],
@@ -1973,6 +2096,7 @@ window.GAMES = [
   },
   {
     id: "bang-on-balls-chronicles",
+    reviewed: true,
     title: "Bang-On Balls: Chronicles",
     year: 2023,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -1989,6 +2113,7 @@ window.GAMES = [
   },
   {
     id: "echo-point-nova",
+    reviewed: true,
     title: "Echo Point Nova",
     year: 2024,
     genres: ["Indie", "First-person", "Shooter", "Open World"],
@@ -2005,6 +2130,7 @@ window.GAMES = [
   },
   {
     id: "stick-it-to-the-stickman",
+    reviewed: true,
     title: "Stick It to the Stickman",
     year: 2025,
     genres: ["Indie", "Side-view", "Action"],
@@ -2021,6 +2147,7 @@ window.GAMES = [
   },
   {
     id: "age-of-empires-2-de",
+    reviewed: true,
     title: "Age of Empires II: Definitive Edition",
     year: 2019,
     genres: ["AAA", "Isometric", "Tactics"],
@@ -2037,6 +2164,7 @@ window.GAMES = [
   },
   {
     id: "mindustry",
+    reviewed: true,
     title: "Mindustry",
     year: 2019,
     genres: ["Indie", "Isometric", "Tactics"],
@@ -2053,6 +2181,7 @@ window.GAMES = [
   },
   {
     id: "crypt-of-the-necrodancer",
+    reviewed: true,
     title: "Crypt of the NecroDancer",
     year: 2015,
     genres: ["Indie", "Isometric", "Action"],
@@ -2069,6 +2198,7 @@ window.GAMES = [
   },
   {
     id: "trine-1",
+    reviewed: true,
     title: "Trine Enchanted Edition",
     year: 2009,
     genres: ["AA", "Side-view", "Action", "Platformer", "Fantasy"],
@@ -2085,6 +2215,7 @@ window.GAMES = [
   },
   {
     id: "outlast-trials",
+    reviewed: true,
     title: "The Outlast Trials",
     year: 2024,
     genres: ["Indie", "First-person", "Stealth", "Horror"],
@@ -2101,6 +2232,7 @@ window.GAMES = [
   },
   {
     id: "cook-serve-delicious",
+    reviewed: true,
     title: "Cook, Serve, Delicious!",
     year: 2013,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -2117,6 +2249,7 @@ window.GAMES = [
   },
   {
     id: "mosa-lina",
+    reviewed: true,
     title: "Mosa Lina",
     year: 2023,
     genres: ["Indie", "Side-view", "Puzzle"],
@@ -2133,6 +2266,7 @@ window.GAMES = [
   },
   {
     id: "dishwasher-vampire-smile",
+    reviewed: true,
     title: "The Dishwasher: Vampire Smile",
     year: 2017,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -2149,6 +2283,7 @@ window.GAMES = [
   },
   {
     id: "astroneer",
+    reviewed: true,
     title: "ASTRONEER",
     year: 2019,
     genres: ["Indie", "Third-person", "Sci-fi", "Survival"],
@@ -2165,6 +2300,7 @@ window.GAMES = [
   },
   {
     id: "valheim",
+    reviewed: true,
     title: "Valheim",
     year: 2021,
     genres: ["Indie", "Third-person", "Fantasy", "Survival", "Open World"],
@@ -2181,6 +2317,7 @@ window.GAMES = [
   },
   {
     id: "lotr-return-to-moria",
+    reviewed: true,
     title: "The Lord of the Rings: Return to Moria",
     year: 2024,
     genres: ["AA", "Third-person", "Fantasy", "Survival"],
@@ -2197,6 +2334,7 @@ window.GAMES = [
   },
   {
     id: "heroes-of-hammerwatch-2",
+    reviewed: true,
     title: "Heroes of Hammerwatch II",
     year: 2025,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
@@ -2213,6 +2351,7 @@ window.GAMES = [
   },
   {
     id: "reanimal",
+    reviewed: true,
     title: "REANIMAL",
     year: 2026,
     genres: ["AAA", "Side-view", "Puzzle", "Platformer", "Horror"],
@@ -2229,6 +2368,7 @@ window.GAMES = [
   },
   {
     id: "elden-ring-nightreign",
+    reviewed: true,
     title: "Elden Ring Nightreign",
     year: 2025,
     genres: ["AAA", "Third-person", "Action", "RPG", "Soulslike", "Fantasy"],
@@ -2245,6 +2385,7 @@ window.GAMES = [
   },
   {
     id: "marvel-cosmic-invasion",
+    reviewed: true,
     title: "MARVEL Cosmic Invasion",
     year: 2025,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -2261,6 +2402,7 @@ window.GAMES = [
   },
   {
     id: "slay-the-spire-2",
+    reviewed: true,
     title: "Slay the Spire 2",
     year: 2026,
     genres: ["Indie", "Side-view", "Tactics"],
@@ -2278,6 +2420,7 @@ window.GAMES = [
   },
   {
     id: "absolum",
+    reviewed: true,
     title: "Absolum",
     year: 2025,
     genres: ["Indie", "Side-view", "Brawler", "Fantasy"],
@@ -2294,6 +2437,7 @@ window.GAMES = [
   },
   {
     id: "cult-of-the-lamb",
+    reviewed: true,
     title: "Cult of the Lamb",
     year: 2022,
     genres: ["AA", "Isometric", "Action"],
@@ -2310,6 +2454,7 @@ window.GAMES = [
   },
   {
     id: "rv-there-yet",
+    reviewed: true,
     title: "RV There Yet?",
     year: 2025,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -2326,6 +2471,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-resistance",
+    reviewed: true,
     title: "Sniper Elite: Resistance",
     year: 2025,
     genres: ["AA", "Third-person", "Shooter", "Stealth", "Military"],
@@ -2342,6 +2488,7 @@ window.GAMES = [
   },
   {
     id: "powerwash-simulator-2",
+    reviewed: true,
     title: "PowerWash Simulator 2",
     year: 2025,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -2358,6 +2505,7 @@ window.GAMES = [
   },
   {
     id: "abiotic-factor",
+    reviewed: true,
     title: "Abiotic Factor",
     year: 2025,
     genres: ["Indie", "First-person", "Sci-fi", "Survival"],
@@ -2374,6 +2522,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-4",
+    reviewed: true,
     title: "Borderlands 4",
     year: 2025,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot"],
@@ -2391,6 +2540,7 @@ window.GAMES = [
   },
   {
     id: "risk-of-rain-returns",
+    reviewed: true,
     title: "Risk of Rain Returns",
     year: 2023,
     genres: ["Indie", "Side-view", "Action", "Shooter", "Platformer"],
@@ -2407,6 +2557,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-4",
+    reviewed: true,
     title: "Sniper Elite 4",
     year: 2017,
     genres: ["AA", "Third-person", "Shooter", "Stealth", "Military"],
@@ -2423,6 +2574,7 @@ window.GAMES = [
   },
   {
     id: "saints-row-3-remastered",
+    reviewed: true,
     title: "Saints Row: The Third Remastered",
     year: 2021,
     genres: ["AAA", "Third-person", "Action", "Open World"],
@@ -2439,6 +2591,7 @@ window.GAMES = [
   },
   {
     id: "edf-6",
+    reviewed: true,
     title: "Earth Defense Force 6",
     year: 2024,
     genres: ["AA", "Third-person", "Shooter", "Sci-fi"],
@@ -2456,6 +2609,7 @@ window.GAMES = [
   },
   {
     id: "far-cry-6",
+    reviewed: true,
     title: "Far Cry 6",
     year: 2023,
     genres: ["AAA", "First-person", "Shooter", "Action", "Open World"],
@@ -2472,6 +2626,7 @@ window.GAMES = [
   },
   {
     id: "trine-4",
+    reviewed: true,
     title: "Trine 4: The Nightmare Prince",
     year: 2019,
     genres: ["AA", "Side-view", "Platformer", "Puzzle", "Fantasy"],
@@ -2488,6 +2643,7 @@ window.GAMES = [
   },
   {
     id: "monster-hunter-world",
+    reviewed: true,
     title: "Monster Hunter: World",
     year: 2018,
     genres: ["AAA", "Third-person", "Action", "RPG", "Fantasy"],
@@ -2504,6 +2660,7 @@ window.GAMES = [
   },
   {
     id: "unravel-two",
+    reviewed: true,
     title: "Unravel Two",
     year: 2020,
     genres: ["AAA", "Side-view", "Platformer", "Puzzle"],
@@ -2520,6 +2677,7 @@ window.GAMES = [
   },
   {
     id: "state-of-decay-2",
+    reviewed: true,
     title: "State of Decay 2: Juggernaut Edition",
     year: 2020,
     genres: ["AAA", "Third-person", "Action", "RPG", "Horror", "Survival"],
@@ -2536,6 +2694,7 @@ window.GAMES = [
   },
   {
     id: "space-hulk-deathwing",
+    reviewed: true,
     title: "Space Hulk: Deathwing Enhanced Edition",
     year: 2018,
     genres: ["AA", "First-person", "Shooter", "Sci-fi", "Military"],
@@ -2552,6 +2711,7 @@ window.GAMES = [
   },
   {
     id: "divinity-original-sin-1",
+    reviewed: true,
     title: "Divinity: Original Sin - Enhanced Edition",
     year: 2015,
     genres: ["AA", "Isometric", "RPG", "Tactics", "Fantasy"],
@@ -2568,6 +2728,7 @@ window.GAMES = [
   },
   {
     id: "vermintide-1",
+    reviewed: true,
     title: "Warhammer: End Times - Vermintide",
     year: 2015,
     genres: ["AA", "First-person", "Shooter", "Action", "Fantasy"],
@@ -2584,6 +2745,7 @@ window.GAMES = [
   },
   {
     id: "lego-voyagers",
+    reviewed: true,
     title: "LEGO Voyagers",
     year: 2025,
     genres: ["AA", "Isometric", "Puzzle", "Platformer"],
@@ -2600,6 +2762,7 @@ window.GAMES = [
   },
   {
     id: "together-moon-escape",
+    reviewed: true,
     title: "Together: Moon Escape",
     year: 2026,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -2616,6 +2779,7 @@ window.GAMES = [
   },
   {
     id: "parallel-experiment",
+    reviewed: true,
     title: "Parallel Experiment",
     year: 2025,
     genres: ["Indie", "Side-view", "Puzzle"],
@@ -2632,6 +2796,7 @@ window.GAMES = [
   },
   {
     id: "hellcard",
+    reviewed: true,
     title: "HELLCARD",
     year: 2024,
     genres: ["Indie", "Side-view", "Tactics"],
@@ -2648,6 +2813,7 @@ window.GAMES = [
   },
   {
     id: "secrets-of-grindea",
+    reviewed: true,
     title: "Secrets of Grindea",
     year: 2024,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -2664,6 +2830,7 @@ window.GAMES = [
   },
   {
     id: "dying-light-the-beast",
+    reviewed: true,
     title: "Dying Light: The Beast",
     year: 2025,
     genres: ["AA", "First-person", "Action", "Horror", "Open World", "Survival"],
@@ -2680,6 +2847,7 @@ window.GAMES = [
   },
   {
     id: "ready-or-not",
+    reviewed: true,
     title: "Ready or Not",
     year: 2023,
     genres: ["Indie", "First-person", "Shooter", "Tactics", "Military"],
@@ -2696,6 +2864,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-legacy",
+    reviewed: true,
     title: "LEGO Batman: Legacy of the Dark Knight",
     year: 2026,
     genres: ["AAA", "Third-person", "Action"],
@@ -2712,6 +2881,7 @@ window.GAMES = [
   },
   {
     id: "thick-as-thieves",
+    reviewed: true,
     title: "Thick As Thieves",
     year: 2026,
     genres: ["AA", "First-person", "Action", "Stealth"],
@@ -2728,6 +2898,7 @@ window.GAMES = [
   },
   {
     id: "in-sink",
+    reviewed: true,
     title: "In Sink: A Co-op Escape Adventure",
     year: 2024,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -2744,6 +2915,7 @@ window.GAMES = [
   },
   {
     id: "bokura",
+    reviewed: true,
     title: "BOKURA",
     year: 2023,
     genres: ["Indie", "Isometric", "Puzzle", "Platformer"],
@@ -2760,6 +2932,7 @@ window.GAMES = [
   },
   {
     id: "the-past-within",
+    reviewed: true,
     title: "The Past Within",
     year: 2022,
     genres: ["Indie", "Side-view", "Puzzle", "Horror"],
@@ -2776,6 +2949,7 @@ window.GAMES = [
   },
   {
     id: "pampas-selene",
+    reviewed: true,
     title: "Pampas & Selene: The Maze of Demons",
     year: 2024,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -2792,6 +2966,7 @@ window.GAMES = [
   },
   {
     id: "blood-typers",
+    reviewed: true,
     title: "Blood Typers",
     year: 2025,
     genres: ["Indie", "First-person", "Horror", "Survival"],
@@ -2808,6 +2983,7 @@ window.GAMES = [
   },
   {
     id: "generation-zero",
+    reviewed: true,
     title: "Generation Zero",
     year: 2019,
     genres: ["AA", "First-person", "Shooter", "Sci-fi", "Open World", "Survival"],
@@ -2824,6 +3000,7 @@ window.GAMES = [
   },
   {
     id: "green-hell",
+    reviewed: true,
     title: "Green Hell",
     year: 2019,
     genres: ["Indie", "First-person", "Survival", "Open World"],
@@ -2840,6 +3017,7 @@ window.GAMES = [
   },
   {
     id: "necesse",
+    reviewed: true,
     title: "Necesse",
     year: 2025,
     genres: ["Indie", "Isometric", "RPG", "Survival"],
@@ -2856,6 +3034,7 @@ window.GAMES = [
   },
   {
     id: "barotrauma",
+    reviewed: true,
     title: "Barotrauma",
     year: 2023,
     genres: ["Indie", "Side-view", "Action", "Sci-fi", "Survival"],
@@ -2872,6 +3051,7 @@ window.GAMES = [
   },
   {
     id: "kletka",
+    reviewed: true,
     title: "KLETKA",
     year: 2026,
     genres: ["Indie", "First-person", "Action", "Horror"],
@@ -2888,6 +3068,7 @@ window.GAMES = [
   },
   {
     id: "blood-and-bacon",
+    reviewed: true,
     title: "Blood and Bacon",
     year: 2016,
     genres: ["Indie", "First-person", "Shooter", "Horror"],
@@ -2904,6 +3085,7 @@ window.GAMES = [
   },
   {
     id: "mass-builder",
+    reviewed: true,
     title: "M.A.S.S. Builder",
     year: 2025,
     genres: ["Indie", "Third-person", "Action", "RPG", "Sci-fi"],
@@ -2920,6 +3102,7 @@ window.GAMES = [
   },
   {
     id: "crashout-crew",
+    reviewed: true,
     title: "Crashout Crew",
     year: 2026,
     genres: ["Indie", "Isometric", "Action"],
@@ -2936,6 +3119,7 @@ window.GAMES = [
   },
   {
     id: "forza-horizon-6",
+    reviewed: true,
     title: "Forza Horizon 6",
     year: 2026,
     genres: ["AAA", "Third-person", "Racing", "Open World"],
@@ -2952,6 +3136,7 @@ window.GAMES = [
   },
   {
     id: "forza-horizon-5",
+    reviewed: true,
     title: "Forza Horizon 5",
     year: 2021,
     genres: ["AAA", "Third-person", "Racing", "Open World"],
@@ -2968,6 +3153,7 @@ window.GAMES = [
   },
   {
     id: "drive-beyond-horizons",
+    reviewed: true,
     title: "Drive Beyond Horizons",
     year: 2025,
     genres: ["Indie", "First-person", "Racing", "Survival"],
@@ -2984,6 +3170,7 @@ window.GAMES = [
   },
   {
     id: "the-division-2",
+    reviewed: true,
     title: "Tom Clancy’s The Division 2",
     year: 2019,
     genres: ["AAA", "Third-person", "Shooter", "Loot", "Military", "Open World"],
@@ -3000,6 +3187,7 @@ window.GAMES = [
   },
   {
     id: "how-to-survive-2",
+    reviewed: true,
     title: "How to Survive 2",
     year: 2016,
     genres: ["AA", "Isometric", "Action", "Survival", "Horror"],
@@ -3017,6 +3205,7 @@ window.GAMES = [
   },
   {
     id: "ripout",
+    reviewed: true,
     title: "RIPOUT",
     year: 2024,
     genres: ["AA", "First-person", "Shooter", "Horror", "Sci-fi"],
@@ -3034,6 +3223,7 @@ window.GAMES = [
   },
   {
     id: "synthetik-2",
+    reviewed: true,
     title: "SYNTHETIK 2",
     year: 2021,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -3050,6 +3240,7 @@ window.GAMES = [
   },
   {
     id: "deep-rock-galactic-rogue-core",
+    reviewed: true,
     title: "Deep Rock Galactic: Rogue Core",
     year: 2026,
     genres: ["AA", "First-person", "Shooter", "Sci-fi"],
@@ -3067,6 +3258,7 @@ window.GAMES = [
   },
   {
     id: "broventure",
+    reviewed: true,
     title: "Broventure: The Wild Co-op",
     year: 2025,
     genres: ["Indie", "Isometric", "RPG", "Fantasy"],
@@ -3083,6 +3275,7 @@ window.GAMES = [
   },
   {
     id: "alien-strike-blasting-the-intruders",
+    reviewed: true,
     title: "Alien Strike: Blasting the Intruders",
     year: 2026,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -3099,6 +3292,7 @@ window.GAMES = [
   },
   {
     id: "voidigo",
+    reviewed: true,
     title: "Voidigo",
     year: 2023,
     genres: ["Indie", "Isometric", "Shooter"],
@@ -3115,6 +3309,7 @@ window.GAMES = [
   },
   {
     id: "sos-ops",
+    reviewed: true,
     title: "SOS OPS!",
     year: 2023,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -3131,6 +3326,7 @@ window.GAMES = [
   },
   {
     id: "carry-the-glass",
+    reviewed: true,
     title: "Carry The Glass",
     year: 2024,
     genres: ["Indie", "Third-person", "Platformer", "Puzzle"],
@@ -3147,6 +3343,7 @@ window.GAMES = [
   },
   {
     id: "hello-kitty-island-adventure",
+    reviewed: true,
     title: "Hello Kitty Island Adventure",
     year: 2025,
     genres: ["Indie", "Third-person", "Adventure", "Open World"],
@@ -3163,6 +3360,7 @@ window.GAMES = [
   },
   {
     id: "the-spell-brigade",
+    reviewed: true,
     title: "The Spell Brigade",
     year: 2026,
     genres: ["Indie", "Isometric", "Action", "Fantasy"],
@@ -3179,6 +3377,7 @@ window.GAMES = [
   },
   {
     id: "cinnabunny",
+    reviewed: true,
     title: "Cinnabunny",
     year: 2025,
     genres: ["Indie", "Isometric", "RPG"],
@@ -3195,6 +3394,7 @@ window.GAMES = [
   },
   {
     id: "never-grave",
+    reviewed: true,
     title: "Never Grave: The Witch and The Curse",
     year: 2026,
     genres: ["Indie", "Side-view", "Platformer", "Fantasy"],
@@ -3211,6 +3411,7 @@ window.GAMES = [
   },
   {
     id: "commandos-origins",
+    reviewed: true,
     title: "Commandos: Origins",
     year: 2025,
     genres: ["AA", "Isometric", "Tactics", "Stealth", "Military"],
@@ -3227,6 +3428,7 @@ window.GAMES = [
   },
   {
     id: "united-heist",
+    reviewed: true,
     title: "United Heist",
     year: 2023,
     genres: ["Indie", "First-person", "Puzzle", "Stealth", "Sci-fi"],
@@ -3243,6 +3445,7 @@ window.GAMES = [
   },
   {
     id: "whispers-in-the-west",
+    reviewed: true,
     title: "Whispers in the West - Co-op Murder Mystery",
     year: 2023,
     genres: ["Indie", "Third-person", "Puzzle", "Adventure"],
@@ -3260,6 +3463,7 @@ window.GAMES = [
   },
   {
     id: "pulsar-lost-colony",
+    reviewed: true,
     title: "PULSAR: Lost Colony",
     year: 2021,
     genres: ["Indie", "First-person", "Action", "RPG", "Sci-fi", "Open World"],
@@ -3276,6 +3480,7 @@ window.GAMES = [
   },
   {
     id: "eresys",
+    reviewed: true,
     title: "Eresys",
     year: 2023,
     genres: ["Indie", "First-person", "Action", "Horror"],
@@ -3293,6 +3498,7 @@ window.GAMES = [
   },
   {
     id: "split-brain",
+    reviewed: true,
     title: "Split Brain",
     year: 2024,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -3309,6 +3515,7 @@ window.GAMES = [
   },
   {
     id: "azoove",
+    reviewed: true,
     title: "Azoove",
     year: 2025,
     genres: ["Indie", "Side-view", "Tactics", "Fantasy"],
@@ -3325,6 +3532,7 @@ window.GAMES = [
   },
   {
     id: "astroloot",
+    reviewed: true,
     title: "Astroloot",
     year: 2025,
     genres: ["Indie", "Isometric", "Shooter", "RPG", "Loot", "Sci-fi"],
@@ -3341,6 +3549,7 @@ window.GAMES = [
   },
   {
     id: "windowkill",
+    reviewed: true,
     title: "Windowkill",
     year: 2024,
     genres: ["Indie", "Isometric", "Shooter"],
@@ -3357,6 +3566,7 @@ window.GAMES = [
   },
   {
     id: "dawn-of-the-monsters",
+    reviewed: true,
     title: "Dawn of the Monsters",
     year: 2022,
     genres: ["Indie", "Side-view", "Action"],
@@ -3373,6 +3583,7 @@ window.GAMES = [
   },
   {
     id: "samurai-riot",
+    reviewed: true,
     title: "Samurai Riot Definitive Edition",
     year: 2017,
     genres: ["Indie", "Side-view", "Action"],
@@ -3389,6 +3600,7 @@ window.GAMES = [
   },
   {
     id: "call-of-duty-world-at-war",
+    reviewed: true,
     title: "Call of Duty: World at War",
     year: 2008,
     genres: ["AAA", "First-person", "Shooter", "Military"],
@@ -3405,6 +3617,7 @@ window.GAMES = [
   },
   {
     id: "relic-hunters-zero-remix",
+    reviewed: true,
     title: "Relic Hunters Zero: Remix",
     year: 2015,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -3421,6 +3634,7 @@ window.GAMES = [
   },
   {
     id: "escape-memoirs-questionable-side-stories",
+    reviewed: true,
     title: "Escape Memoirs: Questionable Side Stories",
     year: 2023,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -3437,6 +3651,7 @@ window.GAMES = [
   },
   {
     id: "unboxing-the-cryptic-killer",
+    reviewed: true,
     title: "Unboxing the Cryptic Killer",
     year: 2023,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -3453,6 +3668,7 @@ window.GAMES = [
   },
   {
     id: "emissary-zero",
+    reviewed: true,
     title: "Emissary Zero",
     year: 2025,
     genres: ["Indie", "First-person", "Puzzle", "Horror"],
@@ -3465,10 +3681,11 @@ window.GAMES = [
     verdict: "Co-op horror exploration: scout a procedural building at night, complete tasks, find the Moon and return alive.",
     storeUrl: "https://store.steampowered.com/app/3176060/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3176060/header.jpg",
-    youtubeUrl: youtube("JnP-dynik6k")
+    youtubeUrl: youtube("q9mb6Ew4b_0")
   },
   {
     id: "100-cats-lost-in-china",
+    reviewed: true,
     title: "100 Cats Lost in China Find & Color",
     year: 2025,
     genres: ["Indie", "Side-view", "Puzzle"],
@@ -3485,6 +3702,7 @@ window.GAMES = [
   },
   {
     id: "linebound",
+    reviewed: true,
     title: "Linebound",
     year: 2026,
     genres: ["Indie", "Side-view", "Platformer", "Puzzle"],
@@ -3501,6 +3719,7 @@ window.GAMES = [
   },
   {
     id: "mechwarrior-5-clans",
+    reviewed: true,
     title: "MechWarrior 5: Clans",
     year: 2024,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi", "Military"],
@@ -3517,6 +3736,7 @@ window.GAMES = [
   },
   {
     id: "research-and-destroy",
+    reviewed: true,
     title: "RESEARCH and DESTROY",
     year: 2022,
     genres: ["Indie", "Third-person", "Tactics", "Action", "Shooter", "Sci-fi"],
@@ -3533,6 +3753,7 @@ window.GAMES = [
   },
   {
     id: "abyssus",
+    reviewed: true,
     title: "Abyssus",
     year: 2025,
     genres: ["Indie", "First-person", "Shooter"],
@@ -3549,6 +3770,7 @@ window.GAMES = [
   },
   {
     id: "ink-inside",
+    reviewed: true,
     title: "Ink Inside",
     year: 2024,
     genres: ["Indie", "Side-view", "Action", "RPG", "Fantasy"],
@@ -3565,6 +3787,7 @@ window.GAMES = [
   },
   {
     id: "lets-cook-together",
+    reviewed: true,
     title: "Let's Cook Together",
     year: 2020,
     genres: ["Indie", "Isometric", "Puzzle", "Action"],
@@ -3581,6 +3804,7 @@ window.GAMES = [
   },
   {
     id: "spirit-mancer",
+    reviewed: true,
     title: "Spirit Mancer",
     year: 2024,
     genres: ["Indie", "Side-view", "Action", "Fantasy"],
@@ -3597,6 +3821,7 @@ window.GAMES = [
   },
   {
     id: "unrailed",
+    reviewed: true,
     title: "Unrailed!",
     year: 2020,
     genres: ["Indie", "Isometric", "Puzzle", "Action"],
@@ -3613,6 +3838,7 @@ window.GAMES = [
   },
   {
     id: "call-of-duty-modern-warfare-2-2009",
+    reviewed: true,
     title: "Call of Duty: Modern Warfare 2 (2009)",
     year: 2009,
     genres: ["AAA", "First-person", "Shooter", "Military"],
@@ -3629,6 +3855,7 @@ window.GAMES = [
   },
   {
     id: "fallen-city-brawl",
+    reviewed: true,
     title: "Fallen City Brawl",
     year: 2025,
     genres: ["Indie", "Side-view", "Action"],
@@ -3645,6 +3872,7 @@ window.GAMES = [
   },
   {
     id: "diner-bros-2",
+    reviewed: true,
     title: "Diner Bros 2",
     year: 2025,
     genres: ["Indie", "Isometric", "Action"],
@@ -3661,6 +3889,7 @@ window.GAMES = [
   },
   {
     id: "slopecrashers",
+    reviewed: true,
     title: "Slopecrashers",
     year: 2024,
     genres: ["Indie", "Third-person", "Racing"],
@@ -3677,6 +3906,7 @@ window.GAMES = [
   },
   {
     id: "paddle-paddle-paddle",
+    reviewed: true,
     title: "Paddle Paddle Paddle",
     year: 2025,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -3688,11 +3918,12 @@ window.GAMES = [
     price: 69,
     verdict: "Physics-paddle parkour through lava on one giant handcrafted level — solo or 2-player co-op race for a mysterious prize.",
     storeUrl: "https://store.steampowered.com/app/3570070/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570070/header.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570070/35be35d69c576eeb612eaf49aa62f24689cdc798/header.jpg",
     youtubeUrl: youtube("lAzlAqRXztI")
   },
   {
     id: "dogfight-1942",
+    reviewed: true,
     title: "Dogfight 1942",
     year: 2012,
     genres: ["AA", "Third-person", "Shooter", "Military"],
@@ -3709,6 +3940,7 @@ window.GAMES = [
   },
   {
     id: "starbound",
+    reviewed: true,
     title: "Starbound",
     year: 2016,
     genres: ["Indie", "Side-view", "Action", "RPG", "Sci-fi", "Open World", "Survival"],
@@ -3725,6 +3957,7 @@ window.GAMES = [
   },
   {
     id: "unrailed-2-back-on-track",
+    reviewed: true,
     title: "Unrailed 2: Back on Track",
     year: 2024,
     genres: ["Indie", "Isometric", "Action"],
@@ -3741,6 +3974,7 @@ window.GAMES = [
   },
   {
     id: "brok-the-investigator",
+    reviewed: true,
     title: "BROK the InvestiGator",
     year: 2022,
     genres: ["Indie", "Side-view", "Adventure", "Brawler", "Sci-fi"],
@@ -3757,6 +3991,7 @@ window.GAMES = [
   },
   {
     id: "section-13",
+    reviewed: true,
     title: "Section 13",
     year: 2025,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -3774,6 +4009,7 @@ window.GAMES = [
   },
   {
     id: "potion-party",
+    reviewed: true,
     title: "Potion Party",
     year: 2021,
     genres: ["Indie", "Isometric", "Puzzle", "Action", "Fantasy"],
@@ -3790,6 +4026,7 @@ window.GAMES = [
   },
   {
     id: "potion-shop-simulator",
+    reviewed: true,
     title: "Potion Shop Simulator",
     year: 2025,
     genres: ["Indie", "First-person", "Action", "Fantasy"],
@@ -3806,6 +4043,7 @@ window.GAMES = [
   },
   {
     id: "graven",
+    reviewed: true,
     title: "GRAVEN",
     year: 2024,
     genres: ["Indie", "First-person", "Shooter", "Fantasy"],
@@ -3823,6 +4061,7 @@ window.GAMES = [
   },
   {
     id: "konami-arcade-classics-anniversary",
+    reviewed: true,
     title: "Arcade Classics Anniversary Collection",
     year: 2019,
     genres: ["AAA", "Side-view", "Shooter", "Sci-fi"],
@@ -3840,6 +4079,7 @@ window.GAMES = [
   },
   {
     id: "eigengrau",
+    reviewed: true,
     title: "Eigengrau",
     year: 2023,
     genres: ["Indie", "Side-view", "Shooter"],
@@ -3856,6 +4096,7 @@ window.GAMES = [
   },
   {
     id: "princess-farmer",
+    reviewed: true,
     title: "Princess Farmer",
     year: 2022,
     genres: ["Indie", "Side-view", "Puzzle", "Fantasy"],
@@ -3872,6 +4113,7 @@ window.GAMES = [
   },
   {
     id: "under-defeat",
+    reviewed: true,
     title: "UNDER DEFEAT",
     year: 2025,
     genres: ["Indie", "Isometric", "Shooter", "Military"],
@@ -3888,6 +4130,7 @@ window.GAMES = [
   },
   {
     id: "micro-mages",
+    reviewed: true,
     title: "Micro Mages",
     year: 2019,
     genres: ["Indie", "Side-view", "Platformer", "Shooter", "Fantasy"],
@@ -3904,6 +4147,7 @@ window.GAMES = [
   },
   {
     id: "darius-cozmic-collection-arcade",
+    reviewed: true,
     title: "Darius Cozmic Collection Arcade",
     year: 2021,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -3920,6 +4164,7 @@ window.GAMES = [
   },
   {
     id: "abathor",
+    reviewed: true,
     title: "Abathor",
     year: 2024,
     genres: ["Indie", "Side-view", "Brawler", "Fantasy"],
@@ -3936,6 +4181,7 @@ window.GAMES = [
   },
   {
     id: "cygni-all-guns-blazing",
+    reviewed: true,
     title: "CYGNI: All Guns Blazing",
     year: 2024,
     genres: ["AA", "Isometric", "Shooter", "Sci-fi"],
@@ -3953,6 +4199,7 @@ window.GAMES = [
   },
   {
     id: "deathsmiles-1-2",
+    reviewed: true,
     title: "Deathsmiles I・II",
     year: 2022,
     genres: ["Indie", "Side-view", "Shooter", "Fantasy"],
@@ -3969,6 +4216,7 @@ window.GAMES = [
   },
   {
     id: "counterattack-uprising",
+    reviewed: true,
     title: "CounterAttack: Uprising",
     year: 2019,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -3985,6 +4233,7 @@ window.GAMES = [
   },
   {
     id: "returnal",
+    reviewed: true,
     title: "Returnal",
     year: 2023,
     genres: ["AAA", "Third-person", "Shooter", "Sci-fi", "Horror"],
@@ -4001,6 +4250,7 @@ window.GAMES = [
   },
   {
     id: "chippy",
+    reviewed: true,
     title: "Chippy",
     year: 2019,
     genres: ["Indie", "Isometric", "Shooter"],
@@ -4017,6 +4267,7 @@ window.GAMES = [
   },
   {
     id: "nex-machina",
+    reviewed: true,
     title: "Nex Machina",
     year: 2017,
     genres: ["AA", "Isometric", "Shooter", "Sci-fi"],
@@ -4033,6 +4284,7 @@ window.GAMES = [
   },
   {
     id: "temtem-swarm",
+    reviewed: true,
     title: "Temtem: Swarm",
     year: 2026,
     genres: ["Indie", "Isometric", "Shooter", "Fantasy"],
@@ -4049,6 +4301,7 @@ window.GAMES = [
   },
   {
     id: "goat-simulator-3",
+    reviewed: true,
     title: "Goat Simulator 3",
     year: 2024,
     genres: ["AA", "Third-person", "Action", "Open World"],
@@ -4065,6 +4318,7 @@ window.GAMES = [
   },
   {
     id: "sedap-a-culinary-adventure",
+    reviewed: true,
     title: "SEDAP! A Culinary Adventure",
     year: 2025,
     genres: ["Indie", "Isometric", "Action"],
@@ -4082,6 +4336,7 @@ window.GAMES = [
   },
   {
     id: "fossil-hunters",
+    reviewed: true,
     title: "Fossil Hunters",
     year: 2018,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -4098,6 +4353,7 @@ window.GAMES = [
   },
   {
     id: "morkredd",
+    reviewed: true,
     title: "Morkredd",
     year: 2020,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -4114,6 +4370,7 @@ window.GAMES = [
   },
   {
     id: "gal-guardians-servants-of-the-dark",
+    reviewed: true,
     title: "Gal Guardians: Servants of the Dark",
     year: 2025,
     genres: ["Indie", "Side-view", "Platformer", "Action", "Horror"],
@@ -4131,6 +4388,7 @@ window.GAMES = [
   },
   {
     id: "muck",
+    reviewed: true,
     title: "Muck",
     year: 2021,
     genres: ["Indie", "Third-person", "Action", "Survival"],
@@ -4147,6 +4405,7 @@ window.GAMES = [
   },
   {
     id: "spectral-scream",
+    reviewed: true,
     title: "Spectral Scream",
     year: 2024,
     genres: ["Indie", "First-person", "Puzzle", "Horror"],
@@ -4163,6 +4422,7 @@ window.GAMES = [
   },
   {
     id: "cosmos-quickstop",
+    reviewed: true,
     title: "Cosmo's Quickstop",
     year: 2021,
     genres: ["Indie", "Isometric", "Action", "Sci-fi"],
@@ -4179,6 +4439,7 @@ window.GAMES = [
   },
   {
     id: "boat-together",
+    reviewed: true,
     title: "Boat Together",
     year: 2025,
     genres: ["Indie", "Third-person", "Action"],
@@ -4195,6 +4456,7 @@ window.GAMES = [
   },
   {
     id: "dead-island-riptide-de",
+    reviewed: true,
     title: "Dead Island: Riptide Definitive Edition",
     year: 2016,
     genres: ["AAA", "First-person", "Action", "RPG", "Horror", "Open World"],
@@ -4211,6 +4473,7 @@ window.GAMES = [
   },
   {
     id: "henry-halfhead",
+    reviewed: true,
     title: "Henry Halfhead",
     year: 2025,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -4227,6 +4490,7 @@ window.GAMES = [
   },
   {
     id: "lost-twins-2",
+    reviewed: true,
     title: "Lost Twins 2",
     year: 2025,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -4243,6 +4507,7 @@ window.GAMES = [
   },
   {
     id: "cato-buttered-cat",
+    reviewed: true,
     title: "CATO: Buttered Cat",
     year: 2024,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -4259,6 +4524,7 @@ window.GAMES = [
   },
   {
     id: "platypus-reclayed",
+    reviewed: true,
     title: "Platypus Reclayed",
     year: 2025,
     genres: ["Indie", "Side-view", "Shooter"],
@@ -4275,6 +4541,7 @@ window.GAMES = [
   },
   {
     id: "garbanzo-quest",
+    reviewed: true,
     title: "Garbanzo Quest",
     year: 2024,
     genres: ["Indie", "Side-view", "Platformer", "Shooter"],
@@ -4291,6 +4558,7 @@ window.GAMES = [
   },
   {
     id: "monster-prom-4-monster-con",
+    reviewed: true,
     title: "Monster Prom 4: Monster Con",
     year: 2025,
     genres: ["Indie", "Side-view", "Adventure"],
@@ -4307,6 +4575,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-4",
+    reviewed: true,
     title: "Chicken Invaders 4: Ultimate Omelette",
     year: 2014,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -4323,6 +4592,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-2",
+    reviewed: true,
     title: "Chicken Invaders 2",
     year: 2016,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -4339,6 +4609,7 @@ window.GAMES = [
   },
   {
     id: "real-rtcw",
+    reviewed: true,
     title: "RealRTCW",
     year: 2020,
     genres: ["Indie", "First-person", "Shooter", "Military"],
@@ -4355,6 +4626,7 @@ window.GAMES = [
   },
   {
     id: "twin-shot-deluxe",
+    reviewed: true,
     title: "Twin Shot Deluxe",
     year: 2026,
     genres: ["Indie", "Side-view", "Platformer", "Shooter", "Fantasy"],
@@ -4371,6 +4643,7 @@ window.GAMES = [
   },
   {
     id: "gum-squad",
+    reviewed: true,
     title: "Gum Squad",
     year: 2026,
     genres: ["Indie", "Isometric", "Shooter", "Loot", "Open World"],
@@ -4387,6 +4660,7 @@ window.GAMES = [
   },
   {
     id: "a-world-of-keflings",
+    reviewed: true,
     title: "A World of Keflings",
     year: 2025,
     genres: ["Indie", "Isometric", "RPG", "Fantasy"],
@@ -4403,6 +4677,7 @@ window.GAMES = [
   },
   {
     id: "kickback-shoot-to-move",
+    reviewed: true,
     title: "Kickback: Shoot to Move!",
     year: 2025,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -4419,6 +4694,7 @@ window.GAMES = [
   },
   {
     id: "unless",
+    reviewed: true,
     title: "Unless",
     year: 2025,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4431,10 +4707,11 @@ window.GAMES = [
     verdict: "Precision pixel-art speedrun platformer with 4 worlds and 66 finely-tuned level screens.",
     storeUrl: "https://store.steampowered.com/app/2944340/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2944340/header.jpg",
-    youtubeUrl: youtube("65yWIiBSQFk")
+    youtubeUrl: youtube("3tfO6d4KBrg")
   },
   {
     id: "brave-escape",
+    reviewed: true,
     title: "Brave Escape",
     year: 2025,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4451,6 +4728,7 @@ window.GAMES = [
   },
   {
     id: "pitfall-planet",
+    reviewed: true,
     title: "Pitfall Planet",
     year: 2016,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -4467,6 +4745,7 @@ window.GAMES = [
   },
   {
     id: "speed-crew",
+    reviewed: true,
     title: "Speed Crew",
     year: 2024,
     genres: ["Indie", "Isometric", "Action"],
@@ -4483,6 +4762,7 @@ window.GAMES = [
   },
   {
     id: "goliath-depot",
+    reviewed: true,
     title: "Goliath Depot",
     year: 2023,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4499,6 +4779,7 @@ window.GAMES = [
   },
   {
     id: "heads-adventures-chibichibi",
+    reviewed: true,
     title: "Head's Adventures: chibichibi",
     year: 2025,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4515,6 +4796,7 @@ window.GAMES = [
   },
   {
     id: "cometstriker-dx",
+    reviewed: true,
     title: "CometStriker DX",
     year: 2018,
     genres: ["Indie", "Side-view", "Shooter"],
@@ -4531,6 +4813,7 @@ window.GAMES = [
   },
   {
     id: "gregory-horror-show-soul-of-roses",
+    reviewed: true,
     title: "Gregory Horror Show: Soul of Roses",
     year: 2024,
     genres: ["Indie", "Side-view", "Action", "Horror"],
@@ -4547,6 +4830,7 @@ window.GAMES = [
   },
   {
     id: "witchs-apocalyptic-journey",
+    reviewed: true,
     title: "Witch's Apocalyptic Journey",
     year: 2026,
     genres: ["Indie", "Side-view", "Tactics", "Fantasy"],
@@ -4563,6 +4847,7 @@ window.GAMES = [
   },
   {
     id: "traumacore-violence",
+    reviewed: true,
     title: "TraumaCore Violence",
     year: 2023,
     genres: ["Indie", "Side-view", "Action"],
@@ -4579,6 +4864,7 @@ window.GAMES = [
   },
   {
     id: "cryptid-farm",
+    reviewed: true,
     title: "Cryptid Farm",
     year: 2024,
     genres: ["Indie", "Third-person", "Horror", "Survival"],
@@ -4595,6 +4881,7 @@ window.GAMES = [
   },
   {
     id: "goodboy-galaxy",
+    reviewed: true,
     title: "Goodboy Galaxy",
     year: 2024,
     genres: ["Indie", "Side-view", "Platformer", "Sci-fi"],
@@ -4611,6 +4898,7 @@ window.GAMES = [
   },
   {
     id: "tipston-salvage",
+    reviewed: true,
     title: "Tipston Salvage",
     year: 2024,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -4627,6 +4915,7 @@ window.GAMES = [
   },
   {
     id: "two-the-top",
+    reviewed: true,
     title: "Two the Top",
     year: 2025,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4643,6 +4932,7 @@ window.GAMES = [
   },
   {
     id: "akai-katana-shin",
+    reviewed: true,
     title: "Akai Katana Shin",
     year: 2022,
     genres: ["Indie", "Side-view", "Shooter"],
@@ -4659,6 +4949,7 @@ window.GAMES = [
   },
   {
     id: "super-cable-boy",
+    reviewed: true,
     title: "Super Cable Boy",
     year: 2020,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4675,6 +4966,7 @@ window.GAMES = [
   },
   {
     id: "very-very-valet",
+    reviewed: true,
     title: "Very Very Valet",
     year: 2022,
     genres: ["Indie", "Isometric", "Action"],
@@ -4691,6 +4983,7 @@ window.GAMES = [
   },
   {
     id: "desecrators",
+    reviewed: true,
     title: "Desecrators",
     year: 2025,
     genres: ["Indie", "First-person", "Shooter", "Sci-fi"],
@@ -4707,6 +5000,7 @@ window.GAMES = [
   },
   {
     id: "vectronom",
+    reviewed: true,
     title: "Vectronom",
     year: 2019,
     genres: ["Indie", "Isometric", "Puzzle", "Platformer"],
@@ -4723,6 +5017,7 @@ window.GAMES = [
   },
   {
     id: "castle-on-the-coast",
+    reviewed: true,
     title: "Castle on the Coast",
     year: 2021,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -4739,6 +5034,7 @@ window.GAMES = [
   },
   {
     id: "thy-sword",
+    reviewed: true,
     title: "Thy Sword",
     year: 2017,
     genres: ["Indie", "Side-view", "Platformer", "Action", "Fantasy"],
@@ -4755,6 +5051,7 @@ window.GAMES = [
   },
   {
     id: "grand-brix-shooter",
+    reviewed: true,
     title: "Grand Brix Shooter",
     year: 2019,
     genres: ["Indie", "Isometric", "Shooter"],
@@ -4771,6 +5068,7 @@ window.GAMES = [
   },
   {
     id: "meowgun-hell-denizen",
+    reviewed: true,
     title: "MeowGun: Hell Denizen",
     year: 2026,
     genres: ["Indie", "First-person", "Shooter"],
@@ -4787,6 +5085,7 @@ window.GAMES = [
   },
   {
     id: "spirits-abyss",
+    reviewed: true,
     title: "Spirits Abyss",
     year: 2020,
     genres: ["Indie", "Side-view", "Platformer", "Action"],
@@ -4799,10 +5098,11 @@ window.GAMES = [
     verdict: "Same-screen roguelite platformer with destructible terrain culminating in the Guardian of the Undying Gate boss.",
     storeUrl: "https://store.steampowered.com/app/1078200/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1078200/header.jpg",
-    youtubeUrl: youtube("sTHYtI-g_cM")
+    youtubeUrl: youtube("xChHW2eI7eY")
   },
   {
     id: "arcade-mayhem-juanito",
+    reviewed: true,
     title: "Arcade Mayhem Juanito",
     year: 2017,
     genres: ["Indie", "Side-view", "Platformer", "Action"],
@@ -4819,6 +5119,7 @@ window.GAMES = [
   },
   {
     id: "two-cubes",
+    reviewed: true,
     title: "Two Cubes",
     year: 2023,
     genres: ["Indie", "Side-view", "Platformer", "Puzzle"],
@@ -4831,10 +5132,11 @@ window.GAMES = [
     verdict: "Two-player online co-op platformer where each player can only touch their own colour across a defined level set.",
     storeUrl: "https://store.steampowered.com/app/2511290/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2511290/header.jpg",
-    youtubeUrl: youtube("Q9AUyrw_1w0")
+    youtubeUrl: youtube("tK7x7cQZ3tE")
   },
   {
     id: "button-button-up",
+    reviewed: true,
     title: "Button Button Up!",
     year: 2019,
     genres: ["Indie", "Side-view", "Platformer", "Puzzle"],
@@ -4851,6 +5153,7 @@ window.GAMES = [
   },
   {
     id: "sigma-impact",
+    reviewed: true,
     title: "Sigma Impact",
     year: 2021,
     genres: ["Indie", "Side-view", "Action"],
@@ -4867,6 +5170,7 @@ window.GAMES = [
   },
   {
     id: "this-is-no-cave",
+    reviewed: true,
     title: "This Is No Cave",
     year: 2025,
     genres: ["Indie", "Side-view", "Platformer", "Sci-fi"],
@@ -4883,6 +5187,7 @@ window.GAMES = [
   },
   {
     id: "step-by-step",
+    reviewed: true,
     title: "Step By Step",
     year: 2023,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4899,6 +5204,7 @@ window.GAMES = [
   },
   {
     id: "unaccessible",
+    reviewed: true,
     title: "Unaccessible",
     year: 2025,
     genres: ["Indie", "Third-person", "Platformer", "Action"],
@@ -4915,6 +5221,7 @@ window.GAMES = [
   },
   {
     id: "adventure-bit",
+    reviewed: true,
     title: "Adventure Bit",
     year: 2021,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -4931,6 +5238,7 @@ window.GAMES = [
   },
   {
     id: "calcium-chaos-derailed",
+    reviewed: true,
     title: "Calcium Chaos: Derailed",
     year: 2024,
     genres: ["Indie", "Top-down", "Shooter", "Fantasy"],
@@ -4947,6 +5255,7 @@ window.GAMES = [
   },
   {
     id: "gundroid",
+    reviewed: true,
     title: "Gundroid",
     year: 2025,
     genres: ["Indie", "Side-view", "Shooter", "Platformer"],
@@ -4963,6 +5272,7 @@ window.GAMES = [
   },
   {
     id: "flat-heroes",
+    reviewed: true,
     title: "Flat Heroes",
     year: 2016,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -4979,6 +5289,7 @@ window.GAMES = [
   },
   {
     id: "ganablade",
+    reviewed: true,
     title: "GanaBlade",
     year: 2023,
     genres: ["Indie", "Top-down", "Shooter", "Sci-fi"],
@@ -4995,6 +5306,7 @@ window.GAMES = [
   },
   {
     id: "tiny-lands-2",
+    reviewed: true,
     title: "Tiny Lands 2",
     year: 2025,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -5011,6 +5323,7 @@ window.GAMES = [
   },
   {
     id: "gensokyo-defenders",
+    reviewed: true,
     title: "Gensokyo Defenders",
     year: 2019,
     genres: ["Indie", "Isometric", "Tactics", "Shooter", "Fantasy"],
@@ -5027,6 +5340,7 @@ window.GAMES = [
   },
   {
     id: "polygunners",
+    reviewed: true,
     title: "Polygunners",
     year: 2022,
     genres: ["Indie", "Top-down", "Shooter"],
@@ -5043,6 +5357,7 @@ window.GAMES = [
   },
   {
     id: "putty-pals",
+    reviewed: true,
     title: "Putty Pals",
     year: 2017,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -5059,6 +5374,7 @@ window.GAMES = [
   },
   {
     id: "ruins-of-mitriom",
+    reviewed: true,
     title: "Ruins Of Mitriom",
     year: 2022,
     genres: ["Indie", "Isometric", "Action"],
@@ -5075,6 +5391,7 @@ window.GAMES = [
   },
   {
     id: "kinduo",
+    reviewed: true,
     title: "Kinduo",
     year: 2021,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -5091,6 +5408,7 @@ window.GAMES = [
   },
   {
     id: "parking-together",
+    reviewed: true,
     title: "Parking Together!",
     year: 2025,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -5107,6 +5425,7 @@ window.GAMES = [
   },
   {
     id: "robodunk",
+    reviewed: true,
     title: "RoboDunk",
     year: 2023,
     genres: ["Indie", "Side-view", "Action"],
@@ -5123,6 +5442,7 @@ window.GAMES = [
   },
   {
     id: "oeuf",
+    reviewed: true,
     title: "Oeuf",
     year: 2026,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -5139,6 +5459,7 @@ window.GAMES = [
   },
   {
     id: "foodslingers",
+    reviewed: true,
     title: "Foodslingers",
     year: 2026,
     genres: ["Indie", "Third-person", "Action"],
@@ -5155,6 +5476,7 @@ window.GAMES = [
   },
   {
     id: "project-starship-x",
+    reviewed: true,
     title: "Project Starship X",
     year: 2020,
     genres: ["Indie", "Isometric", "Shooter", "Horror"],
@@ -5171,6 +5493,7 @@ window.GAMES = [
   },
   {
     id: "beacon-patrol",
+    reviewed: true,
     title: "Beacon Patrol",
     year: 2025,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -5187,6 +5510,7 @@ window.GAMES = [
   },
   {
     id: "jedi-power-battles-remaster",
+    reviewed: true,
     title: "STAR WARS: Episode I - Jedi Power Battles",
     year: 2025,
     genres: ["AA", "Third-person", "Action", "Sci-fi"],
@@ -5203,6 +5527,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-5",
+    reviewed: true,
     title: "Chicken Invaders 5: Cluck of the Dark Side",
     year: 2015,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -5219,6 +5544,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-3",
+    reviewed: true,
     title: "Chicken Invaders 3: Revenge of the Yolk",
     year: 2015,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -5235,6 +5561,7 @@ window.GAMES = [
   },
   {
     id: "f1-25",
+    reviewed: true,
     title: "F1 25",
     year: 2025,
     genres: ["AAA", "Third-person", "Racing"],
@@ -5251,6 +5578,7 @@ window.GAMES = [
   },
   {
     id: "survivor-mercs",
+    reviewed: true,
     title: "Survivor Mercs",
     year: 2026,
     genres: ["Indie", "Isometric", "Shooter", "Action", "Military"],
@@ -5268,6 +5596,7 @@ window.GAMES = [
   },
   {
     id: "grounded-2",
+    reviewed: true,
     title: "Grounded 2",
     year: 2025,
     genres: ["AAA", "First-person", "Survival", "Open World"],
@@ -5286,6 +5615,7 @@ window.GAMES = [
   },
   {
     id: "smalland",
+    reviewed: true,
     title: "Smalland: Survive the Wilds",
     year: 2024,
     genres: ["Indie", "Third-person", "Fantasy", "Survival"],
@@ -5302,6 +5632,7 @@ window.GAMES = [
   },
   {
     id: "dead-island-2",
+    reviewed: true,
     title: "Dead Island 2",
     year: 2024,
     genres: ["AAA", "First-person", "Action", "RPG", "Horror"],
@@ -5318,6 +5649,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-vesperia",
+    reviewed: true,
     title: "Tales of Vesperia: Definitive Edition",
     year: 2019,
     genres: ["AAA", "Third-person", "RPG", "Action", "Fantasy"],
@@ -5334,6 +5666,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-berseria",
+    reviewed: true,
     title: "Tales of Berseria",
     year: 2017,
     genres: ["AAA", "Third-person", "RPG", "Action", "Fantasy"],
@@ -5350,6 +5683,7 @@ window.GAMES = [
   },
   {
     id: "secret-of-mana",
+    reviewed: true,
     title: "Secret of Mana",
     year: 2018,
     genres: ["AAA", "Isometric", "RPG", "Action", "Fantasy"],
@@ -5367,6 +5701,7 @@ window.GAMES = [
   },
   {
     id: "moon-hunters",
+    reviewed: true,
     title: "Moon Hunters",
     year: 2016,
     genres: ["Indie", "Isometric", "RPG", "Action", "Fantasy"],
@@ -5383,6 +5718,7 @@ window.GAMES = [
   },
   {
     id: "spiritfarer",
+    reviewed: true,
     title: "Spiritfarer",
     year: 2020,
     genres: ["Indie", "Side-view", "Adventure", "Platformer"],
@@ -5399,6 +5735,7 @@ window.GAMES = [
   },
   {
     id: "wildermyth",
+    reviewed: true,
     title: "Wildermyth",
     year: 2021,
     genres: ["Indie", "Isometric", "RPG", "Tactics", "Fantasy"],
@@ -5415,6 +5752,7 @@ window.GAMES = [
   },
   {
     id: "anima-flux",
+    reviewed: true,
     title: "Anima Flux",
     year: 2024,
     genres: ["Indie", "Side-view", "Action", "Platformer", "Sci-fi"],
@@ -5431,6 +5769,7 @@ window.GAMES = [
   },
   {
     id: "escapists-2",
+    reviewed: true,
     title: "The Escapists 2",
     year: 2017,
     genres: ["AA", "Isometric", "Stealth", "Action"],
@@ -5447,6 +5786,7 @@ window.GAMES = [
   },
   {
     id: "aragami",
+    reviewed: true,
     title: "Aragami",
     year: 2016,
     genres: ["Indie", "Third-person", "Action", "Stealth", "Fantasy"],
@@ -5463,6 +5803,7 @@ window.GAMES = [
   },
   {
     id: "aragami-2",
+    reviewed: true,
     title: "Aragami 2",
     year: 2021,
     genres: ["Indie", "Third-person", "Action", "Stealth", "Fantasy"],
@@ -5479,6 +5820,7 @@ window.GAMES = [
   },
   {
     id: "ibb-and-obb",
+    reviewed: true,
     title: "ibb & obb",
     year: 2014,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -5495,6 +5837,7 @@ window.GAMES = [
   },
   {
     id: "dungeon-of-the-endless",
+    reviewed: true,
     title: "Dungeon of the Endless",
     year: 2014,
     genres: ["Indie", "Isometric", "Tactics", "Action", "Sci-fi"],
@@ -5511,6 +5854,7 @@ window.GAMES = [
   },
   {
     id: "out-of-space",
+    reviewed: true,
     title: "Out of Space",
     year: 2020,
     genres: ["Indie", "Isometric", "Action"],
@@ -5527,6 +5871,7 @@ window.GAMES = [
   },
   {
     id: "clandestine",
+    reviewed: true,
     title: "Clandestine",
     year: 2015,
     genres: ["Indie", "Third-person", "Stealth", "Action"],
@@ -5543,6 +5888,7 @@ window.GAMES = [
   },
   {
     id: "tick-tock-tale-for-two",
+    reviewed: true,
     title: "Tick Tock: A Tale for Two",
     year: 2019,
     genres: ["Indie", "Side-view", "Puzzle", "Horror"],
@@ -5559,6 +5905,7 @@ window.GAMES = [
   },
   {
     id: "toejam-earl-groove",
+    reviewed: true,
     title: "ToeJam & Earl: Back in the Groove!",
     year: 2019,
     genres: ["Indie", "Isometric", "Action"],
@@ -5575,6 +5922,7 @@ window.GAMES = [
   },
   {
     id: "death-squared",
+    reviewed: true,
     title: "Death Squared",
     year: 2017,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -5591,6 +5939,7 @@ window.GAMES = [
   },
   {
     id: "pico-park-2",
+    reviewed: true,
     title: "PICO PARK 2",
     year: 2024,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -5607,6 +5956,7 @@ window.GAMES = [
   },
   {
     id: "escape-the-backrooms",
+    reviewed: true,
     title: "Escape the Backrooms",
     year: 2025,
     genres: ["Indie", "First-person", "Horror", "Survival"],
@@ -5623,6 +5973,7 @@ window.GAMES = [
   },
   {
     id: "brothers-tale-two-sons-remake",
+    reviewed: true,
     title: "Brothers: A Tale of Two Sons Remake",
     year: 2024,
     genres: ["AA", "Third-person", "Adventure", "Puzzle", "Platformer"],
@@ -5639,6 +5990,7 @@ window.GAMES = [
   },
   {
     id: "flyknight",
+    reviewed: true,
     title: "FlyKnight",
     year: 2025,
     genres: ["Indie", "Third-person", "RPG", "Action", "Soulslike"],
@@ -5655,6 +6007,7 @@ window.GAMES = [
   },
   {
     id: "unsighted",
+    reviewed: true,
     title: "UNSIGHTED",
     year: 2021,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -5671,6 +6024,7 @@ window.GAMES = [
   },
   {
     id: "as-dusk-falls",
+    reviewed: true,
     title: "As Dusk Falls",
     year: 2022,
     genres: ["AAA", "Third-person", "Adventure"],
@@ -5687,6 +6041,7 @@ window.GAMES = [
   },
   {
     id: "bread-and-fred",
+    reviewed: true,
     title: "Bread & Fred",
     year: 2023,
     genres: ["Indie", "Side-view", "Platformer", "Puzzle"],
@@ -5703,6 +6058,7 @@ window.GAMES = [
   },
   {
     id: "labyrinthine",
+    reviewed: true,
     title: "Labyrinthine",
     year: 2023,
     genres: ["Indie", "First-person", "Puzzle", "Horror"],
@@ -5719,6 +6075,7 @@ window.GAMES = [
   },
   {
     id: "wartales",
+    reviewed: true,
     title: "Wartales",
     year: 2023,
     genres: ["AA", "Isometric", "RPG", "Tactics", "Open World"],
@@ -5735,6 +6092,7 @@ window.GAMES = [
   },
   {
     id: "infernax",
+    reviewed: true,
     title: "Infernax",
     year: 2022,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -5751,6 +6109,7 @@ window.GAMES = [
   },
   {
     id: "monaco-2",
+    reviewed: true,
     title: "Monaco 2",
     year: 2025,
     genres: ["Indie", "Isometric", "Stealth", "Action"],
@@ -5768,6 +6127,7 @@ window.GAMES = [
   },
   {
     id: "hacktag",
+    reviewed: true,
     title: "Hacktag",
     year: 2018,
     genres: ["Indie", "Isometric", "Stealth", "Puzzle"],
@@ -5785,6 +6145,7 @@ window.GAMES = [
   },
   {
     id: "nikoderiko",
+    reviewed: true,
     title: "Nikoderiko: The Magical World",
     year: 2024,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -5801,6 +6162,7 @@ window.GAMES = [
   },
   {
     id: "suicide-squad-kjl",
+    reviewed: true,
     title: "Suicide Squad: Kill the Justice League",
     year: 2024,
     genres: ["AAA", "Third-person", "Shooter", "Action"],
@@ -5818,6 +6180,7 @@ window.GAMES = [
   },
   {
     id: "lego-horizon-adventures",
+    reviewed: true,
     title: "LEGO Horizon Adventures",
     year: 2024,
     genres: ["AAA", "Third-person", "Action"],
@@ -5835,6 +6198,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-expeditions-friendship",
+    reviewed: true,
     title: "We Were Here Expeditions: The FriendShip",
     year: 2023,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -5851,6 +6215,7 @@ window.GAMES = [
   },
   {
     id: "atlas-fallen",
+    reviewed: true,
     title: "Atlas Fallen: Reign Of Sand",
     year: 2023,
     genres: ["AA", "Third-person", "Action", "RPG", "Fantasy"],
@@ -5867,6 +6232,7 @@ window.GAMES = [
   },
   {
     id: "diablo-2-resurrected",
+    reviewed: true,
     title: "Diablo II: Resurrected",
     year: 2026,
     genres: ["AAA", "Isometric", "Action", "RPG", "Loot"],
@@ -5883,6 +6249,7 @@ window.GAMES = [
   },
   {
     id: "grim-dawn",
+    reviewed: true,
     title: "Grim Dawn",
     year: 2016,
     genres: ["Indie", "Isometric", "Action", "RPG", "Loot"],
@@ -5899,6 +6266,7 @@ window.GAMES = [
   },
   {
     id: "lara-croft-temple-osiris",
+    reviewed: true,
     title: "Lara Croft and the Temple of Osiris",
     year: 2014,
     genres: ["AAA", "Isometric", "Action", "Puzzle"],
@@ -5916,6 +6284,7 @@ window.GAMES = [
   },
   {
     id: "ember-knights",
+    reviewed: true,
     title: "Ember Knights",
     year: 2023,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -5932,6 +6301,7 @@ window.GAMES = [
   },
   {
     id: "sworn",
+    reviewed: true,
     title: "SWORN",
     year: 2025,
     genres: ["Indie", "Isometric", "Action", "Fantasy"],
@@ -5948,6 +6318,7 @@ window.GAMES = [
   },
   {
     id: "shape-of-dreams",
+    reviewed: true,
     title: "Shape of Dreams",
     year: 2025,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -5964,6 +6335,7 @@ window.GAMES = [
   },
   {
     id: "dyo",
+    reviewed: true,
     title: "DYO",
     year: 2018,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -5980,6 +6352,7 @@ window.GAMES = [
   },
   {
     id: "cassette-beasts",
+    reviewed: true,
     title: "Cassette Beasts",
     year: 2023,
     genres: ["Indie", "Isometric", "RPG"],
@@ -5996,6 +6369,7 @@ window.GAMES = [
   },
   {
     id: "heroes-of-hammerwatch",
+    reviewed: true,
     title: "Heroes of Hammerwatch",
     year: 2018,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -6012,6 +6386,7 @@ window.GAMES = [
   },
   {
     id: "hammerwatch-2",
+    reviewed: true,
     title: "Hammerwatch II",
     year: 2023,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -6029,6 +6404,7 @@ window.GAMES = [
   },
   {
     id: "plateup",
+    reviewed: true,
     title: "PlateUp!",
     year: 2022,
     genres: ["Indie", "Isometric", "Action", "Puzzle"],
@@ -6045,6 +6421,7 @@ window.GAMES = [
   },
   {
     id: "with-you",
+    reviewed: true,
     title: "With You",
     year: 2022,
     genres: ["Indie", "Side-view", "Puzzle", "Adventure"],
@@ -6061,6 +6438,7 @@ window.GAMES = [
   },
   {
     id: "resident-evil-revelations-2",
+    reviewed: true,
     title: "Resident Evil Revelations 2",
     year: 2015,
     genres: ["AAA", "Third-person", "Action", "Horror", "Survival"],
@@ -6077,6 +6455,7 @@ window.GAMES = [
   },
   {
     id: "wizard-of-legend-2",
+    reviewed: true,
     title: "Wizard of Legend 2",
     year: 2025,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -6094,6 +6473,7 @@ window.GAMES = [
   },
   {
     id: "edf-5",
+    reviewed: true,
     title: "Earth Defense Force 5",
     year: 2019,
     genres: ["AA", "Third-person", "Shooter", "Sci-fi"],
@@ -6110,6 +6490,7 @@ window.GAMES = [
   },
   {
     id: "inkbound",
+    reviewed: true,
     title: "Inkbound",
     year: 2024,
     genres: ["Indie", "Third-person", "RPG", "Tactics"],
@@ -6126,6 +6507,7 @@ window.GAMES = [
   },
   {
     id: "stranger-of-paradise-ff-origin",
+    reviewed: true,
     title: "Stranger of Paradise: Final Fantasy Origin",
     year: 2023,
     genres: ["AAA", "Third-person", "Action", "RPG", "Soulslike", "Fantasy"],
@@ -6143,6 +6525,7 @@ window.GAMES = [
   },
   {
     id: "lumencraft",
+    reviewed: true,
     title: "Lumencraft",
     year: 2023,
     genres: ["Indie", "Isometric", "Action", "Shooter"],
@@ -6159,6 +6542,7 @@ window.GAMES = [
   },
   {
     id: "stranded-deep",
+    reviewed: true,
     title: "Stranded Deep",
     year: 2022,
     genres: ["Indie", "First-person", "Survival"],
@@ -6175,6 +6559,7 @@ window.GAMES = [
   },
   {
     id: "bloodstained-rotn",
+    reviewed: true,
     title: "Bloodstained: Ritual of the Night",
     year: 2019,
     genres: ["AA", "Side-view", "Action", "RPG", "Platformer"],
@@ -6191,6 +6576,7 @@ window.GAMES = [
   },
   {
     id: "trinity-trigger",
+    reviewed: true,
     title: "Trinity Trigger",
     year: 2023,
     genres: ["AA", "Isometric", "RPG", "Action", "Fantasy"],
@@ -6208,6 +6594,7 @@ window.GAMES = [
   },
   {
     id: "monster-hunter-rise",
+    reviewed: true,
     title: "Monster Hunter Rise",
     year: 2022,
     genres: ["AAA", "Third-person", "Action", "RPG"],
@@ -6224,6 +6611,7 @@ window.GAMES = [
   },
   {
     id: "tribes-of-midgard",
+    reviewed: true,
     title: "Tribes of Midgard",
     year: 2021,
     genres: ["Indie", "Isometric", "Action", "RPG", "Survival"],
@@ -6240,6 +6628,7 @@ window.GAMES = [
   },
   {
     id: "rhythm-doctor",
+    reviewed: true,
     title: "Rhythm Doctor",
     year: 2025,
     genres: ["Indie", "Side-view", "Adventure", "Puzzle"],
@@ -6256,6 +6645,7 @@ window.GAMES = [
   },
   {
     id: "super-crazy-rhythm-castle",
+    reviewed: true,
     title: "SUPER CRAZY RHYTHM CASTLE",
     year: 2023,
     genres: ["AAA", "Isometric", "Puzzle"],
@@ -6272,6 +6662,7 @@ window.GAMES = [
   },
   {
     id: "company-of-heroes-2",
+    reviewed: true,
     title: "Company of Heroes 2",
     year: 2013,
     genres: ["AAA", "Isometric", "Tactics", "Military"],
@@ -6288,6 +6679,7 @@ window.GAMES = [
   },
   {
     id: "gloomhaven",
+    reviewed: true,
     title: "Gloomhaven",
     year: 2021,
     genres: ["AA", "Isometric", "Tactics", "RPG", "Fantasy"],
@@ -6304,6 +6696,7 @@ window.GAMES = [
   },
   {
     id: "wargroove",
+    reviewed: true,
     title: "Wargroove",
     year: 2019,
     genres: ["Indie", "Isometric", "Tactics", "Fantasy"],
@@ -6320,6 +6713,7 @@ window.GAMES = [
   },
   {
     id: "wargroove-2",
+    reviewed: true,
     title: "Wargroove 2",
     year: 2023,
     genres: ["Indie", "Isometric", "Tactics", "Fantasy"],
@@ -6336,6 +6730,7 @@ window.GAMES = [
   },
   {
     id: "sunderfolk",
+    reviewed: true,
     title: "Sunderfolk",
     year: 2025,
     genres: ["AA", "Isometric", "Tactics", "RPG", "Fantasy"],
@@ -6352,6 +6747,7 @@ window.GAMES = [
   },
   {
     id: "stolen-realm",
+    reviewed: true,
     title: "Stolen Realm",
     year: 2024,
     genres: ["Indie", "Isometric", "Tactics", "RPG", "Fantasy"],
@@ -6368,6 +6764,7 @@ window.GAMES = [
   },
   {
     id: "jagged-alliance-3",
+    reviewed: true,
     title: "Jagged Alliance 3",
     year: 2023,
     genres: ["AA", "Isometric", "Tactics", "Stealth", "Military"],
@@ -6384,6 +6781,7 @@ window.GAMES = [
   },
   {
     id: "popucom",
+    reviewed: true,
     title: "POPUCOM",
     year: 2025,
     genres: ["Indie", "Third-person", "Platformer", "Puzzle"],
@@ -6400,6 +6798,7 @@ window.GAMES = [
   },
   {
     id: "deadzone-rogue",
+    reviewed: true,
     title: "Deadzone: Rogue",
     year: 2025,
     genres: ["Indie", "First-person", "Shooter", "Sci-fi"],
@@ -6416,6 +6815,7 @@ window.GAMES = [
   },
   {
     id: "godbreakers",
+    reviewed: true,
     title: "GODBREAKERS",
     year: 2025,
     genres: ["Indie", "Third-person", "Action", "RPG"],
@@ -6432,6 +6832,7 @@ window.GAMES = [
   },
   {
     id: "unsolved-case",
+    reviewed: true,
     title: "Unsolved Case",
     year: 2022,
     genres: ["Indie", "Side-view", "Puzzle"],
@@ -6448,6 +6849,7 @@ window.GAMES = [
   },
   {
     id: "sea-of-stars",
+    reviewed: true,
     title: "Sea of Stars",
     year: 2023,
     genres: ["Indie", "Isometric", "RPG", "Fantasy"],
@@ -6464,6 +6866,7 @@ window.GAMES = [
   },
   {
     id: "river-city-girls-2",
+    reviewed: true,
     title: "River City Girls 2",
     year: 2022,
     genres: ["AA", "Side-view", "Brawler"],
@@ -6480,6 +6883,7 @@ window.GAMES = [
   },
   {
     id: "mayhem-brawler",
+    reviewed: true,
     title: "Mayhem Brawler",
     year: 2021,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -6496,6 +6900,7 @@ window.GAMES = [
   },
   {
     id: "blazing-chrome",
+    reviewed: true,
     title: "Blazing Chrome",
     year: 2019,
     genres: ["Indie", "Side-view", "Action", "Shooter", "Platformer"],
@@ -6512,6 +6917,7 @@ window.GAMES = [
   },
   {
     id: "bokura-planet",
+    reviewed: true,
     title: "BOKURA: planet",
     year: 2025,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -6528,6 +6934,7 @@ window.GAMES = [
   },
   {
     id: "get-together",
+    reviewed: true,
     title: "Get Together: A Coop Adventure",
     year: 2021,
     genres: ["Indie", "Side-view", "Puzzle"],
@@ -6545,6 +6952,7 @@ window.GAMES = [
   },
   {
     id: "tmnt-splintered-fate",
+    reviewed: true,
     title: "Teenage Mutant Ninja Turtles: Splintered Fate",
     year: 2024,
     genres: ["AA", "Isometric", "Action"],
@@ -6561,6 +6969,7 @@ window.GAMES = [
   },
   {
     id: "the-riftbreaker",
+    reviewed: true,
     title: "The Riftbreaker",
     year: 2021,
     genres: ["Indie", "Isometric", "Action", "Tactics", "Sci-fi"],
@@ -6577,6 +6986,7 @@ window.GAMES = [
   },
   {
     id: "steel-division-2",
+    reviewed: true,
     title: "Steel Division 2",
     year: 2019,
     genres: ["AA", "Isometric", "Tactics", "Military"],
@@ -6593,6 +7003,7 @@ window.GAMES = [
   },
   {
     id: "lynked-banner-of-the-spark",
+    reviewed: true,
     title: "Lynked: Banner of the Spark",
     year: 2025,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -6609,6 +7020,7 @@ window.GAMES = [
   },
   {
     id: "last-epoch",
+    reviewed: true,
     title: "Last Epoch",
     year: 2024,
     genres: ["AA", "Isometric", "RPG", "Loot", "Fantasy"],
@@ -6625,6 +7037,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-pre-sequel",
+    reviewed: true,
     title: "Borderlands: The Pre-Sequel",
     year: 2014,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot", "Sci-fi"],
@@ -6641,6 +7054,7 @@ window.GAMES = [
   },
   {
     id: "torchlight-2",
+    reviewed: true,
     title: "Torchlight II",
     year: 2012,
     genres: ["AA", "Isometric", "RPG", "Loot", "Fantasy"],
@@ -6657,6 +7071,7 @@ window.GAMES = [
   },
   {
     id: "code-vein",
+    reviewed: true,
     title: "CODE VEIN",
     year: 2019,
     genres: ["AAA", "Third-person", "Soulslike", "RPG"],
@@ -6673,6 +7088,7 @@ window.GAMES = [
   },
   {
     id: "zombie-army-4",
+    reviewed: true,
     title: "Zombie Army 4: Dead War",
     year: 2021,
     genres: ["AA", "Third-person", "Shooter", "Horror", "Military"],
@@ -6689,6 +7105,7 @@ window.GAMES = [
   },
   {
     id: "orcs-must-die-3",
+    reviewed: true,
     title: "Orcs Must Die! 3",
     year: 2021,
     genres: ["AA", "Third-person", "Action", "Tactics", "Fantasy"],
@@ -6705,6 +7122,7 @@ window.GAMES = [
   },
   {
     id: "titan-quest-ae",
+    reviewed: true,
     title: "Titan Quest Anniversary Edition",
     year: 2016,
     genres: ["AA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -6721,6 +7139,7 @@ window.GAMES = [
   },
   {
     id: "nine-parchments",
+    reviewed: true,
     title: "Nine Parchments",
     year: 2017,
     genres: ["AA", "Isometric", "Shooter", "Fantasy"],
@@ -6737,6 +7156,7 @@ window.GAMES = [
   },
   {
     id: "gauntlet-slayer",
+    reviewed: true,
     title: "Gauntlet: Slayer Edition",
     year: 2014,
     genres: ["AA", "Isometric", "Action", "Fantasy"],
@@ -6753,6 +7173,7 @@ window.GAMES = [
   },
   {
     id: "trine-3",
+    reviewed: true,
     title: "Trine 3: The Artifacts of Power",
     year: 2015,
     genres: ["AA", "Side-view", "Puzzle", "Platformer", "Fantasy"],
@@ -6770,6 +7191,7 @@ window.GAMES = [
   },
   {
     id: "hammerwatch",
+    reviewed: true,
     title: "Hammerwatch",
     year: 2013,
     genres: ["Indie", "Isometric", "Action", "Fantasy"],
@@ -6786,6 +7208,7 @@ window.GAMES = [
   },
   {
     id: "contra-operation-galuga",
+    reviewed: true,
     title: "Contra: Operation Galuga",
     year: 2024,
     genres: ["AAA", "Side-view", "Shooter", "Platformer", "Sci-fi"],
@@ -6802,6 +7225,7 @@ window.GAMES = [
   },
   {
     id: "scott-pilgrim-the-game",
+    reviewed: true,
     title: "Scott Pilgrim vs. The World: The Game - Complete Edition",
     year: 2023,
     genres: ["AAA", "Side-view", "Brawler"],
@@ -6818,6 +7242,7 @@ window.GAMES = [
   },
   {
     id: "river-city-girls",
+    reviewed: true,
     title: "River City Girls",
     year: 2019,
     genres: ["AA", "Side-view", "Brawler"],
@@ -6834,6 +7259,7 @@ window.GAMES = [
   },
   {
     id: "double-dragon-gaiden",
+    reviewed: true,
     title: "Double Dragon Gaiden: Rise of the Dragons",
     year: 2023,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -6850,6 +7276,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-3",
+    reviewed: true,
     title: "Sniper Elite 3",
     year: 2014,
     genres: ["AA", "Third-person", "Shooter", "Stealth", "Military"],
@@ -6866,6 +7293,7 @@ window.GAMES = [
   },
   {
     id: "gotham-knights",
+    reviewed: true,
     title: "Gotham Knights",
     year: 2022,
     genres: ["AAA", "Third-person", "Action", "RPG"],
@@ -6883,6 +7311,7 @@ window.GAMES = [
   },
   {
     id: "outward",
+    reviewed: true,
     title: "Outward Definitive Edition",
     year: 2022,
     genres: ["AA", "Third-person", "RPG", "Fantasy", "Open World", "Survival"],
@@ -6899,6 +7328,7 @@ window.GAMES = [
   },
   {
     id: "god-eater-3",
+    reviewed: true,
     title: "God Eater 3",
     year: 2019,
     genres: ["AAA", "Third-person", "Action", "RPG", "Sci-fi"],
@@ -6915,6 +7345,7 @@ window.GAMES = [
   },
   {
     id: "tunche",
+    reviewed: true,
     title: "Tunche",
     year: 2021,
     genres: ["Indie", "Side-view", "Brawler", "Fantasy"],
@@ -6931,6 +7362,7 @@ window.GAMES = [
   },
   {
     id: "biped",
+    reviewed: true,
     title: "Biped",
     year: 2020,
     genres: ["Indie", "Isometric", "Puzzle", "Platformer"],
@@ -6947,6 +7379,7 @@ window.GAMES = [
   },
   {
     id: "tools-up",
+    reviewed: true,
     title: "Tools Up!",
     year: 2019,
     genres: ["Indie", "Isometric", "Puzzle", "Action"],
@@ -6963,6 +7396,7 @@ window.GAMES = [
   },
   {
     id: "vikings-wolves-of-midgard",
+    reviewed: true,
     title: "Vikings - Wolves of Midgard",
     year: 2017,
     genres: ["AA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -6980,6 +7414,7 @@ window.GAMES = [
   },
   {
     id: "warhammer-chaosbane",
+    reviewed: true,
     title: "Warhammer: Chaosbane",
     year: 2019,
     genres: ["AA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -6997,6 +7432,7 @@ window.GAMES = [
   },
   {
     id: "victor-vran",
+    reviewed: true,
     title: "Victor Vran",
     year: 2015,
     genres: ["AA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -7013,6 +7449,7 @@ window.GAMES = [
   },
   {
     id: "river-city-saga-three-kingdoms",
+    reviewed: true,
     title: "River City Saga: Three Kingdoms",
     year: 2022,
     genres: ["AA", "Side-view", "Brawler"],
@@ -7029,6 +7466,7 @@ window.GAMES = [
   },
   {
     id: "borderlands-goty",
+    reviewed: true,
     title: "Borderlands Game of the Year Enhanced",
     year: 2023,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot", "Sci-fi"],
@@ -7045,6 +7483,7 @@ window.GAMES = [
   },
   {
     id: "edf-world-brothers",
+    reviewed: true,
     title: "Earth Defense Force: World Brothers",
     year: 2021,
     genres: ["AA", "Third-person", "Shooter", "Action", "Sci-fi"],
@@ -7061,6 +7500,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-siberian-mayhem",
+    reviewed: true,
     title: "Serious Sam: Siberian Mayhem",
     year: 2022,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi"],
@@ -7077,6 +7517,7 @@ window.GAMES = [
   },
   {
     id: "saints-row-gat-out-of-hell",
+    reviewed: true,
     title: "Saints Row: Gat out of Hell",
     year: 2015,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Fantasy", "Open World"],
@@ -7093,6 +7534,7 @@ window.GAMES = [
   },
   {
     id: "warriors-orochi-4",
+    reviewed: true,
     title: "Warriors Orochi 4",
     year: 2018,
     genres: ["AA", "Third-person", "Action", "Fantasy"],
@@ -7109,6 +7551,7 @@ window.GAMES = [
   },
   {
     id: "renegade-ops",
+    reviewed: true,
     title: "Renegade Ops",
     year: 2011,
     genres: ["AA", "Isometric", "Shooter", "Action", "Military"],
@@ -7125,6 +7568,7 @@ window.GAMES = [
   },
   {
     id: "quake",
+    reviewed: true,
     title: "Quake",
     year: 2021,
     genres: ["AAA", "First-person", "Shooter", "Action", "Fantasy"],
@@ -7141,6 +7585,7 @@ window.GAMES = [
   },
   {
     id: "quake-2",
+    reviewed: true,
     title: "Quake II",
     year: 2023,
     genres: ["AAA", "First-person", "Shooter", "Action", "Sci-fi"],
@@ -7157,6 +7602,7 @@ window.GAMES = [
   },
   {
     id: "doom-plus-doom-2",
+    reviewed: true,
     title: "DOOM + DOOM II",
     year: 2024,
     genres: ["AAA", "First-person", "Shooter", "Action", "Sci-fi", "Horror"],
@@ -7173,6 +7619,7 @@ window.GAMES = [
   },
   {
     id: "sacred-citadel",
+    reviewed: true,
     title: "Sacred Citadel",
     year: 2013,
     genres: ["AA", "Side-view", "Brawler", "RPG", "Fantasy"],
@@ -7190,6 +7637,7 @@ window.GAMES = [
   },
   {
     id: "nioh-2",
+    reviewed: true,
     title: "Nioh 2 - The Complete Edition",
     year: 2021,
     genres: ["AAA", "Third-person", "Soulslike", "RPG", "Fantasy"],
@@ -7206,6 +7654,7 @@ window.GAMES = [
   },
   {
     id: "wo-long-fallen-dynasty",
+    reviewed: true,
     title: "Wo Long: Fallen Dynasty",
     year: 2023,
     genres: ["AAA", "Third-person", "Soulslike", "RPG", "Fantasy"],
@@ -7223,6 +7672,7 @@ window.GAMES = [
   },
   {
     id: "lords-of-the-fallen-2023",
+    reviewed: true,
     title: "Lords of the Fallen",
     year: 2023,
     genres: ["AA", "Third-person", "Soulslike", "RPG", "Fantasy"],
@@ -7240,6 +7690,7 @@ window.GAMES = [
   },
   {
     id: "samurai-warriors-5",
+    reviewed: true,
     title: "Samurai Warriors 5",
     year: 2021,
     genres: ["AA", "Third-person", "Action"],
@@ -7256,6 +7707,7 @@ window.GAMES = [
   },
   {
     id: "edf-iron-rain",
+    reviewed: true,
     title: "Earth Defense Force: Iron Rain",
     year: 2019,
     genres: ["AA", "Third-person", "Shooter", "Action", "Sci-fi"],
@@ -7273,6 +7725,7 @@ window.GAMES = [
   },
   {
     id: "samurai-warriors-4-2",
+    reviewed: true,
     title: "Samurai Warriors 4-II",
     year: 2015,
     genres: ["AA", "Third-person", "Action"],
@@ -7289,6 +7742,7 @@ window.GAMES = [
   },
   {
     id: "dynasty-warriors-8-xl",
+    reviewed: true,
     title: "Dynasty Warriors 8: Xtreme Legends Complete Edition",
     year: 2014,
     genres: ["AA", "Third-person", "Action"],
@@ -7305,6 +7759,7 @@ window.GAMES = [
   },
   {
     id: "salt-and-sacrifice",
+    reviewed: true,
     title: "Salt and Sacrifice",
     year: 2023,
     genres: ["Indie", "Side-view", "Soulslike", "Platformer", "Fantasy"],
@@ -7322,6 +7777,7 @@ window.GAMES = [
   },
   {
     id: "pode",
+    reviewed: true,
     title: "Pode",
     year: 2020,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -7338,6 +7794,7 @@ window.GAMES = [
   },
   {
     id: "tiny-tinas-assault-dragon-keep",
+    reviewed: true,
     title: "Tiny Tina's Assault on Dragon Keep",
     year: 2021,
     genres: ["AAA", "First-person", "Shooter", "RPG", "Loot", "Fantasy"],
@@ -7355,6 +7812,7 @@ window.GAMES = [
   },
   {
     id: "dnd-chronicles-of-mystara",
+    reviewed: true,
     title: "Dungeons & Dragons: Chronicles of Mystara",
     year: 2013,
     genres: ["AAA", "Side-view", "Brawler", "RPG", "Fantasy"],
@@ -7371,6 +7829,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-dark-alliance",
+    reviewed: true,
     title: "Baldur's Gate: Dark Alliance",
     year: 2021,
     genres: ["AA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -7387,6 +7846,7 @@ window.GAMES = [
   },
   {
     id: "metal-slug-x",
+    reviewed: true,
     title: "METAL SLUG X",
     year: 2014,
     genres: ["AAA", "Side-view", "Action", "Shooter", "Platformer"],
@@ -7403,6 +7863,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-dark-alliance-2",
+    reviewed: true,
     title: "Baldur's Gate: Dark Alliance II",
     year: 2022,
     genres: ["AA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -7419,6 +7880,7 @@ window.GAMES = [
   },
   {
     id: "far-cry-new-dawn",
+    reviewed: true,
     title: "Far Cry New Dawn",
     year: 2019,
     genres: ["AAA", "First-person", "Shooter", "Action", "Open World"],
@@ -7435,6 +7897,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-2",
+    reviewed: true,
     title: "Serious Sam 2",
     year: 2012,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi"],
@@ -7451,6 +7914,7 @@ window.GAMES = [
   },
   {
     id: "synthetik-legion-rising",
+    reviewed: true,
     title: "SYNTHETIK: Legion Rising",
     year: 2018,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -7467,6 +7931,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-hd-tfe",
+    reviewed: true,
     title: "Serious Sam HD: The First Encounter",
     year: 2009,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi"],
@@ -7483,6 +7948,7 @@ window.GAMES = [
   },
   {
     id: "cat-quest-3",
+    reviewed: true,
     title: "Cat Quest III",
     year: 2024,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
@@ -7499,6 +7965,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-little-hope",
+    reviewed: true,
     title: "The Dark Pictures Anthology: Little Hope",
     year: 2020,
     genres: ["AA", "Third-person", "Adventure", "Horror"],
@@ -7515,6 +7982,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-house-of-ashes",
+    reviewed: true,
     title: "The Dark Pictures Anthology: House of Ashes",
     year: 2021,
     genres: ["AA", "Third-person", "Adventure", "Horror"],
@@ -7531,6 +7999,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-devil-in-me",
+    reviewed: true,
     title: "The Dark Pictures Anthology: The Devil in Me",
     year: 2022,
     genres: ["AA", "Third-person", "Adventure", "Horror"],
@@ -7548,6 +8017,7 @@ window.GAMES = [
   },
   {
     id: "30xx",
+    reviewed: true,
     title: "30XX",
     year: 2023,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -7564,6 +8034,7 @@ window.GAMES = [
   },
   {
     id: "huntdown",
+    reviewed: true,
     title: "Huntdown",
     year: 2021,
     genres: ["Indie", "Side-view", "Shooter", "Action", "Sci-fi"],
@@ -7580,6 +8051,7 @@ window.GAMES = [
   },
   {
     id: "mighty-goose",
+    reviewed: true,
     title: "Mighty Goose",
     year: 2021,
     genres: ["Indie", "Side-view", "Shooter", "Action", "Sci-fi"],
@@ -7596,6 +8068,7 @@ window.GAMES = [
   },
   {
     id: "moving-out-2",
+    reviewed: true,
     title: "Moving Out 2",
     year: 2023,
     genres: ["Indie", "Isometric", "Puzzle", "Action"],
@@ -7612,6 +8085,7 @@ window.GAMES = [
   },
   {
     id: "pit-people",
+    reviewed: true,
     title: "Pit People",
     year: 2018,
     genres: ["Indie", "Isometric", "Tactics"],
@@ -7628,6 +8102,7 @@ window.GAMES = [
   },
   {
     id: "alien-hominid-invasion",
+    reviewed: true,
     title: "Alien Hominid Invasion",
     year: 2023,
     genres: ["Indie", "Side-view", "Shooter", "Action", "Sci-fi"],
@@ -7644,6 +8119,7 @@ window.GAMES = [
   },
   {
     id: "guns-gore-cannoli",
+    reviewed: true,
     title: "Guns, Gore & Cannoli",
     year: 2015,
     genres: ["Indie", "Side-view", "Shooter", "Action", "Horror"],
@@ -7660,6 +8136,7 @@ window.GAMES = [
   },
   {
     id: "shadow-puppeteer",
+    reviewed: true,
     title: "Shadow Puppeteer",
     year: 2014,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer", "Fantasy"],
@@ -7676,6 +8153,7 @@ window.GAMES = [
   },
   {
     id: "curse-of-the-sea-rats",
+    reviewed: true,
     title: "Curse of the Sea Rats",
     year: 2023,
     genres: ["Indie", "Side-view", "Platformer", "Action", "Fantasy"],
@@ -7693,6 +8171,7 @@ window.GAMES = [
   },
   {
     id: "a-robot-named-fight",
+    reviewed: true,
     title: "A Robot Named Fight!",
     year: 2017,
     genres: ["Indie", "Side-view", "Shooter", "Platformer", "Sci-fi"],
@@ -7709,6 +8188,7 @@ window.GAMES = [
   },
   {
     id: "wuppo",
+    reviewed: true,
     title: "Wuppo: Definitive Edition",
     year: 2019,
     genres: ["Indie", "Side-view", "Adventure"],
@@ -7725,6 +8205,7 @@ window.GAMES = [
   },
   {
     id: "sundered",
+    reviewed: true,
     title: "Sundered: Eldritch Edition",
     year: 2017,
     genres: ["Indie", "Side-view", "Platformer", "Action", "Horror"],
@@ -7741,6 +8222,7 @@ window.GAMES = [
   },
   {
     id: "mother-russia-bleeds",
+    reviewed: true,
     title: "Mother Russia Bleeds",
     year: 2016,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -7757,6 +8239,7 @@ window.GAMES = [
   },
   {
     id: "raging-justice",
+    reviewed: true,
     title: "Raging Justice",
     year: 2018,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -7773,6 +8256,7 @@ window.GAMES = [
   },
   {
     id: "final-vendetta",
+    reviewed: true,
     title: "Final Vendetta",
     year: 2022,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -7789,6 +8273,7 @@ window.GAMES = [
   },
   {
     id: "neon-chrome",
+    reviewed: true,
     title: "Neon Chrome",
     year: 2016,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -7805,6 +8290,7 @@ window.GAMES = [
   },
   {
     id: "halo-wars-de",
+    reviewed: true,
     title: "Halo Wars: Definitive Edition",
     year: 2017,
     genres: ["AAA", "Isometric", "Tactics", "Sci-fi"],
@@ -7821,6 +8307,7 @@ window.GAMES = [
   },
   {
     id: "guacamelee-stce",
+    reviewed: true,
     title: "Guacamelee! Super Turbo Championship Edition",
     year: 2014,
     genres: ["Indie", "Side-view", "Action", "Platformer"],
@@ -7837,6 +8324,7 @@ window.GAMES = [
   },
   {
     id: "van-helsing-final-cut",
+    reviewed: true,
     title: "The Incredible Adventures of Van Helsing: Final Cut",
     year: 2015,
     genres: ["AA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -7853,6 +8341,7 @@ window.GAMES = [
   },
   {
     id: "lego-jurassic-world",
+    reviewed: true,
     title: "LEGO Jurassic World",
     year: 2015,
     genres: ["AAA", "Third-person", "Action"],
@@ -7869,6 +8358,7 @@ window.GAMES = [
   },
   {
     id: "lego-dc-super-villains",
+    reviewed: true,
     title: "LEGO DC Super-Villains",
     year: 2018,
     genres: ["AAA", "Third-person", "Action"],
@@ -7885,6 +8375,7 @@ window.GAMES = [
   },
   {
     id: "lego-the-incredibles",
+    reviewed: true,
     title: "LEGO The Incredibles",
     year: 2018,
     genres: ["AAA", "Third-person", "Action"],
@@ -7901,6 +8392,7 @@ window.GAMES = [
   },
   {
     id: "lego-harry-potter-collection",
+    reviewed: true,
     title: "LEGO Harry Potter Collection",
     year: 2024,
     genres: ["AAA", "Third-person", "Action"],
@@ -7917,6 +8409,7 @@ window.GAMES = [
   },
   {
     id: "lego-the-hobbit",
+    reviewed: true,
     title: "LEGO The Hobbit",
     year: 2014,
     genres: ["AAA", "Third-person", "Action"],
@@ -7933,6 +8426,7 @@ window.GAMES = [
   },
   {
     id: "lego-marvel-super-heroes-2",
+    reviewed: true,
     title: "LEGO Marvel Super Heroes 2",
     year: 2017,
     genres: ["AAA", "Third-person", "Action"],
@@ -7949,6 +8443,7 @@ window.GAMES = [
   },
   {
     id: "saints-row-2022",
+    reviewed: true,
     title: "Saints Row",
     year: 2022,
     genres: ["AAA", "Third-person", "Action", "Open World"],
@@ -7966,6 +8461,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-3-beyond-gotham",
+    reviewed: true,
     title: "LEGO Batman 3: Beyond Gotham",
     year: 2014,
     genres: ["AAA", "Third-person", "Action"],
@@ -7982,6 +8478,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-2-dc-super-heroes",
+    reviewed: true,
     title: "LEGO Batman 2: DC Super Heroes",
     year: 2012,
     genres: ["AAA", "Third-person", "Action"],
@@ -7998,6 +8495,7 @@ window.GAMES = [
   },
   {
     id: "painkiller-hell-and-damnation",
+    reviewed: true,
     title: "Painkiller Hell & Damnation",
     year: 2012,
     genres: ["AA", "First-person", "Shooter", "Horror"],
@@ -8014,6 +8512,7 @@ window.GAMES = [
   },
   {
     id: "lego-marvels-avengers",
+    reviewed: true,
     title: "LEGO Marvel's Avengers",
     year: 2016,
     genres: ["AAA", "Third-person", "Action"],
@@ -8030,6 +8529,7 @@ window.GAMES = [
   },
   {
     id: "left-4-dead-1",
+    reviewed: true,
     title: "Left 4 Dead",
     year: 2008,
     genres: ["AAA", "First-person", "Shooter", "Action", "Horror"],
@@ -8046,6 +8546,7 @@ window.GAMES = [
   },
   {
     id: "salt-and-sanctuary",
+    reviewed: true,
     title: "Salt and Sanctuary",
     year: 2016,
     genres: ["Indie", "Side-view", "Soulslike", "Platformer", "Fantasy"],
@@ -8062,6 +8563,7 @@ window.GAMES = [
   },
   {
     id: "haven",
+    reviewed: true,
     title: "Haven",
     year: 2020,
     genres: ["Indie", "Third-person", "RPG", "Sci-fi"],
@@ -8078,6 +8580,7 @@ window.GAMES = [
   },
   {
     id: "degrees-of-separation",
+    reviewed: true,
     title: "Degrees of Separation",
     year: 2019,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -8094,6 +8597,7 @@ window.GAMES = [
   },
   {
     id: "aces-of-the-luftwaffe-squadron",
+    reviewed: true,
     title: "Aces of the Luftwaffe - Squadron",
     year: 2018,
     genres: ["Indie", "Isometric", "Shooter", "Military"],
@@ -8111,6 +8615,7 @@ window.GAMES = [
   },
   {
     id: "tmnt-cowabunga-collection",
+    reviewed: true,
     title: "Teenage Mutant Ninja Turtles: The Cowabunga Collection",
     year: 2022,
     genres: ["AAA", "Side-view", "Brawler"],
@@ -8127,6 +8632,7 @@ window.GAMES = [
   },
   {
     id: "9-monkeys-of-shaolin",
+    reviewed: true,
     title: "9 Monkeys of Shaolin",
     year: 2020,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -8143,6 +8649,7 @@ window.GAMES = [
   },
   {
     id: "young-souls",
+    reviewed: true,
     title: "Young Souls",
     year: 2022,
     genres: ["Indie", "Side-view", "Brawler", "RPG", "Fantasy"],
@@ -8159,6 +8666,7 @@ window.GAMES = [
   },
   {
     id: "39-days-to-mars",
+    reviewed: true,
     title: "39 Days to Mars",
     year: 2018,
     genres: ["Indie", "Side-view", "Puzzle", "Sci-fi"],
@@ -8175,6 +8683,7 @@ window.GAMES = [
   },
   {
     id: "code-of-princess-ex",
+    reviewed: true,
     title: "Code of Princess EX",
     year: 2020,
     genres: ["Indie", "Side-view", "Brawler", "RPG", "Fantasy"],
@@ -8192,6 +8701,7 @@ window.GAMES = [
   },
   {
     id: "die-for-valhalla",
+    reviewed: true,
     title: "Die for Valhalla!",
     year: 2018,
     genres: ["Indie", "Side-view", "Brawler", "Fantasy"],
@@ -8208,6 +8718,7 @@ window.GAMES = [
   },
   {
     id: "phantom-breaker-battle-grounds-ultimate",
+    reviewed: true,
     title: "Phantom Breaker: Battle Grounds Ultimate",
     year: 2025,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -8224,6 +8735,7 @@ window.GAMES = [
   },
   {
     id: "the-takeover",
+    reviewed: true,
     title: "The TakeOver",
     year: 2019,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -8240,6 +8752,7 @@ window.GAMES = [
   },
   {
     id: "splinter-cell-blacklist",
+    reviewed: true,
     title: "Tom Clancy's Splinter Cell Blacklist",
     year: 2013,
     genres: ["AAA", "Third-person", "Stealth", "Action", "Military"],
@@ -8256,6 +8769,7 @@ window.GAMES = [
   },
   {
     id: "jamestown-plus",
+    reviewed: true,
     title: "Jamestown+",
     year: 2019,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -8272,6 +8786,7 @@ window.GAMES = [
   },
   {
     id: "sky-force-reloaded",
+    reviewed: true,
     title: "Sky Force Reloaded",
     year: 2017,
     genres: ["Indie", "Isometric", "Shooter"],
@@ -8288,6 +8803,7 @@ window.GAMES = [
   },
   {
     id: "tesla-vs-lovecraft",
+    reviewed: true,
     title: "Tesla vs Lovecraft",
     year: 2018,
     genres: ["Indie", "Isometric", "Shooter", "Horror"],
@@ -8304,6 +8820,7 @@ window.GAMES = [
   },
   {
     id: "livelock",
+    reviewed: true,
     title: "Livelock",
     year: 2016,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -8320,6 +8837,7 @@ window.GAMES = [
   },
   {
     id: "greedy-guns",
+    reviewed: true,
     title: "Greedy Guns",
     year: 2017,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -8336,6 +8854,7 @@ window.GAMES = [
   },
   {
     id: "phogs",
+    reviewed: true,
     title: "PHOGS!",
     year: 2020,
     genres: ["Indie", "Third-person", "Puzzle", "Platformer"],
@@ -8352,6 +8871,7 @@ window.GAMES = [
   },
   {
     id: "bleed-2",
+    reviewed: true,
     title: "Bleed 2",
     year: 2017,
     genres: ["Indie", "Side-view", "Action"],
@@ -8368,6 +8888,7 @@ window.GAMES = [
   },
   {
     id: "neurovoider",
+    reviewed: true,
     title: "NeuroVoider",
     year: 2016,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -8384,6 +8905,7 @@ window.GAMES = [
   },
   {
     id: "we-need-to-go-deeper",
+    reviewed: true,
     title: "We Need to Go Deeper",
     year: 2019,
     genres: ["Indie", "Side-view", "Action"],
@@ -8400,6 +8922,7 @@ window.GAMES = [
   },
   {
     id: "pixeljunk-monsters-2",
+    reviewed: true,
     title: "PixelJunk Monsters 2",
     year: 2018,
     genres: ["Indie", "Isometric", "Tactics"],
@@ -8417,6 +8940,7 @@ window.GAMES = [
   },
   {
     id: "endless-dungeon",
+    reviewed: true,
     title: "ENDLESS Dungeon",
     year: 2023,
     genres: ["AA", "Isometric", "Shooter", "Sci-fi"],
@@ -8434,6 +8958,7 @@ window.GAMES = [
   },
   {
     id: "dragon-marked-for-death",
+    reviewed: true,
     title: "Dragon Marked for Death",
     year: 2020,
     genres: ["Indie", "Side-view", "Action", "RPG", "Fantasy"],
@@ -8450,6 +8975,7 @@ window.GAMES = [
   },
   {
     id: "battletoads-2020",
+    reviewed: true,
     title: "Battletoads",
     year: 2020,
     genres: ["AAA", "Side-view", "Brawler"],
@@ -8467,6 +8993,7 @@ window.GAMES = [
   },
   {
     id: "iron-meat",
+    reviewed: true,
     title: "Iron Meat",
     year: 2024,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -8483,6 +9010,7 @@ window.GAMES = [
   },
   {
     id: "astral-ascent",
+    reviewed: true,
     title: "Astral Ascent",
     year: 2023,
     genres: ["Indie", "Side-view", "Action", "Fantasy"],
@@ -8499,6 +9027,7 @@ window.GAMES = [
   },
   {
     id: "sun-haven",
+    reviewed: true,
     title: "Sun Haven",
     year: 2023,
     genres: ["Indie", "Isometric", "RPG", "Fantasy"],
@@ -8515,6 +9044,7 @@ window.GAMES = [
   },
   {
     id: "mercenary-kings",
+    reviewed: true,
     title: "Mercenary Kings: Reloaded Edition",
     year: 2014,
     genres: ["Indie", "Side-view", "Shooter"],
@@ -8531,6 +9061,7 @@ window.GAMES = [
   },
   {
     id: "steredenn-binary-stars",
+    reviewed: true,
     title: "Steredenn: Binary Stars",
     year: 2015,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -8547,6 +9078,7 @@ window.GAMES = [
   },
   {
     id: "blazing-beaks",
+    reviewed: true,
     title: "Blazing Beaks",
     year: 2019,
     genres: ["Indie", "Isometric", "Shooter"],
@@ -8563,6 +9095,7 @@ window.GAMES = [
   },
   {
     id: "kingdom-two-crowns",
+    reviewed: true,
     title: "Kingdom Two Crowns",
     year: 2018,
     genres: ["Indie", "Side-view", "Tactics", "Fantasy"],
@@ -8579,6 +9112,7 @@ window.GAMES = [
   },
   {
     id: "chronicon",
+    reviewed: true,
     title: "Chronicon",
     year: 2020,
     genres: ["Indie", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -8595,6 +9129,7 @@ window.GAMES = [
   },
   {
     id: "sanctum-1",
+    reviewed: true,
     title: "Sanctum",
     year: 2011,
     genres: ["AA", "First-person", "Shooter", "Tactics", "Sci-fi"],
@@ -8611,6 +9146,7 @@ window.GAMES = [
   },
   {
     id: "pang-adventures",
+    reviewed: true,
     title: "Pang Adventures",
     year: 2016,
     genres: ["Indie", "Side-view", "Action"],
@@ -8627,6 +9163,7 @@ window.GAMES = [
   },
   {
     id: "wulverblade",
+    reviewed: true,
     title: "Wulverblade",
     year: 2018,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -8643,6 +9180,7 @@ window.GAMES = [
   },
   {
     id: "warhammer-40k-inquisitor-martyr",
+    reviewed: true,
     title: "Warhammer 40,000: Inquisitor - Martyr",
     year: 2018,
     genres: ["AA", "Isometric", "Shooter", "RPG", "Loot", "Sci-fi"],
@@ -8659,6 +9197,7 @@ window.GAMES = [
   },
   {
     id: "age-of-empires-4",
+    reviewed: true,
     title: "Age of Empires IV",
     year: 2021,
     genres: ["AAA", "Isometric", "Tactics"],
@@ -8675,6 +9214,7 @@ window.GAMES = [
   },
   {
     id: "age-of-mythology-retold",
+    reviewed: true,
     title: "Age of Mythology: Retold",
     year: 2024,
     genres: ["AAA", "Isometric", "Tactics", "Fantasy"],
@@ -8691,6 +9231,7 @@ window.GAMES = [
   },
   {
     id: "my-time-at-sandrock",
+    reviewed: true,
     title: "My Time at Sandrock",
     year: 2023,
     genres: ["Indie", "Third-person", "RPG"],
@@ -8707,6 +9248,7 @@ window.GAMES = [
   },
   {
     id: "coral-island",
+    reviewed: true,
     title: "Coral Island",
     year: 2023,
     genres: ["Indie", "Isometric", "RPG"],
@@ -8723,6 +9265,7 @@ window.GAMES = [
   },
   {
     id: "ikaruga",
+    reviewed: true,
     title: "Ikaruga",
     year: 2014,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -8739,6 +9282,7 @@ window.GAMES = [
   },
   {
     id: "r-type-dimensions-ex",
+    reviewed: true,
     title: "R-Type Dimensions EX",
     year: 2018,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -8755,6 +9299,7 @@ window.GAMES = [
   },
   {
     id: "achilles-legends-untold",
+    reviewed: true,
     title: "Achilles: Legends Untold",
     year: 2023,
     genres: ["Indie", "Isometric", "Soulslike", "RPG", "Fantasy"],
@@ -8771,6 +9316,7 @@ window.GAMES = [
   },
   {
     id: "contra-anniversary-collection",
+    reviewed: true,
     title: "Contra Anniversary Collection",
     year: 2019,
     genres: ["AAA", "Side-view", "Shooter", "Sci-fi"],
@@ -8787,6 +9333,7 @@ window.GAMES = [
   },
   {
     id: "the-ninja-saviors-return-of-the-warriors",
+    reviewed: true,
     title: "The Ninja Saviors: Return of the Warriors",
     year: 2023,
     genres: ["Indie", "Side-view", "Brawler", "Sci-fi"],
@@ -8803,6 +9350,7 @@ window.GAMES = [
   },
   {
     id: "sky-force-anniversary",
+    reviewed: true,
     title: "Sky Force Anniversary",
     year: 2015,
     genres: ["Indie", "Isometric", "Shooter"],
@@ -8819,6 +9367,7 @@ window.GAMES = [
   },
   {
     id: "defense-grid-2",
+    reviewed: true,
     title: "Defense Grid 2",
     year: 2014,
     genres: ["Indie", "Isometric", "Tactics", "Sci-fi"],
@@ -8835,6 +9384,7 @@ window.GAMES = [
   },
   {
     id: "ship-of-fools",
+    reviewed: true,
     title: "Ship of Fools",
     year: 2022,
     genres: ["AA", "Isometric", "Shooter", "Action", "Fantasy"],
@@ -8851,6 +9401,7 @@ window.GAMES = [
   },
   {
     id: "rogue-heroes-ruins-of-tasos",
+    reviewed: true,
     title: "Rogue Heroes: Ruins of Tasos",
     year: 2021,
     genres: ["AA", "Isometric", "Action", "RPG", "Fantasy"],
@@ -8867,6 +9418,7 @@ window.GAMES = [
   },
   {
     id: "for-the-king-2",
+    reviewed: true,
     title: "For The King II",
     year: 2023,
     genres: ["AA", "Isometric", "Tactics", "RPG", "Fantasy"],
@@ -8883,6 +9435,7 @@ window.GAMES = [
   },
   {
     id: "blanc",
+    reviewed: true,
     title: "Blanc",
     year: 2023,
     genres: ["Indie", "Isometric", "Adventure", "Puzzle"],
@@ -8899,6 +9452,7 @@ window.GAMES = [
   },
   {
     id: "untitled-goose-game",
+    reviewed: true,
     title: "Untitled Goose Game",
     year: 2020,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -8915,6 +9469,7 @@ window.GAMES = [
   },
   {
     id: "dungeon-defenders-awakened",
+    reviewed: true,
     title: "Dungeon Defenders: Awakened",
     year: 2020,
     genres: ["Indie", "Third-person", "Action", "Tactics", "RPG", "Fantasy"],
@@ -8932,6 +9487,7 @@ window.GAMES = [
   },
   {
     id: "ghost-recon-breakpoint",
+    reviewed: true,
     title: "Ghost Recon Breakpoint",
     year: 2019,
     genres: ["AAA", "Third-person", "Shooter", "Tactics", "Military", "Open World"],
@@ -8948,6 +9504,7 @@ window.GAMES = [
   },
   {
     id: "dark-pictures-man-of-medan",
+    reviewed: true,
     title: "The Dark Pictures Anthology: Man of Medan",
     year: 2019,
     genres: ["AA", "Third-person", "Adventure", "Horror"],
@@ -8964,6 +9521,7 @@ window.GAMES = [
   },
   {
     id: "the-bug-butcher",
+    reviewed: true,
     title: "The Bug Butcher",
     year: 2016,
     genres: ["Indie", "Side-view", "Shooter", "Action", "Sci-fi"],
@@ -8980,6 +9538,7 @@ window.GAMES = [
   },
   {
     id: "hellpoint",
+    reviewed: true,
     title: "Hellpoint",
     year: 2020,
     genres: ["AA", "Third-person", "Soulslike", "RPG", "Sci-fi", "Horror"],
@@ -8996,6 +9555,7 @@ window.GAMES = [
   },
   {
     id: "mechwarrior-5-mercenaries",
+    reviewed: true,
     title: "MechWarrior 5: Mercenaries",
     year: 2021,
     genres: ["AA", "First-person", "Shooter", "Action", "Sci-fi", "Military"],
@@ -9012,6 +9572,7 @@ window.GAMES = [
   },
   {
     id: "aground",
+    reviewed: true,
     title: "Aground",
     year: 2020,
     genres: ["Indie", "Side-view", "RPG", "Fantasy", "Survival"],
@@ -9028,6 +9589,7 @@ window.GAMES = [
   },
   {
     id: "lego-indiana-jones",
+    reviewed: true,
     title: "LEGO Indiana Jones: The Original Adventures",
     year: 2008,
     genres: ["AAA", "Third-person", "Action"],
@@ -9044,6 +9606,7 @@ window.GAMES = [
   },
   {
     id: "lego-pirates-of-the-caribbean",
+    reviewed: true,
     title: "LEGO Pirates of the Caribbean: The Video Game",
     year: 2011,
     genres: ["AAA", "Third-person", "Action"],
@@ -9060,6 +9623,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-3-clone-wars",
+    reviewed: true,
     title: "LEGO Star Wars III: The Clone Wars",
     year: 2011,
     genres: ["AAA", "Third-person", "Action"],
@@ -9076,6 +9640,7 @@ window.GAMES = [
   },
   {
     id: "cook-serve-delicious-3",
+    reviewed: true,
     title: "Cook, Serve, Delicious! 3?!",
     year: 2020,
     genres: ["Indie", "First-person", "Action"],
@@ -9092,6 +9657,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-the-complete-saga",
+    reviewed: true,
     title: "LEGO Star Wars: The Complete Saga",
     year: 2009,
     genres: ["AAA", "Third-person", "Action"],
@@ -9108,6 +9674,7 @@ window.GAMES = [
   },
   {
     id: "lego-the-lord-of-the-rings",
+    reviewed: true,
     title: "LEGO The Lord of the Rings",
     year: 2012,
     genres: ["AAA", "Third-person", "Action"],
@@ -9124,6 +9691,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-the-force-awakens",
+    reviewed: true,
     title: "LEGO Star Wars: The Force Awakens",
     year: 2016,
     genres: ["AAA", "Third-person", "Action"],
@@ -9140,6 +9708,7 @@ window.GAMES = [
   },
   {
     id: "lego-batman-the-videogame",
+    reviewed: true,
     title: "LEGO Batman: The Videogame",
     year: 2008,
     genres: ["AAA", "Third-person", "Action"],
@@ -9156,6 +9725,7 @@ window.GAMES = [
   },
   {
     id: "the-lego-movie-videogame",
+    reviewed: true,
     title: "The LEGO Movie Videogame",
     year: 2014,
     genres: ["AAA", "Third-person", "Action"],
@@ -9172,6 +9742,7 @@ window.GAMES = [
   },
   {
     id: "the-lego-ninjago-movie-video-game",
+    reviewed: true,
     title: "The LEGO Ninjago Movie Video Game",
     year: 2017,
     genres: ["AAA", "Third-person", "Action"],
@@ -9188,6 +9759,7 @@ window.GAMES = [
   },
   {
     id: "minecraft-legends",
+    reviewed: true,
     title: "Minecraft Legends",
     year: 2023,
     genres: ["AAA", "Third-person", "Tactics", "Action", "Fantasy"],
@@ -9205,6 +9777,7 @@ window.GAMES = [
   },
   {
     id: "gigantosaurus-the-game",
+    reviewed: true,
     title: "Gigantosaurus The Game",
     year: 2020,
     genres: ["Indie", "Third-person", "Platformer", "Action"],
@@ -9221,6 +9794,7 @@ window.GAMES = [
   },
   {
     id: "prodeus",
+    reviewed: true,
     title: "Prodeus",
     year: 2022,
     genres: ["Indie", "First-person", "Shooter", "Action"],
@@ -9237,6 +9811,7 @@ window.GAMES = [
   },
   {
     id: "heave-ho",
+    reviewed: true,
     title: "Heave Ho",
     year: 2019,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -9253,6 +9828,7 @@ window.GAMES = [
   },
   {
     id: "pikuniku",
+    reviewed: true,
     title: "Pikuniku",
     year: 2019,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -9269,6 +9845,7 @@ window.GAMES = [
   },
   {
     id: "house-of-the-dead-remake",
+    reviewed: true,
     title: "The House of the Dead: Remake",
     year: 2022,
     genres: ["Indie", "First-person", "Shooter", "Action", "Horror"],
@@ -9286,6 +9863,7 @@ window.GAMES = [
   },
   {
     id: "iron-harvest",
+    reviewed: true,
     title: "Iron Harvest",
     year: 2020,
     genres: ["AA", "Isometric", "Tactics", "Military"],
@@ -9302,6 +9880,7 @@ window.GAMES = [
   },
   {
     id: "sine-mora-ex",
+    reviewed: true,
     title: "Sine Mora EX",
     year: 2017,
     genres: ["Indie", "Side-view", "Shooter", "Action"],
@@ -9319,6 +9898,7 @@ window.GAMES = [
   },
   {
     id: "foul-play",
+    reviewed: true,
     title: "Foul Play",
     year: 2013,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -9335,6 +9915,7 @@ window.GAMES = [
   },
   {
     id: "charlie-murder",
+    reviewed: true,
     title: "Charlie Murder",
     year: 2017,
     genres: ["Indie", "Side-view", "Brawler", "RPG"],
@@ -9351,6 +9932,7 @@ window.GAMES = [
   },
   {
     id: "dungeons-3",
+    reviewed: true,
     title: "Dungeons 3",
     year: 2017,
     genres: ["AA", "Isometric", "Tactics", "Fantasy"],
@@ -9367,6 +9949,7 @@ window.GAMES = [
   },
   {
     id: "risk-of-rain-2013",
+    reviewed: true,
     title: "Risk of Rain",
     year: 2013,
     genres: ["Indie", "Side-view", "Action", "Shooter", "Platformer"],
@@ -9383,6 +9966,7 @@ window.GAMES = [
   },
   {
     id: "knights-and-bikes",
+    reviewed: true,
     title: "Knights and Bikes",
     year: 2019,
     genres: ["Indie", "Isometric", "Adventure", "Action"],
@@ -9399,6 +9983,7 @@ window.GAMES = [
   },
   {
     id: "never-alone",
+    reviewed: true,
     title: "Never Alone (Kisima Ingitchuna)",
     year: 2014,
     genres: ["Indie", "Side-view", "Platformer", "Puzzle"],
@@ -9415,6 +10000,7 @@ window.GAMES = [
   },
   {
     id: "rain-world",
+    reviewed: true,
     title: "Rain World",
     year: 2017,
     genres: ["Indie", "Side-view", "Platformer", "Survival"],
@@ -9431,6 +10017,7 @@ window.GAMES = [
   },
   {
     id: "heretic-hexen",
+    reviewed: true,
     title: "Heretic + Hexen",
     year: 2025,
     genres: ["AAA", "First-person", "Shooter", "Fantasy"],
@@ -9447,6 +10034,7 @@ window.GAMES = [
   },
   {
     id: "tristoy",
+    reviewed: true,
     title: "TRISTOY",
     year: 2015,
     genres: ["Indie", "Side-view", "Platformer", "Puzzle", "Action", "Fantasy"],
@@ -9464,6 +10052,7 @@ window.GAMES = [
   },
   {
     id: "we-were-here-too",
+    reviewed: true,
     title: "We Were Here Too",
     year: 2018,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -9480,6 +10069,7 @@ window.GAMES = [
   },
   {
     id: "pile-up-box-by-box",
+    reviewed: true,
     title: "Pile Up! Box by Box",
     year: 2021,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -9496,6 +10086,7 @@ window.GAMES = [
   },
   {
     id: "dead-rising-2",
+    reviewed: true,
     title: "Dead Rising 2",
     year: 2010,
     genres: ["AAA", "Third-person", "Action", "Horror"],
@@ -9512,6 +10103,7 @@ window.GAMES = [
   },
   {
     id: "fear-3",
+    reviewed: true,
     title: "F.E.A.R. 3",
     year: 2011,
     genres: ["AAA", "First-person", "Shooter", "Horror"],
@@ -9528,6 +10120,7 @@ window.GAMES = [
   },
   {
     id: "dead-rising-2-off-the-record",
+    reviewed: true,
     title: "Dead Rising 2: Off the Record",
     year: 2011,
     genres: ["AAA", "Third-person", "Action", "Horror"],
@@ -9544,6 +10137,7 @@ window.GAMES = [
   },
   {
     id: "catastronauts",
+    reviewed: true,
     title: "Catastronauts",
     year: 2018,
     genres: ["Indie", "Isometric", "Action", "Sci-fi"],
@@ -9560,6 +10154,7 @@ window.GAMES = [
   },
   {
     id: "toxic-commando",
+    reviewed: true,
     title: "John Carpenter's Toxic Commando",
     year: 2026,
     genres: ["AA", "First-person", "Shooter", "Horror"],
@@ -9576,6 +10171,7 @@ window.GAMES = [
   },
   {
     id: "painkiller-2025",
+    reviewed: true,
     title: "Painkiller",
     year: 2025,
     genres: ["AA", "First-person", "Shooter", "Horror"],
@@ -9593,6 +10189,7 @@ window.GAMES = [
   },
   {
     id: "call-of-duty-black-ops-3",
+    reviewed: true,
     title: "Call of Duty: Black Ops III",
     year: 2015,
     genres: ["AAA", "First-person", "Shooter", "Sci-fi", "Military"],
@@ -9609,6 +10206,7 @@ window.GAMES = [
   },
   {
     id: "shovel-knight-treasure-trove",
+    reviewed: true,
     title: "Shovel Knight: Treasure Trove",
     year: 2014,
     genres: ["Indie", "Side-view", "Platformer", "Action", "Fantasy"],
@@ -9625,6 +10223,7 @@ window.GAMES = [
   },
   {
     id: "escape-simulator-2",
+    reviewed: true,
     title: "Escape Simulator 2",
     year: 2025,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -9641,6 +10240,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-symphonia",
+    reviewed: true,
     title: "Tales of Symphonia",
     year: 2016,
     genres: ["AAA", "Third-person", "RPG", "Action", "Fantasy"],
@@ -9657,6 +10257,7 @@ window.GAMES = [
   },
   {
     id: "police-stories",
+    reviewed: true,
     title: "Police Stories",
     year: 2019,
     genres: ["Indie", "Isometric", "Shooter", "Tactics"],
@@ -9673,6 +10274,7 @@ window.GAMES = [
   },
   {
     id: "double-dragon-revive",
+    reviewed: true,
     title: "Double Dragon Revive",
     year: 2025,
     genres: ["AA", "Side-view", "Brawler"],
@@ -9690,6 +10292,7 @@ window.GAMES = [
   },
   {
     id: "double-dragon-neon",
+    reviewed: true,
     title: "Double Dragon: Neon",
     year: 2014,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -9706,6 +10309,7 @@ window.GAMES = [
   },
   {
     id: "evil-west",
+    reviewed: true,
     title: "Evil West",
     year: 2022,
     genres: ["AA", "Third-person", "Action", "Shooter"],
@@ -9722,6 +10326,7 @@ window.GAMES = [
   },
   {
     id: "shootas-blood-and-teef",
+    reviewed: true,
     title: "Warhammer 40,000: Shootas, Blood & Teef",
     year: 2022,
     genres: ["Indie", "Side-view", "Action", "Shooter", "Sci-fi"],
@@ -9738,6 +10343,7 @@ window.GAMES = [
   },
   {
     id: "super-bunny-man",
+    reviewed: true,
     title: "Super Bunny Man",
     year: 2023,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -9754,6 +10360,7 @@ window.GAMES = [
   },
   {
     id: "the-expendabros",
+    reviewed: true,
     title: "The Expendabros",
     year: 2014,
     genres: ["Indie", "Side-view", "Action", "Platformer", "Shooter"],
@@ -9770,6 +10377,7 @@ window.GAMES = [
   },
   {
     id: "scott-pilgrim-ex",
+    reviewed: true,
     title: "Scott Pilgrim EX",
     year: 2026,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -9786,6 +10394,7 @@ window.GAMES = [
   },
   {
     id: "thunder-tier-one",
+    reviewed: true,
     title: "Thunder Tier One",
     year: 2021,
     genres: ["AA", "Isometric", "Tactics", "Shooter", "Military"],
@@ -9803,6 +10412,7 @@ window.GAMES = [
   },
   {
     id: "door-kickers",
+    reviewed: true,
     title: "Door Kickers",
     year: 2014,
     genres: ["Indie", "Isometric", "Tactics"],
@@ -9819,6 +10429,7 @@ window.GAMES = [
   },
   {
     id: "metal-slug-2",
+    reviewed: true,
     title: "METAL SLUG 2",
     year: 2016,
     genres: ["AAA", "Side-view", "Action", "Shooter", "Platformer"],
@@ -9835,6 +10446,7 @@ window.GAMES = [
   },
   {
     id: "metal-slug-1",
+    reviewed: true,
     title: "METAL SLUG",
     year: 2015,
     genres: ["AAA", "Side-view", "Action", "Shooter", "Platformer"],
@@ -9851,6 +10463,7 @@ window.GAMES = [
   },
   {
     id: "tales-of-zestiria",
+    reviewed: true,
     title: "Tales of Zestiria",
     year: 2015,
     genres: ["AAA", "Third-person", "RPG", "Action", "Fantasy"],
@@ -9867,6 +10480,7 @@ window.GAMES = [
   },
   {
     id: "obscure",
+    reviewed: true,
     title: "Obscure",
     year: 2014,
     genres: ["AA", "Third-person", "Action", "Horror"],
@@ -9883,6 +10497,7 @@ window.GAMES = [
   },
   {
     id: "obscure-2",
+    reviewed: true,
     title: "Obscure II (Obscure: The Aftermath)",
     year: 2014,
     genres: ["AA", "Third-person", "Action", "Horror"],
@@ -9899,6 +10514,7 @@ window.GAMES = [
   },
   {
     id: "legend-of-mana",
+    reviewed: true,
     title: "Legend of Mana",
     year: 2021,
     genres: ["AAA", "Isometric", "RPG", "Action", "Fantasy"],
@@ -9915,6 +10531,7 @@ window.GAMES = [
   },
   {
     id: "fireboy-and-watergirl-elements",
+    reviewed: true,
     title: "Fireboy & Watergirl: Elements",
     year: 2019,
     genres: ["Indie", "Side-view", "Puzzle", "Platformer"],
@@ -9931,6 +10548,7 @@ window.GAMES = [
   },
   {
     id: "techtonica",
+    reviewed: true,
     title: "Techtonica",
     year: 2024,
     genres: ["Indie", "First-person", "Sci-fi", "Survival"],
@@ -9948,6 +10566,7 @@ window.GAMES = [
   },
   {
     id: "the-survivalists",
+    reviewed: true,
     title: "The Survivalists",
     year: 2020,
     genres: ["AA", "Isometric", "Survival"],
@@ -9964,6 +10583,7 @@ window.GAMES = [
   },
   {
     id: "gatekeeper",
+    reviewed: true,
     title: "Gatekeeper",
     year: 2025,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -9980,6 +10600,7 @@ window.GAMES = [
   },
   {
     id: "nullpoint-protocol",
+    reviewed: true,
     title: "Nullpoint Protocol",
     year: 2026,
     genres: ["Indie", "Isometric", "Action", "RPG"],
@@ -9997,6 +10618,7 @@ window.GAMES = [
   },
   {
     id: "lost-castle-2",
+    reviewed: true,
     title: "Lost Castle 2",
     year: 2024,
     genres: ["Indie", "Side-view", "Brawler", "Fantasy"],
@@ -10013,6 +10635,7 @@ window.GAMES = [
   },
   {
     id: "fury-unleashed",
+    reviewed: true,
     title: "Fury Unleashed",
     year: 2020,
     genres: ["Indie", "Side-view", "Shooter", "Platformer"],
@@ -10029,6 +10652,7 @@ window.GAMES = [
   },
   {
     id: "cry-of-fear",
+    reviewed: true,
     title: "Cry of Fear",
     year: 2013,
     genres: ["Indie", "First-person", "Action", "Horror"],
@@ -10045,6 +10669,7 @@ window.GAMES = [
   },
   {
     id: "avatar-frontiers-of-pandora",
+    reviewed: true,
     title: "Avatar: Frontiers of Pandora",
     year: 2023,
     genres: ["AAA", "First-person", "Shooter", "Sci-fi", "Open World"],
@@ -10061,6 +10686,7 @@ window.GAMES = [
   },
   {
     id: "all-hands-on-deck",
+    reviewed: true,
     title: "All Hands on Deck",
     year: 2025,
     genres: ["Indie", "Third-person", "Puzzle", "Platformer"],
@@ -10077,6 +10703,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-enhanced-edition",
+    reviewed: true,
     title: "Baldur's Gate: Enhanced Edition",
     year: 2013,
     genres: ["AA", "Isometric", "RPG", "Fantasy"],
@@ -10093,6 +10720,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-2-enhanced-edition",
+    reviewed: true,
     title: "Baldur's Gate II: Enhanced Edition",
     year: 2013,
     genres: ["AA", "Isometric", "RPG", "Fantasy"],
@@ -10109,6 +10737,7 @@ window.GAMES = [
   },
   {
     id: "earthfall",
+    reviewed: true,
     title: "Earthfall",
     year: 2018,
     genres: ["Indie", "First-person", "Shooter", "Sci-fi"],
@@ -10126,6 +10755,7 @@ window.GAMES = [
   },
   {
     id: "wizard-with-a-gun",
+    reviewed: true,
     title: "Wizard with a Gun",
     year: 2023,
     genres: ["Indie", "Isometric", "Shooter", "Fantasy", "Survival"],
@@ -10142,6 +10772,7 @@ window.GAMES = [
   },
   {
     id: "drake-hollow",
+    reviewed: true,
     title: "Drake Hollow",
     year: 2020,
     genres: ["Indie", "Isometric", "Action", "Fantasy", "Survival"],
@@ -10158,6 +10789,7 @@ window.GAMES = [
   },
   {
     id: "neon-inferno",
+    reviewed: true,
     title: "Neon Inferno",
     year: 2025,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -10174,6 +10806,7 @@ window.GAMES = [
   },
   {
     id: "revenge-of-the-savage-planet",
+    reviewed: true,
     title: "Revenge of the Savage Planet",
     year: 2025,
     genres: ["AA", "Third-person", "Action", "Sci-fi"],
@@ -10190,6 +10823,7 @@ window.GAMES = [
   },
   {
     id: "windswept",
+    reviewed: true,
     title: "Windswept",
     year: 2025,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -10206,6 +10840,7 @@ window.GAMES = [
   },
   {
     id: "darkstone",
+    reviewed: true,
     title: "Darkstone",
     year: 2014,
     genres: ["Indie", "Isometric", "Action", "RPG", "Fantasy"],
@@ -10222,6 +10857,7 @@ window.GAMES = [
   },
   {
     id: "daemon-x-machina-titanic-scion",
+    reviewed: true,
     title: "Daemon X Machina: Titanic Scion",
     year: 2025,
     genres: ["AA", "Third-person", "Action", "Shooter", "Sci-fi"],
@@ -10239,6 +10875,7 @@ window.GAMES = [
   },
   {
     id: "warhammer-40k-rogue-trader",
+    reviewed: true,
     title: "Warhammer 40,000: Rogue Trader",
     year: 2023,
     genres: ["AA", "Isometric", "RPG", "Tactics", "Sci-fi"],
@@ -10255,6 +10892,7 @@ window.GAMES = [
   },
   {
     id: "dodonpachi-resurrection",
+    reviewed: true,
     title: "DoDonPachi Resurrection",
     year: 2016,
     genres: ["Indie", "Isometric", "Shooter", "Sci-fi"],
@@ -10271,6 +10909,7 @@ window.GAMES = [
   },
   {
     id: "g-darius-hd",
+    reviewed: true,
     title: "G-Darius HD",
     year: 2022,
     genres: ["Indie", "Side-view", "Shooter", "Sci-fi"],
@@ -10287,6 +10926,7 @@ window.GAMES = [
   },
   {
     id: "frogun-encore",
+    reviewed: true,
     title: "Frogun Encore",
     year: 2024,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -10303,6 +10943,7 @@ window.GAMES = [
   },
   {
     id: "lego-star-wars-skywalker-saga",
+    reviewed: true,
     title: "LEGO Star Wars: The Skywalker Saga",
     year: 2022,
     genres: ["AAA", "Third-person", "Action", "Platformer", "Sci-fi"],
@@ -10319,6 +10960,7 @@ window.GAMES = [
   },
   {
     id: "ashen",
+    reviewed: true,
     title: "Ashen",
     year: 2018,
     genres: ["AA", "Third-person", "Action", "RPG", "Soulslike", "Fantasy"],
@@ -10336,6 +10978,7 @@ window.GAMES = [
   },
   {
     id: "63-days",
+    reviewed: true,
     title: "63 Days",
     year: 2024,
     genres: ["AA", "Isometric", "Tactics", "Stealth", "Military"],
@@ -10352,6 +10995,7 @@ window.GAMES = [
   },
   {
     id: "tank-squad",
+    reviewed: true,
     title: "Tank Squad",
     year: 2025,
     genres: ["Indie", "Third-person", "Tactics", "Military"],
@@ -10368,6 +11012,7 @@ window.GAMES = [
   },
   {
     id: "lizards-must-die-2",
+    reviewed: true,
     title: "LIZARDS MUST DIE 2",
     year: 2025,
     genres: ["Indie", "Third-person", "Action", "Fantasy"],
@@ -10384,6 +11029,7 @@ window.GAMES = [
   },
   {
     id: "cats-love-boxes",
+    reviewed: true,
     title: "Cats Love Boxes",
     year: 2024,
     genres: ["Indie", "Isometric", "Puzzle"],
@@ -10400,6 +11046,7 @@ window.GAMES = [
   },
   {
     id: "sheepherds",
+    reviewed: true,
     title: "Sheepherds!",
     year: 2025,
     genres: ["Indie", "Isometric", "Action"],
@@ -10416,6 +11063,7 @@ window.GAMES = [
   },
   {
     id: "phantom-squad",
+    reviewed: true,
     title: "Phantom Squad",
     year: 2025,
     genres: ["Indie", "Isometric", "Tactics", "Shooter", "Military"],
@@ -10432,6 +11080,7 @@ window.GAMES = [
   },
   {
     id: "legion-td-2",
+    reviewed: true,
     title: "Legion TD 2 - Multiplayer Tower Defense",
     year: 2021,
     genres: ["Indie", "Isometric", "Tactics", "Fantasy"],
@@ -10448,6 +11097,7 @@ window.GAMES = [
   },
   {
     id: "wayfinder",
+    reviewed: true,
     title: "Wayfinder",
     year: 2024,
     genres: ["AA", "Third-person", "Action", "RPG", "Fantasy"],
@@ -10465,6 +11115,7 @@ window.GAMES = [
   },
   {
     id: "rotwood",
+    reviewed: true,
     title: "Rotwood",
     year: 2026,
     genres: ["Indie", "Side-view", "Brawler", "RPG", "Fantasy"],
@@ -10481,6 +11132,7 @@ window.GAMES = [
   },
   {
     id: "joe-n-jo",
+    reviewed: true,
     title: "Joe 'n Jo",
     year: 2024,
     genres: ["Indie", "Side-view", "Platformer", "Puzzle"],
@@ -10498,6 +11150,7 @@ window.GAMES = [
   },
   {
     id: "flock-around",
+    reviewed: true,
     title: "Flock Around",
     year: 2026,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -10514,6 +11167,7 @@ window.GAMES = [
   },
   {
     id: "that-one-otter-game",
+    reviewed: true,
     title: "That One Otter Game",
     year: 2025,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -10530,6 +11184,7 @@ window.GAMES = [
   },
   {
     id: "grenouilles-3d",
+    reviewed: true,
     title: "Grenouilles 3D",
     year: 2026,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -10546,6 +11201,7 @@ window.GAMES = [
   },
   {
     id: "ants-took-my-eyeball",
+    reviewed: true,
     title: "Ants Took My Eyeball",
     year: 2024,
     genres: ["Indie", "Side-view", "Platformer", "Action"],
@@ -10562,6 +11218,7 @@ window.GAMES = [
   },
   {
     id: "bloody-trapland-2-curiosity",
+    reviewed: true,
     title: "Bloody Trapland 2: Curiosity",
     year: 2019,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -10578,6 +11235,7 @@ window.GAMES = [
   },
   {
     id: "geometry-wars-3-dimensions-evolved",
+    reviewed: true,
     title: "Geometry Wars 3: Dimensions Evolved",
     year: 2014,
     genres: ["AAA", "Isometric", "Shooter", "Sci-fi"],
@@ -10594,6 +11252,7 @@ window.GAMES = [
   },
   {
     id: "necromunda-underhive-wars",
+    reviewed: true,
     title: "Necromunda: Underhive Wars",
     year: 2020,
     genres: ["AA", "Third-person", "Tactics", "Sci-fi"],
@@ -10611,6 +11270,7 @@ window.GAMES = [
   },
   {
     id: "trailmakers",
+    reviewed: true,
     title: "Trailmakers",
     year: 2019,
     genres: ["Indie", "Third-person", "Action", "Sci-fi", "Open World"],
@@ -10627,6 +11287,7 @@ window.GAMES = [
   },
   {
     id: "pacify",
+    reviewed: true,
     title: "Pacify",
     year: 2019,
     genres: ["Indie", "First-person", "Action", "Horror"],
@@ -10643,6 +11304,7 @@ window.GAMES = [
   },
   {
     id: "scrapnaut",
+    reviewed: true,
     title: "Scrapnaut",
     year: 2021,
     genres: ["Indie", "Isometric", "Action", "Sci-fi", "Survival"],
@@ -10660,6 +11322,7 @@ window.GAMES = [
   },
   {
     id: "shift-happens",
+    reviewed: true,
     title: "Shift Happens",
     year: 2017,
     genres: ["AA", "Side-view", "Platformer", "Puzzle"],
@@ -10676,6 +11339,7 @@ window.GAMES = [
   },
   {
     id: "ys-ix-monstrum-nox",
+    reviewed: true,
     title: "Ys IX: Monstrum Nox",
     year: 2021,
     genres: ["AA", "Third-person", "Action", "RPG", "Fantasy"],
@@ -10692,6 +11356,7 @@ window.GAMES = [
   },
   {
     id: "portal-reloaded",
+    reviewed: true,
     title: "Portal Reloaded",
     year: 2021,
     genres: ["Indie", "First-person", "Puzzle", "Sci-fi"],
@@ -10708,6 +11373,7 @@ window.GAMES = [
   },
   {
     id: "streets-of-fury-ex",
+    reviewed: true,
     title: "Streets of Fury EX",
     year: 2015,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -10724,6 +11390,7 @@ window.GAMES = [
   },
   {
     id: "death-in-unison",
+    reviewed: true,
     title: "DEATH IN UNISON",
     year: 2024,
     genres: ["Indie", "First-person", "Puzzle", "Horror"],
@@ -10740,6 +11407,7 @@ window.GAMES = [
   },
   {
     id: "tonight-we-riot",
+    reviewed: true,
     title: "Tonight We Riot",
     year: 2020,
     genres: ["Indie", "Side-view", "Brawler"],
@@ -10756,6 +11424,7 @@ window.GAMES = [
   },
   {
     id: "alien-hominid-hd",
+    reviewed: true,
     title: "Alien Hominid HD",
     year: 2023,
     genres: ["Indie", "Side-view", "Action", "Shooter"],
@@ -10772,6 +11441,7 @@ window.GAMES = [
   },
   {
     id: "we-escaped-a-twisted-game",
+    reviewed: true,
     title: "We Escaped a Twisted Game",
     year: 2025,
     genres: ["Indie", "First-person", "Puzzle", "Horror"],
@@ -10788,6 +11458,7 @@ window.GAMES = [
   },
   {
     id: "bloody-trapland",
+    reviewed: true,
     title: "Bloody Trapland",
     year: 2013,
     genres: ["Indie", "Side-view", "Platformer"],
@@ -10804,6 +11475,7 @@ window.GAMES = [
   },
   {
     id: "soulmask",
+    reviewed: true,
     title: "Soulmask",
     year: 2026,
     genres: ["Indie", "Third-person", "Action", "RPG", "Open World", "Survival"],
@@ -10820,6 +11492,7 @@ window.GAMES = [
   },
   {
     id: "schrodingers-cat-burglar",
+    reviewed: true,
     title: "Schrodinger's Cat Burglar",
     year: 2026,
     genres: ["Indie", "Third-person", "Puzzle"],
@@ -10836,6 +11509,7 @@ window.GAMES = [
   },
   {
     id: "paint-the-town-red",
+    reviewed: true,
     title: "Paint the Town Red",
     year: 2021,
     genres: ["Indie", "First-person", "Action"],
@@ -10852,6 +11526,7 @@ window.GAMES = [
   },
   {
     id: "bionic-commando-rearmed",
+    reviewed: true,
     title: "Bionic Commando Rearmed",
     year: 2009,
     genres: ["AAA", "Side-view", "Platformer", "Shooter", "Sci-fi"],
@@ -10869,6 +11544,7 @@ window.GAMES = [
   },
   {
     id: "super-bomberman-r",
+    reviewed: true,
     title: "Super Bomberman R",
     year: 2018,
     genres: ["AAA", "Isometric", "Action"],
@@ -10886,6 +11562,7 @@ window.GAMES = [
   },
   {
     id: "aliens-colonial-marines",
+    reviewed: true,
     title: "Aliens: Colonial Marines",
     year: 2013,
     genres: ["AAA", "First-person", "Shooter", "Sci-fi", "Horror", "Military"],
@@ -10903,6 +11580,7 @@ window.GAMES = [
   },
   {
     id: "voidtrain",
+    reviewed: true,
     title: "Voidtrain",
     year: 2025,
     genres: ["Indie", "First-person", "Action", "Sci-fi", "Survival"],
@@ -10919,6 +11597,7 @@ window.GAMES = [
   },
   {
     id: "alien-breed-impact",
+    reviewed: true,
     title: "Alien Breed: Impact",
     year: 2010,
     genres: ["AA", "Isometric", "Shooter", "Sci-fi"],
@@ -10935,6 +11614,7 @@ window.GAMES = [
   },
   {
     id: "orcs-must-die-deathtrap",
+    reviewed: true,
     title: "Orcs Must Die! Deathtrap",
     year: 2025,
     genres: ["AA", "Third-person", "Action", "Tactics", "Fantasy"],
@@ -10951,6 +11631,7 @@ window.GAMES = [
   },
   {
     id: "minecraft-dungeons",
+    reviewed: true,
     title: "Minecraft Dungeons",
     year: 2021,
     genres: ["AAA", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -10967,6 +11648,7 @@ window.GAMES = [
   },
   {
     id: "luma-island",
+    reviewed: true,
     title: "Luma Island",
     year: 2024,
     genres: ["Indie", "Isometric", "RPG", "Fantasy"],
@@ -10983,6 +11665,7 @@ window.GAMES = [
   },
   {
     id: "dont-panic-it-is-just-turbulence",
+    reviewed: true,
     title: "Don't Panic! It is Just Turbulence",
     year: 2026,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -11000,6 +11683,7 @@ window.GAMES = [
   },
   {
     id: "dirt-5",
+    reviewed: true,
     title: "DIRT 5",
     year: 2020,
     genres: ["AAA", "Third-person", "Racing"],
@@ -11017,6 +11701,7 @@ window.GAMES = [
   },
   {
     id: "hotshot-racing",
+    reviewed: true,
     title: "Hotshot Racing",
     year: 2020,
     genres: ["Indie", "Third-person", "Racing"],
@@ -11033,6 +11718,7 @@ window.GAMES = [
   },
   {
     id: "viking-squad",
+    reviewed: true,
     title: "Viking Squad",
     year: 2016,
     genres: ["Indie", "Side-view", "Brawler", "Platformer", "Fantasy"],
@@ -11049,6 +11735,7 @@ window.GAMES = [
   },
   {
     id: "mai-child-of-ages",
+    reviewed: true,
     title: "Mai: Child of Ages",
     year: 2025,
     genres: ["Indie", "Third-person", "Action", "Platformer"],
@@ -11065,6 +11752,7 @@ window.GAMES = [
   },
   {
     id: "icewind-dale-enhanced-edition",
+    reviewed: true,
     title: "Icewind Dale: Enhanced Edition",
     year: 2014,
     genres: ["Indie", "Isometric", "RPG", "Tactics", "Fantasy"],
@@ -11081,6 +11769,7 @@ window.GAMES = [
   },
   {
     id: "neverwinter-nights-enhanced-edition",
+    reviewed: true,
     title: "Neverwinter Nights: Enhanced Edition",
     year: 2018,
     genres: ["Indie", "Isometric", "RPG", "Fantasy"],
@@ -11097,6 +11786,7 @@ window.GAMES = [
   },
   {
     id: "tetris-effect-connected",
+    reviewed: true,
     title: "Tetris Effect: Connected",
     year: 2021,
     genres: ["AA", "Side-view", "Puzzle"],
@@ -11113,6 +11803,7 @@ window.GAMES = [
   },
   {
     id: "pratfall",
+    reviewed: true,
     title: "Pratfall",
     year: 2026,
     genres: ["Indie", "First-person", "Platformer"],
@@ -11129,6 +11820,7 @@ window.GAMES = [
   },
   {
     id: "horizon-chase-turbo",
+    reviewed: true,
     title: "Horizon Chase Turbo",
     year: 2018,
     genres: ["Indie", "Third-person", "Racing"],
@@ -11145,6 +11837,7 @@ window.GAMES = [
   },
   {
     id: "bloodstained-curse-of-the-moon-2",
+    reviewed: true,
     title: "Bloodstained: Curse of the Moon 2",
     year: 2020,
     genres: ["Indie", "Side-view", "Action", "Platformer", "Fantasy"],
@@ -11161,6 +11854,7 @@ window.GAMES = [
   },
   {
     id: "timespinner",
+    reviewed: true,
     title: "Timespinner",
     year: 2018,
     genres: ["Indie", "Side-view", "Action", "Platformer", "RPG", "Sci-fi"],
@@ -11177,6 +11871,7 @@ window.GAMES = [
   },
   {
     id: "unepic",
+    reviewed: true,
     title: "Unepic",
     year: 2014,
     genres: ["Indie", "Side-view", "Action", "RPG", "Platformer", "Fantasy"],
@@ -11193,6 +11888,7 @@ window.GAMES = [
   },
   {
     id: "escape-memoirs-mini-stories",
+    reviewed: true,
     title: "Escape Memoirs: Mini Stories",
     year: 2022,
     genres: ["Indie", "First-person", "Puzzle"],
@@ -11209,6 +11905,7 @@ window.GAMES = [
   },
   {
     id: "fling-to-the-finish",
+    reviewed: true,
     title: "Fling to the Finish",
     year: 2024,
     genres: ["Indie", "Third-person", "Action", "Platformer"],
@@ -11225,6 +11922,7 @@ window.GAMES = [
   },
   {
     id: "abyss-odyssey",
+    reviewed: true,
     title: "Abyss Odyssey",
     year: 2014,
     genres: ["Indie", "Side-view", "Action", "Fantasy"],
@@ -11242,6 +11940,7 @@ window.GAMES = [
   },
   {
     id: "ghostlore",
+    reviewed: true,
     title: "Ghostlore",
     year: 2023,
     genres: ["Indie", "Isometric", "Action", "RPG", "Loot", "Fantasy"],
@@ -11258,6 +11957,7 @@ window.GAMES = [
   },
   {
     id: "haste-landfall",
+    reviewed: true,
     title: "Haste",
     year: 2025,
     genres: ["Indie", "Third-person", "Platformer"],
@@ -11274,6 +11974,7 @@ window.GAMES = [
   },
   {
     id: "gunboat-god",
+    reviewed: true,
     title: "Gunboat God",
     year: 2026,
     genres: ["Indie", "Side-view", "Shooter", "Platformer"],
@@ -11290,6 +11991,7 @@ window.GAMES = [
   },
   {
     id: "no-mans-sky",
+    reviewed: true,
     title: "No Man's Sky",
     year: 2016,
     genres: ["AA", "First-person", "Action", "Sci-fi", "Open World", "Survival"],
@@ -11306,6 +12008,7 @@ window.GAMES = [
   },
   {
     id: "a-way-out",
+    reviewed: true,
     title: "A Way Out",
     year: 2018,
     genres: ["AA", "Third-person", "Action"],
@@ -11324,6 +12027,7 @@ window.GAMES = [
   },
   {
     id: "it-takes-two",
+    reviewed: true,
     title: "It Takes Two",
     year: 2021,
     genres: ["AA", "Third-person", "Action", "Puzzle", "Platformer"],
@@ -11342,6 +12046,7 @@ window.GAMES = [
   },
   {
     id: "split-fiction",
+    reviewed: true,
     title: "Split Fiction",
     year: 2025,
     genres: ["AA", "Third-person", "Action", "Platformer", "Sci-fi", "Fantasy"],
@@ -11360,6 +12065,7 @@ window.GAMES = [
   },
   {
     id: "resident-evil-5",
+    reviewed: true,
     title: "Resident Evil 5",
     year: 2009,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Horror"],
@@ -11378,6 +12084,7 @@ window.GAMES = [
   },
   {
     id: "resident-evil-6",
+    reviewed: true,
     title: "Resident Evil 6",
     year: 2013,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Horror"],
@@ -11396,6 +12103,7 @@ window.GAMES = [
   },
   {
     id: "dead-space-3",
+    reviewed: true,
     title: "Dead Space 3",
     year: 2013,
     genres: ["AAA", "Third-person", "Shooter", "Action", "Horror", "Sci-fi"],

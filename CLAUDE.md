@@ -213,7 +213,11 @@ Every game lives in **exactly one** state. There are only four lists, plus two p
 
 Cursors (NOT lists of games — just "where the skill stopped"): `coop-hunter/state/progress.json`, `fact-checker/state/progress.json`.
 
-**Invariant:** a game id is in EXACTLY ONE of {`data.js`, `reeval`, `hard-block`}. Helper scripts enforce it — `append_entry.py` drops the id from reeval on add and refuses hard-blocked ids; `log_skip.py` won't list a game that's already in `data.js`. `owner-review` is a TODO **overlay** — it may point at a game living in any of the three; it is not a place of residence (so an id may be both in `data.js` and in owner-review as "remove?").
+**Invariant:** a game id is in EXACTLY ONE of {`data.js`, `reeval`, `hard-block`}. Enforced at two layers:
+- **Preventive (write time):** `append_entry.py` drops the id from reeval on add and refuses hard-blocked ids; `log_skip.py` won't list a game that's already in `data.js` and routes reeval-vs-hard exclusively.
+- **Postfactum sweep:** `coop-hunter/scripts/sync_lists.py` (deterministic, no LLM) reconciles any overlap that slips past the gates (manual edit / crash / race / older row) by fixed precedence — catalog wins over reeval, reeval wins over hard-block, and a `data.js`∩`hard-block` collision is dropped from hard-block AND flagged to `owner-review` (action=contradiction). **Both launchers run `sync_lists.py --apply` at the start of every run**, so the invariant self-heals each pass. Run it by hand anytime: `python3 .claude/skills/coop-hunter/scripts/sync_lists.py` (dry-run) / `--apply`.
+
+`owner-review` is a TODO **overlay** — it may point at a game living in any of the three; it is not a place of residence (so an id may be both in `data.js` and in owner-review as "remove?").
 
 **The `reviewed` flag.** A fresh entry in `data.js` has **no** `reviewed` field = "fact-checker hasn't checked it yet". `fact-checker new` processes every entry lacking `reviewed: true`, then stamps it (`mark_reviewed.py`). This is reliable because it lives on the game, not on git timestamps.
 

@@ -139,7 +139,7 @@ RULES:
 1. data.js only via scripts/append_entry.py (exit 4 = no real 11-char video_id; exit 3 = id in removed-entries.tsv; it also dedupes by Steam app_id). Find a REAL gameplay video via SKILL.md §8 drill cascade — never a youtubeSearch placeholder.
 2. CRON COORDINATION: the GitHub Actions cron owns price + rating on EXISTING entries. If .github/refresh-status.json last_success is < 30h old, SKIP price/rating checks for existing entries. NEW entries: fetch fresh once.
 3. NEVER touch app.js / index.html / styles.css.
-4. GROWTH ONLY (no re-validating existing entries — that's the fact-checker). Walk the structured sources (phase cascade 1->4); when they run dry, switch to CREATIVE DISCOVERY (SKILL.md) — invent fresh search angles (recent Steam releases, YouTube, niche subreddits, 2026 articles, More-like-this) and log them in discovery-log.tsv. There is NO done — keep finding.
+4. GROWTH ONLY (no re-validating existing entries — that is the fact-checker job). Walk the structured sources (phase cascade 1->4); when they run dry, switch to CREATIVE DISCOVERY (SKILL.md) — invent fresh search angles (recent Steam releases, YouTube, niche subreddits, 2026 articles, More-like-this) and log them in discovery-log.tsv. There is NO done — keep finding.
 5. FINAL FIT-GATE before every add (SKILL.md §8b + finish_strength): PC+Steam, real 2+ co-op, a finish (hard, or soft -> leading 🟠 in verdict), >=50 reviews & >=50% positive, not blocklisted, real video+image. On doubt -> SKIP (low_fit). A changeable-reason reject (EA/rating/finish-unverified) -> also log to borderline-watch.tsv.
 6. NEVER ASK QUESTIONS. Ambiguous -> skipped.tsv via scripts/log_skip.py. Owner is asleep.
 7. DRILL MODE: exhaust alternatives before giving up; "cannot find X" is a hypothesis to disprove.
@@ -149,6 +149,14 @@ NO COMPLETION: never set progress.done in normal hunting — there is no "finish
 End with one line: [P=phase N=added K=skipped src=<id> last=<title>]
 PROMPT_EOF
 )
+
+# -------- invariant sweep: enforce one-place-per-game before we start --------
+# Deterministic, no LLM. Reconciles any data.js / reeval / hard-block overlap
+# (catalog wins over reeval, reeval wins over hard-block) so a game never sits in
+# two lists at once. Preventive gates cover normal writes; this catches manual
+# edits / crashes / races.
+"$PY" "$REPO_ROOT/.claude/skills/coop-hunter/scripts/sync_lists.py" --apply || true
+echo ""
 
 # -------- delta tracking --------
 INITIAL_ADDED=$("$PY" -c "import json; print(json.load(open('$PROGRESS_FILE'))['added_count'])")

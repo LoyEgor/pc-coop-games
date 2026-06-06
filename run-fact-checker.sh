@@ -192,6 +192,14 @@ else
 fi
 echo ""
 
+# -------- invariant sweep: one game in exactly one of {data.js, reeval, hard-block} --------
+# Deterministic, no LLM. Same sweeper coop-hunter runs; here it heals any overlap
+# fact-checker's removals/edits or a manual change may have introduced before we
+# start verifying.
+echo "[$(date)] Enforcing list invariant (sync_lists.py)..."
+"$PY" "$REPO_ROOT/.claude/skills/coop-hunter/scripts/sync_lists.py" --apply || true
+echo ""
+
 # -------- consistency audit (cheap, no network) — refresh inconsistencies.tsv --------
 # Catches catalog self-contradictions (same franchise added vs skipped, mixed
 # endingType) that per-entry checks miss. Output is a short owner-review queue.

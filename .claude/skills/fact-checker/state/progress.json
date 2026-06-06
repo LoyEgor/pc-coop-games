@@ -1,15 +1,16 @@
 {
   "current_idx": 551,
-  "total_entries": 551,
-  "checked_count": 1116,
-  "fixed_count": 12,
-  "proposed_count": 68,
+  "total_entries": 701,
+  "checked_count": 1251,
+  "fixed_count": 17,
+  "proposed_count": 83,
   "partial_entries": [],
   "done": true,
-  "last_run_timestamp": "2026-05-31T21:00:00Z",
+  "last_run_timestamp": "2026-06-06T12:05:00Z",
   "mode": "normal",
   "reconcile_drained_count": 28,
   "reconcile_remaining": 5,
   "cron_mode": "cron_healthy",
-  "last_burst_notes": "FINISH MIGRATION burst, idx 540-550 (FINAL): mai-child-of-ages, icewind-dale-enhanced-edition, neverwinter-nights-enhanced-edition, tetris-effect-connected, pratfall, horizon-chase-turbo, bloodstained-curse-of-the-moon-2, timespinner, unepic, escape-memoirs-mini-stories, fling-to-the-finish. All 11 already in good shape, 0 applied, 0 removed. mai-child-of-ages (Indie 2P third-person time-travel metroidvania with split-screen) = story HARD; co-op throughout the campaign. icewind-dale-enhanced-edition (Indie 6P isometric CRPG, Black Isle classic + Heart of Winter) = story HARD; party co-op. neverwinter-nights-enhanced-edition (Indie 6P isometric D&D RPG, OC + Shadows of Undrentide + Hordes of the Underdark) = story HARD; multiplayer campaign throughout. tetris-effect-connected (AA 3P side-view puzzle, Connected mode through Journey + bosses) = levels HARD; full co-op campaign. pratfall (Indie 4P first-person cave-descent platformer, rescue the lost dog at the bottom) = arcade-goal HARD; co-op throughout. horizon-chase-turbo (Indie 4P third-person arcade racer with World Tour championships) = levels HARD; split-screen co-op campaign. bloodstained-curse-of-the-moon-2 (Indie 2P side-view 8-bit Castlevania-style platformer with multi-episode campaign) = levels HARD; local 2P co-op. timespinner (Indie 2P side-view metroidvania, asymmetric: P2 controls familiar to assist combat throughout) = story HARD; asymmetric but P2 present throughout, owner explicitly added it knowing the asymmetry. unepic (Indie 4P side-view 2D action RPG metroidvania with dedicated co-op mode + separate bosses) = story HARD. escape-memoirs-mini-stories (Indie 4P first-person free escape-room with multiple scenarios) = levels HARD. fling-to-the-finish (Indie 8P third-person tethered physics platformer across 4 worlds) = levels HARD. MIGRATION COMPLETE: current_idx=551 >= total_entries=551, partial_entries empty \u2192 done=true."
+  "last_burst_notes": "scope=new burst: drained the final 3 unreviewed entries (chicken-invaders-3, f1-25, survivor-mercs). Cron last_success 2026-06-05T08:25Z ~28h old (still within 30h healthy window) - SKIPPED rating+price. Steam appdetails confirmed Online Co-op category on chicken-invaders-3 (oneCopy=none ok) and f1-25 (oneCopy=none ok); survivor-mercs has only Shared/Split Screen + RPT (no Online Co-op) so oneCopy=remote-play correct. YouTube oembed: all 3 OK (Chicken Invaders 3 Multiplayer by Orandza; F1 25 Two Player Career Mode Part 1 by Tiametmarduk; Survivor Mercs Co-Op Gameplay). Image HEAD: all 3 = 200. Editorial: survivor-mercs genres has redundant 'Action' alongside 'Shooter' per taxonomy Action narrowing_rule -> logged proposed-fix (Indie,Isometric,Shooter,Action,Military -> Indie,Isometric,Shooter,Military). endingType verified for all (CI3 levels=12 chapters with final boss; F1 25 levels=24-round championship; Survivor Mercs roguelite=operations with bosses). All 3 stamped reviewed. Queue now empty (0 unreviewed non-hidden). scope=new DONE.",
+  "scope": "new"
 }

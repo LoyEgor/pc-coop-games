@@ -13,12 +13,28 @@ lego-star-wars-skywalker-saga	contradiction	franchise_split: franchise 'lego sta
 portal-2	contradiction	franchise_ending: franchise 'portal' has mixed endingType: portal-2=story; portal-reloaded=levels
 for-the-king	contradiction	franchise_ending: franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
 hammerwatch-2	contradiction	franchise_ending: franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels
+dunecrawl	contradiction	status: hard-block -> in-catalog-candidate (hard-block says no_coop but appdetails 2026-06-06 shows Online Co-op + LAN Co-op + Remote Play Together; game released 5 Jan 2026 with 75% 584 reviews and final boss Ceramicist — re-evaluate, likely should be added)
 portal-2, portal-reloaded	auto-contradiction	franchise_split: franchise 'portal': in catalog but a sibling was skipped on a judgment call — verify both
 the-division-2	auto-contradiction	franchise_split: franchise 'tom clancy s the division': in catalog but a sibling was skipped on a judgment call — verify both
+chicken-invaders-2	auto-contradiction	franchise_split: franchise 'chicken invaders': in catalog but a sibling was skipped on a judgment call — verify both
 call-of-duty-black-ops-3	auto-contradiction	franchise_split: franchise 'call of duty black ops': in catalog but a sibling was skipped on a judgment call — verify both
 revenge-of-the-savage-planet	auto-contradiction	franchise_split: franchise 'revenge of the savage planet': in catalog but a sibling was skipped on a judgment call — verify both
 lego-star-wars-skywalker-saga	auto-contradiction	franchise_split: franchise 'lego star wars the skywalker saga': in catalog but a sibling was skipped on a judgment call — verify both
 portal-2	auto-contradiction	franchise_ending: franchise 'portal' has mixed endingType: portal-2=story; portal-reloaded=levels
 for-the-king	auto-contradiction	franchise_ending: franchise 'for the king' has mixed endingType: for-the-king=roguelite; for-the-king-2=story
 hammerwatch-2	auto-contradiction	franchise_ending: franchise 'hammerwatch' has mixed endingType: hammerwatch-2=story; hammerwatch=levels
-dunecrawl	contradiction	status: hard-block -> in-catalog-candidate (hard-block says no_coop but appdetails 2026-06-06 shows Online Co-op + LAN Co-op + Remote Play Together; game released 5 Jan 2026 with 75% 584 reviews and final boss Ceramicist — re-evaluate, likely should be added)
+cinnabunny	fix	endingType: story -> survival-goal (soft finish via accumulated carrot/family-checklist — named win-condition fits survival-goal closer than story (no credits event))
+dawn-of-the-monsters	fix	genres: ["Indie","Side-view","Action"] -> ["Indie","Side-view","Brawler"] (Verdict says "kaiju beat-em-up": per taxonomy mechanic.Brawler narrowing rule, replace generic Action with Brawler.)
+samurai-riot	fix	genres: ["Indie","Side-view","Action"] -> ["Indie","Side-view","Brawler"] (Verdict says "samurai beat-em-up": per taxonomy mechanic.Brawler narrowing rule, replace generic Action with Brawler.)
+unrailed	fix	oneCopy: remote-play -> none (Steam categories include Online Co-op (native online), so oneCopy should be none per classification.md (each player needs own copy))
+fallen-city-brawl	fix	genres: ["Indie","Side-view","Action"] -> ["Indie","Side-view","Brawler"] (Beat-em-up — taxonomy narrowing_rule: prefer specific Brawler over fallback Action for pixel beat-em-ups (Streets of Rage lineage). Verdict explicitly says '90s-style pixel beat-em-up')
+diner-bros-2	fix	genres: ["Indie","Isometric","Action"] -> ["Indie","Isometric","Puzzle","Action"] (Cooking/restaurant management is Puzzle (matches Let's Cook Together / Overcooked-style classification in catalog). Action can stay for the chaotic real-time loop)
+potion-party	fix	oneCopy: none -> remote-play (Steam categories show only Shared/Split Screen Co-op + Remote Play Together — no Online Co-op category; should be remote-play per classification.md)
+graven	fix	genres: Indie, First-person, Shooter, Fantasy -> add RPG mechanic (Steam appdetails genres include RPG; GRAVEN is action-RPG-shooter hybrid with skill progression)
+a-world-of-keflings	fix	genres: ["Indie", "Isometric", "RPG", "Fantasy"] -> ["Indie", "Isometric", "Fantasy"] (wrong_mechanic_rpg_for_city_builder: Steam tags are City Builder/Cozy/Building/Management/Top-Down - not an RPG. Taxonomy lacks a city-builder mechanic; suggest dropping RPG. Owner: decide replacement mechanic or accept zero-mechanic.)
+monster-prom-4-monster-con	fix	perspective: Side-view -> uncertain (visual_novel_perspective: Steam tags are Visual Novel/Dating Sim - 2D static character art, no traversal. Side-view is a stretch (no side-scrolling); no clean axis fit. Owner: keep Side-view or drop perspective?)
+calcium-chaos-derailed	fix	genres: Top-down -> Isometric (taxonomy_migration: Top-down merged into Isometric per shared/taxonomy.json (2026-05). Replace stored "Top-down" with "Isometric" in genres array.)
+ganablade	fix	genres: Top-down -> Isometric (taxonomy_migration: Top-down merged into Isometric per shared/taxonomy.json (2026-05). Replace stored "Top-down" with "Isometric" in genres array.)
+polygunners	fix	genres: "Top-down" -> "Isometric" (Legacy Top-down→Isometric per 2026-05 taxonomy merge)
+jedi-power-battles-remaster	fix	oneCopy: "none" -> "remote-play" (Steam cats show Shared/Split + RPT only, no Online Co-op category; verdict 'online or local' is misleading)
+survivor-mercs	fix	genres: Indie,Isometric,Shooter,Action,Military -> Indie,Isometric,Shooter,Military (Action redundant with Shooter; taxonomy Action narrowing_rule says drop generic Action when more specific mechanic (Shooter) covers the real-time loop)
