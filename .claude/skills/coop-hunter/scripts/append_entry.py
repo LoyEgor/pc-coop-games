@@ -15,9 +15,44 @@ import os
 import sys
 import json
 import re
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 DATA_JS = Path(__file__).resolve().parents[3].parent / "data.js"
+UA = "Mozilla/5.0 (compatible; pc-coop-games-coop-hunter/1.0)"
+
+
+def _url_ok(url):
+    """HEAD a CDN url; True on 2xx/3xx. Best-effort — any network error returns
+    False so the caller treats it as 'unverified', never as a hard failure."""
+    try:
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return 200 <= r.status < 400
+    except (urllib.error.URLError, OSError):
+        return False
+
+
+def durable_image_expr(app_id, literal_url):
+    """Pick the most DURABLE reachable image, SOFT-verified. SHARED policy with
+    fix_image.py / refresh.py: hash-less `cdn.cloudflare/steam/apps/<id>/
+    header.jpg` first (no hash -> can't drift), else the passed hashed
+    header_image (the only form for the ~44 newest apps). Returns a literal URL
+    string, or None when nothing verifies (caller writes its best guess anyway —
+    the cron + client onerror fallback are the safety net). Never blocks an add:
+    a transient HEAD failure must not drop a real game."""
+    if not app_id:
+        return None
+    hashless = f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
+    try:
+        if _url_ok(hashless):
+            return hashless
+        if literal_url and _url_ok(literal_url):
+            return literal_url
+    except (urllib.error.URLError, OSError):
+        return None
+    return None
 SHARED = Path(__file__).resolve().parents[2] / "shared"
 HARDBLOCK_TSV = SHARED / "hard-block.tsv"   # never re-add these (mechanical)
 REEVAL_TSV = SHARED / "reeval.tsv"          # re-checkable; drop an id once it enters the catalog
@@ -117,10 +152,18 @@ def render_entry(g):
         except (TypeError, ValueError):
             raise TypeError(f"non-numeric value {v!r} for a numeric field")
 
-    # imageUrl: prefer Steam's authoritative header_image (a literal URL, with
-    # the ?t= cache-buster stripped). The legacy steamImage() CDN path
-    # `/steam/apps/<id>/header.jpg` is GONE for newer apps (hard 404), so it is
-    # only a last-resort fallback when no resolved header_image is available.
+    # imageUrl: write the most DURABLE reachable url (write-guard so a new entry
+    # is never born broken). durable_image_expr SOFT-verifies (HEAD) and prefers
+    # the hash-less form (can't drift) over the hashed header_image; it only
+    # falls back to the hashed form for the ~44 newest apps where hash-less 404s.
+    # If nothing verifies (e.g. transient network), we still WRITE the best guess
+    # — the daily cron + the client onerror fallback heal it; an add is never
+    # blocked on an image HEAD.
+    app_id = g.get("app_id")
+    if not app_id:
+        m_store = re.search(r"app/(\d+)", g.get("storeUrl", "") or "")
+        app_id = m_store.group(1) if m_store else None
+
     header_image = g.get("header_image") or ""
     raw_image = g.get("imageUrl", "") or ""
     literal_url = ""
@@ -129,10 +172,16 @@ def render_entry(g):
     elif isinstance(raw_image, str) and raw_image.startswith("http"):
         literal_url = raw_image.split("?")[0]
 
-    if literal_url:
+    durable = durable_image_expr(app_id, literal_url)
+    if durable:
+        image_expr = js_str(durable)
+    elif literal_url:
         image_expr = js_str(literal_url)
-    elif g.get("app_id"):
-        image_expr = f"steamImage({g['app_id']})"
+        if app_id:
+            print(f"WARNING: image for '{g.get('id')}' unverified, writing anyway: {literal_url}", file=sys.stderr)
+    elif app_id:
+        image_expr = f"steamImage({app_id})"
+        print(f"WARNING: image for '{g.get('id')}' falls back to steamImage({app_id}) (may 404 for new apps)", file=sys.stderr)
     else:
         # The skill sometimes passes the helper call itself as a literal string
         # (e.g. "steamImage(429660)"). Quoting that makes it a string value, so

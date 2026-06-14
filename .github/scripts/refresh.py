@@ -7,15 +7,20 @@ GitHub Actions cron — see .github/workflows/refresh-prices.yml.
 This script OWNS the drift-prone / breakable fields:
   - `price`    (UAH, from /api/appdetails?cc=ua → price_overview.final / 100)
   - `rating`   (Steam %positive, from /appreviews/<id>?json=1)
-  - `imageUrl` (auto-heals header images that 404 — the legacy steamImage() CDN
-                path `/steam/apps/<id>/header.jpg` is gone for newer apps; the
-                authoritative URL is `header_image` from appdetails)
+  - `imageUrl` (auto-heals header images that 404 OR whose content-hash drifted
+                — a dev re-uploading header art changes the hash in a hashed
+                store_item_assets URL and the old one 404s. Heals to the DURABLE
+                hash-less `cdn.cloudflare/steam/apps/<id>/header.jpg` when it 200s
+                (no hash -> never drifts again), else the fresh hashed
+                header_image for the newest apps. Shared policy with
+                fix_image.py.)
 
 Drift / breakage thresholds (match fact-checker conservative auto-fix):
   - rating: apply update if |new - old| >= 5pp
   - price:  apply update if relative |new - old| / old >= 10%
-  - image:  replace only when the CURRENT image is a hard 404/410 (a 301
-            redirect still renders in the browser, so it's left alone)
+  - image:  replace when the CURRENT image hard-404/410s OR its content-hash
+            differs from the fresh header_image (drift, even if still 200 via
+            edge cache); a 301 redirect still renders, so it's left alone
 
 For NEW entries: this script never inserts. The coop-hunter skill does that,
 including the initial price/rating values.
@@ -129,11 +134,44 @@ def current_image_url(entry):
 
 def canonical_image_url(details):
     """Steam's authoritative header image (already in `details` via the basic
-    filter), with the ?t= cache-buster stripped for a stable stored URL."""
+    filter), with the ?t= cache-buster stripped for a stable stored URL. NOTE:
+    appdetails ALWAYS returns the hashed store_item_assets form — the drift-prone
+    one — so this is only a fallback; durable_image_url prefers the hash-less."""
     header = (details or {}).get("header_image")
     if not header:
         return None
     return header.split("?")[0]
+
+
+def hashless_url(app_id):
+    """Hash-less CDN path — no content hash, so it can't go stale on art updates."""
+    return f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
+
+
+_HASH_RE = re.compile(r"/store_item_assets/steam/apps/\d+/([0-9a-f]{8,})/header")
+
+
+def stored_hash(url):
+    """The content-hash embedded in a hashed store_item_assets URL, or None for
+    a hash-less url (which therefore cannot drift)."""
+    m = _HASH_RE.search(url or "")
+    return m.group(1) if m else None
+
+
+def durable_image_url(app_id, details):
+    """Most durable reachable header url. SHARED policy with
+    .claude/skills/coop-hunter/scripts/fix_image.py — keep the two in sync so the
+    cron and the skill converge on the same url instead of fighting:
+      1. hash-less (immortal) when it 200s;
+      2. else the fresh appdetails header_image (hashed) for the newest apps.
+    """
+    hl = hashless_url(app_id)
+    if head_status(hl) == 200:
+        return hl
+    canon = canonical_image_url(details)
+    if canon and head_status(canon) == 200:
+        return canon
+    return None
 
 
 def list_entries():
@@ -307,15 +345,29 @@ def main():
                     updates["count"] += 1
                     print(f"  [{i}/{len(entries)}] {game_id}: ratingCount {old_count or '-'} -> {new_count}")
 
-        # Image healing — replace only a CURRENT image that hard-404s, so diffs
-        # stay limited to actually-broken rows. canonical comes from `details`
-        # (header_image, already fetched above) — no extra appdetails call.
+        # Image healing. Two triggers, both using `details` already fetched above
+        # (the durable HEAD adds at most one CDN request, only when healing):
+        #   - hard break: the current url 404/410s; OR
+        #   - hash drift: the stored content-hash differs from the fresh
+        #     header_image hash EVEN IF the old url still 200s. From GitHub's
+        #     healthy network a stale hashed url can still 200 via edge cache
+        #     while the user (different PoP) sees the new art or a 404 — this is
+        #     the only way the cron catches that. Hash-less urls have no hash, so
+        #     stored_hash() is None and they're correctly skipped (can't drift).
+        # The replacement is the DURABLE form (hash-less if reachable), so a
+        # healed entry doesn't re-break on the next art update.
         cur_img = current_image_url(entry)
         canon_img = canonical_image_url(details)
-        if cur_img and canon_img and canon_img != cur_img and head_status(cur_img) in (404, 410):
-            if apply_update(game_id, "imageUrl", canon_img):
-                updates["image"] += 1
-                print(f"  [{i}/{len(entries)}] {game_id}: image 404 -> {canon_img}")
+        sh, ch = stored_hash(cur_img), stored_hash(canon_img)
+        drifted = bool(sh and ch and sh != ch)
+        broken = head_status(cur_img) in (404, 410) if cur_img else False
+        if cur_img and (broken or drifted):
+            new_img = durable_image_url(app_id, details)
+            if new_img and new_img != cur_img:
+                if apply_update(game_id, "imageUrl", new_img):
+                    updates["image"] += 1
+                    why = "404" if broken else "hash-drift"
+                    print(f"  [{i}/{len(entries)}] {game_id}: image {why} -> {new_img}")
 
     print(f"\n[{datetime.datetime.utcnow().isoformat()}Z] Refresh complete")
     print(f"  entries_checked: {checked}/{len(entries)}")

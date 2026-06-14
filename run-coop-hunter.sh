@@ -227,6 +227,11 @@ do_push() {
   # Periodic commit + rebase-onto-cron + push, called between bursts on a cadence.
   # On any failure it leaves the commit in place and retries next cadence — finds
   # are never lost. Reads $ADDED / updates $LAST_PUSH_* (loop-scope vars).
+  # Media guard: heal any broken header image on freshly-added/changed entries
+  # before they're committed (fast --changed path). Advisory (|| true) — a
+  # transient CDN blip must never abort the eternal hunter; residual breakage is
+  # left for fact-checker.
+  "$PY" "$REPO_ROOT/.claude/skills/coop-hunter/scripts/lint_data.py" --changed --fix || true
   git add data.js \
           .claude/skills/shared/reeval.tsv \
           .claude/skills/shared/hard-block.tsv \

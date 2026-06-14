@@ -408,16 +408,118 @@ function render() {
   renderActiveFilterButtons();
 }
 
+// Patch the table after a single Played toggle WITHOUT rebuilding every row.
+// Toggles the row's styling in place; drops it if it no longer belongs to the
+// current view (To play / Played); refreshes caption + empty state from the
+// live DOM. A one-row change should cost one row, not an 851-row re-render.
+function refreshAfterPlayedToggle(game, tr) {
+  savePrefs();
+  const nowPlayed = isPlayed(game);
+  if (tr) {
+    tr.classList.toggle("is-played", nowPlayed);
+    const inView =
+      state.viewMode === "all" ||
+      (state.viewMode === "active" && !nowPlayed) ||
+      (state.viewMode === "played" && nowPlayed);
+    if (!inView) tr.remove();
+  }
+  const visibleCount = els.body.querySelectorAll("tr").length;
+  const playedCount = games.filter(isPlayed).length;
+  els.empty.hidden = visibleCount > 0;
+  els.caption.textContent = `Showing ${visibleCount} of ${games.length}. Played: ${playedCount}.`;
+}
+
+// --- Resilient header images -------------------------------------------------
+// Steam header art has no single durable URL: the hash-less path
+// /steam/apps/<id>/header.jpg works for established apps but 404s for the very
+// newest; the hashed store_item_assets/<hash>/header.jpg works for new apps but
+// goes stale when a dev re-uploads art (the hash in the path changes -> 404).
+// On top of that, a single CDN host can be regionally unreachable while the
+// asset is fine elsewhere. So the <img> is given an ordered failover list and a
+// delegated 'error' handler walks it host-by-host, ending on an inline SVG that
+// can never itself fail. The cron + write-guard keep the STORED url durable;
+// this is the client-side safety net for drift + regional flakiness.
+const IMG_PLACEHOLDER =
+  "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20460%20215'%3E%3Crect%20width='460'%20height='215'%20fill='%231b1f29'/%3E%3Ctext%20x='230'%20y='112'%20fill='%235b6577'%20font-family='sans-serif'%20font-size='22'%20text-anchor='middle'%3Eno%20image%3C/text%3E%3C/svg%3E";
+const imgResolved = new Map(); // appId -> first src that successfully loaded this session
+
+function steamAppId(storeUrl) {
+  const m = /\/app\/(\d+)/.exec(storeUrl || "");
+  return m ? m[1] : "";
+}
+
+// Ordered failover URLs for one app, derived from the appid + the form of the
+// url that just failed. Host families don't cross: shared.* serves the hashed
+// store_item_assets path, cdn.* serves the hash-less path (each on all three CDN
+// vendors). Terminates on the inline placeholder.
+function buildImgCandidates(appId, failedSrc) {
+  const list = [failedSrc];
+  if (appId) {
+    const hashed = /\/store_item_assets\/steam\/apps\/\d+\/([0-9a-f]{8,})\/header\.jpg/.exec(failedSrc || "");
+    if (hashed) {
+      const path = `/store_item_assets/steam/apps/${appId}/${hashed[1]}/header.jpg`;
+      ["shared.akamai", "shared.fastly", "shared.cloudflare"].forEach((h) =>
+        list.push(`https://${h}.steamstatic.com${path}`)
+      );
+    }
+    // Hash-less variants double as the cure for a drifted hash on an established
+    // app, and as the host-swap for a regionally blocked CDN host.
+    ["cdn.cloudflare", "cdn.akamai", "cdn.fastly"].forEach((h) =>
+      list.push(`https://${h}.steamstatic.com/steam/apps/${appId}/header.jpg`)
+    );
+  }
+  list.push(IMG_PLACEHOLDER);
+  return [...new Set(list)];
+}
+
+// Delegated, capture-phase (error does NOT bubble) handler on the tbody. Walks
+// the candidate list via a data-attr index so it survives the innerHTML rebuilds
+// render() does, and can never infinite-loop (index advances, skips dupes, and
+// the last candidate is a no-network data URI).
+function onImgError(event) {
+  const img = event.target;
+  if (!(img instanceof HTMLImageElement) || !img.classList.contains("thumb")) return;
+  if (img.dataset.imgDone) return;
+  const cands = buildImgCandidates(img.dataset.app, img.getAttribute("src"));
+  let idx = Number(img.dataset.imgIdx || 0);
+  let next;
+  do {
+    idx += 1;
+    next = cands[idx];
+  } while (next && next === img.getAttribute("src"));
+  if (!next) {
+    img.dataset.imgDone = "1";
+    return;
+  }
+  img.dataset.imgIdx = String(idx);
+  if (idx >= cands.length - 1) img.dataset.imgDone = "1"; // reached the placeholder
+  img.src = next;
+}
+
+// Remember the first url that actually loaded for an app, so re-renders
+// (filter/sort/played-toggle rebuild the whole tbody) reuse it instead of
+// re-walking the failover chain. Never memoize the inline placeholder.
+function onImgLoad(event) {
+  const img = event.target;
+  if (!(img instanceof HTMLImageElement) || !img.classList.contains("thumb")) return;
+  const appId = img.dataset.app;
+  if (!appId || imgResolved.has(appId)) return;
+  const src = img.getAttribute("src");
+  if (src && src.slice(0, 5) !== "data:") imgResolved.set(appId, src);
+}
+
 function renderRow(game) {
   const played = isPlayed(game);
   const oneCopy = ONE_COPY[game.oneCopy] || ONE_COPY.none;
   const priceDisplay = `<a class="price-link" href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">${game.price}&nbsp;₴</a>`;
+  const appId = steamAppId(game.storeUrl);
+  const imgSrc = (appId && imgResolved.get(appId)) || game.imageUrl;
 
   return `
     <tr class="${played ? "is-played" : ""}">
       <td class="image-cell">
         <a href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">
-          <img src="${escapeHtml(game.imageUrl)}" alt="${escapeHtml(game.title)}" loading="lazy">
+          <img class="thumb" src="${escapeHtml(imgSrc)}" alt="${escapeHtml(game.title)}" loading="lazy" decoding="async" width="100" height="47"${appId ? ` data-app="${appId}"` : ""}>
         </a>
       </td>
       <td class="title-cell">
@@ -513,16 +615,339 @@ function renderYoutubeButton(game) {
   return `<a class="youtube-link" href="${escapeHtml(game.youtubeUrl)}" target="_blank" rel="noreferrer" ${aria}>${icon}</a>`;
 }
 
-function openVideo(videoId) {
-  els.videoFrame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+// === YouTube fast-open (Approach F: preconnect + warm-on-first-interaction +
+// pointer pre-buffer + reveal/unmute on click) ================================
+//
+// Goal: minimize wall-clock from the user's click on a YouTube icon to the
+// video actually PLAYING. We attack every step that the old code paid ON the
+// click: DNS/TLS to YouTube (now preconnected in <head>), fetching+parsing the
+// player JS (now loaded on first interaction), and buffering the specific video
+// (now started MUTED on pointerenter/pointerdown, BEFORE the modal is shown).
+// On the actual click we only reveal the modal and unmute — the gesture that
+// authorizes sound — so playback is typically already running by then.
+//
+// Mechanism uses the YouTube IFrame Player API so we can (a) pre-buffer a video
+// muted without showing it, (b) flip mute off on the click gesture, and (c) get
+// a precise PLAYING signal for instrumentation. A single persistent player is
+// reused for all 800+ rows — we never create per-row iframes.
+
+const YT_EMBED_HOST = "https://www.youtube-nocookie.com";
+
+// Cold fallback used only when the IFrame Player API never loads (blocked /
+// offline / very slow). Replaces the #videoFrame element with a plain autoplay
+// iframe by the same id so `.video-modal iframe` CSS still applies. autoplay=1
+// with a real user gesture (the click) gets sound; no API means no muted
+// pre-buffer, but preconnect still removed the DNS/TLS cost from the click.
+function fallbackIframe(videoId) {
+  const host = document.querySelector("#videoFrame");
+  if (!host) return;
+  let frame = host;
+  if (frame.tagName !== "IFRAME") {
+    frame = document.createElement("iframe");
+    frame.id = "videoFrame";
+    frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.title = "Gameplay video";
+    host.replaceWith(frame);
+    els.videoFrame = frame; // keep the cached ref live for closeVideo()
+  }
+  frame.src = `${YT_EMBED_HOST}/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+}
+
+// Instrumentation: set to true to log "click->play Xms" to the console.
+// Guarded so it ships off; flip to true (or set window.YT_PERF=true before load)
+// to measure. Times from the click gesture to the first PLAYING state.
+const YT_PERF = false;
+// Debug / benchmark via URL params — no rebuild, no branch-switch needed:
+//   ?ytperf=1   -> log + on-screen TOAST of "click->play Nms (new|legacy)"
+//   ?yt=legacy  -> disable the preconnect-prewarm fast path (always cold-load),
+//                  so you can A/B it against the new path by just changing the URL.
+const YT_PARAMS = (typeof location !== "undefined") ? new URLSearchParams(location.search) : new URLSearchParams();
+const YT_PERF_PARAM = YT_PARAMS.has("ytperf");
+const YT_LEGACY = YT_PARAMS.get("yt") === "legacy";
+function ytPerfOn() { return YT_PERF || YT_PERF_PARAM || (typeof window !== "undefined" && window.YT_PERF); }
+function ytPerfReport(ms) {
+  const tag = YT_LEGACY ? "legacy" : "new";
+  console.log(`[yt] click->play ${ms}ms (${tag})`);
+  if (typeof showToast === "function") showToast(`click→play ${ms}ms (${tag})`);
+}
+let ytClickAt = 0; // performance.now() captured at the click gesture
+
+const ytState = {
+  apiRequested: false, // IFrame API <script> injected?
+  player: null,        // YT.Player instance once ready
+  ready: false,        // player fired onReady?
+  prebufferedId: null, // videoId we've cued/buffered muted (modal still hidden)
+  pendingPlayId: null, // videoId to reveal+play as soon as the player is ready
+  revealed: false,     // is the modal actually OPEN (user clicked), not just prebuffering?
+  usedFallback: false, // a plain <iframe> took over (API never arrived by click)
+  trigger: null        // the icon that opened the modal, to restore focus on close
+};
+
+// Load the IFrame Player API exactly once. Called on the FIRST user interaction
+// (pointerdown/touchstart/keydown anywhere) so it never blocks first paint, yet
+// is almost always ready by the time a YouTube icon is actually clicked.
+function warmYouTube() {
+  if (ytState.apiRequested) return;
+  ytState.apiRequested = true;
+  // If another script already pulled the API in, just build the player.
+  if (window.YT && window.YT.Player) { createYtPlayer(); return; }
+  const prev = window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady = () => {
+    if (typeof prev === "function") { try { prev(); } catch (_) {} }
+    createYtPlayer();
+  };
+  const s = document.createElement("script");
+  s.src = "https://www.youtube.com/iframe_api";
+  s.async = true;
+  document.head.appendChild(s);
+}
+
+function createYtPlayer() {
+  if (ytState.player || ytState.usedFallback) return;
+  // Adopt the existing #videoFrame iframe as a YT.Player. Start with no video
+  // (autoplay off) and muted — nothing is shown until the modal opens.
+  ytState.player = new YT.Player("videoFrame", {
+    host: YT_EMBED_HOST,
+    playerVars: {
+      autoplay: 0,
+      rel: 0,
+      modestbranding: 1,
+      playsinline: 1,
+      enablejsapi: 1,
+      // REQUIRED for enablejsapi: without it the API posts commands to the wrong
+      // origin (it guessed https:// on an http:// page) — postMessage is rejected,
+      // commands (play/unMute/seek) never reach the player, and the iframe stays
+      // white. Pin it to OUR page origin so every postMessage matches.
+      origin: (typeof location !== "undefined" ? location.origin : undefined)
+    },
+    events: {
+      onReady: onYtReady,
+      onError: onYtError,
+      onStateChange: onYtStateChange
+    }
+  });
+}
+
+function onYtReady() {
+  ytState.ready = true;
+  try { ytState.player.mute(); } catch (_) {}
+  // The API replaced the #videoFrame div with its own iframe — re-cache the live
+  // element so closeVideo()/fallback never touch the detached placeholder.
+  try { els.videoFrame = ytState.player.getIframe(); } catch (_) {}
+  // If the user already clicked an icon while the API was still loading, honor
+  // that now: reveal + play with sound (the original click was the gesture).
+  if (ytState.pendingPlayId) {
+    playRevealed(ytState.pendingPlayId);
+  } else if (ytState.prebufferedId) {
+    // A hover/pointerdown asked us to pre-buffer before we were ready; do it now
+    // (muted, modal stays hidden).
+    prebufferVideo(ytState.prebufferedId);
+  }
+}
+
+function onYtStateChange(e) {
+  if (!ytPerfOn()) return;
+  // YT.PlayerState.PLAYING === 1
+  if (e && e.data === 1 && ytClickAt) {
+    ytPerfReport(Math.round(performance.now() - ytClickAt));
+    ytClickAt = 0; // log once per open
+  }
+}
+
+// YouTube playback error (e.data: 2 bad id, 5 HTML5 transient, 100 removed,
+// 101/150 embedding-off). Many are transient — the "An error occurred, try
+// again" that clears on a second open. Retry the current video ONCE; the
+// _erroredId guard prevents a loop. Only while the modal is actually open.
+function onYtError(e) {
+  if (!ytState.revealed) return;
+  const code = e && e.data;
+  const id = ytState.prebufferedId;
+  if (!id) return;
+  // Codes 100 (removed), 101/150 (embedding disabled) are PERMANENT — retrying
+  // loops uselessly. Only 5 (HTML5 transient) and 2 (bad param) are retryable.
+  if (code !== 5 && code !== 2) {
+    if (typeof showToast === "function") showToast("This video is unavailable — try opening it on YouTube.");
+    return;
+  }
+  if (ytState._erroredId === id) return; // already retried this one
+  ytState._erroredId = id;
+  try { ytState.player.loadVideoById(id); } catch (_) { return; } // don't swallow the load failure
+  try { ytState.player.unMute(); ytState.player.setVolume(100); } catch (_) {}
+}
+
+// Pre-buffer a video MUTED with the modal still hidden. Satisfies autoplay
+// policy (muted autoplay is always allowed) so frames start downloading/decoding
+// before the user commits. Idempotent per id. Cancels any earlier pre-buffer so
+// we never have more than one video in flight — no request storm across rows.
+function prebufferVideo(videoId) {
+  if (!videoId) return;
+  if (YT_LEGACY) return; // A/B: legacy mode never prewarms — the click loads cold
+  // Respect Save-Data / metered connections: skip speculative muted buffering.
+  if (navigator.connection && navigator.connection.saveData) return;
+  // Don't prewarm WHILE the table is scrolling: as the page moves under a
+  // stationary cursor, pointerover fires on every row passing beneath it. Each
+  // would kick a loadVideoById — a request/decode storm that stutters the
+  // scroll. The scroll handler clears this flag ~250ms after motion stops.
+  if (ytState.scrolling) return;
+  warmYouTube();
+  if (!ytState.ready || !ytState.player) {
+    // Remember the latest hover target; onYtReady will pick it up.
+    ytState.prebufferedId = videoId;
+    return;
+  }
+  if (ytState.prebufferedId === videoId && !ytState.revealed) return; // already buffering this one
+  if (ytState.revealed) return; // a video is on screen; don't yank it for a hover
+  ytState.prebufferedId = videoId;
+  try {
+    ytState.player.mute();
+    // The iframe must have real (non-zero) dimensions or the browser will stall
+    // a hidden video. So we put the modal into a "prebuffer" state: rendered and
+    // laid out (iframe has size) but fully transparent + non-interactive + no
+    // backdrop — the user sees and hears nothing. CSS keys off [data-prebuffer].
+    if (els.videoModal.hidden) {
+      els.videoModal.hidden = false;
+      els.videoModal.dataset.prebuffer = "1";
+      els.videoModal.setAttribute("aria-hidden", "true"); // invisible buffer: hide from assistive tech
+    }
+    // loadVideoById starts buffering AND playing (muted) immediately, which is
+    // what pre-warms the decode pipeline; while data-prebuffer is set the user
+    // sees nothing and hears nothing until they click.
+    ytState.player.loadVideoById(videoId);
+  } catch (_) {
+    ytState.prebufferedId = null;
+    if (els.videoModal.dataset.prebuffer) {
+      els.videoModal.hidden = true;
+      delete els.videoModal.dataset.prebuffer;
+    }
+  }
+}
+
+// Tear down a hover pre-buffer that was never clicked: stop the muted video and
+// dismiss the transparent prebuffer modal. No-op once the video is revealed (a
+// real open owns the player now) so a stray pointerout can't kill a playing
+// video the user just clicked into.
+function cancelPrebuffer() {
+  if (ytState.revealed) return;
+  if (!ytState.prebufferedId && !els.videoModal.dataset.prebuffer) return;
+  ytState.prebufferedId = null;
+  if (els.videoModal.dataset.prebuffer) {
+    els.videoModal.hidden = true;
+    delete els.videoModal.dataset.prebuffer;
+    els.videoModal.removeAttribute("aria-hidden");
+  }
+  if (ytState.player && ytState.ready) {
+    try { ytState.player.stopVideo(); ytState.player.mute(); } catch (_) {}
+  }
+}
+
+// Reveal the modal and play WITH SOUND. Called from the click handler (the user
+// gesture that authorizes unmuted audio). If we pre-buffered this exact id, the
+// video is already running muted — we just unmute + reveal (near-instant). If
+// not (cold click, or a different id), we load it now.
+function playRevealed(videoId) {
+  ytState.pendingPlayId = null;
+  ytState._erroredId = null; // fresh open of any video gets a fresh retry budget
+  ytState.revealed = true;
   els.videoModal.hidden = false;
+  delete els.videoModal.dataset.prebuffer; // exit prebuffer → fully visible
+  els.videoModal.removeAttribute("aria-hidden");
   document.body.style.overflow = "hidden";
+  try {
+    if (ytState.prebufferedId === videoId) {
+      // Hot path: already buffered muted. Unmute (gesture allows it) + ensure
+      // it's playing. No new network round-trip for the embed/player. Set volume
+      // BEFORE unmuting so audio doesn't briefly play at the wrong level.
+      ytState.player.setVolume(100);
+      ytState.player.unMute();
+      ytState.player.playVideo();
+      // NB: no seekTo(0) — seeking a still-buffering prewarmed video throws
+      // YouTube error 5 ("An error occurred, try again", clears on 2nd open).
+      // A short hover only advances a couple seconds; not worth the breakage.
+      // The video was likely ALREADY playing (muted) so onStateChange may not
+      // re-fire PLAYING — log the (tiny) click->reveal time here so the metric
+      // still captures the hot path. Guarded behind the perf flag.
+      if (ytPerfOn() && ytClickAt && ytState.player.getPlayerState &&
+          ytState.player.getPlayerState() === 1) {
+        ytPerfReport(Math.round(performance.now() - ytClickAt));
+        ytClickAt = 0;
+      }
+    } else {
+      ytState.player.loadVideoById(videoId);
+      ytState.player.setVolume(100);
+      ytState.player.unMute();
+    }
+  } catch (_) {
+    // Defensive fallback: drive a plain iframe directly (no API). Still off the
+    // cold-DNS path thanks to preconnect.
+    fallbackIframe(videoId);
+  }
+  ytState.prebufferedId = videoId; // the visible video is now this one
+}
+
+function openVideo(videoId) {
+  if (ytPerfOn()) ytClickAt = performance.now();
+  // Instant facade: paint the YouTube thumbnail behind the (still-spinning)
+  // player so the modal is never an empty black box on a cold click. i.ytimg.com
+  // is preconnected, so this is a single already-warm image fetch; the opaque
+  // iframe paints over it the moment the first video frame is ready.
+  const frameEl = els.videoModal.querySelector(".video-modal-frame");
+  if (frameEl) frameEl.style.backgroundImage = `url("https://i.ytimg.com/vi/${videoId}/hqdefault.jpg")`;
+  warmYouTube();
+  if (ytState.ready && ytState.player) {
+    playRevealed(videoId);
+    return;
+  }
+  // API not ready at click (rare — it loads on the first interaction anywhere).
+  // Don't wait for it: build a plain autoplay iframe SYNCHRONOUSLY inside this
+  // click gesture so iOS/Safari grant sound (a delayed src set loses the gesture
+  // and would force muted playback). Mark usedFallback so a late
+  // onYouTubeIframeAPIReady doesn't also build a YT.Player over this iframe.
+  ytState.usedFallback = true;
+  ytState.revealed = true;
+  els.videoModal.hidden = false;
+  delete els.videoModal.dataset.prebuffer; // a click means: reveal it
+  els.videoModal.removeAttribute("aria-hidden");
+  document.body.style.overflow = "hidden";
+  fallbackIframe(videoId);
 }
 
 function closeVideo() {
-  els.videoFrame.src = "";
   els.videoModal.hidden = true;
+  const frameEl = els.videoModal.querySelector(".video-modal-frame");
+  if (frameEl) frameEl.style.backgroundImage = ""; // drop the thumbnail facade
+  delete els.videoModal.dataset.prebuffer;
+  els.videoModal.removeAttribute("aria-hidden");
   document.body.style.overflow = "";
+  ytState.revealed = false;
+  ytState.pendingPlayId = null;
+  ytState.prebufferedId = null;
+  ytState._erroredId = null;
+  // STOP playback so no audio leaks after close. Stop the API player if present;
+  // and if a plain fallback iframe took over, blank its src to tear it down.
+  if (ytState.player && ytState.ready) {
+    try { ytState.player.stopVideo(); ytState.player.mute(); } catch (_) {}
+  }
+  if (ytState.usedFallback) {
+    // Tear down the raw fallback iframe AND restore a clean <div id="videoFrame">
+    // so the API player can adopt it on the next open — don't stay stuck on the
+    // fallback (losing prewarm) for the rest of the session.
+    const frame = els.videoFrame || document.querySelector("#videoFrame");
+    if (frame) {
+      try { frame.src = ""; } catch (_) {}
+      const div = document.createElement("div");
+      div.id = "videoFrame";
+      frame.replaceWith(div);
+      els.videoFrame = div;
+    }
+    ytState.usedFallback = false;
+  }
+  // Return focus to the icon that opened the modal (keyboard a11y).
+  if (ytState.trigger) {
+    try { ytState.trigger.focus({ preventScroll: true }); } catch (_) {}
+    ytState.trigger = null;
+  }
 }
 
 function renderEndingType(value) {
@@ -761,6 +1186,8 @@ function renderFilterMarkup(key, config) {
   `;
 }
 
+let textFilterTimer = 0;
+
 function bindFilterControls(key, config) {
   els.popover.querySelectorAll("input").forEach((input) => {
     input.addEventListener("input", () => {
@@ -777,6 +1204,14 @@ function bindFilterControls(key, config) {
       if (input.dataset.setFilter) {
         if (input.checked) state.filters[key].add(input.value);
         else state.filters[key].delete(input.value);
+      }
+      // Free-text typing fires per keystroke; coalesce the (full-table) render so
+      // a fast typist doesn't trigger 851-row rebuilds mid-word. Range/checkbox
+      // changes are discrete, so they render immediately.
+      if (config.type === "text") {
+        clearTimeout(textFilterTimer);
+        textFilterTimer = setTimeout(render, 200);
+        return;
       }
       render();
       // The faceted Genres popover shows live counts that depend on the
@@ -876,10 +1311,77 @@ function initEvents() {
     closeFilter();
   });
 
+  // Resilient header images: ONE delegated handler each for load/error, in the
+  // CAPTURE phase (resource load/error events do not bubble, so a tbody-level
+  // listener only sees child <img> events on the way down). Bound once here and
+  // never removed — it survives every render() innerHTML rebuild of the rows.
+  els.body.addEventListener("error", onImgError, { capture: true });
+  els.body.addEventListener("load", onImgLoad, { capture: true });
+
+  // --- YouTube pre-warming on the table -------------------------------------
+  // Load the IFrame Player API as early as possible so it's READY before the
+  // first click — otherwise the first click hits the no-API fallback (slower,
+  // and no timing). Idle so it never blocks first paint; first interaction is a
+  // backstop if idle is delayed.
+  const warmOnce = () => warmYouTube();
+  if (typeof requestIdleCallback === "function") requestIdleCallback(warmOnce, { timeout: 2500 });
+  else setTimeout(warmOnce, 1200);
+  ["pointerover", "pointerdown", "keydown"].forEach((ev) =>
+    window.addEventListener(ev, warmOnce, { once: true, passive: true })
+  );
+
+  // Desktop pre-buffer (muted, modal stays hidden). Two triggers:
+  //   • hovering anywhere on a game ROW -> prewarm that row's video after a short
+  //     dwell. The cursor enters the row LONG before the tiny icon, so this is
+  //     the big head start. The dwell avoids thrashing while scanning past rows.
+  //   • hovering the icon itself -> prewarm immediately (no dwell).
+  // Only ONE video is ever in flight (prebufferVideo swaps), so sweeping the
+  // table can't storm YouTube.
+  // While the table scrolls, a stationary cursor still receives pointerover for
+  // every row sliding under it — that would storm prebufferVideo. Flag scrolling
+  // so prewarm pauses, and clear it ~250ms after motion settles.
+  let ytScrollTimer = 0;
+  const scroller = els.body.closest(".table-wrap");
+  if (scroller) {
+    scroller.addEventListener("scroll", () => {
+      ytState.scrolling = true;
+      clearTimeout(ytScrollTimer);
+      ytScrollTimer = setTimeout(() => { ytState.scrolling = false; }, 250);
+    }, { passive: true });
+  }
+
+  let ytRowDwell = 0;
+  els.body.addEventListener("pointerover", (event) => {
+    if (event.pointerType === "touch") return;
+    const icon = event.target.closest("[data-video-id]");
+    if (icon) { clearTimeout(ytRowDwell); prebufferVideo(icon.dataset.videoId); return; }
+    const row = event.target.closest("tr");
+    const btn = row && row.querySelector("[data-video-id]");
+    if (!btn) return;
+    clearTimeout(ytRowDwell);
+    const id = btn.dataset.videoId;
+    ytRowDwell = setTimeout(() => prebufferVideo(id), 120);
+  }, { passive: true });
+
+  // Leaving the table entirely tears down an un-clicked silent pre-buffer (stop
+  // the muted video, hide the transparent modal, free bandwidth). Row-to-row
+  // moves DON'T cancel — the next row's pointerover just swaps the prewarm.
+  els.body.addEventListener("pointerleave", () => {
+    clearTimeout(ytRowDwell);
+    cancelPrebuffer();
+  });
+
+  // pointerdown = earliest signal on touch (no hover) and just before the click.
+  els.body.addEventListener("pointerdown", (event) => {
+    const ytButton = event.target.closest("[data-video-id]");
+    if (ytButton) prebufferVideo(ytButton.dataset.videoId);
+  }, { passive: true });
+
   els.body.addEventListener("click", (event) => {
     const ytButton = event.target.closest("[data-video-id]");
     if (ytButton) {
       event.preventDefault();
+      ytState.trigger = ytButton; // restore focus here on close (keyboard a11y)
       openVideo(ytButton.dataset.videoId);
       return;
     }
@@ -897,10 +1399,8 @@ function initEvents() {
     // of the active view.
     button.dataset.played = String(next);
     if (next) button.classList.add("is-toggling");
-    setTimeout(() => {
-      savePrefs();
-      render();
-    }, next ? 760 : 220);
+    const toggledRow = button.closest("tr");
+    setTimeout(() => refreshAfterPlayedToggle(game, toggledRow), next ? 760 : 220);
     showToast(next ? "Marked as played" : "Unmarked");
   });
 
@@ -910,10 +1410,11 @@ function initEvents() {
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
-    if (!els.videoModal.hidden) {
+    if (ytState.revealed) { // only close a genuinely-open modal, never a silent prebuffer
       closeVideo();
       return;
     }
+    if (ytState.prebufferedId) { cancelPrebuffer(); return; } // clear a stuck silent prebuffer
     if (!els.popover.hidden) {
       closeFilter();
       lastFilterTrigger?.focus();

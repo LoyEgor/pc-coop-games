@@ -4,19 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PC Co-op Games</title>
+  <link rel="icon" type="image/png" href="favicon.png?v=2026-06-14-perf">
+  <link rel="apple-touch-icon" href="favicon.png?v=2026-06-14-perf">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2026-05-27-mobile8">
-  <script src="data.js?v=2026-05-27-mobile8" defer></script>
-  <script src="app.js?v=2026-05-27-mobile8" defer></script>
+  <!-- Warm the YouTube embed origins at page load so the click->play path skips
+       DNS + TLS to all four hosts the embed touches. Cheap (handshakes only, no
+       bytes); the iframe/player JS/video are fetched later on interaction. -->
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://s.ytimg.com" crossorigin>
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="preconnect" href="https://www.google.com" crossorigin>
+  <!-- dns-prefetch fallback (engines that cap/ignore preconnect) + the media CDN
+       (*.googlevideo.com) whose exact subdomain isn't known until the player
+       resolves it, so it can only be DNS-pre-resolved, never preconnected. -->
+  <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://s.ytimg.com">
+  <link rel="dns-prefetch" href="https://i.ytimg.com">
+  <link rel="dns-prefetch" href="https://yt3.ggpht.com">
+  <link rel="dns-prefetch" href="https://googlevideo.com">
+  <link rel="dns-prefetch" href="https://www.google.com">
+  <link rel="stylesheet" href="styles.css?v=2026-06-14-perf">
+  <script src="data.js?v=2026-06-14-perf" defer></script>
+  <script src="app.js?v=2026-06-14-perf" defer></script>
 </head>
 <body data-theme="dark">
   <div class="app">
     <header class="topbar">
       <div class="title-block">
-        <h1>PC Co-op Games</h1>
-        <p>Co-op games you can actually finish — every entry has credits, a final boss, or a clear win condition.</p>
+        <img class="app-icon" src="favicon.png?v=2026-06-14-perf" alt="" width="52" height="52" decoding="async">
+        <div class="title-text">
+          <h1>PC Co-op Games</h1>
+          <p>Co-op games you can actually finish — every entry has credits, a final boss, or a clear win condition.</p>
+        </div>
       </div>
       <div class="top-actions">
         <div class="view-mode" id="viewModeControl" role="tablist" aria-label="View mode">
@@ -141,7 +164,12 @@
       <button class="video-modal-close" type="button" data-close aria-label="Close">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
       </button>
-      <iframe id="videoFrame" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <!-- The YouTube IFrame Player API (app.js) REPLACES this <div> with an
+           <iframe> that keeps the same id, so `.video-modal iframe` CSS still
+           applies. A placeholder div (not an empty iframe) is the API's
+           documented, reliable adoption target. If the API never loads, the
+           cold-path fallback in app.js swaps in a plain iframe by id. -->
+      <div id="videoFrame"></div>
     </div>
   </div>
 </body>

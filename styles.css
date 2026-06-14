@@ -110,6 +110,22 @@ a {
 
 .title-block {
   min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.app-icon {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 22%; /* iOS-app rounded square */
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+}
+
+.title-text {
+  min-width: 0;
 }
 
 h1 {
@@ -1031,6 +1047,25 @@ tbody tr:hover .youtube-link .yt-icon-play {
   display: none;
 }
 
+/* Pre-buffer state: the modal is in the DOM and the iframe is laid out at full
+   size (so the browser actually buffers/decodes the muted video) but the user
+   sees and hears nothing. We hide the backdrop + close button, make the frame
+   invisible + click-through, and skip the pop animation. On the real click the
+   [data-prebuffer] attribute is removed and the frame becomes visible instantly
+   with the already-buffered video. opacity:0 (not visibility:hidden) keeps the
+   iframe rendering; pointer-events:none lets clicks pass through to the row. */
+.video-modal[data-prebuffer] {
+  pointer-events: none;
+}
+.video-modal[data-prebuffer] .video-modal-backdrop,
+.video-modal[data-prebuffer] .video-modal-close {
+  opacity: 0;
+}
+.video-modal[data-prebuffer] .video-modal-frame {
+  opacity: 0;
+  animation: none;
+}
+
 .video-modal-backdrop {
   position: absolute;
   inset: 0;
@@ -1043,7 +1078,9 @@ tbody tr:hover .youtube-link .yt-icon-play {
   position: relative;
   width: min(92vw, 1100px);
   aspect-ratio: 16 / 9;
-  background: #000;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
@@ -1059,6 +1096,10 @@ tbody tr:hover .youtube-link .yt-icon-play {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-modal-frame { animation: none; }
 }
 
 .video-modal-close {
@@ -1080,6 +1121,11 @@ tbody tr:hover .youtube-link .yt-icon-play {
 
 .video-modal-close:hover {
   background: rgba(255, 255, 255, 0.28);
+}
+
+.video-modal-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .video-modal-close svg {

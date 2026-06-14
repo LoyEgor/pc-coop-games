@@ -1,21 +1,25 @@
 #!/usr/bin/env python3
 """
-Repoint the imageUrl of an existing data.js entry to Steam's authoritative
-header image (the `header_image` from appdetails), written as a literal URL.
+Repoint the imageUrl of an existing data.js entry to the most DURABLE reachable
+Steam header image, written as a literal URL.
 
 Usage:
     python fix_image.py <id> <app_id>
 
-Why not steamImage(): the legacy CDN path `/steam/apps/<id>/header.jpg` that the
-steamImage() helper builds is GONE for newer apps (hard 404). appdetails always
-returns the live header_image, so that is the canonical source of truth.
+Durable-image policy (SHARED with .github/scripts/refresh.py — keep in sync):
+  1. Prefer the hash-less CDN path `cdn.cloudflare.steamstatic.com/steam/apps/
+     <id>/header.jpg` when it HEAD-200s. It carries NO content hash, so it cannot
+     go stale when a dev re-uploads header art (the recurring 404 cause).
+  2. Fall back to appdetails `header_image` (the hashed store_item_assets form,
+     ?t= stripped) ONLY for the ~44 newest apps where hash-less still 404s.
 
-The ?t= cache-buster is stripped for a stable stored URL, and the resolved URL
-is HEAD-verified (2xx/3xx) before writing.
+Both candidates are HEAD-verified (2xx/3xx) before writing. The earlier code
+ALWAYS stored the hashed header_image, so a healed entry re-broke on the next art
+update — this preference inversion is the fix for that round-trip.
 
-Logs each fix to state/image-fixes.tsv.
+The change is recorded in data.js itself (git diff is the log).
 
-Exits 0 on success, 1 if id not found in data.js, 3 if no usable header_image
+Exits 0 on success, 1 if id not found in data.js, 3 if no usable header image
 could be resolved (caller should log `no_image`), 2 on usage/other error.
 """
 
@@ -58,6 +62,32 @@ def resolve_header_image(app_id):
         return None
     header = (data.get("data") or {}).get("header_image")
     return header.split("?")[0] if header else None
+
+
+def hashless_url(app_id):
+    """The hash-less CDN path. It has NO content hash, so it can never go stale
+    when a dev re-uploads header art — the durable choice for established apps."""
+    return f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
+
+
+def durable_image_url(app_id):
+    """Pick the most durable reachable header URL. SHARED healing policy with
+    .github/scripts/refresh.py — keep the two in sync so they converge on the
+    same url instead of ping-ponging an entry across commits.
+
+    1. hash-less `cdn.cloudflare/steam/apps/<id>/header.jpg` if it 200s — it has
+       no hash in the path, so it survives future art updates (immortal).
+    2. else the fresh appdetails `header_image` (hashed) — the ONLY form that
+       exists for the ~44 newest apps, where hash-less still 404s.
+    Returns None if neither is reachable.
+    """
+    hl = hashless_url(app_id)
+    if url_ok(hl):
+        return hl
+    canon = resolve_header_image(app_id)
+    if canon and url_ok(canon):
+        return canon
+    return None
 
 
 def url_ok(url):
@@ -109,12 +139,12 @@ def main():
         sys.exit(2)
 
     try:
-        new_url = resolve_header_image(app_id)
+        new_url = durable_image_url(app_id)
     except (urllib.error.URLError, json.JSONDecodeError, OSError) as e:
         print(f"ERROR: appdetails fetch failed for app {app_id}: {e}", file=sys.stderr)
         sys.exit(3)
-    if not new_url or not url_ok(new_url):
-        print(f"NO IMAGE: no usable header_image for app {app_id} (got {new_url!r})", file=sys.stderr)
+    if not new_url:
+        print(f"NO IMAGE: no usable header image for app {app_id}", file=sys.stderr)
         sys.exit(3)
 
     content = DATA_JS.read_text(encoding="utf-8")

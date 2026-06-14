@@ -207,6 +207,20 @@ echo "[$(date)] Running consistency audit (find_neighbors.py)..."
 "$PY" "$REPO_ROOT/.claude/skills/fact-checker/scripts/find_neighbors.py" || true
 echo ""
 
+# -------- media guard: heal broken header images, flag dead youtube ids --------
+# Deterministic, no LLM. fact-checker owns existing-entry verification, so the
+# broken-image sweep belongs here — heal mechanically (fix_image.py) instead of
+# making the LLM HEAD every image. 'all' scope checks the whole catalog; 'new'
+# uses the fast --changed path. Advisory (|| true): never abort the run; residual
+# breakage surfaces as the lint TSV for the LLM/owner to handle.
+echo "[$(date)] Healing broken media (lint_data.py)..."
+if [ "$SCOPE" = "all" ]; then
+  "$PY" "$REPO_ROOT/.claude/skills/coop-hunter/scripts/lint_data.py" --fix || true
+else
+  "$PY" "$REPO_ROOT/.claude/skills/coop-hunter/scripts/lint_data.py" --changed --fix || true
+fi
+echo ""
+
 # -------- main loop: one claude -p burst per iteration --------
 MAX_BURSTS=80             # runaway guard. Earlier 600 combined with the missing
                           # session-limit detector produced 600 instant-fail bursts
