@@ -1235,9 +1235,13 @@ function renderFilterMarkup(key, config) {
             `;
           })
           .join("");
+        const allSelected = tagsInData.every((t) => selected.has(t));
         return `
           <div class="facet-section">
-            <div class="facet-heading">${escapeHtml(axis.label)}</div>
+            <div class="facet-heading">
+              <span>${escapeHtml(axis.label)}</span>
+              <button class="facet-all" type="button" data-genre-axis="${escapeHtml(axis.key)}" aria-pressed="${allSelected}">${allSelected ? "None" : "All"}</button>
+            </div>
             ${rows}
           </div>
         `;
@@ -1321,6 +1325,27 @@ function bindFilterControls(key, config) {
       }
     });
   });
+
+  // Per-axis "All / None" toggle in the faceted Genres popover: select every tag
+  // in the section (so you can then uncheck a few to exclude them), or clear the
+  // section if all are already selected.
+  if (key === "genres") {
+    els.popover.querySelectorAll("[data-genre-axis]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const axis = GENRE_AXES.find((a) => a.key === btn.dataset.genreAxis);
+        if (!axis) return;
+        const present = new Set(config.options());
+        const tags = axis.tags.filter((t) => present.has(t));
+        const allSelected = tags.length > 0 && tags.every((t) => state.filters.genres.has(t));
+        tags.forEach((t) => (allSelected ? state.filters.genres.delete(t) : state.filters.genres.add(t)));
+        render();
+        els.popover.innerHTML = renderFilterMarkup(key, config);
+        bindFilterControls(key, config);
+        capFilterHeight();
+        els.popover.querySelector(`[data-genre-axis="${CSS.escape(axis.key)}"]`)?.focus({ preventScroll: true });
+      });
+    });
+  }
 
   const clearButton = els.popover.querySelector("[data-clear-filter]");
   clearButton?.addEventListener("click", () => {
