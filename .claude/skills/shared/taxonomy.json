@@ -222,6 +222,7 @@
         "Is the level set NOT procedurally generated? → yes",
         "Story can be weak or absent — what matters is the level structure."
       ],
+      "narrowing_rule": "A 'last level' must be the TERMINUS OF A SEQUENCE you advance through, not merely the final item in a selectable roster. Cuphead (island -> island -> final boss -> credits) qualifies. A flat, independently-selectable, REPLAYABLE pool of maps/rounds played for score/survival/time/leaderboard does NOT, even if the count is finite (e.g. 5 maps): that is the Phasmophobia / Counter-Strike / DEVOUR pattern = no finish, do NOT classify as 'levels' and do NOT add.",
       "examples": ["castle-crashers", "streets-of-rage-4", "cuphead", "rv-there-yet", "left-4-dead-2"]
     },
     "arcade-goal": {

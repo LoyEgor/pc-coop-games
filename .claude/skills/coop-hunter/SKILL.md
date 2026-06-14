@@ -217,7 +217,7 @@ Read `taxonomy.json` → `finish_strength` (the authoritative version). Two gate
 Then classify the finish:
 - **Hard finish** (real finish event: credits / last level / final boss / win-condition / summit) → add normally.
 - **Soft finish** (a finish exists but it is an accumulated status / checklist / score-threshold inside the same loop — Forza Hall of Fame, Soulmask Central Core) → add, but **prefix the `verdict` with `🟠 ` and state briefly why** (≤120 chars still; the 🟠 counts).
-- **No finish** (endless contracts/quotas, repeatable matches, co-op never resolves) → skip `endless`.
+- **No finish** (endless contracts/quotas, repeatable matches, co-op never resolves) → skip `endless`. **A finite map/level COUNT is NOT a finish** — a selectable, replayable roster (even 5 maps) played for score / survival / time has no culminating endpoint (Counter-Strike / Phasmophobia / DEVOUR pattern). A finish needs a SEQUENCE to a final boss / credits / destination, not just variety in a replay loop.
 
 If you cannot tell hard vs soft but a finish clearly exists → treat as soft (🟠). Episodic+secondary co-op → ADD with 🟠, NOT a skip. Skip ONLY: no finish at all (`endless` / `unclear_ending`), no 2-player co-op (`no_coop`), or co-op finish ≤1h (`coop_too_short`).
 

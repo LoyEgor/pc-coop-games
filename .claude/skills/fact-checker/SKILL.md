@@ -185,6 +185,10 @@ must not be here at all (CLAUDE.md §2). So this check has two parts:
    - For `roguelite` and `survival-goal` entries especially: confirm there is a named
      final boss / explicit win-condition (Mithrix, Moon Lord, "launch the rocket"), NOT
      just "endless escalating runs/waves".
+   - A finite COUNT of maps/levels/rounds is NOT a finish: a selectable, replayable
+     roster (even 5 maps) played for score / survival / time is the Counter-Strike /
+     Phasmophobia / DEVOUR pattern — no culminating endpoint → remove as `endless`. A
+     finish needs a SEQUENCE to a final boss / credits / destination, not just variety.
    - Read 2-3 snippets and form a judgment. This is the step that catches an endless
      game that slipped in looking finite.
 

@@ -196,6 +196,7 @@ Skip the candidate if Steam categories or tags include ANY of:
 - **High-risk category — racing / open-world FESTIVAL** (`Racing` or `Driving` + `Open World` + `Seasons`/seasonal playlists). Skip ONLY if there is no credits / Hall-of-Fame / Legend / final-event milestone (The Crew). If a Hall-of-Fame/Legend-style career milestone exists (Forza Horizon), it's a valid SOFT finish → add with 🟠.
 - **High-risk category — live-service** (`Seasons` + `Battle Pass` + ongoing content as the core loop). Skip unless a finite campaign with credits is explicitly verifiable.
 - **High-risk category — open-ended sim/sandbox** (city-builder / tycoon / colony / management with no named win-condition). Skip — "build forever" is not a finish.
+- **A finite COUNT of maps/levels/rounds is NOT a finish.** Discrete levels qualify only as a SEQUENCE that culminates (final boss / credits / reached destination). A flat, independently-selectable, replayable pool of maps/rounds played for score / survival / time / leaderboard — even a small fixed set — has no culminating endpoint: this is the Counter-Strike / Phasmophobia / DEVOUR (5 banishing-ritual maps, each replayed) pattern. Skip `endless`. Test: "do I progress TOWARD an endpoint?", not "is the map count finite?".
 
 ### Soft signals (count them — 3+ means skip)
 

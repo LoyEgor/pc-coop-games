@@ -114,6 +114,7 @@ const state = {
 const els = {
   body: document.querySelector("#gamesBody"),
   caption: document.querySelector("#tableCaption"),
+  activeFilters: document.querySelector("#activeFilters"),
   empty: document.querySelector("#emptyState"),
   popover: document.querySelector("#filterPopover"),
   toast: document.querySelector("#toast"),
@@ -992,6 +993,88 @@ function renderActiveFilterButtons() {
     const isActive = filterIsActive(control.dataset.filter);
     control.classList.toggle("has-active-filter", isActive);
   });
+  renderActiveFilterChips();
+}
+
+// Build a removable chip per active filter dimension/value, mirroring the
+// header-highlight state above. Each chip carries enough data-* to clear EXACTLY
+// its own slice on click (a single genre tag / set value, or one whole range /
+// text field) — see clearFilterChip. Returns nothing when no filter is active so
+// the bar collapses entirely (rendered hidden).
+function activeFilterChips() {
+  const f = state.filters;
+  const chips = [];
+
+  if (f.title.trim()) {
+    chips.push({ key: "title", value: "", label: `Search: ${f.title.trim()}` });
+  }
+
+  // Ranges: one chip per range field, label showing only the bound(s) that
+  // actually constrain (min only → "≥ x", max only → "≤ y", both → "x–y").
+  // rating + ratingCount are independent chips even though they share a popover.
+  for (const key of ["year", "rating", "ratingCount", "playersMax", "hours", "price"]) {
+    if (!rangeFilterActive(key)) continue;
+    const value = state.filters[key];
+    const { min: dataMin, max: dataMax } = getRangeExtents(key);
+    const minActive = value.min !== "" && Number(value.min) > dataMin;
+    const maxActive = value.max !== "" && Number(value.max) < dataMax;
+    const name = filterConfig[key].label;
+    let label;
+    if (minActive && maxActive) label = `${name} ${value.min}–${value.max}`;
+    else if (minActive) label = `${name} ≥ ${value.min}`;
+    else label = `${name} ≤ ${value.max}`;
+    chips.push({ key, value: "", label });
+  }
+
+  // Faceted genres: one chip per selected tag (clearing removes just that tag).
+  for (const tag of f.genres) {
+    chips.push({ key: "genres", value: tag, label: `Genre: ${tag}` });
+  }
+
+  // Multi-select sets: one chip per selected value, using the column's display
+  // label for the value where it has one (e.g. ending-type short names).
+  for (const setKey of ["endingType", "oneCopy"]) {
+    const config = filterConfig[setKey];
+    for (const value of f[setKey]) {
+      const label = config.labelFor ? config.labelFor(value) : value;
+      chips.push({ key: setKey, value, label });
+    }
+  }
+
+  return chips;
+}
+
+function renderActiveFilterChips() {
+  if (!els.activeFilters) return;
+  const chips = activeFilterChips();
+  els.activeFilters.hidden = chips.length === 0;
+  els.activeFilters.innerHTML = chips
+    .map((chip) => `
+      <button class="filter-chip" type="button" data-chip-key="${escapeHtml(chip.key)}" data-chip-value="${escapeHtml(chip.value)}">
+        <span class="filter-chip-label">${escapeHtml(chip.label)}</span>
+        <span class="filter-chip-x" aria-hidden="true">×</span>
+        <span class="visually-hidden">Remove filter</span>
+      </button>`)
+    .join("");
+}
+
+// Clear exactly the slice a chip represents, then re-render everything (table +
+// headers + chips + URL). For single-value set chips (genres/ending/copies) this
+// removes only that value and keeps the rest; for text/range chips it falls back
+// to clearFilter, which clears that whole dimension. Note: clearFilter("rating")
+// would ALSO wipe ratingCount (they share a popover), so the rating chip resets
+// only its own bounds here to leave a separate Reviews chip intact.
+function clearFilterChip(key, value) {
+  const slot = state.filters[key];
+  if (slot instanceof Set) {
+    slot.delete(value);
+  } else if (key === "rating") {
+    slot.min = "";
+    slot.max = "";
+  } else {
+    clearFilter(key);
+  }
+  render();
 }
 
 function rangeFilterActive(key) {
@@ -1054,8 +1137,8 @@ function capFilterHeight() {
   els.popover.style.overflowY = "";
   const list = els.popover.querySelector(".checkbox-list");
   if (list) {
-    const btn = els.popover.querySelector(".button");
-    const reserve = (btn ? btn.offsetHeight + 10 : 0) + 14; // button + its margin-top + popover bottom padding
+    const footer = els.popover.querySelector(".popover-footer");
+    const reserve = (footer ? footer.offsetHeight + 10 : 0) + 14; // footer + its margin-top + popover bottom padding
     const avail = window.innerHeight - list.getBoundingClientRect().top - reserve - vGap;
     list.style.maxHeight = `${Math.max(120, avail)}px`;
   } else {
@@ -1085,12 +1168,23 @@ function rangeInputs(key) {
   `;
 }
 
+// Footer row shared by every popover: Clear (secondary) + Done (primary).
+// Filters apply live on input, so Done only closes the popover.
+function filterFooter(key) {
+  return `
+    <div class="popover-footer">
+      <button class="button" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
+      <button class="button primary" type="button" data-close-filter>Done</button>
+    </div>
+  `;
+}
+
 function renderFilterMarkup(key, config) {
   if (config.type === "text") {
     return `
       <div class="popover-title">${escapeHtml(config.label)}</div>
       <input class="filter-input" data-text-filter="${escapeHtml(key)}" value="${escapeHtml(state.filters[key])}" placeholder="${escapeHtml(config.placeholder)}">
-      <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
+      ${filterFooter(key)}
     `;
   }
 
@@ -1103,7 +1197,7 @@ function renderFilterMarkup(key, config) {
       ${rangeInputs("rating")}
       <div class="popover-subhead">Reviews (min / max)</div>
       ${rangeInputs("ratingCount")}
-      <button class="button full" type="button" data-clear-filter="rating">Clear</button>
+      ${filterFooter("rating")}
     `;
   }
 
@@ -1111,7 +1205,7 @@ function renderFilterMarkup(key, config) {
     return `
       <div class="popover-title">${escapeHtml(config.label)}: min / max</div>
       ${rangeInputs(key)}
-      <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
+      ${filterFooter(key)}
     `;
   }
 
@@ -1155,7 +1249,7 @@ function renderFilterMarkup(key, config) {
       <div class="checkbox-list faceted">
         ${sectionsHtml}
       </div>
-      <button class="button full" type="button" data-clear-filter="genres">Clear</button>
+      ${filterFooter("genres")}
     `;
   }
 
@@ -1182,7 +1276,7 @@ function renderFilterMarkup(key, config) {
     <div class="checkbox-list">
       ${options.map(renderOptionRow).join("")}
     </div>
-    <button class="button full" type="button" data-clear-filter="${escapeHtml(key)}">Clear</button>
+    ${filterFooter(key)}
   `;
 }
 
@@ -1233,6 +1327,12 @@ function bindFilterControls(key, config) {
     clearFilter(key);
     closeFilter();
     render();
+  });
+
+  // Done just dismisses the popover — filters already applied live on input.
+  const closeButton = els.popover.querySelector("[data-close-filter]");
+  closeButton?.addEventListener("click", () => {
+    closeFilter();
   });
 }
 
@@ -1305,8 +1405,31 @@ function initEvents() {
     btn.addEventListener("click", () => toggleSort(btn.dataset.sort));
   });
 
+  // Active-filter chips: one delegated handler — clicking a chip clears just its
+  // own dimension/value (the chip list is rebuilt on every render).
+  els.activeFilters?.addEventListener("click", (event) => {
+    const chip = event.target.closest("[data-chip-key]");
+    if (!chip) return;
+    clearFilterChip(chip.dataset.chipKey, chip.dataset.chipValue);
+  });
+
+  // A drag-select inside a number input can release the mouse OUTSIDE the
+  // popover, firing a "click" whose target is outside — which would wrongly
+  // close the popover mid-selection. So remember where the press STARTED: only
+  // a click whose press origin AND release target are both genuinely outside
+  // closes the popover.
+  let pressStartedInside = false;
+  document.addEventListener("mousedown", (event) => {
+    pressStartedInside =
+      !els.popover.hidden &&
+      (els.popover.contains(event.target) || !!event.target.closest("[data-filter]"));
+  });
+
   document.addEventListener("click", (event) => {
+    const startedInside = pressStartedInside;
+    pressStartedInside = false;
     if (els.popover.hidden) return;
+    if (startedInside) return;
     if (els.popover.contains(event.target) || event.target.closest("[data-filter]")) return;
     closeFilter();
   });

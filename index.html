@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PC Co-op Games</title>
-  <link rel="icon" type="image/png" href="favicon.png?v=2026-06-14-perf">
-  <link rel="apple-touch-icon" href="favicon.png?v=2026-06-14-perf">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2026-06-14-icon2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-16.png?v=2026-06-14-icon2">
+  <link rel="icon" type="image/png" href="favicon.png?v=2026-06-14-icon2">
+  <link rel="apple-touch-icon" href="favicon.png?v=2026-06-14-icon2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,7 +37,7 @@
   <div class="app">
     <header class="topbar">
       <div class="title-block">
-        <img class="app-icon" src="favicon.png?v=2026-06-14-perf" alt="" width="52" height="52" decoding="async">
+        <img class="app-icon" src="favicon.png?v=2026-06-14-icon2" alt="" width="52" height="52" decoding="async">
         <div class="title-text">
           <h1>PC Co-op Games</h1>
           <p>Co-op games you can actually finish — every entry has credits, a final boss, or a clear win condition.</p>
@@ -59,6 +61,7 @@
     </header>
 
     <main>
+      <div class="active-filters" id="activeFilters" aria-label="Active filters" hidden></div>
       <section class="table-panel" aria-label="Co-op games table">
         <div class="table-wrap">
           <table>
