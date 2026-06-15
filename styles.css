@@ -333,19 +333,11 @@ main {
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
-  /* Lives INSIDE the scroll container as a sticky-bottom bar (mirror of the
-     sticky-top header). z-index 10 = same as the header: rows scroll under it,
-     but a hovered image-zoom (z-index 50) paints OVER it, just like over the
-     header. This is how the zoom can overlap the footer without escaping the
-     scroll container (no JS). Mobile resets this to static. */
-  position: sticky;
-  /* bottom: -1px (not 0) so the bar overshoots the scroll-container edge by a
-     pixel — the overshoot is clipped, but it kills the sub-pixel seam where a
-     row was peeking through under the footer (Chrome rounds the sticky offset).
-     Matching padding-bottom keeps the text vertically centred. */
-  bottom: -1px;
-  padding-bottom: 7px;
-  z-index: 10;
+  /* The caption ("Showing N of M") is a fixed summary, not table data, so it sits
+     in its OWN panel grid row (.table-panel: minmax(0,1fr) auto), BELOW the scroll
+     container — it never scrolls, vertically or horizontally. The panel's
+     border-radius + overflow:hidden clip its bottom corners. On mobile the panel
+     is display:block, so it simply flows after the card list. */
 }
 
 .table-wrap {
@@ -1399,8 +1391,6 @@ tbody tr:hover .youtube-link .yt-icon-play {
     padding: 8px 4px 0;
     background: transparent;
     justify-content: flex-start;
-    /* No sticky-bottom on mobile — it just sits at the end of the card list. */
-    position: static;
   }
 
   .table-wrap {
