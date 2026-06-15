@@ -97,6 +97,9 @@ const state = {
   // Storage uses the older "hiddenOverrides" key — same shape, same semantics
   // (true == "this game is done"), just renamed for clarity.
   playedOverrides: {},
+  // Persisted YouTube audio preference, carried across video opens (frames).
+  // Default matches the historical behavior: sound on at full volume.
+  ytAudio: { muted: false, volume: 100 },
   filters: {
     title: "",
     year: { min: "", max: "" },
@@ -179,6 +182,13 @@ function loadPrefs() {
     }
     // Same: playedOverrides supersedes the older hiddenOverrides (same shape).
     state.playedOverrides = prefs.playedOverrides || prefs.hiddenOverrides || {};
+    if (prefs.ytAudio && typeof prefs.ytAudio === "object") {
+      const v = prefs.ytAudio.volume;
+      state.ytAudio = {
+        muted: !!prefs.ytAudio.muted,
+        volume: (typeof v === "number" && v >= 0 && v <= 100) ? v : 100
+      };
+    }
   } catch {
     state.theme = "dark";
   }
@@ -188,7 +198,8 @@ function savePrefs() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
     theme: state.theme,
     viewMode: state.viewMode,
-    playedOverrides: state.playedOverrides
+    playedOverrides: state.playedOverrides,
+    ytAudio: state.ytAudio
   }));
 }
 
@@ -653,7 +664,9 @@ function fallbackIframe(videoId) {
     host.replaceWith(frame);
     els.videoFrame = frame; // keep the cached ref live for closeVideo()
   }
-  frame.src = `${YT_EMBED_HOST}/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+  // No API on this path, so carry at least the saved mute preference via the URL.
+  const muteParam = (state.ytAudio && state.ytAudio.muted) ? "&mute=1" : "";
+  frame.src = `${YT_EMBED_HOST}/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1${muteParam}`;
 }
 
 // Instrumentation: set to true to log "click->play Xms" to the console.
@@ -686,10 +699,60 @@ const ytState = {
   trigger: null        // the icon that opened the modal, to restore focus on close
 };
 
+// --- Persisted audio preference across video opens ---------------------------
+// state.ytAudio ({muted, volume}) carries the user's last YouTube sound setting
+// from one opened video to the next. applyYtAudioPref() pushes it INTO the player
+// on reveal (instead of the old unconditional unMute); a listener on the player's
+// "infoDelivery" messages writes the user's own mute/volume changes back out.
+let ytAudioSettleUntil = 0; // ignore player state echoes until this time (perf.now)
+
+function applyYtAudioPref() {
+  if (!ytState.player || !ytState.ready) return;
+  const pref = state.ytAudio;
+  try {
+    // Set volume before (un)muting so audio never plays a beat at the wrong level.
+    ytState.player.setVolume(pref.volume);
+    if (pref.muted) ytState.player.mute();
+    else ytState.player.unMute();
+  } catch (_) {}
+  // Our own (un)mute echoes back via infoDelivery; ignore those for a beat so the
+  // command we just issued isn't misread as a user action (and so the stale
+  // prebuffer-muted state, reported just before unMute lands, isn't recorded).
+  ytAudioSettleUntil = (typeof performance !== "undefined" ? performance.now() : 0) + 1200;
+}
+
+// The YouTube player posts "infoDelivery" messages carrying the live muted/volume
+// state (the same channel the IFrame API itself learns state from). Polling
+// player.isMuted() proved unreliable across embeds, so we read these directly and
+// persist the user's choice. We only record while the modal is REVEALED (not the
+// hidden muted prebuffer) and past the settle window after our applyYtAudioPref().
+let ytAudioListenerInstalled = false;
+function installYtAudioListener() {
+  if (ytAudioListenerInstalled) return;
+  ytAudioListenerInstalled = true;
+  window.addEventListener("message", (e) => {
+    if (typeof e.data !== "string") return;
+    if (e.origin !== YT_EMBED_HOST && e.origin !== "https://www.youtube.com") return;
+    let msg; try { msg = JSON.parse(e.data); } catch (_) { return; }
+    if (!msg || msg.event !== "infoDelivery" || !msg.info) return;
+    const info = msg.info;
+    if (!("muted" in info) && !("volume" in info)) return;
+    if (!ytState.revealed) return; // hidden prebuffer / closed: not a user choice
+    if ((typeof performance !== "undefined" ? performance.now() : 0) < ytAudioSettleUntil) return;
+    const muted = ("muted" in info) ? !!info.muted : state.ytAudio.muted;
+    const volume = (typeof info.volume === "number" && info.volume >= 0 && info.volume <= 100)
+      ? info.volume : state.ytAudio.volume;
+    if (muted === state.ytAudio.muted && volume === state.ytAudio.volume) return;
+    state.ytAudio = { muted, volume };
+    savePrefs();
+  });
+}
+
 // Load the IFrame Player API exactly once. Called on the FIRST user interaction
 // (pointerdown/touchstart/keydown anywhere) so it never blocks first paint, yet
 // is almost always ready by the time a YouTube icon is actually clicked.
 function warmYouTube() {
+  installYtAudioListener();
   if (ytState.apiRequested) return;
   ytState.apiRequested = true;
   // If another script already pulled the API in, just build the player.
@@ -775,7 +838,7 @@ function onYtError(e) {
   if (ytState._erroredId === id) return; // already retried this one
   ytState._erroredId = id;
   try { ytState.player.loadVideoById(id); } catch (_) { return; } // don't swallow the load failure
-  try { ytState.player.unMute(); ytState.player.setVolume(100); } catch (_) {}
+  applyYtAudioPref();
 }
 
 // Pre-buffer a video MUTED with the modal still hidden. Satisfies autoplay
@@ -857,11 +920,10 @@ function playRevealed(videoId) {
   document.body.style.overflow = "hidden";
   try {
     if (ytState.prebufferedId === videoId) {
-      // Hot path: already buffered muted. Unmute (gesture allows it) + ensure
-      // it's playing. No new network round-trip for the embed/player. Set volume
-      // BEFORE unmuting so audio doesn't briefly play at the wrong level.
-      ytState.player.setVolume(100);
-      ytState.player.unMute();
+      // Hot path: already buffered muted. Apply the saved audio preference (the
+      // gesture allows unmuting) + ensure it's playing. No new network round-trip
+      // for the embed/player.
+      applyYtAudioPref();
       ytState.player.playVideo();
       // NB: no seekTo(0) — seeking a still-buffering prewarmed video throws
       // YouTube error 5 ("An error occurred, try again", clears on 2nd open).
@@ -876,8 +938,7 @@ function playRevealed(videoId) {
       }
     } else {
       ytState.player.loadVideoById(videoId);
-      ytState.player.setVolume(100);
-      ytState.player.unMute();
+      applyYtAudioPref();
     }
   } catch (_) {
     // Defensive fallback: drive a plain iframe directly (no API). Still off the
