@@ -12,6 +12,11 @@
       "rule": "exactly_one_per_game",
       "note": "Every game has exactly one primary perspective. If perspective is switchable (e.g. some RPGs), pick the one used most often during co-op gameplay."
     },
+    "dimension": {
+      "rule": "exactly_one_per_game",
+      "position_in_genres_array": "immediately after perspective",
+      "note": "2D or 3D by the game's DOMINANT RENDERING (not camera or gameplay plane). 3D = polygonal models (even with a fixed/isometric/side camera); 2D = sprites / hand-drawn / painted / pixel / vector. For a 2.5D game pick the dominant render."
+    },
     "mechanic": {
       "rule": "at_least_one_per_game_unless_survival",
       "note": "What the player primarily does. Multiple allowed but be conservative — only tag if the mechanic is a defining feature. EXEMPTION: survival-craft games whose defining axis is Survival (structure) may carry NO mechanic tag — Survival anchors the genre on its own (e.g. Valheim, Terraria, Satisfactory). Do not force-fit a wrong mechanic like Action onto a building/automation survival game. If a survival game has an obvious combat focus you MAY add Action, but it is optional."
@@ -79,6 +84,18 @@
         "2D rendering with the camera at the side? → yes",
         "Player runs/jumps horizontally? → typically yes"
       ]
+    }
+  },
+
+  "dimension": {
+    "$rule": "Exactly one per game, placed immediately after perspective in the genres array. Judge by DOMINANT RENDERING, not camera or gameplay plane.",
+    "2D": {
+      "definition": "Rendered in 2D: sprites, hand-drawn, painted, pixel, or vector art — regardless of camera (side, top-down, isometric).",
+      "examples_positive": ["cuphead", "castle-crashers", "monaco", "hades", "terraria", "enter-the-gungeon"]
+    },
+    "3D": {
+      "definition": "Built from 3D polygonal models, even with a fixed / isometric / side camera. For a 2.5D game (3D models on a 2D plane) pick 3D.",
+      "examples_positive": ["portal-2", "the-ascent", "trine-5", "halo-mcc", "gears-5", "diablo-4"]
     }
   },
 

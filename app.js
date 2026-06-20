@@ -65,7 +65,7 @@ const ENDING_TYPE = {
 
 const TIER_VALUES = new Set(["AAA", "AA", "Indie"]);
 
-// Faceted-filter axes for the Genres column. Mirrors the `axes` structure in
+// Faceted-filter axes for the Tags column. Mirrors the `axes` structure in
 // .claude/skills/shared/taxonomy.json. Within an axis the filter is OR (pick
 // First-person + Third-person → games matching either). Across axes it's AND
 // (Tier=AAA AND View=Side-view → must be both). "FPS" is a legacy perspective
@@ -74,6 +74,7 @@ const TIER_VALUES = new Set(["AAA", "AA", "Indie"]);
 const GENRE_AXES = [
   { key: "tier", label: "Tier", tags: ["AAA", "AA", "Indie"] },
   { key: "perspective", label: "View", tags: ["First-person", "Third-person", "Isometric", "Side-view", "FPS"] },
+  { key: "dimension", label: "Dimension", tags: ["2D", "3D"] },
   { key: "mechanic", label: "Genre", tags: ["Shooter", "Action", "Brawler", "Racing", "Puzzle", "Platformer", "RPG", "Tactics", "Stealth", "Soulslike", "Loot", "Adventure"] },
   { key: "setting", label: "Setting", tags: ["Fantasy", "Sci-fi", "Horror", "Military"] },
   { key: "structure", label: "Structure", tags: ["Open World", "Survival"] }
@@ -144,7 +145,7 @@ const filterConfig = {
   ratingCount: { type: "range", label: "Reviews", step: 50, min: 0 },
   playersMax: { type: "range", label: "Players", step: 1, min: 0 },
   hours: { type: "range", label: "Hours", step: 1, min: 0 },
-  genres: { type: "set", label: "Genres", options: () => uniqueSorted(games.flatMap((game) => game.genres)) },
+  genres: { type: "set", label: "Tags", options: () => uniqueSorted(games.flatMap((game) => game.genres)) },
   endingType: {
     type: "set",
     label: "Ending",
