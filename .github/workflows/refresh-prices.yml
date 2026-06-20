@@ -29,7 +29,11 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Full sequential sweep is ~2 Steam calls/entry x ~3.2s; at ~860 entries that
+    # is ~45 min and growing with the catalog. 30 was too tight (runs cancelled at
+    # [558/832] since 2026-06-15, never reaching the commit step). 90 leaves
+    # headroom to ~1600 entries; revisit (or make refresh.py resumable) past that.
+    timeout-minutes: 90
     steps:
       - name: Checkout
         uses: actions/checkout@v4
