@@ -153,7 +153,33 @@ See [`.claude/skills/README.md`](.claude/skills/README.md) for the full picture.
 - `coop-hunter` (skill) — grows the catalog, eternally. Launch: `./run-coop-hunter.sh`. Every added game starts WITHOUT a `reviewed` flag, so `fact-checker new` picks it up automatically (no queue file — see §6b).
 - `fact-checker` (skill) — verifies entries + removes endless games. Launch: `./run-fact-checker.sh [new|all]` (`new` = just the hunter's latest finds via the queue; `all` = whole catalog, default).
 - taxonomy migration — fact-checker in a special mode, one-time. Launch: `./run-migration.sh`.
-- `refresh-prices` (GitHub Actions cron) — owns `price`/`rating`/`ratingCount`, runs daily on GitHub, no LLM.
+- `refresh-prices` (GitHub Actions cron) — owns the OBJECTIVE fields, runs daily on GitHub, no LLM.
+
+### Field ownership — OBJECTIVE (cron) vs SUBJECTIVE (LLM). Read this before "fixing" any field.
+
+The recurring-error trap: an LLM hand-guesses a field that actually has a Steam-API
+ground truth, gets it wrong, we clean it, and the next add re-introduces the same wrong
+guess. The fix is a hard split by who is allowed to write each field:
+
+- **OBJECTIVE fields = the `refresh-prices` cron's job (deterministic, from the Steam API,
+  no LLM): `price`, `rating`, `ratingCount`, `year`, `oneCopy`, `imageUrl`.** These have a
+  single source of truth (appdetails / appreviews) so a script must derive them — an LLM
+  must NEVER hand-set or "correct" them in `data.js`. The cron re-derives them daily and
+  self-heals any drift/add-time mistake within ~a day. An LLM's only role here is to verify
+  the cron ran and to FIX `.github/scripts/refresh.py` if it derives something wrong — never
+  to edit the data. (oneCopy caveat: the cron derives none/remote-play from categories;
+  `friend-pass` is store-DLC text not in categories, so the cron leaves a stored friend-pass
+  alone — that one value may still need a human/LLM call.)
+- **SUBJECTIVE fields = the LLM's job: `genres` (tier/perspective/dimension/mechanic/setting/
+  structure), `endingType`, `verdict`, `title`, `youtubeUrl`, `playersMax`.** These need
+  judgment. For the error-prone visual/finish ones (perspective, endingType) the LLM must
+  derive the value INDEPENDENTLY from evidence (screenshots/tags/finish search) and, when
+  unsure, CORROBORATE with several independent verifiers — applying a change only when they
+  agree and the current value is confidently wrong. Never swap a defensible value for
+  another defensible one (that is churn, not error-reduction).
+- **At ADD time** (coop-hunter): the LLM supplies only the subjective fields; the objective
+  ones are filled deterministically (and the cron maintains them thereafter), so a new entry
+  is born correct without the LLM guessing year/oneCopy/price/rating.
 
 Quick brief covering all of them, with watch-progress commands: [`.claude/skills/README.md`](.claude/skills/README.md). Read that first if you're new to the repo.
 

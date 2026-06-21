@@ -4,9 +4,16 @@ Refresh `price` and `rating` for every non-hidden entry in data.js by hitting
 Steam's storefront API (cc=ua) and appreviews endpoint. Designed to run on a
 GitHub Actions cron — see .github/workflows/refresh-prices.yml.
 
-This script OWNS the drift-prone / breakable fields:
+This script OWNS the OBJECTIVE fields — those with a Steam-API ground truth.
+The LLM skills (coop-hunter, fact-checker) must NOT write these; they only verify
+the cron ran and fix THIS script if it derives something wrong. Objective fields:
   - `price`    (UAH, from /api/appdetails?cc=ua → price_overview.final / 100)
   - `rating`   (Steam %positive, from /appreviews/<id>?json=1)
+  - `year`     (release year, from /api/appdetails → release_date; applied on any diff)
+  - `oneCopy`  (from /api/appdetails → categories: Online/LAN Co-op → 'none';
+                else only Remote Play Together / Shared-Split-Screen → 'remote-play'.
+                NEVER overrides a stored 'friend-pass' — that is store-DLC text, not a
+                category, so it can't be derived here.)
   - `imageUrl` (auto-heals header images that 404 OR whose content-hash drifted
                 — a dev re-uploading header art changes the hash in a hashed
                 store_item_assets URL and the old one 404s. Heals to the DURABLE
@@ -82,7 +89,7 @@ def fetch_json(url):
 def appdetails(app_id):
     url = (
         f"https://store.steampowered.com/api/appdetails"
-        f"?appids={app_id}&cc=ua&filters=basic,price_overview"
+        f"?appids={app_id}&cc=ua&filters=basic,price_overview,categories,release_date"
     )
     data = fetch_json(url).get(str(app_id), {})
     if not data.get("success"):
@@ -104,6 +111,29 @@ def compute_rating(reviews_summary):
     if total < 50:  # too few to trust; same threshold as coop-hunter §3
         return None
     return round(positive / total * 100)
+
+
+def derive_year(details):
+    """Release year from appdetails release_date (objective ground truth)."""
+    m = re.search(r"(\d{4})", (details or {}).get("release_date", {}).get("date", "") or "")
+    if m:
+        y = int(m.group(1))
+        if 1990 <= y <= 2030:
+            return y
+    return None
+
+
+def derive_onecopy(details):
+    """oneCopy from appdetails categories (objective): Online/LAN Co-op -> 'none';
+    else only Remote Play Together / Shared-Split-Screen -> 'remote-play'. Returns
+    None when undeterminable (leave the stored value). Never returns 'friend-pass'
+    (store-DLC text, not a category) so a stored friend-pass is never overwritten."""
+    cats = [c.get("description", "") for c in (details or {}).get("categories", [])]
+    if any("Online Co-op" in c or "LAN Co-op" in c for c in cats):
+        return "none"
+    if any(c == "Remote Play Together" or "Shared/Split Screen Co-op" in c for c in cats):
+        return "remote-play"
+    return None
 
 
 def head_status(url):
@@ -195,7 +225,7 @@ def apply_update(game_id, field, new_value):
 def write_status(success, entries_checked, updates, failures, error=None):
     STATUS_FILE.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "owned_fields": ["price", "rating", "ratingCount"],
+        "owned_fields": ["price", "rating", "ratingCount", "year", "oneCopy"],
         "next_expected_window_hours": 30,
         "entries_checked": entries_checked,
         "updates_applied": updates,
@@ -232,12 +262,12 @@ def main():
         entries = list_entries()
     except Exception as e:
         print(f"FATAL: list_entries failed: {e}", file=sys.stderr)
-        write_status(False, 0, {"price": 0, "rating": 0, "count": 0, "image": 0}, 0, error=f"list_entries: {e}")
+        write_status(False, 0, {"price": 0, "rating": 0, "count": 0, "image": 0, "year": 0, "oneCopy": 0}, 0, error=f"list_entries: {e}")
         sys.exit(1)
 
     print(f"Loaded {len(entries)} non-hidden entries from data.js")
 
-    updates = {"price": 0, "rating": 0, "count": 0, "image": 0}
+    updates = {"price": 0, "rating": 0, "count": 0, "image": 0, "year": 0, "oneCopy": 0}
     failures = 0
     consecutive_failures = 0
     checked = 0
@@ -369,9 +399,29 @@ def main():
                     why = "404" if broken else "hash-drift"
                     print(f"  [{i}/{len(entries)}] {game_id}: image {why} -> {new_img}")
 
+        # Year — objective ground truth (release_date). Apply on any real diff.
+        new_year = derive_year(details)
+        if new_year is not None:
+            try:
+                old_year = int(entry.get("year", 0) or 0)
+            except (ValueError, TypeError):
+                old_year = 0
+            if old_year and new_year != old_year:
+                if apply_update(game_id, "year", new_year):
+                    updates["year"] += 1
+                    print(f"  [{i}/{len(entries)}] {game_id}: year {old_year} -> {new_year}")
+
+        # oneCopy — objective (categories). none<->remote-play only; never touch friend-pass.
+        new_oc = derive_onecopy(details)
+        old_oc = entry.get("oneCopy")
+        if new_oc and old_oc and old_oc != "friend-pass" and new_oc != old_oc:
+            if apply_update(game_id, "oneCopy", new_oc):
+                updates["oneCopy"] += 1
+                print(f"  [{i}/{len(entries)}] {game_id}: oneCopy {old_oc} -> {new_oc}")
+
     print(f"\n[{datetime.datetime.utcnow().isoformat()}Z] Refresh complete")
     print(f"  entries_checked: {checked}/{len(entries)}")
-    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, count={updates['count']}, image={updates['image']}")
+    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, count={updates['count']}, image={updates['image']}, year={updates['year']}, oneCopy={updates['oneCopy']}")
     print(f"  fetch_failures:  {failures}")
 
     # A run is only healthy if we actually verified something. If every attempt

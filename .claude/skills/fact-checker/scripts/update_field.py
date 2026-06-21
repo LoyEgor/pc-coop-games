@@ -36,8 +36,9 @@ def atomic_write_text(path, text):
     os.replace(tmp, path)
 
 ALLOWED_INT_FIELDS = {"rating", "ratingCount", "price", "year", "playersMax", "hours"}
-ALLOWED_STR_FIELDS = {"imageUrl"}
+ALLOWED_STR_FIELDS = {"imageUrl", "oneCopy"}
 ALLOWED_FIELDS = ALLOWED_INT_FIELDS | ALLOWED_STR_FIELDS
+ONECOPY_VALUES = {"none", "remote-play", "friend-pass"}
 
 
 
@@ -98,6 +99,9 @@ def main():
     else:
         if field == "imageUrl" and not value.startswith("https://"):
             print(f"ERROR: imageUrl must be an https:// URL, got '{value}'", file=sys.stderr)
+            sys.exit(2)
+        if field == "oneCopy" and value not in ONECOPY_VALUES:
+            print(f"ERROR: oneCopy must be one of {sorted(ONECOPY_VALUES)}, got '{value}'", file=sys.stderr)
             sys.exit(2)
         log_value = value
         write_value = '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'

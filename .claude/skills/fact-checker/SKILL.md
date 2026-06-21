@@ -121,14 +121,16 @@ From appdetails `categories[]`:
 
 If found differs from `entry.playersMax` → log to `shared/owner-review.tsv` (action `fix`) via `log_event.py proposed-fixes ...`. Don't auto-fix.
 
-### 7. oneCopy
+### 7. oneCopy — CRON-OWNED, do NOT touch
 
-Re-evaluate per classification.md "One-copy rules":
-- Friend Pass DLC explicitly mentioned on store page → `friend-pass`.
-- No online category, only Remote Play Together → `remote-play`.
-- Native online multiplayer → `none`.
-
-If derived differs from current → propose.
+`oneCopy` is now an OBJECTIVE field owned by the `refresh-prices` cron (derived
+deterministically from Steam categories: Online/LAN Co-op → `none`; else only Remote
+Play Together / Shared-Split-Screen → `remote-play`). **Do not propose or change it** —
+the cron self-heals it daily. Same for `year` (cron-owned via release_date) and
+`price`/`rating`/`ratingCount`/`imageUrl`. The ONLY oneCopy case a human/LLM may still
+weigh in on is `friend-pass` (store-DLC text, not a Steam category, so the cron can't
+derive it). See CLAUDE.md "Field ownership". If the cron looks WRONG on an objective
+field, fix `.github/scripts/refresh.py`, never the data.
 
 ### 8. genres + tier — derived from `.claude/skills/shared/taxonomy.json`
 
@@ -152,13 +154,26 @@ For each entry:
 3. Apply axis rules from `taxonomy.axes`:
    - `tier` — derive from publisher scale + budget (AAA = major publisher / big-budget;
      AA = mid; Indie = small/self-published). Judge from developers/publishers, not tags.
-   - `perspective` — pick exactly one. **DO NOT rely on tags alone.** Determine the camera
-     VISUALLY: read the screenshots + description (e.g. "over-the-shoulder" → Third-person,
-     "first-person view" → First-person, top-down/Diablo-style → Isometric, 2D side
-     scroller → Side-view). Apply this check to EVERY entry, including ones that already
-     have a perspective — if the stored perspective contradicts what the screenshots show,
-     propose the corrected one. Only stamp perspective `OK` after you have actually judged
-     the visuals, never on tag-silence.
+   - `perspective` — pick exactly one. **DO NOT rely on tags alone, and DERIVE IT BLIND.**
+     Decide the camera from EVIDENCE *before* you look at the stored value, then compare —
+     so a wrong stored value can never anchor you into rubber-stamping it. Determine the
+     camera VISUALLY from the store-page popular tags + screenshots + description:
+     "over-the-shoulder / behind-the-back 3D, full body" → Third-person; "eyes view, hands/
+     weapon, no body" → First-person; fixed camera looking DOWN at the play area, avatar
+     rendered small/seen from above (twin-stick, top-down ARPG, tactics, top-down shooter,
+     Diablo/Hades-like) → Isometric; 2D side camera, runs/jumps horizontally → Side-view.
+     **TRAP (the exact class this rule exists to catch): a top-down / isometric game is NOT
+     Third-person.** Third-person REQUIRES an over-the-shoulder / behind-the-back 3D camera.
+     A top-down crawler/twin-stick wrongly stored as `Third-person` is precisely the miss we
+     are preventing (e.g. a desert top-down crawler tagged Third-person slipped through once).
+     Apply to EVERY entry, including ones that already have a perspective. Only stamp
+     perspective `OK` after you actually judged the visuals — never on tag-silence; if you
+     could not load the screenshots/tags, report it `fail` and add to `partial_entries[]`.
+     The same blind-derive-then-compare discipline applies to `dimension` (2D vs 3D),
+     `endingType`, and `tier`. For a low-noise CATALOG-WIDE sweep of these, see the
+     "Classification audit" section below — it derives all four axes blind and flags only
+     the mismatches, which is how the catalog surfaces its own misclassifications without
+     a human re-checking every game.
    - `mechanic` — at least one required. **Adventure has `narrowing_rule`** — apply ONLY to narrative-led + exploration + dialogue games. If the entry has `Adventure` but does not match the rule (e.g. it's actually an action game or pure puzzle), log a proposed REMOVAL of `Adventure`.
    - `setting`, `structure` — optional.
 
@@ -169,6 +184,25 @@ Compare derived genres set to `entry.genres`:
 - Tier mismatch → log proposed change.
 
 **Do not auto-modify the `genres` array.** Editorial choice — owner reviews the `fix` entries in `shared/owner-review.tsv` and decides which to apply via a separate migration step. Exception: there is a dedicated migration phase (see `taxonomy_migration` section below) that DOES auto-apply specific deterministic rewrites (e.g., split `FPS` → `First-person` + `Shooter`).
+
+### 8c. Classification audit — blind catalog-wide sweep (catches the DuneCrawl class)
+
+Per-entry §8 prevents NEW errors, but to surface EXISTING misclassifications across the whole
+catalog without a human re-checking every game, run a BLIND audit:
+
+1. Extract `{id, title, app_id}` for every non-hidden entry — WITHOUT the recorded genres, so
+   the deriver cannot anchor on a wrong stored value.
+2. For each entry, derive perspective / dimension / endingType / tier ONLY from authoritative
+   evidence (store-page popular tags + screenshots + description; a gameplay search when the
+   camera is unclear). Output the derived axes + a confidence + the evidence string.
+3. Compare derived vs recorded. The mismatches are the findings — log perspective mismatches
+   (high/medium confidence) and endingType/dimension/tier mismatches to `shared/owner-review.tsv`
+   (action `fix`) via `log_event.py proposed-fixes <id> <field> <old> <new> <evidence>`.
+
+The blindness is the whole point: a top-down crawler stored as `Third-person` gets flagged
+because the deriver, looking only at the screenshots/tags, independently says `Isometric` and
+the comparison surfaces the conflict. Output is just the mismatch list (not 900+ "OK" lines),
+so it is cheap to review. Run it whenever classification drift is suspected.
 
 ### 9. endingType — decision_tree PLUS a targeted web search
 

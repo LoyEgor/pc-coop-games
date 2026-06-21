@@ -294,6 +294,16 @@ Confirm ALL of these hold (you already gathered the evidence in §0–§8); if a
 If the candidate is a clear genre/structure outlier you can't classify against `taxonomy.json` → SKIP `taxonomy_gap`, do not force-fit. When genuinely unsure whether it belongs → SKIP. Drill for evidence first (per drill mode), but the tie-breaker is always SKIP.
 
 ### 9. Build and append entry
+
+**Objective fields are CRON-OWNED — don't agonize (CLAUDE.md "Field ownership").** `year`,
+`oneCopy`, `rating`, `ratingCount`, `price`, `imageUrl` have a Steam-API ground truth and are
+maintained deterministically by `refresh-prices` (`.github/scripts/refresh.py`), which
+re-derives them daily and self-heals any add-time value within ~a day. Pass best-effort values
+(append needs them) but treat them as PROVISIONAL — the cron is authoritative. Spend judgment on
+the SUBJECTIVE fields only: `genres` (tier/perspective/dimension/mechanic/setting/structure),
+`endingType`, `verdict`, `playersMax`, `youtubeUrl`. Never hand-"correct" an objective field
+afterwards; if the cron derivation looks wrong, fix the cron script, not the data.
+
 Use the helper script `scripts/append_entry.py` (described below) to insert a new entry into `data.js` immediately before the first `hidden: true` block (or at end if no hidden entries). Pass JSON args.
 
 Entry shape (post-2026-05 minimal schema — see CLAUDE.md WHY-1/2/3):
