@@ -243,6 +243,7 @@ ham-the-game	HAM: The Game	endless	creative_discovery	Endless gameplay with esca
 handshakes	Handshakes	low_rating	aaa_aa_sweep	98.9% positive of 2872 reviews and real 2-player co-op (each controls one hand) + Remote Play Together, but only 30 grid puzzles beatable in ~30min-1h — co-op finish content is <=1h, fails the >1h gat
 handy-dandy	Handy Dandy	low_rating	aaa_aa_sweep	96.3% positive of 374 reviews, real 2-player co-op platform-puzzle with a discrete reunion finish, but ~1h total (dev: 'over 1 hour'; estimates 'about 1 hour') — sits at the 1h line, not clearly above
 haunted-paws	unreleased	unknown	phase4_websearch_niche_queries	
+heads-adventures-chibichibi	Head's Adventures: chibichibi	not_enough_reviews	removed	
 hela-of-mice-magic	Hela: of Mice & Magic	unreleased	aaa_aa_sweep	unreleased — Steam shows coming_soon, release date '2026' (no reviews yet). Has online + split-screen co-op so re-check after launch.
 hellbreach-vegas	hellbreach-vegas	endless	wave/horde-based co-op shooter (CoD-zombies style); endless waves, violates no-endless rule	
 helldivers-1	HELLDIVERS Dive Harder Edition	endless	websearch_drill	Galactic War sessional structure — same live-service feel as HD2 blocklist
@@ -611,5 +612,6 @@ wonder-warp	Wonder Warp	low_fit	aaa_aa_sweep	Released 5 Jun 2026 but has 0 Steam
 wuthering-waves	wuthering-waves	blocklisted_endless	phase4_steam_more_like_this	gacha live service, no ending
 xanadu-land	Xanadu Land	blocklisted_endless	phase4_websearch_niche_queries	MMO + In-App Purchases (free-to-play); hardcoded MMO blocklist
 yakuza-0	yakuza-0	low_fit	phase4_community_substitute	co-op limited to Red Light Raid wave/arena mode; main game single-player, no finite co-op campaign ending
+ys-viii-lacrimosa-of-dana	Ys VIII: Lacrimosa of DANA	coop_mod_only	removed	
 zero-hour	Zero Hour	endless	aaa_aa_sweep	Co-op mode is repeatable standalone tactical operations (R6/SWAT-style objective grind), no finite narrative campaign with a defined endpoint; game also leans heavily on 5v5 PvP. No discrete co-op fin
 zombie-estate-2	Zombie Estate 2	endless	phase4_creative_steam_topcoop	Online co-op wave-based shooter, 'how long can you survive' — wave survival no defined ending
