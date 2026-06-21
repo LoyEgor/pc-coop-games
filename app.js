@@ -1090,7 +1090,7 @@ function activeFilterChips() {
 
   // Faceted genres: one chip per selected tag (clearing removes just that tag).
   for (const tag of f.genres) {
-    chips.push({ key: "genres", value: tag, label: `Genre: ${tag}` });
+    chips.push({ key: "genres", value: tag, label: `Tag: ${tag}` });
   }
 
   // Multi-select sets: one chip per selected value, using the column's display
@@ -1291,7 +1291,7 @@ function renderFilterMarkup(key, config) {
             return `
               <label class="check-row faceted${isDisabled ? " disabled" : ""}">
                 <input type="checkbox" data-set-filter="genres" value="${escapeHtml(value)}" ${isChecked ? "checked" : ""} ${isDisabled ? "disabled" : ""}>
-                <span class="check-label">${escapeHtml(value)}</span>
+                <span class="check-label">${escapeHtml(value === "Isometric" ? "Isometric / top-down" : value)}</span>
                 <span class="check-count">${count}</span>
               </label>
             `;
