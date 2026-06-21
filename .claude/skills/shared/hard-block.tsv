@@ -1,6 +1,7 @@
 id	title	reason	notes
 007-first-light	007 First Light	no_coop	Solo Bond stealth game
 100-animals-on-an-island	100-animals-on-an-island	no_coop	app 3209400 single-player only
+8days	8DAYS	not_on_steam	delisted 2018, appdetails success=false
 a-dance-of-fire-and-ice	A Dance of Fire and Ice	no_coop	Single-player only per Steam categories
 a-juggler-s-tale	A Juggler's Tale	no_coop	Single-player only. Steam app 1252830 (correct id; hint 2050700 was a soundtrack) lists category Single-player only — no online co-op, no local co-op, no Remote Play Together. The candidate's '2-playe
 after-the-fall	After the Fall	no_coop	VR Only title (Steam category 'VR Only', app 751630). Co-op requires each player to own a VR headset; not a standard PC co-op game playable via Remote Play Together. Mechanically out of scope for this
@@ -104,6 +105,7 @@ dark-souls	Dark Souls	delisted	Dark Souls: Prepare To Die Edition (appid 211420)
 dark-void	Dark Void	delisted	Not on Steam. Store search returns only Kalimba DLCs and unrelated indies, no Capcom 2010 'Dark Void'; it was delisted. Hint app_id 45100 resolves to a different game (Secret of the Magic Crystals).
 date-everything	Date Everything	no_coop	Single-player only sandbox dating sim per Steam categories
 dave-the-diver	dave-the-diver	no_coop	single-player adventure [seen 2x; reasons: no_coop]
+dead-as-disco	Dead as Disco	no_coop	single-player rhythm beat-em-up, no co-op
 dead-cells	Dead Cells	no_coop	app 588650, Single-player only
 dead-rising-deluxe-remaster	Dead Rising Deluxe Remaster	no_coop	Steam categories: Single-player only (no Co-op in remaster of DR1, which was SP)
 dead-static-drive	Dead Static Drive	no_coop	single_player_only_no_co_op_category_also_38pct_low_quality [seen 2x; reasons: no_coop,not_enough_reviews]
@@ -298,6 +300,7 @@ marvels-spider-man-remastered	marvels-spider-man-remastered	no_coop	single-playe
 massive-darkness-2	Massive Darkness 2	not_on_steam	No Steam listing found for Massive Darkness 2 / Hellscape / CMON Massive Darkness under any query. Not on Steam.
 max-payne	Max Payne	delisted	Single-player noir shooter with no co-op mode; also delisted from Steam (appid 12140 returns success:false, not in store search).
 max-payne-2-the-fall-of-max-payne	Max Payne 2: The Fall of Max Payne	no_coop	Single-player only (Steam categories = Single-player); no 2-player mode, Remote Play cannot make it co-op.
+mcdroid	McDROID	no_coop	no 2-player co-op
 mega-man-11	Mega Man 11	no_coop	Single-player only per Steam categories
 mega-man-legacy-collection	Mega Man Legacy Collection	no_coop	Single-player only on Steam (app 363440) — categories list only Single-player, no Co-op / Multi-player / Remote Play Together.
 melatonin	Melatonin	no_coop	Single-player only per Steam categories
@@ -385,6 +388,7 @@ resident-evil-7-biohazard	Resident Evil 7 Biohazard	no_coop	Steam categories: Si
 resident-evil-operation-raccoon-city	resident-evil-operation-raccoon-city	not_on_steam	
 restore-your-island	Restore Your Island	no_coop	single-player only
 return-to-castle-wolfenstein	Return to Castle Wolfenstein	pvp_primary	No shipped 2-player co-op mode — Steam categories are Single-player + Multi-player (PvP Axis vs Allies); SP campaign is solo. Co-op only via third-party mods, which doesn't count.
+riddled-corpses-ex	Riddled Corpses EX	not_on_steam	not on Steam
 ride-5	RIDE 5	no_coop	only PvP racing categories; no co-op
 rift-of-the-necrodancer	Rift of the NecroDancer	no_coop	Single-player rhythm spinoff
 rings-of-reagent	Rings of Reagent	delisted	Not on Steam. Hint id 1833230 returns success:false (dead/delisted); Steam storesearch for 'Rings of Reagent' and 'Reagent' returns no matching product (only unrelated Outlast Trials pack and Re:Agent
@@ -409,10 +413,12 @@ sega-master-system-classics	Sega Master System Classics	not_on_steam	No such pro
 sega-mega-drive-and-genesis-classics	SEGA Mega Drive and Genesis Classics	delisted	Delisted/retired on Steam (app 34270): appdetails returns no price_overview, no packages, no package_groups, and search confirms it is no longer available for purchase. Not purchasable.
 sektori	Sektori	no_coop	Single-player only per Steam categories
 sephonie	sephonie	no_coop	
+serious-sam-the-random-encounter	Serious Sam: The Random Encounter	no_coop	no 2-player co-op
 shadow-complex-remastered	Shadow Complex Remastered	no_coop	App 385560. Steam categories: Single-player only. Metroidvania, no co-op support.
 shadows-awakening	Shadows Awakening	mmo	Single-player only. Real Steam title is 'Shadows: Awakening' (app 585450); Steam categories list ONLY 'Single-player' (no Co-op / Multi-player / Remote Play Together). Demonologist controls multiple s
 shellshock-live	shellshock-live	no_coop	PvP artillery, no ending [seen 2x; reasons: low_fit,no_coop]
 shiftlings	Shiftlings	not_on_steam	Steam SearchApps + storesearch return 0 results for "Shiftlings"/"shiftling". The game (2015 Sierra/Rock Pocket platformer) is delisted; its old app id 318570 now resolves to a different game ("Hunter
+shredders	Shredders	no_coop	no 2-player co-op
 shrek-forever-after	Shrek Forever After	not_on_steam	Not on Steam — 2010 console-only movie tie-in; Steam search returns only a PowerWash Simulator DLC pack.
 skul-the-hero-slayer	Skul: The Hero Slayer	no_coop	Single-player only per Steam categories
 slap-city	Slap City	pvp_primary	platform fighter (Smash-style) — PvP-primary; co-op modes are vs-CPU arcade not a campaign
@@ -422,6 +428,8 @@ slime-rancher-2	Slime Rancher 2	no_coop	Single-player only per Steam categories
 sniper-ghost-warrior-contracts-2	Sniper Ghost Warrior Contracts 2	no_coop	Single-player only [seen 3x; reasons: no_coop]
 snow-bros-special-anniversary-edition	SNOW BROS. SPECIAL: ANNIVERSARY EDITION	no_coop	DROP: Gate A fails. Steam categories for app 3107890 are local-only (Single-player, Co-op, Shared/Split Screen Co-op, Shared/Split Screen) with NO 'Online Co-op' and NO 'Remote Play Together'. Propose
 solasta-ii	Solasta II	no_coop	Single-player only, no Multi-player category [seen 2x; reasons: no_coop]
+soldner-x-2-final-prototype	Soldner-X 2: Final Prototype	not_on_steam	not on Steam
+soldner-x-himmelsstuermer	Soldner-X: Himmelsstuermer	not_on_steam	not on Steam
 song-of-farca	Song of Farca	no_coop	App 1435670 is single-player only (no Co-op / Multi-player / Remote Play Together category). The chunk's 'co-op' note is wrong; it's a solo detective-puzzle game.
 sonic-generations	Sonic Generations	no_coop	PC version (Sonic Generations Collection, app 71340) is Single-player only — no 2-player co-op on PC/console (only the 3DS port had a race mode). No Remote Play Together co-op.
 sonic-racing-crossworlds	Sonic Racing CrossWorlds	no_coop	PvP only — no co-op category, only Shared/Split Screen PvP
@@ -558,6 +566,7 @@ voodolls	Voodolls	no_coop	app_id 2144830. Steam categories are only [Single-play
 wallace-gromit-s-grand-adventures	Wallace & Gromit's Grand Adventures	no_coop	On Steam (app 31100) but Steam categories list Single-player only — no multiplayer/co-op/Remote Play Together. Not a co-op game.
 wand-wars	Wand Wars	pvp_primary	Magic broom sports party game; PvP primary, no co-op campaign. app 422110
 wanted-dead	Wanted: Dead	no_coop	Steam app 1981610. Categories = Single-player only. It is a single-player character-action/beat-em-up; the note's 'campaign co-op (2-player)' claim is false. Fails Gate A.
+wardogs-red-s-return	WarDogs: Red's Return	no_coop	categories single-player only
 warhammer-40-000-battlesector	Warhammer 40,000: Battlesector	pvp_primary	Correct app 1295500. Multiplayer categories are PvP / Online PvP / Shared-Split-Screen PvP only — no Co-op. Campaign is single-player. PvP-primary multiplayer, fails Gate A.
 warhammer-40-000-space-marine-anniversary-edition	Warhammer 40,000: Space Marine - Anniversary Edition	pvp_primary	MP categories only Single-player + Multi-player (PvP); Exterminatus co-op DLC is endless wave defense
 warhammer-40k-boltgun	Warhammer 40,000: Boltgun	no_coop	[seen 3x; reasons: no_coop]
@@ -590,6 +599,7 @@ wulfar-s-armada	Wulfar's Armada	not_on_steam	Not on Steam: hint app_id 1842530 r
 wytchwood	Wytchwood	no_coop	Single-player only (app 729000). Categories list only Single-player + Remote Play on Phone/Tablet/TV; no Remote Play Together or co-op. Note's 'co-op for two' is false.
 xcom-2	XCOM 2	pvp_primary	Steam (app 268500) lists Single-player only — no official co-op campaign (only a 1v1 PvP/fan mods).
 xenonauts-2	Xenonauts 2	no_coop	Single-player only — appdetails categories list no Multi-player/Co-op despite the candidate note. No 2-player co-op mode exists.
+xydonia	XYDONIA	not_on_steam	not on Steam
 yakuza-like-a-dragon	Yakuza: Like a Dragon	no_coop	Single-player only turn-based RPG (no Co-op/Multi-player category); 'co-op elements' claim is false. Correct app_id 1235140 (hint 1235280 is a DLC SKU).
 ys-vs-trails-in-the-sky-alternative-saga	Ys vs. Trails in the Sky: Alternative Saga	pvp_primary	Fighting game crossover with Online PvP category; co-op is co-op-vs-AI within fighting bouts, fundamentally PvP-primary
 ys-x-nordics	Ys X: Nordics	no_coop	Single-player only per Steam categories
