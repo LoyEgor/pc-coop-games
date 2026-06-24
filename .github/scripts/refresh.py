@@ -89,7 +89,7 @@ def fetch_json(url):
 def appdetails(app_id):
     url = (
         f"https://store.steampowered.com/api/appdetails"
-        f"?appids={app_id}&cc=ua&filters=basic,price_overview,categories,release_date"
+        f"?appids={app_id}&cc=ua&filters=basic,price_overview,categories,release_date,movies"
     )
     data = fetch_json(url).get(str(app_id), {})
     if not data.get("success"):
@@ -121,6 +121,52 @@ def derive_year(details):
         if 1990 <= y <= 2030:
             return y
     return None
+
+
+def derive_preview_url(details):
+    """microtrailer.mp4 url for the hover preview — the SAME ~6s muted loop Steam's
+    own store/library capsules autoplay. Derived from the first trailer's HLS dir:
+    appdetails advertises only adaptive manifests (hls/dash), but the directory
+    that serves the manifest also serves a flat progressive `microtrailer.mp4`
+    (CORS-open: access-control-allow-origin:*, so it plays from github.io). The
+    akamai dir carries a content hash + timestamp that DRIFTS when the dev
+    re-uploads the trailer — the same drift class as the hashed header image — so
+    this is cron-maintained, never frozen. The ?t= cache-buster is stripped for a
+    stable stored URL. Returns None when the game ships no trailer."""
+    movies = (details or {}).get("movies") or []
+    if not movies:
+        return None
+    hls = movies[0].get("hls_h264") or ""
+    if not hls:
+        return None
+    directory = hls.split("?", 1)[0].rsplit("/", 1)[0]
+    return f"{directory}/microtrailer.mp4"
+
+
+def all_preview_urls(details):
+    """The microtrailer.mp4 url for EVERY trailer the app currently lists (not just
+    movies[0]). The state-based heal uses membership in this set to tell a harmless
+    REORDER (stored url still present → keep, no churn) from a pull / re-upload
+    (stored url gone → re-point or clear). Pure string derivation from the already-
+    fetched movies — no extra network."""
+    urls = set()
+    for m in (details or {}).get("movies") or []:
+        hls = m.get("hls_h264") or ""
+        if hls:
+            urls.add(f"{hls.split('?', 1)[0].rsplit('/', 1)[0]}/microtrailer.mp4")
+    return urls
+
+
+def head_video_ok(url):
+    """True only if the URL HEADs 200 with a video content-type. Used to soft-verify
+    a freshly-derived microtrailer before writing it, so a derived-but-dead url is
+    never stored (the client then keeps the static header / screenshot fallback)."""
+    req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": UA})
+    try:
+        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as r:
+            return r.status == 200 and "video" in (r.headers.get("Content-Type") or "")
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError):
+        return False
 
 
 def derive_onecopy(details):
@@ -225,7 +271,7 @@ def apply_update(game_id, field, new_value):
 def write_status(success, entries_checked, updates, failures, error=None):
     STATUS_FILE.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "owned_fields": ["price", "rating", "ratingCount", "year", "oneCopy"],
+        "owned_fields": ["price", "rating", "ratingCount", "year", "oneCopy", "imageUrl", "previewUrl"],
         "next_expected_window_hours": 30,
         "entries_checked": entries_checked,
         "updates_applied": updates,
@@ -262,12 +308,12 @@ def main():
         entries = list_entries()
     except Exception as e:
         print(f"FATAL: list_entries failed: {e}", file=sys.stderr)
-        write_status(False, 0, {"price": 0, "rating": 0, "count": 0, "image": 0, "year": 0, "oneCopy": 0}, 0, error=f"list_entries: {e}")
+        write_status(False, 0, {"price": 0, "rating": 0, "count": 0, "image": 0, "preview": 0, "year": 0, "oneCopy": 0}, 0, error=f"list_entries: {e}")
         sys.exit(1)
 
     print(f"Loaded {len(entries)} non-hidden entries from data.js")
 
-    updates = {"price": 0, "rating": 0, "count": 0, "image": 0, "year": 0, "oneCopy": 0}
+    updates = {"price": 0, "rating": 0, "count": 0, "image": 0, "preview": 0, "year": 0, "oneCopy": 0}
     failures = 0
     consecutive_failures = 0
     checked = 0
@@ -399,6 +445,36 @@ def main():
                     why = "404" if broken else "hash-drift"
                     print(f"  [{i}/{len(entries)}] {game_id}: image {why} -> {new_img}")
 
+        # Preview microtrailer — STATE-BASED heal (mirrors the image heal's intent;
+        # see WHY-6). The akamai url carries a content hash/timestamp that changes
+        # when the dev re-uploads OR reorders trailers, so a naive "movies[0] differs
+        # → rewrite" churns the field on a harmless reorder. Instead: keep the stored
+        # url while it's still one of the app's CURRENT trailers (set membership —
+        # pure string, no HEAD); only act when it's GONE from that set — re-point to a
+        # live trailer (pull/re-upload), or CLEAR to "" when the app has no trailer at
+        # all (so the client falls back and lint/fix_preview stop re-reporting a dead
+        # url forever). When there's no stored url yet, backfill if a trailer exists.
+        cur_prev = entry.get("previewUrl") or ""
+        if cur_prev.startswith("http"):
+            if cur_prev not in all_preview_urls(details):
+                fresh_prev = derive_preview_url(details)
+                if fresh_prev and head_video_ok(fresh_prev):
+                    if apply_update(game_id, "previewUrl", fresh_prev):
+                        updates["preview"] += 1
+                        print(f"  [{i}/{len(entries)}] {game_id}: preview re-point -> {fresh_prev}")
+                elif not (details.get("movies") or []):
+                    # trailer pulled entirely — clear (a present-but-dead HEAD or a
+                    # transient miss with movies still listed is left for next run).
+                    if apply_update(game_id, "previewUrl", ""):
+                        updates["preview"] += 1
+                        print(f"  [{i}/{len(entries)}] {game_id}: preview cleared (no trailer)")
+        else:
+            fresh_prev = derive_preview_url(details)
+            if fresh_prev and head_video_ok(fresh_prev):
+                if apply_update(game_id, "previewUrl", fresh_prev):
+                    updates["preview"] += 1
+                    print(f"  [{i}/{len(entries)}] {game_id}: preview backfill -> {fresh_prev}")
+
         # Year — objective ground truth (release_date). Apply on any real diff.
         new_year = derive_year(details)
         if new_year is not None:
@@ -421,7 +497,7 @@ def main():
 
     print(f"\n[{datetime.datetime.utcnow().isoformat()}Z] Refresh complete")
     print(f"  entries_checked: {checked}/{len(entries)}")
-    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, count={updates['count']}, image={updates['image']}, year={updates['year']}, oneCopy={updates['oneCopy']}")
+    print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, count={updates['count']}, image={updates['image']}, preview={updates['preview']}, year={updates['year']}, oneCopy={updates['oneCopy']}")
     print(f"  fetch_failures:  {failures}")
 
     # A run is only healthy if we actually verified something. If every attempt

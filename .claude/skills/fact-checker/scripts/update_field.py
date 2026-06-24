@@ -36,7 +36,7 @@ def atomic_write_text(path, text):
     os.replace(tmp, path)
 
 ALLOWED_INT_FIELDS = {"rating", "ratingCount", "price", "year", "playersMax", "hours"}
-ALLOWED_STR_FIELDS = {"imageUrl", "oneCopy"}
+ALLOWED_STR_FIELDS = {"imageUrl", "oneCopy", "previewUrl"}
 ALLOWED_FIELDS = ALLOWED_INT_FIELDS | ALLOWED_STR_FIELDS
 ONECOPY_VALUES = {"none", "remote-play", "friend-pass"}
 
@@ -97,9 +97,12 @@ def main():
             sys.exit(2)
         write_value = log_value
     else:
-        if field == "imageUrl" and not value.startswith("https://"):
-            print(f"ERROR: imageUrl must be an https:// URL, got '{value}'", file=sys.stderr)
-            sys.exit(2)
+        if field in ("imageUrl", "previewUrl") and not value.startswith("https://"):
+            # previewUrl may be cleared to "" when a game's trailer is pulled (the
+            # client then falls back to screenshots/header). imageUrl must be a real url.
+            if not (field == "previewUrl" and value == ""):
+                print(f"ERROR: {field} must be an https:// URL (or \"\" to clear previewUrl), got '{value}'", file=sys.stderr)
+                sys.exit(2)
         if field == "oneCopy" and value not in ONECOPY_VALUES:
             print(f"ERROR: oneCopy must be one of {sorted(ONECOPY_VALUES)}, got '{value}'", file=sys.stderr)
             sys.exit(2)

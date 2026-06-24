@@ -53,6 +53,59 @@ def durable_image_expr(app_id, literal_url):
     except (urllib.error.URLError, OSError):
         return None
     return None
+
+
+def _appdetails_full(app_id):
+    """Fetch full appdetails (movies + screenshots needed for the preview). Best-
+    effort: any network/parse error returns None so an add is never blocked."""
+    url = f"https://store.steampowered.com/api/appdetails?appids={app_id}&cc=us&l=en"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.loads(r.read().decode("utf-8"))
+    except (urllib.error.URLError, OSError, json.JSONDecodeError, ValueError):
+        return None
+    entry = data.get(str(app_id)) or {}
+    return entry.get("data") if entry.get("success") else None
+
+
+def _head_video_ok(url):
+    try:
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return r.status == 200 and "video" in (r.headers.get("Content-Type") or "")
+    except (urllib.error.URLError, OSError):
+        return False
+
+
+def derive_preview(app_id):
+    """Add-time hover-preview source, SOFT-verified (write-guard so a new entry is
+    born with a preview instead of waiting for the nightly cron). Returns
+    (previewUrl, previewShots) — at most one is set. SHARED policy with
+    refresh.py.derive_preview_url + fix_preview.py: microtrailer.mp4 from the first
+    trailer's HLS dir, HEAD-verified as live video; else up to 4 screenshots for
+    the crossfade fallback; else (None, None). Never blocks an add — the cron
+    re-derives/heals previewUrl daily, so a transient miss self-corrects."""
+    if not app_id:
+        return None, None
+    d = _appdetails_full(app_id)
+    if not d:
+        return None, None
+    movies = d.get("movies") or []
+    if movies:
+        hls = movies[0].get("hls_h264") or ""
+        if hls:
+            mp4 = f"{hls.split('?', 1)[0].rsplit('/', 1)[0]}/microtrailer.mp4"
+            if _head_video_ok(mp4):
+                return mp4, None
+    shots = []
+    for s in (d.get("screenshots") or [])[:4]:
+        u = (s.get("path_full") or s.get("path_thumbnail") or "").split("?", 1)[0]
+        if u:
+            shots.append(u)
+    return None, (shots or None)
+
+
 SHARED = Path(__file__).resolve().parents[2] / "shared"
 HARDBLOCK_TSV = SHARED / "hard-block.tsv"   # never re-add these (mechanical)
 REEVAL_TSV = SHARED / "reeval.tsv"          # re-checkable; drop an id once it enters the catalog
@@ -207,6 +260,23 @@ def render_entry(g):
         )
     yt_expr = f'youtube("{youtube_id}")'
 
+    # previewUrl / previewShots: the hover gameplay preview (CLAUDE.md WHY-6),
+    # derived + soft-verified at write time so a new entry shows motion on hover
+    # immediately. A trailer -> previewUrl (microtrailer.mp4); no trailer -> a few
+    # screenshots to crossfade; neither -> nothing (static header). previewUrl is
+    # cron-owned thereafter (drift-heals like imageUrl). The skill may also pass
+    # previewUrl/previewShots explicitly to skip the fetch.
+    preview_url = g.get("previewUrl")
+    preview_shots = g.get("previewShots")
+    if not preview_url and not preview_shots:
+        preview_url, preview_shots = derive_preview(app_id)
+    if preview_url:
+        preview_line = f"\n    previewUrl: {js_str(preview_url)},"
+    elif preview_shots:
+        preview_line = f"\n    previewShots: {js_arr(preview_shots)},"
+    else:
+        preview_line = ""
+
     needs_review = g.get("needs_review") or g.get("needs-review")
     review_line = ',\n    "needs-review": true' if needs_review else ""
 
@@ -233,7 +303,7 @@ def render_entry(g):
     price: {js_int(g["price"])},
     verdict: {js_str(g["verdict"])},
     storeUrl: {js_str(g["storeUrl"])},
-    imageUrl: {image_expr},
+    imageUrl: {image_expr},{preview_line}
     youtubeUrl: {yt_expr}{review_line}
   }}"""
 

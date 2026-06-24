@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
 Deterministic, no-LLM media guard for data.js. Verifies every entry's header
-image is reachable and every youtubeUrl carries a real 11-char video id, and can
-auto-heal broken images via the shared healer (fix_image.py). This is the guard
+image is reachable, every youtubeUrl carries a real 11-char video id, and every
+PRESENT previewUrl (the hover microtrailer) still resolves; can auto-heal broken
+images (fix_image.py) and drifted previewUrls (fix_preview.py) via shared healers.
+A missing previewUrl is NOT breakage (legit "no trailer"); previewShots are not
+probed (one-time backfill the client tolerates a broken frame of). This is the guard
 the owner asked for: any LLM run that adds/edits games is FORCED to heal media
 through it (the launchers run `lint_data.py --changed --fix`), the same way
 sync_lists.py enforces the state-list invariant.
@@ -62,6 +65,7 @@ REPO_ROOT = SCRIPTS.parents[2].parent
 DATA_JS = REPO_ROOT / "data.js"
 LIST_ENTRIES = REPO_ROOT / ".claude" / "skills" / "fact-checker" / "scripts" / "list_entries.py"
 FIX_IMAGE = SCRIPTS / "fix_image.py"
+FIX_PREVIEW = SCRIPTS / "fix_preview.py"
 
 UA = "Mozilla/5.0 (compatible; pc-coop-games-lint/1.0)"
 YT_ID_RE = re.compile(r'youtube\("([A-Za-z0-9_-]{11})"\)')
@@ -150,8 +154,8 @@ def changed_ids(base):
 
 
 def lint(entries, args):
-    """Returns (image_results, youtube_results) as lists of (entry, kind, status, url)
-    for everything that is NOT OK."""
+    """Returns (img_break, yt_break, preview_break, unknown, probed): the first
+    three are lists of (entry, kind, status, url) for everything that is NOT OK."""
     # --- youtube (regex always; HEAD only with --deep-youtube) ---
     yt_break = []
     deep_targets = []
@@ -173,14 +177,28 @@ def lint(entries, args):
         else:
             yt_break.append((e, "image", "MALFORMED", e.get("imageUrl", "")[:60]))
 
-    img_break = []
+    # --- preview microtrailer (concurrent HEAD). Only a PRESENT previewUrl is
+    # checked: a missing one is a legitimate "no trailer" (the client falls back
+    # to screenshots / static header), not breakage. previewShots are NOT checked
+    # — they're a one-time backfill the client already tolerates a broken frame of
+    # (CLAUDE.md WHY-6), so probing 4 stills per no-trailer game is pure noise. A
+    # DEAD previewUrl is healed by re-derivation (drift), same model as images.
+    preview_targets = []
+    for e in entries:
+        url = (e.get("previewUrl") or "").strip()
+        if url.startswith("http"):
+            preview_targets.append((e, url))
+
+    img_break, preview_break = [], []
     unknown = 0
-    targets = img_targets + deep_targets
+    labelled = (
+        [((e, url), "image") for (e, url) in img_targets]
+        + [((e, url), "youtube") for (e, url) in deep_targets]
+        + [((e, url), "preview") for (e, url) in preview_targets]
+    )
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as ex:
         futs = {ex.submit(classify, url, args.timeout): (e, url, kind)
-                for (e, url), kind in (
-                    [(t, "image") for t in img_targets] + [(t, "youtube") for t in deep_targets]
-                )}
+                for (e, url), kind in labelled}
         for fut in concurrent.futures.as_completed(futs):
             e, url, kind = futs[fut]
             status = fut.result()
@@ -191,10 +209,12 @@ def lint(entries, args):
                 continue
             if kind == "image":
                 img_break.append((e, "image", status, url))
+            elif kind == "preview":
+                preview_break.append((e, "preview", status, url))
             else:
                 yt_break.append((e, "youtube", "DEAD", url))
 
-    return img_break, yt_break, unknown, len(targets)
+    return img_break, yt_break, preview_break, unknown, len(labelled)
 
 
 def heal_images(img_break, args):
@@ -215,6 +235,29 @@ def heal_images(img_break, args):
         else:
             still.append(e)
             print(f"IRRECOVERABLE {gid} image :: {(r.stderr or r.stdout).strip()[:120]}", file=sys.stderr)
+    return healed, still
+
+
+def heal_previews(preview_break, args):
+    """Run fix_preview.py for each DEAD previewUrl (re-derive the drifted akamai
+    url); return (healed_ids, still_broken). A trailer that was pulled entirely is
+    IRRECOVERABLE here — the client still degrades to the static header."""
+    healed, still = [], []
+    for e, _kind, _status, _url in preview_break:
+        gid = e.get("id")
+        app_id = e.get("__app_id")
+        if not gid or not app_id:
+            still.append(e)
+            print(f"IRRECOVERABLE {gid} preview (no app_id)", file=sys.stderr)
+            continue
+        r = subprocess.run(["python3", str(FIX_PREVIEW), gid, str(app_id)],
+                           capture_output=True, text=True)
+        if r.returncode == 0:
+            healed.append(gid)
+            print(f"HEALED {gid} preview -> {r.stdout.strip().split('-> ')[-1]}", file=sys.stderr)
+        else:
+            still.append(e)
+            print(f"IRRECOVERABLE {gid} preview :: {(r.stderr or r.stdout).strip()[:120]}", file=sys.stderr)
     return healed, still
 
 
@@ -247,16 +290,19 @@ def main():
         print("lint_data: no entries to check (clean).", file=sys.stderr)
         sys.exit(0)
 
-    img_break, yt_break, unknown, probed = lint(entries, args)
+    img_break, yt_break, preview_break, unknown, probed = lint(entries, args)
 
     # INCONCLUSIVE: too much of the network came back UNKNOWN -> don't trust it.
     if probed and unknown / probed > 0.50:
         print(f"INCONCLUSIVE: {unknown}/{probed} probes UNKNOWN (network down?) — not trusting result, not fixing.", file=sys.stderr)
         sys.exit(3)
 
-    if args.fix and img_break:
-        dead_ids = {e.get("id") for (e, _k, _s, _u) in img_break}
-        heal_images(img_break, args)  # performs the writes; prints HEALED/IRRECOVERABLE
+    if args.fix and (img_break or preview_break):
+        dead_ids = {e.get("id") for (e, _k, _s, _u) in img_break + preview_break}
+        if img_break:
+            heal_images(img_break, args)      # performs the writes; prints HEALED/IRRECOVERABLE
+        if preview_break:
+            heal_previews(preview_break, args)
         # Re-read data.js (writes happened) and re-lint ONLY the originally-dead
         # set; whatever is still DEAD stays as breakage.
         try:
@@ -264,17 +310,18 @@ def main():
         except Exception:
             fresh = entries
         recheck = [e for e in fresh if e.get("id") in dead_ids]
-        img_break, _yt2, _u2, _p2 = lint(recheck, argparse.Namespace(
+        img_break, _yt2, preview_break, _u2, _p2 = lint(recheck, argparse.Namespace(
             deep_youtube=False, workers=args.workers, timeout=args.timeout))
 
-    breakage = img_break + yt_break
+    breakage = img_break + yt_break + preview_break
     for e, kind, status, url in breakage:
         print(f"{e.get('id')}\t{e.get('__app_id')}\t{kind}\t{status}\t{url}")
 
     n_img = sum(1 for b in breakage if b[1] == "image")
     n_yt = sum(1 for b in breakage if b[1] == "youtube")
+    n_prev = sum(1 for b in breakage if b[1] == "preview")
     print(f"lint_data: checked {len(entries)} entries | image breakage={n_img} "
-          f"youtube breakage={n_yt} unknown(net)={unknown}", file=sys.stderr)
+          f"youtube breakage={n_yt} preview breakage={n_prev} unknown(net)={unknown}", file=sys.stderr)
 
     sys.exit(1 if breakage else 0)
 

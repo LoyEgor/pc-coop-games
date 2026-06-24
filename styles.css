@@ -607,6 +607,55 @@ th:nth-child(13),
 
 .image-cell a {
   display: block;
+  position: relative; /* positioning context for the hover-preview overlay */
+}
+
+/* Hover preview overlay (microtrailer <video> or screenshot crossfade) shares the
+   thumbnail box and scales identically to the static-image hover zoom, so it sits
+   exactly on top of it. pointer-events:none lets clicks fall through to the store
+   link. Hidden (opacity 0) until JS adds .preview-on once playback/crossfade is up,
+   so the static header is always the visible floor — no blank frame, graceful
+   fallback on any error. */
+.image-cell video.preview,
+.image-cell .preview-shots {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(4);
+  transform-origin: left center;
+  box-shadow: var(--shadow-hover);
+  z-index: 50;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.image-cell video.preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-2);
+}
+
+.image-cell .preview-shots img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+
+.image-cell .preview-shots img.is-on {
+  opacity: 1;
+}
+
+.image-cell.preview-on video.preview,
+.image-cell.preview-on .preview-shots {
+  opacity: 1;
 }
 
 .image-cell img {
@@ -625,7 +674,7 @@ th:nth-child(13),
 }
 
 .image-cell:hover img {
-  transform: scale(3);
+  transform: scale(4);
   box-shadow: var(--shadow-hover);
   position: relative;
   z-index: 50;
@@ -1514,6 +1563,9 @@ tbody tr:hover .youtube-link .yt-icon-play {
 
   td.image-cell img {
     width: 100%;
+    height: auto; /* let aspect-ratio compute the height; the HTML height="47" attr
+                     (a presentational hint with no CSS height to override it) was
+                     pinning the image to a flat 47px strip on mobile */
     aspect-ratio: 460 / 215;
     transform: none !important;
     box-shadow: none !important;
@@ -1526,6 +1578,18 @@ tbody tr:hover .youtube-link .yt-icon-play {
   .image-cell:hover img {
     transform: none !important;
     box-shadow: none !important;
+  }
+
+  /* Touch has no hover: the preview auto-plays on the card the user is most likely
+     looking at (centred in the viewport — see mobilePreview in app.js). So the
+     overlay video/screenshots fill the full-width image box at its real size, NOT
+     the desktop scale(4) zoom (which would balloon off the card). */
+  .image-cell video.preview,
+  .image-cell .preview-shots {
+    transform: none !important;
+    box-shadow: none !important;
+    border-radius: var(--radius-sm);
+    z-index: 1;
   }
 
   td.title-cell {

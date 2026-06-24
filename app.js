@@ -414,11 +414,17 @@ function render() {
   const visibleGames = getVisibleGames();
   const playedCount = games.filter(isPlayed).length;
 
+  // Park the pooled <video> before the rebuild destroys the cell it lives in (a
+  // revealed desktop hover preview), else it decodes off-DOM until the next hover.
+  // The mobile centred-autoplay's active cell is parked by mobilePreview.refresh().
+  clearTimeout(previewState.dwell);
+  if (previewState.cell) { stopImagePreview(previewState.cell); previewState.cell = null; }
   els.body.innerHTML = visibleGames.map(renderRow).join("");
   els.empty.hidden = visibleGames.length > 0;
   els.caption.textContent = `Showing ${visibleGames.length} of ${games.length}. Played: ${playedCount}.`;
   renderSortIcons();
   renderActiveFilterButtons();
+  mobilePreview.refresh(); // re-observe the rebuilt cells (mobile auto-preview); no-op on desktop
 }
 
 // Patch the table after a single Played toggle WITHOUT rebuilding every row.
@@ -434,7 +440,13 @@ function refreshAfterPlayedToggle(game, tr) {
       state.viewMode === "all" ||
       (state.viewMode === "active" && !nowPlayed) ||
       (state.viewMode === "played" && nowPlayed);
-    if (!inView) tr.remove();
+    if (!inView) {
+      // Park the pooled <video> before detaching the row if it's the one currently
+      // previewing (desktop hover or mobile centred-autoplay), else it orphans.
+      if (previewState.cell && tr.contains(previewState.cell)) { stopImagePreview(previewState.cell); previewState.cell = null; }
+      if (mobilePreview.active && tr.contains(mobilePreview.active)) { stopImagePreview(mobilePreview.active); mobilePreview.active = null; }
+      tr.remove();
+    }
   }
   const visibleCount = els.body.querySelectorAll("tr").length;
   const playedCount = games.filter(isPlayed).length;
@@ -527,10 +539,17 @@ function renderRow(game) {
   const priceDisplay = `<a class="price-link" href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">${game.price}&nbsp;₴</a>`;
   const appId = steamAppId(game.storeUrl);
   const imgSrc = (appId && imgResolved.get(appId)) || game.imageUrl;
+  // Hover-preview source: a Steam microtrailer mp4 if the game has a trailer,
+  // else a small screenshot set to crossfade. Absent on both => static header.
+  const previewAttr = game.previewUrl
+    ? ` data-preview="${escapeHtml(game.previewUrl)}"`
+    : (Array.isArray(game.previewShots) && game.previewShots.length
+        ? ` data-shots="${escapeHtml(JSON.stringify(game.previewShots))}"`
+        : "");
 
   return `
     <tr class="${played ? "is-played" : ""}">
-      <td class="image-cell">
+      <td class="image-cell"${previewAttr}>
         <a href="${escapeHtml(game.storeUrl)}" target="_blank" rel="noreferrer">
           <img class="thumb" src="${escapeHtml(imgSrc)}" alt="${escapeHtml(game.title)}" loading="lazy" decoding="async" width="100" height="47"${appId ? ` data-app="${appId}"` : ""}>
         </a>
@@ -1012,6 +1031,271 @@ function closeVideo() {
     ytState.trigger = null;
   }
 }
+
+// === Image-cell gameplay preview on hover (pooled + warmed, low latency) ======
+// SteamDB-style: hovering a game's thumbnail overlays a muted looping Steam
+// microtrailer (game.previewUrl) — or, for games without a trailer, a screenshot
+// crossfade (game.previewShots). The static header stays underneath as the floor,
+// so there is never a blank frame; every failure path (no source / <video> error /
+// autoplay rejection / broken screenshot) silently degrades to it (the overlay
+// just never gets .preview-on, so it stays transparent).
+//
+// LATENCY: hover->first-frame is attacked on three fronts (benchmarked vs a naive
+// create-<video>-per-hover approach — combined was the clear winner):
+//   1. <head> preconnects video.akamai.steamstatic.com (crossorigin → the anon-CORS
+//      socket pool the video uses), so the first hover skips ~30-49ms DNS+TCP+TLS.
+//   2. ONE long-lived pooled <video> is reused for every row. teardown PARKS it
+//      inert — it never calls load()/removes the element, so the H.264 decoder +
+//      buffered bytes survive between hovers (discarding them was the slow part).
+//   3. The earliest signal (cursor enters the cell) PRIMES the pooled element with
+//      the url (preload + decode-ahead) so the dwell-fire play() is ~a presentation
+//      flip; a visibility-gated 25s keepalive re-arms the warm H2 socket.
+const PREVIEW_HOST = "https://video.akamai.steamstatic.com";
+const previewState = { cell: null, dwell: 0 };
+
+// Single reused <video>: the decoder/socket warmth lives here, not per-row.
+const vpool = {
+  el: null,
+  primed: null,    // url currently loaded into el
+  last: null,      // last url touched, for the keepalive re-arm
+  lastHover: 0,    // perf ts of last hover, to stop the keepalive when idle
+  revealed: false, // is the pooled video currently shown in a cell?
+  gen: 0,          // bumped each reveal/hide so a stale frame-callback can't fire
+  _show: null,     // current readiness listener, removed on the next reveal/hide
+  ka: 0,
+  ensure() {
+    if (this.el) return this.el;
+    const v = document.createElement("video");
+    v.className = "preview";
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.preload = "auto";
+    v.crossOrigin = "anonymous"; // share the anon-CORS pool the preconnect warmed
+    v.setAttribute("aria-hidden", "true");
+    this.park(v);
+    document.body.appendChild(v);
+    this.el = v;
+    if (!this.ka) {
+      this.ka = window.setInterval(() => {
+        // Re-arm the idle H2 socket (1-byte Range, also re-touches the immutable
+        // cache) so a hover after a pause is still warm — but only while the tab is
+        // visible and a hover happened recently, so an idle tab does nothing.
+        if (!this.last || document.visibilityState !== "visible") return;
+        if (performance.now() - this.lastHover > 120000) return;
+        fetch(this.last, { mode: "cors", credentials: "omit", cache: "force-cache",
+          headers: { Range: "bytes=0-0" } }).catch(() => {});
+      }, 25000);
+    }
+    return v;
+  },
+  park(v) { // inert + invisible, but KEEP src + decoder for the next hover
+    v.style.position = "absolute";
+    v.style.opacity = "0";
+    v.style.pointerEvents = "none";
+    v.style.width = "1px";
+    v.style.height = "1px";
+    if (v.parentNode !== document.body) document.body.appendChild(v);
+  },
+  unpark(v) {
+    v.style.position = "";
+    v.style.opacity = "";
+    v.style.pointerEvents = "";
+    v.style.width = "";
+    v.style.height = "";
+  },
+  // Earliest signal: load the bytes + decode-ahead without revealing.
+  prime(url) {
+    if (!url) return;
+    this.last = url;
+    this.lastHover = performance.now();
+    const v = this.ensure();
+    if (this.primed === url) return;
+    this.primed = url;
+    const myGen = this.gen;
+    v.src = url;
+    try { v.load(); } catch (_) {}
+    // Decode-ahead by playing while still parked+invisible. The deferred pause is
+    // GATED so it can only pause THIS prime's own still-parked element: skip if
+    // reveal() already showed it (`revealed`), OR if a later prime/reveal moved on
+    // to another url (`primed`/`gen` changed). Without the url/gen guard, on a fast
+    // A→B sweep A's late-resolving play() would pause the element now warming B —
+    // re-introducing the first-frame latency prime exists to remove.
+    const p = v.play();
+    if (p && p.then) p.then(() => {
+      if (!this.revealed && this.primed === url && this.gen === myGen) {
+        try { v.pause(); v.currentTime = 0; } catch (_) {}
+      }
+    }).catch(() => {});
+  },
+  // Reveal in `cell` and play (muted). Reuses the primed stream when it matches.
+  reveal(cell) {
+    const anchor = cell.querySelector("a");
+    if (!anchor) return;
+    const url = cell.dataset.preview;
+    const v = this.ensure();
+    this.last = url;
+    this.lastHover = performance.now();
+    this.revealed = true;
+    this.unpark(v);
+    if (v.parentNode !== anchor) anchor.appendChild(v);
+    if (this.primed !== url) {
+      this.primed = url;
+      v.src = url;
+      try { v.load(); } catch (_) {}
+    }
+    // Commit the opacity:0 baseline in this NEW position before .preview-on flips it
+    // to 1, so the 300ms CSS fade actually animates. prime() lands the first frame
+    // so fast that without this forced reflow the 0->1 change coalesces into an
+    // instant pop (no transition baseline) — the video would snap over the cover.
+    void v.offsetWidth;
+    // Reveal on the FIRST of several readiness signals — all idempotent (classList
+    // .add) and gen-gated so a stale fire can't show a preview the cursor left.
+    // requestVideoFrameCallback is the truest "frame presented", but it can be
+    // missed right after the element was re-parented / freshly loaded; 'playing' and
+    // 'loadeddata' back it up. Without that backup a missed rVFC left the video
+    // playing-but-invisible (no .preview-on) until a second hover.
+    if (this._show) {
+      v.removeEventListener("playing", this._show);
+      v.removeEventListener("loadeddata", this._show);
+    }
+    const gen = ++this.gen;
+    const show = () => { if (this.gen === gen) cell.classList.add("preview-on"); };
+    this._show = show; // tracked so the next reveal removes it (bounded listeners)
+    if (typeof v.requestVideoFrameCallback === "function") v.requestVideoFrameCallback(show);
+    v.addEventListener("playing", show);
+    v.addEventListener("loadeddata", show);
+    // play() can reject when the element was just re-parented or a new load started
+    // (the rare "stuck until I hover again" case). Retry ONCE after a tick, gen-gated
+    // so a stale retry can't resurrect a preview the cursor already left.
+    const playNow = () => {
+      const p = v.play();
+      if (p && p.catch) p.catch(() => window.setTimeout(() => {
+        if (this.gen === gen) { const p2 = v.play(); if (p2 && p2.catch) p2.catch(() => {}); }
+      }, 60));
+    };
+    playNow();
+  },
+  hide(cell) {
+    this.gen++;
+    this.revealed = false;
+    if (cell) cell.classList.remove("preview-on");
+    const v = this.el;
+    if (!v) return;
+    if (this._show) {
+      v.removeEventListener("playing", this._show);
+      v.removeEventListener("loadeddata", this._show);
+      this._show = null;
+    }
+    try { v.pause(); } catch (_) {}
+    try { v.currentTime = 0; } catch (_) {}
+    this.park(v); // KEEP src + warm decoder — do NOT load()/remove
+  },
+};
+
+function startImagePreview(cell) {
+  if (cell.dataset.preview) { vpool.reveal(cell); return; }
+  const anchor = cell.querySelector("a");
+  if (anchor && cell.dataset.shots) startShotCrossfade(cell, anchor, cell.dataset.shots);
+}
+
+function startShotCrossfade(cell, anchor, shotsRaw) {
+  let urls;
+  try { urls = JSON.parse(shotsRaw); } catch (_) { return; }
+  if (!Array.isArray(urls) || !urls.length) return;
+  let wrap = cell.querySelector(".preview-shots");
+  if (!wrap) {
+    wrap = document.createElement("div");
+    wrap.className = "preview-shots";
+    wrap.setAttribute("aria-hidden", "true");
+    urls.forEach((u, i) => {
+      const im = document.createElement("img");
+      im.decoding = "async";
+      im.addEventListener("error", () => im.remove(), { once: true });
+      im.src = u;
+      if (i === 0) im.classList.add("is-on");
+      wrap.appendChild(im);
+    });
+    anchor.appendChild(wrap);
+  }
+  cell.classList.add("preview-on");
+  let i = 0;
+  wrap._timer = window.setInterval(() => {
+    const imgs = wrap.querySelectorAll("img");
+    if (imgs.length < 2) return;
+    imgs[i % imgs.length].classList.remove("is-on");
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add("is-on");
+  }, 1100);
+}
+
+function stopImagePreview(cell) {
+  if (!cell) return;
+  vpool.hide(cell); // parks the pooled <video> (keeps decoder warm); clears .preview-on
+  const wrap = cell.querySelector(".preview-shots");
+  if (wrap) {
+    clearInterval(wrap._timer);
+    wrap.remove();
+  }
+}
+
+// === Mobile auto-preview ======================================================
+// Touch has no hover, so the desktop hover-to-play never fires. Instead we mirror
+// the video-feed pattern (Instagram / TikTok / Netflix rows): an IntersectionObserver
+// with a centred root band plays the microtrailer of the card the user is most
+// likely looking at — the one whose image sits closest to the vertical centre of
+// the viewport — and parks it once it scrolls out of the band. Reuses the same
+// single pooled <video> as desktop (startImagePreview/stopImagePreview → vpool), so
+// only ONE preview ever plays at a time. The band (rootMargin -40%/-40% → a 20%
+// centre strip) ensures exactly one card qualifies as the user scrolls.
+const mobilePreview = {
+  io: null,
+  active: null,
+  inBand: new Map(), // cell -> intersectionRatio (only cells touching the centre band)
+  isMobile() {
+    return window.matchMedia("(max-width: 720px)").matches;
+  },
+  // Re-observe the current image cells. Called after every render() (the tbody is
+  // rebuilt, so prior observed nodes are gone) and on resize across the breakpoint.
+  refresh() {
+    if (!this.isMobile()) { this.teardown(); return; }
+    if (!this.io) {
+      this.io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && e.target.dataset.preview) this.inBand.set(e.target, e.intersectionRatio);
+          else this.inBand.delete(e.target);
+        }
+        this.pick();
+      }, { rootMargin: "-40% 0px -40% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] });
+    } else {
+      this.io.disconnect();
+      this.inBand.clear();
+    }
+    // Park the pooled <video> before dropping the reference: the rebuilt tbody
+    // detached the old active cell, and if the new result has no in-band card,
+    // pick() never runs (best === active === null) so the clip would decode forever.
+    if (this.active) stopImagePreview(this.active);
+    this.active = null;
+    document.querySelectorAll("td.image-cell[data-preview]").forEach((c) => this.io.observe(c));
+  },
+  // Play the card most inside the centre band (highest intersection ratio).
+  pick() {
+    if (!this.isMobile()) { this.teardown(); return; } // crossed to desktop: yield the pooled <video> to hover
+    let best = null, bestRatio = -1;
+    for (const [cell, ratio] of this.inBand) {
+      if (ratio > bestRatio) { bestRatio = ratio; best = cell; }
+    }
+    if (best === this.active) return;
+    if (this.active) stopImagePreview(this.active);
+    this.active = best;
+    if (best) startImagePreview(best);
+  },
+  teardown() {
+    if (this.io) { this.io.disconnect(); this.io = null; }
+    this.inBand.clear();
+    if (this.active) { stopImagePreview(this.active); this.active = null; }
+  },
+};
 
 function renderEndingType(value) {
   const meta = ENDING_TYPE[value];
@@ -1570,7 +1854,45 @@ function initEvents() {
     if (!btn) return;
     clearTimeout(ytRowDwell);
     const id = btn.dataset.videoId;
-    ytRowDwell = setTimeout(() => prebufferVideo(id), 120);
+    // Priority: the hover MICROTRAILER preview goes FIRST. When this row has one
+    // (its image cell carries data-preview) hold the passive YouTube row-prebuffer
+    // back so the microtrailer wins the network/decoder; YouTube then warms second.
+    // Rows without a microtrailer keep the original fast warm. The icon-hover and
+    // pointerdown immediate-prebuffer paths are untouched — a direct intent to open
+    // YouTube is as instant as ever; only this passive row-warm yields.
+    const hasPreview = row.querySelector(".image-cell[data-preview]");
+    ytRowDwell = setTimeout(() => prebufferVideo(id), hasPreview ? 450 : 120);
+  }, { passive: true });
+
+  // Image-cell hover preview (mirrors the YouTube dwell). Arm on entering a NEW
+  // image cell with a preview source; a 140ms dwell means a fast sweep fetches
+  // nothing. previewState.cell is set on ENTER (not after the dwell) so repeated
+  // pointerover from child <a>/<img> inside the same cell don't reset the timer.
+  els.body.addEventListener("pointerover", (event) => {
+    if (event.pointerType === "touch") return;
+    if (mobilePreview.isMobile()) return; // narrow viewport: the centred-card autoplay owns the pooled <video>
+    const cell = event.target.closest(".image-cell");
+    if (cell === previewState.cell) return; // already inside the armed/active cell
+    clearTimeout(previewState.dwell);
+    if (previewState.cell && previewState.cell !== cell) stopImagePreview(previewState.cell);
+    previewState.cell = cell || null;
+    if (!cell || (!cell.dataset.preview && !cell.dataset.shots)) return;
+    // Arm the reveal. CRUCIAL: do NOT swallow the hover when the table is mid-scroll.
+    // That was the "video never plays until I re-hover (esp. after scrolling)" bug:
+    // the cursor lands while the 250ms scroll-settle flag is up, the reveal is
+    // dropped, and because previewState.cell is already this cell, no later
+    // pointerover re-arms it while the cursor sits still. Instead defer + retry until
+    // the scroll settles, so the SAME hover eventually reveals — no second hover.
+    const arm = () => {
+      if (previewState.cell !== cell) return;          // cursor moved on
+      if (ytState.scrolling) { previewState.dwell = setTimeout(arm, 150); return; }
+      startImagePreview(cell);
+    };
+    // Early warm the pooled <video> the instant the cursor lands (skip mid-scroll to
+    // avoid thrash; reveal() loads the src itself if priming was skipped). Short
+    // dwell because the warming, not the wait, hides the latency.
+    if (cell.dataset.preview && !ytState.scrolling) vpool.prime(cell.dataset.preview);
+    previewState.dwell = setTimeout(arm, cell.dataset.preview ? 75 : 120);
   }, { passive: true });
 
   // Leaving the table entirely tears down an un-clicked silent pre-buffer (stop
@@ -1579,6 +1901,30 @@ function initEvents() {
   els.body.addEventListener("pointerleave", () => {
     clearTimeout(ytRowDwell);
     cancelPrebuffer();
+    clearTimeout(previewState.dwell);
+    if (previewState.cell) { stopImagePreview(previewState.cell); previewState.cell = null; }
+  });
+
+  // Toggle the mobile centred-card auto-preview when crossing the 720px breakpoint
+  // (resize / orientation). refresh() observes on mobile, tears down on desktop;
+  // debounced so a resize drag doesn't thrash the observer.
+  let previewResizeT = 0;
+  window.addEventListener("resize", () => {
+    clearTimeout(previewResizeT);
+    previewResizeT = setTimeout(() => mobilePreview.refresh(), 200);
+  }, { passive: true });
+
+  // Park any playing preview when the tab is backgrounded so it doesn't keep
+  // decoding off-screen (battery/CPU); re-arm the mobile centred-autoplay on return.
+  // (IntersectionObserver does not fire on tab-background, so pick() can't catch this.)
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      clearTimeout(previewState.dwell);
+      if (previewState.cell) { stopImagePreview(previewState.cell); previewState.cell = null; }
+      if (mobilePreview.active) { stopImagePreview(mobilePreview.active); mobilePreview.active = null; }
+    } else {
+      mobilePreview.refresh();
+    }
   });
 
   // pointerdown = earliest signal on touch (no hover) and just before the click.

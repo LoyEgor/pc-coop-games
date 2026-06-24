@@ -19,6 +19,12 @@
   <link rel="preconnect" href="https://s.ytimg.com" crossorigin>
   <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="preconnect" href="https://www.google.com" crossorigin>
+  <!-- Hover-preview microtrailer CDN. crossorigin is REQUIRED: the mp4 is fetched
+       anonymous-CORS, and browsers pool anonymous vs credentialed sockets
+       separately, so a non-crossorigin preconnect socket would NOT be reused by the
+       video request — the first hover would still pay the full ~30-49ms DNS+TCP+TLS.
+       Warming it here skips that handshake before the very first hover. -->
+  <link rel="preconnect" href="https://video.akamai.steamstatic.com" crossorigin>
   <!-- dns-prefetch fallback (engines that cap/ignore preconnect) + the media CDN
        (*.googlevideo.com) whose exact subdomain isn't known until the player
        resolves it, so it can only be DNS-pre-resolved, never preconnected. -->
@@ -29,9 +35,10 @@
   <link rel="dns-prefetch" href="https://yt3.ggpht.com">
   <link rel="dns-prefetch" href="https://googlevideo.com">
   <link rel="dns-prefetch" href="https://www.google.com">
-  <link rel="stylesheet" href="styles.css?v=2026-06-14-perf">
-  <script src="data.js?v=2026-06-14-perf" defer></script>
-  <script src="app.js?v=2026-06-14-perf" defer></script>
+  <link rel="dns-prefetch" href="https://video.akamai.steamstatic.com">
+  <link rel="stylesheet" href="styles.css?v=2026-06-24-hover8">
+  <script src="data.js?v=2026-06-24-hover8" defer></script>
+  <script src="app.js?v=2026-06-24-hover8" defer></script>
 </head>
 <body data-theme="dark">
   <div class="app">
