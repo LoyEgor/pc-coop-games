@@ -94,6 +94,19 @@ restart finds another 5–15 games. It means "the easy sources are tapped, go hu
 
 ## Creative discovery (invent new search angles — the real "never stop")
 
+**PRIMARY ENGINE FIRST — do not default to WebSearch listicles.** The catalog's highest-yield
+method BY FAR is the `steam_coop_deep_scan` source (sources.json): page Steam's Co-op category
+(`category2=9`) by `Reviews_DESC` and walk the DEEP TAIL, resuming from the offset stored in
+`progress.json` (`current_offset`). On 2026-06-06 it added 5-11 net-new games PER PAGE across
+offsets 250-450; the Co-op category holds ~13k apps, so the tail is ~96% unexplored. WebSearch
+"best co-op 2026" / roundup / franchise-completeness angles are SATURATED on a mature catalog —
+they re-surface only already-known popular games (proven 0-yield on 2026-06-27, when inline bursts
+abandoned the deep-scan and fell back to listicles). So: **resume `steam_coop_deep_scan` from its
+offset as the default each burst**; use the angles below only for variety. When subagents are
+available, the LEVER is to PARALLELIZE the deep-scan — give each agent a disjoint offset slice
+(a:450-650, b:650-850, …) — which is exactly why the 2026-06-27 subagent sweep found net-new games
+while the inline loop (re-running saturated listicles, never resuming the crawl) found none.
+
 You are an LLM, not a fixed crawler. When `sources.json` is yielding little, GENERATE
 your own search angles and chase them. Each discovery burst: pick an angle you have NOT
 recently tried (check `state/discovery-log.tsv`), search it, run the Per-candidate
@@ -402,6 +415,15 @@ Rationale: the catalog's discovery sources are exhausted (many full runs found n
 3. Extract game names + Steam app IDs.
 4. Dedupe against existing entries.
 5. For each new candidate → run "Per-candidate procedure".
+
+### `steam_coop_deep_scan` (PRIMARY — the high-yield engine)
+1. Read `current_offset` from `progress.json` (RESUME; do NOT restart at 0 — restarting re-scans the saturated front and finds nothing).
+2. GET `https://store.steampowered.com/search/results/?category2=9&sort_by=Reviews_DESC&start=<offset>&count=50&infinite=1` with header `User-Agent: Mozilla/5.0` (JSON response).
+3. Parse `results_html` for `data-ds-appid` → appids; read `total_count` from the JSON.
+4. For each appid NOT already in data.js / reeval.tsv / hard-block.tsv → run the "Per-candidate procedure".
+5. Advance `current_offset += 50` and PERSIST it to progress.json so the next burst resumes deeper.
+6. Exhausted only when `current_offset >= total_count`, OR several consecutive pages yield 0 net-new after exclusion. With ~13k co-op apps this runs a long time — intended; it is the engine, not a quick source.
+7. SUBAGENT LEVER: when you can spawn agents, give each a disjoint offset slice and run them in parallel — the proven way to outpace inline.
 
 ### `websearch_queries`
 1. For each query in `queries` array, run a single `WebSearch` call.

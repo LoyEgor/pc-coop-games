@@ -123,6 +123,16 @@
     },
 
     {
+      "id": "steam_coop_deep_scan",
+      "phase": 4,
+      "method": "steam_coop_deep_scan",
+      "url_template": "https://store.steampowered.com/search/results/?category2=9&sort_by=Reviews_DESC&start={start}&count=50&infinite=1",
+      "page_size": 50,
+      "start_offset": 450,
+      "total_count_hint": 12990,
+      "note": "PRIMARY phase-4 engine — proven highest-yield (5-11 net-new per page across offsets 250-450 on 2026-06-06). Walks the LONG TAIL of Steam's Co-op category (~13k apps) by review count, deep past the saturated popular front (first ~300 are all catalogued). Cursor = the `start` offset stored in progress.json: RESUME from where the last run stopped, page +50, do NOT reinvent it ad-hoc as a one-off WebSearch (that regression is exactly why 2026-06-27 inline bursts found 0 — they fell back to saturated listicles instead of resuming this crawl). Exhausted only when start >= total_count OR several consecutive pages yield 0 net-new AFTER exclusion. PARALLELIZE with subagents when available: give each agent a disjoint offset slice (a:450-650, b:650-850, ...) — that parallel tail-mining is what made the subagent sweep outperform inline. Response is JSON; appids are in results_html as data-ds-appid. Dedup every appid vs data.js + reeval.tsv + hard-block.tsv BEFORE any per-candidate work."
+    },
+    {
       "id": "reeval_skipped",
       "phase": 4,
       "method": "reeval_skipped",
@@ -215,6 +225,7 @@
     "webfetch": "Generic article scrape. Look for game lists with links to Steam.",
     "reeval_skipped": "Read state/skipped.tsv. For each row where reason is in [ambiguous, unclear_ending, not_enough_reviews], run validate() again. If now passes, build entry and append.",
     "steam_more_like_this": "Use Steam's tag-similarity to expand. Each top entry's Steam page has 'More like this' carousel. Scrape those titles.",
-    "websearch_queries": "Run each query through WebSearch. Parse results for game names mentioned. Dedupe heavily against existing data.js."
+    "websearch_queries": "Run each query through WebSearch. Parse results for game names mentioned. Dedupe heavily against existing data.js. NOTE: on a mature catalog this method is SATURATED — listicles/roundups only surface already-known popular games (proven 0-yield on 2026-06-27). Prefer steam_coop_deep_scan; use websearch_queries only for variety, not as the main engine.",
+    "steam_coop_deep_scan": "GET the url_template with {start} = the stored offset (JSON response; send header User-Agent: Mozilla/5.0). Parse results_html for data-ds-appid attributes -> appids. For each NEW appid (not already in data.js / reeval.tsv / hard-block.tsv), run the standard Per-candidate procedure. After the page, advance the offset by page_size (50) and PERSIST it to progress.json (current_offset) so the next burst resumes deeper instead of restarting. total_count is in the JSON response — keep paging until start >= total_count. This is the Steam-store search by the Co-op category (category2=9) sorted by review count; it was the fallback for steamdb_tag 403s, now promoted to a first-class RESUMABLE source because it is the catalog's highest-yield discovery method (the popular front is exhausted; net-new lives in the deep tail)."
   }
 }

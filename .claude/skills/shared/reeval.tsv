@@ -296,6 +296,7 @@ into-the-dungeon	Into the Dungeon	not_enough_reviews	cycle5-validate	45 reviews 
 into-the-fire	Into the Fire	unreleased	aaa_aa_sweep	Coming soon Early Access 2026, 0 reviews, single-player only (no Co-op category) — unreleased
 iron-front-digital-war-edition	Iron Front: Digital War Edition	low_fit	aaa_aa_sweep	Gate A: no shipped, finishable 2-player co-op campaign. Steam categories list only Single-player + Multi-player (no Co-op / Online Co-op badge). Multiplayer is ARMA-engine PvP modes (deathmatch/CTF) p
 ironclad	Ironclad	unreleased	aaa_aa_sweep	Coming soon (TBA), unreleased with 0 Steam reviews.
+ironwolf-vr	IronWolf VR	low_fit	steam_coop_deep_scan	VR-only, outside catalog scope; non-VR edition (ironwolf-free-non-vr-edition) is the kept entry
 it-takes-two-friends-pass	It Takes Two Friends Pass	duplicate	steam_more_like_this	Friend Pass version of It Takes Two (already in catalog as 1426210)
 jaws-of-the-lion	Jaws of the Lion	low_fit	aaa_aa_sweep	Not a standalone game — it is Steam DLC (app 1809490, type=dlc) requiring base game Gloomhaven (780290). Catalog entries are standalone Steam apps with their own storeUrl/oneCopy semantics; a campaign
 jay-and-silent-bob-chronic-blunt-punch	Jay and Silent Bob: Chronic Blunt Punch	low_fit	websearch_niche_queries	Released Apr 2026; 65% positive (Mixed, 112 reviews); UA region returns appdetails success:false — likely region-locked; Atari publisher. Marginal quality + can't easily buy.
@@ -467,6 +468,7 @@ riftborne	Riftborne	endless	steam-coop-deep-scan-offset-375	Terminal-based grand
 rising-lords	Rising Lords	endless	coop-hunter-validate	app 835650, 71% of 965 reviews, has Online/LAN Co-op categories — but co-op is "comp-stomp" skirmish vs AI only (open-ended domination matches, replayable on maps), NOT a culminating sequence. The onl
 rivals-of-aether-2	Rivals of Aether II	low_fit	phase4_steam_more_like_this	PvP platform fighter sequel; no finite co-op campaign
 romestead	Romestead	endless	creative_discovery	Early Access sandbox survival/builder, no defined ending — primarily sandbox-oriented per Steam page; 1-2 years in EA
+rosalie	Rosalie	low_fit	steam_coop_deep_scan	Early Access, content incomplete ("two regions so far") — no shipped finish yet; recheck on 1.0
 runcscape-dragonwilds	RuneScape: Dragonwilds	early_access	steam_more_like_this	still_EA_per_steam_genre_2025_release_dragon_queen_planned_endboss
 s-and-box	s-and-box	low_fit	phase4_steam_more_like_this	sandbox (Garry's Mod successor), no defined ending
 s-box	s&box	endless	aaa_aa_sweep	Game-creation sandbox platform (Facepunch, Source 2) — 'endless sandbox fun', community-made content, no win-state/finish. Also still unreleased/coming-soon. Endless + unreleased. Re-checkable.
@@ -479,6 +481,7 @@ sea-of-thieves	Sea of Thieves	endless	removed-entries	hardcoded_blocklist+manual
 serpent-s-gaze	Serpent's Gaze	unclear_ending	coop-hunter-validate	app_id 3069050, EA released 25 May 2026, 87% of 516 reviews, 1-4p Online Co-op (Gate A passes). But it's a roguelite still in Early Access with devs stating 1-2 more years of EA ahead and more bosses/
 shift-at-midnight	Shift At Midnight	endless	creative-discovery	Coming soon 2026 (Steam app 3722330), randomly generated shifts pattern (Lethal/Phasmo-like) — likely endless
 shock-troopers	SHOCK TROOPERS	low_fit	aaa_aa_sweep	Real 2-4 co-op + Remote Play, but a single run to credits is ~28 min; reaching the finish is <=1h (branching routes need replays). Below the >1h co-op-finish gate.
+shovel-knight-shovel-of-hope	Shovel Knight: Shovel of Hope	low_fit	steam_coop_deep_scan	redundant — subset of shovel-knight-treasure-trove (already catalogued)
 shovel-knight-shovel-of-hope-dx	Shovel Knight: Shovel of Hope DX	unreleased	aaa_aa_sweep	Steam app 2661310 is coming_soon (release 'To be announced'), 0 reviews. Unreleased.
 shrimp-game-krill-confirmed	SHRIMP GAME: KRILL CONFIRMED	low_fit	steam-coop-deep-scan-offset-375	Marketed as an 'intro to SHRIMP GAME' (the full project) — appears to be a free demo/teaser. app 4597330
 silent-rain	Silent Rain	endless	expanded_discovery	Found 2026-06-27: app 1791910, released 15 Jul 2024, Online Co-op 1-4, but endless (no discrete finish per validation). Re-checkable.
