@@ -36,6 +36,7 @@ anvil-vault-breakers	not_found	unknown	Steam search returns no match under this 
 apocalypse-party-20-minutes-till-dawn-free-thanking-dlc	Apocalypse Party & 20 Minutes Till Dawn Free Thanking DLC	low_fit	steam-coop-deep-scan-offset-325	Free DLC for Apocalypse Party + 20 Minutes Till Dawn, not a standalone game (type=DLC). app 2685140
 arc-raiders	ARC Raiders	endless	aaa_aa_sweep	Gate B fail: multiplayer extraction shooter (PvPvE) — endless live-service extraction loop with seasons, no discrete finish. 84% of 401k reviews pass threshold but no win-state.
 archrobo-robotic-annihilation	ArchRobo - Robotic Annihilation	endless	aaa_aa_sweep	Has 22 reviews (86% positive) so passes the threshold and Remote Play Together is present, but the only co-op modes are an endless 4-player Survival mode (randomized layouts, 'endless fun') and a PvP 
+arizona-sunshine-vr-remake	Arizona Sunshine VR Remake	low_fit	steam_coop_deep_scan	VR-only
 ark-survival-evolved	ARK: Survival Evolved	blocklisted_endless	curated;phase4_steam_more_like_this;steam_more_like_this	on hardcoded blocklist [seen 3x; reasons: blocklisted_endless]
 arm-of-satan-chapter-1	Arm of Satan: Chapter 1	not_enough_reviews	reeval_skipped	Re-checked 2026-06-27: still 8 reviews/100% (<50 gate). app 2388750. Re-trigger: total_reviews>=50.
 arma-3	Arma 3	ambiguous	reeval_skipped	main campaign single-player; co-op only via Apex Protocol DLC + workshop [seen 4x]
@@ -115,6 +116,7 @@ conan-chop-chop	Conan Chop Chop	unclear_ending	cycle6-validate	roguelite finish 
 conan-exiles	Conan Exiles	endless	curated	Massively Multiplayer category, sandbox survival no win-condition
 contagion	Contagion	endless	aaa_aa_sweep	Passes thresholds (15711 reviews, Mostly Positive ~73%) and has online co-op (Escape/Extraction), but co-op is repeatable individual maps with no campaign arc or defined finish — pick a map, escape/ex
 content-warning	Content Warning	endless	aaa_aa_sweep	On the hardcoded blocklist — sessional co-op horror (film spooky stuff to go viral, quota-style sessions like Lethal Company) with no end. Endless by design.
+cook-out	Cook-Out	low_fit	steam_coop_deep_scan	VR-only
 cooking-simulator-2	Cooking Simulator 2	low_rating	aaa_aa_sweep	Cooking Simulator 2: Better Together — Mixed, 349/765 = 46% positive, below 50% threshold (co-op exists, re-checkable)
 cooking-simulator-2-better-together	Cooking Simulator 2: Better Together	not_enough_reviews	aaa_aa_sweep	Steam reviews 45.6% positive (349/765) — below 50% threshold (Mixed). Has real online co-op and is released, but fails the rating gate.
 core-keeper	Core Keeper	endless	removed-entries	hardcoded_blocklist+manual_audit
@@ -128,6 +130,7 @@ crime-simulator	Crime Simulator	endless	aaa_aa_sweep	endless
 crimzon-clover-world-ignition	Crimzon Clover: World Ignition	coop_too_short	coop-hunter-validate	app 285440 (live, distinct from 2022 remaster "World EXplosion" 1718160). Reviews 1383/1484 = 93% Very Positive (passes quality). Co-op EXISTS but is local-only tacked-on (USB=P1, keyboard=P2; SHARED 
 critter-crunch	Critter Crunch	endless	discovery	Co-op = Survival mode endless score-attack; Adventure (campaign with credits) is SP-only; no co-op finish event
 crush-crush	Crush Crush	endless	phase4_steam_more_like_this	idle clicker dating sim, no ending
+cryo	CRYO	low_fit	steam_coop_deep_scan	Early Access/incomplete
 cyber-citizen-shockman-2	not_found	unknown	Steam search returns no match under this name	
 cybercorp	CyberCorp	endless	creative_discovery	Procedural loot shooter, no defined ending, live-service style, app 1116170
 damnation-2009	Damnation (2009)	unknown	wikipedia_coop_lists	
