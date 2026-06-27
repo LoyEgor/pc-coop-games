@@ -9,16 +9,16 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 989,
+  "entries_checked": 1043,
   "updates_applied": {
-    "price": 189,
-    "rating": 14,
-    "count": 18,
-    "image": 11,
-    "preview": 109,
+    "price": 42,
+    "rating": 0,
+    "count": 0,
+    "image": 0,
+    "preview": 2,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
-  "last_success": "2026-06-27T12:22:46Z"
+  "last_success": "2026-06-27T14:57:04Z"
 }
