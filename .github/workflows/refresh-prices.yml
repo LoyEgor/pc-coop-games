@@ -60,11 +60,15 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # Stage data.js (may or may not have changes) + status (always changes).
-          git add data.js .github/refresh-status.json .claude/skills/fact-checker/state/applied-fixes.tsv 2>/dev/null || true
+          # NB: do NOT list a non-existent pathspec here — `git add a b missing`
+          # aborts and stages NOTHING (silent under `|| true`), which made the cron
+          # run green but never commit since ~2026-06-05 (applied-fixes.tsv was
+          # removed in the 2026-05-31 state-model fold-down). Stage only real files.
+          git add data.js .github/refresh-status.json 2>/dev/null || true
 
-          # Only commit if there are real changes (status file timestamp
-          # alone shouldn't trigger noise — but data.js + applied-fixes.tsv will).
-          if git diff --cached --quiet -- data.js .claude/skills/fact-checker/state/applied-fixes.tsv; then
+          # Only commit if there are real changes (status file timestamp alone
+          # shouldn't trigger noise — but data.js drift will).
+          if git diff --cached --quiet -- data.js; then
             # No data changes — still commit status to record heartbeat,
             # but use a quieter message.
             git diff --cached --quiet && exit 0
