@@ -418,6 +418,7 @@ pga-tour-2k25	PGA TOUR 2K25	low_fit	aaa_aa_sweep	Sports/golf sim. Steam 'Co-op' 
 phasmophobia	Phasmophobia	endless	aaa_aa_sweep	Explicit blocklist + endless: ghost-hunting contracts/quotas with no finish event, ongoing live updates. No win-condition or final mission — endless loop.
 pico-park-classic-edition	PICO PARK Classic Edition	duplicate	steam_more_like_this	PICO PARK (1509960) and PICO PARK 2 already in catalog
 pirate-chips	Pirate Chips	low_fit	phase4_steam_more_like_this	obscure, unverified
+pixel-dungeon-vr	Pixel Dungeon VR	low_fit	steam_coop_deep_scan	VR-only
 pixel-gun-2	Pixel Gun 2	endless	aaa_aa_sweep	Unreleased (coming_soon) + 'Massively Multiplayer' F2P PvP shooter, matches-forever loop with no finish. Re-check post-launch.
 pixel-paint-together	Pixel Paint Together	low_fit	phase4_steam_more_like_this	collaborative painting sandbox tool
 pixel-worlds	Pixel Worlds MMO Sandbox	blocklisted_endless	phase4_steam_more_like_this	MMO sandbox, blocklist [seen 2x; reasons: blocklisted_endless]
@@ -587,6 +588,7 @@ titan-quest-ii	Titan Quest II	unreleased	aaa_aa_sweep	Still in Early Access (gen
 titanfall-2	Titanfall 2	endless	aaa_aa_sweep	Acclaimed story campaign is single-player only (no co-op). Co-op mode is Frontier Defense, 4-player endless wave-based horde survival with no finish.
 to-your-stations	To Your Stations!	not_enough_reviews	coop-hunter-validate	app_id 1078360. Steam appreviews summary: total_reviews=19 (18 positive / 1 negative, ~95%) — below the required ≥50 minimum, so fails STEP 3 quality gate. Otherwise it would have qualified: free game
 toasterball	no_finite_content	unknown	reddit_just_finished	
+tom-clancy-s-ghost-recon	Tom Clancy's Ghost Recon	online_dead	removed	re-added by deep-scan under new slug; app 15300 = removed ghost-recon-2001 (GameSpy dead 2014). reeval appid-gap: reeval keyed by slug not appid, so appid-exclusion missed it.
 tom-clancy-s-rainbow-six-extraction	Tom Clancy's Rainbow Six Extraction	endless	aaa_aa_sweep	Co-op PvE but structured entirely around repeatable Incursions/extraction objectives across regions; no campaign ending. Extraction-loop like GTFO -> endless.
 tom-clancy-s-splinter-cell-double-agent	Tom Clancy's Splinter Cell: Double Agent	low_rating	aaa_aa_sweep	low_rating (673/1895 positive = 35% < 50%)
 too-deep-to-quit	Too Deep To Quit	unreleased	aaa_aa_sweep	App 4182190 has 1-4p online co-op but is 'Coming soon' (2026) with 0 reviews. Unreleased — fails the released/>=20 reviews threshold. Re-check after launch.
