@@ -454,26 +454,31 @@ def main():
         # live trailer (pull/re-upload), or CLEAR to "" when the app has no trailer at
         # all (so the client falls back and lint/fix_preview stop re-reporting a dead
         # url forever). When there's no stored url yet, backfill if a trailer exists.
-        cur_prev = entry.get("previewUrl") or ""
-        if cur_prev.startswith("http"):
-            if cur_prev not in all_preview_urls(details):
+        # Only when appdetails actually returned. A None/failed fetch (Steam
+        # throttle) must NOT be read as "trailer gone" — that would churn/clear
+        # every entry; skip and retry next run. (This None-guard is the fix for the
+        # AttributeError that broke the 2026-06-27 cron run.)
+        if details:
+            cur_prev = entry.get("previewUrl") or ""
+            if cur_prev.startswith("http"):
+                if cur_prev not in all_preview_urls(details):
+                    fresh_prev = derive_preview_url(details)
+                    if fresh_prev and head_video_ok(fresh_prev):
+                        if apply_update(game_id, "previewUrl", fresh_prev):
+                            updates["preview"] += 1
+                            print(f"  [{i}/{len(entries)}] {game_id}: preview re-point -> {fresh_prev}")
+                    elif not (details.get("movies") or []):
+                        # trailer pulled entirely — clear (a present-but-dead HEAD or a
+                        # transient miss with movies still listed is left for next run).
+                        if apply_update(game_id, "previewUrl", ""):
+                            updates["preview"] += 1
+                            print(f"  [{i}/{len(entries)}] {game_id}: preview cleared (no trailer)")
+            else:
                 fresh_prev = derive_preview_url(details)
                 if fresh_prev and head_video_ok(fresh_prev):
                     if apply_update(game_id, "previewUrl", fresh_prev):
                         updates["preview"] += 1
-                        print(f"  [{i}/{len(entries)}] {game_id}: preview re-point -> {fresh_prev}")
-                elif not (details.get("movies") or []):
-                    # trailer pulled entirely — clear (a present-but-dead HEAD or a
-                    # transient miss with movies still listed is left for next run).
-                    if apply_update(game_id, "previewUrl", ""):
-                        updates["preview"] += 1
-                        print(f"  [{i}/{len(entries)}] {game_id}: preview cleared (no trailer)")
-        else:
-            fresh_prev = derive_preview_url(details)
-            if fresh_prev and head_video_ok(fresh_prev):
-                if apply_update(game_id, "previewUrl", fresh_prev):
-                    updates["preview"] += 1
-                    print(f"  [{i}/{len(entries)}] {game_id}: preview backfill -> {fresh_prev}")
+                        print(f"  [{i}/{len(entries)}] {game_id}: preview backfill -> {fresh_prev}")
 
         # Year — objective ground truth (release_date). Apply on any real diff.
         new_year = derive_year(details)
