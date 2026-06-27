@@ -99,6 +99,7 @@ cargo-co-op-delivery-simulator	CARGO Co-Op Delivery Simulator	unreleased	aaa_aa_
 cartel-pilots-wanted	Cartel Pilots Wanted	unreleased	aaa_aa_sweep	Coming soon (date TBA) with 0 Steam reviews. Fails the >=20 reviews / released threshold. Re-check after launch.
 catacomb-kids	Catacomb Kids	endless	aaa_aa_sweep	Still in Early Access (2025); per dev only 2/4 environments done and 'a proper final boss' is missing -> no finish exists yet. Co-op listed as a planned/incomplete feature, no online co-op. Re-check w
 catto-pew-pew	Catto Pew Pew	low_fit	phase4_steam_more_like_this	obscure casual, unverified
+cave-digger-2-dig-harder	Cave Digger 2 Dig Harder	low_fit	steam_coop_deep_scan	VR-only
 chains-of-fury	Chains of Fury	low_quality	creative_discovery	32.9% positive (25/76 reviews) — below 50% gate; also SP-only no co-op
 cheapskate	cheapskate	endless	aaa_aa_sweep	Early Access moddable skate sandbox with PvP/co-op but no finish / win-condition — endless sandbox.
 chefs-together	Chefs Together	endless	creative_discovery	Open-ended restaurant level-up loop; no campaign ending — customers keep coming, levels scale forever (Steam page confirms).
@@ -296,6 +297,7 @@ incursion-red-river	Incursion Red River	endless	creative_discovery	App 2116120, 
 infinity-nikki	infinity-nikki	endless	aaa_aa_sweep	Free-to-play open-world gacha with IAP and daily/weekly tasks; co-op is a shared-world hangout (hold hands, collect, photos), no finishable co-op campaign — endless live-service
 insurgency	Insurgency	endless	aaa_aa_sweep	Co-op is repeatable PvE Checkpoint skirmishes vs bots — no campaign finish, endless match loop.
 insurgency-sandstorm	Insurgency: Sandstorm	endless	aaa_aa_sweep	Co-op Checkpoint mode = repeatable PvE matches vs bots, no finish event; primarily PvP/PvE match-based, endless.
+into-black	Into Black	low_fit	steam_coop_deep_scan	VR-only
 into-the-dungeon	Into the Dungeon	not_enough_reviews	cycle5-validate	45 reviews 67%; co-op deckbuilder, recheck at 50+
 into-the-fire	Into the Fire	unreleased	aaa_aa_sweep	Coming soon Early Access 2026, 0 reviews, single-player only (no Co-op category) — unreleased
 iron-front-digital-war-edition	Iron Front: Digital War Edition	low_fit	aaa_aa_sweep	Gate A: no shipped, finishable 2-player co-op campaign. Steam categories list only Single-player + Multi-player (no Co-op / Online Co-op badge). Multiplayer is ARMA-engine PvP modes (deathmatch/CTF) p
