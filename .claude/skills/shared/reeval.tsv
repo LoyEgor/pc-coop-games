@@ -626,6 +626,7 @@ trigger-witch	Trigger Witch	not_enough_reviews	coop-hunter-validate	Steam app_id
 trine-6-together-in-time	Trine 6: Together in Time	unreleased	reeval_skipped	Re-checked 2026-06-27: coming_soon=true, releases 17 Sep 2026 (app 2932260). 0 reviews. HIGH-VALUE future add: Online Co-op + Shared Screen + RPT + cross-play; Trine series always ships a finite story campaign to credits (Trine 1-5 all catalogued). Re-trigger: after 17 Sep 2026 with >=50 reviews & >=50%.
 tumbleweed-destiny	Tumbleweed Destiny	endless	steam_coop_deep_scan	tumbleweed life simulator clicker — earn TP, explore wilderness, no defined endpoint
 turok-origins	Turok: Origins	not_enough_reviews	cycle5-validate	below 50 reviews
+twilight-wars	Twilight Wars	no_video_found	removed	fact-check: stored youtube was a DIFFERENT same-named game (cyberpunk 'Twilight Wars'); no correct gameplay video for app 3096550 (Gamelet top-down shooter) — namesake floods results. Re-add when a verified clip is found.
 undercrewed	Undercrewed	early_access	reeval_skipped	Re-checked 2026-06-27: still EA, abandoned since 2020 (no updates 5+ yrs); only 8 of 11 planned campaign levels. No finale. Re-trigger: unlikely (abandoned).
 underling-uprising	Underling Uprising	low_rating	aaa_aa_sweep	Only 19 total Steam reviews — below the 20-review threshold (released 14 May 2026, 74% positive). Re-check once it accrues more reviews.
 unreleased	unreleased	unreleased	aaa_aa_sweep	Placeholder/garbage candidate: title is the literal string 'unreleased' with no app_id; does not resolve to any real Steam game on store search, so nothing to verify or add. Prior reject reason was 'u
@@ -657,6 +658,7 @@ webfishing	WEBFISHING	blocklisted_endless	steam_more_like_this	blocklisted hango
 wendigo-blue	Wendigo Blue	unreleased	aaa_aa_sweep	Early Access 2D beat-em-up, content not complete. No documented story-mode ending / final game-end finish; finish unverified. Co-op + reviews fine, but Gate B fails for now.
 what-sub	What'Sub	endless	creative_discovery	Lethal-style extraction-diver — procedural levels, no campaign; also only 35 reviews; app 4269100
 where-winds-meet	where-winds-meet	low_fit	phase4_steam_more_like_this	open-world online live-service RPG, no clear ending [seen 2x; reasons: low_fit]
+whimsical-artefacts	Whimsical Artefacts	endless	removed	fact-check: no reachable finish (endless roguelike, procedural descent); discover verdict hallucinated a true ending (confused with another game). reeval.
 whisper-mountain-outbreak	Whisper Mountain Outbreak	endless	coop-hunter-validate	app_id 1953230, Early Access (Aug 2025), 85% of 2464 reviews, 4-player online co-op + Friend's Pass. Fails Gate B: the final mission is an endless wave horde with NO win condition. Both Steam discussi
 wild-hearts	Wild Hearts	not_enough_reviews	aaa_aa_sweep	WILD HEARTS Steam reviews 6062/12961 = 47% positive (Mixed), below the 50% threshold.
 wilmots-warehouse	Wilmot's Warehouse	endless	wikipedia_coop_lists	sandbox_warehouse_organizer_no_named_win_condition
