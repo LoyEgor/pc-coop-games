@@ -68,3 +68,12 @@ timestamp	angle	queries	added	notes
 2026-06-27T17:27:37Z	steam-coop-deep-scan-offset-1050-1300	6	pending	deep-scan 1050-1300: 33 qualified; slice 1150-1199 FAILED (session limit) - re-scan later; appended to working tree, FACT-CHECK + COMMIT DEFERRED to limit reset.
 2026-06-27T18:15:06Z	steam-coop-deep-scan-offset-1350-1600	6	51	deep-scan 1350-1600: 54 qualified; appended ~51, rest EA/VR/dup/blocklist. Tail still high-yield.
 2026-06-27T18:49:43Z	steam-coop-deep-scan-offset-1650-1900	6	27	deep-scan 1650-1900: 32 qualified; appended 27, rest VR/EA/dup. Yield thinning slightly at this depth.
+2026-06-27T23:14:50Z	steam-coop-deep-scan-offset-1950-2100	4	43	overnight discovery-only (no commit): offset 1950-2100, appended to working tree; total unreviewed now 43.
+2026-06-28T00:30:46Z	steam-coop-deep-scan-offset-2150-2300	4	76	overnight no-commit: offset 2150-2300; total unreviewed 76.
+2026-06-28T01:32:12Z	steam-coop-deep-scan-offset-2350-2500	4	102	overnight no-commit: offset 2350-2500; total unreviewed 102.
+2026-06-28T02:33:42Z	steam-coop-deep-scan-offset-2550-2700	4	135	overnight no-commit: offset 2550-2700; total unreviewed 135.
+2026-06-28T03:34:26Z	steam-coop-deep-scan-offset-2750-2900	4	157	overnight no-commit: offset 2750-2900; total unreviewed 157.
+2026-06-28T04:35:21Z	steam-coop-deep-scan-offset-2950-3100	4	183	overnight no-commit: offset 2950-3100; total unreviewed 183.
+2026-06-28T05:36:52Z	steam-coop-deep-scan-offset-3150-3300	4	208	overnight no-commit: offset 3150-3300; total unreviewed 208.
+2026-06-28T06:34:52Z	steam-coop-deep-scan-offset-3350-3500	4	216	overnight no-commit: offset 3350-3500; yield thinning (page 3500=0 net-new); total unreviewed 216.
+2026-06-28T07:29:52Z	steam-coop-deep-scan-offset-3550-3700	4	0	EXHAUSTED: 4 consecutive pages = 0 net-new; all remaining co-op apps are <50 reviews or DLC/non-games. Deep-scan tail (>=50 reviews) fully mined ~offset 3550. Loop stopped.
