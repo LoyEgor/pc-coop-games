@@ -18153,6 +18153,7 @@ window.GAMES = [
   },
   {
     id: "call-to-arms",
+    reviewed: true,
     title: "Call to Arms",
     year: 2018,
     genres: ["AA", "Isometric", "3D", "Tactics", "Military"],
@@ -18171,6 +18172,7 @@ window.GAMES = [
   },
   {
     id: "viscera-cleanup-detail-shadow-warrior",
+    reviewed: true,
     title: "Viscera Cleanup Detail: Shadow Warrior",
     year: 2013,
     genres: ["Indie", "First-person", "3D", "Puzzle"],
@@ -18189,6 +18191,7 @@ window.GAMES = [
   },
   {
     id: "escape-room-der-kranke-kollege",
+    reviewed: true,
     title: "Escape Room - Der kranke Kollege",
     year: 2020,
     genres: ["Indie", "First-person", "3D", "Puzzle", "Horror"],
@@ -18206,25 +18209,8 @@ window.GAMES = [
     youtubeUrl: youtube("CIerqkrFafs")
   },
   {
-    id: "banzai-escape-2-subterranean",
-    title: "Banzai Escape 2: Subterranean",
-    year: 2021,
-    genres: ["Indie", "Third-person", "3D", "Shooter", "Action", "Sci-fi"],
-    endingType: "levels",
-    rating: 81,
-    ratingCount: 960,
-    playersMax: 2,
-    hours: 5,
-    oneCopy: "none",
-    price: 0,
-    verdict: "Free anime third-person co-op shooter; clear discrete dungeon mission sets that end in an escape from underground.",
-    storeUrl: "https://store.steampowered.com/app/1758950/",
-    imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1758950/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1758950/702381/6b6217fcd9046d04d29f7cdd20bff7bb93af5e16/1750732894/microtrailer.mp4",
-    youtubeUrl: youtube("DvriILSX_0E")
-  },
-  {
     id: "somewhere-in-the-shadow",
+    reviewed: true,
     title: "Somewhere in the Shadow",
     year: 2021,
     genres: ["Indie", "First-person", "3D", "Puzzle", "Horror"],
@@ -18243,6 +18229,7 @@ window.GAMES = [
   },
   {
     id: "kunkun-dream-startles-the-soul",
+    reviewed: true,
     title: "KunKun dream Startles the Soul",
     year: 2024,
     genres: ["Indie", "First-person", "3D", "Puzzle", "Horror"],
@@ -18261,6 +18248,7 @@ window.GAMES = [
   },
   {
     id: "corgi-warlock",
+    reviewed: true,
     title: "Corgi Warlock",
     year: 2015,
     genres: ["Indie", "Side-view", "2D", "Action", "Fantasy"],
@@ -18279,6 +18267,7 @@ window.GAMES = [
   },
   {
     id: "project-starship",
+    reviewed: true,
     title: "Project Starship",
     year: 2016,
     genres: ["Indie", "Isometric", "2D", "Shooter", "Sci-fi", "Horror"],
@@ -18297,6 +18286,7 @@ window.GAMES = [
   },
   {
     id: "river-tails-stronger-together",
+    reviewed: true,
     title: "River Tails: Stronger Together",
     year: 2023,
     genres: ["Indie", "Side-view", "3D", "Platformer", "Puzzle"],
@@ -18315,6 +18305,7 @@ window.GAMES = [
   },
   {
     id: "songbringer",
+    reviewed: true,
     title: "Songbringer",
     year: 2017,
     genres: ["Indie", "Isometric", "2D", "Action", "RPG", "Sci-fi"],
@@ -18333,6 +18324,7 @@ window.GAMES = [
   },
   {
     id: "dresden-files-cooperative-card-game",
+    reviewed: true,
     title: "Dresden Files Cooperative Card Game",
     year: 2017,
     genres: ["Indie", "Isometric", "2D", "Tactics", "Fantasy"],
@@ -18351,6 +18343,7 @@ window.GAMES = [
   },
   {
     id: "cyberhunk",
+    reviewed: true,
     title: "CYBERHUNK",
     year: 2022,
     genres: ["Indie", "Isometric", "3D", "Shooter", "Sci-fi"],
@@ -18369,6 +18362,7 @@ window.GAMES = [
   },
   {
     id: "the-captain-is-dead",
+    reviewed: true,
     title: "The Captain is Dead",
     year: 2021,
     genres: ["Indie", "Isometric", "3D", "Tactics", "Sci-fi"],
@@ -18387,6 +18381,7 @@ window.GAMES = [
   },
   {
     id: "speaking-simulator",
+    reviewed: true,
     title: "Speaking Simulator",
     year: 2020,
     genres: ["Indie", "Third-person", "3D", "Puzzle"],
@@ -18405,6 +18400,7 @@ window.GAMES = [
   },
   {
     id: "slam-and-roll",
+    reviewed: true,
     title: "Slam and Roll",
     year: 2024,
     genres: ["Indie", "Side-view", "2D", "Platformer"],
@@ -18423,6 +18419,7 @@ window.GAMES = [
   },
   {
     id: "utawarerumono-zan-2",
+    reviewed: true,
     title: "Utawarerumono: ZAN 2",
     year: 2026,
     genres: ["AA", "Third-person", "3D", "Action", "RPG", "Fantasy"],

@@ -54,6 +54,7 @@ b-a-n-k	B.A.N.K.	endless	creative_discovery	Open-ended career sandbox: serve cus
 backrooms-blackhole	Backrooms: Blackhole	low_fit	aaa_aa_sweep	Only 3 total Steam reviews (released June 5, 2026) — below the >=20 threshold.
 backrooms-escape-together	Backrooms: Escape Together	unreleased	aaa_aa_sweep	Still in Early Access; 11 procedurally generated levels with no definitive final escape (current beta Hub, run-into-the-void). Ending remains unclear/fuzzy. Prior unclear_ending still holds.
 bang-bang-barrage	Bang Bang Barrage	endless	discovery	15-minute roguelite runs; reviewer describes endless sessional structure, no narrative finish or final boss
+banzai-escape-2-subterranean	Banzai Escape 2: Subterranean	endless	removed	fact-check: Early Access procedural roguelike; no implemented campaign finale (only planned); randomly-generated maps -> no qualifying finish. Re-check when campaign mode ships.
 basureroes-invasion	Basureroes: Invasion	not_enough_reviews	reeval_skipped	Re-checked 2026-06-27: still 29 reviews/100% (<50 gate). Co-op = split-screen + Remote Play Together (no Online Co-op cat). Released 30 Jan 2025. Re-trigger: when total_reviews>=50.
 battlecap	BattleCap	endless	aaa_aa_sweep	Real game (app 2885480, released 2024, 165 reviews/97%), but its only co-op mode 'Sea Monster Fishing' is wave-defense ('defend the Nymph's camp against waves of enemy assaults') with roguelite blessi
 battlemon	Battlemon	low_fit	phase4_steam_more_like_this	PvP party game; no finite co-op campaign
