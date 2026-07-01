@@ -22768,7 +22768,7 @@ window.GAMES = [
   },
   {
     id: "ghost-recon-breakpoint",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2231380/162747019/c9c9288f18110d900934dadc4bf9da15cacf74b3/1782834951/microtrailer.mp4",
     ratingCount: 42616,
     reviewed: true,
     title: "Ghost Recon Breakpoint",
@@ -24034,7 +24034,7 @@ window.GAMES = [
   {
     id: "lost-castle-2",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2445690/5870449/b67a9ba6cf9339a95f8e3c6c828b4caa62a73aef/1780906977/microtrailer.mp4",
-    ratingCount: 11182,
+    ratingCount: 12533,
     reviewed: true,
     title: "Lost Castle 2",
     year: 2026,
