@@ -3097,7 +3097,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "First-person", "3D", "Puzzle"],
     endingType: "arcade-goal",
-    rating: 90,
+    rating: 92,
     playersMax: 2,
     hours: 5,
     oneCopy: "none",
@@ -3432,7 +3432,7 @@ window.GAMES = [
   },
   {
     id: "blood-and-bacon",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/434570/50033/b0cc6d6e1050a07577e1c042b8c8de535bfd556b/1750530586/microtrailer.mp4",
     ratingCount: 36074,
     reviewed: true,
     title: "Blood and Bacon",
@@ -7136,7 +7136,7 @@ window.GAMES = [
   },
   {
     id: "one-piece-pirate-warriors-3",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/331600/33179/70f426f472b7f7909af714e0f6c7f6a39e78fb26/1751281915/microtrailer.mp4",
     reviewed: true,
     title: "ONE PIECE: PIRATE WARRIORS 3",
     year: 2015,
@@ -9697,7 +9697,7 @@ window.GAMES = [
   },
   {
     id: "outbreak",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/514990/318101/955aadeda554b2e3f26a9182a66ca15266d7e376/1751296019/microtrailer.mp4",
     reviewed: true,
     title: "Outbreak",
     year: 2017,
@@ -13434,7 +13434,7 @@ window.GAMES = [
     verdict: "🟠 Co-op comedy salon sim; the ending is reached by surviving rising daily quotas up to level 7.",
     storeUrl: "https://store.steampowered.com/app/3398870/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3398870/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3398870/870517/0f54dc024bf39d3ed5dd800c782c2e09f2d0b608/1750825905/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3398870/872293/7dbc54ba23766fdfd3d0b84893c910464491bf9e/1750825907/microtrailer.mp4",
     youtubeUrl: youtube("RVXPhjyy4u0")
   },
   {
@@ -14617,6 +14617,7 @@ window.GAMES = [
   },
   {
     id: "yars-recharged",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2019990/479464/c05cced5f58ec2758f3bf8265d979c79dee32ffc/1751068156/microtrailer.mp4",
     reviewed: true,
     title: "Yars: Recharged",
     year: 2022,
@@ -14731,6 +14732,7 @@ window.GAMES = [
   },
   {
     id: "embr",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1062830/403600/a56d21a32b2de3387b966d8b4fcf319f0545a99b/1750610912/microtrailer.mp4",
     reviewed: true,
     title: "Embr",
     year: 2021,
@@ -15415,6 +15417,7 @@ window.GAMES = [
   },
   {
     id: "runbow",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/464650/79013/652a40929e61839d9233423c45cefdf018c2497a/1751289410/microtrailer.mp4",
     reviewed: true,
     title: "Runbow",
     year: 2016,
@@ -19627,7 +19630,7 @@ window.GAMES = [
   },
   {
     id: "company-of-heroes-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/231430/42192/0b68542aa88b36d1a6ec5d96cd450a2aea9a076d/1750495255/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/231430/42191/9bbbe9536736a1fda24400dc2a69da310f8e697a/1750495251/microtrailer.mp4",
     ratingCount: 112647,
     reviewed: true,
     title: "Company of Heroes 2",
@@ -19989,7 +19992,7 @@ window.GAMES = [
   },
   {
     id: "steel-division-2",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/919640/229093/b6daf9d7669b773fdc6f1acdf75583fd10412485/1750596236/microtrailer.mp4",
     ratingCount: 9500,
     reviewed: true,
     title: "Steel Division 2",
@@ -21008,7 +21011,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-2",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/204340/6741/b26a260c48aa23990140a59e47e90d5b286440d0/1751267293/microtrailer.mp4",
     ratingCount: 13869,
     reviewed: true,
     title: "Serious Sam 2",
@@ -21315,7 +21318,7 @@ window.GAMES = [
   },
   {
     id: "a-robot-named-fight",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/603530/310828/fcc46112744ca80cda1df1591a08ee6c08eddb51/1751124129/microtrailer.mp4",
     ratingCount: 888,
     reviewed: true,
     title: "A Robot Named Fight!",
@@ -22002,7 +22005,7 @@ window.GAMES = [
   },
   {
     id: "tesla-vs-lovecraft",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/636100/143782/2c400bc48f78a8198681f6582a435c5d449c6d81/1751161306/microtrailer.mp4",
     ratingCount: 1233,
     reviewed: true,
     title: "Tesla vs Lovecraft",
@@ -23284,7 +23287,7 @@ window.GAMES = [
   },
   {
     id: "risk-of-rain-2013",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/248820/14440/f5e933307db87bd962ff313be46c72a6f40647fc/1750487603/microtrailer.mp4",
     ratingCount: 29815,
     reviewed: true,
     title: "Risk of Rain",
@@ -24147,7 +24150,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-2-enhanced-edition",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/257350/28863/dbc9603d7042ef05ba6384bd39851fba8b38704d/1750490786/microtrailer.mp4",
     ratingCount: 10721,
     reviewed: true,
     title: "Baldur's Gate II: Enhanced Edition",
