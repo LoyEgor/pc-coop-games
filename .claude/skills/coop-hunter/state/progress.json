@@ -548,5 +548,6 @@
       "pass": 4,
       "yield": 0
     }
-  ]
+  ],
+  "rpt_deep_scan_offset": 800
 }

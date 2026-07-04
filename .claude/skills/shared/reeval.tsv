@@ -53,6 +53,7 @@ awaysis	Awaysis	unreleased	aaa_aa_sweep	Unreleased — Steam status 'Coming soon
 b-a-n-k	B.A.N.K.	endless	creative_discovery	Open-ended career sandbox: serve customers and climb the corporate ladder — no defined final mission, loop continues; 98%/58 reviews
 backrooms-blackhole	Backrooms: Blackhole	low_fit	aaa_aa_sweep	Only 3 total Steam reviews (released June 5, 2026) — below the >=20 threshold.
 backrooms-escape-together	Backrooms: Escape Together	unreleased	aaa_aa_sweep	Still in Early Access; 11 procedurally generated levels with no definitive final escape (current beta Hub, run-into-the-void). Ending remains unclear/fuzzy. Prior unclear_ending still holds.
+bang-average-football-play-manage-create	Bang Average Football - Play, Manage, Create	unclear_ending	steam_rpt_deep_scan	RPT scan 2026-07-04: co-op is matches-only (one player runs management); 'King's Cup champions' reads as a career milestone, not a hard finish — football career/management is typically an open-ended season loop. Verify a real end before adding.
 bang-bang-barrage	Bang Bang Barrage	endless	discovery	15-minute roguelite runs; reviewer describes endless sessional structure, no narrative finish or final boss
 banzai-escape-2-subterranean	Banzai Escape 2: Subterranean	endless	removed	fact-check: Early Access procedural roguelike; no implemented campaign finale (only planned); randomly-generated maps -> no qualifying finish. Re-check when campaign mode ships.
 basureroes-invasion	Basureroes: Invasion	not_enough_reviews	reeval_skipped	Re-checked 2026-06-27: still 29 reviews/100% (<50 gate). Co-op = split-screen + Remote Play Together (no Online Co-op cat). Released 30 Jan 2025. Re-trigger: when total_reviews>=50.
@@ -439,10 +440,12 @@ pixel-paint-together	Pixel Paint Together	low_fit	phase4_steam_more_like_this	co
 pixel-worlds	Pixel Worlds MMO Sandbox	blocklisted_endless	phase4_steam_more_like_this	MMO sandbox, blocklist [seen 2x; reasons: blocklisted_endless]
 pixel-worlds-mmo-sandbox	Pixel Worlds: MMO Sandbox	blocklisted_endless	phase4_steam_more_like_this	MMO sandbox; auto-block by category
 pixeljunk-eden-2	PixelJunk Eden 2	not_enough_reviews	cycle6-validate	below 50 reviews
+pizza-tower	Pizza Tower	coop_too_thin	steam_rpt_deep_scan	RPT scan 2026-07-04: base game is single-player; only 'co-op' is a hidden Swap Mode where P2 momentarily seizes control of the SAME character — not simultaneous 2-player co-op (Gate A). Reconsider if real co-op is added.
 placid-plastic-duck-simulator	Placid Plastic Duck Simulator	endless	phase4_creative_steam_topcoop	Relaxation rubber-duck pool sim, chill music, no goal — sandbox no finish
 planet-crafter	The Planet Crafter	endless	removed-entries	hardcoded_blocklist+manual_audit
 planetary-annihilation-titans	Planetary Annihilation: Titans	endless	aaa_aa_sweep	Co-op is skirmish-vs-AI only (endless comp-stomp, no finish); the campaign-like Galactic War has no co-op. Co-op portion has no finish event.
 plants-vs-zombies-garden-warfare-2	Plants vs. Zombies Garden Warfare 2	endless	aaa_aa_sweep	Endless — competitive MP shooter; co-op is wave-defense (Garden Ops) and endgame Infinity Time is explicitly endless, no co-op campaign finish.
+platypus	Platypus	duplicate	steam_rpt_deep_scan	RPT scan 2026-07-04: original 2014 Platypus (app 307340); catalog already has the 2024 remaster Platypus Reclayed (app 2912430). Redundant variant.
 play-with-gilbert-a-small-tail	Play With Gilbert - A Small Tail	endless	discovery	Open-ended sandbox for ages 3+; no objectives, only 'soft objectives'; explicitly no narrative ending per dev
 plush-time	Plush Time	low_fit	phase4_steam_more_like_this	obscure, unverified
 police-stories-the-academy	Police Stories: The Academy	coop_too_short	cycle6-requeue	free 3-mission teaser ~20-30min
@@ -498,6 +501,7 @@ schedule-i	Schedule I	endless	removed-entries	hardcoded_blocklist+manual_audit
 scp-containment-breach-multiplayer	SCP Containment Breach Multiplayer	endless	steam_more_like_this	Round-based escape-the-facility matches; sessional PvP/co-op hybrid without a campaign finish
 sea-of-thieves	Sea of Thieves	endless	removed-entries	hardcoded_blocklist+manual_audit
 serious-sam-3-vr-bfe	Serious Sam 3 VR: BFE	low_fit	steam_coop_deep_scan	VR
+serious-sam-classic-the-second-encounter	Serious Sam Classic: The Second Encounter	duplicate	steam_rpt_deep_scan	RPT scan 2026-07-04: same game (The Second Encounter) already in catalog as serious-sam-hd-the-second-encounter, and the classic engine is covered by serious-sam-classics-revolution. Redundant variant.
 serious-sam-vr-the-last-hope	Serious Sam VR: The Last Hope	low_fit	steam_coop_deep_scan	VR
 serious-sam-vr-the-second-encounter	Serious Sam VR: The Second Encounter	low_fit	steam_coop_deep_scan	VR
 serpent-s-gaze	Serpent's Gaze	unclear_ending	coop-hunter-validate	app_id 3069050, EA released 25 May 2026, 87% of 516 reviews, 1-4p Online Co-op (Gate A passes). But it's a roguelite still in Early Access with devs stating 1-2 more years of EA ahead and more bosses/
@@ -643,6 +647,7 @@ voodoo-fishin	Voodoo Fishin'	endless	steam_more_like_this	app 3071240, Early Acc
 voyagers-of-nera	Voyagers of Nera	endless	phase4_steam_more_like_this	Early Access survival sandbox with no explicit win condition; up to 10 players
 vpet-simulator	VPet-Simulator	endless	phase4_creative_steam_topcoop	Desktop V-Pet sandbox toy, no campaign or ending — free-form pet sim
 vr-giants	VR Giants	low_fit	creative_discovery	VR Only category — at least one player must have VR hardware; outside typical catalog (PC two-player without VR requirement)
+vr-the-diner-duo	VR The Diner Duo	vr_required	steam_rpt_deep_scan	RPT scan 2026-07-04: genuine asymmetric co-op (one cooks in VR, one waits tables on monitor, 30-level finish) but P1 needs a VR headset — poor fit for remote play. Deferred like other VR titles this session.
 vulcard	Vulcard	not_enough_reviews	cycle5-validate	6 reviews, EA; recheck later
 war-islands-a-co-op-adventure	War Islands: A Co-op Adventure	unreleased	aaa_aa_sweep	Still Early Access; store page states the full version will add 'all chapters' — the story ending is not shipped yet, so a co-op run cannot be finished. 32 reviews / 78%.
 warframe	Warframe	endless	aaa_aa_sweep	On the project blocklist: free-to-play live-service co-op shooter with endless procedurally-generated missions and no real finish. The note itself admits 'endless missions... no strict campaign ending
@@ -680,3 +685,4 @@ ys-viii-lacrimosa-of-dana	Ys VIII: Lacrimosa of DANA	coop_mod_only	removed
 zero-hour	Zero Hour	endless	aaa_aa_sweep	Co-op mode is repeatable standalone tactical operations (R6/SWAT-style objective grind), no finite narrative campaign with a defined endpoint; game also leans heavily on 5v5 PvP. No discrete co-op fin
 zombie-estate-2	Zombie Estate 2	endless	phase4_creative_steam_topcoop	Online co-op wave-based shooter, 'how long can you survive' — wave survival no defined ending
 zpellcatz	ZpellCatz	not_enough_reviews	cycle6-requeue	12 reviews; recheck at 50+
+jamestown	Jamestown	duplicate	steam_rpt_deep_scan	RPT 2026-07-04: original 2011 Jamestown (app 94200); catalog already has expanded Jamestown+ (app 221980). Redundant variant.
