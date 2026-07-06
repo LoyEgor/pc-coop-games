@@ -23961,7 +23961,7 @@ window.GAMES = [
     year: 2026,
     genres: ["AA", "First-person", "3D", "Shooter", "Horror"],
     endingType: "levels",
-    rating: 76,
+    rating: 74,
     playersMax: 4,
     hours: 9,
     oneCopy: "none",
