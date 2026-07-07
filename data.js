@@ -16070,7 +16070,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "Isometric", "2D", "Shooter", "Sci-fi"],
     endingType: "roguelite",
-    rating: 86,
+    rating: 84,
     ratingCount: 91,
     playersMax: 2,
     hours: 8,
