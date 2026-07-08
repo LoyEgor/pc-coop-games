@@ -4350,7 +4350,7 @@ window.GAMES = [
   },
   {
     id: "paddle-paddle-paddle",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3570070/364672533/a35b6ed5ca181be21d5cfec7679662e2b8acc391/1771515804/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3570070/1575476597/95e9d9ed83f0986c86c3788f40361e31e9aed296/1763722505/microtrailer.mp4",
     ratingCount: 1533,
     reviewed: true,
     title: "Paddle Paddle Paddle",
@@ -7658,7 +7658,7 @@ window.GAMES = [
     year: 2024,
     genres: ["AA", "Third-person", "3D", "Action", "Adventure"],
     endingType: "levels",
-    rating: 64,
+    rating: 62,
     ratingCount: 833,
     playersMax: 4,
     hours: 22,
@@ -22367,7 +22367,7 @@ window.GAMES = [
   {
     id: "phantom-breaker-battle-grounds-ultimate",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2067350/871587/55556c8ef1c9bd145b43a1ab705ab49533120b66/1750745811/microtrailer.mp4",
-    ratingCount: 187,
+    ratingCount: 210,
     reviewed: true,
     title: "Phantom Breaker: Battle Grounds Ultimate",
     year: 2025,
