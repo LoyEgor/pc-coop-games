@@ -436,7 +436,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 18,
     oneCopy: "none",
-    price: 659,
+    price: 349,
     verdict: "Parkour, zombies, and full co-op campaign after the intro. A grittier, livelier two-player option.",
     storeUrl: "https://store.steampowered.com/app/239140/Dying_Light/",
     imageUrl: steamImage(239140),
@@ -3989,7 +3989,7 @@ window.GAMES = [
   },
   {
     id: "dawn-of-the-monsters",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1642170/447557/aaa3845008581d1562ad2e74d545fdf1553143b0/1751013274/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 147,
     reviewed: true,
     title: "Dawn of the Monsters",
@@ -4668,7 +4668,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 4,
     oneCopy: "remote-play",
-    price: 700,
+    price: 600,
     verdict: "Cinematic vertical shmup: split your energy between shields and weapons across seven stages to reach Earth.",
     storeUrl: "https://store.steampowered.com/app/1248080/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248080/header.jpg",
@@ -4926,7 +4926,7 @@ window.GAMES = [
   },
   {
     id: "cosmos-quickstop",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/724680/393511/72285e8a17aecaac78911ba6a3e656faa1fc3cee/1751136317/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 115,
     reviewed: true,
     title: "Cosmo's Quickstop",
@@ -5458,8 +5458,8 @@ window.GAMES = [
   },
   {
     id: "two-the-top",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3525360/1354288876/13371166c0afc61ddc8fe9458affeb7154307662/1750826383/microtrailer.mp4",
-    ratingCount: 73,
+    previewUrl: "",
+    ratingCount: 83,
     reviewed: true,
     title: "Two the Top",
     year: 2025,
@@ -5838,7 +5838,7 @@ window.GAMES = [
   },
   {
     id: "gundroid",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2416510/2001476245/4cb6b58a1d5c4616f80e0b65d8b8123f5f50dd9a/1750916758/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 62,
     reviewed: true,
     title: "Gundroid",
@@ -5914,7 +5914,7 @@ window.GAMES = [
   },
   {
     id: "gensokyo-defenders",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1019920/207033/ba1a3da5be236c95ceefde6ba938f21b5717a7b4/1751177403/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 136,
     reviewed: true,
     title: "Gensokyo Defenders",
@@ -6048,7 +6048,7 @@ window.GAMES = [
   {
     id: "oeuf",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3831080/510286574/f1ec7d16208f4fa217a57f0c3973c52c7fa73d0c/1780613032/microtrailer.mp4",
-    ratingCount: 96,
+    ratingCount: 108,
     reviewed: true,
     title: "Oeuf",
     year: 2026,
@@ -6496,7 +6496,7 @@ window.GAMES = [
     playersMax: 3,
     hours: 36,
     oneCopy: "none",
-    price: 1799,
+    price: 2399,
     verdict: "Break-and-build Gunpla action; story missions playable in online co-op up to 3, with a real campaign ending.",
     storeUrl: "https://store.steampowered.com/app/1672500/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1672500/header.jpg",
@@ -6629,7 +6629,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 10,
     oneCopy: "none",
-    price: 700,
+    price: 225,
     verdict: "Two-player WWII sniper co-op through the full mission set to a defined final target.",
     storeUrl: "https://store.steampowered.com/app/728740/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/728740/header.jpg",
@@ -7147,7 +7147,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 16,
     oneCopy: "remote-play",
-    price: 450,
+    price: 630,
     verdict: "Musou through the One Piece anime arcs; full local split-screen co-op across most story missions to a clear finish.",
     storeUrl: "https://store.steampowered.com/app/331600/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/331600/header.jpg",
@@ -7299,7 +7299,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 9,
     oneCopy: "remote-play",
-    price: 279,
+    price: 229,
     verdict: "Isometric survival action-RPG; craft, survive zombie islands and escape by plane after the final boss.",
     storeUrl: "https://store.steampowered.com/app/250400/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/250400/header.jpg",
@@ -7509,7 +7509,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 5,
     oneCopy: "remote-play",
-    price: 209,
+    price: 169,
     verdict: "Top-down alien shooter; full story campaign plays in shared-screen co-op, escape Ganymede to finish.",
     storeUrl: "https://store.steampowered.com/app/11200/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/11200/header.jpg",
@@ -8796,7 +8796,7 @@ window.GAMES = [
   },
   {
     id: "escape-first",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/850450/159069/dfd39a684012817f6e0e79297dbcbc8b8b6c2426/1751153274/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Escape First",
     year: 2018,
@@ -9832,7 +9832,7 @@ window.GAMES = [
   },
   {
     id: "serious-sams-bogus-detour",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/272620/109438/f16a93cb18c14f0bcc7d32601e0b77c5ed0e343c/1751268682/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/272620/96998/d3799d2fc4e5c4b5a44fa58186df09e9bf3646e2/1751268681/microtrailer.mp4",
     reviewed: true,
     title: "Serious Sam's Bogus Detour",
     year: 2017,
@@ -10232,7 +10232,7 @@ window.GAMES = [
   },
   {
     id: "en-route-a-co-op-space-escape",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1651950/402791/676c927d58f8531929353f077194ca801dc84baa/1751014351/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "En Route: A Co-Op Space Escape",
     year: 2022,
@@ -10837,7 +10837,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 7,
     oneCopy: "remote-play",
-    price: 209,
+    price: 163,
     verdict: "Top-down alien shooter with a story campaign and boss-fight finale; two-player local co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/2500/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2500/header.jpg",
@@ -11272,7 +11272,7 @@ window.GAMES = [
     genres: ["Indie", "Third-person", "3D", "Platformer"],
     endingType: "arcade-goal",
     rating: 72,
-    ratingCount: 158,
+    ratingCount: 177,
     playersMax: 4,
     hours: 6,
     oneCopy: "none",
@@ -11853,7 +11853,7 @@ window.GAMES = [
     verdict: "Cult Flash brawlers reborn: a 15-level co-op campaign climaxing in the Hypergon boss, plus deathmatch and survival.",
     storeUrl: "https://store.steampowered.com/app/3038340/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3038340/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3038340/801439/206a14d66bee3a52025dbca2273e707f8fb55c3a/1750960031/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("Du-Bsqt4aMc")
   },
   {
@@ -11948,7 +11948,7 @@ window.GAMES = [
     verdict: "Free two-player co-op puzzle platformer: play Rock, Paper or Scissors across 40 levels to the end.",
     storeUrl: "https://store.steampowered.com/app/3831990/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3831990/85433e51aefc79d8d4f3de2c091c733e938d5994/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3831990/195868498/304735ad27981c631e46473a13fb3e9ec10a5ea8/1768652334/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("LzbDR95nc3M")
   },
   {
@@ -12254,7 +12254,7 @@ window.GAMES = [
     verdict: "Classic two-player co-op puzzle-platformer; clear 31 levels guiding both elementals to their doors.",
     storeUrl: "https://store.steampowered.com/app/1781350/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1781350/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1781350/407494/0b71275d498d3aa32e5d7ce83c736a6deb3f1de8/1751030271/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("WZ8J2y_RLKA")
   },
   {
@@ -12370,7 +12370,7 @@ window.GAMES = [
     verdict: "Co-op space-physics survival odyssey; keep your ship alive across campaigns to reach your home planet.",
     storeUrl: "https://store.steampowered.com/app/725120/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/725120/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/725120/491987/9c679cd3bcc4c2ac852eb9256aa0ec47108ac595/1751136401/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("6nBwSQ14Y0Y")
   },
   {
@@ -12655,7 +12655,7 @@ window.GAMES = [
     verdict: "Two-player co-op grand campaign of feudal Japan: share conquests and battles, race a shared victory to become Shogun.",
     storeUrl: "https://store.steampowered.com/app/34330/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/34330/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/201270/7607/7d47ae878e8363f6583316cacbe5ef1e5ade9072/1751267669/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("5gTvgjzPCIE")
   },
   {
@@ -12731,7 +12731,7 @@ window.GAMES = [
     verdict: "Shmup-meets-block-breaker across 5 worlds of handcrafted stages and bosses to a finale; co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/994500/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/994500/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/994500/248878/2865417ba11fdb13011ec904865c9c7b9244288a/1751173704/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("m5I3NhN3ZO0")
   },
   {
@@ -14565,7 +14565,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "First-person", "3D", "Puzzle", "Adventure", "Fantasy"],
     endingType: "story",
-    rating: 89,
+    rating: 87,
     ratingCount: 144,
     playersMax: 4,
     hours: 12,
@@ -16021,7 +16021,7 @@ window.GAMES = [
     verdict: "ASCII action-RPG; clear 5 towers to open the portal and slay Lord Z, with a constant fairy co-op partner.",
     storeUrl: "https://store.steampowered.com/app/1356040/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1356040/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1356040/349281/ae539153527003e200b78ee22d335a1f2f15ab77/1751226279/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("Xjv2stAAtHQ")
   },
   {
@@ -16136,7 +16136,7 @@ window.GAMES = [
     verdict: "Cozy Mario 64-style 3D collectathon platformer; couch co-op for up to four little tree trunks.",
     storeUrl: "https://store.steampowered.com/app/1173740/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1173740/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1173740/246579/6843d34eb01629ae9993c7b7f855b82f573078be/1751198927/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("NxdbPm3jfAk")
   },
   {
@@ -16612,7 +16612,7 @@ window.GAMES = [
     verdict: "Co-op detective adventure: question suspects, combine clues and spot contradictions to crack the case together.",
     storeUrl: "https://store.steampowered.com/app/1591670/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1591670/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1591670/360504/6ac34dd9e3b18245da8b728feab873b4f2d21575/1751007342/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("VZr5fBEKr-M")
   },
   {
@@ -16641,7 +16641,7 @@ window.GAMES = [
     year: 2024,
     genres: ["Indie", "Side-view", "2D", "Puzzle"],
     endingType: "levels",
-    rating: 87,
+    rating: 84,
     ratingCount: 55,
     playersMax: 2,
     hours: 12,
@@ -17030,7 +17030,7 @@ window.GAMES = [
     verdict: "Free 3-player co-op shooter through undead carnival Venice to a final stand at the church.",
     storeUrl: "https://store.steampowered.com/app/3365870/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3365870/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3365870/1126890008/dfb3e425c64e19d95984fe3aab6d5acfacc2c3cf/1750170725/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("LrlwCSO1NRk")
   },
   {
@@ -17049,7 +17049,7 @@ window.GAMES = [
     verdict: "Free couch co-op bullet-hell as Cerberus; rescue every stray rabbit across the levels of the Underworld.",
     storeUrl: "https://store.steampowered.com/app/594300/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/594300/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/594300/92055/367a53a422d6ccfc3b3fbcc62cf675ba3e7642a5/1751107458/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("ZEnn952vkBM")
   },
   {
@@ -17334,7 +17334,7 @@ window.GAMES = [
     verdict: "WW2 RTS where you command unseen units by radio; a finite Canadian campaign from Dieppe to the Falaise Gap.",
     storeUrl: "https://store.steampowered.com/app/1011610/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1011610/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1011610/273731/53a1534544407262dabe6183fd073000298472e7/1751175972/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("gxScZ3Wi2K0")
   },
   {
@@ -17600,7 +17600,7 @@ window.GAMES = [
     verdict: "Accessible vertical bullet-hell shmup; clear five stages and the true last boss for the 1cc.",
     storeUrl: "https://store.steampowered.com/app/544580/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/544580/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/544580/97131/9f88602808f4e74add8b1a0bf7a7e76eadef10c7/1751300016/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("6evW0c8-CRo")
   },
   {
@@ -17657,7 +17657,7 @@ window.GAMES = [
     verdict: "Physics co-op delivery puzzler; two jellies haul packages across 100+ levels in five biomes.",
     storeUrl: "https://store.steampowered.com/app/1945260/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1945260/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1945260/613548/32adb8361bb37c41d7eae46384919858ee114c7f/1751051963/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1945260/530124/6419451496cbc65b9a078780d5485d6a6eb6e0ea/1751052320/microtrailer.mp4",
     youtubeUrl: youtube("ghTzJ_Z3b1E")
   },
   {
@@ -17942,7 +17942,7 @@ window.GAMES = [
     verdict: "Puzzle-platformer that teaches HTML/CSS: carry web tags through 100 logic levels, playable in local co-op.",
     storeUrl: "https://store.steampowered.com/app/502210/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/502210/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/502210/64817/0016f532061a6fbe224a4801c8612223d2171fc8/1751294187/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("_OI_iMqz1os")
   },
   {
@@ -18284,7 +18284,7 @@ window.GAMES = [
     verdict: "Arcade bullet-hell roguelite with randomized runs; beat Cthulhu to end a run. Local co-op via Remote Play Together.",
     storeUrl: "https://store.steampowered.com/app/454890/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/454890/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/454890/55223/456f6c8b22fa6567e2fa6bef1fc33c8187906495/1751287852/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("izEjaXEyUmo")
   },
   {
@@ -18512,7 +18512,7 @@ window.GAMES = [
     verdict: "Satirical 2D beat 'em up; four masked citizens brawl through a short pandemic-themed campaign, local/RPT co-op.",
     storeUrl: "https://store.steampowered.com/app/1425760/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1425760/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1425760/486738/f041794ee31293f469ec4ade8bd758f80b741339/1751236618/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("waFEvghr-nI")
   },
   {
@@ -19080,7 +19080,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 18,
     oneCopy: "none",
-    price: 530,
+    price: 450,
     verdict: "Escape 11 prisons with a partner. Isometric pixel art, a different layout each level.",
     storeUrl: "https://store.steampowered.com/app/641990/",
     imageUrl: steamImage(641990),
@@ -20535,7 +20535,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 35,
     oneCopy: "none",
-    price: 799,
+    price: 999,
     verdict: "Anime Souls-like with deep character creation: summon a partner online to clear a story campaign with a finale.",
     storeUrl: "https://store.steampowered.com/app/678960/",
     imageUrl: steamImage(678960),
@@ -20889,7 +20889,7 @@ window.GAMES = [
   },
   {
     id: "vikings-wolves-of-midgard",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/404590/95639/8a25bd3ca869d57dee1e84148c1f71987540f831/1751277800/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/404590/90586/55806bdb4162ad95389ff5ccf39a38cbcca047b7/1751277796/microtrailer.mp4",
     ratingCount: 4478,
     reviewed: true,
     title: "Vikings - Wolves of Midgard",
@@ -22090,7 +22090,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 14,
     oneCopy: "remote-play",
-    price: 629,
+    price: 549,
     verdict: "DC heroes go to space against Brainiac; two-player drop-in co-op via Remote Play, story campaign with finale.",
     storeUrl: "https://store.steampowered.com/app/313690/",
     imageUrl: steamImage(313690),
@@ -22327,7 +22327,7 @@ window.GAMES = [
   },
   {
     id: "code-of-princess-ex",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/711380/311301/a2fb1a6026df31acaab32aec43af6ffaee194c27/1751134629/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 64,
     reviewed: true,
     title: "Code of Princess EX",
@@ -22575,7 +22575,7 @@ window.GAMES = [
   },
   {
     id: "pixeljunk-monsters-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/749800/151802/6d7d34c11423f396a8eb207064bca89898a4a28d/1751139630/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/749800/152098/c77a213c1687c6010d022b5026e7bfa976b009c0/1751139633/microtrailer.mp4",
     ratingCount: 280,
     reviewed: true,
     title: "PixelJunk Monsters 2",
@@ -24376,7 +24376,7 @@ window.GAMES = [
   },
   {
     id: "fireboy-and-watergirl-elements",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1003480/202239/a40c327bd6247fc1e60005de7d0487932d544dc4/1751174944/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 1143,
     reviewed: true,
     title: "Fireboy & Watergirl: Elements",
