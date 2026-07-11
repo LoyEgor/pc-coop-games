@@ -3773,7 +3773,7 @@ window.GAMES = [
     price: 280,
     verdict: "1-4 player co-op Vampire Survivors-like with friendly fire and named end-of-run bosses to topple.",
     storeUrl: "https://store.steampowered.com/app/2904000/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2904000/84f86623e0c700205624086614e36ce3fccf8dda/header_alt_assets_3.jpg",
+    imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2904000/header.jpg",
     youtubeUrl: youtube("pOtO3HbNeWA")
   },
   {
@@ -7090,7 +7090,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 8,
     oneCopy: "none",
-    price: 1099,
+    price: 899,
     verdict: "VR zombie-apocalypse co-op campaign; finite story with a real finale (each player needs a headset).",
     storeUrl: "https://store.steampowered.com/app/1540210/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1540210/header.jpg",
