@@ -6252,7 +6252,7 @@ window.GAMES = [
     price: 459,
     verdict: "Story campaign (Knights, Vikings, Samurai) playable 2-player online co-op to the end; brutal melee dueling.",
     storeUrl: "https://store.steampowered.com/app/304390/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/304390/70c0a279707d99a4651c441386f77d8394ac58b9/header_alt_assets_10.jpg",
+    imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/304390/header.jpg",
     youtubeUrl: youtube("PIZWD50tLzU")
   },
   {
@@ -11948,7 +11948,7 @@ window.GAMES = [
     verdict: "Free two-player co-op puzzle platformer: play Rock, Paper or Scissors across 40 levels to the end.",
     storeUrl: "https://store.steampowered.com/app/3831990/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3831990/85433e51aefc79d8d4f3de2c091c733e938d5994/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3831990/195868498/304735ad27981c631e46473a13fb3e9ec10a5ea8/1768652334/microtrailer.mp4",
     youtubeUrl: youtube("LzbDR95nc3M")
   },
   {
@@ -12988,7 +12988,7 @@ window.GAMES = [
     year: 2025,
     genres: ["Indie", "Isometric", "3D", "Puzzle", "Platformer", "Sci-fi"],
     endingType: "levels",
-    rating: 92,
+    rating: 90,
     ratingCount: 84,
     playersMax: 2,
     hours: 5,
@@ -25799,7 +25799,7 @@ window.GAMES = [
   {
     id: "pratfall",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4244510/1129292563/30e95713e1d46697349ae7c54c215ea70dec2725/1776608950/microtrailer.mp4",
-    ratingCount: 2130,
+    ratingCount: 2390,
     reviewed: true,
     title: "Pratfall",
     year: 2026,

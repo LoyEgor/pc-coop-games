@@ -11,14 +11,14 @@
   "next_expected_window_hours": 30,
   "entries_checked": 1365,
   "updates_applied": {
-    "price": 1,
-    "rating": 0,
-    "count": 0,
+    "price": 0,
+    "rating": 1,
+    "count": 1,
     "image": 1,
-    "preview": 0,
+    "preview": 1,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
-  "last_success": "2026-07-11T07:07:40Z"
+  "last_success": "2026-07-12T07:28:34Z"
 }
