@@ -12,13 +12,13 @@
   "entries_checked": 1365,
   "updates_applied": {
     "price": 0,
-    "rating": 1,
-    "count": 1,
-    "image": 1,
-    "preview": 1,
+    "rating": 2,
+    "count": 2,
+    "image": 0,
+    "preview": 0,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
-  "last_success": "2026-07-12T07:28:34Z"
+  "last_success": "2026-07-13T07:45:33Z"
 }
