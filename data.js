@@ -3989,7 +3989,7 @@ window.GAMES = [
   },
   {
     id: "dawn-of-the-monsters",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1642170/447557/aaa3845008581d1562ad2e74d545fdf1553143b0/1751013274/microtrailer.mp4",
     ratingCount: 147,
     reviewed: true,
     title: "Dawn of the Monsters",
@@ -4926,7 +4926,7 @@ window.GAMES = [
   },
   {
     id: "cosmos-quickstop",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/724680/393511/72285e8a17aecaac78911ba6a3e656faa1fc3cee/1751136317/microtrailer.mp4",
     ratingCount: 115,
     reviewed: true,
     title: "Cosmo's Quickstop",
@@ -5458,7 +5458,7 @@ window.GAMES = [
   },
   {
     id: "two-the-top",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3525360/1354288876/13371166c0afc61ddc8fe9458affeb7154307662/1750826383/microtrailer.mp4",
     ratingCount: 83,
     reviewed: true,
     title: "Two the Top",
@@ -8796,7 +8796,7 @@ window.GAMES = [
   },
   {
     id: "escape-first",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/850450/159069/dfd39a684012817f6e0e79297dbcbc8b8b6c2426/1751153274/microtrailer.mp4",
     reviewed: true,
     title: "Escape First",
     year: 2018,
@@ -10232,7 +10232,7 @@ window.GAMES = [
   },
   {
     id: "en-route-a-co-op-space-escape",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1651950/402791/676c927d58f8531929353f077194ca801dc84baa/1751014351/microtrailer.mp4",
     reviewed: true,
     title: "En Route: A Co-Op Space Escape",
     year: 2022,
@@ -12254,7 +12254,7 @@ window.GAMES = [
     verdict: "Classic two-player co-op puzzle-platformer; clear 31 levels guiding both elementals to their doors.",
     storeUrl: "https://store.steampowered.com/app/1781350/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1781350/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1781350/407494/0b71275d498d3aa32e5d7ce83c736a6deb3f1de8/1751030271/microtrailer.mp4",
     youtubeUrl: youtube("WZ8J2y_RLKA")
   },
   {
@@ -16136,7 +16136,7 @@ window.GAMES = [
     verdict: "Cozy Mario 64-style 3D collectathon platformer; couch co-op for up to four little tree trunks.",
     storeUrl: "https://store.steampowered.com/app/1173740/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1173740/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1173740/246579/6843d34eb01629ae9993c7b7f855b82f573078be/1751198927/microtrailer.mp4",
     youtubeUrl: youtube("NxdbPm3jfAk")
   },
   {
@@ -17942,7 +17942,7 @@ window.GAMES = [
     verdict: "Puzzle-platformer that teaches HTML/CSS: carry web tags through 100 logic levels, playable in local co-op.",
     storeUrl: "https://store.steampowered.com/app/502210/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/502210/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/502210/64817/0016f532061a6fbe224a4801c8612223d2171fc8/1751294187/microtrailer.mp4",
     youtubeUrl: youtube("_OI_iMqz1os")
   },
   {
@@ -19586,7 +19586,7 @@ window.GAMES = [
   },
   {
     id: "diablo-2-resurrected",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2536520/880349240/7dc9f6d1869ea7fd9205a531d7620e674348452b/1771013103/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2536520/1834865890/5b6b794cb4b26b1717a63650a37028d2d053cd05/1769459896/microtrailer.mp4",
     ratingCount: 5197,
     reviewed: true,
     title: "Diablo II: Resurrected",
@@ -21429,7 +21429,7 @@ window.GAMES = [
   },
   {
     id: "far-cry-new-dawn",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/939960/207286/e286e130b75d37b60f3c3e5831f4a2ef18a8c03c/1750599011/microtrailer.mp4",
     ratingCount: 34612,
     reviewed: true,
     title: "Far Cry New Dawn",
