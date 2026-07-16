@@ -329,7 +329,7 @@ window.GAMES = [
   },
   {
     id: "ghost-recon-wildlands",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/460930/92655/0ed3b67ca6f5498a82f4e359df975e970ee92f3d/1750533722/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 104684,
     reviewed: true,
     title: "Ghost Recon Wildlands",
@@ -3503,7 +3503,7 @@ window.GAMES = [
     price: 2299,
     verdict: "🟠 Horizon Legend is a career-status milestone in the open-world festival loop, not a final mission.",
     storeUrl: "https://store.steampowered.com/app/2483190/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2483190/744a52b2f79bb03825dea2c0fcfa29e330bb2f1e/header_alt_assets_1.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2483190/99ff2e08356158cc0aacb4cf192298fc4c45f215/header_alt_assets_2.jpg",
     youtubeUrl: youtube("DfKtEuhBuyM")
   },
   {
@@ -11958,7 +11958,7 @@ window.GAMES = [
     year: 2023,
     genres: ["Indie", "Isometric", "3D", "RPG", "Tactics", "Fantasy"],
     endingType: "roguelite",
-    rating: 95,
+    rating: 93,
     ratingCount: 57,
     playersMax: 4,
     hours: 12,
