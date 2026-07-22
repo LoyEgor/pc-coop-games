@@ -4351,7 +4351,7 @@ window.GAMES = [
   {
     id: "paddle-paddle-paddle",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3570070/1575476597/95e9d9ed83f0986c86c3788f40361e31e9aed296/1763722505/microtrailer.mp4",
-    ratingCount: 1533,
+    ratingCount: 1722,
     reviewed: true,
     title: "Paddle Paddle Paddle",
     year: 2025,
@@ -4638,7 +4638,7 @@ window.GAMES = [
   },
   {
     id: "abathor",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2295610/871109/d35db71171073e305138d28fe30c23a22674fe5a/1750811108/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2295610/162234797/71b9669a9f3c00cc059e22800665da09df4bc996/1784696716/microtrailer.mp4",
     ratingCount: 361,
     reviewed: true,
     title: "Abathor",
@@ -13054,7 +13054,7 @@ window.GAMES = [
     verdict: "Free splitscreen co-op heist: two goblins stack, climb and sneak through a guarded manor, then escape with the loot.",
     storeUrl: "https://store.steampowered.com/app/4140170/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4140170/7ff5eb6aa7b1aca4a2cfd5b1b6f9196d96c1d718/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4140170/1866217444/713e5f3fbdcd7f6f2c6f7b9f2beca4d69c02b96f/1777645993/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4140170/803557584/2c995b3c85074bbe26f79e718725e356c7c322e8/1774307088/microtrailer.mp4",
     youtubeUrl: youtube("veXrDaDeAno")
   },
   {
@@ -25108,7 +25108,7 @@ window.GAMES = [
   {
     id: "grenouilles-3d",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3645100/235101047/564d516bbfd1bceaefe858f12183023381d3ff6e/1774198516/microtrailer.mp4",
-    ratingCount: 178,
+    ratingCount: 201,
     reviewed: true,
     title: "Grenouilles 3D",
     year: 2026,
