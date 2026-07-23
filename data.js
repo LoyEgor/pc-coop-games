@@ -5009,7 +5009,7 @@ window.GAMES = [
     year: 2025,
     genres: ["Indie", "Side-view", "2D", "Puzzle", "Platformer"],
     endingType: "levels",
-    rating: 90,
+    rating: 88,
     playersMax: 2,
     hours: 6,
     oneCopy: "remote-play",
