@@ -9,10 +9,10 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1365,
+  "entries_checked": 1163,
   "updates_applied": {
     "price": 0,
-    "rating": 2,
+    "rating": 0,
     "count": 0,
     "image": 0,
     "preview": 0,
@@ -20,5 +20,14 @@
     "oneCopy": 0
   },
   "fetch_failures": 0,
-  "last_success": "2026-07-25T07:09:54Z"
+  "last_success": "2026-07-25T14:07:10Z",
+  "sweep": {
+    "cursor": "haven",
+    "cycle_started_at": "2026-07-25T13:17:08Z",
+    "cycle_visited": 1163,
+    "cycle_size": 1365,
+    "budget_minutes": 50.0,
+    "budget_exhausted": true,
+    "full_cycle_target_hours": 96
+  }
 }
