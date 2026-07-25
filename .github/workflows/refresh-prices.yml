@@ -1,23 +1,31 @@
 name: refresh-prices
 
-# Owned-by-cron: this workflow keeps `price` (UAH), `rating` (Steam %positive)
-# and `imageUrl` (header image) on every non-hidden entry in data.js fresh.
-# Thresholds:
-#   - rating >= 5pp
-#   - price  >= 10% relative
-#   - image  hard 404/410 only (a 301 redirect still renders, so it's left alone)
-# Below threshold = silent. Above = auto-update + commit + push.
+# Owned-by-cron: this workflow keeps the OBJECTIVE fields of every non-hidden entry
+# in data.js fresh — price (UAH), rating (Steam %positive), ratingCount, year,
+# oneCopy, imageUrl, previewUrl. Thresholds and field ownership live in the header
+# comment of .github/scripts/refresh.py; below-threshold drift is silent.
 #
-# Skills (coop-hunter, fact-checker) read .github/refresh-status.json and skip
-# these two fields when the cron is healthy (< 30h since last success).
-# If the cron is stale, skills fall back to doing the work themselves.
+# Skills (coop-hunter, fact-checker) read .github/refresh-status.json and skip these
+# fields when the cron is healthy (< 30h since last success); if it is stale they
+# fall back to doing the work themselves.
+#
+# RELIABILITY CONTRACT — see CLAUDE.md §8a before changing any of this:
+#   * the sweep is budgeted + resumable, so `timeout-minutes` is a BACKSTOP and
+#     raising it is never the fix for a slow sweep;
+#   * the commit step is `if: always()` so a crash cannot discard applied updates;
+#   * health-check.yml watches this workflow and alarms on any silent failure.
 
 on:
   schedule:
     # Daily at 04:00 UTC (07:00 Kyiv). GitHub schedules are best-effort —
     # actual fire time may drift by a few minutes during peak load.
     - cron: '0 4 * * *'
-  workflow_dispatch:  # allows manual trigger from the Actions tab
+  workflow_dispatch:
+    inputs:
+      budget_minutes:
+        description: 'Wall-clock budget for the sweep (minutes)'
+        required: false
+        default: '50'
 
 permissions:
   contents: write   # needed to commit + push data.js + refresh-status.json
@@ -29,32 +37,34 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    # Full sequential sweep is ~2 Steam calls/entry x ~3.2s; at ~860 entries that
-    # is ~45 min and growing with the catalog. 30 was too tight (runs cancelled at
-    # [558/832] since 2026-06-15, never reaching the commit step). 90 leaves
-    # headroom to ~1600 entries; revisit (or make refresh.py resumable) past that.
-    timeout-minutes: 90
+    # Backstop only — the script stops itself at --budget-minutes (default 50).
+    timeout-minutes: 70
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # full history not needed; default fetch-depth: 1 is fine
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
       - name: Run refresh script
-        run: python3 .github/scripts/refresh.py
+        id: refresh
+        # Failure must not skip the commit step below: whatever the sweep already
+        # applied to data.js is good data and gets committed. The job is failed
+        # explicitly in the last step instead.
+        continue-on-error: true
+        run: python3 .github/scripts/refresh.py --budget-minutes ${{ inputs.budget_minutes || '50' }}
 
       - name: Show status file
         if: always()
         run: cat .github/refresh-status.json || echo "(no status file)"
 
       - name: Commit + push if changes
-        if: success()
+        if: always()
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -91,3 +101,10 @@ jobs:
             exit 1
           fi
           git push
+
+      - name: Fail the job if the sweep errored
+        if: steps.refresh.outcome != 'success'
+        run: |
+          echo "::error::refresh.py exited non-zero — see the 'Run refresh script' step."
+          echo "Whatever it had already applied was still committed by the step above."
+          exit 1

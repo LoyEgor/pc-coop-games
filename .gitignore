@@ -9,6 +9,7 @@ coop-hunter.log
 # Skill internal scratch
 .claude/skills/coop-hunter/state/_*.json
 .claude/skills/**/scripts/__pycache__/
+.github/scripts/__pycache__/
 
 # Misc
 header-screenshot.png

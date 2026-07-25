@@ -298,6 +298,38 @@ GitHub Pages is configured to serve `main` branch root. Every push to `main` tri
 
 Do not touch `.github/`, GitHub Actions, or any deployment workflow without explicit user permission.
 
+### 8a. Automation reliability contract (read before changing anything under `.github/`)
+
+The daily cron broke silently three separate times in June 2026 — a green run that
+committed nothing (bad `git add` pathspec), six runs cancelled after the sweep outgrew
+`timeout-minutes`, three runs crashed on a `None` payload — and each time the owner
+found out weeks later, by suspicion. The fix was never "one more bug"; it was that
+nothing bounded the run and nothing watched it. Four invariants now hold. Preserve them:
+
+1. **The sweep is budgeted and resumable.** `refresh.py --budget-minutes` (default 50)
+   stops on wall clock and persists a cursor in `sweep` inside `refresh-status.json`;
+   the next run continues, wrapping around. Coverage is therefore guaranteed per CYCLE
+   (`sweep.last_full_cycle_at`), not per run, so catalog growth can never again outgrow
+   the job. **Raising `timeout-minutes` is not a fix** — that was tried on 2026-06-20 and
+   only moved the wall. `timeout-minutes` is a backstop.
+2. **Applied work is never discarded.** The commit step runs `if: always()`, so a crash
+   mid-sweep still commits what already landed in `data.js`; a separate final step marks
+   the job red.
+3. **Nothing fails silently.** `health-check.yml` runs `health_check.py` daily and opens
+   (then auto-closes) a GitHub issue assigned to the owner when the heartbeat goes stale,
+   the last run failed, the sweep stops completing cycles, the schedule stops firing, or
+   GitHub disabled the workflow. Test it with `--dry-run [--status <file>]` — it touches
+   no issues then.
+4. **Script changes are smoke-tested before the night run.** `refresh-smoke.yml` runs
+   `refresh.py --limit 12 --dry-run` on every push touching `.github/scripts/**`.
+   `--dry-run` must stay write-free; the workflow asserts that.
+
+Known remaining risk: GitHub disables cron workflows in a public repo after 60 days
+without repository activity, and pushes made by `github-actions[bot]` with `GITHUB_TOKEN`
+do **not** count. The weekly keepalive step in `health-check.yml` closes that hole but is
+inert until a `KEEPALIVE_TOKEN` secret (fine-grained PAT, Contents: read+write) exists;
+until then `health_check.py` at least detects the disabled state and re-enables it.
+
 ## 9. Persona and tone
 
 The owner is Russian-speaking and direct, but the public site is **English-only**. All user-facing strings in `data.js` (the `verdict` field, `hiddenReason`), `app.js` (ONE_COPY / ENDING_TYPE labels, filter labels, captions), and `index.html` (`<h1>`, subtitle, button text, column headers) are in English. Code comments and LLM-facing docs (like this file) are in English. The owner himself communicates in Russian — that's a session-level concern, not a data/UI concern.

@@ -1,0 +1,50 @@
+name: refresh-smoke
+
+# Catches the crash class BEFORE it eats a nightly run: three nights of data were once
+# lost to a plain runtime error a 12-entry dry run would have caught (CLAUDE.md §8a).
+
+on:
+  push:
+    paths:
+      - '.github/scripts/**'
+      - '.github/workflows/refresh-prices.yml'
+      - '.claude/skills/fact-checker/scripts/list_entries.py'
+  pull_request:
+    paths:
+      - '.github/scripts/**'
+      - '.github/workflows/refresh-prices.yml'
+      - '.claude/skills/fact-checker/scripts/list_entries.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Compile the cron scripts
+        run: python3 -m py_compile .github/scripts/refresh.py .github/scripts/health_check.py
+
+      # --dry-run writes nothing (no data.js edits, no status file), so this only
+      # exercises the fetch/derive/compare paths. It exits 0 on a throttled Steam by
+      # design — a red mark here means a real code fault, not a bad API day.
+      - name: Dry-run the sweep over a few entries
+        run: python3 .github/scripts/refresh.py --limit 12 --dry-run
+
+      - name: Verify nothing was written
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::--dry-run modified tracked files — that must never happen."
+            git --no-pager diff --stat
+            exit 1
+          fi

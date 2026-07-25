@@ -14,7 +14,8 @@ is too long" — so everything moved to headless bursts.)
 | **coop-hunter** (skill) | ETERNAL searcher — discovers new PC co-op games and appends them to `data.js`. Never "done"; Ctrl+C to stop. | `./run-coop-hunter.sh` | `.claude/skills/coop-hunter/state/` |
 | **fact-checker** (skill) | Verifies entry fields against Steam / HLTB / YouTube; auto-removes endless games; logs editorial discrepancies. `new` = only games the hunter just added; `all` = whole catalog. | `./run-fact-checker.sh [new\|all]` | `.claude/skills/fact-checker/state/` |
 | **taxonomy migration** (fact-checker, special mode) | One-time: rewrites all entries onto the axis taxonomy (split FPS, narrow Adventure, fill perspective). | `./run-migration.sh` | shares fact-checker state (`mode=taxonomy_migration`) |
-| **refresh-prices** (cron) | Owns `price` and `rating` on existing entries. Re-fetches from Steam daily, commits drift > threshold. Pure stdlib Python, no LLM. | `.github/workflows/refresh-prices.yml` (daily 04:00 UTC, GitHub-hosted) | `.github/refresh-status.json` |
+| **refresh-prices** (cron) | Owns `price` and `rating` on existing entries. Re-fetches from Steam daily, commits drift > threshold. Pure stdlib Python, no LLM. Budgeted + resumable sweep — coverage is per cycle, not per run. | `.github/workflows/refresh-prices.yml` (daily 04:00 UTC, GitHub-hosted) | `.github/refresh-status.json` |
+| **health-check** (cron watchdog) | Watches the above: stale heartbeat, failed run, sweep that stops completing cycles, schedule that stopped firing, workflow disabled by GitHub. Opens/closes a GitHub issue assigned to the owner. Contract: CLAUDE.md §8a. | `.github/workflows/health-check.yml` (daily 06:00 UTC); locally `python3 .github/scripts/health_check.py --dry-run` | same heartbeat file + the `cron-health` issue |
 
 **The single source of truth for genres + endingType is
 [`shared/taxonomy.json`](shared/taxonomy.json).** Both skills read it and classify

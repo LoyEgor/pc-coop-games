@@ -1,0 +1,75 @@
+name: health-check
+
+# Watchdog over refresh-prices.yml — the signal that was missing while three separate
+# outages went unnoticed for weeks (CLAUDE.md §8a). health_check.py opens/updates a
+# GitHub issue ASSIGNED to the repo owner (which emails him) and fails the run, then
+# closes the issue automatically once things recover.
+
+on:
+  schedule:
+    # 06:00 UTC — the refresh window is 04:00 + at most ~55 min of sweep.
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write    # open / update / close the health issue
+  actions: write   # read run history AND re-enable the cron if GitHub disabled it
+
+concurrency:
+  group: health-check
+  cancel-in-progress: false
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # Job-level on purpose: a step's own `env:` block is not visible to that
+      # step's `if:` condition, so the keepalive gate below would never see it.
+      KEEPALIVE_TOKEN: ${{ secrets.KEEPALIVE_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Check refresh health
+        id: check
+        continue-on-error: true   # the keepalive step below must still run
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/health_check.py
+
+      # GitHub disables scheduled workflows in a public repository after 60 days with
+      # no repository activity — and commits pushed by github-actions[bot] with
+      # GITHUB_TOKEN do NOT count as activity, so a repo whose only traffic is this
+      # cron eventually switches itself off. A weekly commit authored by a real user
+      # token does count, which resets the timer for good.
+      # OPTIONAL: skipped entirely until a `KEEPALIVE_TOKEN` secret exists
+      # (fine-grained PAT on this repo, Contents: read and write).
+      - name: Weekly keepalive commit
+        if: env.KEEPALIVE_TOKEN != ''
+        run: |
+          if [ "$(date -u +%u)" != "1" ]; then
+            echo "Not Monday — keepalive not due."
+            exit 0
+          fi
+          date -u +"last keepalive: %Y-%m-%dT%H:%M:%SZ" > .github/cron-keepalive
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/cron-keepalive
+          git diff --cached --quiet && { echo "Nothing to commit."; exit 0; }
+          git commit -m "chore: cron keepalive (resets GitHub's 60-day schedule timer)"
+          git remote set-url origin "https://x-access-token:${KEEPALIVE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git pull --rebase origin main || { git rebase --abort 2>/dev/null || true; exit 1; }
+          git push origin HEAD:main
+
+      - name: Fail the job if unhealthy
+        if: steps.check.outcome != 'success'
+        run: |
+          echo "::error::Refresh automation is unhealthy — see the health issue opened by the check step."
+          exit 1
