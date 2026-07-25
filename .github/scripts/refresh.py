@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Refresh `price` and `rating` for every non-hidden entry in data.js by hitting
-Steam's storefront API (cc=ua) and appreviews endpoint. Designed to run on a
+Refresh every CRON-OWNED field of every non-hidden entry in data.js — price, rating,
+ratingCount, year, oneCopy, imageUrl, previewUrl — from Steam's storefront API (cc=ua)
+and the appreviews endpoint. Designed to run on a
 GitHub Actions cron — see .github/workflows/refresh-prices.yml.
 
 This script OWNS the OBJECTIVE fields — those with a Steam-API ground truth.
@@ -22,9 +23,11 @@ the cron ran and fix THIS script if it derives something wrong. Objective fields
                 header_image for the newest apps. Shared policy with
                 fix_image.py.)
 
-Drift / breakage thresholds (match fact-checker conservative auto-fix):
-  - rating: apply update if |new - old| >= 5pp
-  - price:  apply update if relative |new - old| / old >= 10%
+Drift / breakage thresholds (the constants below are authoritative if this ever drifts):
+  - rating: apply update if |new - old| >= RATING_DRIFT_PP (2pp)
+  - price:  apply update if relative drift >= PRICE_DRIFT_REL (10%)
+  - count:  apply update if relative drift >= COUNT_DRIFT_REL (12%)
+  - year / oneCopy: applied on any real diff (oneCopy never overwrites friend-pass)
   - image:  replace when the CURRENT image hard-404/410s OR its content-hash
             differs from the fresh header_image (drift, even if still 200 via
             edge cache); a 301 redirect still renders, so it's left alone
@@ -65,6 +68,7 @@ import datetime
 import json
 import os
 import re
+import signal
 import subprocess
 import sys
 import time
@@ -103,6 +107,7 @@ DEFAULT_BUDGET_MINUTES = 50   # must stay well under the job's timeout-minutes
 FULL_CYCLE_TARGET_HOURS = 96  # health_check.py alarms if a cycle takes longer
 
 DRY_RUN = False
+WRITE_FAILURES = 0  # update_field.py refusals; a broken writer must never read as success
 
 
 def now_iso():
@@ -304,6 +309,8 @@ def apply_update(game_id, field, new_value):
         text=True,
     )
     if result.returncode != 0:
+        global WRITE_FAILURES
+        WRITE_FAILURES += 1
         print(f"  ! update_field.py failed for {game_id}.{field}: {result.stderr.strip()}", file=sys.stderr)
         return False
     return True
@@ -323,6 +330,7 @@ def write_status(success, entries_checked, updates, failures, error=None, sweep=
         "entries_checked": entries_checked,
         "updates_applied": updates,
         "fetch_failures": failures,
+        "write_failures": WRITE_FAILURES,
     }
     ts = now_iso()
     if success:
@@ -385,15 +393,27 @@ def main():
     prev_sweep = read_prev_status().get("sweep") or {}
     cycle_started_at = prev_sweep.get("cycle_started_at") or now_iso()
     cycle_visited = int(prev_sweep.get("cycle_visited") or 0)
+    cycle_unverified = int(prev_sweep.get("cycle_unverified") or 0)
     last_full_cycle_at = prev_sweep.get("last_full_cycle_at")
 
-    # Resume where the previous run stopped; an unknown cursor (entry removed,
-    # first run, data.js reordered) simply restarts the cycle from the top.
     cursor = prev_sweep.get("cursor")
     ids = [e.get("id") for e in entries]
-    start = ids.index(cursor) + 1 if cursor in ids else 0
-    if start >= len(entries):
+    if cursor in ids:
+        start = ids.index(cursor) + 1
+        if start >= len(entries):
+            start = 0
+    else:
+        # Cursor gone (entry removed or hidden, data.js reordered, first run): the walk
+        # restarts at the top, so the CYCLE COUNTER has to restart with it. Carrying the
+        # old count over would let the next run cross cycle_size after sweeping only the
+        # head of the list and stamp last_full_cycle_at for a pass that never reached the
+        # tail — and the watchdog trusts that stamp.
         start = 0
+        if cursor is not None:
+            print(f"  cursor {cursor!r} no longer in data.js — restarting the cycle from the top")
+        cycle_visited = 0
+        cycle_unverified = 0
+        cycle_started_at = now_iso()
     plan = entries[start:] + entries[:start]
     if args.limit > 0:
         plan = plan[:args.limit]
@@ -406,24 +426,44 @@ def main():
     consecutive_failures = 0
     checked = 0
     visited = 0
+    unverified = 0
     budget_exhausted = False
 
-    def sweep_state(cycle_done=None):
-        """Cursor + cycle accounting, recomputed on every status write so a crash
-        mid-sweep still persists the resume point."""
-        done = cycle_visited + visited if cycle_done is None else cycle_done
+    def sweep_state(closed=False):
+        """Cursor + cycle accounting. `closed` starts a fresh cycle.
+
+        cycle_unverified is the honest half of cycle_visited: the cursor advances past an
+        entry even when Steam threw or answered with nothing (otherwise one dead app would
+        stall the sweep forever), so visits alone overstate coverage. health_check.py
+        alarms when a CLOSED cycle left too large a share unverified."""
         state = {
             "cursor": cursor,
             "cycle_started_at": cycle_started_at,
-            "cycle_visited": done,
+            "cycle_visited": 0 if closed else cycle_visited + visited,
+            "cycle_unverified": 0 if closed else cycle_unverified + unverified,
             "cycle_size": len(entries),
             "budget_minutes": None if budget_s is None else args.budget_minutes,
             "budget_exhausted": budget_exhausted,
             "full_cycle_target_hours": FULL_CYCLE_TARGET_HOURS,
         }
+        if closed:
+            state["last_cycle_unverified"] = cycle_unverified + unverified
+        elif prev_sweep.get("last_cycle_unverified") is not None:
+            state["last_cycle_unverified"] = prev_sweep["last_cycle_unverified"]
         if last_full_cycle_at:
             state["last_full_cycle_at"] = last_full_cycle_at
         return state
+
+    # A cancelled job (job timeout, a platform outage, the owner pressing cancel) SIGTERMs
+    # the step. Without this the cursor for everything swept in that run dies with it, so
+    # the next run re-walks ground already covered while the tail keeps waiting.
+    def persist_and_exit(signum, _frame):
+        print(f"\n  signal {signum} — persisting cursor {cursor!r} before exit", file=sys.stderr)
+        write_status(False, checked, updates, failures, error=f"interrupted:{signum}", sweep=sweep_state())
+        sys.exit(1)
+
+    for _sig in (signal.SIGTERM, signal.SIGINT):
+        signal.signal(_sig, persist_and_exit)
 
     for i, entry in enumerate(plan, 1):
         if budget_s is not None and time.monotonic() - started >= budget_s:
@@ -438,6 +478,7 @@ def main():
         if game_id:
             cursor = game_id
         if not game_id or not app_id:
+            unverified += 1
             print(f"  [{i}/{len(plan)}] SKIP {game_id!r}: no app_id derivable")
             continue
 
@@ -449,6 +490,7 @@ def main():
             consecutive_failures = 0
         except (urllib.error.URLError, urllib.error.HTTPError, json.JSONDecodeError, TimeoutError) as e:
             failures += 1
+            unverified += 1
             consecutive_failures += 1
             print(f"  [{i}/{len(plan)}] FAIL {game_id} (app {app_id}): {e}")
             if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
@@ -461,6 +503,7 @@ def main():
             # never abort the whole run: the heartbeat written at the end is what
             # tells the skills the cron is alive. Count it, log it, move on.
             failures += 1
+            unverified += 1
             print(f"  [{i}/{len(plan)}] ERROR {game_id} (app {app_id}): {type(e).__name__}: {e}")
             continue
 
@@ -471,6 +514,7 @@ def main():
         # is reported unhealthy instead of "all good".
         if not details and not reviews:
             failures += 1
+            unverified += 1
             consecutive_failures += 1
             print(f"  [{i}/{len(plan)}] NO-DATA {game_id} (app {app_id}): appdetails+appreviews both empty (likely throttled)")
             if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
@@ -619,23 +663,31 @@ def main():
     # Cycle accounting: a cycle closes once the run has visited as many entries as
     # the catalog holds. Counting visits (not indexes) keeps this correct across a
     # catalog that grew mid-cycle and across the wraparound.
-    cycle_done_after = None
-    if cycle_visited + visited >= len(entries) and not args.limit:
+    cycle_closed = cycle_visited + visited >= len(entries) and not args.limit
+    if cycle_closed:
         last_full_cycle_at = now_iso()
         cycle_started_at = last_full_cycle_at
-        cycle_done_after = 0
         print(f"  full cycle COMPLETE — every entry visited since {prev_sweep.get('cycle_started_at', 'n/a')}")
 
     print(f"\n[{now_iso()}] Refresh complete")
     print(f"  entries_visited: {visited} (of {len(entries)} in catalog); verified: {checked}")
     print(f"  updates_applied: price={updates['price']}, rating={updates['rating']}, count={updates['count']}, image={updates['image']}, preview={updates['preview']}, year={updates['year']}, oneCopy={updates['oneCopy']}")
-    print(f"  fetch_failures:  {failures}")
+    print(f"  fetch_failures:  {failures} (unverified this run: {unverified}); write_failures: {WRITE_FAILURES}")
     print(f"  next cursor:     {cursor!r}{' (budget-stopped)' if budget_exhausted else ''}")
 
     # A run is only healthy if we actually verified something. If every attempt
     # returned no data (checked==0) or more than half the attempted entries came
     # back empty/failed, Steam was throttling us — mark the heartbeat unhealthy
     # so the skills run their own price/rating checks instead of trusting it.
+    # A writer that refuses every change is the nastiest failure shape: entries verify
+    # fine, the cursor advances, and the heartbeat would report a healthy run while
+    # data.js never actually changed.
+    if WRITE_FAILURES and not any(updates.values()):
+        error = f"writer_broken:{WRITE_FAILURES}_refused"
+        print(f"UNHEALTHY: {error}", file=sys.stderr)
+        write_status(False, checked, updates, failures, error=error, sweep=sweep_state())
+        sys.exit(0 if DRY_RUN else 1)
+
     attempted = checked + failures
     nodata_ratio = (failures / attempted) if attempted else 1.0
     if checked == 0 or nodata_ratio > 0.50:
@@ -646,7 +698,7 @@ def main():
         # a throttled Steam must not paint the smoke test red.
         sys.exit(0 if DRY_RUN else 1)
 
-    write_status(True, checked, updates, failures, sweep=sweep_state(cycle_done_after))
+    write_status(True, checked, updates, failures, sweep=sweep_state(closed=cycle_closed))
 
 
 if __name__ == "__main__":

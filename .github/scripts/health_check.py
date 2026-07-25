@@ -7,14 +7,17 @@ Every past outage of this automation was silent and found weeks late (history in
 CLAUDE.md §8a). This script is the missing layer: it turns breakage into a GitHub issue
 assigned to the repo owner — which emails him — plus a red run, within a day.
 
-It checks four independent things — the point is that they fail in different ways:
+It checks independent things — the point is that they fail in different ways:
   1. heartbeat freshness  — `last_success` in .github/refresh-status.json. A broken
      commit/push step also lands here: the status file only reaches the repo via that
      step, so a stale checked-out heartbeat means green-but-not-committing.
   2. last outcome         — `last_failure` newer than `last_success` (crash class).
-  3. sweep completion     — `sweep.last_full_cycle_at`: the sweep is budgeted and
-     resumable, so a run can be green every night while the tail of the catalog never
-     gets visited. This is the check that catches that.
+  3. sweep completion     — `sweep.last_full_cycle_at` (or cycle_started_at before the
+     first close): the sweep is budgeted and resumable, so a run can be green every night
+     while the tail of the catalog never gets visited.
+  3b. sweep COVERAGE      — `sweep.last_cycle_unverified`: a cycle can also close having
+     walked every entry while verifying few of them, when Steam refused the requests.
+  3c. writer health       — `write_failures`: drift computed but never written to data.js.
   4. schedule liveness    — the newest refresh run's age + conclusion, and the workflow's
      own state. GitHub disables scheduled workflows in a public repo after 60 days
      without repository activity (bot pushes made with GITHUB_TOKEN do not count), so
@@ -38,9 +41,11 @@ WORKFLOW = "refresh-prices.yml"
 LABEL = "cron-health"
 ISSUE_TITLE = "⚠️ Data refresh automation is unhealthy"
 
-HEARTBEAT_MAX_AGE_H = 30      # daily cron + slack for GitHub's schedule drift
-RUN_MAX_AGE_H = 30            # a schedule that stopped firing at all
-CYCLE_FALLBACK_TARGET_H = 96  # used when the status file carries no target
+HEARTBEAT_MAX_AGE_H = 30         # daily cron + slack for GitHub's schedule drift
+RUN_MAX_AGE_H = 30               # a schedule that stopped firing at all
+CYCLE_FALLBACK_TARGET_H = 96     # used when the status file carries no target
+CYCLE_UNVERIFIED_MAX_REL = 0.15  # a closed cycle may leave at most this share unverified
+WRITE_FAILURES_MAX = 3           # update_field.py refusals tolerated in one run
 
 
 def gh(*args, check=True, mutates=False):
@@ -79,6 +84,11 @@ def collect_problems():
         status = json.loads(STATUS_FILE.read_text())
     except (OSError, json.JSONDecodeError) as e:
         return [("status_unreadable", f"`.github/refresh-status.json` is missing or unparseable ({e}).")]
+    # Valid JSON is not enough: a list or a bare string would sail through json.loads and
+    # then AttributeError on the first .get() — the watchdog would go red without ever
+    # reaching the issue flow, i.e. fail silently in the one place that must not.
+    if not isinstance(status, dict):
+        return [("status_malformed", f"`.github/refresh-status.json` parsed as {type(status).__name__}, not an object.")]
 
     last_success, last_failure = status.get("last_success"), status.get("last_failure")
 
@@ -100,16 +110,43 @@ def collect_problems():
             f"The most recent run FAILED ({fail_age:.0f}h ago): `{status.get('last_failure_error', 'unknown')}`.",
         ))
 
+    writes = status.get("write_failures")
+    if isinstance(writes, int) and writes >= WRITE_FAILURES_MAX:
+        problems.append((
+            "writer_failing",
+            f"The last run hit **{writes}** update_field.py refusals — verified drift is being computed but not "
+            "written into data.js, so the catalog silently stops tracking Steam.",
+        ))
+
     sweep = status.get("sweep") or {}
     cycle_at = sweep.get("last_full_cycle_at")
     target = sweep.get("full_cycle_target_hours") or CYCLE_FALLBACK_TARGET_H
-    cycle_age = hours_since(cycle_at)
-    if sweep and cycle_at and cycle_age is not None and cycle_age > target:
+    # Fall back to cycle_started_at: before the first cycle ever closes there is no
+    # last_full_cycle_at, so keying only off that leaves the one check meant to catch
+    # "green every night, catalog never actually swept" inert exactly when the sweep is
+    # new — or after any reset of the cursor.
+    cycle_ref = cycle_at or sweep.get("cycle_started_at")
+    cycle_age = hours_since(cycle_ref)
+    if sweep and cycle_ref and cycle_age is not None and cycle_age > target:
+        what = ("has not completed a full pass over the catalog" if cycle_at
+                else "has not finished its FIRST full pass since the cursor was reset")
         problems.append((
             "cycle_stalled",
-            f"The sweep has not completed a full pass over the catalog in **{cycle_age:.0f}h** (target {target}h) — "
+            f"The sweep {what} in **{cycle_age:.0f}h** (target {target}h) — "
             f"currently at {sweep.get('cycle_visited', '?')}/{sweep.get('cycle_size', '?')} entries. "
             "Green runs alone do not mean every entry is being refreshed; raise `--budget-minutes` or shorten the cron interval.",
+        ))
+
+    # Coverage, not just progress: the cursor advances past entries Steam refused to
+    # answer for, so a cycle can close having verified far less than it walked.
+    size = sweep.get("cycle_size") or 0
+    missed = sweep.get("last_cycle_unverified")
+    if size and isinstance(missed, int) and missed > size * CYCLE_UNVERIFIED_MAX_REL:
+        problems.append((
+            "cycle_coverage_thin",
+            f"The last completed cycle left **{missed}/{size}** entries unverified "
+            f"({missed / size:.0%}, limit {CYCLE_UNVERIFIED_MAX_REL:.0%}) — Steam refused a large share of requests, "
+            "so those prices and ratings are older than the cycle stamp suggests.",
         ))
 
     runs = gh("run", "list", "--workflow", WORKFLOW, "--limit", "1",
@@ -181,16 +218,22 @@ def issue_body(problems, status_text):
 
 
 def open_health_issue():
-    """The open cron-health issue as (number, body), or (None, "")."""
+    """(number, body, ok) for the open cron-health issue. `ok` is False when the LOOKUP
+    failed: a successful `gh issue list` prints "[]" for no results, so an empty string
+    means the call itself broke. Reading that as "no issue exists" would open a fresh
+    duplicate on every transient API/auth error and the codes_marker dedup would never
+    catch up."""
     raw = gh("issue", "list", "--label", LABEL, "--state", "open", "--limit", "1",
-             "--json", "number,body", check=False)
+             "--json", "number,body")
+    if not raw:
+        return None, "", False
     try:
-        items = json.loads(raw) if raw else []
+        items = json.loads(raw)
     except json.JSONDecodeError:
-        items = []
+        return None, "", False
     if not items:
-        return None, ""
-    return items[0].get("number"), items[0].get("body") or ""
+        return None, "", True
+    return items[0].get("number"), items[0].get("body") or "", True
 
 
 def main():
@@ -205,7 +248,7 @@ def main():
 
     problems = collect_problems()
     status_text = STATUS_FILE.read_text() if STATUS_FILE.exists() else "(status file missing)"
-    number, existing_body = open_health_issue()
+    number, existing_body, lookup_ok = open_health_issue()
 
     if not problems:
         print("HEALTHY: refresh cron is fresh, last run succeeded, sweep is completing cycles.")
@@ -231,6 +274,9 @@ def main():
             gh("issue", "comment", str(number), "--body",
                "The diagnosis changed:\n\n" + "\n".join(f"- {t}" for _, t in problems), check=False, mutates=True)
         print(f"Updated health issue #{number}.")
+    elif not lookup_ok:
+        print("::warning::could not read the existing health issues — reporting the problems in this log "
+              "only, rather than risking a duplicate issue every day. The job still fails.")
     else:
         gh("label", "create", LABEL, "--color", "B60205",
            "--description", "Automated data-refresh health alerts", "--force", check=False, mutates=True)

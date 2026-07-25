@@ -312,9 +312,17 @@ nothing bounded the run and nothing watched it. Four invariants now hold. Preser
    (`sweep.last_full_cycle_at`), not per run, so catalog growth can never again outgrow
    the job. **Raising `timeout-minutes` is not a fix** — that was tried on 2026-06-20 and
    only moved the wall. `timeout-minutes` is a backstop.
-2. **Applied work is never discarded.** The commit step runs `if: always()`, so a crash
-   mid-sweep still commits what already landed in `data.js`; a separate final step marks
-   the job red.
+   Two accounting rules keep the cycle stamp honest, and both exist because a reviewer
+   found the lie: losing the cursor (entry removed/hidden) RESETS the cycle counter, since
+   the walk restarts at the top; and `cycle_unverified` counts entries the cursor advanced
+   past without verifying (Steam threw or returned nothing), because the cursor must not
+   stall on one dead app. A cycle that closes having verified too little raises
+   `cycle_coverage_thin` instead of passing as full coverage.
+2. **Applied work is never discarded.** The commit step runs `if: always()`, so a script
+   crash mid-sweep still commits what already landed in `data.js`; a separate final step
+   marks the job red. Belt and braces, because `always()` cannot be trusted against a hard
+   runner kill: `refresh.py` traps SIGTERM/SIGINT and persists the cursor before exiting,
+   so a cancelled job (timeout, platform outage, manual cancel) still resumes correctly.
 3. **Nothing fails silently.** `health-check.yml` runs `health_check.py` daily and opens
    (then auto-closes) a GitHub issue assigned to the owner when the heartbeat goes stale,
    the last run failed, the sweep stops completing cycles, the schedule stops firing, or
@@ -324,11 +332,19 @@ nothing bounded the run and nothing watched it. Four invariants now hold. Preser
    `refresh.py --limit 12 --dry-run` on every push touching `.github/scripts/**`.
    `--dry-run` must stay write-free; the workflow asserts that.
 
-Known remaining risk: GitHub disables cron workflows in a public repo after 60 days
-without repository activity, and pushes made by `github-actions[bot]` with `GITHUB_TOKEN`
-do **not** count. The weekly keepalive step in `health-check.yml` closes that hole but is
-inert until a `KEEPALIVE_TOKEN` secret (fine-grained PAT, Contents: read+write) exists;
-until then `health_check.py` at least detects the disabled state and re-enables it.
+Known remaining risks, in order of how much they should worry you:
+
+- **Both crons disabled together.** The watchdog is itself a scheduled workflow, so it
+  cannot report its own disablement. GitHub disables cron workflows in a public repo after
+  60 days without repository activity, and pushes made by `github-actions[bot]` with
+  `GITHUB_TOKEN` do **not** count. The weekly keepalive commit in `health-check.yml` — a
+  real user push via the `KEEPALIVE_TOKEN` PAT (verified working 2026-07-25) — is what
+  prevents reaching day 60 at all; if that step ever fails it fails LOUDLY (red job). If
+  the secret is ever removed, the keepalive goes inert and this risk returns.
+- **A hard runner kill.** See invariant 2: the SIGTERM trap, not `always()`, is what
+  guarantees the resume point in that case.
+- **A verified-but-unwritten cycle.** `update_field.py` refusals are counted
+  (`write_failures`); an all-refusals run fails outright, and ≥3 raises `writer_failing`.
 
 ## 9. Persona and tone
 
