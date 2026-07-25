@@ -74,6 +74,11 @@ jobs:
           git add .github/cron-keepalive
           git diff --cached --quiet && { echo "Nothing to commit."; exit 0; }
           git commit -m "chore: cron keepalive (resets GitHub's 60-day schedule timer)"
+          # actions/checkout leaves an http.extraheader holding GITHUB_TOKEN, and that
+          # header beats credentials in the remote URL: the push would go out as
+          # github-actions[bot], get a 403, and — worse — a bot push does not reset
+          # the 60-day timer this step exists for. Drop it so the PAT authenticates.
+          git config --unset-all http.https://github.com/.extraheader
           git remote set-url origin "https://x-access-token:${KEEPALIVE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git pull --rebase origin main || { git rebase --abort 2>/dev/null || true; exit 1; }
           git push origin HEAD:main
