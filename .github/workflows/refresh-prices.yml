@@ -20,12 +20,7 @@ on:
     # Daily at 04:00 UTC (07:00 Kyiv). GitHub schedules are best-effort —
     # actual fire time may drift by a few minutes during peak load.
     - cron: '0 4 * * *'
-  workflow_dispatch:
-    inputs:
-      budget_minutes:
-        description: 'Wall-clock budget for the sweep (minutes)'
-        required: false
-        default: '50'
+  workflow_dispatch:  # allows manual trigger from the Actions tab
 
 permissions:
   contents: write   # needed to commit + push data.js + refresh-status.json
@@ -57,7 +52,12 @@ jobs:
         # applied to data.js is good data and gets committed. The job is failed
         # explicitly in the last step instead.
         continue-on-error: true
-        run: python3 .github/scripts/refresh.py --budget-minutes ${{ inputs.budget_minutes || '50' }}
+        # Literal, no `${{ }}`: a run-time expression here is what made GitHub reject
+        # the whole file on 2026-07-25 (run 30157999993 — "workflow file issue", zero
+        # jobs created, while actionlint and the YAML parser both called it valid).
+        # For a one-off different budget, set the REFRESH_BUDGET_MINUTES env var or
+        # run the script locally with --budget-minutes / --full.
+        run: python3 .github/scripts/refresh.py --budget-minutes 50
 
       - name: Show status file
         if: always()
