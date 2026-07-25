@@ -52,10 +52,8 @@ jobs:
         # applied to data.js is good data and gets committed. The job is failed
         # explicitly in the last step instead.
         continue-on-error: true
-        # Literal, no `${{ }}`: a run-time expression here is what made GitHub reject
-        # the whole file on 2026-07-25 (run 30157999993 — "workflow file issue", zero
-        # jobs created, while actionlint and the YAML parser both called it valid).
-        # For a one-off different budget, set the REFRESH_BUDGET_MINUTES env var or
+        # A literal, not a workflow_dispatch input: one less expression in the file
+        # the cron depends on. For a different budget set REFRESH_BUDGET_MINUTES, or
         # run the script locally with --budget-minutes / --full.
         run: python3 .github/scripts/refresh.py --budget-minutes 50
 

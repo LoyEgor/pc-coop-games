@@ -10,6 +10,11 @@ on:
     # 06:00 UTC — the refresh window is 04:00 + at most ~55 min of sweep.
     - cron: '0 6 * * *'
   workflow_dispatch:
+    inputs:
+      force_keepalive:
+        description: 'Run the keepalive commit now, even if today is not Monday'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -51,10 +56,15 @@ jobs:
       # token does count, which resets the timer for good.
       # OPTIONAL: skipped entirely until a `KEEPALIVE_TOKEN` secret exists
       # (fine-grained PAT on this repo, Contents: read and write).
+      # force_keepalive exists so the PAT can be proven end-to-end on the day it is
+      # added: without it the first real exercise of the token is a Monday run, and a
+      # token missing Contents:write would only surface as a red job days later.
       - name: Weekly keepalive commit
         if: env.KEEPALIVE_TOKEN != ''
+        env:
+          FORCE: ${{ inputs.force_keepalive }}
         run: |
-          if [ "$(date -u +%u)" != "1" ]; then
+          if [ "$FORCE" != "true" ] && [ "$(date -u +%u)" != "1" ]; then
             echo "Not Monday — keepalive not due."
             exit 0
           fi
