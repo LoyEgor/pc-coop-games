@@ -74,6 +74,11 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 STATUS_FILE = REPO_ROOT / ".github" / "refresh-status.json"
+# Published twin of the heartbeat. GitHub Pages does not serve dot-directories, so
+# `.github/refresh-status.json` is a 404 on the site; the page needs its own copy to
+# show the staleness notice. A JS global (not JSON + fetch) matches how data.js is
+# loaded and keeps the page working with no network request of its own.
+PUBLIC_STATUS_FILE = REPO_ROOT / "status.js"
 LIST_ENTRIES = REPO_ROOT / ".claude" / "skills" / "fact-checker" / "scripts" / "list_entries.py"
 UPDATE_FIELD = REPO_ROOT / ".claude" / "skills" / "fact-checker" / "scripts" / "update_field.py"
 
@@ -334,6 +339,17 @@ def write_status(success, entries_checked, updates, failures, error=None, sweep=
     # the catalog would never get checked).
     payload["sweep"] = sweep if sweep is not None else prev.get("sweep", {})
     STATUS_FILE.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+    public = {
+        "last_success": payload.get("last_success"),
+        "entries_checked": payload.get("entries_checked"),
+        "cycle_completed_at": (payload.get("sweep") or {}).get("last_full_cycle_at"),
+    }
+    PUBLIC_STATUS_FILE.write_text(
+        "// Written by .github/scripts/refresh.py — the site reads this to warn when data went stale.\n"
+        f"window.REFRESH_STATUS = {json.dumps(public, indent=2)};\n",
+        encoding="utf-8",
+    )
 
 
 def parse_args():

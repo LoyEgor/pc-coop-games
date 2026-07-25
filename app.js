@@ -2012,6 +2012,22 @@ function initStickyOffsets() {
   sync();
 }
 
+// Prices and ratings come from a nightly cron; when it stops, the table still looks
+// perfectly fine, which is how past outages stayed unnoticed for weeks. status.js is
+// rewritten by that cron, so its age is the honest signal — surfaced only past the
+// threshold to keep the header quiet on a normal day.
+function renderStaleNotice() {
+  const el = document.getElementById("staleNotice");
+  if (!el) return;
+  const stamp = window.REFRESH_STATUS && window.REFRESH_STATUS.last_success;
+  const ms = stamp ? Date.now() - Date.parse(stamp) : NaN;
+  const hours = ms / 36e5;
+  if (!Number.isFinite(hours) || hours < 48) return;
+  const days = Math.floor(hours / 24);
+  el.textContent = `⚠ Prices and ratings last refreshed ${days} day${days === 1 ? "" : "s"} ago — the data may be out of date.`;
+  el.hidden = false;
+}
+
 function showToast(message) {
   els.toast.textContent = message;
   els.toast.classList.add("visible");
@@ -2023,3 +2039,4 @@ loadPrefs();
 applyFiltersFromURL();
 initEvents();
 render();
+renderStaleNotice();
