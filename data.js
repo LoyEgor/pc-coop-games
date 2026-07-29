@@ -5364,7 +5364,7 @@ window.GAMES = [
   {
     id: "witchs-apocalyptic-journey",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3709430/147604146/b3666e0a34197538c9ac2452cb7fc19e025269fd/1780797475/microtrailer.mp4",
-    ratingCount: 1098,
+    ratingCount: 1231,
     reviewed: true,
     title: "Witch's Apocalyptic Journey",
     year: 2026,
@@ -6238,7 +6238,7 @@ window.GAMES = [
   },
   {
     id: "for-honor",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/304390/778116558/410f303e8659b4f2c526cb538299f4efbaeeed6f/1776936766/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/304390/1364143981/b285b7f92446abf368bc014c69e63555311e7ef3/1785258386/microtrailer.mp4",
     reviewed: true,
     title: "FOR HONOR™",
     year: 2017,
@@ -10997,7 +10997,7 @@ window.GAMES = [
   },
   {
     id: "forever-skies",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1641960/870021/ff266241bbc2593ab446be80cd57ba8c3a557399/1750714754/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1641960/1003187836/81404076a294d68ce95e4a3c72a2474546ab02a4/1784727136/microtrailer.mp4",
     reviewed: true,
     title: "Forever Skies",
     year: 2025,
@@ -14757,7 +14757,7 @@ window.GAMES = [
     year: 2024,
     genres: ["AA", "Isometric", "3D", "Tactics", "Military"],
     endingType: "levels",
-    rating: 88,
+    rating: 86,
     ratingCount: 1354,
     playersMax: 5,
     hours: 10,
