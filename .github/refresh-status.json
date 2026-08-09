@@ -9,11 +9,11 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1194,
+  "entries_checked": 1213,
   "updates_applied": {
-    "price": 1,
-    "rating": 0,
-    "count": 1,
+    "price": 0,
+    "rating": 1,
+    "count": 3,
     "image": 0,
     "preview": 0,
     "year": 0,
@@ -21,17 +21,17 @@
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-08-08T05:41:53Z",
+  "last_success": "2026-08-09T05:49:38Z",
   "sweep": {
-    "cursor": "chicken-invaders-5",
-    "cycle_started_at": "2026-08-07T06:26:49Z",
-    "cycle_visited": 1194,
+    "cursor": "in-sink",
+    "cycle_started_at": "2026-08-09T05:49:38Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-08-07T06:26:49Z"
+    "last_full_cycle_at": "2026-08-09T05:49:38Z"
   }
 }
