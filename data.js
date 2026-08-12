@@ -150,7 +150,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 5,
     oneCopy: "friend-pass",
-    price: 415,
+    price: 539,
     verdict: "Fully co-op-only 2-player campaign (Friend Pass); roles are asymmetric but both players are required throughout.",
     storeUrl: "https://store.steampowered.com/app/1335790/Operation_Tango/",
     imageUrl: steamImage(1335790),
@@ -782,7 +782,7 @@ window.GAMES = [
     price: 159,
     verdict: "Co-op challenge: reach the summit. Not a story, but each run is a short complete arc.",
     storeUrl: "https://store.steampowered.com/app/3527290/PEAK/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/31bac6b2eccf09b368f5e95ce510bae2baf3cfcd/header.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/89f65be18915d2dc5566de1de322379d62c1dcac/header_alt_assets_3.jpg",
     youtubeUrl: youtube("u_vlCvsf8dg")
   },
   {
@@ -3503,7 +3503,7 @@ window.GAMES = [
     price: 2299,
     verdict: "🟠 Horizon Legend is a career-status milestone in the open-world festival loop, not a final mission.",
     storeUrl: "https://store.steampowered.com/app/2483190/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2483190/99ff2e08356158cc0aacb4cf192298fc4c45f215/header_alt_assets_2.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2483190/aec13616ef2adf9908ab2bf185f6e0557d6603ef/header_alt_assets_3.jpg",
     youtubeUrl: youtube("DfKtEuhBuyM")
   },
   {
@@ -3703,7 +3703,7 @@ window.GAMES = [
   {
     id: "sos-ops",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2475460/336173680/827692dd9379c2956fc2aac25df679a2db3ce587/1777555737/microtrailer.mp4",
-    ratingCount: 3912,
+    ratingCount: 4390,
     reviewed: true,
     title: "SOS OPS!",
     year: 2023,
@@ -19156,7 +19156,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
-    price: 199,
+    price: 234,
     verdict: "Roguelite-tower-defense hybrid by Amplitude: runs through 12 floors, co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/249050/",
     imageUrl: steamImage(249050),
@@ -23103,7 +23103,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 8,
     oneCopy: "none",
-    price: 999,
+    price: 682,
     verdict: "Two-player roguelite where you crew a ship, load cannons and blast sea monsters to beat the final storm boss.",
     storeUrl: "https://store.steampowered.com/app/1286580/",
     imageUrl: steamImage(1286580),
@@ -24426,7 +24426,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 24,
     oneCopy: "none",
-    price: 540,
+    price: 419,
     verdict: "Island survival sandbox in The Escapists world; train monkeys and complete the questline to escape.",
     storeUrl: "https://store.steampowered.com/app/897450/",
     imageUrl: steamImage(897450),
