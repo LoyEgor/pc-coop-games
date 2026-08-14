@@ -3490,7 +3490,7 @@ window.GAMES = [
   {
     id: "forza-horizon-6",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2483190/2058949366/d739456da33f95f5cc4b083fba09e203d39a2a1b/1779911769/microtrailer.mp4",
-    ratingCount: 83271,
+    ratingCount: 93399,
     reviewed: true,
     title: "Forza Horizon 6",
     year: 2026,
@@ -25651,7 +25651,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "First-person", "3D", "Puzzle"],
     endingType: "arcade-goal",
-    rating: 71,
+    rating: 73,
     playersMax: 2,
     hours: 5,
     oneCopy: "none",
