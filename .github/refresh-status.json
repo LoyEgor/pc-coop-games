@@ -9,29 +9,29 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1215,
+  "entries_checked": 1186,
   "updates_applied": {
-    "price": 2,
-    "rating": 1,
-    "count": 2,
+    "price": 0,
+    "rating": 0,
+    "count": 0,
     "image": 0,
-    "preview": 0,
+    "preview": 65,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-08-18T05:20:41Z",
+  "last_success": "2026-08-19T05:22:16Z",
   "sweep": {
-    "cursor": "madness-project-nexus",
-    "cycle_started_at": "2026-08-17T05:26:13Z",
-    "cycle_visited": 1215,
+    "cursor": "lizards-must-die-2",
+    "cycle_started_at": "2026-08-19T05:22:16Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-08-17T05:26:13Z"
+    "last_full_cycle_at": "2026-08-19T05:22:16Z"
   }
 }
