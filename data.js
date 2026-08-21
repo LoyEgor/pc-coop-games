@@ -3147,7 +3147,7 @@ window.GAMES = [
   },
   {
     id: "secrets-of-grindea",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/269770/665495/367bfa208feced81aed42902b9775abaee98053e/1750487875/microtrailer.mp4",
     ratingCount: 8539,
     reviewed: true,
     title: "Secrets of Grindea",
@@ -8382,7 +8382,7 @@ window.GAMES = [
     genres: ["Indie", "First-person", "3D", "Shooter", "Action", "Military"],
     endingType: "story",
     rating: 80,
-    ratingCount: 408,
+    ratingCount: 457,
     playersMax: 4,
     hours: 8,
     oneCopy: "none",
@@ -8497,7 +8497,7 @@ window.GAMES = [
     genres: ["Indie", "First-person", "3D", "Adventure"],
     endingType: "story",
     rating: 90,
-    ratingCount: 17716,
+    ratingCount: 19881,
     playersMax: 6,
     hours: 4,
     oneCopy: "none",
@@ -9602,7 +9602,7 @@ window.GAMES = [
   },
   {
     id: "knights-of-braveland",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1253610/1491481211/ef9f1be48e606e7eadc8d273a0822fa9b17476be/1781549080/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1253610/1727389444/c13c0b4e2090c3a6c331ade798e2e35738909eee/1781548569/microtrailer.mp4",
     reviewed: true,
     title: "Knights of Braveland",
     year: 2023,
@@ -15336,7 +15336,7 @@ window.GAMES = [
     verdict: "Konami compilation of seven classic Bomberman titles; most Normal modes are two-player co-op through all levels to.",
     storeUrl: "https://store.steampowered.com/app/3756010/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3756010/cdb5d4d45a27797897f6052d55bc7316ea9a3e4c/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3756010/238350485/3273a8fedd3b9734d19d68889f5880ea77af4bff/1773108085/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3756010/509253345/14f36c5f291e77b1a9dad8a564f8c7cb6651a33a/1770017369/microtrailer.mp4",
     youtubeUrl: youtube("nrMzSfv71qo")
   },
   {
@@ -24665,7 +24665,7 @@ window.GAMES = [
   {
     id: "neon-inferno",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2957720/753168/2f06f6a31b7eda34e31239c1f62b357129881f97/1750953151/microtrailer.mp4",
-    ratingCount: 373,
+    ratingCount: 419,
     reviewed: true,
     title: "Neon Inferno",
     year: 2025,
@@ -25798,7 +25798,7 @@ window.GAMES = [
   },
   {
     id: "pratfall",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4244510/1129292563/30e95713e1d46697349ae7c54c215ea70dec2725/1776608950/microtrailer.mp4",
     ratingCount: 3008,
     reviewed: true,
     title: "Pratfall",
