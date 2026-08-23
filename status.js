@@ -1,6 +1,6 @@
 // Written by .github/scripts/refresh.py — the site reads this to warn when data went stale.
 window.REFRESH_STATUS = {
-  "last_success": "2026-08-22T05:18:00Z",
-  "entries_checked": 1140,
-  "cycle_completed_at": "2026-08-21T05:23:06Z"
+  "last_success": "2026-08-23T05:21:50Z",
+  "entries_checked": 1238,
+  "cycle_completed_at": "2026-08-23T05:21:50Z"
 };

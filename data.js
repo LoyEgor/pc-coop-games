@@ -2632,7 +2632,7 @@ window.GAMES = [
   {
     id: "reanimal",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2129530/263149291/9e773f2c15cd32915819471deffe1196dfb63abd/1771917237/microtrailer.mp4",
-    ratingCount: 22302,
+    ratingCount: 24995,
     reviewed: true,
     title: "REANIMAL",
     year: 2026,
@@ -5364,7 +5364,7 @@ window.GAMES = [
   {
     id: "witchs-apocalyptic-journey",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3709430/147604146/b3666e0a34197538c9ac2452cb7fc19e025269fd/1780797475/microtrailer.mp4",
-    ratingCount: 1231,
+    ratingCount: 1383,
     reviewed: true,
     title: "Witch's Apocalyptic Journey",
     year: 2026,
@@ -17763,7 +17763,7 @@ window.GAMES = [
     genres: ["Indie", "First-person", "3D", "Shooter", "Sci-fi", "Horror"],
     endingType: "roguelite",
     rating: 81,
-    ratingCount: 822,
+    ratingCount: 922,
     playersMax: 2,
     hours: 10,
     oneCopy: "none",
@@ -25607,7 +25607,7 @@ window.GAMES = [
   {
     id: "minecraft-dungeons",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1672970/390610/c12bc1af01ec77a3cd91303caa02876bdb34623a/1750722693/microtrailer.mp4",
-    ratingCount: 16832,
+    ratingCount: 18893,
     reviewed: true,
     title: "Minecraft Dungeons",
     year: 2021,
