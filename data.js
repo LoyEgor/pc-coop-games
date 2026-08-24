@@ -62,7 +62,7 @@ window.GAMES = [
   },
   {
     id: "remnant-2",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1282100/590928/c579ac21a04cc375dcf830e461c657d16dee339f/1750662256/microtrailer.mp4",
     ratingCount: 66931,
     reviewed: true,
     title: "Remnant II",
@@ -406,7 +406,7 @@ window.GAMES = [
   },
   {
     id: "tiny-tinas-wonderlands",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1286680/403105/6b2a92836b39ec14676551a0b3c48563ab8ab865/1750668233/microtrailer.mp4",
     ratingCount: 24438,
     reviewed: true,
     title: "Tiny Tina's Wonderlands",
@@ -882,7 +882,7 @@ window.GAMES = [
   },
   {
     id: "cat-quest-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/914710/244546/234d0afec76bd73688bb4b0915c1be354bc0dcad/1750595735/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/914710/244543/89c08ac7230fcab4d39ff70ff3f4ef2fd40786a7/1750595695/microtrailer.mp4",
     ratingCount: 7094,
     reviewed: true,
     title: "Cat Quest II",
@@ -1281,7 +1281,7 @@ window.GAMES = [
   },
   {
     id: "lego-marvel-superheroes",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/249130/13811/66e8e950132c67e247b9d3288f85fe9a46ef9a26/1750487618/microtrailer.mp4",
     ratingCount: 29877,
     reviewed: true,
     title: "LEGO Marvel Super Heroes",
@@ -1444,7 +1444,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
-    price: 750,
+    price: 999,
     verdict: "Episodic co-op campaign against zombie waves. Up to 4 online.",
     storeUrl: "https://store.steampowered.com/app/699130/World_War_Z_Aftermath/",
     imageUrl: steamImage(699130),
@@ -3299,7 +3299,7 @@ window.GAMES = [
   },
   {
     id: "pampas-selene",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1966220/702789/5f1671dc1adc8a1de501db623527baf65faa84d1/1751062064/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1966220/702787/dca215ee087d103d414c189c60745fd4c30330b7/1751062063/microtrailer.mp4",
     ratingCount: 423,
     reviewed: true,
     title: "Pampas & Selene: The Maze of Demons",
@@ -3337,7 +3337,7 @@ window.GAMES = [
   },
   {
     id: "generation-zero",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/704270/520354/582f72c20a34bca116b38f2372710daf405ae93d/1750573131/microtrailer.mp4",
     ratingCount: 41866,
     reviewed: true,
     title: "Generation Zero",
@@ -3432,7 +3432,7 @@ window.GAMES = [
   },
   {
     id: "blood-and-bacon",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/434570/50033/b0cc6d6e1050a07577e1c042b8c8de535bfd556b/1750530586/microtrailer.mp4",
     ratingCount: 36074,
     reviewed: true,
     title: "Blood and Bacon",
@@ -3721,7 +3721,7 @@ window.GAMES = [
   },
   {
     id: "carry-the-glass",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3263320/1917654076/4762a5a347d6e3050c26cdd710e668767cb4deac/1754432758/microtrailer.mp4",
     ratingCount: 3165,
     reviewed: true,
     title: "Carry The Glass",
@@ -4122,7 +4122,7 @@ window.GAMES = [
   },
   {
     id: "linebound",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4447550/506111448/e451ba504882c8e65a1392f829ed8c1735dfc191/1772200412/microtrailer.mp4",
     ratingCount: 124,
     reviewed: true,
     title: "Linebound",
@@ -4426,7 +4426,7 @@ window.GAMES = [
   },
   {
     id: "brok-the-investigator",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/949480/486435/e422e7f33c5a3b1d7b887be78c211c0e7843d144/1750599882/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/949480/489983/fba28cf2bc9a2ba056d47d49dab3e49c973eaec4/1750599900/microtrailer.mp4",
     ratingCount: 1262,
     reviewed: true,
     title: "BROK the InvestiGator",
@@ -4495,7 +4495,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 12,
     oneCopy: "none",
-    price: 360,
+    price: 295,
     verdict: "🟠 Co-op alchemy shop sim with a 'find the missing owner' arc; story completes but the shop loop continues after.",
     storeUrl: "https://store.steampowered.com/app/2788920/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2788920/header.jpg",
@@ -4945,7 +4945,7 @@ window.GAMES = [
   },
   {
     id: "boat-together",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3543890/209077408/5c9a9af48e22e71a6efd9a8adefcc6291d7e9e21/1755091119/microtrailer.mp4",
     ratingCount: 392,
     reviewed: true,
     title: "Boat Together",
@@ -5420,7 +5420,7 @@ window.GAMES = [
   },
   {
     id: "goodboy-galaxy",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2705890/770358/f383c8bbbf19e98f10a88b5ab19bd9e56f3593a5/1750819028/microtrailer.mp4",
     ratingCount: 145,
     reviewed: true,
     title: "Goodboy Galaxy",
@@ -5857,7 +5857,7 @@ window.GAMES = [
   },
   {
     id: "flat-heroes",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/508790/176296/d0ab7df0d355530199af73f17547b076e8fee284/1751294906/microtrailer.mp4",
     ratingCount: 563,
     reviewed: true,
     title: "Flat Heroes",
@@ -8192,7 +8192,7 @@ window.GAMES = [
     genres: ["Indie", "Isometric", "2D", "Action", "RPG", "Fantasy"],
     endingType: "roguelite",
     rating: 94,
-    ratingCount: 9608,
+    ratingCount: 10835,
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
@@ -8898,7 +8898,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "First-person", "3D", "Puzzle", "Fantasy"],
     endingType: "story",
-    rating: 87,
+    rating: 89,
     ratingCount: 153,
     playersMax: 2,
     hours: 5,
@@ -11967,7 +11967,7 @@ window.GAMES = [
     verdict: "Co-op real-time strategy autobattler: build a party across a randomized map run to resurrect a dead goddess.",
     storeUrl: "https://store.steampowered.com/app/2561500/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2561500/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2561500/847174671/b14d782d28a88c841dcc7d39fda6429f32052935/1773864130/microtrailer.mp4",
     youtubeUrl: youtube("cb75xq9xQEU")
   },
   {
@@ -13871,7 +13871,7 @@ window.GAMES = [
     verdict: "Dig deep, upgrade your mech and reach bedrock to foil a demonic plot for a real ending; online co-op for up to 8.",
     storeUrl: "https://store.steampowered.com/app/1603180/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1603180/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1603180/658180/6960fd7f03745458e602f3cf51adecdedce0237f/1751008824/microtrailer.mp4",
     youtubeUrl: youtube("5BREeULjE2E")
   },
   {
@@ -15203,7 +15203,7 @@ window.GAMES = [
     verdict: "Atmospheric Siberian janitor sim with online co-op; do utility jobs to save for a ticket and leave the city.",
     storeUrl: "https://store.steampowered.com/app/1836160/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1836160/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1836160/442210/08f0ebf0a8b0ae4cdaf6fdb641353a67bd294127/1751036946/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1836160/442216/59d24c39a420c9ead037004d17b2c8ad964539b4/1751036947/microtrailer.mp4",
     youtubeUrl: youtube("jEY6NjvTF3g")
   },
   {
@@ -15518,7 +15518,7 @@ window.GAMES = [
     year: 2024,
     genres: ["AA", "Isometric", "3D", "Action", "RPG", "Horror"],
     endingType: "roguelite",
-    rating: 89,
+    rating: 87,
     ratingCount: 116,
     playersMax: 4,
     hours: 10,
@@ -16155,7 +16155,7 @@ window.GAMES = [
     verdict: "Short, humorous top-down action-RPG dungeon crawl; P2 can drop in or out anytime; culminating in a final boss.",
     storeUrl: "https://store.steampowered.com/app/333330/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/333330/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/333330/29721/ac97325976beede97843c219443087582a7cdd07/1751265216/microtrailer.mp4",
     youtubeUrl: youtube("oOtlwe8OQEc")
   },
   {
@@ -16631,7 +16631,7 @@ window.GAMES = [
     verdict: "Devilishly hard 1-4 player platformer; race through 125+ campaign levels across worlds to the finish.",
     storeUrl: "https://store.steampowered.com/app/399140/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/399140/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/399140/42942/f0494ee7fe532eb04636219cf39dd15f34bec4da/1751278045/microtrailer.mp4",
     youtubeUrl: youtube("dnpQgJ094r4")
   },
   {
@@ -17486,7 +17486,7 @@ window.GAMES = [
     verdict: "Top-down roguelike shooter through procedural biomes; clear bosses to reach the final fight home.",
     storeUrl: "https://store.steampowered.com/app/1684080/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1684080/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1684080/381276/906852b91d11b596bf9a9434d41ad1ececd82c30/1751019284/microtrailer.mp4",
     youtubeUrl: youtube("2zN4Hd8xiJQ")
   },
   {
@@ -18740,7 +18740,7 @@ window.GAMES = [
     verdict: "Pixel-art Wild West revenge hunt: roam the open frontier, question suspects, and gun down your family's killer.",
     storeUrl: "https://store.steampowered.com/app/275200/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/275200/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/275200/30598/7ff4e7de89bef55968ca1e371818a7a3f77caf53/1751251158/microtrailer.mp4",
     youtubeUrl: youtube("RmTsjapXOGY")
   },
   {
@@ -20870,7 +20870,7 @@ window.GAMES = [
   },
   {
     id: "tools-up",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1004490/726090/fabe63a5e796230750852e3bb5396b109cd22c9f/1750605706/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1004490/314179/02b40d4c9c618e98348dfb65d2f84606910f6d0c/1750605684/microtrailer.mp4",
     ratingCount: 1093,
     reviewed: true,
     title: "Tools Up!",
@@ -21100,7 +21100,7 @@ window.GAMES = [
   },
   {
     id: "quake-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2320/596031/f26190be40ad161e01c1c0229bee8704206c42f1/1750480951/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2320/595911/75225bfe7bbafd1fa48be93c1da81c15e5d80fc9/1750480951/microtrailer.mp4",
     ratingCount: 10111,
     reviewed: true,
     title: "Quake II",
@@ -21372,7 +21372,7 @@ window.GAMES = [
   },
   {
     id: "baldurs-gate-dark-alliance",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1695830/423894/816c4ebb7626b88517f5b1cbdf6ef9c63bb268b9/1750726643/microtrailer.mp4",
     ratingCount: 1001,
     reviewed: true,
     title: "Baldur's Gate: Dark Alliance",
@@ -21467,7 +21467,7 @@ window.GAMES = [
   },
   {
     id: "synthetik-legion-rising",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/528230/334553/f58ddd11d423e02c0c3f07e85a14034253f0af3a/1750544552/microtrailer.mp4",
     ratingCount: 13047,
     reviewed: true,
     title: "SYNTHETIK: Legion Rising",
@@ -21621,7 +21621,7 @@ window.GAMES = [
   },
   {
     id: "mighty-goose",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1299360/372974/d0cd892d9c500628da5bda27b7e839d211a89664/1751217667/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1299360/372972/326273cdbcddf99a9b88be1de2d5c6cbd53156b7/1751217666/microtrailer.mp4",
     ratingCount: 1047,
     reviewed: true,
     title: "Mighty Goose",
@@ -21888,7 +21888,7 @@ window.GAMES = [
   },
   {
     id: "halo-wars-de",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/459220/98363/348cb032a51038a7c2e8c433da89b81ec1ac2bf7/1750533053/microtrailer.mp4",
     ratingCount: 9294,
     reviewed: true,
     title: "Halo Wars: Definitive Edition",
@@ -22404,7 +22404,7 @@ window.GAMES = [
   },
   {
     id: "jamestown-plus",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/377950/253697/c23563979e9868cdd6de009895a126e8555de0e4/1751272718/microtrailer.mp4",
     ratingCount: 247,
     reviewed: true,
     title: "Jamestown+",
@@ -23015,7 +23015,7 @@ window.GAMES = [
   },
   {
     id: "contra-anniversary-collection",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1018020/224745/5bec8f04264033a454508f67de36eb162cf93ef9/1751177110/microtrailer.mp4",
     ratingCount: 1454,
     reviewed: true,
     title: "Contra Anniversary Collection",
@@ -24109,7 +24109,7 @@ window.GAMES = [
   },
   {
     id: "double-dragon-neon",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/252350/16456/a0da3a2b0ee5da0bd58a23f81d3ea3da68bd4843/1751261526/microtrailer.mp4",
     ratingCount: 2554,
     reviewed: true,
     title: "Double Dragon: Neon",
@@ -24799,7 +24799,7 @@ window.GAMES = [
   },
   {
     id: "g-darius-hd",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1640160/448130/acafd29da847a295c3a8b9c0699a24c922574588/1751013043/microtrailer.mp4",
     ratingCount: 161,
     reviewed: true,
     title: "G-Darius HD",
@@ -24972,7 +24972,7 @@ window.GAMES = [
   },
   {
     id: "phantom-squad",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2841770/1019632151/2d43806a135bacf2d241b3ce2a3056b47bbd64be/1752822568/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2841770/1383677342/a7414da704023d528dd2becb8c5e338834d7404c/1752485160/microtrailer.mp4",
     ratingCount: 516,
     reviewed: true,
     title: "Phantom Squad",
@@ -25874,7 +25874,7 @@ window.GAMES = [
   },
   {
     id: "unepic",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/233980/11867/8241422cb7317fec6d9c3eadfaaeb10dfdcb3327/1750491125/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/233980/18261/cf9b32e43fbba2b14d4f14d0dd367ee06bf815a3/1750491127/microtrailer.mp4",
     ratingCount: 8152,
     reviewed: true,
     title: "Unepic",
