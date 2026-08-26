@@ -5059,7 +5059,7 @@ window.GAMES = [
   },
   {
     id: "garbanzo-quest",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2105910/737145/b09d7ff7499f0ec60d48526e113b99cb628ebd86/1751076820/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 637,
     reviewed: true,
     title: "Garbanzo Quest",
@@ -5306,7 +5306,7 @@ window.GAMES = [
   },
   {
     id: "goliath-depot",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2479030/641836/90f69673bc70c255c631fc3b69db697c49801f57/1750923266/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 65,
     reviewed: true,
     title: "Goliath Depot",
@@ -5724,7 +5724,7 @@ window.GAMES = [
   },
   {
     id: "sigma-impact",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1654890/524739/d7844b28a8cfbfbc622eb433f30fec6aa841caa8/1751014963/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1654890/387668/79bfc7969a27f8f1361c55235a47b73f2b932e59/1751014963/microtrailer.mp4",
     ratingCount: 101,
     reviewed: true,
     title: "Sigma Impact",
@@ -5743,7 +5743,7 @@ window.GAMES = [
   },
   {
     id: "this-is-no-cave",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2852760/740615301/cbceb38638e0d8ca9578be381730d30d3a41fd02/1764821627/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 148,
     reviewed: true,
     title: "This Is No Cave",
@@ -6028,7 +6028,7 @@ window.GAMES = [
   },
   {
     id: "robodunk",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1557720/608420/4250df48a885027be7ea58fc7d2fc16a2464737d/1751002963/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 93,
     reviewed: true,
     title: "RoboDunk",
@@ -6085,7 +6085,7 @@ window.GAMES = [
   },
   {
     id: "project-starship-x",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1175430/250539/21d97862208f630e40e3c89d73bdb27e671bee1d/1751199176/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 94,
     reviewed: true,
     title: "Project Starship X",
@@ -6447,7 +6447,7 @@ window.GAMES = [
   },
   {
     id: "trials-rising",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/641080/170077/85114c2c7344365131297c9031b3b7c50ee6ecfb/1750565883/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Trials® Rising",
     year: 2019,
@@ -6983,7 +6983,7 @@ window.GAMES = [
   },
   {
     id: "smurfs-2-prisoner-green-stone",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2397500/624153/97ba3be90c83906169f5468efd6f17ae091f14b9/1750914946/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2397500/600785/7af22c226d21f481737548c864cf8d5ffe34eae7/1750914937/microtrailer.mp4",
     reviewed: true,
     title: "The Smurfs 2 - The Prisoner of the Green Stone",
     year: 2023,
@@ -7136,7 +7136,7 @@ window.GAMES = [
   },
   {
     id: "one-piece-pirate-warriors-3",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/331600/33179/70f426f472b7f7909af714e0f6c7f6a39e78fb26/1751281915/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "ONE PIECE: PIRATE WARRIORS 3",
     year: 2015,
@@ -7231,7 +7231,7 @@ window.GAMES = [
   },
   {
     id: "mothergunship",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/574090/170808/d2866cb58961bc92d6abdd2905d40c2d0b197fd1/1750552387/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/574090/190610/6229051de4af6e51b91869f67667c85ad748aa60/1750552399/microtrailer.mp4",
     reviewed: true,
     title: "MOTHERGUNSHIP",
     year: 2018,
@@ -7326,7 +7326,7 @@ window.GAMES = [
   },
   {
     id: "wild-guns-reloaded",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/585910/99202/5048c90cd86d6b9f2372504105c88044d03f6941/1751305662/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Wild Guns Reloaded",
     year: 2017,
@@ -7441,7 +7441,7 @@ window.GAMES = [
   },
   {
     id: "toy-soldiers-complete",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/262120/18012/54ad43004a05ea56b5741ce1fbefa16a1f6dd7f3/1750497868/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/262120/18013/930525f39d70a85fc53f2383cad944cf16c6dd98/1750497870/microtrailer.mp4",
     reviewed: true,
     title: "Toy Soldiers: Complete",
     year: 2016,
@@ -7575,7 +7575,7 @@ window.GAMES = [
   },
   {
     id: "towerborne",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2458830/156224418/2d7c9f06aaa12a2b82514b4c83d07d5027ed78ea/1772142591/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Towerborne",
     year: 2026,
@@ -7690,7 +7690,7 @@ window.GAMES = [
   },
   {
     id: "magicite",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/268750/17384/55a0edc873fb5bd72297ebbc3dbae6f2e5223417/1751260880/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Magicite",
     year: 2014,
@@ -7824,7 +7824,7 @@ window.GAMES = [
   },
   {
     id: "earth-defense-force-world-brothers-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2370170/760948/4259157a743f9a47aaa9dc2caefbae1c734f19f8/1750912009/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2370170/760961/a2c19edb0efa7db48721bd46505f97de53a7c3b6/1750912010/microtrailer.mp4",
     reviewed: true,
     title: "EARTH DEFENSE FORCE: WORLD BROTHERS 2",
     year: 2024,
@@ -7843,7 +7843,7 @@ window.GAMES = [
   },
   {
     id: "sacred-2-remaster",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3906660/648371787/86626e8133e38685407d8bc6a90fa8c55ef54e4b/1762943349/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Sacred 2 Remaster",
     year: 2025,
@@ -7900,7 +7900,7 @@ window.GAMES = [
   },
   {
     id: "17-waves-td",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2369760/810901/3ed6d93dd15248190c9e07d70501c5a1b1f9aac8/1750911945/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "17.waves TD",
     year: 2026,
@@ -7938,7 +7938,7 @@ window.GAMES = [
   },
   {
     id: "disney-illusion-island",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2054660/631972137/afd5cda66994707130a74e6bd037ccfae8ebcad2/1751069532/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Disney Illusion Island Starring Mickey and Friends",
     year: 2025,
@@ -7963,7 +7963,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "First-person", "3D", "Puzzle", "Adventure", "Horror"],
     endingType: "arcade-goal",
-    rating: 70,
+    rating: 72,
     ratingCount: 82,
     playersMax: 2,
     hours: 4,
@@ -7976,7 +7976,7 @@ window.GAMES = [
   },
   {
     id: "hyperspaced",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1125830/2036962400/c81ea4cfd283ab229fc5053c3350e488035fe492/1753187950/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Hyperspaced",
     year: 2025,
@@ -7995,7 +7995,7 @@ window.GAMES = [
   },
   {
     id: "lets-cook-together-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1637400/766412/b9d24a890d4f45f58baaa1aee338a1bce98d2d60/1751012631/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Let's Cook Together 2",
     year: 2025,
@@ -8242,7 +8242,7 @@ window.GAMES = [
   },
   {
     id: "bones-cafe",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1739070/448324/56399b26ef74fd0144d78aa257d92975eafcd8a9/1751025860/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Bone's Cafe",
     year: 2022,
@@ -8280,7 +8280,7 @@ window.GAMES = [
   },
   {
     id: "its-only-money",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1415220/774688/1ed3e035cb170b2bfcd600a7c473ffbbdea2dac9/1751235003/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "It's Only Money",
     year: 2024,
@@ -8433,7 +8433,7 @@ window.GAMES = [
   },
   {
     id: "chicken-fight",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2159470/565370/1431294da663d38b83a926d2e38829e130bd00d2/1751083992/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2159470/568202/7c75ba941ebe40cb70d55f61782c3fbceb264db2/1751083532/microtrailer.mp4",
     reviewed: true,
     title: "Chicken Fight",
     year: 2023,
@@ -8624,7 +8624,7 @@ window.GAMES = [
   },
   {
     id: "arcrunner",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1575830/561979/a1a32695c9d3b27aa30c4e2a008d7ee353d5ce0f/1751005294/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1575830/512222/682e99e8553ac2d44383f81e4dd2b6eeb5c559ff/1751005294/microtrailer.mp4",
     reviewed: true,
     title: "ArcRunner",
     year: 2023,
@@ -8701,7 +8701,7 @@ window.GAMES = [
   },
   {
     id: "classic-marathon-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2398490/696250/5d9f964aba99edbc77bfe3ffb2063c76b66b6849/1750915054/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Classic Marathon 2",
     year: 2024,
@@ -8796,7 +8796,7 @@ window.GAMES = [
   },
   {
     id: "escape-first",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/850450/159069/dfd39a684012817f6e0e79297dbcbc8b8b6c2426/1751153274/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Escape First",
     year: 2018,
@@ -9047,7 +9047,7 @@ window.GAMES = [
   },
   {
     id: "rampage-knights",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/314410/42296/2faea487973b40f4f8f48cc1106dd2b6b4960b4e/1751263457/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/314410/32511/d48a4fa2d3a8fc4323c1d4f8d981ab1d717f7bdc/1751263454/microtrailer.mp4",
     reviewed: true,
     title: "Rampage Knights",
     year: 2015,
@@ -9180,7 +9180,7 @@ window.GAMES = [
   },
   {
     id: "towertale",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/980480/235738/bd7291af973bc2152f6fba61d7946ab4a1a79d0a/1751171735/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/980480/227073/86a65171f00232e2ba36caaaad4562c6f93f455a/1751171734/microtrailer.mp4",
     reviewed: true,
     title: "Towertale",
     year: 2019,
@@ -9218,7 +9218,7 @@ window.GAMES = [
   },
   {
     id: "archvale",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1296360/419281/d00c0ab55ee5a36e9bdf1f8e6583a6daad9f7935/1751217001/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Archvale",
     year: 2021,
@@ -9257,7 +9257,7 @@ window.GAMES = [
   },
   {
     id: "blightbound",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1263070/416544/2a55db8d489e61c84a998f1c8f22482840b0be6e/1751211326/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1263070/297485/7198a5cc8f356b502c5bb56ef1cbd4d531f85098/1751211315/microtrailer.mp4",
     reviewed: true,
     title: "Blightbound",
     year: 2021,
@@ -9545,7 +9545,7 @@ window.GAMES = [
   },
   {
     id: "jitsu-squad",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1522080/474424/a465474ff72b8b52ffcfdbcdd8066a9e768f1db8/1750998505/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Jitsu Squad",
     year: 2022,
@@ -9583,7 +9583,7 @@ window.GAMES = [
   },
   {
     id: "juju",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/300840/29018/69f965b811438f735e39a26b9a5f1f1b85644121/1751261744/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "JUJU",
     year: 2014,
@@ -9717,7 +9717,7 @@ window.GAMES = [
   },
   {
     id: "outer-terror",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2189860/559812/da30c8c3ee9bc9f176d542bbb7e14734d9c10b81/1751087600/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2189860/553036/6399f4f492ac6aab1d6c11fa49df047e6434ad86/1751087593/microtrailer.mp4",
     reviewed: true,
     title: "Outer Terror",
     year: 2023,
@@ -9793,7 +9793,7 @@ window.GAMES = [
   },
   {
     id: "rogue-stormers",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/299480/44798/c1b528589b9a55335e14afd360c8345fe1bc0d4e/1751263160/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Rogue Stormers",
     year: 2016,
@@ -10041,7 +10041,7 @@ window.GAMES = [
   },
   {
     id: "xeno-crisis",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/464260/237123/62c934c610fc09d64414cc217e5eadbe69f4114b/1750534245/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Xeno Crisis",
     year: 2019,
@@ -10079,7 +10079,7 @@ window.GAMES = [
   },
   {
     id: "aaero2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3010090/149016931/202b11c04d8eed3c440c60eb285221220fc0137c/1765902744/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Aaero2",
     year: 2024,
@@ -10311,7 +10311,7 @@ window.GAMES = [
   },
   {
     id: "hyperparasite",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/838110/270195/10c422462c8d720231f63f914775327ff0af0b0a/1751150852/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "HyperParasite",
     year: 2020,
@@ -10369,7 +10369,7 @@ window.GAMES = [
   },
   {
     id: "okinawa-rush",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/777670/403553/a8d7ec60765674d4f3112269762e424fae3df5fa/1751143585/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Okinawa Rush",
     year: 2021,
@@ -10483,7 +10483,7 @@ window.GAMES = [
   },
   {
     id: "snow-bros-2-special",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2340640/866821/26052bce87b6637e60d8f8fed7865b087098c9f8/1750908631/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "SNOW BROS. 2 SPECIAL",
     year: 2025,
@@ -10730,7 +10730,7 @@ window.GAMES = [
   },
   {
     id: "find-or-be-found",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3223330/841944/92718768f29ff957c499d4e34374005345fda935/1750882385/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3223330/452000909/b0cffd4872c5a3eca99780b1a50175eed4fea215/1750882385/microtrailer.mp4",
     reviewed: true,
     title: "Find or be Found",
     year: 2025,
@@ -10788,7 +10788,7 @@ window.GAMES = [
   },
   {
     id: "no-straight-roads-encore-edition",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1726190/410399/b8c8c3714ae4358195e59e1c6267ab91303fb321/1750730004/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "No Straight Roads: Encore Edition",
     year: 2021,
@@ -11073,7 +11073,7 @@ window.GAMES = [
   },
   {
     id: "shing",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1103730/308563/3dcf8db63a4e54378ccebf25b7cc657064e38e16/1751189067/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1103730/242836/0a217a63fe9eed1ab11d2d8df61c0d5df35efe84/1751189066/microtrailer.mp4",
     reviewed: true,
     title: "Shing!",
     year: 2020,
@@ -11092,7 +11092,7 @@ window.GAMES = [
   },
   {
     id: "usac-code-breach",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1886070/548460/db3b06bced7cc8c6d0d081c80a65ec3f45440153/1750739802/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1886070/580237/246b3e7e252b137398f6c39cfad9da24892c48f3/1750739802/microtrailer.mp4",
     reviewed: true,
     title: "USAC: Code Breach",
     year: 2022,
@@ -11245,7 +11245,7 @@ window.GAMES = [
   },
   {
     id: "coffee-crisis",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/596380/388889/ededea7bc88c6c0776a5999cdbfbc2d1faec5ec9/1751107753/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/596380/202861/356532304417c03b00c7bbfed284583d75c86a43/1751107753/microtrailer.mp4",
     reviewed: true,
     title: "Coffee Crisis",
     year: 2018,
@@ -11284,7 +11284,7 @@ window.GAMES = [
   },
   {
     id: "earth-defense-force-insect-armageddon",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/23530/6487/cbba0da8275a1fb0ef064df7a387411add014f2f/1750484745/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Earth Defense Force: Insect Armageddon",
     year: 2011,
@@ -11610,7 +11610,7 @@ window.GAMES = [
   },
   {
     id: "wirm",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1934870/1454096445/c2b8d7cc3f666f3eb6c2ae8723c4d9e2937d6a39/1765314258/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1934870/1951031864/dce16a8e41cf8e0f71b7ce2c56994f9addda9183/1756445389/microtrailer.mp4",
     reviewed: true,
     title: "Wirm",
     year: 2025,
@@ -11853,7 +11853,7 @@ window.GAMES = [
     verdict: "Cult Flash brawlers reborn: a 15-level co-op campaign climaxing in the Hypergon boss, plus deathmatch and survival.",
     storeUrl: "https://store.steampowered.com/app/3038340/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3038340/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3038340/801439/206a14d66bee3a52025dbca2273e707f8fb55c3a/1750960031/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("Du-Bsqt4aMc")
   },
   {
@@ -11986,7 +11986,7 @@ window.GAMES = [
     verdict: "Touhou fan 2D platformer like Super Mario; second player drops in to help through the stages to the finish.",
     storeUrl: "https://store.steampowered.com/app/2887260/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2887260/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2887260/679552/0092ee09133d20a5b03db6ba14f7b75f5d9767f3/1750950833/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("1nTbcVU4SOY")
   },
   {
@@ -12351,7 +12351,7 @@ window.GAMES = [
     verdict: "2-player run-and-gun shooter through 7 Halloween-themed levels, ending in a final boss.",
     storeUrl: "https://store.steampowered.com/app/1232810/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1232810/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1232810/284387/db15c79748565ad8bc490a58696967004e529b83/1751207526/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("oad8JdK8dXo")
   },
   {
@@ -12503,7 +12503,7 @@ window.GAMES = [
     verdict: "Fwooshy roguelite flight combat over procedural islands; clear all objectives and land to finish each mission, 2P co-op.",
     storeUrl: "https://store.steampowered.com/app/381020/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/381020/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/381020/119323/bf5eb79c05da57e569c0131687bfd95b0a8ff153/1751273162/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("7ORa3Ve1vhg")
   },
   {
@@ -12579,7 +12579,7 @@ window.GAMES = [
     verdict: "Cozy hidden-object hunt across handcrafted Japan scenes; find all cats, color them, then unlock the secret final level.",
     storeUrl: "https://store.steampowered.com/app/3766170/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3766170/bf9b701c1041faf6b9c49d86c1eb4c4a4389b712/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3766170/51924952/b44c6164e2e9d61e45ff0c0b2de3d76df6ec913a/1750379321/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("G_Ih3BRlHHM")
   },
   {
@@ -12674,7 +12674,7 @@ window.GAMES = [
     verdict: "Slo-mo side-scrolling action-shooter; Story Mode's cyborg colony mystery plays solo or online/local 2P co-op.",
     storeUrl: "https://store.steampowered.com/app/357340/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/357340/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/357340/50487/a9878bc79e69a8d42b1b7b60d648f09b3cc5c14b/1751274216/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/357340/50491/c7e67c5a679dd8893dd0266accb3c7e95a684709/1751274219/microtrailer.mp4",
     youtubeUrl: youtube("LGeyWRKDtdk")
   },
   {
@@ -12921,7 +12921,7 @@ window.GAMES = [
     verdict: "GBC-style top-down soulslike metroidvania with bosses and a story finale; P2 joins as a color-swapped hunter.",
     storeUrl: "https://store.steampowered.com/app/3216340/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3216340/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3216340/808152676/9ea6a1d46b6e5bd0e2d83ebe005519b0fe51b2d1/1770117098/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3216340/667095885/7eb3037f110445194be865f6f01a8e7331ef6ea1/1750869256/microtrailer.mp4",
     youtubeUrl: youtube("v01VzOhMCU4")
   },
   {
@@ -13054,7 +13054,7 @@ window.GAMES = [
     verdict: "Free splitscreen co-op heist: two goblins stack, climb and sneak through a guarded manor, then escape with the loot.",
     storeUrl: "https://store.steampowered.com/app/4140170/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4140170/7ff5eb6aa7b1aca4a2cfd5b1b6f9196d96c1d718/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4140170/803557584/2c995b3c85074bbe26f79e718725e356c7c322e8/1774307088/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("veXrDaDeAno")
   },
   {
@@ -13282,7 +13282,7 @@ window.GAMES = [
     verdict: "Top-down witch action-roguelite: blast through demon-guarded levels to stop the grimoire, local co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/2118370/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2118370/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2118370/557642/7ed5f6e45ff13fec642b6cac83c22f0acfb223ae/1751078458/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("Q9DtdRu_gtg")
   },
   {
@@ -13320,7 +13320,7 @@ window.GAMES = [
     verdict: "Frantic restaurant management: run each campaign to its 3-star award, then optional endless mode; local co-op 2-4.",
     storeUrl: "https://store.steampowered.com/app/846800/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/846800/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/846800/197331/2ec79755777c15cd4a1959d69b2cfd7b07dfc508/1751152303/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("PP-Jo_Hv8Xc")
   },
   {
@@ -13377,7 +13377,7 @@ window.GAMES = [
     verdict: "Co-op roguelike deckbuilder; build a band and beat the run-ending final boss to become a rock legend.",
     storeUrl: "https://store.steampowered.com/app/1322100/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1322100/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1322100/454388/6d77b6bfef1a233f956139707e3cef8a04b87b52/1750672208/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("eyx0WjSP7lA")
   },
   {
@@ -13396,7 +13396,7 @@ window.GAMES = [
     verdict: "Free Quake-3-style FMV shooter with a campy co-op story campaign across full-motion-video episodes.",
     storeUrl: "https://store.steampowered.com/app/1860550/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1860550/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1860550/427597/0486228ac8cead32fdaea8fe8915ae82522650ef/1751039553/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("j8vV83ikr88")
   },
   {
@@ -13434,7 +13434,7 @@ window.GAMES = [
     verdict: "🟠 Co-op comedy salon sim; the ending is reached by surviving rising daily quotas up to level 7.",
     storeUrl: "https://store.steampowered.com/app/3398870/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3398870/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3398870/872293/7dbc54ba23766fdfd3d0b84893c910464491bf9e/1750825907/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3398870/870510/bac4760d14f85bf1350c4cebfe7d783e73fefaba/1750825898/microtrailer.mp4",
     youtubeUrl: youtube("RVXPhjyy4u0")
   },
   {
@@ -13624,7 +13624,7 @@ window.GAMES = [
     verdict: "Platform-fighter with per-character Story Modes ending in a mirror boss; two players can clear them together.",
     storeUrl: "https://store.steampowered.com/app/1116770/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1116770/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1116770/251458/167c1f386fed946c5bce675802c2649fa11f9c31/1751191899/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("D-mmTp4Bsqc")
   },
   {
@@ -13833,7 +13833,7 @@ window.GAMES = [
     verdict: "Play a zombie devouring a retro-futurist 1950s town; story campaign with a finale, two-player split-screen co-op.",
     storeUrl: "https://store.steampowered.com/app/7800/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/7800/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/7800/354550/d36b62a1211cb8d5f118a1b3e9ba587b4f3bafb0/1751245949/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("Oe8QJ7yzNqk")
   },
   {
@@ -13985,7 +13985,7 @@ window.GAMES = [
     verdict: "Top-down Zelda-like where a shotgun hillbilly clears dungeons to collect rim pieces and beat a final boss.",
     storeUrl: "https://store.steampowered.com/app/597230/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/597230/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/597230/345605/c02f4022c3c4d790c49ec8c45102f501851f0b52/1751107862/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("yoB91m9_N7w")
   },
   {
@@ -14023,7 +14023,7 @@ window.GAMES = [
     verdict: "Fast fantasy strategy with roguelike maps; team up vs the AI and win as the last alliance standing.",
     storeUrl: "https://store.steampowered.com/app/403950/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/403950/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/403950/45347/428162b945a4a2f827d3ca2cea231e5695503f24/1751277744/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("cO-cQR15rMg")
   },
   {
@@ -14137,7 +14137,7 @@ window.GAMES = [
     verdict: "Co-op reverse escape room for up to five; solve a safe house of puzzles and complete the heist to finish.",
     storeUrl: "https://store.steampowered.com/app/2722360/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2722360/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2722360/728584/cb90a5afa3f15627e29ad40203774aa9cc2572ec/1750894207/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("0M_aNcj9FOo")
   },
   {
@@ -14175,7 +14175,7 @@ window.GAMES = [
     verdict: "Frantic toy-car party racer with a completable championship of races, challenges and mini-games.",
     storeUrl: "https://store.steampowered.com/app/1202970/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1202970/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1202970/268646/b0cf0ff570931ac2db49f8b715344605c07dee40/1751203494/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1202970/261763/7412d815f663bb068a99dd724c4189ff5229c32a/1751203493/microtrailer.mp4",
     youtubeUrl: youtube("cRT6quv4igg")
   },
   {
@@ -14194,7 +14194,7 @@ window.GAMES = [
     verdict: "NES-style arcade co-op: two aliens abduct every human across four themed stages, Bubble Bobble-flavored.",
     storeUrl: "https://store.steampowered.com/app/550810/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/550810/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/550810/79360/026c649763b2b355a198dc34279abf82ee146b64/1751300708/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("SAiFMeih3OM")
   },
   {
@@ -14213,7 +14213,7 @@ window.GAMES = [
     verdict: "Two-player isometric survival-action across a short level set as you fight the monster outbreak to its end.",
     storeUrl: "https://store.steampowered.com/app/1676870/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1676870/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1676870/434717/5ca5427bd2a989a7879fc06510c178b6f459612f/1751018343/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("ltPAMUPHnBQ")
   },
   {
@@ -14251,7 +14251,7 @@ window.GAMES = [
     verdict: "Hand-drawn 2D soulslike with parry-heavy swordplay; a friend can join your hunt online through 25+ bosses.",
     storeUrl: "https://store.steampowered.com/app/2488540/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2488540/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2488540/1741816143/6f4739157aeed2b4d404ab956895037370cc3370/1769624942/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("v5HI8KpnF0U")
   },
   {
@@ -14555,7 +14555,7 @@ window.GAMES = [
     verdict: "Retro Doom-engine FPS in a norse-celtic world; co-op through 4 episodes of pixel carnage that conclude the campaign.",
     storeUrl: "https://store.steampowered.com/app/1715690/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1715690/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1715690/400455/457577abcf3acd8d523604f30c1fd0f72d8460d3/1751023039/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("4Nglfpzn5wc")
   },
   {
@@ -14727,7 +14727,7 @@ window.GAMES = [
     verdict: "Top-down survival sandbox with crafting and bosses, ending on the Nightmare Boss. Up to 4-player online co-op.",
     storeUrl: "https://store.steampowered.com/app/538100/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/538100/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/538100/75859/b0e6fbe4de4bdcdee029de1b2480b6f6fcbc81d7/1751299148/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("cy8NRkT8yzY")
   },
   {
@@ -14880,7 +14880,7 @@ window.GAMES = [
     verdict: "Cinematic Flashback-style action-adventure; one plays Adam, one Eve, through a short complete story.",
     storeUrl: "https://store.steampowered.com/app/963450/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/963450/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/963450/194789/baece085ce4065990a5671d2c811f9e5b69d7d4a/1751169425/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("2W9i-h2FYiA")
   },
   {
@@ -14937,7 +14937,7 @@ window.GAMES = [
     verdict: "Top-down looter-shooter with a 15+ hour campaign chasing the artifact Nienix, online co-op up to six.",
     storeUrl: "https://store.steampowered.com/app/1332760/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1332760/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1332760/674983/54cb8dd97e6f6be4ffe13ef968a5b11796eceb8c/1751222696/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("39OFFLpcfPM")
   },
   {
@@ -15203,7 +15203,7 @@ window.GAMES = [
     verdict: "Atmospheric Siberian janitor sim with online co-op; do utility jobs to save for a ticket and leave the city.",
     storeUrl: "https://store.steampowered.com/app/1836160/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1836160/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1836160/442216/59d24c39a420c9ead037004d17b2c8ad964539b4/1751036947/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1836160/442210/08f0ebf0a8b0ae4cdaf6fdb641353a67bd294127/1751036946/microtrailer.mp4",
     youtubeUrl: youtube("jEY6NjvTF3g")
   },
   {
@@ -15222,7 +15222,7 @@ window.GAMES = [
     verdict: "Twin-stick roguelite shoot'em-up with mutant animals on a gory TV show; runs build to a final boss across episodes.",
     storeUrl: "https://store.steampowered.com/app/1390700/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1390700/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1390700/641109/d10b3ca9992626c5fb41882cdbf20f13d2ff8bc2/1751231546/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1390700/611995/f23a2137eb3632a4a84d7ad1686423030143aadf/1751231545/microtrailer.mp4",
     youtubeUrl: youtube("d9hc_HjpHlI")
   },
   {
@@ -15412,7 +15412,7 @@ window.GAMES = [
     verdict: "Advance Wars-style dieselpunk turn-based tactics with three hand-designed story campaigns; co-op via hotseat/Remote.",
     storeUrl: "https://store.steampowered.com/app/1477170/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1477170/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1477170/663877/b097838e1ff4f3ce939d67bb78efd2095f7fe258/1750992717/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("jR6_vuVgoto")
   },
   {
@@ -15451,7 +15451,7 @@ window.GAMES = [
     verdict: "Side-scrolling shmup across 24 missions and six bosses to reclaim Earth; two-player co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/2298950/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2298950/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2298950/590041/5c22f359ced616dcb78a808c308c1ae9a5724941/1750904446/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("Nwv0K2DozmU")
   },
   {
@@ -15489,7 +15489,7 @@ window.GAMES = [
     verdict: "Bonkers mecha-destruction action-adventure with a story and four endings; two-player co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/1394810/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1394810/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1394810/370673/ed2b2b2bd89b7f1ff756ac24fb10dcedf3c88249/1751232135/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("C_hJ3r-2WdA")
   },
   {
@@ -15508,7 +15508,7 @@ window.GAMES = [
     verdict: "Comical arena shooter whose 18-level Tournament campaign culminates in a final boss; co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/334560/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/334560/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/334560/52847/1f8f7a7566602dd76a803dff1244bc65b4e75f57/1751265414/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("zRrUdlVaFRM")
   },
   {
@@ -15527,7 +15527,7 @@ window.GAMES = [
     verdict: "Gothic blood-surfing action roguelike; escape the prison of Mictlan and beat its final boss, online co-op up to 4.",
     storeUrl: "https://store.steampowered.com/app/2507400/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2507400/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2507400/801225/fee59a288288afc81b363be61977de22069bbafc/1750925949/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2507400/698482/43cc2aa6bea08fec4d45521aef7bce5f40d92e2a/1750925948/microtrailer.mp4",
     youtubeUrl: youtube("RyyJ1oTeNAM")
   },
   {
@@ -15565,7 +15565,7 @@ window.GAMES = [
     verdict: "Retro spaghetti-western co-op RPG with real-time battles and a 9-12h story that ends with the Saints-Little Gang.",
     storeUrl: "https://store.steampowered.com/app/313470/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/313470/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/313470/25329/e5c7226b8c24193f8b7a054f38e483d525982a9b/1751263414/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("zfa7YBp1PhY")
   },
   {
@@ -15717,7 +15717,7 @@ window.GAMES = [
     verdict: "2.5D side-scrolling beat-em-up across 8 zombie-town chapters; 4-player online co-op with a defined last mission.",
     storeUrl: "https://store.steampowered.com/app/233190/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/233190/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/233190/13612/8a442696772a9a024c2d1c11c204a4cf6c3af4c6/1751249547/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("-JKN6oWS11s")
   },
   {
@@ -15850,7 +15850,7 @@ window.GAMES = [
     verdict: "Co-op reverse escape-room: a thief crew solves puzzles room by room to pull off a mansion heist for up to five.",
     storeUrl: "https://store.steampowered.com/app/1925320/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1925320/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1925320/472927/7a758c593643440f05dab7705baa829b5cf047cd/1750741169/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("eIpr9ROWpY0")
   },
   {
@@ -15926,7 +15926,7 @@ window.GAMES = [
     verdict: "Overcooked-style cook-em-up with combat; 20 levels across worlds culminating in a final cook-off.",
     storeUrl: "https://store.steampowered.com/app/1136020/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1136020/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1136020/476885/cd276959e6d05697220071b3318842faf9fe0bfc/1751193598/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1136020/285262/309ed1b01e41bbc8cdbcb0b335b9de66d85d4f97/1751193655/microtrailer.mp4",
     youtubeUrl: youtube("xKD3c6SY078")
   },
   {
@@ -16021,7 +16021,7 @@ window.GAMES = [
     verdict: "ASCII action-RPG; clear 5 towers to open the portal and slay Lord Z, with a constant fairy co-op partner.",
     storeUrl: "https://store.steampowered.com/app/1356040/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1356040/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1356040/349281/ae539153527003e200b78ee22d335a1f2f15ab77/1751226279/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("Xjv2stAAtHQ")
   },
   {
@@ -16040,7 +16040,7 @@ window.GAMES = [
     verdict: "Top-down 3D shmup; 13 stages and 5 multi-phase bosses to the finale, fun two-player co-op.",
     storeUrl: "https://store.steampowered.com/app/1584750/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1584750/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1584750/364624/9a4b703b46f7f00b1d2b23cfeb521af1d98726d2/1751006383/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("bOcdYHMm-NY")
   },
   {
@@ -16079,7 +16079,7 @@ window.GAMES = [
     verdict: "2D twin-stick roguelite; fight across the solar system run by run until you reach Earth, co-op supported.",
     storeUrl: "https://store.steampowered.com/app/2980170/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2980170/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2980170/1796964489/f2081c43b69f0e71132c935d491cf44723fb01ef/1779694745/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2980170/1359228195/2200d57677dc27ecf1d3374e0ba3d0eaa411ca46/1778240136/microtrailer.mp4",
     youtubeUrl: youtube("XaaVF-fSTHQ")
   },
   {
@@ -16098,7 +16098,7 @@ window.GAMES = [
     verdict: "RTS meets third-person shooter; an 8-10h, 3-chapter campaign with a Friend Pass for one-copy co-op.",
     storeUrl: "https://store.steampowered.com/app/1332430/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1332430/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1332430/101525387/e87a7a060d7c806cc2c4f6aef31bbcdef11ba2bc/1755898103/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1332430/831337/4d377dbd20f46e79e37debc11f1af1b7e0f93eab/1751222669/microtrailer.mp4",
     youtubeUrl: youtube("yHUsWfDP12w")
   },
   {
@@ -16364,7 +16364,7 @@ window.GAMES = [
     verdict: "HeroQuest-style turn-based dungeon crawler; lead a party through castle maps to slay the evil sorcerer.",
     storeUrl: "https://store.steampowered.com/app/453690/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/453690/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/453690/200321/80ae01e60b5860aa686a8a07e10ae18fab831df5/1750532563/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("BJ_YsB00ldw")
   },
   {
@@ -16383,12 +16383,12 @@ window.GAMES = [
     verdict: "2D stealth platformer where everything burns; sneak through a campaign to a final battle and ending.",
     storeUrl: "https://store.steampowered.com/app/431940/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/431940/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/431940/287242/dd17dcca73b649d57f9c67065527fdf3d31d303c/1751283840/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/431940/280559/3b5d7101ec7bae5ec4b73e58a10d3549b916f2f3/1751283837/microtrailer.mp4",
     youtubeUrl: youtube("3YNC8kxduZ0")
   },
   {
     id: "cobra-kai-the-karate-kid-saga-continues",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1279920/334894/e72fd8f941ae20e7dd99522b3f570d25d323a9e2/1751214129/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Cobra Kai: The Karate Kid Saga Continues",
     year: 2021,
@@ -16536,7 +16536,7 @@ window.GAMES = [
     verdict: "Co-op roguelite base defense: small robots fend off alien waves through a campaign ending on an act-2 boss.",
     storeUrl: "https://store.steampowered.com/app/2103950/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2103950/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2103950/516082886/cad3145069138b8e3ed2d222506b9162ec961968/1776331924/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("2gEoSILiLm4")
   },
   {
@@ -16897,7 +16897,7 @@ window.GAMES = [
     verdict: "Three Kingdoms musou with story-mode campaigns that culminate in endings; 2-player co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/968790/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/968790/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/968790/196898/59ad2943fdfefc58f017bbc4404b69d22c71912a/1750602314/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("gLkHJuhmIy0")
   },
   {
@@ -17011,7 +17011,7 @@ window.GAMES = [
     verdict: "Co-op action roguelike: fight through 10 worlds of multi-stage bosses to escape back home.",
     storeUrl: "https://store.steampowered.com/app/2189670/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2189670/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2189670/1866776867/ff457ade8f6b3dc4c0799e6203fd34f709a5da9d/1756786740/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("aVC7wUG2GII")
   },
   {
@@ -17334,7 +17334,7 @@ window.GAMES = [
     verdict: "WW2 RTS where you command unseen units by radio; a finite Canadian campaign from Dieppe to the Falaise Gap.",
     storeUrl: "https://store.steampowered.com/app/1011610/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1011610/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1011610/273731/53a1534544407262dabe6183fd073000298472e7/1751175972/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("gxScZ3Wi2K0")
   },
   {
@@ -17353,7 +17353,7 @@ window.GAMES = [
     verdict: "Save the Smurf forest from Gargamel; P2 pilots an assist hat alongside you through a short story platformer.",
     storeUrl: "https://store.steampowered.com/app/1502560/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1502560/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1502560/421261/b5c81bde9346337033bcfdaa94e309c654b0eb09/1750996118/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1502560/384430/e796dd8c308f3fb690b0e9cb204de997964926ad/1750996114/microtrailer.mp4",
     youtubeUrl: youtube("YfMl8UghKCI")
   },
   {
@@ -17372,7 +17372,7 @@ window.GAMES = [
     verdict: "🟠 Pixel JRPG with a Tetris-style puzzle battle system; co-op is a battles-only assist mode, one player owns the story.",
     storeUrl: "https://store.steampowered.com/app/1372000/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1372000/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1372000/942523349/e9ef6b1211a81ffe986c170e4b5c6fd10901586b/1751046861/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1372000/754287/cabe83a9bc718cdb9b4d1fa1f26f5eb668649af0/1751228664/microtrailer.mp4",
     youtubeUrl: youtube("1rTChhQrmD4")
   },
   {
@@ -17885,7 +17885,7 @@ window.GAMES = [
     verdict: "🟠 Open-world zombie survival ending in a quest to stop the plague, but the loop is wave defense; 1-4 couch co-op.",
     storeUrl: "https://store.steampowered.com/app/786450/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/786450/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/786450/152673/2b59288dc6c535ae832e10ac7e892a9cbeccd85e/1751144562/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("7BxXVQJzrSI")
   },
   {
@@ -17904,7 +17904,7 @@ window.GAMES = [
     verdict: "Frantic twin-stick bullet-hell co-op: pilot a cyberdragon through an 8-mission campaign of escalating swarms.",
     storeUrl: "https://store.steampowered.com/app/298280/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/298280/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/298280/27024/bf2695b7689a77e1affc8f1f38c9b6922e310665/1751260363/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("nj88hbPKqy4")
   },
   {
@@ -17980,7 +17980,7 @@ window.GAMES = [
     verdict: "Whimsical 2D puzzle-platformer: explore mysterious doors, grab cubes and animals, and finish the world in co-op.",
     storeUrl: "https://store.steampowered.com/app/678850/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/678850/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/678850/133820/a4cbfb6454b501760b0e90481aabb77118742a2a/1751130023/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("73lw1A7h-l0")
   },
   {
@@ -18075,7 +18075,7 @@ window.GAMES = [
     verdict: "Top-down survival action-RPG; tame ghosts, build, and beat the final boss for a real ending, 4-player co-op.",
     storeUrl: "https://store.steampowered.com/app/1316230/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1316230/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1316230/474398/101442767c996e87907640be44240fdc6ba7bddf/1751221068/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("vF47vvSmGhE")
   },
   {
@@ -18322,7 +18322,7 @@ window.GAMES = [
     verdict: "Zelda-like sci-fi action-RPG; P2 joins as the robot Jib throughout, ending in a multi-phase final boss.",
     storeUrl: "https://store.steampowered.com/app/367080/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/367080/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/367080/118261/5ec857c4ab1d1dca761acf5f85a7d2b3ac299aa7/1751270949/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("1vDOTiNKbrQ")
   },
   {
@@ -18493,7 +18493,7 @@ window.GAMES = [
     verdict: "Fast auto-runner run-and-gun through 6 worlds of bosses; a partner goose can drop in for local co-op.",
     storeUrl: "https://store.steampowered.com/app/584640/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/584640/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/584640/397933/803e3acbf8e24f87e2cd9f5e271adc55c22fd4cb/1751305408/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("BSac8E-v7z0")
   },
   {
@@ -18721,7 +18721,7 @@ window.GAMES = [
     verdict: "Frantic pixel-art shoot 'em up with 2-player local co-op across 10 boss-capped levels to a final showdown.",
     storeUrl: "https://store.steampowered.com/app/772610/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/772610/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/772610/229347/c0ea14a00c71d76eec8cd3bb81acfbd0d0bfded4/1751142944/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("h3FbJVlZods")
   },
   {
@@ -18835,7 +18835,7 @@ window.GAMES = [
     verdict: "Terraria-like roguelite wave-defense: build up and hold Fort Platz through waves and bosses to beat the run.",
     storeUrl: "https://store.steampowered.com/app/1996550/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1996550/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1996550/1757364677/55c0bc25b03e7e6d9c317ba5a203333764200c6e/1785532652/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1996550/1723380241/62b18afaf0fd742a2410af253555e1f5fa216b90/1774994521/microtrailer.mp4",
     youtubeUrl: youtube("oQD7r8cQnR8")
   },
   {
@@ -18993,7 +18993,7 @@ window.GAMES = [
   },
   {
     id: "moon-hunters",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/320040/833903277/a739ff2c9516227d0ad7a0e6e55844ef5f3436d8/1763648748/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/320040/62992/2ecdaff71dc95b58c3e376f590fdffacde54ef9a/1751273567/microtrailer.mp4",
     ratingCount: 5201,
     reviewed: true,
     title: "Moon Hunters",
@@ -19050,7 +19050,7 @@ window.GAMES = [
   },
   {
     id: "anima-flux",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/763180/764688/72e54aaf7af29de968f11f91d0527eccf7c2a42b/1750581091/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/763180/582977/4db3d190c315d6ac333b20ce94cffac3f1b0407e/1750581070/microtrailer.mp4",
     ratingCount: 124,
     reviewed: true,
     title: "Anima Flux",
@@ -19489,7 +19489,7 @@ window.GAMES = [
   },
   {
     id: "nikoderiko",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2374190/870860/d5cdc4a8c6b112fa9c965510e6e1887b481ab67e/1750813271/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2374190/870883/1a827761966a5c647354ae7218d013e1623bc147/1750813271/microtrailer.mp4",
     ratingCount: 384,
     reviewed: true,
     title: "Nikoderiko: The Magical World",
@@ -19528,7 +19528,7 @@ window.GAMES = [
   },
   {
     id: "lego-horizon-adventures",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2428810/785192/8fbfdae9417b08bb54699141aa8156b085550725/1750814675/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2428810/785281/59a7e9ffa47674700332dcb0eb2c90aae46e342b/1750814757/microtrailer.mp4",
     ratingCount: 621,
     reviewed: true,
     title: "LEGO Horizon Adventures",
@@ -20889,7 +20889,7 @@ window.GAMES = [
   },
   {
     id: "vikings-wolves-of-midgard",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/404590/90586/55806bdb4162ad95389ff5ccf39a38cbcca047b7/1751277796/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/404590/87853/5f67834a894c93a3bbab6292d70e0ec964b661a8/1751277789/microtrailer.mp4",
     ratingCount: 4478,
     reviewed: true,
     title: "Vikings - Wolves of Midgard",
@@ -20948,7 +20948,7 @@ window.GAMES = [
   },
   {
     id: "river-city-saga-three-kingdoms",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1013220/464287/41bd91a84a84d6abbc9da7bf40b4bf662af102ca/1751176327/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1013220/464292/a4f66fccde861daa5ea8cbc1338df24beb579c6b/1751176338/microtrailer.mp4",
     ratingCount: 283,
     reviewed: true,
     title: "River City Saga: Three Kingdoms",
@@ -20986,7 +20986,7 @@ window.GAMES = [
   },
   {
     id: "edf-world-brothers",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1497950/368984/d53c2af88156ccdac07a93fd77028b9e1069c6d4/1750995570/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 798,
     reviewed: true,
     title: "Earth Defense Force: World Brothers",
@@ -21217,7 +21217,7 @@ window.GAMES = [
   },
   {
     id: "samurai-warriors-5",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1591530/388157/8be75fb8dec3dfc949cad7de7a3874de57c2da30/1750707967/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1591530/370909/e7e384524ae56ddc98edb6a73662c6f75f77c34c/1750707782/microtrailer.mp4",
     ratingCount: 1548,
     reviewed: true,
     title: "Samurai Warriors 5",
@@ -21314,7 +21314,7 @@ window.GAMES = [
   },
   {
     id: "pode",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/944080/264169/273f63450047e61ba236f7b791017dd711bf2dfa/1750599243/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 603,
     reviewed: true,
     title: "Pode",
@@ -21716,7 +21716,7 @@ window.GAMES = [
   },
   {
     id: "shadow-puppeteer",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/316480/48888/ed72a35133a31165fac44400aa56ea7f3c2e94ce/1751263640/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 223,
     reviewed: true,
     title: "Shadow Puppeteer",
@@ -21735,7 +21735,7 @@ window.GAMES = [
   },
   {
     id: "curse-of-the-sea-rats",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1453900/505805/09fdc80faba0953fd9e5599f5ec418cdc3458fdf/1750990129/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1453900/554510/ffecf2c98b196998349607bd841ef6afb68a47c8/1750990134/microtrailer.mp4",
     ratingCount: 218,
     reviewed: true,
     title: "Curse of the Sea Rats",
@@ -21755,7 +21755,7 @@ window.GAMES = [
   },
   {
     id: "a-robot-named-fight",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/603530/310828/fcc46112744ca80cda1df1591a08ee6c08eddb51/1751124129/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 888,
     reviewed: true,
     title: "A Robot Named Fight!",
@@ -21831,7 +21831,7 @@ window.GAMES = [
   },
   {
     id: "raging-justice",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/384200/161843/aaeabefd9c5a11639b04c18aec4c680dac49447b/1750522337/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/384200/147185/3ce917d261a671116e31391495c85c106daad97b/1750522321/microtrailer.mp4",
     ratingCount: 160,
     reviewed: true,
     title: "Raging Justice",
@@ -22117,7 +22117,7 @@ window.GAMES = [
   },
   {
     id: "painkiller-hell-and-damnation",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/214870/9587/cc9a8ef966973920b712448c15037ee91c207c5e/1751259427/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 4327,
     reviewed: true,
     title: "Painkiller Hell & Damnation",
@@ -22231,7 +22231,7 @@ window.GAMES = [
   },
   {
     id: "aces-of-the-luftwaffe-squadron",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/859350/170507/99ce524f65e2cf6c41d886e9bfd87a2d007e2ff9/1751154419/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 150,
     reviewed: true,
     title: "Aces of the Luftwaffe - Squadron",
@@ -22270,7 +22270,7 @@ window.GAMES = [
   },
   {
     id: "9-monkeys-of-shaolin",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/739080/326260/81228358faf860be71a2e94e35b2449d10edacfd/1750576954/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/739080/179640/8de21af3c581c1c3f4d5f9cc936e3dddf7fcbf02/1750576920/microtrailer.mp4",
     ratingCount: 909,
     reviewed: true,
     title: "9 Monkeys of Shaolin",
@@ -22385,7 +22385,7 @@ window.GAMES = [
   },
   {
     id: "the-takeover",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/418620/258726/c46fbf85c434cd5eca48dc3f1c1c934edd4140c9/1751280907/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 1167,
     reviewed: true,
     title: "The TakeOver",
@@ -22499,7 +22499,7 @@ window.GAMES = [
   },
   {
     id: "phogs",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/850320/320461/2d4b44ddb336d5b7844f29669155422d522736f7/1751153263/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 1400,
     reviewed: true,
     title: "PHOGS!",
@@ -22537,7 +22537,7 @@ window.GAMES = [
   },
   {
     id: "neurovoider",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/400450/70793/4455aae8f9bc0b3539f55599ea262ea273ac237a/1750525901/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/400450/55306/420d5c735707db1887e312fb23f8fa43466acb6a/1750525876/microtrailer.mp4",
     ratingCount: 889,
     reviewed: true,
     title: "NeuroVoider",
@@ -22825,7 +22825,7 @@ window.GAMES = [
   },
   {
     id: "pang-adventures",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/415150/54580/e51a058c51edc0dac400cb3d755ba993ceebc2f1/1751280379/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 448,
     reviewed: true,
     title: "Pang Adventures",
@@ -23820,7 +23820,7 @@ window.GAMES = [
   },
   {
     id: "tristoy",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/303260/28520/c0ec66af344d1b543964e6bc00ea430a8879ddd4/1751271381/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 230,
     reviewed: true,
     title: "TRISTOY",
@@ -23859,7 +23859,7 @@ window.GAMES = [
   },
   {
     id: "pile-up-box-by-box",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1109820/354472/210749dca3df9280639aeb1503867e91af08567d/1751189830/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 98,
     reviewed: true,
     title: "Pile Up! Box by Box",
@@ -24606,7 +24606,7 @@ window.GAMES = [
   },
   {
     id: "earthfall",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/415590/193114/b731932476582c67dcdb5936a3379f66c9c8db4b/1751280458/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/415590/188028/921c05053ab9b82f66e4c9d9a013f76e20a08f59/1751280456/microtrailer.mp4",
     ratingCount: 2292,
     reviewed: true,
     title: "Earthfall",
@@ -24645,7 +24645,7 @@ window.GAMES = [
   },
   {
     id: "drake-hollow",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/739650/357645/ee7d3bc92892ee66b0a34bbbe453f186e6c0b834/1751138266/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 1797,
     reviewed: true,
     title: "Drake Hollow",
@@ -24703,7 +24703,7 @@ window.GAMES = [
   },
   {
     id: "windswept",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1660960/1084233677/b58eee39c6a9288dabd3166d23afc002ac21b256/1760994170/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1660960/1120190503/92ac949b632e64b185ae30cfacd103cc65cd9b59/1751016103/microtrailer.mp4",
     ratingCount: 529,
     reviewed: true,
     title: "Windswept",
@@ -24799,7 +24799,7 @@ window.GAMES = [
   },
   {
     id: "g-darius-hd",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1640160/448130/acafd29da847a295c3a8b9c0699a24c922574588/1751013043/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 161,
     reviewed: true,
     title: "G-Darius HD",
@@ -24934,7 +24934,7 @@ window.GAMES = [
   },
   {
     id: "cats-love-boxes",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1961160/658565/fbb57edd978adef44f1ea543015d921bf516247a/1750743227/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 432,
     reviewed: true,
     title: "Cats Love Boxes",
@@ -25318,7 +25318,7 @@ window.GAMES = [
   },
   {
     id: "streets-of-fury-ex",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/350910/628318682/c7a03545f90dec2abdc26f51f3c9f5a3c263144c/1769460927/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/350910/35740/2e3623a7ddcd1632e146c17a0acff4497ed03acb/1751281734/microtrailer.mp4",
     ratingCount: 859,
     reviewed: true,
     title: "Streets of Fury EX",
@@ -25703,7 +25703,7 @@ window.GAMES = [
   },
   {
     id: "viking-squad",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/325930/76763/b5991b374df628c947dc828e3bbe08e985575724/1751264445/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 277,
     reviewed: true,
     title: "Viking Squad",
@@ -25722,7 +25722,7 @@ window.GAMES = [
   },
   {
     id: "mai-child-of-ages",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3499550/232961157/dcd9c3c927528517d8528bb5cba10d71b3222aa9/1757769348/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3499550/1558795565/22c4213207f81fd29d9a586d4b4cb19c0bbf64a6/1752701900/microtrailer.mp4",
     ratingCount: 266,
     reviewed: true,
     title: "Mai: Child of Ages",
@@ -25836,7 +25836,7 @@ window.GAMES = [
   },
   {
     id: "bloodstained-curse-of-the-moon-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1257360/295166/a1ff31f4aa29bda355fb06e46a5024c6a3ccb327/1750652509/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 1606,
     reviewed: true,
     title: "Bloodstained: Curse of the Moon 2",
@@ -25931,7 +25931,7 @@ window.GAMES = [
   },
   {
     id: "abyss-odyssey",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/255070/21922/9944dc48f61dd43d8f481562a832a5329be71856/1751261498/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/255070/21840/94d0182dc8d0ef3abbb50aa8337a9cf63ba6b3c2/1751261498/microtrailer.mp4",
     ratingCount: 2531,
     reviewed: true,
     title: "Abyss Odyssey",
