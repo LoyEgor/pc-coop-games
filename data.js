@@ -10489,7 +10489,7 @@ window.GAMES = [
     year: 2025,
     genres: ["Indie", "Side-view", "2D", "Platformer", "Action", "Fantasy"],
     endingType: "levels",
-    rating: 70,
+    rating: 72,
     ratingCount: 98,
     playersMax: 4,
     hours: 3,
@@ -13662,7 +13662,7 @@ window.GAMES = [
     verdict: "Twin-stick action-adventure with a story campaign and bosses; a second player runs Damon's dog throughout in local.",
     storeUrl: "https://store.steampowered.com/app/3557460/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3557460/3fd3185ee97ed3f13f69721588bdce538b579ab5/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3557460/576944221/7f9c1d7c3535f2bd737dc92798b291e44d9d94fe/1774515562/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3557460/1275064409/5afc978830adedbe1ec1b0f28b6b08231cae5f22/1787715049/microtrailer.mp4",
     youtubeUrl: youtube("92ZpzeBZqi4")
   },
   {
@@ -22825,7 +22825,7 @@ window.GAMES = [
   },
   {
     id: "pang-adventures",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/415150/54580/e51a058c51edc0dac400cb3d755ba993ceebc2f1/1751280379/microtrailer.mp4",
     ratingCount: 448,
     reviewed: true,
     title: "Pang Adventures",
@@ -23820,7 +23820,7 @@ window.GAMES = [
   },
   {
     id: "tristoy",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/303260/28520/c0ec66af344d1b543964e6bc00ea430a8879ddd4/1751271381/microtrailer.mp4",
     ratingCount: 230,
     reviewed: true,
     title: "TRISTOY",
@@ -23859,7 +23859,7 @@ window.GAMES = [
   },
   {
     id: "pile-up-box-by-box",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1109820/354472/210749dca3df9280639aeb1503867e91af08567d/1751189830/microtrailer.mp4",
     ratingCount: 98,
     reviewed: true,
     title: "Pile Up! Box by Box",
@@ -24096,7 +24096,7 @@ window.GAMES = [
     year: 2025,
     genres: ["AA", "Side-view", "3D", "Brawler"],
     endingType: "levels",
-    rating: 63,
+    rating: 65,
     playersMax: 2,
     hours: 6,
     oneCopy: "none",
@@ -24645,7 +24645,7 @@ window.GAMES = [
   },
   {
     id: "drake-hollow",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/739650/357645/ee7d3bc92892ee66b0a34bbbe453f186e6c0b834/1751138266/microtrailer.mp4",
     ratingCount: 1797,
     reviewed: true,
     title: "Drake Hollow",
@@ -24799,7 +24799,7 @@ window.GAMES = [
   },
   {
     id: "g-darius-hd",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1640160/448130/acafd29da847a295c3a8b9c0699a24c922574588/1751013043/microtrailer.mp4",
     ratingCount: 161,
     reviewed: true,
     title: "G-Darius HD",
@@ -24934,7 +24934,7 @@ window.GAMES = [
   },
   {
     id: "cats-love-boxes",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1961160/658565/fbb57edd978adef44f1ea543015d921bf516247a/1750743227/microtrailer.mp4",
     ratingCount: 432,
     reviewed: true,
     title: "Cats Love Boxes",
@@ -25703,7 +25703,7 @@ window.GAMES = [
   },
   {
     id: "viking-squad",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/325930/76763/b5991b374df628c947dc828e3bbe08e985575724/1751264445/microtrailer.mp4",
     ratingCount: 277,
     reviewed: true,
     title: "Viking Squad",
@@ -25836,7 +25836,7 @@ window.GAMES = [
   },
   {
     id: "bloodstained-curse-of-the-moon-2",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1257360/295166/a1ff31f4aa29bda355fb06e46a5024c6a3ccb327/1750652509/microtrailer.mp4",
     ratingCount: 1606,
     reviewed: true,
     title: "Bloodstained: Curse of the Moon 2",
