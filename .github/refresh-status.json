@@ -9,29 +9,29 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1243,
+  "entries_checked": 1163,
   "updates_applied": {
     "price": 0,
-    "rating": 2,
+    "rating": 0,
     "count": 0,
     "image": 0,
-    "preview": 9,
+    "preview": 0,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-08-28T16:42:15Z",
+  "last_success": "2026-08-29T11:32:14Z",
   "sweep": {
-    "cursor": "jagged-alliance-3",
-    "cycle_started_at": "2026-08-27T15:46:58Z",
-    "cycle_visited": 1243,
+    "cursor": "wattam",
+    "cycle_started_at": "2026-08-29T11:32:14Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-08-27T15:46:58Z"
+    "last_full_cycle_at": "2026-08-29T11:32:14Z"
   }
 }
