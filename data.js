@@ -6401,7 +6401,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 50,
     oneCopy: "none",
-    price: 949,
+    price: 639,
     verdict: "Historical co-op campaign: conquer Rome's world to the campaign victory condition together. Full co-op.",
     storeUrl: "https://store.steampowered.com/app/214950/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/214950/header.jpg",
@@ -8275,7 +8275,7 @@ window.GAMES = [
     price: 499,
     verdict: "🟠 Co-op pirate survival in the Bermuda Void; the 'escape back to the real world' win is fuzzy and gated behind survival.",
     storeUrl: "https://store.steampowered.com/app/2168260/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2168260/113fa6f0fb8fbc0de2593081ce03fd805566c8bb/header.jpg",
+    imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2168260/header.jpg",
     youtubeUrl: youtube("dFa_5H6zBwo")
   },
   {
@@ -10837,7 +10837,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 7,
     oneCopy: "remote-play",
-    price: 163,
+    price: 209,
     verdict: "Top-down alien shooter with a story campaign and boss-fight finale; two-player local co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/2500/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2500/header.jpg",
