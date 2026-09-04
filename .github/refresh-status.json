@@ -9,29 +9,29 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1176,
+  "entries_checked": 1271,
   "updates_applied": {
     "price": 1,
-    "rating": 0,
-    "count": 2,
-    "image": 1,
-    "preview": 1,
+    "rating": 2,
+    "count": 3,
+    "image": 0,
+    "preview": 0,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-09-03T09:19:43Z",
+  "last_success": "2026-09-04T09:15:25Z",
   "sweep": {
-    "cursor": "borderlands-2",
-    "cycle_started_at": "2026-09-02T09:10:15Z",
-    "cycle_visited": 1176,
+    "cursor": "tank-squad",
+    "cycle_started_at": "2026-09-04T09:15:25Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-09-02T09:10:15Z"
+    "last_full_cycle_at": "2026-09-04T09:15:25Z"
   }
 }
