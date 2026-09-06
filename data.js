@@ -3665,7 +3665,7 @@ window.GAMES = [
   {
     id: "alien-strike-blasting-the-intruders",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2876150/1592535918/e08c48755805effc5fffe2e4173fa29f8b57751d/1776455917/microtrailer.mp4",
-    ratingCount: 145,
+    ratingCount: 163,
     reviewed: true,
     title: "Alien Strike: Blasting the Intruders",
     year: 2026,
@@ -6111,7 +6111,7 @@ window.GAMES = [
     year: 2025,
     genres: ["Indie", "Isometric", "3D", "Puzzle"],
     endingType: "arcade-goal",
-    rating: 94,
+    rating: 96,
     playersMax: 4,
     hours: 3,
     oneCopy: "remote-play",
@@ -18917,7 +18917,7 @@ window.GAMES = [
   {
     id: "dead-island-2",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/934700/772874/2b9a66eedd5f57b6934b700b41404ac40ccc8e12/1750597891/microtrailer.mp4",
-    ratingCount: 26252,
+    ratingCount: 29422,
     reviewed: true,
     title: "Dead Island 2",
     year: 2024,
