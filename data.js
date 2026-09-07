@@ -6,7 +6,7 @@ window.GAMES = [
   {
     id: "gears-of-war-reloaded",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2523720/1926403680/cbed0a5ded139444155a83959f5dfe2f7c23cf60/1756252726/microtrailer.mp4",
-    ratingCount: 3672,
+    ratingCount: 4114,
     reviewed: true,
     title: "Gears of War: Reloaded",
     year: 2025,
@@ -8898,7 +8898,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "First-person", "3D", "Puzzle", "Fantasy"],
     endingType: "story",
-    rating: 89,
+    rating: 87,
     ratingCount: 153,
     playersMax: 2,
     hours: 5,
@@ -10845,7 +10845,7 @@ window.GAMES = [
   },
   {
     id: "soundfall",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1608700/461950/9124452feb29f44047818863313bafc11dd7d511/1751009456/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1608700/449044/14da937a98c7a2074f1d0382847bbeb116484f8f/1751009456/microtrailer.mp4",
     reviewed: true,
     title: "Soundfall",
     year: 2022,
@@ -11940,7 +11940,7 @@ window.GAMES = [
     genres: ["Indie", "Side-view", "2D", "Puzzle", "Platformer"],
     endingType: "levels",
     rating: 94,
-    ratingCount: 74,
+    ratingCount: 83,
     playersMax: 2,
     hours: 4,
     oneCopy: "none",
@@ -12408,7 +12408,7 @@ window.GAMES = [
     verdict: "Dig-and-defend roguelite: mine resources, fend off waves, then complete the Relic Hunt to win the run.",
     storeUrl: "https://store.steampowered.com/app/1637320/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1637320/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1637320/213525232/6b9e09d757bab4981feb34127e603ba774f43fe9/1775830135/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1637320/674501930/9d05ffbfe5b0a12b55fd07f6845534fd5d5bd156/1775811565/microtrailer.mp4",
     youtubeUrl: youtube("skQA_iBaQ9c")
   },
   {
