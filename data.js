@@ -782,7 +782,7 @@ window.GAMES = [
     price: 159,
     verdict: "Co-op challenge: reach the summit. Not a story, but each run is a short complete arc.",
     storeUrl: "https://store.steampowered.com/app/3527290/PEAK/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/89f65be18915d2dc5566de1de322379d62c1dcac/header_alt_assets_3.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527290/31bac6b2eccf09b368f5e95ce510bae2baf3cfcd/header.jpg",
     youtubeUrl: youtube("u_vlCvsf8dg")
   },
   {
@@ -2460,6 +2460,7 @@ window.GAMES = [
   },
   {
     id: "trine-1",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/35700/44536929/3c555f1dbb28953848d3199a9db72cf715a7e931/1789122583/microtrailer.mp4",
     previewShots: ["https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/35700/ss_20bcdff20ea02555d45ce7c6b3a838c180db1c02.1920x1080.jpg", "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/35700/ss_0a675f8e6f7cc0bc8dc44cd3eea952e37700601d.1920x1080.jpg", "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/35700/ss_bb35507b7d69fbb4d90e4a7f3ea68278377d119b.1920x1080.jpg", "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/35700/ss_1157f426ae88660f65981161ae27b1b9ce441e68.1920x1080.jpg"],
     ratingCount: 15849,
     reviewed: true,
@@ -10760,7 +10761,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 17,
     oneCopy: "friend-pass",
-    price: 515,
+    price: 385,
     verdict: "Cozy co-op craft/farm island; everything done together, ends at the last pirate base + cutscene.",
     storeUrl: "https://store.steampowered.com/app/1550730/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1550730/header.jpg",
@@ -11193,7 +11194,7 @@ window.GAMES = [
     year: 2025,
     genres: ["Indie", "Third-person", "3D", "Racing"],
     endingType: "levels",
-    rating: 79,
+    rating: 77,
     ratingCount: 1111,
     playersMax: 4,
     hours: 5,
@@ -23974,7 +23975,7 @@ window.GAMES = [
   {
     id: "painkiller-2025",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2300120/528106141/bcd3f11dc7dd96cf5bd5e56f6a9c1353571e7403/1765793054/microtrailer.mp4",
-    ratingCount: 1120,
+    ratingCount: 1256,
     reviewed: true,
     title: "Painkiller",
     year: 2025,
