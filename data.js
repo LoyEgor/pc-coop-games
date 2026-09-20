@@ -25800,7 +25800,7 @@ window.GAMES = [
   {
     id: "pratfall",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4244510/1129292563/30e95713e1d46697349ae7c54c215ea70dec2725/1776608950/microtrailer.mp4",
-    ratingCount: 3008,
+    ratingCount: 3371,
     reviewed: true,
     title: "Pratfall",
     year: 2026,
