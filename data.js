@@ -2767,7 +2767,7 @@ window.GAMES = [
   {
     id: "sniper-elite-resistance",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2169200/820495/e7e41fcc73207b4219eca6f3f5aa84f7963dbbcb/1750784414/microtrailer.mp4",
-    ratingCount: 5537,
+    ratingCount: 6217,
     reviewed: true,
     title: "Sniper Elite: Resistance",
     year: 2025,
@@ -5421,7 +5421,7 @@ window.GAMES = [
   },
   {
     id: "goodboy-galaxy",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2705890/770358/f383c8bbbf19e98f10a88b5ab19bd9e56f3593a5/1750819028/microtrailer.mp4",
     ratingCount: 145,
     reviewed: true,
     title: "Goodboy Galaxy",
@@ -8950,7 +8950,7 @@ window.GAMES = [
   },
   {
     id: "mad-experiments-2-escape-room",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1816930/504606/962e3b8141c388877affa94682fbefc86e375cd2/1751034383/microtrailer.mp4",
     reviewed: true,
     title: "Mad Experiments: Escape Room 2",
     year: 2022,
@@ -13237,7 +13237,7 @@ window.GAMES = [
     genres: ["Indie", "Third-person", "Action", "Sci-fi"],
     endingType: "roguelite",
     rating: 91,
-    ratingCount: 845,
+    ratingCount: 950,
     playersMax: 10,
     hours: 12,
     oneCopy: "none",
@@ -22335,7 +22335,7 @@ window.GAMES = [
     year: 2020,
     genres: ["Indie", "Side-view", "2D", "Brawler", "RPG", "Fantasy"],
     endingType: "story",
-    rating: 58,
+    rating: 56,
     playersMax: 2,
     hours: 8,
     oneCopy: "none",
@@ -22978,7 +22978,7 @@ window.GAMES = [
   },
   {
     id: "r-type-dimensions-ex",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/928390/192218/57e172bad59426a445e2b8d172380ee7d89afef3/1751165177/microtrailer.mp4",
     ratingCount: 329,
     reviewed: true,
     title: "R-Type Dimensions EX",
@@ -24186,7 +24186,7 @@ window.GAMES = [
   },
   {
     id: "the-expendabros",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/312990/23723/73fe812e0aa1bc05050c4929082d1174312c72e5/1751526436/microtrailer.mp4",
     ratingCount: 18246,
     reviewed: true,
     title: "The Expendabros",
