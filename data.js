@@ -5251,7 +5251,7 @@ window.GAMES = [
   {
     id: "brave-escape",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1354260/504293750/9653937d2c15f88292941156932ec81dfb39a327/1758828440/microtrailer.mp4",
-    ratingCount: 169,
+    ratingCount: 190,
     reviewed: true,
     title: "Brave Escape",
     year: 2025,
@@ -5365,7 +5365,7 @@ window.GAMES = [
   {
     id: "witchs-apocalyptic-journey",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3709430/147604146/b3666e0a34197538c9ac2452cb7fc19e025269fd/1780797475/microtrailer.mp4",
-    ratingCount: 1383,
+    ratingCount: 1550,
     reviewed: true,
     title: "Witch's Apocalyptic Journey",
     year: 2026,
@@ -8174,7 +8174,7 @@ window.GAMES = [
     genres: ["AA", "Third-person", "3D", "Action", "RPG", "Survival", "Fantasy", "Open World"],
     endingType: "survival-goal",
     rating: 81,
-    ratingCount: 28335,
+    ratingCount: 31936,
     playersMax: 4,
     hours: 20,
     oneCopy: "none",
@@ -10700,7 +10700,7 @@ window.GAMES = [
     genres: ["AA", "Isometric", "3D", "Tactics", "RPG", "Fantasy"],
     endingType: "story",
     rating: 83,
-    ratingCount: 1265,
+    ratingCount: 1417,
     playersMax: 4,
     hours: 14,
     oneCopy: "none",
@@ -24034,7 +24034,7 @@ window.GAMES = [
   {
     id: "escape-simulator-2",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2879840/108339930/0c07fa111312142f433228d12ffeb12dc4d4c457/1760128556/microtrailer.mp4",
-    ratingCount: 4242,
+    ratingCount: 4755,
     reviewed: true,
     title: "Escape Simulator 2",
     year: 2025,
@@ -25646,7 +25646,7 @@ window.GAMES = [
   {
     id: "dont-panic-it-is-just-turbulence",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4187140/1391651385/fb96f5205d7cd4c3e55426ab5355fb86c5889dd1/1778685495/microtrailer.mp4",
-    ratingCount: 440,
+    ratingCount: 493,
     reviewed: true,
     title: "Don't Panic! It is Just Turbulence",
     year: 2026,
