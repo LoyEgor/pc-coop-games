@@ -10971,7 +10971,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 10,
     oneCopy: "none",
-    price: 740,
+    price: 530,
     verdict: "Digital tabletop dungeon crawler; party through turn-based adventures, each ending in a boss you defeat together.",
     storeUrl: "https://store.steampowered.com/app/1484280/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1484280/header.jpg",
