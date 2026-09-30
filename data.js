@@ -2391,7 +2391,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "Side-view", "2D", "Action"],
     endingType: "roguelite",
-    rating: 97,
+    rating: 95,
     playersMax: 4,
     hours: 10,
     oneCopy: "remote-play",
@@ -9767,7 +9767,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 7,
     oneCopy: "remote-play",
-    price: 275,
+    price: 225,
     verdict: "Brutal top-down brawler with a story campaign; play the whole thing two-player via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/447290/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/447290/header.jpg",
@@ -10775,7 +10775,7 @@ window.GAMES = [
     year: 2025,
     genres: ["Indie", "Side-view", "2D", "Platformer", "Shooter", "Sci-fi"],
     endingType: "roguelite",
-    rating: 69,
+    rating: 71,
     ratingCount: 2187,
     playersMax: 4,
     hours: 12,
@@ -18209,7 +18209,7 @@ window.GAMES = [
     verdict: "Free first-person co-op escape room; solve puzzles across creepy rooms to escape, 2-6 players.",
     storeUrl: "https://store.steampowered.com/app/1301720/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1301720/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1301720/284845/294272edf2e8da181ab8512bad79b4d07ddee7b1/1751218196/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1301720/284841/9f357ca4b92e321614b426c0767b095752de16a4/1751218195/microtrailer.mp4",
     youtubeUrl: youtube("CIerqkrFafs")
   },
   {
@@ -25090,7 +25090,7 @@ window.GAMES = [
   {
     id: "that-one-otter-game",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3823460/615921749/e21dae603b14a204761b50f89258f86f929a5246/1750146733/microtrailer.mp4",
-    ratingCount: 1177,
+    ratingCount: 1319,
     reviewed: true,
     title: "That One Otter Game",
     year: 2025,
@@ -25453,7 +25453,7 @@ window.GAMES = [
   {
     id: "schrodingers-cat-burglar",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2111550/219003324/2b54a875a9e58c1af99da402073c13fe627bb8a5/1777351673/microtrailer.mp4",
-    ratingCount: 614,
+    ratingCount: 688,
     reviewed: true,
     title: "Schrodinger's Cat Burglar",
     year: 2026,
