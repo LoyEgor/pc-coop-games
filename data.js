@@ -3799,7 +3799,7 @@ window.GAMES = [
   {
     id: "never-grave",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2395770/2034734256/b1bd8c4ce55708ff58136ac587c4fa16ca1ce285/1771213194/microtrailer.mp4",
-    ratingCount: 593,
+    ratingCount: 665,
     reviewed: true,
     title: "Never Grave: The Witch and The Curse",
     year: 2026,
@@ -4889,7 +4889,7 @@ window.GAMES = [
   },
   {
     id: "muck",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1625450/374792/ff5cf283bbf1e91d02118bbd2d9c7fc42b28461d/1751011320/microtrailer.mp4",
     ratingCount: 183330,
     reviewed: true,
     title: "Muck",
@@ -4947,7 +4947,7 @@ window.GAMES = [
   {
     id: "boat-together",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3543890/209077408/5c9a9af48e22e71a6efd9a8adefcc6291d7e9e21/1755091119/microtrailer.mp4",
-    ratingCount: 392,
+    ratingCount: 444,
     reviewed: true,
     title: "Boat Together",
     year: 2025,
@@ -4985,7 +4985,7 @@ window.GAMES = [
   {
     id: "henry-halfhead",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2058140/1213703881/e0055f29ef41dda89885d0f2655ceaa73092c849/1754917557/microtrailer.mp4",
-    ratingCount: 220,
+    ratingCount: 247,
     reviewed: true,
     title: "Henry Halfhead",
     year: 2025,
@@ -9603,7 +9603,7 @@ window.GAMES = [
   },
   {
     id: "knights-of-braveland",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1253610/1727389444/c13c0b4e2090c3a6c331ade798e2e35738909eee/1781548569/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1253610/971178251/6eec293f92f92adae8b448b571fd9801fe3c1dba/1790800221/microtrailer.mp4",
     reviewed: true,
     title: "Knights of Braveland",
     year: 2023,
@@ -23969,7 +23969,7 @@ window.GAMES = [
     price: 1049,
     verdict: "Four-player co-op FPS with a nine-mission zombie campaign ending in a final-boss showdown.",
     storeUrl: "https://store.steampowered.com/app/2157830/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2157830/b37812d9d1172fdc8a24784adc12e34c9563c545/header_alt_assets_1.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2157830/ade0163ee0cebba5dc9b200424e7f70c81222ddd/header.jpg",
     youtubeUrl: youtube("dXJ_XypjbFg")
   },
   {
