@@ -787,7 +787,7 @@ window.GAMES = [
   },
   {
     id: "raft",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/648800/472596/2b044f3af0177b0711f90c375be5a4b346c125e0/1750567254/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/648800/378740/4220b4cf0fe25fa2312c780e4797e390fa672a78/1750567248/microtrailer.mp4",
     ratingCount: 372665,
     reviewed: true,
     title: "Raft",
@@ -1566,7 +1566,7 @@ window.GAMES = [
   },
   {
     id: "human-fall-flat",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/477160/1047236089/f415d6bc5bf94b2b7b3f97849d802a5d0880f751/1772711935/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/477160/318607826/26280147a63f888fa5ef2b3622c3f7a4c1cba8fb/1789037952/microtrailer.mp4",
     ratingCount: 224524,
     reviewed: true,
     title: "Human Fall Flat",
@@ -3704,7 +3704,7 @@ window.GAMES = [
   {
     id: "sos-ops",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2475460/336173680/827692dd9379c2956fc2aac25df679a2db3ce587/1777555737/microtrailer.mp4",
-    ratingCount: 4948,
+    ratingCount: 5646,
     reviewed: true,
     title: "SOS OPS!",
     year: 2023,
@@ -5630,7 +5630,7 @@ window.GAMES = [
   },
   {
     id: "meowgun-hell-denizen",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2347390/1064342672/cbc00f145b57e2e46311e4f8ac1113fb861b0935/1769247802/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2347390/1077234163/b1f05368b0a92ade304876a2f8d08442d6a7f637/1782404942/microtrailer.mp4",
     ratingCount: 114,
     reviewed: true,
     title: "MeowGun: Hell Denizen",
@@ -6984,7 +6984,7 @@ window.GAMES = [
   },
   {
     id: "smurfs-2-prisoner-green-stone",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2397500/600785/7af22c226d21f481737548c864cf8d5ffe34eae7/1750914937/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2397500/624153/97ba3be90c83906169f5468efd6f17ae091f14b9/1750914946/microtrailer.mp4",
     reviewed: true,
     title: "The Smurfs 2 - The Prisoner of the Green Stone",
     year: 2023,
@@ -11902,7 +11902,7 @@ window.GAMES = [
     year: 2026,
     genres: ["Indie", "Side-view", "2D", "Action", "Platformer"],
     endingType: "levels",
-    rating: 95,
+    rating: 93,
     ratingCount: 112,
     playersMax: 2,
     hours: 5,
@@ -21159,7 +21159,7 @@ window.GAMES = [
   },
   {
     id: "nioh-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1325200/346491/cc34fc6a280e8cc7f09dbb7a7eb5d3ec7a8b3635/1750672545/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1325200/341229/494dac7b36b1d1260ce41d1a4781828a142c4539/1750672503/microtrailer.mp4",
     ratingCount: 49957,
     reviewed: true,
     title: "Nioh 2 - The Complete Edition",
