@@ -9,29 +9,29 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1224,
+  "entries_checked": 1242,
   "updates_applied": {
     "price": 0,
-    "rating": 1,
-    "count": 1,
+    "rating": 3,
+    "count": 0,
     "image": 0,
-    "preview": 5,
+    "preview": 0,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-10-05T11:57:45Z",
+  "last_success": "2026-10-06T11:48:58Z",
   "sweep": {
-    "cursor": "tfc-the-fertile-crescent",
-    "cycle_started_at": "2026-10-04T11:12:35Z",
-    "cycle_visited": 1224,
+    "cursor": "shakes-on-a-plane",
+    "cycle_started_at": "2026-10-06T11:48:58Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-10-04T11:12:35Z"
+    "last_full_cycle_at": "2026-10-06T11:48:58Z"
   }
 }
