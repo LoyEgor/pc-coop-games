@@ -2748,7 +2748,7 @@ window.GAMES = [
   {
     id: "rv-there-yet",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3949040/750434220/4debbf5fe1ea5546b18ab2c4c608e94b04a2a95f/1760356005/microtrailer.mp4",
-    ratingCount: 79133,
+    ratingCount: 88690,
     reviewed: true,
     title: "RV There Yet?",
     year: 2025,
@@ -10769,10 +10769,10 @@ window.GAMES = [
   },
   {
     id: "neon-abyss-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2235200/713252529/691f6cfc9874353c5ec1e59ffc5904e89ce7285e/1752676708/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2235200/11205786/9da9244b71e37b62087421cdd367ad78eb973161/1791381871/microtrailer.mp4",
     reviewed: true,
     title: "Neon Abyss 2",
-    year: 2025,
+    year: 2026,
     genres: ["Indie", "Side-view", "2D", "Platformer", "Shooter", "Sci-fi"],
     endingType: "roguelite",
     rating: 71,
@@ -21642,7 +21642,7 @@ window.GAMES = [
   {
     id: "moving-out-2",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1641700/592975/ba06defae557b590752feffa260492377d342aa0/1750714601/microtrailer.mp4",
-    ratingCount: 568,
+    ratingCount: 637,
     reviewed: true,
     title: "Moving Out 2",
     year: 2023,
@@ -25813,7 +25813,7 @@ window.GAMES = [
     price: 159,
     verdict: "Chaotic co-op cave descent: dig, fall, and explode your way down to rescue your lost dog.",
     storeUrl: "https://store.steampowered.com/app/4244510/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/3f98ce3ab76af1109463b66bbb008665cc1643a1/header_alt_assets_1.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/aa5134d11626034935daa974478c834d03d73f54/header.jpg",
     youtubeUrl: youtube("vaRE3Xc2rqw")
   },
   {
