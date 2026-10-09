@@ -150,7 +150,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 5,
     oneCopy: "friend-pass",
-    price: 415,
+    price: 539,
     verdict: "Fully co-op-only 2-player campaign (Friend Pass); roles are asymmetric but both players are required throughout.",
     storeUrl: "https://store.steampowered.com/app/1335790/Operation_Tango/",
     imageUrl: steamImage(1335790),
@@ -340,7 +340,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 35,
     oneCopy: "none",
-    price: 759,
+    price: 1499,
     verdict: "Military co-op in an open world. Story is weaker, but two players clearing the map works.",
     storeUrl: "https://store.steampowered.com/app/460930/Tom_Clancys_Ghost_Recon_Wildlands/",
     imageUrl: steamImage(460930),
@@ -436,7 +436,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 18,
     oneCopy: "none",
-    price: 659,
+    price: 349,
     verdict: "Parkour, zombies, and full co-op campaign after the intro. A grittier, livelier two-player option.",
     storeUrl: "https://store.steampowered.com/app/239140/Dying_Light/",
     imageUrl: steamImage(239140),
@@ -756,7 +756,7 @@ window.GAMES = [
     year: 2015,
     genres: ["AA", "Isometric", "3D", "Action", "Fantasy"],
     endingType: "story",
-    rating: 80,
+    rating: 82,
     playersMax: 4,
     hours: 6,
     oneCopy: "remote-play",
@@ -939,7 +939,7 @@ window.GAMES = [
   },
   {
     id: "full-metal-furies",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/416600/136839/65539ee0a4802000cdf17c6ea6808ea47b35bf42/1751280633/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/416600/90621/57d648f9f63260fe33be1d2aee07342b62de48d5/1751280630/microtrailer.mp4",
     ratingCount: 2904,
     reviewed: true,
     title: "Full Metal Furies",
@@ -1871,7 +1871,7 @@ window.GAMES = [
   },
   {
     id: "monaco",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/113020/11258/03ec4129795c04834ae486a45cd763fe6194090a/1750491741/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 8518,
     reviewed: true,
     title: "Monaco: What's Yours Is Mine",
@@ -2327,7 +2327,7 @@ window.GAMES = [
   },
   {
     id: "heavenly-bodies",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1138850/1097801194/8de2e2bace9cd671180da1c53c21ccba2f0f6003/1763978224/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1138850/237768/30e9176d6f07fefb25331a6cecace1bdb34582dd/1750626467/microtrailer.mp4",
     ratingCount: 4345,
     reviewed: true,
     title: "Heavenly Bodies",
@@ -2481,7 +2481,7 @@ window.GAMES = [
   {
     id: "outlast-trials",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1304930/2088211010/daa115092484bd631ad18d122608d610417c4352/1774361779/microtrailer.mp4",
-    ratingCount: 104020,
+    ratingCount: 117097,
     reviewed: true,
     title: "The Outlast Trials",
     year: 2024,
@@ -3587,7 +3587,7 @@ window.GAMES = [
   },
   {
     id: "ripout",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1558830/705890/eb225cc4cfed80eec8614c8fe1b814c0b11c13b2/1751003112/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1558830/777116/3edc76417f8a8efd8180c3918f00ffd466adc8a4/1751003114/microtrailer.mp4",
     ratingCount: 1202,
     reviewed: true,
     title: "RIPOUT",
@@ -3607,7 +3607,7 @@ window.GAMES = [
   },
   {
     id: "synthetik-2",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1471410/1694585059/dd5e6e0353f421c6306dfe8b81adf5c9bc185f1a/1773162052/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1471410/603124/d12e3f09c922913d67f335549ad2b9319757e449/1750992086/microtrailer.mp4",
     ratingCount: 3385,
     reviewed: true,
     title: "SYNTHETIK 2",
@@ -3875,7 +3875,7 @@ window.GAMES = [
   },
   {
     id: "pulsar-lost-colony",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/252870/379209/19ea4de5a50106a41597d908ce555491d87d1bc0/1750487814/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 5711,
     reviewed: true,
     title: "PULSAR: Lost Colony",
@@ -4669,7 +4669,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 4,
     oneCopy: "remote-play",
-    price: 700,
+    price: 600,
     verdict: "Cinematic vertical shmup: split your energy between shields and weapons across seven stages to reach Earth.",
     storeUrl: "https://store.steampowered.com/app/1248080/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1248080/header.jpg",
@@ -8560,7 +8560,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 2,
     oneCopy: "remote-play",
-    price: 27,
+    price: 34,
     verdict: "Brutal zero-g physics platformer; reach the final level as a flailing space banana. Co-op rage-fest.",
     storeUrl: "https://store.steampowered.com/app/1331670/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1331670/header.jpg",
@@ -9565,7 +9565,7 @@ window.GAMES = [
   },
   {
     id: "joggernauts",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/747620/187232/b76d68edbbb2bcfe0d296124b2b5b64109d6b4c1/1751139371/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/747620/178264/ae9f0261a494b853420931e03105ae6d9613d511/1751139370/microtrailer.mp4",
     reviewed: true,
     title: "Joggernauts",
     year: 2018,
@@ -9718,7 +9718,7 @@ window.GAMES = [
   },
   {
     id: "outer-terror",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2189860/553036/6399f4f492ac6aab1d6c11fa49df047e6434ad86/1751087593/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2189860/583930/b9c22eab1534cf29604a90d5a364b2f2bc3e3b5e/1751087607/microtrailer.mp4",
     reviewed: true,
     title: "Outer Terror",
     year: 2023,
@@ -9928,7 +9928,7 @@ window.GAMES = [
   },
   {
     id: "surmount-a-mountain-climbing-adventure",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1675000/688794/a0e1e8f433ef1aced4ea7fa45885885a7ac589ec/1750722804/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1675000/670830/14d9181451832ec1f46affdd8d5aca6815c6a771/1750722796/microtrailer.mp4",
     reviewed: true,
     title: "Surmount: A Mountain Climbing Adventure",
     year: 2024,
@@ -10827,7 +10827,7 @@ window.GAMES = [
   },
   {
     id: "shadowgrounds",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2500/300/f27a7f411527476a940c8d7dfe0eb6c2983e161a/1751245933/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Shadowgrounds",
     year: 2006,
@@ -10838,7 +10838,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 7,
     oneCopy: "remote-play",
-    price: 209,
+    price: 163,
     verdict: "Top-down alien shooter with a story campaign and boss-fight finale; two-player local co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/2500/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2500/header.jpg",
@@ -11240,7 +11240,7 @@ window.GAMES = [
     price: 124,
     verdict: "Two-player off-road co-op where your cars are chained together; drive the route through every biome to the end.",
     storeUrl: "https://store.steampowered.com/app/4243690/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4243690/056427d8342ae894072924b21fe4633cff8cc348/header_alt_assets_0.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4243690/e7646480507c8b4333097faef96c5dd300f8f67e/header.jpg",
     youtubeUrl: youtube("F_-DjOjOBsY"),
     "needs-review": true
   },
@@ -12994,7 +12994,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 5,
     oneCopy: "none",
-    price: 265,
+    price: 230,
     verdict: "Two robots dive into an infected PC, routing energy to solve top-down co-op puzzles across neon circuit biomes.",
     storeUrl: "https://store.steampowered.com/app/1952690/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1952690/header.jpg",
@@ -13055,7 +13055,7 @@ window.GAMES = [
     verdict: "Free splitscreen co-op heist: two goblins stack, climb and sneak through a guarded manor, then escape with the loot.",
     storeUrl: "https://store.steampowered.com/app/4140170/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4140170/7ff5eb6aa7b1aca4a2cfd5b1b6f9196d96c1d718/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4140170/803557584/2c995b3c85074bbe26f79e718725e356c7c322e8/1774307088/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/4140170/1866217444/713e5f3fbdcd7f6f2c6f7b9f2beca4d69c02b96f/1777645993/microtrailer.mp4",
     youtubeUrl: youtube("veXrDaDeAno")
   },
   {
@@ -13492,7 +13492,7 @@ window.GAMES = [
     verdict: "Metroidvania beat-em-up; escape a cloning facility map by map, with a co-op partner playing the helper drone.",
     storeUrl: "https://store.steampowered.com/app/2352640/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2352640/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2352640/695812/51c0dbf3649c32a62c490e7c8144ea289beb63ad/1750812669/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2352640/353781862/7956e4c99b310e3a1b3a2d10a1b15fce5b4a6374/1750453458/microtrailer.mp4",
     youtubeUrl: youtube("NmEkw-p9dhI")
   },
   {
@@ -13587,7 +13587,7 @@ window.GAMES = [
     verdict: "Vertical shmup with a finite 40-mission campaign and capital-ship bossfights; up to four pilots in local co-op.",
     storeUrl: "https://store.steampowered.com/app/460220/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/460220/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/460220/76692/7065573027ed3b30451cc2e144bb77ff4adac6ff/1751288666/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/460220/72332/962679f1757a21538b6b6b3a65c557fc26da1982/1751288663/microtrailer.mp4",
     youtubeUrl: youtube("rEdM4LT4rbY")
   },
   {
@@ -15870,7 +15870,7 @@ window.GAMES = [
     verdict: "Slapstick roguelite platformer; clear five hat heists and beat Mr. Moon while managing your recruited HQ team.",
     storeUrl: "https://store.steampowered.com/app/1214670/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/1214670/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1214670/584002/f54ec12dd5a7c7ea5114a83c05f44d80119646df/1751205217/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1214670/556178/2ab12e3ebf489fb84284960387ee5bce50604dd5/1751205213/microtrailer.mp4",
     youtubeUrl: youtube("aZBwQoAncWg")
   },
   {
@@ -16389,7 +16389,7 @@ window.GAMES = [
   },
   {
     id: "cobra-kai-the-karate-kid-saga-continues",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1279920/334894/e72fd8f941ae20e7dd99522b3f570d25d323a9e2/1751214129/microtrailer.mp4",
+    previewUrl: "",
     reviewed: true,
     title: "Cobra Kai: The Karate Kid Saga Continues",
     year: 2021,
@@ -16860,7 +16860,7 @@ window.GAMES = [
     verdict: "Twin-stick survivor-roguelite across 3 maps with boss fights to beat; 2-player co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/2218400/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2218400/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2218400/1309597714/bbdd8fac562bd088e7c894d2751507e0ad7d1f8c/1757942192/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2218400/652089664/2c4486758294bf3e8d88bda7146a2942d89dc0e5/1757942198/microtrailer.mp4",
     youtubeUrl: youtube("iKKBRN46isQ")
   },
   {
@@ -18095,7 +18095,7 @@ window.GAMES = [
     verdict: "Top-down zombie-apocalypse RPG with a story finale; build a community and survive, online co-op.",
     storeUrl: "https://store.steampowered.com/app/340050/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/340050/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/340050/30186/ff0d08cd5a38f973700dc8a6b904c0b1889faab4/1751272415/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("iwrDSYd79bs")
   },
   {
@@ -18874,7 +18874,7 @@ window.GAMES = [
     verdict: "Comedic side-scrolling platformer with a full story campaign playable in two-player local co-op.",
     storeUrl: "https://store.steampowered.com/app/390520/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/390520/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/390520/47714/4fa0a3cd13f8eea687f8a8422a7450887d691a64/1751278752/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/390520/47624/e99d05db2ab0492354d39ab8492267401ad61a80/1751278752/microtrailer.mp4",
     youtubeUrl: youtube("3roFF4hP9Qw")
   },
   {
@@ -19675,7 +19675,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 18,
     oneCopy: "none",
-    price: 400,
+    price: 635,
     verdict: "Hades in Arthurian dress: 4 players, must slay the corrupted King Arthur and his knights.",
     storeUrl: "https://store.steampowered.com/app/1763250/",
     imageUrl: steamImage(1763250),
@@ -20239,7 +20239,7 @@ window.GAMES = [
   },
   {
     id: "godbreakers",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2687400/2064663470/8a349588f431bb767aa33c05c3c21d8f77ffb6a2/1765558092/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2687400/51899327/0cae326397daa5f4d789d0db7ed5c8f1604c55c8/1761156307/microtrailer.mp4",
     ratingCount: 971,
     reviewed: true,
     title: "GODBREAKERS",
@@ -20756,7 +20756,7 @@ window.GAMES = [
   },
   {
     id: "sniper-elite-3",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/238090/16329/744e3de5c7016b219b3b99df8f9c5999ae684cc1/1750483277/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/238090/21421/f047d3f0cc981cb4f55c857283a7edd6ca04d40b/1750483278/microtrailer.mp4",
     ratingCount: 28186,
     reviewed: true,
     title: "Sniper Elite 3",
@@ -22091,7 +22091,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 14,
     oneCopy: "remote-play",
-    price: 629,
+    price: 549,
     verdict: "DC heroes go to space against Brainiac; two-player drop-in co-op via Remote Play, story campaign with finale.",
     storeUrl: "https://store.steampowered.com/app/313690/",
     imageUrl: steamImage(313690),
@@ -22731,7 +22731,7 @@ window.GAMES = [
   },
   {
     id: "steredenn-binary-stars",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/347160/157450/d1a91b09ba7fbce2532fd6d809e4b4863c43aefc/1751274890/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/347160/157449/438e1da0c0892f16bd5442492a7ad310f8c17059/1751274890/microtrailer.mp4",
     ratingCount: 959,
     reviewed: true,
     title: "Steredenn: Binary Stars",
@@ -23104,7 +23104,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 8,
     oneCopy: "none",
-    price: 682,
+    price: 852,
     verdict: "Two-player roguelite where you crew a ship, load cannons and blast sea monsters to beat the final storm boss.",
     storeUrl: "https://store.steampowered.com/app/1286580/",
     imageUrl: steamImage(1286580),
@@ -23821,7 +23821,7 @@ window.GAMES = [
   },
   {
     id: "tristoy",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/303260/28520/c0ec66af344d1b543964e6bc00ea430a8879ddd4/1751271381/microtrailer.mp4",
+    previewUrl: "",
     ratingCount: 230,
     reviewed: true,
     title: "TRISTOY",
@@ -24396,7 +24396,7 @@ window.GAMES = [
   },
   {
     id: "techtonica",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1457320/780433/336e6032eb0d0fc92da15e8c1c76115d47e022c6/1750691442/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1457320/762336/a4aae4afb1c27dd3f3f8d400f1a2f5cc4ef6f3ea/1750691439/microtrailer.mp4",
     ratingCount: 3207,
     reviewed: true,
     title: "Techtonica",
