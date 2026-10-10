@@ -9,29 +9,29 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1203,
+  "entries_checked": 1192,
   "updates_applied": {
-    "price": 10,
-    "rating": 1,
+    "price": 2,
+    "rating": 0,
     "count": 1,
-    "image": 1,
-    "preview": 23,
+    "image": 0,
+    "preview": 2,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-10-09T11:55:31Z",
+  "last_success": "2026-10-10T11:13:16Z",
   "sweep": {
-    "cursor": "lost-twins-2",
-    "cycle_started_at": "2026-10-08T11:56:30Z",
-    "cycle_visited": 1203,
+    "cursor": "roboquest",
+    "cycle_started_at": "2026-10-10T11:13:16Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-10-08T11:56:30Z"
+    "last_full_cycle_at": "2026-10-10T11:13:16Z"
   }
 }
