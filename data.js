@@ -2684,7 +2684,7 @@ window.GAMES = [
     price: 673,
     verdict: "Beat-em-up from the TMNT Shredder's Revenge team: up to 4 heroes, short campaign.",
     storeUrl: "https://store.steampowered.com/app/2753970/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2753970/1ddb6ff382471f431fdfd1f28e95e0565633db1d/header.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2753970/bf8e7717b8e9db8ef3bb4de5e4be947fa32cb50b/header_alt_assets_1.jpg",
     youtubeUrl: youtube("95KGhcg1o1o")
   },
   {
@@ -2921,7 +2921,7 @@ window.GAMES = [
   {
     id: "far-cry-6",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2369390/558150/94fa91e325153c7872b861b59c5f436bbdd5a15b/1750837656/microtrailer.mp4",
-    ratingCount: 34251,
+    ratingCount: 38472,
     reviewed: true,
     title: "Far Cry 6",
     year: 2023,
@@ -4438,7 +4438,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 15,
     oneCopy: "remote-play",
-    price: 399,
+    price: 470,
     verdict: "🟠 Punch & click detective adventure; co-op only joins for brawl scenes, P2 plays a sidekick.",
     storeUrl: "https://store.steampowered.com/app/949480/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/949480/1017bad4f81cd99d99d3ab21e5d2490cdb4db027/header.jpg",
@@ -5745,7 +5745,7 @@ window.GAMES = [
   {
     id: "this-is-no-cave",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2852760/740615301/cbceb38638e0d8ca9578be381730d30d3a41fd02/1764821627/microtrailer.mp4",
-    ratingCount: 148,
+    ratingCount: 166,
     reviewed: true,
     title: "This Is No Cave",
     year: 2025,
@@ -10776,7 +10776,7 @@ window.GAMES = [
     genres: ["Indie", "Side-view", "2D", "Platformer", "Shooter", "Sci-fi"],
     endingType: "roguelite",
     rating: 71,
-    ratingCount: 2187,
+    ratingCount: 2453,
     playersMax: 4,
     hours: 12,
     oneCopy: "none",
@@ -23867,7 +23867,7 @@ window.GAMES = [
     year: 2021,
     genres: ["Indie", "Third-person", "3D", "Platformer"],
     endingType: "levels",
-    rating: 92,
+    rating: 90,
     playersMax: 4,
     hours: 4,
     oneCopy: "remote-play",
@@ -24898,7 +24898,7 @@ window.GAMES = [
   {
     id: "tank-squad",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1498130/1358421188/1559eb137b4c12b8d2b9039d48839253b918240f/1750695594/microtrailer.mp4",
-    ratingCount: 820,
+    ratingCount: 919,
     reviewed: true,
     title: "Tank Squad",
     year: 2025,
