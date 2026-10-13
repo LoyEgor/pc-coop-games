@@ -1871,7 +1871,7 @@ window.GAMES = [
   },
   {
     id: "monaco",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/113020/11258/03ec4129795c04834ae486a45cd763fe6194090a/1750491741/microtrailer.mp4",
     ratingCount: 8518,
     reviewed: true,
     title: "Monaco: What's Yours Is Mine",
@@ -3875,7 +3875,7 @@ window.GAMES = [
   },
   {
     id: "pulsar-lost-colony",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/252870/379209/19ea4de5a50106a41597d908ce555491d87d1bc0/1750487814/microtrailer.mp4",
     ratingCount: 5711,
     reviewed: true,
     title: "PULSAR: Lost Colony",
@@ -6162,7 +6162,7 @@ window.GAMES = [
   },
   {
     id: "chicken-invaders-3",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/377460/37469/c7c07979629298c1f180584b180fe44945864153/1751283137/microtrailer.mp4",
     ratingCount: 432,
     reviewed: true,
     title: "Chicken Invaders 3: Revenge of the Yolk",
@@ -8498,7 +8498,7 @@ window.GAMES = [
     genres: ["Indie", "First-person", "3D", "Adventure"],
     endingType: "story",
     rating: 90,
-    ratingCount: 22278,
+    ratingCount: 25016,
     playersMax: 6,
     hours: 4,
     oneCopy: "none",
@@ -9289,7 +9289,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 10,
     oneCopy: "none",
-    price: 415,
+    price: 474,
     verdict: "Up-to-4 beat-em-up roguelite; clear five dungeons then the Sky Fortress final boss together.",
     storeUrl: "https://store.steampowered.com/app/943370/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/943370/header.jpg",
@@ -9718,7 +9718,7 @@ window.GAMES = [
   },
   {
     id: "outer-terror",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2189860/583930/b9c22eab1534cf29604a90d5a364b2f2bc3e3b5e/1751087607/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2189860/559812/da30c8c3ee9bc9f176d542bbb7e14734d9c10b81/1751087600/microtrailer.mp4",
     reviewed: true,
     title: "Outer Terror",
     year: 2023,
@@ -10827,7 +10827,7 @@ window.GAMES = [
   },
   {
     id: "shadowgrounds",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2500/300/f27a7f411527476a940c8d7dfe0eb6c2983e161a/1751245933/microtrailer.mp4",
     reviewed: true,
     title: "Shadowgrounds",
     year: 2006,
@@ -11959,7 +11959,7 @@ window.GAMES = [
     year: 2023,
     genres: ["Indie", "Isometric", "3D", "RPG", "Tactics", "Fantasy"],
     endingType: "roguelite",
-    rating: 87,
+    rating: 89,
     ratingCount: 72,
     playersMax: 4,
     hours: 12,
@@ -12428,7 +12428,7 @@ window.GAMES = [
     verdict: "Castle-building RTS remaster with a 10-mission co-op trail you and a friend complete together against the AI lords.",
     storeUrl: "https://store.steampowered.com/app/3024040/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3024040/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3024040/1185678210/cd3053f61c7b5ea08c23ae5648f76cef4426da99/1752157090/microtrailer.mp4",
+    previewUrl: "",
     youtubeUrl: youtube("NIGa6iK_3Bk")
   },
   {
@@ -13540,7 +13540,7 @@ window.GAMES = [
     year: 2023,
     genres: ["AA", "Third-person", "Shooter", "Sci-fi"],
     endingType: "levels",
-    rating: 90,
+    rating: 88,
     ratingCount: 107,
     playersMax: 2,
     hours: 6,
@@ -16389,7 +16389,7 @@ window.GAMES = [
   },
   {
     id: "cobra-kai-the-karate-kid-saga-continues",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1279920/334894/e72fd8f941ae20e7dd99522b3f570d25d323a9e2/1751214129/microtrailer.mp4",
     reviewed: true,
     title: "Cobra Kai: The Karate Kid Saga Continues",
     year: 2021,
@@ -16860,7 +16860,7 @@ window.GAMES = [
     verdict: "Twin-stick survivor-roguelite across 3 maps with boss fights to beat; 2-player co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/2218400/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/2218400/header.jpg",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2218400/652089664/2c4486758294bf3e8d88bda7146a2942d89dc0e5/1757942198/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/2218400/1309597714/bbdd8fac562bd088e7c894d2751507e0ad7d1f8c/1757942192/microtrailer.mp4",
     youtubeUrl: youtube("iKKBRN46isQ")
   },
   {
@@ -18095,7 +18095,7 @@ window.GAMES = [
     verdict: "Top-down zombie-apocalypse RPG with a story finale; build a community and survive, online co-op.",
     storeUrl: "https://store.steampowered.com/app/340050/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/340050/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/340050/30186/ff0d08cd5a38f973700dc8a6b904c0b1889faab4/1751272415/microtrailer.mp4",
     youtubeUrl: youtube("iwrDSYd79bs")
   },
   {
@@ -23093,7 +23093,7 @@ window.GAMES = [
   },
   {
     id: "ship-of-fools",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1286580/876149/fe66832e30f841f82b370f90e7812b9269ddf172/1750666823/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1286580/626331/b4e0efef3c6daf5c42add9e5286b2c69e348b46c/1750666820/microtrailer.mp4",
     ratingCount: 6011,
     reviewed: true,
     title: "Ship of Fools",
@@ -23821,7 +23821,7 @@ window.GAMES = [
   },
   {
     id: "tristoy",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/303260/28520/c0ec66af344d1b543964e6bc00ea430a8879ddd4/1751271381/microtrailer.mp4",
     ratingCount: 230,
     reviewed: true,
     title: "TRISTOY",
@@ -25913,7 +25913,7 @@ window.GAMES = [
   },
   {
     id: "fling-to-the-finish",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1054430/651557/46632e8719ad1e6220d9afcaca098ccc96bc1f4c/1751182047/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1054430/651560/80613c2fddff6a6a10ad93d554be118e68a33f4d/1751182050/microtrailer.mp4",
     ratingCount: 1390,
     reviewed: true,
     title: "Fling to the Finish",
