@@ -9,29 +9,29 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1249,
+  "entries_checked": 1251,
   "updates_applied": {
-    "price": 1,
-    "rating": 2,
+    "price": 0,
+    "rating": 0,
     "count": 1,
     "image": 0,
-    "preview": 12,
+    "preview": 2,
     "year": 0,
     "oneCopy": 0
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-10-13T12:11:44Z",
+  "last_success": "2026-10-14T10:04:10Z",
   "sweep": {
-    "cursor": "stranded-deep",
-    "cycle_started_at": "2026-10-12T12:26:40Z",
-    "cycle_visited": 1249,
+    "cursor": "rocketbirds-hardboiled-chicken",
+    "cycle_started_at": "2026-10-14T10:04:10Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-10-12T12:26:40Z"
+    "last_full_cycle_at": "2026-10-14T10:04:10Z"
   }
 }

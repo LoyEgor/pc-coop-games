@@ -12428,7 +12428,7 @@ window.GAMES = [
     verdict: "Castle-building RTS remaster with a 10-mission co-op trail you and a friend complete together against the AI lords.",
     storeUrl: "https://store.steampowered.com/app/3024040/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/3024040/header.jpg",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3024040/1185678210/cd3053f61c7b5ea08c23ae5648f76cef4426da99/1752157090/microtrailer.mp4",
     youtubeUrl: youtube("NIGa6iK_3Bk")
   },
   {
@@ -25109,7 +25109,7 @@ window.GAMES = [
   {
     id: "grenouilles-3d",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3645100/235101047/564d516bbfd1bceaefe858f12183023381d3ff6e/1774198516/microtrailer.mp4",
-    ratingCount: 226,
+    ratingCount: 254,
     reviewed: true,
     title: "Grenouilles 3D",
     year: 2026,
@@ -25913,7 +25913,7 @@ window.GAMES = [
   },
   {
     id: "fling-to-the-finish",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1054430/651560/80613c2fddff6a6a10ad93d554be118e68a33f4d/1751182050/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1054430/651557/46632e8719ad1e6220d9afcaca098ccc96bc1f4c/1751182047/microtrailer.mp4",
     ratingCount: 1390,
     reviewed: true,
     title: "Fling to the Finish",
