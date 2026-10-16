@@ -9,29 +9,29 @@
     "previewUrl"
   ],
   "next_expected_window_hours": 30,
-  "entries_checked": 1193,
+  "entries_checked": 1189,
   "updates_applied": {
-    "price": 2,
-    "rating": 0,
+    "price": 4,
+    "rating": 1,
     "count": 1,
     "image": 0,
     "preview": 0,
-    "year": 0,
+    "year": 1,
     "oneCopy": 0
   },
   "fetch_failures": 0,
   "write_failures": 0,
-  "last_success": "2026-10-15T09:36:39Z",
+  "last_success": "2026-10-16T09:32:10Z",
   "sweep": {
-    "cursor": "mini-motor-racing-x",
-    "cycle_started_at": "2026-10-14T10:04:10Z",
-    "cycle_visited": 1193,
+    "cursor": "vengeance-hunters",
+    "cycle_started_at": "2026-10-16T09:32:10Z",
+    "cycle_visited": 0,
     "cycle_unverified": 0,
     "cycle_size": 1365,
     "budget_minutes": 50.0,
     "budget_exhausted": true,
     "full_cycle_target_hours": 96,
     "last_cycle_unverified": 0,
-    "last_full_cycle_at": "2026-10-14T10:04:10Z"
+    "last_full_cycle_at": "2026-10-16T09:32:10Z"
   }
 }
