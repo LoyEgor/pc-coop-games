@@ -16680,7 +16680,7 @@ window.GAMES = [
     year: 2024,
     genres: ["Indie", "Third-person", "3D", "Shooter", "Survival", "Horror"],
     endingType: "survival-goal",
-    rating: 79,
+    rating: 77,
     ratingCount: 66,
     playersMax: 4,
     hours: 6,
@@ -22462,7 +22462,7 @@ window.GAMES = [
   },
   {
     id: "livelock",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/251230/105392/1531a2840376714694f5056d16532a3661ea7b23/1751251056/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/251230/475515871/2b45abff1edc8050d7df242a91def46dea07e1e5/1792213109/microtrailer.mp4",
     ratingCount: 901,
     reviewed: true,
     title: "Livelock",
@@ -23152,7 +23152,7 @@ window.GAMES = [
   {
     id: "blanc",
     previewShots: ["https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1982340/ss_1f6a7f6393f2f60d57d6692a5f582c40d669c214.1920x1080.jpg", "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1982340/ss_9edcf9e1e0c0c0ac15e913d72fccb2029f59c9e6.1920x1080.jpg", "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1982340/ss_01bf98d91e13084fcc14e97e46303d08e83f5d06.1920x1080.jpg", "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1982340/ss_5cfcbc36f319b824fc111da8bbc38db5dc492e2c.1920x1080.jpg"],
-    ratingCount: 1413,
+    ratingCount: 1586,
     reviewed: true,
     title: "Blanc",
     year: 2023,
