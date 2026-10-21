@@ -291,7 +291,7 @@ window.GAMES = [
   },
   {
     id: "far-cry-5",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/552520/131447/672f9977b92be9e5cbb85e3debe0a1002a26fb16/1750549377/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/552520/1470190032/cadcba83da028861b79cd904fa195c970f3003eb/1792529945/microtrailer.mp4",
     ratingCount: 186216,
     reviewed: true,
     title: "Far Cry 5",
@@ -4256,7 +4256,7 @@ window.GAMES = [
   },
   {
     id: "unrailed",
-    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1016920/312902/0efb4e965edd09e7b98157e50daa2d871b35e032/1750606577/microtrailer.mp4",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/1016920/312901/b266cc2e2ce68811f45a405789ea6d91af728313/1750606549/microtrailer.mp4",
     ratingCount: 19575,
     reviewed: true,
     title: "Unrailed!",
@@ -7518,7 +7518,7 @@ window.GAMES = [
   },
   {
     id: "serious-sam-classics-revolution",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/227780/20123/54a9724a31d4c7b4cb50bd6737901a8f3830d894/1751258858/microtrailer.mp4",
     reviewed: true,
     title: "Serious Sam Classics: Revolution",
     year: 2019,
@@ -18756,7 +18756,7 @@ window.GAMES = [
     playersMax: 2,
     hours: 2,
     oneCopy: "remote-play",
-    price: 27,
+    price: 34,
     verdict: "Hardcore twin-stick shooter through shifting neon arenas to colossal bosses; two-player couch co-op via Remote Play.",
     storeUrl: "https://store.steampowered.com/app/394030/",
     imageUrl: "https://cdn.cloudflare.steamstatic.com/steam/apps/394030/header.jpg",
@@ -19184,7 +19184,7 @@ window.GAMES = [
   },
   {
     id: "clandestine",
-    previewUrl: "",
+    previewUrl: "https://video.akamai.steamstatic.com/store_trailers/290530/46297/d4709ed0202e3e9f878edbaca13e2bed1dd26dd1/1751271577/microtrailer.mp4",
     ratingCount: 510,
     reviewed: true,
     title: "Clandestine",
@@ -24091,7 +24091,7 @@ window.GAMES = [
   {
     id: "double-dragon-revive",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3012220/220769371/5d88960179ea3a00a736934bc44edcb51803db3e/1750987053/microtrailer.mp4",
-    ratingCount: 178,
+    ratingCount: 200,
     reviewed: true,
     title: "Double Dragon Revive",
     year: 2025,
@@ -26194,7 +26194,7 @@ window.GAMES = [
     playersMax: 4,
     hours: 15,
     oneCopy: "none",
-    price: 415,
+    price: 360,
     verdict: "Online/LAN/shared co-op desert-crawler campaign with a clear final boss; co-op throughout.",
     storeUrl: "https://store.steampowered.com/app/1833200/",
     imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1833200/37965d2ff6a862f5a0eee0ca046a7b92e90bde9c/header.jpg",
