@@ -7965,7 +7965,7 @@ window.GAMES = [
     genres: ["Indie", "First-person", "3D", "Puzzle", "Adventure", "Horror"],
     endingType: "arcade-goal",
     rating: 72,
-    ratingCount: 93,
+    ratingCount: 105,
     playersMax: 2,
     hours: 4,
     oneCopy: "none",
@@ -14061,7 +14061,7 @@ window.GAMES = [
     price: 170,
     verdict: "🟠 Soft finish: relaxing co-op mine-and-shopkeep sim; story wraps when you solve the earthquake mystery, loop continues.",
     storeUrl: "https://store.steampowered.com/app/3744080/",
-    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744080/f1d1251cd1a0fefddf95a86cab9e31b4f0792f2c/header_alt_assets_0.jpg",
+    imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744080/6d6931e04518303b61add8c26b96fbf8bbebe166/header.jpg",
     previewUrl: "https://video.akamai.steamstatic.com/store_trailers/3744080/1795038002/15bfb4c808a8c40c8ce82857dd786849d6e88994/1771598385/microtrailer.mp4",
     youtubeUrl: youtube("SrB10vaVA4A")
   },
